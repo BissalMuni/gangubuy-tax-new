@@ -1,50 +1,129 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report
+==================
+Version change: 0.0.0 → 1.0.0 (Initial ratification)
+
+Added sections:
+- Core Principles (5 principles)
+- Technology Stack
+- Development Workflow
+- Governance
+
+Templates requiring updates:
+- .specify/templates/plan-template.md: ✅ updated (Next.js App Router structure option added)
+- .specify/templates/spec-template.md: ✅ compatible
+- .specify/templates/tasks-template.md: ✅ compatible (TDD reflected)
+
+Follow-up TODOs: None
+-->
+
+# Gangubuy Tax Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Component-Based Design
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+All UI MUST be composed of reusable component units.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+- Components MUST follow the Single Responsibility Principle
+- Common components reside in `components/ui/`, domain components in `components/[domain]/`
+- Components MUST explicitly define Props interfaces
+- Use Ant Design components as the base; wrap only when customization is required
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### II. Type Safety
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+Use TypeScript to catch errors at compile time.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+- `any` type is PROHIBITED (if unavoidable, document the reason in comments)
+- All functions MUST specify parameter and return types
+- API responses and DB schemas MUST be defined as types/interfaces
+- `strict: true` configuration is REQUIRED
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### III. Test-First (TDD) - NON-NEGOTIABLE
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+Write tests first, verify they fail, then implement.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+- Red → Green → Refactor cycle MUST be strictly followed
+- Tax calculation logic MUST include unit tests
+- Tax-related code CANNOT be merged without tests
+- Coverage target: 100% for tax calculation logic, 80%+ overall
+
+### IV. Data Accuracy
+
+Tax information MUST be accurate. Incorrect tax information causes real harm to users.
+
+- All tax rates/standards MUST cite their source (laws, regulations)
+- Tax calculation results MUST be backed by verifiable test cases
+- Document data update procedures when laws change
+- Formulas used in calculations MUST include comments citing legal basis
+
+### V. Simplicity
+
+Build only what is needed. Avoid over-abstraction.
+
+- YAGNI: Do not build features not currently needed
+- Do not abstract until something repeats 3+ times
+- Convention over Configuration
+- Break complex logic into small functions, but avoid excessive layering
+
+## Technology Stack
+
+Defines the technology stack used in this project.
+
+| Area | Technology | Notes |
+|------|------------|-------|
+| Framework | Next.js 14+ (App Router) | SSR/SSG support, API Routes |
+| Language | TypeScript 5+ | strict mode required |
+| UI Library | Ant Design 5+ | Base UI components |
+| Styling | Tailwind CSS | Utility-first CSS |
+| State | Zustand | Client state management |
+| Data Fetching | TanStack Query | Server state management, caching |
+| Database | Supabase (PostgreSQL) | Auth, realtime features included |
+| Testing | Vitest + Testing Library | Unit/integration tests |
+| Deployment | Vercel | Next.js optimized deployment |
+
+## Development Workflow
+
+Defines development process and quality standards.
+
+### Branch Strategy
+
+- `main`: Production deployment branch
+- `feature/[feature-name]`: Feature development branches
+- `fix/[issue-number]`: Bug fix branches
+
+### Commit Convention
+
+```
+type: brief description
+
+- feat: New feature
+- fix: Bug fix
+- docs: Documentation changes
+- refactor: Code refactoring
+- test: Add/modify tests
+- chore: Build, config changes
+```
+
+### PR Checklist
+
+- [ ] No TypeScript compilation errors
+- [ ] All tests pass
+- [ ] Test cases added for tax calculation logic changes
+- [ ] No lint errors
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+The Constitution supersedes all other development practices in this project.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+- All PRs MUST verify Constitution compliance
+- Constitution amendments MUST include documentation, version update, and impact analysis
+- If principle violation is unavoidable, document the reason and alternatives considered in the PR
+
+### Versioning
+
+- MAJOR: Principle removal or fundamental changes
+- MINOR: New principles/sections added
+- PATCH: Wording fixes, clarifications
+
+**Version**: 1.0.0 | **Ratified**: 2026-01-28 | **Last Amended**: 2026-01-28
