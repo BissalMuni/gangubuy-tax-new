@@ -1,0 +1,21 @@
+{
+  "versions": [
+    {
+      "version": "1.0.0",
+      "file": "v1.0.0.mdx",
+      "effectiveDate": "2024-01-01",
+      "description": "초기 버전 - 2024년 기준 1주택 취득세율",
+      "changes": [
+        "초기 콘텐츠 생성",
+        "조정대상지역/비조정대상지역 구분",
+        "가격대별 세율 정리",
+        "85㎡ 기준 농특세 과세 여부 구분"
+      ],
+      "isCurrent": true,
+      "author": "세무팀",
+      "reviewedBy": "법무팀",
+      "publishedAt": "2026-01-29"
+    }
+  ],
+  "changelog": "/changelog/acquisition-tax-one-house.md"
+}

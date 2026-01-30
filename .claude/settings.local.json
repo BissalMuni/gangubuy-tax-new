@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git fetch:*)",
+      "Bash(pwsh -File .specify/scripts/powershell/create-new-feature.ps1:*)",
+      "Bash(powershell -File:*)",
+      "Bash(powershell -Command \"& ''.specify/scripts/powershell/create-new-feature.ps1'' -Json -ShortName ''homepage-layout'' -Number 1 ''홈페이지 좌측 트리 메뉴 우측 세금 정보 표시 레이아웃 구현''\")"
+    ]
+  }
+}
