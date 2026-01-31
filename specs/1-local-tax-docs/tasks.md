@@ -27,15 +27,15 @@
 
 **Purpose**: Project initialization and basic structure
 
-- [ ] T001 Initialize Next.js 14+ project with TypeScript in repository root
-- [ ] T002 Install dependencies: Ant Design, Tailwind CSS, Zustand, @next/mdx, next-mdx-remote, flexsearch, @supabase/supabase-js
-- [ ] T003 [P] Configure TypeScript strict mode in tsconfig.json
-- [ ] T004 [P] Configure Tailwind CSS in tailwind.config.ts and app/globals.css
-- [ ] T005 [P] Configure ESLint and Prettier in .eslintrc.js and .prettierrc
-- [ ] T006 [P] Setup Vitest and React Testing Library in vitest.config.ts
-- [ ] T007 Create shared type definitions in lib/types/index.ts (NavigationNode, ContentMeta, ContentItem, Comment, Attachment, etc.)
-- [ ] T007.1 [P] Create Supabase server client in lib/supabase/server.ts with env variables (SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)
-- [ ] T007.2 [P] Create Supabase tables (comments, attachments) and Storage bucket via Supabase dashboard or migration SQL
+- [x] T001 Initialize Next.js 14+ project with TypeScript in repository root
+- [x] T002 Install dependencies: Ant Design, Tailwind CSS, Zustand, @next/mdx, next-mdx-remote, flexsearch, @supabase/supabase-js
+- [x] T003 [P] Configure TypeScript strict mode in tsconfig.json
+- [x] T004 [P] Configure Tailwind CSS in tailwind.config.ts and app/globals.css
+- [x] T005 [P] Configure ESLint and Prettier in .eslintrc.js and .prettierrc
+- [x] T006 [P] Setup Vitest and React Testing Library in vitest.config.ts
+- [x] T007 Create shared type definitions in lib/types/index.ts (NavigationNode, ContentMeta, ContentItem, Comment, Attachment, etc.)
+- [x] T007.1 [P] Create Supabase server client in lib/supabase/server.ts with env variables (SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)
+- [x] T007.2 [P] Create Supabase tables (comments, attachments) and Storage bucket via Supabase dashboard or migration SQL
 
 ---
 
@@ -45,13 +45,13 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T008 Create root layout with Ant Design ConfigProvider in app/layout.tsx
-- [ ] T009 Create navigation configuration in lib/navigation/nav.config.ts
-- [ ] T010 [P] Create MDX content loader utility with nested path support in lib/content/loader.ts
-- [ ] T011 [P] Create sample MDX content file content/acquisition/rates/paid/sale/housing-v1.0.mdx (개조식 공문서 스타일, content-style-guide.md 참조)
-- [ ] T012 Configure MDX support in next.config.mjs with @next/mdx
-- [ ] T013 Create custom MDX components (Alert, Table, Criteria) in components/mdx/index.tsx
-- [ ] T014 Create 404 page in app/not-found.tsx
+- [x] T008 Create root layout with Ant Design ConfigProvider in app/layout.tsx
+- [x] T009 Create navigation configuration in lib/navigation/nav.config.ts
+- [x] T010 [P] Create MDX content loader utility with nested path support in lib/content/loader.ts
+- [x] T011 [P] Create sample MDX content file content/acquisition/rates/paid/sale/housing-v1.0.mdx (개조식 공문서 스타일, content-style-guide.md 참조)
+- [x] T012 Configure MDX support in next.config.mjs with @next/mdx
+- [x] T013 Create custom MDX components (Alert, Table, Criteria) in components/mdx/index.tsx
+- [x] T014 Create 404 page in app/not-found.tsx
 
 **Checkpoint**: Foundation ready - user story implementation can now begin
 

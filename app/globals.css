@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-size-small: 14px;
+  --font-size-medium: 16px;
+  --font-size-large: 18px;
+  --content-font-size: var(--font-size-medium);
+}
+
+body {
+  font-size: var(--content-font-size);
+}
