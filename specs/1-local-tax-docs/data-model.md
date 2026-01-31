@@ -47,26 +47,32 @@ interface NavigationConfig {
   search: NavigationNode;       // 검색
 }
 
-// Example: 취득세/세율 트리구조 (취득원인 우선)
+// Example: 취득세/세율 트리구조 (물건 기준)
 // acquisition.children.rates.children = {
-//   paid: {                     // 유상취득
-//     label: '유상취득',
+//   realestate: {               // 부동산
+//     label: '부동산',
 //     children: {
-//       sale: {                 // 매매
-//         label: '매매',
+//       housing: {              // 주택
+//         label: '주택',
 //         children: {
-//           housing: { label: '주택', path: '/acquisition/rates/paid/sale/housing' },
-//           farmland: { label: '농지', path: '/acquisition/rates/paid/sale/farmland' },
-//           building: { label: '건물', path: '/acquisition/rates/paid/sale/building' },
+//           general: { label: '유상거래', path: '/acquisition/rates/realestate/housing/general' },
+//           inheritance: { label: '상속', path: '/acquisition/rates/realestate/housing/inheritance' },
+//           gift: { label: '증여', path: '/acquisition/rates/realestate/housing/gift' },
+//           original: { label: '원시취득', path: '/acquisition/rates/realestate/housing/original' },
+//           'multi-house': { label: '다주택자 중과', path: '/acquisition/rates/realestate/housing/multi-house' },
+//           corporate: { label: '법인 취득 중과', path: '/acquisition/rates/realestate/housing/corporate' },
+//           luxury: { label: '고급주택 중과', path: '/acquisition/rates/realestate/housing/luxury' },
 //         }
 //       },
-//       exchange: { label: '교환', path: '/acquisition/rates/paid/exchange' },
-//       division: { label: '분할', path: '/acquisition/rates/paid/division' },
+//       farmland: { ... },      // 농지 (유상거래, 상속, 증여)
+//       'non-farmland': { ... }, // 농지 외 (유상거래, 상속, 증여, 원시취득)
 //     }
 //   },
-//   unpaid: { ... },            // 무상취득 (상속, 증여)
-//   original: { ... },          // 원시취득 (신축)
-//   luxury: { ... },            // 사치성재산 (고급주택, 골프, 과점주주)
+//   'non-realestate': {         // 부동산 외 (§12 통합)
+//     label: '부동산 외',
+//     path: '/acquisition/rates/non-realestate/non-realestate',
+//   },
+//   common: { ... },            // 공통 (분할, 과밀억제, 사치성재산, 특례, 추징, 면세점, 주택수판단)
 // }
 ```
 
@@ -275,21 +281,24 @@ SearchIndex
 content/{category}/{nested-path}/{slug}-v{major}.{minor}.mdx
 
 Examples:
-- content/acquisition/rates/paid/sale/housing-v1.0.mdx
-- content/acquisition/rates/paid/sale/housing-v1.1.mdx
-- content/acquisition/rates/unpaid/gift/housing-v1.0.mdx
-- content/acquisition/rates/luxury/golf-v1.0.mdx
+- content/acquisition/rates/realestate/housing/general-v1.0.mdx
+- content/acquisition/rates/realestate/housing/general-v1.1.mdx
+- content/acquisition/rates/realestate/housing/multi-house-v1.0.mdx
+- content/acquisition/rates/realestate/farmland/general-v1.0.mdx
+- content/acquisition/rates/realestate/non-farmland/original-v1.0.mdx
+- content/acquisition/rates/non-realestate/non-realestate-v1.0.mdx
+- content/acquisition/rates/common/division-v1.0.mdx
 - content/acquisition/standard-v1.0.mdx
 - content/property/rates-v1.0.mdx
 ```
 
 **URL Mapping**:
 ```
-/acquisition/rates/paid/sale/housing
-  → content/acquisition/rates/paid/sale/housing-v{latest}.mdx
+/acquisition/rates/realestate/housing/general
+  → content/acquisition/rates/realestate/housing/general-v{latest}.mdx
 
-/acquisition/rates/paid/sale/housing?v=1.0
-  → content/acquisition/rates/paid/sale/housing-v1.0.mdx
+/acquisition/rates/realestate/housing/general?v=1.0
+  → content/acquisition/rates/realestate/housing/general-v1.0.mdx
 ```
 
 **Parsing**:

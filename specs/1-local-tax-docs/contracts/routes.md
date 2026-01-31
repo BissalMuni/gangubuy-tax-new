@@ -123,17 +123,34 @@ Same pattern as `/acquisition/[slug]`.
 ## URL Structure Summary
 
 ```
-/                           # Home
-/acquisition/rates          # 취득세 > 세율 (latest)
-/acquisition/rates?v=1.0    # 취득세 > 세율 (v1.0)
-/acquisition/standard       # 취득세 > 과세표준
-/acquisition/requirements   # 취득세 > 과세요건
-/acquisition/special        # 취득세 > 특례
-/property/rates             # 재산세 > 세율
-/property/standard          # 재산세 > 과세표준
-/property/special           # 재산세 > 특례
-/vehicle/rates              # 자동차세 > 세율
-/vehicle/...                # (other vehicle tax content)
-/search                     # Search page
-/search?q=keyword           # Search with query
+/                                                        # Home
+/acquisition/rates/realestate/housing/general             # 취득세 > 세율 > 부동산 > 주택 > 유상거래
+/acquisition/rates/realestate/housing/general?v=1.0       # (v1.0)
+/acquisition/rates/realestate/housing/inheritance          # 취득세 > 세율 > 부동산 > 주택 > 상속
+/acquisition/rates/realestate/housing/gift                 # 취득세 > 세율 > 부동산 > 주택 > 증여
+/acquisition/rates/realestate/housing/original             # 취득세 > 세율 > 부동산 > 주택 > 원시취득
+/acquisition/rates/realestate/housing/multi-house          # 취득세 > 세율 > 부동산 > 주택 > 다주택자 중과
+/acquisition/rates/realestate/housing/corporate            # 취득세 > 세율 > 부동산 > 주택 > 법인 취득 중과
+/acquisition/rates/realestate/housing/luxury               # 취득세 > 세율 > 부동산 > 주택 > 고급주택 중과
+/acquisition/rates/realestate/farmland/general             # 취득세 > 세율 > 부동산 > 농지 > 유상거래
+/acquisition/rates/realestate/farmland/inheritance          # 취득세 > 세율 > 부동산 > 농지 > 상속
+/acquisition/rates/realestate/farmland/gift                 # 취득세 > 세율 > 부동산 > 농지 > 증여
+/acquisition/rates/realestate/non-farmland/general          # 취득세 > 세율 > 부동산 > 농지외 > 유상거래
+/acquisition/rates/realestate/non-farmland/inheritance      # 취득세 > 세율 > 부동산 > 농지외 > 상속
+/acquisition/rates/realestate/non-farmland/gift             # 취득세 > 세율 > 부동산 > 농지외 > 증여
+/acquisition/rates/realestate/non-farmland/original         # 취득세 > 세율 > 부동산 > 농지외 > 원시취득
+/acquisition/rates/non-realestate/non-realestate            # 취득세 > 세율 > 부동산 외
+/acquisition/rates/common/division                          # 취득세 > 세율 > 공통 > 분할취득
+/acquisition/rates/common/metro-surcharge                   # 취득세 > 세율 > 공통 > 과밀억제권역 중과
+/acquisition/rates/common/luxury-surcharge                  # 취득세 > 세율 > 공통 > 사치성재산 중과
+/acquisition/rates/common/special-rates                     # 취득세 > 세율 > 공통 > 세율 특례
+/acquisition/rates/common/rate-application                  # 취득세 > 세율 > 공통 > 세율 적용/추징
+/acquisition/rates/common/exemption                         # 취득세 > 세율 > 공통 > 면세점
+/acquisition/rates/common/housing-count                     # 취득세 > 세율 > 공통 > 주택 수 판단
+/acquisition/standard                                       # 취득세 > 과세표준
+/acquisition/requirements                                   # 취득세 > 과세요건
+/property/...                                               # 재산세
+/vehicle/...                                                # 자동차세
+/search                                                     # Search page
+/search?q=keyword                                           # Search with query
 ```
