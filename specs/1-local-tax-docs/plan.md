@@ -118,8 +118,10 @@ content/
 │   │       ├── rate-application-v1.0.mdx  # 세율 적용/추징 (§16)
 │   │       ├── exemption-v1.0.mdx         # 면세점 (§17: 50만원)
 │   │       └── housing-count-v1.0.mdx     # 주택 수 판단 (§13의3)
-│   ├── standard-v1.0.mdx                  # 과세표준
-│   └── requirements-v1.0.mdx              # 과세요건
+│   ├── themes/                            # 테마별 통합규정
+│   │   └── multi-house-v1.0.mdx           # 다주택자 중과 (§13의2 통합)
+│   └── standard/                          # 과세표준
+│       └── standard-v1.0.mdx              # 과세표준
 ├── property/                              # 재산세
 │   └── ...
 └── vehicle/                               # 자동차세
