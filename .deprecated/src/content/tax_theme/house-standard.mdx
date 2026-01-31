@@ -1,0 +1,294 @@
+export const meta = {
+  id: "house-standard",
+  title: "1주택 기준",
+  description: "취득세 중과 판정 시 주택 수 산정방법 및 제외 주택",
+  category: "acquisition",
+  lastUpdated: "2026-01-25",
+  version: "1.0"
+};
+
+## 개요
+
+- **적용범위**: 주택 취득세 중과 판정 시 주택 수 산정
+- **기준일**: 주택 취득일 현재
+- **근거법령**: 지방세법 시행령 제28조의4
+
+<DataTable
+  title="주택 수 산정 4대 원칙"
+  icon="OrderedListOutlined"
+  columns={[
+    { key: "category", title: "구분", width: "20%" },
+    { key: "article", title: "조항", width: "15%" },
+    { key: "content", title: "핵심 내용", width: "65%" }
+  ]}
+  rows={[
+    { category: "원칙", article: "제1항", content: "주택 수에 포함되는 것", highlight: true },
+    { category: "취득 주택 제외", article: "제2항", content: "취득하는 주택이 카운트에서 빠짐" },
+    { category: "보유 주택 제외", article: "제6항", content: "기존 보유 주택이 카운트에서 빠짐" },
+    { category: "특수 규정", article: "제3~5항", content: "동시취득, 공동소유 등" }
+  ]}
+/>
+
+---
+
+## 1. 주택 수에 포함 (제1항)
+
+주택 취득일 현재 1세대가 국내에 소유하는 다음 항목을 모두 합산합니다.
+
+<List title="주택 수 포함 대상" icon="PlusCircleOutlined" variant="bullet">
+  <ListItem text="주택 (취득하는 주택 포함)" />
+  <ListItem text="조합원입주권 (재건축·재개발 등)" />
+  <ListItem text="주택분양권" />
+  <ListItem text="주거용 오피스텔" />
+</List>
+
+<DataTable
+  title="주택 수 산정 기준일"
+  icon="CalendarOutlined"
+  columns={[
+    { key: "type", title: "취득 유형", width: "30%" },
+    { key: "standard", title: "기준일", width: "70%" }
+  ]}
+  rows={[
+    { type: "일반 주택 취득", standard: "주택 취득일 현재", highlight: true },
+    { type: "조합원입주권으로 주택 취득", standard: "조합원입주권 취득일" },
+    { type: "분양사업자로부터 분양권 취득", standard: "분양계약일" },
+    { type: "분양권 매매·교환·증여로 취득", standard: "주택분양권 취득일" },
+    { type: "1세대 내 동일 분양권 취득일이 2개 이상", standard: "가장 빠른 취득일" }
+  ]}
+/>
+
+<Alert variant="warning" title="분양권 취득 시 주의">
+  분양권으로 주택을 취득하는 경우, **완공된 주택의 취득일이 아니라 분양권 취득일**을 기준으로 주택 수를 산정합니다. 분양권 취득 당시의 주택 수가 중요합니다.
+</Alert>
+
+---
+
+## 2. 취득 주택 제외 (제2항)
+
+**"내가 지금 사는 집"이 주택 수에서 빠지는 경우**입니다. 취득하는 주택을 제외하고 기존 보유 주택만 계산합니다.
+
+### 소형 신축주택 (2024.1.10~2027.12.31)
+
+<DataTable
+  title="소형 신축주택 요건"
+  icon="HomeOutlined"
+  columns={[
+    { key: "item", title: "구분", width: "25%" },
+    { key: "requirement", title: "요건", width: "75%" }
+  ]}
+  rows={[
+    { item: "취득시기", requirement: "2024년 1월 10일 ~ 2027년 12월 31일 (사용검사/승인 및 최초 유상취득)" },
+    { item: "주택유형", requirement: "다가구주택, 연립주택, 다세대주택, 도시형 생활주택" },
+    { item: "면적요건", requirement: "전용면적 60㎡ 이하", highlight: true },
+    { item: "가격요건 (비수도권)", requirement: "취득당시가액 3억원 이하", highlight: true },
+    { item: "가격요건 (수도권)", requirement: "취득당시가액 6억원 이하", highlight: true }
+  ]}
+/>
+
+### 소형 임대주택 (2024.1.10~2027.12.31)
+
+<List title="소형 임대주택 요건" icon="BankOutlined" variant="numbered">
+  <ListItem
+    title="주택유형 및 규모"
+    description="다가구·연립·다세대·도시형 생활주택, 전용 60㎡ 이하, 3억원/6억원 이하"
+  />
+  <ListItem
+    title="임대사업자 등록"
+    description="취득일부터 60일 이내에 민간임대주택법에 따라 임대사업자 등록 및 임대주택 등록"
+  />
+  <ListItem
+    title="의무기간 준수"
+    description="임대의무기간 내 임대 외 용도 사용, 매각·증여 시 제외 혜택 상실"
+  />
+</List>
+
+### 미분양 아파트 (2024.1.10~2025.12.31)
+
+<DataTable
+  title="미분양 아파트 요건"
+  icon="BuildOutlined"
+  columns={[
+    { key: "item", title: "구분", width: "25%" },
+    { key: "requirement", title: "요건", width: "75%" }
+  ]}
+  rows={[
+    { item: "취득시기", requirement: "2024년 1월 10일 ~ 2025년 12월 31일" },
+    { item: "대상", requirement: "사업주체가 사용검사 후 분양되지 않은 아파트를 최초 유상취득" },
+    { item: "지역요건", requirement: "수도권 외 지역", highlight: true },
+    { item: "면적요건", requirement: "전용면적 85㎡ 이하", highlight: true },
+    { item: "가격요건", requirement: "취득당시가액 6억원 이하", highlight: true }
+  ]}
+/>
+
+---
+
+## 3. 보유 주택 제외 (제6항)
+
+**"이미 가지고 있는 집"이 주택 수에서 빠지는 경우**입니다. 취득하는 주택을 제외한 소유주택 수 계산 시 제외됩니다.
+
+<List title="보유 주택 제외 대상" icon="MinusCircleOutlined" variant="numbered">
+  <ListItem
+    title="시가표준액 1억원 이하 주택"
+    description="주택 수 산정일 현재 시가표준액이 1억원 이하인 주택 (농어촌주택, 공시가격 1억원 이하 주택 등)"
+    legalBasis="제6항 제1호"
+  />
+  <ListItem
+    title="상속주택 (5년 이내)"
+    description="상속으로 취득한 주택, 조합원입주권, 주택분양권, 오피스텔로서 상속개시일부터 5년이 지나지 않은 것"
+    legalBasis="제6항 제3호"
+  />
+  <ListItem
+    title="시가표준액 1억원 이하 오피스텔"
+    description="주택 수 산정일 현재 시가표준액이 1억원 이하인 오피스텔"
+    legalBasis="제6항 제4호"
+  />
+  <ListItem
+    title="시가표준액 1억원 이하 부속토지"
+    description="시가표준액이 1억원 이하인 부속토지만을 소유한 경우"
+    legalBasis="제6항 제5호"
+  />
+  <ListItem
+    title="혼인 전 분양권 취득 주택"
+    description="혼인한 사람이 혼인 전 소유한 주택분양권으로 취득하는 경우 배우자가 혼인 전부터 소유한 주택"
+    legalBasis="제6항 제6호"
+  />
+  <ListItem
+    title="신축 소형 오피스텔 (2024.1.10~2027.12.31)"
+    description="신축 오피스텔 최초 유상취득, 전용 60㎡ 이하, 3억원(수도권 6억원) 이하"
+    legalBasis="제6항 제8호"
+  />
+  <ListItem
+    title="소형 임대 오피스텔"
+    description="소형 오피스텔 유상취득 후 60일 이내 임대사업자 등록 및 임대주택 등록"
+    legalBasis="제6항 제9호"
+  />
+  <ListItem
+    title="건설·공급업자의 신축 주택"
+    description="주거용 건물 건설업 또는 공급업자가 신축하여 보유하는 주택 (1년 이상 거주한 주택 제외)"
+    legalBasis="제6항 제2호"
+  />
+</List>
+
+---
+
+## 4. 특수 규정 (제3~5항)
+
+### 동시 취득 (제3항)
+
+<Alert variant="warning" title="동시 취득 시">
+  주택, 조합원입주권, 주택분양권, 오피스텔을 동시에 2개 이상 취득하는 경우, **납세의무자가 정하는 바**에 따라 순차적으로 취득하는 것으로 봅니다.
+</Alert>
+
+### 세대원 공동소유 (제4항)
+
+<Alert variant="info" title="공동소유">
+  1세대 내에서 1개의 주택 등을 세대원이 공동으로 소유하는 경우, **1개의 주택**으로 산정합니다.
+</Alert>
+
+### 상속에 의한 공동소유 (제5항)
+
+<List title="상속 공동소유 시 소유자 판정 순서" icon="TeamOutlined" variant="numbered">
+  <ListItem text="지분이 가장 큰 상속인을 소유자로 봄" />
+  <ListItem text="지분이 같은 경우: ① 해당 주택 거주자 → ② 나이가 가장 많은 자" />
+</List>
+
+---
+
+## 핵심 차이점
+
+<DataTable
+  title="취득 주택 제외 vs 보유 주택 제외"
+  icon="SwapOutlined"
+  columns={[
+    { key: "item", title: "구분", width: "20%" },
+    { key: "article2", title: "취득 주택 제외 (제2항)", width: "40%" },
+    { key: "article6", title: "보유 주택 제외 (제6항)", width: "40%" }
+  ]}
+  rows={[
+    { item: "적용 대상", article2: "지금 사는 집", article6: "이미 가진 집", highlight: true },
+    { item: "효과", article2: "취득 주택이 카운트 안 됨", article6: "보유 주택이 카운트 안 됨" },
+    { item: "예시", article2: "1주택자가 소형주택 사면 → 1주택 유지", article6: "상속주택 보유자가 주택 사면 → 상속주택 빼고 계산" },
+    { item: "주요 대상", article2: "소형 신축주택, 소형 임대주택, 미분양 아파트", article6: "상속주택 5년, 시가표준액 1억 이하, 농어촌주택" }
+  ]}
+/>
+
+---
+
+## 사례
+
+<Cases title="사례" icon="FileSearchOutlined">
+  <Case
+    title="[취득 주택 제외] 소형 신축주택 취득"
+    scenario="기존 1주택 보유자가 2024년 5월 수도권 외 지역의 신축 다세대주택(전용 55㎡, 2.5억원)을 추가 취득"
+    result="신축 소형주택 요건 충족 → 취득 주택이 주택 수에서 제외 → 1주택자로 세율 적용"
+    resultType="success"
+    note="제2항 적용: 취득하는 주택이 카운트 안 됨"
+  >
+    <Analysis label="적용 조항" value="제2항 (취득 주택 제외)" />
+    <Analysis label="전용면적" value="55㎡ (60㎡ 이하)" />
+    <Analysis label="취득가액" value="2.5억원 (3억원 이하)" />
+  </Case>
+
+  <Case
+    title="[보유 주택 제외] 상속주택 보유 중 추가 취득"
+    scenario="2023년 상속받은 주택 보유 중 2025년 신규 주택 매수 (상속개시일로부터 2년 경과)"
+    result="상속주택 5년 이내 → 보유 주택에서 제외 → 1주택자로 세율 적용"
+    resultType="success"
+    note="제6항 적용: 기존 보유 주택이 카운트 안 됨"
+  >
+    <Analysis label="적용 조항" value="제6항 (보유 주택 제외)" />
+    <Analysis label="상속 후 경과" value="2년 (5년 이내)" />
+  </Case>
+
+  <Case
+    title="[보유 주택 제외] 상속주택 5년 경과 후 추가 취득"
+    scenario="2019년 상속받은 주택 보유 중 2025년 신규 주택 매수 (상속개시일로부터 6년 경과)"
+    result="상속주택 5년 경과 → 보유 주택에 포함 → 2주택자로 세율 적용"
+    resultType="warning"
+    note="5년 경과 시 일반 주택과 동일하게 주택 수에 포함"
+  >
+    <Analysis label="적용 조항" value="제6항 미적용" />
+    <Analysis label="상속 후 경과" value="6년 (5년 초과)" />
+  </Case>
+
+  <Case
+    title="[보유 주택 제외] 시가표준액 1억원 이하 주택 보유"
+    scenario="시가표준액 8천만원 농어촌주택 보유 중 도시 아파트 취득"
+    result="농어촌주택 시가표준액 1억 이하 → 보유 주택에서 제외 → 1주택자로 세율 적용"
+    resultType="success"
+    note="제6항 적용: 시가표준액 1억원 이하 주택은 무조건 제외"
+  >
+    <Analysis label="적용 조항" value="제6항 (보유 주택 제외)" />
+    <Analysis label="농어촌주택 시가표준액" value="8천만원 (1억원 이하)" />
+  </Case>
+</Cases>
+
+---
+
+## 관련 법조문
+
+<References title="관련 법조문" icon="BookOutlined">
+  <Reference
+    law="지방세법 시행령"
+    article="제28조의4"
+    title="주택 수의 산정방법"
+    description="주택 취득세 중과 시 주택 수 산정 및 제외 규정"
+  />
+  <Reference
+    law="지방세법"
+    article="제13조의2"
+    title="주택 유상거래 취득 중과"
+    description="다주택자 주택 취득 시 중과세율 적용"
+  />
+  <Reference
+    law="지방세법 시행령"
+    article="제28조의2"
+    title="1세대 1주택의 범위"
+    description="취득세 세율 적용 시 1세대 1주택 판정 기준"
+  />
+</References>
+
+<Alert variant="warning" title="한시 규정 유의">
+  소형주택·오피스텔 관련 주택 수 제외 규정은 2027년 또는 2028년까지 한시 적용됩니다. 미분양 아파트 규정은 2027년 12월 31일까지 유효합니다.
+</Alert>

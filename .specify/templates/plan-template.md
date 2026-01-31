@@ -89,6 +89,25 @@ api/
 
 ios/ or android/
 └── [platform-specific structure: feature modules, UI flows, platform tests]
+
+# [REMOVE IF UNUSED] Option 4: Next.js App Router (when "Next.js" detected)
+app/
+├── (routes)/           # 라우트 그룹
+├── api/                # API Routes
+└── layout.tsx          # 루트 레이아웃
+
+components/
+├── ui/                 # 공통 UI 컴포넌트
+└── [domain]/           # 도메인별 컴포넌트
+
+lib/
+├── supabase/           # Supabase 클라이언트
+├── utils/              # 유틸리티 함수
+└── types/              # 타입 정의
+
+tests/
+├── unit/               # 단위 테스트
+└── integration/        # 통합 테스트
 ```
 
 **Structure Decision**: [Document the selected structure and reference the real
