@@ -87,6 +87,54 @@ A user wants to see how tax information has changed over time. They find a versi
 
 ---
 
+### User Story 6 - Search (Priority: P2)
+
+A user wants to find specific tax information by keyword. They navigate to the search page, enter a query, and see matching results with highlighted keywords. Clicking a result takes them to the corresponding content.
+
+**Why this priority**: Essential for users who know what they're looking for but not where it is in the navigation tree.
+
+**Independent Test**: Navigate to search page, enter query, verify results display with highlighted keywords and link to correct content.
+
+**Acceptance Scenarios**:
+
+1. **Given** user navigates to the search page, **When** the page loads, **Then** they see a search input field
+2. **Given** user enters a keyword (e.g., "다주택"), **When** search executes, **Then** matching content items are displayed with highlighted keywords and snippets
+3. **Given** user sees search results, **When** they click a result, **Then** they navigate to the corresponding content page
+
+---
+
+### User Story 7 - Content Comments (Priority: P2)
+
+A user is reading tax content and wants to leave a question or note. They find a comment section below the content, enter their name and comment, and submit. Other users viewing the same content can see all comments.
+
+**Why this priority**: Enables team collaboration and knowledge sharing on tax content. Builds on P1 content browsing.
+
+**Independent Test**: Navigate to content, submit a comment, refresh page, verify comment persists.
+
+**Acceptance Scenarios**:
+
+1. **Given** user is viewing any MDX content, **When** they scroll below the content, **Then** they see a comment section with existing comments and a form to add new ones
+2. **Given** user fills in name and comment text, **When** they click submit, **Then** the comment appears immediately in the list
+3. **Given** user views content with comments, **When** the page loads, **Then** comments are displayed in chronological order with author name and timestamp
+
+---
+
+### User Story 8 - Content File Attachments (Priority: P2)
+
+A user wants to attach reference files (PDF, Excel, images) to a specific tax content page. They upload a file and it appears in the attachment list. Other users can download the attached files.
+
+**Why this priority**: Enables sharing of supporting documents (신고서, 등기부등본 등) alongside tax content.
+
+**Independent Test**: Navigate to content, upload a file, refresh page, verify file appears in attachment list and is downloadable.
+
+**Acceptance Scenarios**:
+
+1. **Given** user is viewing any MDX content, **When** they look at the attachment section, **Then** they see existing attachments with filename, uploader, and date
+2. **Given** user selects a file to upload, **When** the upload completes, **Then** the file appears in the attachment list
+3. **Given** user sees an attached file, **When** they click the filename, **Then** the file downloads
+
+---
+
 ### Edge Cases
 
 - What happens when MDX content file is missing or corrupted? Display a friendly error message with navigation to other content.
@@ -94,6 +142,8 @@ A user wants to see how tax information has changed over time. They find a versi
 - What happens when user has JavaScript disabled? Core content should still be readable (SSR/SSG).
 - What happens when scrolling very fast through infinite scroll? Debounce URL updates to prevent excessive history entries.
 - What happens when a content version is deleted? Redirect to the latest version with a notice.
+- What happens when file upload exceeds size limit? Display error message with allowed max size.
+- What happens when Supabase is temporarily unavailable? Content (MDX) still loads (static), comments/attachments show "일시적으로 사용할 수 없습니다" message.
 
 ## Requirements *(mandatory)*
 
@@ -139,6 +189,21 @@ A user wants to see how tax information has changed over time. They find a versi
 - **FR-025**: Search results MUST display matching content items with highlighted keywords
 - **FR-026**: Clicking a search result MUST navigate to the corresponding content
 
+**Comments**
+- **FR-027**: System MUST display a comment section below each MDX content page
+- **FR-028**: System MUST allow users to submit comments with author name and body text
+- **FR-029**: Comments MUST be processed via Next.js API Route and stored in Supabase Postgres (service key, server-side only)
+- **FR-030**: Comments MUST display in chronological order with author name and timestamp
+- **FR-031**: System MUST allow comment authors to delete their own comments
+
+**File Attachments**
+- **FR-032**: System MUST display an attachment section on each MDX content page
+- **FR-033**: System MUST allow users to upload files (PDF, Excel, images) with uploader name
+- **FR-034**: File uploads MUST be processed via Next.js API Route (server-side validation) and stored in Supabase Storage with metadata in Supabase Postgres
+- **FR-035**: System MUST display attachment list with filename, uploader, upload date, and file size
+- **FR-036**: Clicking an attachment MUST allow file download
+- **FR-037**: System MUST enforce a maximum file size limit per upload (10MB)
+
 ### Key Entities
 
 - **Navigation Node**: Represents a single item in the navigation tree. Has label, path, icon (optional), and children (for nested items).
@@ -146,6 +211,8 @@ A user wants to see how tax information has changed over time. They find a versi
 - **Content Item**: An MDX file containing tax information. Has title, category, version, lastUpdated date, and body content.
 - **Content Version**: A specific version of a content item. Multiple versions can exist for the same navigation path.
 - **User Preference**: Stored settings including font size preference.
+- **Comment**: A user comment on a specific MDX content page. Has author, body, content_path, timestamps.
+- **Attachment**: A file attached to a specific MDX content page. Has filename, storage_path, content_path, uploader, file_size.
 
 ## Success Criteria *(mandatory)*
 
@@ -177,3 +244,5 @@ A user wants to see how tax information has changed over time. They find a versi
 - Content versions follow a simple versioning scheme: v1.0, v1.1, v2.0, etc.
 - Mobile breakpoint at 768px follows common responsive design standards
 - Site is fully public with no authentication required
+- Comments and file attachments use Next.js API Route → Supabase (Postgres + Storage, service key) as backend
+- Comment/attachment author is identified by name input (no login), deletion by matching author name

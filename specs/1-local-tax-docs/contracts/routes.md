@@ -98,6 +98,21 @@ Same pattern as `/acquisition/[slug]`.
 5. Version indicator shows "v1.0 (viewing older version)"
 ```
 
+## API Routes
+
+Server-side routes for comments and file attachments. All use Supabase service key (server-only).
+
+| Route | Method | Description |
+|-------|--------|-------------|
+| `/api/comments` | GET | 특정 콘텐츠의 댓글 목록 조회 |
+| `/api/comments` | POST | 댓글 작성 |
+| `/api/comments/[id]` | DELETE | 댓글 삭제 |
+| `/api/attachments` | GET | 특정 콘텐츠의 첨부파일 목록 조회 |
+| `/api/attachments` | POST | 파일 업로드 (multipart/form-data) |
+| `/api/attachments/[id]` | DELETE | 첨부파일 삭제 |
+
+상세 명세: [comments-api.md](./comments-api.md), [attachments-api.md](./attachments-api.md)
+
 ## Error Handling
 
 ### 404 Not Found

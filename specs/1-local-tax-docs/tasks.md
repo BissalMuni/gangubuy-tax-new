@@ -1,7 +1,7 @@
 # Tasks: Local Tax Documentation Site
 
 **Input**: Design documents from `/specs/1-local-tax-docs/`
-**Prerequisites**: plan.md, spec.md, data-model.md, contracts/, research.md, quickstart.md
+**Prerequisites**: plan.md, spec.md, data-model.md, research.md, quickstart.md
 
 **Tests**: TDD is NON-NEGOTIABLE per Constitution. Tests MUST be written first and FAIL before implementation.
 
@@ -28,12 +28,14 @@
 **Purpose**: Project initialization and basic structure
 
 - [ ] T001 Initialize Next.js 14+ project with TypeScript in repository root
-- [ ] T002 Install dependencies: Ant Design, Tailwind CSS, Zustand, @next/mdx, next-mdx-remote, flexsearch
+- [ ] T002 Install dependencies: Ant Design, Tailwind CSS, Zustand, @next/mdx, next-mdx-remote, flexsearch, @supabase/supabase-js
 - [ ] T003 [P] Configure TypeScript strict mode in tsconfig.json
 - [ ] T004 [P] Configure Tailwind CSS in tailwind.config.ts and app/globals.css
 - [ ] T005 [P] Configure ESLint and Prettier in .eslintrc.js and .prettierrc
 - [ ] T006 [P] Setup Vitest and React Testing Library in vitest.config.ts
-- [ ] T007 Create shared type definitions in lib/types/index.ts (NavigationNode, ContentMeta, ContentItem, etc.)
+- [ ] T007 Create shared type definitions in lib/types/index.ts (NavigationNode, ContentMeta, ContentItem, Comment, Attachment, etc.)
+- [ ] T007.1 [P] Create Supabase server client in lib/supabase/server.ts with env variables (SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)
+- [ ] T007.2 [P] Create Supabase tables (comments, attachments) and Storage bucket via Supabase dashboard or migration SQL
 
 ---
 
@@ -201,7 +203,57 @@
 
 ---
 
-## Phase 9: Polish & Cross-Cutting Concerns
+## Phase 9: User Story 7 - Content Comments (Priority: P2)
+
+**Goal**: Users can leave comments on each MDX content page
+
+**Independent Test**: Navigate to content, submit comment, refresh, verify comment persists
+
+### Tests for User Story 7 ⚠️
+
+- [ ] T072 [P] [US7] Unit test for comment CRUD in tests/unit/comments.test.ts
+- [ ] T073 [P] [US7] Integration test for comment section in tests/integration/comments.test.tsx
+
+### Implementation for User Story 7
+
+- [ ] T074 [US7] Create comment DB utility in lib/supabase/comments.ts (server-side only)
+- [ ] T075 [US7] Create API Route: GET, POST /api/comments in app/api/comments/route.ts (입력값 검증 포함)
+- [ ] T075.1 [US7] Create API Route: DELETE /api/comments/[id] in app/api/comments/[id]/route.ts (작성자 확인)
+- [ ] T076 [P] [US7] Create CommentItem component in components/comments/CommentItem.tsx
+- [ ] T077 [P] [US7] Create CommentForm component in components/comments/CommentForm.tsx
+- [ ] T078 [US7] Create CommentList component in components/comments/CommentList.tsx
+- [ ] T079 [US7] Integrate CommentList below MDX content in tax content pages
+
+**Checkpoint**: User Story 7 complete - comments work independently
+
+---
+
+## Phase 10: User Story 8 - Content File Attachments (Priority: P2)
+
+**Goal**: Users can upload and download files attached to each MDX content page
+
+**Independent Test**: Navigate to content, upload file, refresh, verify file appears and is downloadable
+
+### Tests for User Story 8 ⚠️
+
+- [ ] T080 [P] [US8] Unit test for attachment CRUD in tests/unit/attachments.test.ts
+- [ ] T081 [P] [US8] Integration test for attachment section in tests/integration/attachments.test.tsx
+
+### Implementation for User Story 8
+
+- [ ] T082 [US8] Create attachment DB/Storage utility in lib/supabase/attachments.ts (server-side only)
+- [ ] T083 [US8] Create API Route: GET, POST /api/attachments in app/api/attachments/route.ts (크기/타입 검증 포함)
+- [ ] T083.1 [US8] Create API Route: DELETE /api/attachments/[id] in app/api/attachments/[id]/route.ts (업로더 확인 + Storage 삭제)
+- [ ] T084 [P] [US8] Create AttachmentUpload component in components/attachments/AttachmentUpload.tsx
+- [ ] T085 [P] [US8] Create AttachmentList component in components/attachments/AttachmentList.tsx
+- [ ] T086 [US8] Integrate AttachmentList and AttachmentUpload into tax content pages
+- [ ] T087 [US8] Add file download via Supabase Storage public URL
+
+**Checkpoint**: User Story 8 complete - file attachments work independently
+
+---
+
+## Phase 11: Polish & Cross-Cutting Concerns
 
 **Purpose**: Improvements that affect multiple user stories
 
@@ -226,7 +278,9 @@
 - **User Stories (Phase 3-8)**: All depend on Foundational phase completion
   - US1 (P1) → US2 (P2) and US3 (P2) can run in parallel after US1
   - US4 (P3), US5 (P3), US6 (P2) can run in parallel after Foundational
-- **Polish (Phase 9)**: Depends on all user stories being complete
+- **US7 Comments (Phase 9)**: Depends on Foundational phase + Supabase setup (T007.1, T007.2)
+- **US8 Attachments (Phase 10)**: Depends on Foundational phase + Supabase setup (T007.1, T007.2)
+- **Polish (Phase 11)**: Depends on all user stories being complete
 
 ### User Story Dependencies
 
@@ -237,7 +291,9 @@
 | US3 (Responsive) | US1 (modifies layout) | US2, US4, US5, US6 |
 | US4 (Font Size) | Foundational | US2, US3, US5, US6 |
 | US5 (Versions) | Foundational | US2, US3, US4, US6 |
-| US6 (Search) | Foundational | US2, US3, US4, US5 |
+| US6 (Search) | Foundational | US2, US3, US4, US5, US7, US8 |
+| US7 (Comments) | Foundational + Supabase | US2, US3, US4, US5, US6, US8 |
+| US8 (Attachments) | Foundational + Supabase | US2, US3, US4, US5, US6, US7 |
 
 ### Within Each User Story
 
@@ -295,7 +351,9 @@ T024, T025 can run in parallel
 6. Phase 8: US6 Search (T056-T062)
 7. Phase 6: US4 Font Size (T042-T047)
 8. Phase 7: US5 Versions (T048-T055)
-9. Phase 9: Polish (T063-T069)
+9. Phase 9: US7 Comments (T072-T079)
+10. Phase 10: US8 Attachments (T080-T087)
+11. Phase 11: Polish (T063-T071)
 
 ---
 
@@ -306,7 +364,7 @@ T024, T025 can run in parallel
 - TDD required: Write tests first, verify they fail, then implement
 - Commit after each task or logical group
 - Each checkpoint = deployable increment
-- Total tasks: 71
+- Total tasks: 89
 - Content structure: 취득원인 우선 트리구조 (유상→무상→원시→사치성)
 - Content style: 개조식 공문서 형식 (content-style-guide.md 참조)
 - Content exclusion: .deprecated 사례 데이터 마이그레이션 안 함

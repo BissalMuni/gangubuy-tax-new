@@ -5,19 +5,19 @@
 
 ## Summary
 
-Build an internal-facing local tax information site that renders MDX content with tree-structured navigation. The site features infinite scroll between content sections, responsive design for PC/mobile, font size adjustment, content versioning, and full-text search. Uses Next.js App Router for SSR/SSG, Ant Design for UI components, and static MDX files for content storage. Content is organized by property type (물건 기준) per 지방세법 체계.
+Build an internal-facing local tax information site that renders MDX content with tree-structured navigation. The site features infinite scroll between content sections, responsive design for PC/mobile, font size adjustment, content versioning, full-text search, per-content comments, and per-content file attachments. Uses Next.js App Router for SSR/SSG, Ant Design for UI components, static MDX files for content storage, and Supabase for comments/file storage. Content is organized by property type (물건 기준) per 지방세법 체계.
 
 ## Technical Context
 
 **Language/Version**: TypeScript 5+
-**Primary Dependencies**: Next.js 14+ (App Router), Ant Design 5+, Tailwind CSS, Zustand, @next/mdx
-**Storage**: Static MDX files (no database for content), Local Storage (user preferences)
+**Primary Dependencies**: Next.js 14+ (App Router), Ant Design 5+, Tailwind CSS, Zustand, @next/mdx, @supabase/supabase-js
+**Storage**: Static MDX files (content), Supabase Postgres (comments, attachment metadata), Supabase Storage (file uploads), Local Storage (user preferences)
 **Testing**: Vitest + React Testing Library
 **Target Platform**: Web (modern browsers), SSR/SSG on Vercel
 **Project Type**: Web (Next.js App Router)
 **Performance Goals**: Page load < 2s, font size change < 100ms, seamless infinite scroll
-**Constraints**: No authentication, SEO-friendly (SSG where possible)
-**Scale/Scope**: ~24 content pages (취득세 세율) + 과세표준/요건, versioned content
+**Constraints**: No authentication (읽기 공개, 댓글/업로드는 직원명 입력), SEO-friendly (SSG where possible)
+**Scale/Scope**: ~24 content pages (취득세 세율) + 과세표준 + 테마별 통합규정, versioned content, per-content comments & attachments
 
 ## Constitution Check
 
@@ -44,7 +44,9 @@ specs/1-local-tax-docs/
 ├── data-model.md        # Phase 1 output
 ├── quickstart.md        # Phase 1 output
 ├── content-style-guide.md  # 개조식 공문서 스타일 가이드
-├── contracts/           # Phase 1 output (internal routes, no external API)
+├── contracts/           # API Route 계약 명세
+│   ├── comments-api.md  # 댓글 CRUD API
+│   └── attachments-api.md # 파일 첨부 API
 └── tasks.md             # Phase 2 output (/speckit.tasks command)
 ```
 
@@ -68,6 +70,15 @@ app/
 │       ├── [...slug]/
 │       │   └── page.tsx
 │       └── page.tsx
+├── api/                          # API Routes (서버)
+│   ├── comments/
+│   │   └── route.ts              # GET, POST /api/comments?content_path=...
+│   ├── comments/[id]/
+│   │   └── route.ts              # DELETE /api/comments/:id
+│   ├── attachments/
+│   │   └── route.ts              # GET, POST /api/attachments?content_path=...
+│   └── attachments/[id]/
+│       └── route.ts              # DELETE /api/attachments/:id
 ├── search/                       # 검색
 │   └── page.tsx
 └── not-found.tsx                 # 404 page
@@ -83,6 +94,13 @@ components/
 │   ├── MDXRenderer.tsx
 │   ├── ContentHeader.tsx
 │   └── InfiniteScrollLoader.tsx
+├── comments/                     # 댓글 components
+│   ├── CommentList.tsx
+│   ├── CommentForm.tsx
+│   └── CommentItem.tsx
+├── attachments/                  # 파일 첨부 components
+│   ├── AttachmentList.tsx
+│   └── AttachmentUpload.tsx
 └── search/                       # Search components
     ├── SearchInput.tsx
     └── SearchResults.tsx
@@ -119,7 +137,8 @@ content/
 │   │       ├── exemption-v1.0.mdx         # 면세점 (§17: 50만원)
 │   │       └── housing-count-v1.0.mdx     # 주택 수 판단 (§13의3)
 │   ├── themes/                            # 테마별 통합규정
-│   │   └── multi-house-v1.0.mdx           # 다주택자 중과 (§13의2 통합)
+│   │   ├── multi-house-v1.0.mdx           # 다주택자 중과 (§13의2 통합)
+│   │   └── first-time-buyer-v1.0.mdx      # 생애최초 주택취득 감면 (§36의3)
 │   └── standard/                          # 과세표준
 │       └── standard-v1.0.mdx              # 과세표준
 ├── property/                              # 재산세
@@ -135,6 +154,10 @@ lib/
 │   ├── loader.ts                 # MDX content loader
 │   ├── versions.ts               # Version management
 │   └── search.ts                 # Search index & query
+├── supabase/
+│   ├── server.ts                 # Supabase server client (SUPABASE_SERVICE_ROLE_KEY)
+│   ├── comments.ts               # 댓글 DB 조회/저장
+│   └── attachments.ts            # 파일 메타 조회/저장 + Storage 업로드
 ├── stores/
 │   └── preferences.ts            # Zustand store for user preferences
 ├── types/
@@ -176,3 +199,4 @@ tests/
 | Versioning | Filename-based | Simplicity - no database needed, easy to manage |
 | Infinite Scroll | Intersection Observer | Standard pattern, no external library needed |
 | Content Structure | 물건 기준 (property-type-first) | 세무 실무 흐름과 법령 체계에 부합 |
+| Comments & Attachments | API Route → Supabase (service key) | 서버에서 검증/권한 제어. 외부용 확장 시 인증 레이어 추가 용이. Key 노출 방지 |
