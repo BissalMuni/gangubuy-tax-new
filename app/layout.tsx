@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { AntdProvider } from '@/components/providers/AntdProvider';
+import { FontSizeProvider } from '@/components/providers/FontSizeProvider';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -15,7 +16,9 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <AntdProvider>{children}</AntdProvider>
+        <AntdProvider>
+          <FontSizeProvider>{children}</FontSizeProvider>
+        </AntdProvider>
       </body>
     </html>
   );

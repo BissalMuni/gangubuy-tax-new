@@ -67,23 +67,23 @@
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T015 [P] [US1] Unit test for navigation config parsing in tests/unit/navigation.test.ts
-- [ ] T016 [P] [US1] Unit test for MDX content loader in tests/unit/contentLoader.test.ts
+- [x] T015 [P] [US1] Unit test for navigation config parsing in tests/unit/navigation.test.ts
+- [x] T016 [P] [US1] Unit test for MDX content loader in tests/unit/contentLoader.test.ts
 - [ ] T017 [P] [US1] Integration test for content page rendering in tests/integration/contentPage.test.tsx
 
 ### Implementation for User Story 1
 
-- [ ] T018 [P] [US1] Create Header component in components/ui/Header.tsx
-- [ ] T019 [P] [US1] Create Sidebar component with Ant Design Menu in components/ui/Sidebar.tsx
-- [ ] T020 [US1] Create tax layout with sidebar in app/(tax)/layout.tsx
-- [ ] T021 [US1] Create MDXRenderer component in components/content/MDXRenderer.tsx
-- [ ] T022 [US1] Create ContentHeader component in components/content/ContentHeader.tsx
-- [ ] T023 [US1] Create catch-all tax content page in app/(tax)/acquisition/[...slug]/page.tsx (supports nested paths like /rates/paid/sale/housing)
-- [ ] T024 [P] [US1] Create property tax page in app/(tax)/property/[...slug]/page.tsx
-- [ ] T025 [P] [US1] Create vehicle tax page in app/(tax)/vehicle/[...slug]/page.tsx
-- [ ] T026 [US1] Create home page in app/page.tsx
-- [ ] T027 [US1] Add navigation highlight sync based on current path in Sidebar component
-- [ ] T028 [US1] Add tree expand/collapse state persistence using session storage
+- [x] T018 [P] [US1] Create Header component in components/ui/Header.tsx
+- [x] T019 [P] [US1] Create Sidebar component with Ant Design Menu in components/ui/Sidebar.tsx
+- [x] T020 [US1] Create tax layout with sidebar in app/(tax)/layout.tsx
+- [x] T021 [US1] Create MDXRenderer component in components/content/MDXRenderer.tsx
+- [x] T022 [US1] Create ContentHeader component in components/content/ContentHeader.tsx
+- [x] T023 [US1] Create catch-all tax content page in app/(tax)/acquisition/[...slug]/page.tsx (supports nested paths like /rates/paid/sale/housing)
+- [x] T024 [P] [US1] Create property tax page in app/(tax)/property/[...slug]/page.tsx
+- [x] T025 [P] [US1] Create vehicle tax page in app/(tax)/vehicle/[...slug]/page.tsx
+- [x] T026 [US1] Create home page in app/page.tsx
+- [x] T027 [US1] Add navigation highlight sync based on current path in Sidebar component
+- [x] T028 [US1] Add tree expand/collapse state persistence using session storage
 
 **Checkpoint**: User Story 1 complete - basic content browsing works
 
@@ -97,16 +97,16 @@
 
 ### Tests for User Story 2 ⚠️
 
-- [ ] T029 [P] [US2] Unit test for content sequence logic in tests/unit/contentSequence.test.ts
+- [x] T029 [P] [US2] Unit test for content sequence logic in tests/unit/contentSequence.test.ts
 - [ ] T030 [P] [US2] Integration test for infinite scroll in tests/integration/infiniteScroll.test.tsx
 
 ### Implementation for User Story 2
 
-- [ ] T031 [US2] Create content sequence configuration in lib/navigation/contentSequence.ts
-- [ ] T032 [US2] Create InfiniteScrollLoader component using IntersectionObserver in components/content/InfiniteScrollLoader.tsx
-- [ ] T033 [US2] Implement URL update via history.replaceState in InfiniteScrollLoader
-- [ ] T034 [US2] Integrate InfiniteScrollLoader into tax content pages
-- [ ] T035 [US2] Add sidebar highlight sync on scroll-triggered content change
+- [x] T031 [US2] Create content sequence configuration in lib/navigation/contentSequence.ts
+- [x] T032 [US2] Create InfiniteScrollLoader component using IntersectionObserver in components/content/InfiniteScrollLoader.tsx
+- [x] T033 [US2] Implement URL update via history.replaceState in InfiniteScrollLoader
+- [x] T034 [US2] Integrate InfiniteScrollLoader into tax content pages
+- [x] T035 [US2] Add sidebar highlight sync on scroll-triggered content change
 
 **Checkpoint**: User Story 2 complete - infinite scroll works independently
 
@@ -124,11 +124,11 @@
 
 ### Implementation for User Story 3
 
-- [ ] T037 [US3] Create MobileNav component with drawer menu in components/ui/MobileNav.tsx
-- [ ] T038 [US3] Add responsive breakpoint logic to app/(tax)/layout.tsx
-- [ ] T039 [US3] Add Tailwind responsive classes to content area for proper width adjustment
-- [ ] T040 [US3] Implement hamburger menu toggle button in Header for mobile
-- [ ] T041 [US3] Ensure MobileNav has same tree structure as desktop Sidebar
+- [x] T037 [US3] Create MobileNav component with drawer menu in components/ui/MobileNav.tsx
+- [x] T038 [US3] Add responsive breakpoint logic to app/(tax)/layout.tsx
+- [x] T039 [US3] Add Tailwind responsive classes to content area for proper width adjustment
+- [x] T040 [US3] Implement hamburger menu toggle button in Header for mobile
+- [x] T041 [US3] Ensure MobileNav has same tree structure as desktop Sidebar
 
 **Checkpoint**: User Story 3 complete - mobile layout works independently
 
@@ -142,15 +142,15 @@
 
 ### Tests for User Story 4 ⚠️
 
-- [ ] T042 [P] [US4] Unit test for preferences store in tests/unit/preferences.test.ts
+- [x] T042 [P] [US4] Unit test for preferences store in tests/unit/preferences.test.ts
 
 ### Implementation for User Story 4
 
-- [ ] T043 [US4] Create Zustand preferences store with localStorage persist in lib/stores/preferences.ts
-- [ ] T044 [US4] Create FontSizeControl component in components/ui/FontSizeControl.tsx
-- [ ] T045 [US4] Add CSS variables for font size levels in app/globals.css
-- [ ] T046 [US4] Integrate FontSizeControl into content layout
-- [ ] T047 [US4] Apply font size to MDXRenderer based on preference
+- [x] T043 [US4] Create Zustand preferences store with localStorage persist in lib/stores/preferences.ts
+- [x] T044 [US4] Create FontSizeControl component in components/ui/FontSizeControl.tsx
+- [x] T045 [US4] Add CSS variables for font size levels in app/globals.css
+- [x] T046 [US4] Integrate FontSizeControl into content layout
+- [x] T047 [US4] Apply font size to MDXRenderer based on preference
 
 **Checkpoint**: User Story 4 complete - font size adjustment works independently
 
@@ -164,17 +164,17 @@
 
 ### Tests for User Story 5 ⚠️
 
-- [ ] T048 [P] [US5] Unit test for version parsing and loading in tests/unit/versions.test.ts
+- [x] T048 [P] [US5] Unit test for version parsing and loading in tests/unit/versions.test.ts
 - [ ] T049 [P] [US5] Integration test for version selector in tests/integration/versionSelector.test.tsx
 
 ### Implementation for User Story 5
 
-- [ ] T050 [US5] Create version management utility in lib/content/versions.ts
+- [x] T050 [US5] Create version management utility in lib/content/versions.ts
 - [ ] T051 [US5] Create additional versioned content file content/acquisition/rates-v1.1.mdx
-- [ ] T052 [US5] Create VersionSelector component in components/ui/VersionSelector.tsx
-- [ ] T053 [US5] Integrate VersionSelector into ContentHeader
-- [ ] T054 [US5] Add version query parameter handling (?v=1.0) to content pages
-- [ ] T055 [US5] Show "viewing older version" indicator when not on latest
+- [x] T052 [US5] Create VersionSelector component in components/ui/VersionSelector.tsx
+- [x] T053 [US5] Integrate VersionSelector into ContentHeader
+- [x] T054 [US5] Add version query parameter handling (?v=1.0) to content pages
+- [x] T055 [US5] Show "viewing older version" indicator when not on latest
 
 **Checkpoint**: User Story 5 complete - version history works independently
 
@@ -188,16 +188,16 @@
 
 ### Tests for User Story 6 ⚠️
 
-- [ ] T056 [P] [US6] Unit test for search index and query in tests/unit/search.test.ts
+- [x] T056 [P] [US6] Unit test for search index and query in tests/unit/search.test.ts
 - [ ] T057 [P] [US6] Integration test for search page in tests/integration/search.test.tsx
 
 ### Implementation for User Story 6
 
-- [ ] T058 [US6] Create search index builder and query utility in lib/content/search.ts
-- [ ] T059 [US6] Create SearchInput component in components/search/SearchInput.tsx
-- [ ] T060 [US6] Create SearchResults component with keyword highlighting in components/search/SearchResults.tsx
-- [ ] T061 [US6] Create search page in app/search/page.tsx
-- [ ] T062 [US6] Generate search index at build time in next.config.mjs or scripts/
+- [x] T058 [US6] Create search index builder and query utility in lib/content/search.ts
+- [x] T059 [US6] Create SearchInput component in components/search/SearchInput.tsx
+- [x] T060 [US6] Create SearchResults component with keyword highlighting in components/search/SearchResults.tsx
+- [x] T061 [US6] Create search page in app/search/page.tsx
+- [x] T062 [US6] Generate search index at build time in next.config.mjs or scripts/
 
 **Checkpoint**: User Story 6 complete - search works independently
 
@@ -216,13 +216,13 @@
 
 ### Implementation for User Story 7
 
-- [ ] T074 [US7] Create comment DB utility in lib/supabase/comments.ts (server-side only)
-- [ ] T075 [US7] Create API Route: GET, POST /api/comments in app/api/comments/route.ts (입력값 검증 포함)
-- [ ] T075.1 [US7] Create API Route: DELETE /api/comments/[id] in app/api/comments/[id]/route.ts (작성자 확인)
-- [ ] T076 [P] [US7] Create CommentItem component in components/comments/CommentItem.tsx
-- [ ] T077 [P] [US7] Create CommentForm component in components/comments/CommentForm.tsx
-- [ ] T078 [US7] Create CommentList component in components/comments/CommentList.tsx
-- [ ] T079 [US7] Integrate CommentList below MDX content in tax content pages
+- [x] T074 [US7] Create comment DB utility in lib/supabase/comments.ts (server-side only)
+- [x] T075 [US7] Create API Route: GET, POST /api/comments in app/api/comments/route.ts (입력값 검증 포함)
+- [x] T075.1 [US7] Create API Route: DELETE /api/comments/[id] in app/api/comments/[id]/route.ts (작성자 확인)
+- [x] T076 [P] [US7] Create CommentItem component in components/comments/CommentItem.tsx
+- [x] T077 [P] [US7] Create CommentForm component in components/comments/CommentForm.tsx
+- [x] T078 [US7] Create CommentList component in components/comments/CommentList.tsx
+- [x] T079 [US7] Integrate CommentList below MDX content in tax content pages
 
 **Checkpoint**: User Story 7 complete - comments work independently
 
@@ -241,13 +241,13 @@
 
 ### Implementation for User Story 8
 
-- [ ] T082 [US8] Create attachment DB/Storage utility in lib/supabase/attachments.ts (server-side only)
-- [ ] T083 [US8] Create API Route: GET, POST /api/attachments in app/api/attachments/route.ts (크기/타입 검증 포함)
-- [ ] T083.1 [US8] Create API Route: DELETE /api/attachments/[id] in app/api/attachments/[id]/route.ts (업로더 확인 + Storage 삭제)
-- [ ] T084 [P] [US8] Create AttachmentUpload component in components/attachments/AttachmentUpload.tsx
-- [ ] T085 [P] [US8] Create AttachmentList component in components/attachments/AttachmentList.tsx
-- [ ] T086 [US8] Integrate AttachmentList and AttachmentUpload into tax content pages
-- [ ] T087 [US8] Add file download via Supabase Storage public URL
+- [x] T082 [US8] Create attachment DB/Storage utility in lib/supabase/attachments.ts (server-side only)
+- [x] T083 [US8] Create API Route: GET, POST /api/attachments in app/api/attachments/route.ts (크기/타입 검증 포함)
+- [x] T083.1 [US8] Create API Route: DELETE /api/attachments/[id] in app/api/attachments/[id]/route.ts (업로더 확인 + Storage 삭제)
+- [x] T084 [P] [US8] Create AttachmentUpload component in components/attachments/AttachmentUpload.tsx
+- [x] T085 [P] [US8] Create AttachmentList component in components/attachments/AttachmentList.tsx
+- [x] T086 [US8] Integrate AttachmentList and AttachmentUpload into tax content pages
+- [x] T087 [US8] Add file download via Supabase Storage public URL
 
 **Checkpoint**: User Story 8 complete - file attachments work independently
 
@@ -260,9 +260,9 @@
 - [ ] T063 [P] Create acquisition/rates MDX files (유상취득: 매매-주택/농지/건물, 교환, 분할) - 개조식, 사례 제외
 - [ ] T064 [P] Create acquisition/rates MDX files (무상취득: 상속-주택/농지, 증여-주택/농지) - 개조식, 사례 제외
 - [ ] T065 [P] Create acquisition/rates MDX files (원시취득: 신축, 사치성: 고급주택/골프/과점주주) - 개조식, 사례 제외
-- [ ] T066 [P] Add SEO metadata to all pages using Next.js Metadata API
+- [x] T066 [P] Add SEO metadata to all pages using Next.js Metadata API
 - [ ] T067 Performance optimization: implement content pre-fetching for infinite scroll
-- [ ] T068 Add error boundary component for graceful error handling
+- [x] T068 Add error boundary component for graceful error handling
 - [ ] T069 Run all tests and ensure 80%+ coverage
 - [ ] T070 Validate against quickstart.md scenarios
 - [ ] T071 Final accessibility check (keyboard navigation, ARIA labels)
