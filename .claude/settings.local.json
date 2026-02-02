@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /home/minh0/projects/gangubuy-tax-new log --oneline)",
+      "Bash(git -C /home/minh0/projects/gangubuy-tax-new log --all --oneline --decorate)",
+      "Bash(git -C /home/minh0/projects/gangubuy-tax-new show --stat)",
+      "Bash(tree:*)",
+      "Bash(git fetch:*)",
+      "Bash(ls:*)",
+      "Bash(pwsh:*)",
+      "Bash(git checkout:*)",
+      "Bash(npx create-next-app:*)",
+      "Bash(echo:*)",
+      "Bash(npm init:*)",
+      "Bash(git -C /home/minh0/projects/gangubuy-tax-new push --set-upstream origin 1-local-tax-docs)",
+      "Bash(git config:*)",
+      "Bash(git -C /home/minh0/projects/gangubuy-tax-new log --oneline --all)",
+      "Bash(git -C /home/minh0/projects/gangubuy-tax-new merge origin/1-local-tax-docs)",
+      "Bash(git -C /home/minh0/projects/gangubuy-tax-new add .specify/memory/constitution.md)",
+      "Bash(git -C /home/minh0/projects/gangubuy-tax-new commit -m \"$\\(cat <<''EOF''\nmerge: integrate 1-local-tax-docs branch, resolve constitution conflict \\(keep v1.0.0 한국어\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git -C /home/minh0/projects/gangubuy-tax-new log --oneline -5)",
+      "Bash(git -C /home/minh0/projects/gangubuy-tax-new diff a932ca0 HEAD -- .specify/memory/constitution.md)",
+      "Bash(git -C /home/minh0/projects/gangubuy-tax-new push)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push)",
+      "Bash(npm install:*)",
+      "Bash(npx next build:*)",
+      "Bash(npx vitest:*)",
+      "Bash(git -C /home/minh0/projects/gangubuy-tax-new status -s)",
+      "Bash(git -C /home/minh0/projects/gangubuy-tax-new diff --stat HEAD)",
+      "Bash(git -C /home/minh0/projects/gangubuy-tax-new log --oneline -3)",
+      "Bash(git -C /home/minh0/projects/gangubuy-tax-new commit -m \"$\\(cat <<''EOF''\nfeat: Phase 3~11 완료 — 전체 기능 구현 \\(Browse, Scroll, Responsive, Font, Versions, Search, Comments, Attachments\\)\n\n- US1: 콘텐츠 브라우징 \\(Header, Sidebar, MDXRenderer, catch-all pages\\)\n- US2: 무한스크롤 \\(IntersectionObserver, URL 업데이트, 사이드바 하이라이트 동기화\\)\n- US3: 반응형 레이아웃 \\(MobileNav Drawer, 768px breakpoint\\)\n- US4: 글꼴 크기 조절 \\(Zustand + localStorage persist\\)\n- US5: 버전 관리 \\(VersionSelector, ?v= 쿼리 파라미터\\)\n- US6: 전문 검색 \\(FlexSearch, /api/search, 키워드 하이라이트\\)\n- US7: 댓글 \\(Supabase API Route, CommentList/Form/Item\\)\n- US8: 첨부파일 \\(Supabase Storage, AttachmentUpload/List\\)\n- SEO metadata, error boundary 추가\n- 44개 단위 테스트 통과\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git -C /home/minh0/projects/gangubuy-tax-new remote -v)",
+      "Bash(git -C /home/minh0/projects/gangubuy-tax-new push origin main)",
+      "Bash(npx tsc:*)"
+    ]
+  }
+}

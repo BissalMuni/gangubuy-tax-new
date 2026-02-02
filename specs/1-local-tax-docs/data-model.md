@@ -155,7 +155,7 @@ interface ContentVersion {
 
 ### ContentSequence
 
-Defines the order of content for infinite scroll.
+~~Defines the order of content for infinite scroll.~~ [REMOVED — 무한 스크롤 제거됨]
 
 ```typescript
 interface ContentSequence {
@@ -382,9 +382,9 @@ Attachment
 2. Runtime (Navigation):
    User Click → NavigationNode.path → Load ContentItem → Render MDX
 
-3. Runtime (Infinite Scroll):
-   Scroll Event → ContentSequence.next → Load ContentItem → Append to DOM
-                                      → Update URL (replaceState)
+3. ~~Runtime (Infinite Scroll)~~ [REMOVED]:
+   ~~Scroll Event → ContentSequence.next → Load ContentItem → Append to DOM~~ [제거됨]
+   ~~→ Update URL (replaceState)~~ [제거됨]
 
 4. Runtime (Version Switch):
    User Select → ContentVersion.filePath → Load ContentItem → Replace content

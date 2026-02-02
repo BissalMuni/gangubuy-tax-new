@@ -15,7 +15,7 @@ export function Callout({ type = 'info', children }: CalloutProps) {
   return (
     <Alert
       type={typeMap[type]}
-      message={children}
+      title={children}
       showIcon
       style={{ marginBottom: 16 }}
     />

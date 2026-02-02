@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { Upload, Button, Input, message } from 'antd';
+import { useState, useEffect } from 'react';
+import { Upload, Button, Input, App } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { ALLOWED_MIME_TYPES, MAX_FILE_SIZE } from '@/lib/types';
 
@@ -11,13 +11,14 @@ interface AttachmentUploadProps {
 }
 
 export function AttachmentUpload({ contentPath, onUploaded }: AttachmentUploadProps) {
+  const { message } = App.useApp();
   const [uploading, setUploading] = useState(false);
-  const [uploader, setUploader] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('gangubuy-comment-author') || '';
-    }
-    return '';
-  });
+  const [uploader, setUploader] = useState('');
+
+  useEffect(() => {
+    const saved = localStorage.getItem('gangubuy-comment-author');
+    if (saved) setUploader(saved);
+  }, []);
 
   const handleUpload = async (file: File) => {
     if (!uploader.trim()) {

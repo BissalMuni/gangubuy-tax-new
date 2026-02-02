@@ -37,7 +37,7 @@ export default function VehicleContentPage({ params, searchParams }: PageProps) 
 
   return (
     <ContentPageWrapper currentPath={currentPath} category="vehicle">
-      <MDXRenderer meta={meta} source={rawSource} versions={versions} />
+      <MDXRenderer meta={meta} source={rawSource} versions={versions} contentPath={currentPath.replace(/^\//, '')} />
     </ContentPageWrapper>
   );
 }

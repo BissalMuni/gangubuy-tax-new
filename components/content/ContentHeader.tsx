@@ -1,3 +1,5 @@
+'use client';
+
 import { Tag, Typography } from 'antd';
 import { VersionSelector } from '@/components/ui/VersionSelector';
 import type { ContentMeta, ContentVersion } from '@/lib/types';

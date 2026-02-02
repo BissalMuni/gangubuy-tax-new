@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { Typography, Divider, message, Spin } from 'antd';
+import { Typography, Divider, Spin, App } from 'antd';
 import { CommentOutlined } from '@ant-design/icons';
 import { CommentItem } from './CommentItem';
 import { CommentForm } from './CommentForm';
@@ -17,11 +17,13 @@ export function CommentList({ contentPath }: CommentListProps) {
   const [comments, setComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
+  const { message } = App.useApp();
 
-  const currentAuthor =
-    typeof window !== 'undefined'
-      ? localStorage.getItem('gangubuy-comment-author') || ''
-      : '';
+  const [currentAuthor, setCurrentAuthor] = useState('');
+
+  useEffect(() => {
+    setCurrentAuthor(localStorage.getItem('gangubuy-comment-author') || '');
+  }, []);
 
   const fetchComments = useCallback(async () => {
     try {

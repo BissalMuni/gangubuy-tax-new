@@ -42,7 +42,8 @@ export async function uploadAttachment(
 
   const supabase = getSupabase();
   const uuid = crypto.randomUUID();
-  const storagePath = `${contentPath}/${uuid}_${file.name}`;
+  const ext = file.name.includes('.') ? file.name.split('.').pop() : '';
+  const storagePath = `${contentPath}/${uuid}${ext ? `.${ext}` : ''}`;
 
   // Upload to Storage
   const buffer = Buffer.from(await file.arrayBuffer());

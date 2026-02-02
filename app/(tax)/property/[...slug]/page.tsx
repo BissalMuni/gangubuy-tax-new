@@ -37,7 +37,7 @@ export default function PropertyContentPage({ params, searchParams }: PageProps)
 
   return (
     <ContentPageWrapper currentPath={currentPath} category="property">
-      <MDXRenderer meta={meta} source={rawSource} versions={versions} />
+      <MDXRenderer meta={meta} source={rawSource} versions={versions} contentPath={currentPath.replace(/^\//, '')} />
     </ContentPageWrapper>
   );
 }

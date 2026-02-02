@@ -37,7 +37,7 @@ export default function AcquisitionContentPage({ params, searchParams }: PagePro
 
   return (
     <ContentPageWrapper currentPath={currentPath} category="acquisition">
-      <MDXRenderer meta={meta} source={rawSource} versions={versions} />
+      <MDXRenderer meta={meta} source={rawSource} versions={versions} contentPath={currentPath.replace(/^\//, '')} />
     </ContentPageWrapper>
   );
 }

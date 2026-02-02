@@ -1,15 +1,10 @@
 'use client';
 
-import { List, Tag, Typography } from 'antd';
+import { Tag, Typography } from 'antd';
 import Link from 'next/link';
 import type { SearchResult } from '@/lib/types';
 
 const { Text, Paragraph } = Typography;
-
-interface SearchResultsProps {
-  results: SearchResult[];
-  query: string;
-}
 
 function highlightText(text: string, query: string): React.ReactNode {
   if (!query.trim()) return text;
@@ -39,11 +34,9 @@ export function SearchResults({ results, query }: SearchResultsProps) {
   }
 
   return (
-    <List
-      itemLayout="vertical"
-      dataSource={results}
-      renderItem={(item) => (
-        <List.Item>
+    <div>
+      {results.map((item) => (
+        <div key={item.path} style={{ padding: '12px 0', borderBottom: '1px solid #f0f0f0' }}>
           <Link href={item.path} style={{ textDecoration: 'none' }}>
             <div>
               <Text strong style={{ fontSize: 16 }}>
@@ -60,8 +53,13 @@ export function SearchResults({ results, query }: SearchResultsProps) {
               {highlightText(item.snippet, query)}
             </Paragraph>
           </Link>
-        </List.Item>
-      )}
-    />
+        </div>
+      ))}
+    </div>
   );
+}
+
+interface SearchResultsProps {
+  results: SearchResult[];
+  query: string;
 }

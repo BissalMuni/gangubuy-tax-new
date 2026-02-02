@@ -53,7 +53,12 @@ export interface ContentSequence {
 
 // === User Preferences ===
 
-export type FontSize = 'small' | 'medium' | 'large';
+export type FontSize = number; // px 단위, MIN_FONT_SIZE ~ MAX_FONT_SIZE
+
+export const MIN_FONT_SIZE = 12;
+export const MAX_FONT_SIZE = 22;
+export const FONT_SIZE_STEP = 1;
+export const DEFAULT_FONT_SIZE = 15;
 
 export interface UserPreferences {
   fontSize: FontSize;

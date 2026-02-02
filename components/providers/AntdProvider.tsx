@@ -1,6 +1,6 @@
 'use client';
 
-import { ConfigProvider } from 'antd';
+import { ConfigProvider, App } from 'antd';
 import koKR from 'antd/locale/ko_KR';
 
 export function AntdProvider({ children }: { children: React.ReactNode }) {
@@ -13,7 +13,7 @@ export function AntdProvider({ children }: { children: React.ReactNode }) {
         },
       }}
     >
-      {children}
+      <App>{children}</App>
     </ConfigProvider>
   );
 }

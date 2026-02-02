@@ -5,7 +5,7 @@
 
 ## Summary
 
-Build an internal-facing local tax information site that renders MDX content with tree-structured navigation. The site features infinite scroll between content sections, responsive design for PC/mobile, font size adjustment, content versioning, full-text search, per-content comments, and per-content file attachments. Uses Next.js App Router for SSR/SSG, Ant Design for UI components, static MDX files for content storage, and Supabase for comments/file storage. Content is organized by property type (물건 기준) per 지방세법 체계.
+Build an internal-facing local tax information site that renders MDX content with tree-structured navigation. The site features responsive design for PC/mobile, font size adjustment, content versioning, full-text search, per-content comments, and per-content file attachments. Uses Next.js App Router for SSR/SSG, Ant Design for UI components, static MDX files for content storage, and Supabase for comments/file storage. Content is organized by property type (물건 기준) per 지방세법 체계.
 
 ## Technical Context
 
@@ -15,7 +15,7 @@ Build an internal-facing local tax information site that renders MDX content wit
 **Testing**: Vitest + React Testing Library
 **Target Platform**: Web (modern browsers), SSR/SSG on Vercel
 **Project Type**: Web (Next.js App Router)
-**Performance Goals**: Page load < 2s, font size change < 100ms, seamless infinite scroll
+**Performance Goals**: Page load < 2s, font size change < 100ms
 **Constraints**: No authentication (읽기 공개, 댓글/업로드는 직원명 입력), SEO-friendly (SSG where possible)
 **Scale/Scope**: ~24 content pages (취득세 세율) + 과세표준 + 테마별 통합규정, versioned content, per-content comments & attachments
 
@@ -92,8 +92,7 @@ components/
 │   └── VersionSelector.tsx
 ├── content/                      # Content-related components
 │   ├── MDXRenderer.tsx
-│   ├── ContentHeader.tsx
-│   └── InfiniteScrollLoader.tsx
+│   └── ContentHeader.tsx
 ├── comments/                     # 댓글 components
 │   ├── CommentList.tsx
 │   ├── CommentForm.tsx
@@ -148,8 +147,7 @@ content/
 
 lib/
 ├── navigation/
-│   ├── nav.config.ts             # Navigation tree configuration (물건 기준 트리구조)
-│   └── contentSequence.ts        # Infinite scroll sequence (각 카테고리별)
+│   └── nav.config.ts             # Navigation tree configuration (물건 기준 트리구조)
 ├── content/
 │   ├── loader.ts                 # MDX content loader
 │   ├── versions.ts               # Version management
@@ -171,7 +169,6 @@ tests/
 │   ├── contentLoader.test.ts
 │   └── versionSelector.test.ts
 └── integration/
-    ├── infiniteScroll.test.tsx
     └── search.test.tsx
 ```
 
@@ -197,6 +194,6 @@ tests/
 |--------|----------|-----------|
 | Search | Client-side with pre-built index | Simplicity - no search server needed for ~24 pages |
 | Versioning | Filename-based | Simplicity - no database needed, easy to manage |
-| Infinite Scroll | Intersection Observer | Standard pattern, no external library needed |
+| ~~Infinite Scroll~~ | ~~Intersection Observer~~ | 제거됨 — 각 MDX 페이지 독립 표시 |
 | Content Structure | 물건 기준 (property-type-first) | 세무 실무 흐름과 법령 체계에 부합 |
 | Comments & Attachments | API Route → Supabase (service key) | 서버에서 검증/권한 제어. 외부용 확장 시 인증 레이어 추가 용이. Key 노출 방지 |

@@ -89,24 +89,24 @@
 
 ---
 
-## Phase 4: User Story 2 - Infinite Scroll Navigation (Priority: P2)
+## Phase 4: ~~User Story 2 - Infinite Scroll Navigation (Priority: P2)~~ [REMOVED]
 
-**Goal**: Auto-load next content section on scroll, update URL and sidebar highlight
+**Goal**: ~~Auto-load next content section on scroll~~ — 제거됨. 각 MDX 페이지 독립 표시.
 
 **Independent Test**: Open tax page, scroll to bottom, verify next content loads and URL updates
 
 ### Tests for User Story 2 ⚠️
 
-- [x] T029 [P] [US2] Unit test for content sequence logic in tests/unit/contentSequence.test.ts
-- [ ] T030 [P] [US2] Integration test for infinite scroll in tests/integration/infiniteScroll.test.tsx
+- [-] T029 [P] [US2] Unit test for content sequence logic in tests/unit/contentSequence.test.ts [REMOVED]
+- [-] T030 [P] [US2] Integration test for infinite scroll in tests/integration/infiniteScroll.test.tsx [REMOVED]
 
 ### Implementation for User Story 2
 
-- [x] T031 [US2] Create content sequence configuration in lib/navigation/contentSequence.ts
-- [x] T032 [US2] Create InfiniteScrollLoader component using IntersectionObserver in components/content/InfiniteScrollLoader.tsx
-- [x] T033 [US2] Implement URL update via history.replaceState in InfiniteScrollLoader
-- [x] T034 [US2] Integrate InfiniteScrollLoader into tax content pages
-- [x] T035 [US2] Add sidebar highlight sync on scroll-triggered content change
+- [-] T031 [US2] Create content sequence configuration in lib/navigation/contentSequence.ts [REMOVED]
+- [-] T032 [US2] Create InfiniteScrollLoader component using IntersectionObserver in components/content/InfiniteScrollLoader.tsx [REMOVED]
+- [-] T033 [US2] Implement URL update via history.replaceState in InfiniteScrollLoader [REMOVED]
+- [-] T034 [US2] Integrate InfiniteScrollLoader into tax content pages [REMOVED]
+- [-] T035 [US2] Add sidebar highlight sync on scroll-triggered content change [REMOVED]
 
 **Checkpoint**: User Story 2 complete - infinite scroll works independently
 
@@ -261,7 +261,7 @@
 - [ ] T064 [P] Create acquisition/rates MDX files (무상취득: 상속-주택/농지, 증여-주택/농지) - 개조식, 사례 제외
 - [ ] T065 [P] Create acquisition/rates MDX files (원시취득: 신축, 사치성: 고급주택/골프/과점주주) - 개조식, 사례 제외
 - [x] T066 [P] Add SEO metadata to all pages using Next.js Metadata API
-- [ ] T067 Performance optimization: implement content pre-fetching for infinite scroll
+- [-] T067 Performance optimization: implement content pre-fetching for infinite scroll [REMOVED]
 - [x] T068 Add error boundary component for graceful error handling
 - [ ] T069 Run all tests and ensure 80%+ coverage
 - [ ] T070 Validate against quickstart.md scenarios
@@ -287,7 +287,7 @@
 | Story | Depends On | Can Parallel With |
 |-------|------------|-------------------|
 | US1 (Browse) | Foundational | - |
-| US2 (Infinite Scroll) | US1 (uses content pages) | US3, US4, US5, US6 |
+| ~~US2 (Infinite Scroll)~~ | ~~US1~~ | 제거됨 |
 | US3 (Responsive) | US1 (modifies layout) | US2, US4, US5, US6 |
 | US4 (Font Size) | Foundational | US2, US3, US5, US6 |
 | US5 (Versions) | Foundational | US2, US3, US4, US6 |

@@ -40,7 +40,7 @@ Use Flexsearch with pre-built search index generated at build time.
 | Fuse.js | Simple | Slower on larger datasets | Flexsearch is faster |
 | Native filter | Zero dependencies | Poor search quality | Bad UX for Korean text |
 
-## Infinite Scroll Pattern
+## ~~Infinite Scroll Pattern~~ [REMOVED]
 
 ### Decision
 Use Intersection Observer API with content sequence configuration.
@@ -171,7 +171,7 @@ export const navigation: NavigationConfig = {
 |-------|----------|
 | MDX Integration | @next/mdx + next-mdx-remote |
 | Search | Flexsearch (client-side, pre-built index) |
-| Infinite Scroll | Intersection Observer API |
+| ~~Infinite Scroll~~ | ~~Intersection Observer API~~ [제거됨] |
 | Versioning | Filename-based (content-v1.0.mdx) |
 | Responsive | Tailwind breakpoints + Ant Design |
 | Preferences | Zustand with localStorage persist |

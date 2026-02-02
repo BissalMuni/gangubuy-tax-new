@@ -150,7 +150,7 @@ interface ContentHeaderProps {
 // - Last updated date (FR-020)
 ```
 
-### InfiniteScrollLoader
+### ~~InfiniteScrollLoader~~ [REMOVED]
 
 ```typescript
 interface InfiniteScrollLoaderProps {
@@ -304,7 +304,6 @@ RootLayout
         ├── ContentHeader
         │   └── VersionSelector
         ├── MDXRenderer
-        ├── InfiniteScrollLoader
         └── FontSizeControl
 
 SearchPage

@@ -23,19 +23,9 @@ A user visits the site to read tax information. They see a clean layout with the
 
 ---
 
-### User Story 2 - Infinite Scroll Navigation (Priority: P2)
+### ~~User Story 2 - Infinite Scroll Navigation (Priority: P2)~~ [REMOVED]
 
-A user is reading tax content and scrolls down. When they reach the end of the current section, the next section in the sequence automatically loads and the URL updates. The sidebar navigation highlights the new current section.
-
-**Why this priority**: Improves reading experience by allowing continuous reading without manual clicks. Builds on P1 foundation.
-
-**Independent Test**: Open a tax info page, scroll to the bottom, verify next content loads and URL/sidebar updates.
-
-**Acceptance Scenarios**:
-
-1. **Given** user is reading "취득세 > 세율", **When** they scroll past the content end, **Then** "취득세 > 과세표준" content loads below
-2. **Given** content auto-loads via scroll, **When** the new section becomes visible, **Then** the browser URL updates to reflect the new section
-3. **Given** URL updates via scroll, **When** user checks the sidebar, **Then** the highlighted item matches the currently visible section
+> **제거됨**: 무한 스크롤 기능은 콘텐츠 독립성 및 문서 단위 탐색 편의를 위해 제거함. 각 MDX 페이지는 독립적으로 표시됨.
 
 ---
 
@@ -140,7 +130,6 @@ A user wants to attach reference files (PDF, Excel, images) to a specific tax co
 - What happens when MDX content file is missing or corrupted? Display a friendly error message with navigation to other content.
 - What happens when user navigates to a non-existent route? Show a 404 page with navigation options.
 - What happens when user has JavaScript disabled? Core content should still be readable (SSR/SSG).
-- What happens when scrolling very fast through infinite scroll? Debounce URL updates to prevent excessive history entries.
 - What happens when a content version is deleted? Redirect to the latest version with a notice.
 - What happens when file upload exceeds size limit? Display error message with allowed max size.
 - What happens when Supabase is temporarily unavailable? Content (MDX) still loads (static), comments/attachments show "일시적으로 사용할 수 없습니다" message.
@@ -162,10 +151,10 @@ A user wants to attach reference files (PDF, Excel, images) to a specific tax co
 - **FR-008**: Currently active navigation item MUST be visually highlighted
 - **FR-009**: Navigation tree state (expanded/collapsed nodes) MUST persist during the session
 
-**Infinite Scroll**
-- **FR-010**: System MUST load the next content section when user scrolls to the end of current content
-- **FR-011**: System MUST update the browser URL when a new section becomes the primary visible content
-- **FR-012**: System MUST synchronize the sidebar highlight with the currently visible content during scroll
+**~~Infinite Scroll~~ [REMOVED]**
+- ~~**FR-010**~~: 제거됨
+- ~~**FR-011**~~: 제거됨
+- ~~**FR-012**~~: 제거됨
 
 **Responsive Design**
 - **FR-013**: System MUST provide a mobile-optimized layout for screens narrower than 768px

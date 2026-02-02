@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { Typography, Divider, List, Button, Popconfirm, Tag, message, Spin } from 'antd';
+import { Typography, Divider, Button, Popconfirm, Tag, Spin, App } from 'antd';
 import {
   PaperClipOutlined,
   DownloadOutlined,
@@ -26,11 +26,13 @@ function formatFileSize(bytes: number): string {
 export function AttachmentList({ contentPath }: AttachmentListProps) {
   const [attachments, setAttachments] = useState<Attachment[]>([]);
   const [loading, setLoading] = useState(true);
+  const { message } = App.useApp();
 
-  const currentUser =
-    typeof window !== 'undefined'
-      ? localStorage.getItem('gangubuy-comment-author') || ''
-      : '';
+  const [currentUser, setCurrentUser] = useState('');
+
+  useEffect(() => {
+    setCurrentUser(localStorage.getItem('gangubuy-comment-author') || '');
+  }, []);
 
   const fetchAttachments = useCallback(async () => {
     try {
@@ -85,43 +87,27 @@ export function AttachmentList({ contentPath }: AttachmentListProps) {
         <div style={{ textAlign: 'center', padding: 24 }}>
           <Spin />
         </div>
+      ) : attachments.length === 0 ? (
+        <div style={{ textAlign: 'center', padding: 24, color: '#999' }}>
+          첨부파일이 없습니다
+        </div>
       ) : (
-        <List
-          size="small"
-          dataSource={attachments}
-          locale={{ emptyText: '첨부파일이 없습니다' }}
-          renderItem={(item) => (
-            <List.Item
-              actions={[
-                item.download_url && (
-                  <a
-                    key="download"
-                    href={item.download_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button size="small" icon={<DownloadOutlined />}>
-                      다운로드
-                    </Button>
-                  </a>
-                ),
-                item.uploaded_by === currentUser && (
-                  <Popconfirm
-                    key="delete"
-                    title="파일을 삭제하시겠습니까?"
-                    onConfirm={() => handleDelete(item.id)}
-                    okText="삭제"
-                    cancelText="취소"
-                  >
-                    <Button size="small" icon={<DeleteOutlined />} danger />
-                  </Popconfirm>
-                ),
-              ].filter(Boolean)}
+        <div>
+          {attachments.map((item) => (
+            <div
+              key={item.id}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                padding: '8px 0',
+                borderBottom: '1px solid #f0f0f0',
+              }}
             >
-              <List.Item.Meta
-                avatar={<FileOutlined style={{ fontSize: 20, color: '#1890ff' }} />}
-                title={item.file_name}
-                description={
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, minWidth: 0, flex: 1 }}>
+                <FileOutlined style={{ fontSize: 20, color: '#1890ff', flexShrink: 0 }} />
+                <div style={{ minWidth: 0 }}>
+                  <div style={{ fontWeight: 500 }}>{item.file_name}</div>
                   <div>
                     <Text type="secondary" style={{ fontSize: 12 }}>
                       {formatFileSize(item.file_size)} · {item.uploaded_by} ·{' '}
@@ -131,11 +117,34 @@ export function AttachmentList({ contentPath }: AttachmentListProps) {
                       {item.mime_type.split('/').pop()}
                     </Tag>
                   </div>
-                }
-              />
-            </List.Item>
-          )}
-        />
+                </div>
+              </div>
+              <div style={{ display: 'flex', gap: 8, flexShrink: 0 }}>
+                {item.download_url && (
+                  <a
+                    href={item.download_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button size="small" icon={<DownloadOutlined />}>
+                      다운로드
+                    </Button>
+                  </a>
+                )}
+                {item.uploaded_by === currentUser && (
+                  <Popconfirm
+                    title="파일을 삭제하시겠습니까?"
+                    onConfirm={() => handleDelete(item.id)}
+                    okText="삭제"
+                    cancelText="취소"
+                  >
+                    <Button size="small" icon={<DeleteOutlined />} danger />
+                  </Popconfirm>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );

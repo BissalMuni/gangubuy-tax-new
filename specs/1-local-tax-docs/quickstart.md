@@ -78,7 +78,8 @@ export const navigation = {
 };
 ```
 
-### 4. Update Content Sequence (for infinite scroll)
+### ~~4. Update Content Sequence (for infinite scroll)~~ [REMOVED]
+> 제거됨: 무한 스크롤 기능 제거로 content sequence 설정이 불필요합니다.
 
 ```typescript
 // lib/navigation/contentSequence.ts

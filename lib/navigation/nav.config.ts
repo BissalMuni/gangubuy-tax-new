@@ -143,7 +143,7 @@ export const navigationConfig: NavigationConfig = {
         },
       },
       themes: {
-        label: '테마별 통합규정',
+        label: '테마별 취득세',
         path: '/acquisition/themes',
         isCategory: true,
         children: {
