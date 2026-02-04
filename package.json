@@ -1,0 +1,46 @@
+{
+  "name": "gangubuy-tax-new",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^6.1.0",
+    "@mdx-js/loader": "^3.1.1",
+    "@mdx-js/react": "^3.1.1",
+    "@next/mdx": "^16.1.6",
+    "@supabase/supabase-js": "^2.93.3",
+    "@types/react": "^19.2.10",
+    "@types/react-dom": "^19.2.3",
+    "antd": "^6.2.2",
+    "autoprefixer": "^10.4.24",
+    "flexsearch": "^0.8.212",
+    "gray-matter": "^4.0.3",
+    "next": "^14.2.35",
+    "next-mdx-remote": "^5.0.0",
+    "postcss": "^8.5.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.9.3",
+    "zustand": "^5.0.10"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/flexsearch": "^0.7.6",
+    "@vitejs/plugin-react": "^5.1.2",
+    "eslint": "^9.39.2",
+    "eslint-config-next": "^16.1.6",
+    "jsdom": "^27.4.0",
+    "prettier": "^3.8.1",
+    "vitest": "^4.0.18"
+  }
+}

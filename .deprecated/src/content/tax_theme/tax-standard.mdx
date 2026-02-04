@@ -1,0 +1,93 @@
+export const meta = {
+  id: "tax-standard",
+  title: "신축시 과세표준",
+  description: "건물을 신축하여 취득할 때 적용되는 취득세 과세표준 산정 방법입니다.",
+  category: "acquisition",
+  lastUpdated: "2026-01-24",
+  version: "1.0"
+};
+
+## 개요
+
+- **적용대상**: 건물 신축 원시취득자
+- **과세표준 원칙**: 사실상 취득가격 또는 시가표준액 중 높은 금액
+- **신고방법**: 실제 건축비용 증빙 또는 시가표준액 적용
+
+<Comparison title="과세표준 유형 비교" icon="DiffOutlined">
+  <ComparisonItem
+    title="사실상 취득가격"
+    value="실제 비용 기준"
+    description="건축비(재료비, 인건비), 설계비, 감리비, 부대비용(인허가 비용 등)을 합산한 금액"
+    variant="primary"
+  />
+  <ComparisonItem
+    title="시가표준액"
+    value="고시가격 기준"
+    description="건물신축가격기준액 × 면적 × 구조·용도·위치 지수를 적용한 금액 (감가상각 미적용)"
+    variant="secondary"
+  />
+</Comparison>
+
+<Cases title="과세표준 계산 사례" icon="CalculatorOutlined">
+  <Case
+    title="취득가격 > 시가표준액"
+    scenario="실제 건축비가 시가표준액보다 높은 경우"
+    result="실제 건축비 적용"
+    resultType="success"
+  >
+    <Analysis label="과세표준" value="사실상 취득가격" />
+    <Analysis label="예시" value="건축비 5억원, 시가표준액 4억원 → 5억원 기준" />
+  </Case>
+
+  <Case
+    title="취득가격 < 시가표준액"
+    scenario="실제 건축비가 시가표준액보다 낮은 경우"
+    result="시가표준액 적용"
+    resultType="error"
+  >
+    <Analysis label="과세표준" value="시가표준액" />
+    <Analysis label="예시" value="건축비 3억원, 시가표준액 4억원 → 4억원 기준" />
+  </Case>
+
+  <Case
+    title="취득가격 불분명"
+    scenario="건축비를 입증할 수 없는 경우"
+    result="시가표준액 적용"
+    resultType="error"
+  >
+    <Analysis label="과세표준" value="시가표준액" />
+    <Analysis label="사유" value="증빙서류 미비 시 시가표준액으로 결정" />
+  </Case>
+</Cases>
+
+<DataTable
+  title="신축 취득세율"
+  icon="PercentageOutlined"
+  columns={[
+    { key: "category", title: "구분", width: "30%" },
+    { key: "acquisitionTax", title: "취득세", width: "15%" },
+    { key: "educationTax", title: "지방교육세", width: "15%" },
+    { key: "ruralTax", title: "농어촌특별세", width: "15%" },
+    { key: "total", title: "합계", width: "15%" }
+  ]}
+  rows={[
+    { category: "주택 (85㎡ 이하)", acquisitionTax: "1.1%", educationTax: "0.1%", ruralTax: "-", total: "1.2%" },
+    { category: "주택 (85㎡ 초과)", acquisitionTax: "1.1%", educationTax: "0.1%", ruralTax: "0.2%", total: "1.4%" },
+    { category: "주택 외 건물", acquisitionTax: "2.8%", educationTax: "0.16%", ruralTax: "0.2%", total: "3.16%" }
+  ]}
+/>
+
+<References title="관련 법조문" icon="BookOutlined">
+  <Reference
+    law="지방세법"
+    article="제10조"
+    title="과세표준"
+    description="취득세 과세표준의 원칙"
+  />
+  <Reference
+    law="지방세법 시행령"
+    article="제18조"
+    title="시가표준액의 결정"
+    description="건물 시가표준액 산정 방법"
+  />
+</References>

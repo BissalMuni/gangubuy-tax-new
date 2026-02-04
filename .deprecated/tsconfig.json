@@ -38,6 +38,10 @@
       "@data/*": ["src/data/*"]
     }
   },
+<<<<<<< HEAD
   "include": ["src"],
+=======
+  "include": ["src", "src/**/*.mdx"],
+>>>>>>> 9e33101fa373775de70c7d7e1713d78538caaddf
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 import React, { useState, useLayoutEffect } from 'react';
 import ReactDOM from 'react-dom';
+=======
+import React from 'react';
+import { Tooltip as AntTooltip, Typography } from 'antd';
+
+const { Text } = Typography;
+>>>>>>> 9e33101fa373775de70c7d7e1713d78538caaddf
 
 interface TooltipProps {
   content: string[];
@@ -7,16 +14,20 @@ interface TooltipProps {
 }
 
 const Tooltip: React.FC<TooltipProps> = ({ content, children }) => {
+<<<<<<< HEAD
   const [isVisible, setIsVisible] = useState(false);
   const [tooltipPosition, setTooltipPosition] = useState({ top: 0, left: 0 });
   const [showBelow, setShowBelow] = useState(false);
   const triggerRef = React.useRef<HTMLDivElement>(null);
   const tooltipRef = React.useRef<HTMLDivElement>(null);
 
+=======
+>>>>>>> 9e33101fa373775de70c7d7e1713d78538caaddf
   if (!content || content.length === 0) {
     return <>{children}</>;
   }
 
+<<<<<<< HEAD
   // 툴팁 위치 계산
   useLayoutEffect(() => {
     if (isVisible && triggerRef.current && tooltipRef.current) {
@@ -100,10 +111,56 @@ const Tooltip: React.FC<TooltipProps> = ({ content, children }) => {
             : 'top-full border-t-4 border-l-transparent border-r-transparent border-t-gray-800'
         }`}
       ></div>
+=======
+  const tooltipContent = (
+    <div style={{ maxWidth: 360 }}>
+      {content.map((item, index) => (
+        <div
+          key={index}
+          style={{
+            borderBottom: index < content.length - 1 ? '1px solid rgba(255,255,255,0.2)' : 'none',
+            paddingBottom: index < content.length - 1 ? 8 : 0,
+            marginBottom: index < content.length - 1 ? 8 : 0,
+          }}
+        >
+          {typeof item === 'string' ? (
+            <Text style={{ color: '#fff', fontSize: 12 }}>{item}</Text>
+          ) : typeof item === 'object' && item !== null ? (
+            (item as any).clause ? (
+              <div>
+                <Text strong style={{ color: '#fadb14', fontSize: 12 }}>
+                  {(item as any).clause}
+                </Text>
+                <div style={{ marginTop: 4, paddingLeft: 8 }}>
+                  {Array.isArray((item as any).content) ? (
+                    <ul style={{ margin: 0, paddingLeft: 16 }}>
+                      {((item as any).content as string[]).map((contentItem: string, idx: number) => (
+                        <li key={idx} style={{ color: 'rgba(255,255,255,0.85)', fontSize: 12 }}>
+                          {contentItem}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <Text style={{ color: 'rgba(255,255,255,0.85)', fontSize: 12 }}>
+                      {(item as any).content || ''}
+                    </Text>
+                  )}
+                </div>
+              </div>
+            ) : (
+              <Text style={{ color: '#fff', fontSize: 12 }}>{JSON.stringify(item)}</Text>
+            )
+          ) : (
+            <Text style={{ color: '#fff', fontSize: 12 }}>{String(item)}</Text>
+          )}
+        </div>
+      ))}
+>>>>>>> 9e33101fa373775de70c7d7e1713d78538caaddf
     </div>
   );
 
   return (
+<<<<<<< HEAD
     <>
       <div
         ref={triggerRef}
@@ -118,6 +175,11 @@ const Tooltip: React.FC<TooltipProps> = ({ content, children }) => {
         document.body
       )}
     </>
+=======
+    <AntTooltip title={tooltipContent} placement="top" overlayStyle={{ maxWidth: 400 }}>
+      <span style={{ cursor: 'help' }}>{children}</span>
+    </AntTooltip>
+>>>>>>> 9e33101fa373775de70c7d7e1713d78538caaddf
   );
 };
 

@@ -1,0 +1,132 @@
+export const meta = {
+  id: "household-standard",
+  title: "1세대의 기준",
+  description: "취득세 중과 판정 시 1세대 범위 및 별도 세대로 보는 경우",
+  category: "acquisition",
+  lastUpdated: "2026-01-24",
+  version: "1.0"
+};
+
+## 개요
+
+- **적용범위**: 주택 취득세 중과 판정 시 1세대 범위 결정
+- **기준일**: 주택 취득일 현재
+- **근거법령**: 지방세법 시행령 제28조의3
+
+주택 취득세 중과 판정 시 1세대의 범위가 중요합니다. 원칙적으로 세대별 주민등록표에 함께 기재된 가족으로 구성되며, 다음의 경우 같은 주민등록표에 없더라도 1세대에 포함됩니다.
+
+## 1세대의 구성
+
+<List title="1세대에 포함되는 자" icon="TeamOutlined" variant="bullet">
+  <ListItem text="세대별 주민등록표 또는 등록외국인기록표에 함께 기재된 가족 (동거인 제외)" />
+  <ListItem text="배우자 (사실혼 제외, 법률상 이혼했으나 사실상 이혼 아닌 경우 포함)" />
+  <ListItem text="미혼인 30세 미만의 자녀" />
+  <ListItem text="부모 (취득자가 미혼이고 30세 미만인 경우)" />
+</List>
+
+<Alert variant="info" title="참고">
+  같은 주민등록표에 기재되어 있지 않더라도 배우자, 미혼 30세 미만 자녀, 부모(취득자가 미혼 30세 미만인 경우)는 1세대에 포함됩니다.
+</Alert>
+
+## 별도 세대로 보는 경우
+
+<List title="별도 세대 인정 요건" icon="UsergroupDeleteOutlined" variant="numbered">
+  <ListItem
+    title="30세 미만 미혼 자녀의 소득요건 충족"
+    description="부모와 같은 주민등록표에 없고, 직전 12개월 소득이 [중위소득](https://www.mohw.go.kr/menu.es?mid=a10708010900) 40% 이상이며 독립 생계 유지 가능한 경우 (미성년자 제외)"
+    legalBasis="지방세법 시행령 제28조의3 제2항 제1호"
+  />
+  <ListItem
+    title="65세 이상 직계존속 동거봉양"
+    description="65세 이상 직계존속을 동거봉양하기 위해 30세 이상, 혼인한, 또는 소득요건 충족 성년 직계비속이 합가한 경우"
+    legalBasis="지방세법 시행령 제28조의3 제2항 제2호"
+  />
+  <ListItem
+    title="세대전원 90일 이상 출국"
+    description="세대전원이 90일 이상 출국하면서 출국 후 거주지를 다른 가족 주소로 신고한 경우"
+    legalBasis="지방세법 시행령 제28조의3 제2항 제3호"
+  />
+  <ListItem
+    title="60일 이내 세대분리"
+    description="별도 세대 구성 가능한 자가 주택 취득일부터 60일 이내에 취득 주택으로 주소 이전하여 세대분리하는 경우"
+    legalBasis="지방세법 시행령 제28조의3 제2항 제4호"
+  />
+</List>
+
+## 30세 미만 미혼 자녀 세대분리
+
+<DataTable
+  title="30세 미만 미혼 자녀 세대분리 요건 비교"
+  icon="UsergroupDeleteOutlined"
+  columns={[
+    { key: "category", title: "구분", width: "25%" },
+    { key: "withIncome", title: "소득요건 충족", width: "37.5%" },
+    { key: "withoutIncome", title: "소득요건 미충족", width: "37.5%" }
+  ]}
+  rows={[
+    { category: "세대 판정", withIncome: "독립세대로 인정", withoutIncome: "부모 세대에 포함", highlight: true },
+    { category: "소득 기준", withIncome: "[중위소득](https://www.mohw.go.kr/menu.es?mid=a10708010900) 40% 이상 (월 약 102만원, 2026년 기준)", withoutIncome: "소득 없음 또는 미달" },
+    { category: "주택 수 계산", withIncome: "본인 주택만 계산", withoutIncome: "부모 주택과 합산" },
+    { category: "취득세 중과", withIncome: "본인 기준 적용", withoutIncome: "부모 다주택 시 중과 가능" },
+    { category: "증빙 서류", withIncome: "소득금액증명원, 근로소득원천징수영수증 등", withoutIncome: "세대분리 불인정" }
+  ]}
+/>
+
+<Cases title="사례" icon="FileSearchOutlined">
+  <Case
+    title="29세 미혼 자녀 소득요건 충족"
+    scenario="29세 미혼 자녀(월 소득 150만원)가 부모로부터 아파트 매수, 별도 세대로 거주 중"
+    result="독립세대 인정, 본인 기준 취득세 적용"
+    resultType="success"
+    note="소득금액증명원 필수 제출"
+  >
+    <Analysis label="나이" value="29세 (30세 미만)" />
+    <Analysis label="혼인 여부" value="미혼" />
+    <Analysis label="월 소득" value="150만원" />
+    <Analysis label="중위소득 40% 충족" value="예 (102만원 이상)" />
+  </Case>
+
+  <Case
+    title="28세 미혼 자녀 소득요건 미충족"
+    scenario="28세 미혼 무직 자녀가 부모로부터 주택 매수, 부모는 이미 2주택 보유"
+    result="부모 세대에 포함, 3주택자로 중과세율 적용 가능"
+    resultType="error"
+    note="세대분리 불인정으로 부모 주택 수에 합산"
+  >
+    <Analysis label="나이" value="28세 (30세 미만)" />
+    <Analysis label="혼인 여부" value="미혼" />
+    <Analysis label="월 소득" value="없음" />
+    <Analysis label="중위소득 40% 충족" value="아니오" />
+  </Case>
+
+  <Case
+    title="65세 부모 동거봉양을 위한 합가"
+    scenario="35세 기혼 자녀가 65세 부모를 동거봉양하기 위해 합가"
+    result="별도 세대로 인정"
+    resultType="success"
+    note="합가 전 각각 별도 세대였던 경우"
+  >
+    <Analysis label="직계존속 나이" value="65세 이상" />
+    <Analysis label="직계비속 나이" value="35세 (30세 이상)" />
+    <Analysis label="혼인 여부" value="기혼" />
+  </Case>
+</Cases>
+
+<References title="관련 법조문" icon="BookOutlined">
+  <Reference
+    law="지방세법 시행령"
+    article="제28조의3"
+    title="세대의 기준"
+    description="1세대 범위 및 별도 세대로 보는 경우"
+  />
+  <Reference
+    law="지방세법"
+    article="제13조의2"
+    title="주택 유상거래 취득 중과"
+    description="다주택자 주택 취득 시 중과세율 적용"
+  />
+</References>
+
+<Alert variant="info" title="중위소득 확인">
+  기준 중위소득은 매년 보건복지부 고시로 변경됩니다. 최신 중위소득은 [보건복지부 홈페이지](https://www.mohw.go.kr/menu.es?mid=a10708010900)에서 확인할 수 있습니다.
+</Alert>

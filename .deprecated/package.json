@@ -13,6 +13,7 @@
     "test:coverage": "vitest --coverage",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "format": "prettier --write \"src/**/*.{ts,tsx,css,md}\"",
+<<<<<<< HEAD
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
@@ -21,6 +22,17 @@
     "@ant-design/pro-layout": "^7.22.7",
     "@tanstack/react-query": "^5.8.4",
     "antd": "^5.29.3",
+=======
+    "type-check": "tsc --noEmit",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^6.1.0",
+    "@mdx-js/react": "^3.1.1",
+    "@mdx-js/rollup": "^3.1.1",
+    "@tanstack/react-query": "^5.8.4",
+    "antd": "^6.1.2",
+>>>>>>> 9e33101fa373775de70c7d7e1713d78538caaddf
     "axios": "^1.6.2",
     "chart.js": "^4.4.1",
     "clsx": "^2.0.0",
@@ -42,6 +54,10 @@
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^14.5.1",
+<<<<<<< HEAD
+=======
+    "@types/mdx": "^2.0.13",
+>>>>>>> 9e33101fa373775de70c7d7e1713d78538caaddf
     "@types/node": "^20.10.0",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
@@ -52,7 +68,12 @@
     "eslint": "^8.55.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+<<<<<<< HEAD
 "jsdom": "^23.0.1",
+=======
+    "husky": "^8.0.3",
+    "jsdom": "^23.0.1",
+>>>>>>> 9e33101fa373775de70c7d7e1713d78538caaddf
     "postcss": "^8.4.32",
     "prettier": "^3.1.0",
     "tailwindcss": "^3.3.6",

@@ -1,0 +1,215 @@
+export const meta = {
+  id: "family-trade",
+  title: "가족간 유상거래",
+  description: "배우자 또는 직계존비속 간 부동산 유상거래 시 취득세 과세 기준",
+  category: "acquisition",
+  lastUpdated: "2026-01-24",
+  version: "1.1"
+};
+
+<Alert variant="warning" title="원칙" emphasis="증여 취득세율 3.5% 적용">
+  배우자 또는 직계존비속의 부동산등을 취득하는 경우 원칙적으로 증여로 취득한 것으로 본다.
+</Alert>
+
+<Alert variant="success" title="예외">
+  일정 요건 충족 시 그 취득한 부동산등 전체를 유상취득으로 본다.
+</Alert>
+
+<List title="유상취득 인정 사유" icon="CheckCircleOutlined" variant="numbered" legalLink="https://www.law.go.kr/법령/지방세법/제7조">
+  <ListItem
+    title="공매(경매 포함)를 통한 취득"
+    description="공매 또는 경매를 통하여 부동산등을 취득한 경우"
+    legalBasis="지방세법 제7조 제11항 제1호"
+  />
+  <ListItem
+    title="파산선고로 인한 취득"
+    description="파산선고로 인하여 처분되는 부동산등을 취득한 경우"
+    legalBasis="지방세법 제7조 제11항 제2호"
+  />
+  <ListItem
+    title="부동산 교환"
+    description="권리의 이전이나 행사에 등기 또는 등록이 필요한 부동산등을 서로 교환한 경우"
+    legalBasis="지방세법 제7조 제11항 제3호"
+  />
+  <ListItem
+    title="대가 지급 사실 증명"
+    description="해당 부동산등의 취득을 위하여 그 대가를 지급한 사실이 증명되는 경우"
+    legalBasis="지방세법 제7조 제11항 제4호"
+    note="단, 대가와 시가인정액 차액이 3억원 이상이거나 시가인정액의 30% 이상인 경우는 제외"
+  >
+    <SubItem>그 대가를 지급하기 위한 취득자의 소득이 증명되는 경우</SubItem>
+    <SubItem>소유재산을 처분 또는 담보한 금액으로 해당 부동산을 취득한 경우</SubItem>
+    <SubItem>이미 상속세 또는 증여세를 과세받았거나 신고한 재산의 가액으로 대가를 지급한 경우</SubItem>
+    <SubItem>취득자의 재산으로 그 대가를 지급한 사실이 입증되는 경우</SubItem>
+  </ListItem>
+</List>
+
+<Criteria
+  title="대가와 시가인정액 차액 기준"
+  icon="CalculatorOutlined"
+  description="대가 지급 사실이 증명되더라도 아래 기준에 해당하면 증여로 간주"
+  legalBasis="지방세법 제7조 제11항 제4호 단서, 시행령 제11조의3"
+  note="시가인정액을 산정하기 어려운 경우에는 시가표준액 적용"
+>
+  <Condition condition="차액 >= 3억원" result="증여로 간주" type="negative" />
+  <Condition condition="차액 >= 시가인정액의 30%" result="증여로 간주" type="negative" />
+</Criteria>
+
+<Alert variant="info" title="대가와 시가인정액 차액 기준 미충족시 전체를 무상으로 볼 것인지, 일부를 유상으로 볼 것인지">
+  법문의 구조상 **원칙**(증여로 본다) → **예외**(전체를 유상취득으로 본다) → **단서**(제외한다)로 되어 있어, '제외'의 해석에 따라 과세 결과가 달라집니다.
+
+  <List title="전부 증여설과 부분 유상설" icon="BookOutlined" variant="numbered">
+    <ListItem
+      title="전부 증여설"
+      description="단서의 '제외'는 예외 규정(제4호) 자체에서 제외하는 것 → 원칙(본문)으로 복귀하여 **거래 전체를 증여**로 의제"
+    />
+    <ListItem
+      title="부분 유상설"
+      description="'전체를 유상취득으로 본다'는 효과만 제외 → **'일부를 유상으로 본다'는 가능** → 대가 지급분은 유상, 차액만 증여로 각각 과세. 실질과세 원칙 및 상증세법 저가양수 규정(제35조)과의 체계적 해석상 타당"
+    />
+  </List>
+
+  <Alert variant="warning" title="실무상 유의사항">
+    현행 과세실무는 **전부 증여설**을 따르는 것으로 보이나, 납세자 입장에서 부분 유상설에 따른 과세처분 불복 가능성이 있습니다. 분쟁 예방을 위해 차액 기준 이내로 거래하거나, 충분한 증빙을 갖추는 것이 권장됩니다.
+  </Alert>
+</Alert>
+<DataTable
+  title="취득세율 비교"
+  icon="PercentageOutlined"
+  columns={[
+    { key: "type", title: "취득 유형", width: "35%" },
+    { key: "rate", title: "세율", width: "25%" },
+    { key: "note", title: "비고", width: "40%" }
+  ]}
+  rows={[
+    { type: "유상승계취득 (주택)", rate: "1~3%", note: "주택가액 6억 이하 1%, 6~9억 1~3%, 9억 초과 3%", highlight: true },
+    { type: "유상승계취득 (일반)", rate: "4%", note: "주택 외 부동산" },
+    { type: "증여취득", rate: "3.5%", note: "무상취득 세율 적용" }
+  ]}
+/>
+
+<Comparison title="과세표준 비교" icon="DiffOutlined">
+  <ComparisonItem
+    title="유상승계취득"
+    value="사실상취득가격"
+    description="실제 거래가격 기준"
+    legalBasis="지방세법 제10조의3"
+    variant="primary"
+  />
+  <ComparisonItem
+    title="증여취득"
+    value="시가인정액"
+    description="시가인정액 (산정 어려운 경우 시가표준액)"
+    legalBasis="지방세법 제10조의2"
+    variant="secondary"
+  />
+</Comparison>
+
+<Cases title="사례" icon="FileSearchOutlined">
+  <Case
+    title="아버지로부터 아파트 매수"
+    scenario="아들이 아버지 소유 아파트(시가 5억원)를 4억5천만원에 매수"
+    result="유상취득 인정 가능"
+    resultType="success"
+    note="소득증명 또는 재산처분 증빙 필요"
+  >
+    <Analysis label="시가와의 차액" value="5천만원" />
+    <Analysis label="차액 비율" value="10%" />
+    <Analysis label="3억원 이상?" value="아니오" />
+    <Analysis label="30% 이상?" value="아니오" />
+  </Case>
+
+  <Case
+    title="어머니로부터 상가 매수 (저가양도)"
+    scenario="자녀가 어머니 소유 상가(시가 10억원)를 5억원에 매수"
+    result="증여로 간주"
+    resultType="error"
+    note="증여취득 세율 3.5% 적용"
+  >
+    <Analysis label="시가와의 차액" value="5억원" />
+    <Analysis label="차액 비율" value="50%" />
+    <Analysis label="3억원 이상?" value="예" />
+    <Analysis label="30% 이상?" value="예" />
+  </Case>
+
+  <Case
+    title="배우자 간 주택 매매"
+    scenario="남편이 아내 소유 주택(시가 8억원)을 7억5천만원에 매수, 본인 예금으로 대금 지급"
+    result="유상취득 인정 가능"
+    resultType="success"
+    note="예금잔액증명서, 계좌이체내역 필요"
+  >
+    <Analysis label="시가와의 차액" value="5천만원" />
+    <Analysis label="차액 비율" value="6.25%" />
+    <Analysis label="3억원 이상?" value="아니오" />
+    <Analysis label="30% 이상?" value="아니오" />
+  </Case>
+
+  </Cases>
+
+<DataTable
+  title="가족 범위"
+  icon="TeamOutlined"
+  columns={[
+    { key: "relation", title: "관계", width: "30%" },
+    { key: "included", title: "포함 여부", width: "20%" },
+    { key: "description", title: "설명", width: "50%" }
+  ]}
+  rows={[
+    { relation: "배우자", included: "O", description: "법률상 혼인관계에 있는 자" },
+    { relation: "직계존속", included: "O", description: "부모, 조부모, 외조부모 등" },
+    { relation: "직계비속", included: "O", description: "자녀, 손자녀 등" },
+    { relation: "형제자매", included: "X", description: "가족간 거래 규정 미적용" },
+    { relation: "사위/며느리", included: "X", description: "직계존비속이 아님" }
+  ]}
+/>
+
+
+<Steps title="실무 체크리스트" icon="OrderedListOutlined">
+  <Step title="거래 당사자 확인" description="배우자 또는 직계존비속 간 거래인지 확인" />
+  <Step title="유상취득 예외 해당 여부" description="공매, 파산선고, 교환, 대가지급 증명 중 해당사항 확인" />
+  <Step title="대가 지급 증빙 준비" description="소득증명, 재산처분 내역, 대출내역 등 증빙서류 준비" />
+  <Step title="시가 대비 거래가액 확인" description="거래가액과 시가인정액 차액이 3억원 미만이고 30% 미만인지 확인" />
+  <Step title="취득세 신고" description="증빙서류와 함께 취득세 신고 진행" />
+</Steps>
+
+<List title="필요 서류" icon="FolderOutlined" variant="bullet">
+  <ListItem text="매매계약서" />
+  <ListItem text="대금지급 증빙 (계좌이체 내역 등)" />
+  <ListItem text="소득금액증명원 또는 원천징수영수증" />
+  <ListItem text="재산처분 증빙 (매매계약서, 대출약정서 등)" />
+  <ListItem text="시가인정액 산정 자료 (감정평가서, 매매사례가액 등)" />
+</List>
+
+<References title="관련 법조문" icon="BookOutlined">
+  <Reference
+    law="지방세법"
+    article="제7조 제11항"
+    title="가족간 유상거래 증여 간주 규정"
+    description="배우자 또는 직계존비속 간 부동산 취득 시 증여로 보는 원칙 및 예외 사유"
+  />
+  <Reference
+    law="지방세법 시행령"
+    article="제11조의3"
+    title="대가와 시가인정액의 차액 기준"
+    description="3억원 또는 시가인정액의 30% 기준 규정"
+  />
+  <Reference
+    law="지방세법"
+    article="제10조의2"
+    title="무상취득의 경우 과세표준"
+    description="시가인정액 기준 과세표준 산정"
+  />
+  <Reference
+    law="지방세법"
+    article="제10조의3"
+    title="유상승계취득의 경우 과세표준"
+    description="사실상취득가격 기준 과세표준 산정"
+  />
+  <Reference
+    law="지방세법"
+    article="제11조"
+    title="부동산 취득의 세율"
+    description="유상취득 1~4%, 무상취득 3.5% 등"
+  />
+</References>

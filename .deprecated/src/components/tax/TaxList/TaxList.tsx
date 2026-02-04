@@ -1,6 +1,15 @@
 import React from 'react';
+<<<<<<< HEAD
 import { TaxItem } from '@/types/tax.types';
 
+=======
+import { Card, Tag, Typography, Space, Badge, Collapse } from 'antd';
+import { TaxItem } from '@/types/tax.types';
+
+const { Text, Title } = Typography;
+const { Panel } = Collapse;
+
+>>>>>>> 9e33101fa373775de70c7d7e1713d78538caaddf
 interface TaxListProps {
   items: TaxItem[];
 }
@@ -28,6 +37,7 @@ const TaxList: React.FC<TaxListProps> = ({ items }) => {
   });
 
   return (
+<<<<<<< HEAD
     <div className="tax-list-container">
       {sortedTypes.map((type) => (
         <div key={type} className="acquisition-group">
@@ -142,8 +152,71 @@ const TaxList: React.FC<TaxListProps> = ({ items }) => {
           }
         }
       `}</style>
+=======
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24, padding: 16 }}>
+      {sortedTypes.map((type) => (
+        <Card
+          key={type}
+          title={
+            <Space>
+              <Title level={5} style={{ margin: 0 }}>{type}</Title>
+              <Badge count={groupedItems[type].length} style={{ backgroundColor: '#52c41a' }} />
+            </Space>
+          }
+          style={{ borderLeft: '4px solid #52c41a' }}
+        >
+          <Collapse defaultActiveKey={[]} ghost>
+            {groupedItems[type].map((item) => (
+              <Panel
+                key={item.id}
+                header={
+                  <Space wrap>
+                    <Text strong style={{ fontSize: 15 }}>
+                      {item.path[1] || '일반'}
+                    </Text>
+                    {item.path.slice(2).map((path, pathIndex) => (
+                      <Tag key={pathIndex} color="green">{path}</Tag>
+                    ))}
+                    <Tag color="blue">{item.category}</Tag>
+                  </Space>
+                }
+              >
+                <Space direction="vertical" style={{ width: '100%' }} size="small">
+                  {Object.entries(item.data).map(([key, value]) => (
+                    <div
+                      key={key}
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        padding: '8px 12px',
+                        background: '#fafafa',
+                        borderRadius: 4,
+                      }}
+                    >
+                      <Text type="secondary">{key}</Text>
+                      <Text
+                        strong
+                        style={{
+                          color: key === '취득세' ? '#1890ff' : key === '지방교육세' ? '#52c41a' : '#fa8c16',
+                        }}
+                      >
+                        {value}
+                      </Text>
+                    </div>
+                  ))}
+                </Space>
+              </Panel>
+            ))}
+          </Collapse>
+        </Card>
+      ))}
+>>>>>>> 9e33101fa373775de70c7d7e1713d78538caaddf
     </div>
   );
 };
 
+<<<<<<< HEAD
 export default TaxList;
+=======
+export default TaxList;
+>>>>>>> 9e33101fa373775de70c7d7e1713d78538caaddf
