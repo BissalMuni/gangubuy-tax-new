@@ -1,6 +1,0 @@
-{
-  "/api/comments/route": "app/api/comments/route.js",
-  "/api/attachments/route": "app/api/attachments/route.js",
-  "/(tax)/page": "app/(tax)/page.js",
-  "/(tax)/acquisition/[...slug]/page": "app/(tax)/acquisition/[...slug]/page.js"
-}
