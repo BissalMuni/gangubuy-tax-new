@@ -92,29 +92,33 @@ export function Sidebar() {
     return getAncestorKeys(activePath);
   }, [activePath]);
 
-  // Controlled openKeys state: initialized from sessionStorage, merged with path-based keys
-  const [openKeys, setOpenKeys] = useState<string[]>(() => {
-    if (typeof window === 'undefined') return pathOpenKeys;
+  // Controlled openKeys state: initialize consistently for SSR, then restore from sessionStorage
+  const [openKeys, setOpenKeys] = useState<string[]>(pathOpenKeys);
+  const [mounted, setMounted] = useState(false);
+
+  // Restore openKeys from sessionStorage after mounting (to avoid hydration mismatch)
+  useEffect(() => {
+    setMounted(true);
     try {
       const stored = sessionStorage.getItem(OPEN_KEYS_STORAGE_KEY);
       if (stored) {
         const parsed: string[] = JSON.parse(stored);
         // Merge stored keys with current path keys (ensure current path is always open)
-        return [...new Set([...parsed, ...pathOpenKeys])];
+        setOpenKeys((prev) => [...new Set([...parsed, ...prev])]);
       }
     } catch {
       // ignore parse errors
     }
-    return pathOpenKeys;
-  });
+  }, []);
 
   // When pathname changes, ensure all ancestor keys for the new path are open
   useEffect(() => {
+    if (!mounted) return;
     setOpenKeys((prev) => {
       const merged = [...new Set([...prev, ...pathOpenKeys])];
       return merged;
     });
-  }, [pathOpenKeys]);
+  }, [pathOpenKeys, mounted]);
 
   // Persist openKeys to sessionStorage on change
   useEffect(() => {

@@ -8,7 +8,7 @@
  * - Supports dynamic expansion
  */
 
-import type { NavigationTree } from '@/types/navigation.types'
+import type { NavigationTree, NavigationNode, BreadcrumbItem } from '@/types/navigation.types'
 
 export const navigationTree: NavigationTree = {
   "홈": {

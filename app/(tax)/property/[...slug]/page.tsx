@@ -11,6 +11,7 @@ interface PageProps {
 }
 
 export function generateStaticParams() {
+  if (process.env.NODE_ENV === 'development') return [];
   return getContentSlugs('property').map((slug) => ({ slug }));
 }
 

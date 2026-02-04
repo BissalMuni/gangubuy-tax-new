@@ -14,8 +14,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko">
-      <body>
+    <html lang="ko" suppressHydrationWarning>
+      <head>
+        <meta name="darkreader-lock" />
+      </head>
+      <body suppressHydrationWarning>
         <AntdProvider>
           <FontSizeProvider>{children}</FontSizeProvider>
         </AntdProvider>

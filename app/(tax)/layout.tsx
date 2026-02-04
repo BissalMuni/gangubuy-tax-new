@@ -44,6 +44,7 @@ export default function TaxLayout({
             minHeight: 'calc(100vh - 48px)',
             overflow: 'auto',
             maxWidth: 900,
+            background: 'var(--bg-color)',
           }}
         >
           {children}

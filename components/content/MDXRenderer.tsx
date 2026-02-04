@@ -15,7 +15,7 @@ interface MDXRendererProps {
 export function MDXRenderer({ meta, source, versions, contentPath }: MDXRendererProps) {
   return (
     <article>
-      <ContentHeader meta={meta} versions={versions} />
+      <ContentHeader meta={meta} versions={versions} showInteractionLinks={!!contentPath} />
       <div style={{ fontSize: 'var(--content-font-size)' }}>
         <MDXRemote source={source} components={mdxComponents} />
       </div>

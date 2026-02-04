@@ -4,6 +4,7 @@ import { Layout, Typography, Button } from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
 import Link from 'next/link';
 import { FontSizeControl } from './FontSizeControl';
+import { DarkModeToggle } from './DarkModeToggle';
 
 const { Header: AntHeader } = Layout;
 
@@ -42,6 +43,7 @@ export function Header({ onMenuClick, showMenuButton }: HeaderProps) {
         </Typography.Title>
       </Link>
       <FontSizeControl />
+      <DarkModeToggle />
     </AntHeader>
   );
 }

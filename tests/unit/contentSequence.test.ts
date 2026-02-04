@@ -20,14 +20,8 @@ describe('contentSequence', () => {
 
     it('should return paths in depth-first traversal order', () => {
       const leaves = getLeafPaths(navigationConfig.acquisition);
-      // First leaves should be under rates/realestate/housing
-      const housingLeaves = leaves.filter((p) =>
-        p.startsWith('/acquisition/rates/realestate/housing/'),
-      );
-      expect(housingLeaves.length).toBeGreaterThan(0);
-      expect(housingLeaves[0]).toBe(
-        '/acquisition/rates/realestate/housing/general',
-      );
+      // First leaf should be housing (single file, no subpages)
+      expect(leaves[0]).toBe('/acquisition/rates/realestate/housing');
     });
 
     it('should not include category nodes (only leaf nodes)', () => {
@@ -35,7 +29,6 @@ describe('contentSequence', () => {
       // /acquisition/rates is a category, should not be in leaves
       expect(leaves).not.toContain('/acquisition/rates');
       expect(leaves).not.toContain('/acquisition/rates/realestate');
-      expect(leaves).not.toContain('/acquisition/rates/realestate/housing');
     });
 
     it('should return empty array for a node with no children', () => {
@@ -51,14 +44,14 @@ describe('contentSequence', () => {
 
   describe('getNextPath', () => {
     it('should return the next leaf path in the category', () => {
-      const next = getNextPath('/acquisition/rates/realestate/housing/general');
-      expect(next).toBe('/acquisition/rates/realestate/housing/inheritance');
+      const next = getNextPath('/acquisition/rates/realestate/housing');
+      expect(next).toBe('/acquisition/rates/realestate/farmland');
     });
 
     it('should cross parent boundaries to find next sibling', () => {
-      const next = getNextPath('/acquisition/rates/realestate/housing/luxury');
-      // After the last housing leaf, should go to farmland/general
-      expect(next).toBe('/acquisition/rates/realestate/farmland/general');
+      const next = getNextPath('/acquisition/rates/realestate/non-farmland');
+      // After non-farmland, should go to non-realestate
+      expect(next).toBe('/acquisition/rates/non-realestate/non-realestate');
     });
 
     it('should return null for the last leaf in the category', () => {
@@ -76,10 +69,8 @@ describe('contentSequence', () => {
 
   describe('getPrevPath', () => {
     it('should return the previous leaf path', () => {
-      const prev = getPrevPath(
-        '/acquisition/rates/realestate/housing/inheritance',
-      );
-      expect(prev).toBe('/acquisition/rates/realestate/housing/general');
+      const prev = getPrevPath('/acquisition/rates/realestate/farmland');
+      expect(prev).toBe('/acquisition/rates/realestate/housing');
     });
 
     it('should return null for the first leaf in the category', () => {
@@ -92,9 +83,7 @@ describe('contentSequence', () => {
 
   describe('getSequencePosition', () => {
     it('should return current index and total count', () => {
-      const pos = getSequencePosition(
-        '/acquisition/rates/realestate/housing/general',
-      );
+      const pos = getSequencePosition('/acquisition/rates/realestate/housing');
       expect(pos).not.toBeNull();
       expect(pos!.current).toBe(0);
       expect(pos!.total).toBeGreaterThan(1);

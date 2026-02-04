@@ -25,79 +25,14 @@ export const navigationConfig: NavigationConfig = {
               housing: {
                 label: '주택',
                 path: '/acquisition/rates/realestate/housing',
-                isCategory: true,
-                children: {
-                  general: {
-                    label: '유상거래',
-                    path: '/acquisition/rates/realestate/housing/general',
-                  },
-                  inheritance: {
-                    label: '상속',
-                    path: '/acquisition/rates/realestate/housing/inheritance',
-                  },
-                  gift: {
-                    label: '증여',
-                    path: '/acquisition/rates/realestate/housing/gift',
-                  },
-                  original: {
-                    label: '원시취득/신축',
-                    path: '/acquisition/rates/realestate/housing/original',
-                  },
-                  'multi-house': {
-                    label: '다주택자 중과',
-                    path: '/acquisition/rates/realestate/housing/multi-house',
-                  },
-                  corporate: {
-                    label: '법인 취득 중과',
-                    path: '/acquisition/rates/realestate/housing/corporate',
-                  },
-                  luxury: {
-                    label: '고급주택 중과',
-                    path: '/acquisition/rates/realestate/housing/luxury',
-                  },
-                },
               },
               farmland: {
                 label: '농지',
                 path: '/acquisition/rates/realestate/farmland',
-                isCategory: true,
-                children: {
-                  general: {
-                    label: '유상거래',
-                    path: '/acquisition/rates/realestate/farmland/general',
-                  },
-                  inheritance: {
-                    label: '상속',
-                    path: '/acquisition/rates/realestate/farmland/inheritance',
-                  },
-                  gift: {
-                    label: '증여',
-                    path: '/acquisition/rates/realestate/farmland/gift',
-                  },
-                },
               },
               'non-farmland': {
                 label: '농지 외',
                 path: '/acquisition/rates/realestate/non-farmland',
-                isCategory: true,
-                children: {
-                  general: {
-                    label: '유상거래',
-                    path: '/acquisition/rates/realestate/non-farmland/general',
-                  },
-                  inheritance: {
-                    label: '상속',
-                    path: '/acquisition/rates/realestate/non-farmland/inheritance',
-                  },
-                  gift: {
-                    label: '증여',
-                    path: '/acquisition/rates/realestate/non-farmland/gift',
-                  },
-                  original: {
-                    label: '원시취득',
-                    path: '/acquisition/rates/realestate/non-farmland/original',
-                  },
-                },
               },
             },
           },

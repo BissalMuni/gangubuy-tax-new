@@ -73,7 +73,7 @@ export function AttachmentList({ contentPath }: AttachmentListProps) {
   };
 
   return (
-    <div style={{ marginTop: 32 }}>
+    <div id="attachments-section" style={{ marginTop: 32 }}>
       <Divider />
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
         <Title level={5} style={{ margin: 0 }}>

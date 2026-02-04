@@ -1,4 +1,5 @@
 import { Alert, Table as AntTable } from 'antd';
+import { SectionNav } from './SectionNav';
 
 interface CalloutProps {
   type?: 'info' | 'caution' | 'warning';
@@ -24,6 +25,7 @@ export function Callout({ type = 'info', children }: CalloutProps) {
 
 export const mdxComponents = {
   Callout,
+  SectionNav,
   table: (props: React.HTMLAttributes<HTMLTableElement>) => (
     <div style={{ overflowX: 'auto', marginBottom: 16 }}>
       <table

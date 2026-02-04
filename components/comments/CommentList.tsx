@@ -88,7 +88,7 @@ export function CommentList({ contentPath }: CommentListProps) {
   };
 
   return (
-    <div style={{ marginTop: 48 }}>
+    <div id="comments-section" style={{ marginTop: 48 }}>
       <Divider />
       <Title level={5}>
         <CommentOutlined style={{ marginRight: 8 }} />
