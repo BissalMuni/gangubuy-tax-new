@@ -90,6 +90,10 @@ export const navigationConfig: NavigationConfig = {
             label: '생애최초 주택취득 감면',
             path: '/acquisition/themes/first-time-buyer',
           },
+          'luxury': {
+            label: '고급주택 중과',
+            path: '/acquisition/themes/luxury',
+          },
         },
       },
       standard: {
