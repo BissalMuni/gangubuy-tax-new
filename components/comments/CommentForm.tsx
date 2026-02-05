@@ -11,26 +11,24 @@ interface CommentFormProps {
 }
 
 export function CommentForm({ onSubmit, loading }: CommentFormProps) {
-  const [author, setAuthor] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('gangubuy-comment-author') || '';
-    }
-    return '';
-  });
+  // 작성자를 '익명'으로 고정
+  const [author] = useState('익명');
   const [body, setBody] = useState('');
 
   const handleSubmit = async () => {
-    if (!author.trim() || !body.trim()) return;
+    if (!body.trim()) return;
 
-    localStorage.setItem('gangubuy-comment-author', author.trim());
-    await onSubmit(author.trim(), body.trim());
+    // localStorage 저장 비활성화
+    // localStorage.setItem('gangubuy-comment-author', author.trim());
+    await onSubmit(author, body.trim());
     setBody('');
   };
 
   return (
     <div style={{ padding: '16px 0' }}>
       <Form layout="vertical">
-        <Form.Item label="작성자" style={{ marginBottom: 8 }}>
+        {/* 작성자 입력 필드 비활성화 */}
+        {/* <Form.Item label="작성자" style={{ marginBottom: 8 }}>
           <Input
             placeholder="이름"
             value={author}
@@ -38,7 +36,7 @@ export function CommentForm({ onSubmit, loading }: CommentFormProps) {
             maxLength={100}
             style={{ maxWidth: 200 }}
           />
-        </Form.Item>
+        </Form.Item> */}
         <Form.Item label="댓글" style={{ marginBottom: 8 }}>
           <TextArea
             rows={3}
@@ -52,7 +50,7 @@ export function CommentForm({ onSubmit, loading }: CommentFormProps) {
           type="primary"
           onClick={handleSubmit}
           loading={loading}
-          disabled={!author.trim() || !body.trim()}
+          disabled={!body.trim()}
         >
           댓글 작성
         </Button>

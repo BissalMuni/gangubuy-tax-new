@@ -1,5 +1,7 @@
 import { Alert, Table as AntTable } from 'antd';
 import { SectionNav } from './SectionNav';
+import { AcquisitionThemeNav } from './AcquisitionThemeNav';
+import { Outline } from './Outline';
 
 interface CalloutProps {
   type?: 'info' | 'caution' | 'warning';
@@ -26,6 +28,8 @@ export function Callout({ type = 'info', children }: CalloutProps) {
 export const mdxComponents = {
   Callout,
   SectionNav,
+  AcquisitionThemeNav,
+  Outline,
   table: (props: React.HTMLAttributes<HTMLTableElement>) => (
     <div style={{ overflowX: 'auto', marginBottom: 16 }}>
       <table

@@ -1,4 +1,5 @@
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import rehypeSlug from 'rehype-slug';
 import { mdxComponents } from '@/components/mdx';
 import { ContentHeader } from './ContentHeader';
 import { CommentList } from '@/components/comments/CommentList';
@@ -17,7 +18,7 @@ export function MDXRenderer({ meta, source, versions, contentPath }: MDXRenderer
     <article>
       <ContentHeader meta={meta} versions={versions} showInteractionLinks={!!contentPath} />
       <div style={{ fontSize: 'var(--content-font-size)' }}>
-        <MDXRemote source={source} components={mdxComponents} />
+        <MDXRemote source={source} components={mdxComponents} options={{ mdxOptions: { rehypePlugins: [rehypeSlug] } }} />
       </div>
       {contentPath && (
         <div style={{ marginTop: 24 }}>
