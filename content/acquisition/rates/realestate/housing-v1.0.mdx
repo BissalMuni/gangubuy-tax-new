@@ -8,39 +8,43 @@ version: "1.0"
 effective_date: "2026-01-01"
 last_updated: "2026-01-31"
 status: "draft"
-law_reference: "지방세법 §11, §13, §13의2, §15"
+law_reference: "지방세법 §11, §13, §13의2, §13의3, §15"
 tags: ["주택", "취득세", "세율", "유상거래", "상속", "증여", "원시취득", "다주택", "법인", "고급주택"]
 ---
 
 # 주택 취득세율
 
-> 주택 취득 시 취득 유형별(유상거래, 상속, 증여, 원시취득) 세율 및 중과세율(다주택, 법인, 고급주택) 안내
+> 주택 취득 시 취득유형(유상거래, 상속, 증여, 원시취득)과 주택 수, 취득자 유형(개인, 법인)에 따른 세율을 안내한다.
+
+---
 
 <SectionNav sections={[
-  { id: "유상거래", label: "유상거래" },
-  { id: "상속", label: "상속" },
-  { id: "증여", label: "증여" },
-  { id: "원시취득", label: "원시취득" },
-  { id: "다주택자중과", label: "다주택자 중과" },
-  { id: "법인취득중과", label: "법인 취득 중과" },
-  { id: "고급주택중과", label: "고급주택 중과" }
+  { id: "general", label: "유상거래 (일반)" },
+  { id: "inheritance", label: "상속" },
+  { id: "gift", label: "증여" },
+  { id: "original", label: "원시취득 (신축)" },
+  { id: "multi-house", label: "다주택자 중과" },
+  { id: "corporate", label: "법인" },
+  { id: "luxury", label: "고급주택 (사치성재산)" },
 ]} />
 
 ---
 
-<h2 id="유상거래">유상거래</h2>
+<h2 id="general">
+  <Outline level={1}>유상거래 (일반)</Outline>
+</h2>
 
 > 매매·분양·교환·경매·공매·현물출자 등 유상거래로 주택을 취득하는 경우의 세율 및 신고 안내
 
-<Outline level={2}>적용 대상
+### 적용 대상
 
 - **유상거래**에 해당하는 취득
   - 매매, 수분양, 교환, 경매, 공매, 현물출자
 - **유상거래가 아닌 것**: 신축(원시취득), 증여, 상속
 
-<Outline level={2}>주요 내용
+### 주요 내용
 
-<Outline level={3}>기본 제출서류
+#### 가. 기본 제출서류
 
 - **취득세신고서** + 취득상세내역서(주택의 경우)
 - **매매(분양)계약서** / 분양의 경우 잔금납부확인서
@@ -51,26 +55,51 @@ tags: ["주택", "취득세", "세율", "유상거래", "상속", "증여", "원
   - 주택이고 계약일자 **2019.12.4. 이후**이면 제출
   - 외국인: 외국인 등록사실증명서(또는 국내거소사실증명) + 세대원정보 기재
 
-<Outline level={3}>부동산 거래시 검인/신고 대상 구분
+#### 나. 부동산 거래시 검인/신고 대상 구분
 
 - **검인대상**: 교환, 증여, 분할, 인낙, 사용승인전 분양
   - 2017년 이후 일정규모 이상 분양계약은 신고필증
   - 합의해제계약서는 검인 불필요
 - **신고·검인 대상 아닌 것**: 상속분할협의서, 수용, 경매(공매) 낙찰
 
-<Outline level={3}>1세대 4주택 경과규정 (부칙 5조)
+#### 다. 1세대 4주택 경과규정 (부칙 5조)
 
 - 공동주택 분양(3년) **2019.12.3.까지** 매매계약 체결
 - **2022.12.31.까지** 잔금 지급하여 취득하는 경우
 - → 종전의 **2%** 세율 적용
 
-<Outline level={2}>세율·금액
+### 세율표
 
-| 구분 | 취득가액 | 세율 | 비고 |
-|------|----------|------|------|
-| 6억원 이하 | ~ 6억원 | **1%** | |
-| 6억원 초과 ~ 9억원 이하 | 6억 ~ 9억원 | **1% ~ 3%** | 아래 계산식 적용 |
-| 9억원 초과 | 9억원 ~ | **3%** | |
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>취득가액</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>세율</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>6억원 이하</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>~ 6억원</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>1%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}></td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>6억원 초과 ~ 9억원 이하</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>6억 ~ 9억원</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>1% ~ 3%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>아래 계산식 적용</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>9억원 초과</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>9억원 ~</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>3%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}></td>
+    </tr>
+  </tbody>
+</table>
 
 #### 6~9억원 구간 세율 계산식
 
@@ -81,14 +110,32 @@ tags: ["주택", "취득세", "세율", "유상거래", "상속", "증여", "원
 - 과세표준액 **150만원**마다 **0.01%**씩 상승
 - 소수점 3째자리 반올림
 
-<Outline level={2}>관련 법령
+### 관련 법령
 
-| 구분 | 법령명 | 조항 | 비고 |
-|------|--------|------|------|
-| 근거법 | 지방세법 | §11①8 | 주택 유상거래 세율 |
-| 경과규정 | 부칙 | 제5조 | 1세대4주택 경과규정 |
-
-<Outline level={2}>주의사항
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>법령명</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>조항</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>근거법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§11①8</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>주택 유상거래 세율</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>경과규정</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>부칙</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>제5조</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1세대4주택 경과규정</td>
+    </tr>
+  </tbody>
+</table>
 
 <Callout type="caution">
 
@@ -99,32 +146,24 @@ tags: ["주택", "취득세", "세율", "유상거래", "상속", "증여", "원
 
 </Callout>
 
-<SectionNav sections={[
-  { id: "유상거래", label: "유상거래" },
-  { id: "상속", label: "상속" },
-  { id: "증여", label: "증여" },
-  { id: "원시취득", label: "원시취득" },
-  { id: "다주택자중과", label: "다주택자 중과" },
-  { id: "법인취득중과", label: "법인 취득 중과" },
-  { id: "고급주택중과", label: "고급주택 중과" }
-]} />
-
 ---
 
-<h2 id="상속">상속</h2>
+<h2 id="inheritance">
+  <Outline level={1}>상속</Outline>
+</h2>
 
 > 상속·유증에 의한 주택 취득 시 세율, 감면요건, 구비서류 및 실무 안내
 
-<Outline level={2}>적용 대상
+### 적용 대상
 
 - **상속**으로 인한 부동산 취득 (피상속인 사망)
 - **유증** (유언공정증서에 의한 취득)
 - **실종선고**에 의한 취득
 - 다주택이라도 **별도의 세율체계** 적용 (유상거래 중과세율 미적용)
 
-<Outline level={2}>주요 내용
+### 주요 내용
 
-<Outline level={3}>일반 상속 신고 구비서류
+#### 가. 일반 상속 신고 구비서류
 
 - **상속재산분할협의서**
   - 검인 불필요
@@ -146,13 +185,13 @@ tags: ["주택", "취득세", "세율", "유상거래", "상속", "증여", "원
 
 </Callout>
 
-<Outline level={3}>법정지분 신고
+#### 나. 법정지분 신고
 
 - 상속자가 **단독**이거나, 재산분할 협의가 안 되면 **법정상속지분**으로 취득 신고 가능
 - 이 경우 상속재산분할협의서 불필요
 - 법정지분율: **배우자 1.5 : 자녀 1**의 비율
 
-<Outline level={3}>1가구 1주택 상속 감면
+#### 다. 1가구 1주택 상속 감면
 
 - **감면세율**: 2.8% → **0.8%** (취득분 2% 감면), 농비
 - **추가 구비서류**:
@@ -163,37 +202,71 @@ tags: ["주택", "취득세", "세율", "유상거래", "상속", "증여", "원
 - **재외국민**: 상속 세율특례 적용 불가 (외국인 배우자는 가능)
 - **판단기준**: 상속인 기준으로만 결정 / 피상속인 주택수 무관
 
-<Outline level={3}>1가구 1주택의 범위
+#### 라. 1가구 1주택의 범위
 
 - "세대별주민등록표"에 기재된 상속인과 그 가족으로 구성된 1가구
 - 상속인의 **배우자**, **미혼인 30세 미만의 직계비속**은 같은 세대별 주민등록표에 미기재라도 포함
 - 상속인이 미혼·30세 미만인 경우 **부모**도 포함 판단
 - 동거인은 제외
 
-<Outline level={3}>취득세 상속순위 (1가구1주택 판단)
+#### 마. 취득세 상속순위 (1가구1주택 판단)
 
-| 순위 | 기준 |
-|------|------|
-| **1순위** | 지분이 가장 큰 자 |
-| **2순위** | 상속주택 거주자 |
-| **3순위** | 연장자 |
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>순위</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>기준</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>1순위</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지분이 가장 큰 자</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>2순위</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>상속주택 거주자</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>3순위</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>연장자</td>
+    </tr>
+  </tbody>
+</table>
 
 - 1주택을 여러 사람이 공동상속 시 → **1순위 주택 상속자 한 사람**의 소유주택으로 판단
 - 협의분할 시 지분도 정할 수 있음
 
-<Outline level={3}>상속 신고납부기한
+#### 바. 상속 신고납부기한
 
 - 사망한 달의 말일로부터 **6개월 이내**
 - 해외에 주소를 둔 상속인이 있는 경우 **9개월 이내**
 - **실종의 경우**: 실종선고일이 속하는 달의 말일부터 6개월 이내
   - 실종기간 만료일이 사망일이 됨 (민법 §28)
 
-<Outline level={3}>재협의분할 (상속인 변경)
+#### 사. 재협의분할 (상속인 변경)
 
-| 구분 | 상속기간 내 | 상속기간 경과 후 |
-|------|------------|----------------|
-| **등기 전** 재협의 | 취득세 재납부 불필요, 기존 납부고지서로 등기 | 동일 |
-| **등기 후** 재협의 | 증여로 보지 않고 **등록면허세**만 납부 | **증여에 의한 취득세** 발생 (§7⑬) |
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>상속기간 내</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>상속기간 경과 후</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>등기 전</strong> 재협의</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득세 재납부 불필요, 기존 납부고지서로 등기</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>동일</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>등기 후</strong> 재협의</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>증여로 보지 않고 <strong>등록면허세</strong>만 납부</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>증여에 의한 취득세</strong> 발생 (§7⑬)</td>
+    </tr>
+  </tbody>
+</table>
 
 <Callout type="caution">
 
@@ -202,7 +275,7 @@ tags: ["주택", "취득세", "세율", "유상거래", "상속", "증여", "원
 
 </Callout>
 
-<Outline level={3}>유증 (유언공정증서)
+#### 아. 유증 (유언공정증서)
 
 - **1순위 상속자**(배우자·직계비속)에게 유증 → **상속**으로 봄 (2.8%, 6개월 이내 신고)
 - **1순위 이외의 자**에게 유증 → **증여**로 봄 (3.5%, 유증개시일로부터 60일 이내 신고)
@@ -211,7 +284,7 @@ tags: ["주택", "취득세", "세율", "유상거래", "상속", "증여", "원
   - 필요서류: 신탁재산귀속증서, 신탁원부, 가족관계증명서, 기본증명서
 - **포괄유증**은 상속으로 봄 (조심2015지1855)
 
-<Outline level={3}>특수 사례
+#### 자. 특수 사례
 
 - **무허가건축물(주택)** + 일반주택 상속 시:
   - 무허가건축물은 일반세율(4.6%) 적용, 주택으로 보지 않음
@@ -221,43 +294,157 @@ tags: ["주택", "취득세", "세율", "유상거래", "상속", "증여", "원
 - **상속 부과제척기간**: 부과할 수 있는 날부터 **10년** (2014년 개정, 2015.6월 사망자부터)
 - **상속중간생략등기**: 경·공매 이전 시에도 상속포기 없으면 과세대상
 
-<Outline level={2}>세율·금액
+### 세율표
 
-| 구분 | 취득세 | 농특세 | 지방교육세 | 합계 | 비고 |
-|------|--------|--------|----------|------|------|
-| 일반 상속 | **2.8%** | 0.2% | 0.16% | **3.16%** | |
-| 1가구1주택 상속 | **0.8%** | 비과세 | 0.16% | **0.96%** | 취득분 2% 감면 |
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>취득세</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>농특세</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>지방교육세</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>합계</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>일반 상속</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>2.8%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>0.2%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>0.16%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>3.16%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}></td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1가구1주택 상속</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>0.8%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>비과세</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>0.16%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>0.96%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득분 2% 감면</td>
+    </tr>
+  </tbody>
+</table>
 
-<Outline level={2}>법정상속 지분 계산 예시
+### 법정상속 지분 계산 예시
 
-| 구분 | 상속인 | 상속분 비율 |
-|------|--------|-----------|
-| 장남 + 배우자 | 장남 1 / 배우자 1.5 | 2/5 / 3/5 |
-| 장남·장녀 + 배우자 | 장남 1 / 장녀 1 / 배우자 1.5 | 2/7 / 2/7 / 3/7 |
-| 5남매 + 배우자 | 자녀 각 1 / 배우자 1.5 | 각 2/11 / 3/11 |
-| 부모 + 배우자 (자녀 없음) | 부 1 / 모 1 / 배우자 1.5 | 2/7 / 2/7 / 3/7 |
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>상속인</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>상속분 비율</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>장남 + 배우자</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>장남 1 / 배우자 1.5</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>2/5 / 3/5</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>장남·장녀 + 배우자</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>장남 1 / 장녀 1 / 배우자 1.5</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>2/7 / 2/7 / 3/7</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>5남매 + 배우자</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>자녀 각 1 / 배우자 1.5</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>각 2/11 / 3/11</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>부모 + 배우자 (자녀 없음)</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>부 1 / 모 1 / 배우자 1.5</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>2/7 / 2/7 / 3/7</td>
+    </tr>
+  </tbody>
+</table>
 
-<Outline level={2}>민법상 상속순위
+### 민법상 상속순위
 
-| 순위 | 피상속인과의 관계 | 비고 |
-|------|-----------------|------|
-| **1순위** | 직계비속과 배우자 | 항상 상속인 |
-| **2순위** | 직계존속과 배우자 | 직계비속 없는 경우 |
-| **3순위** | 형제자매 | 1·2순위 없는 경우 |
-| **4순위** | 4촌 이내 방계혈족 | 1·2·3순위 없는 경우 |
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>순위</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>피상속인과의 관계</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>1순위</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>직계비속과 배우자</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>항상 상속인</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>2순위</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>직계존속과 배우자</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>직계비속 없는 경우</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>3순위</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>형제자매</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1·2순위 없는 경우</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>4순위</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>4촌 이내 방계혈족</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1·2·3순위 없는 경우</td>
+    </tr>
+  </tbody>
+</table>
 
-<Outline level={2}>관련 법령
+### 관련 법령
 
-| 구분 | 법령명 | 조항 | 비고 |
-|------|--------|------|------|
-| 근거법 | 지방세법 | §15①(세율특례) | 1가구1주택 감면 |
-| 근거법 | 지방세법 | §11①1나 | 상속 일반세율 2.8% |
-| 시행령 | 지방세법 시행령 | §29③ | 취득세 상속순위 |
-| 관련법 | 민법 | §1000~1001 | 상속순위, 대습상속 |
-| 관련법 | 민법 | §27~28 | 실종선고 |
-| 관련법 | 농특세법 | §4(비과세) 10의4 | 1가구1주택 농특세 비과세 |
-
-<Outline level={2}>주의사항
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>법령명</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>조항</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>근거법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§15①(세율특례)</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1가구1주택 감면</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>근거법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§11①1나</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>상속 일반세율 2.8%</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>시행령</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법 시행령</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§29③</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득세 상속순위</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>관련법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>민법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§1000~1001</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>상속순위, 대습상속</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>관련법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>민법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§27~28</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>실종선고</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>관련법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>농특세법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§4(비과세) 10의4</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1가구1주택 농특세 비과세</td>
+    </tr>
+  </tbody>
+</table>
 
 <Callout type="caution">
 
@@ -269,32 +456,24 @@ tags: ["주택", "취득세", "세율", "유상거래", "상속", "증여", "원
 
 </Callout>
 
-<SectionNav sections={[
-  { id: "유상거래", label: "유상거래" },
-  { id: "상속", label: "상속" },
-  { id: "증여", label: "증여" },
-  { id: "원시취득", label: "원시취득" },
-  { id: "다주택자중과", label: "다주택자 중과" },
-  { id: "법인취득중과", label: "법인 취득 중과" },
-  { id: "고급주택중과", label: "고급주택 중과" }
-]} />
-
 ---
 
-<h2 id="증여">증여</h2>
+<h2 id="gift">
+  <Outline level={1}>증여</Outline>
+</h2>
 
 > 증여에 의한 주택 취득 시 세율(일반/중과), 증여의제 규정, 구비서류 및 실무 안내
 
-<Outline level={2}>적용 대상
+### 적용 대상
 
 - **증여**로 인한 주택 취득
 - **배우자·직계존비속** 간 부동산 취득 (증여 의제)
 - **부담부증여** (채무승계 포함)
 - 다주택이라도 **별도의 세율체계** 적용 (유상거래 중과와 별도)
 
-<Outline level={2}>주요 내용
+### 주요 내용
 
-<Outline level={3}>증여취득 중과세율
+#### 가. 증여취득 중과세율
 
 - **조정대상지역 내** 3억 이상 주택 → 3.5% → **12%**로 강화
 - **두 가지 요건 모두 충족** 시 중과:
@@ -314,18 +493,18 @@ tags: ["주택", "취득세", "세율", "유상거래", "상속", "증여", "원
 
 </Callout>
 
-<Outline level={3}>과세표준
+#### 나. 과세표준
 
 - 원칙: **시가인정액** 적용 (§10조의2①)
 - 시가인정액 산정이 어려운 경우: **시가표준액** 적용 (§10조의2②)
 - 감정평가서 제출 시 신고가액 인정
 
-<Outline level={3}>일반증여 구비서류
+#### 다. 일반증여 구비서류
 
 - **증여계약서** (검인·날인 필수, 증여자가 중요)
 - **취득세 신고서**
 
-<Outline level={3}>배우자·직계존비속 간 유상취득 시 추가 서류
+#### 라. 배우자·직계존비속 간 유상취득 시 추가 서류
 
 - 수증인의 **소득금액증명서** 또는 근로소득원천징수명세서
   - 세무서/홈택스 발급, 금액의 크고 작음은 상관없음
@@ -333,7 +512,7 @@ tags: ["주택", "취득세", "세율", "유상거래", "상속", "증여", "원
 - **입금확인증** (입금내역)
 - 매매계약서 + 신고필증 + 취득세 신고서
 
-<Outline level={3}>배우자·직계존비속 간 증여의제 (§7⑪)
+#### 마. 배우자·직계존비속 간 증여의제 (§7⑪)
 
 - 배우자·직계존비속의 부동산 취득은 **증여(3.5%)**로 본다
 - 단, **대가 지급 사실이 증명**되는 경우 유상취득(1~3%)으로 인정:
@@ -342,20 +521,37 @@ tags: ["주택", "취득세", "세율", "유상거래", "상속", "증여", "원
   - 다. 이미 **상속세·증여세를 과세** 받은 재산의 가액으로 대가 지급한 경우
   - 라. 가~다에 준하여 취득자의 재산으로 대가 지급이 **입증**되는 경우
 
-<Outline level={3}>특수관계인 간 유상승계취득
+#### 바. 특수관계인 간 유상승계취득
 
 - 배우자·직계존비속 **외** 특수관계인: 소득증빙·자금증빙 불필요
 - 단, **시가인정액** 적용
 - 시가인정액보다 낮은 가격 취득 시, 차액이 **3억원 이상** 또는 시가인정액의 **5% 이상**이면 → **시가인정액**으로 취득가액 결정
 
-<Outline level={3}>부부 간 / 본인·직계존비속 간 거래 비교
+#### 사. 부부 간 / 본인·직계존비속 간 거래 비교
 
-| 구분 | 부부 간 거래 | 본인·직계존비속 간 거래 |
-|------|-------------|----------------------|
-| 부담부(채무승계)증여 | 배우자의 소득도 인정 | 배우자의 소득도 인정 |
-| 일반매매 | **본인소득 한도 내에서만** 인정 | 배우자의 소득도 인정 |
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>부부 간 거래</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>본인·직계존비속 간 거래</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>부담부(채무승계)증여</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>배우자의 소득도 인정</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>배우자의 소득도 인정</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>일반매매</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>본인소득 한도 내에서만</strong> 인정</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>배우자의 소득도 인정</td>
+    </tr>
+  </tbody>
+</table>
 
-<Outline level={3}>증여취득 후 합의해제
+#### 아. 증여취득 후 합의해제
 
 **합의해제 필수요건** (시행령 §20):
 1. **등기하지 않고**
@@ -371,29 +567,105 @@ tags: ["주택", "취득세", "세율", "유상거래", "상속", "증여", "원
 
 </Callout>
 
-<Outline level={2}>세율·금액
+### 세율표
 
-| 구분 | 취득세 | 농특세 | 지방교육세 | 합계 | 비고 |
-|------|--------|--------|----------|------|------|
-| 일반 증여 | **3.5%** | 0.2% | 0.3% | **4.0%** | |
-| 중과 (조정지역 3억↑) | **12%** | 0.2% | 0.4% | **12.6%** | 1세대1주택 증여자 제외 |
-| 1세대1주택자 → 배우자·직계존비속 증여 | **3.5%** | 0.2% | 0.3% | **4.0%** | 중과 제외 |
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>취득세</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>농특세</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>지방교육세</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>합계</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>일반 증여</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>3.5%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>0.2%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>0.3%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>4.0%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}></td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>중과 (조정지역 3억↑)</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>12%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>0.2%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>0.4%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>12.6%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1세대1주택 증여자 제외</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1세대1주택자 → 배우자·직계존비속 증여</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>3.5%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>0.2%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>0.3%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>4.0%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>중과 제외</td>
+    </tr>
+  </tbody>
+</table>
 
 - 증여계약일이 **2020.8.11. 이전**이면 종전세율(3.5%) 적용
 
-<Outline level={2}>관련 법령
+### 관련 법령
 
-| 구분 | 법령명 | 조항 | 비고 |
-|------|--------|------|------|
-| 근거법 | 지방세법 | §11①2 | 증여 일반세율 3.5% |
-| 중과 | 지방세법 | §13의2② | 조정지역 3억↑ 증여 중과 12% |
-| 증여의제 | 지방세법 | §7⑪ | 배우자·직계존비속 간 |
-| 주택수 | 지방세법 | §13의3 | 주택 수 판단 |
-| 과세표준 | 지방세법 | §10의2 | 시가인정액 |
-| 합의해제 | 시행령 | §20 | 계약해제 요건 |
-| 특수관계인 | 소득세법 | §101① | 특수관계인 범위 |
-
-<Outline level={2}>주의사항
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>법령명</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>조항</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>근거법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§11①2</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>증여 일반세율 3.5%</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>중과</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§13의2②</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>조정지역 3억↑ 증여 중과 12%</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>증여의제</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§7⑪</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>배우자·직계존비속 간</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>주택수</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§13의3</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>주택 수 판단</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>과세표준</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§10의2</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>시가인정액</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>합의해제</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>시행령</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§20</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>계약해제 요건</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>특수관계인</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>소득세법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§101①</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>특수관계인 범위</td>
+    </tr>
+  </tbody>
+</table>
 
 <Callout type="caution">
 
@@ -405,85 +677,228 @@ tags: ["주택", "취득세", "세율", "유상거래", "상속", "증여", "원
 
 </Callout>
 
-<SectionNav sections={[
-  { id: "유상거래", label: "유상거래" },
-  { id: "상속", label: "상속" },
-  { id: "증여", label: "증여" },
-  { id: "원시취득", label: "원시취득" },
-  { id: "다주택자중과", label: "다주택자 중과" },
-  { id: "법인취득중과", label: "법인 취득 중과" },
-  { id: "고급주택중과", label: "고급주택 중과" }
-]} />
-
 ---
 
-<h2 id="원시취득">원시취득/신축</h2>
+<h2 id="original">
+  <Outline level={1}>원시취득 (신축)</Outline>
+</h2>
 
 > 재건축·재개발 등 원시취득(신축)에 의한 주택 취득 시 세율, 과세표준, 납세의무자별 안내
 
-<Outline level={2}>적용 대상
+### 적용 대상
 
 - **원시취득**(신축)으로 인한 주택 취득
 - **재건축·재개발** 사업에 의한 주택 취득
   - 원조합원, 승계조합원, 일반분양자 구분
 
-<Outline level={2}>주요 내용
+### 주요 내용
 
-<Outline level={3}>재개발 — 원조합원
+#### 가. 재개발 — 원조합원
 
-| 구분 | 면적 | 취득세 | 농특세 | 지방교육세 | 합계 | 과세표준 |
-|------|------|--------|--------|----------|------|---------|
-| 주택 85㎡ 이하 | 85㎡↓ | **100% 감면** | - | - | 최소납부제 적용 시 감면의 15% | 청산금 |
-| 주택 외 전면적 | - | 2.8% | 0.2% | 0.16% | **3.16%** | 청산금 |
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>면적</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>취득세</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>농특세</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>지방교육세</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>합계</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>과세표준</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>주택 85㎡ 이하</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>85㎡↓</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>100% 감면</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>-</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>-</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>최소납부제 적용 시 감면의 15%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>청산금</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>주택 외 전면적</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>-</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>2.8%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>0.2%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>0.16%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>3.16%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>청산금</td>
+    </tr>
+  </tbody>
+</table>
 
 - 과세표준 = 조합원분양가 + 옵션 − 권리가액
 
-<Outline level={3}>재개발·재건축 — 승계조합원 (사업시행인가일 이후)
+#### 나. 재개발·재건축 — 승계조합원 (사업시행인가일 이후)
 
-| 구분 | 면적 | 취득세 | 농특세 | 지방교육세 | 합계 | 과세표준 |
-|------|------|--------|--------|----------|------|---------|
-| 주택 85㎡ 이하 | 85㎡↓ | 2.8% | 0% | 0.16% | **2.96%** | 초과액 또는 전체공사비 |
-| 주택 외 전면적 | - | 2.8% | 0.2% | 0.16% | **3.16%** | 전체공사비 등 |
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>면적</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>취득세</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>농특세</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>지방교육세</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>합계</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>과세표준</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>주택 85㎡ 이하</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>85㎡↓</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>2.8%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>0%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>0.16%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>2.96%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>초과액 또는 전체공사비</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>주택 외 전면적</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>-</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>2.8%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>0.2%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>0.16%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>3.16%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>전체공사비 등</td>
+    </tr>
+  </tbody>
+</table>
 
 - 과세표준 = 조합원분양가 + 옵션 + 프리미엄 − 종전입주권취득가액(프리미엄 포함)
 - 2023.1.1. 관리처분계획인가 전 재개발의 경우 초과액 적용
 
-<Outline level={3}>일반분양자
+#### 다. 일반분양자
 
-| 구분 | 취득세 | 과세표준 |
-|------|--------|---------|
-| 주택 6억 이하 | **1.1%** (취득+지방교육세) | 분양금액 |
-| 주택 6~9억 이하 | **2.2%** | 분양금액 |
-| 주택 9억 초과 | **3.3%** | 분양금액 |
-| 주택 외 | **4.6%** | 분양금액 |
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>취득세</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>과세표준</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>주택 6억 이하</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>1.1%</strong> (취득+지방교육세)</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>분양금액</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>주택 6~9억 이하</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>2.2%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>분양금액</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>주택 9억 초과</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>3.3%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>분양금액</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>주택 외</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>4.6%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>분양금액</td>
+    </tr>
+  </tbody>
+</table>
 
 - 과세표준 = 일반분양가 + 프리미엄 + 옵션
 - 유상거래 세율 적용 (중과 별도)
 
-<Outline level={3}>당초 토지 초과분
+#### 라. 당초 토지 초과분
 
-| 대상 | 취득시기 | 세율 | 과세표준 |
-|------|---------|------|---------|
-| 조합원 | 사용승인일 | **4%** | 과세면적 × 토지분양가/㎡ |
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>대상</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>취득시기</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>세율</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>과세표준</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>조합원</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>사용승인일</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>4%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>과세면적 × 토지분양가/㎡</td>
+    </tr>
+  </tbody>
+</table>
 
-<Outline level={2}>세율·금액 (요약)
+### 세율표 (요약)
 
-| 납세의무자 | 취득원인 | 세율 합계 | 비고 |
-|-----------|---------|----------|------|
-| 원조합원 (재개발) | 원시취득 85㎡↓ | **감면** (최소납부제) | 청산금 기준 |
-| 원조합원 (재개발) | 원시취득 85㎡↑ | **3.16%** | |
-| 승계조합원 | 원시취득 85㎡↓ | **2.96%** | |
-| 승계조합원 | 원시취득 85㎡↑ | **3.16%** | |
-| 일반분양자 | 승계취득 | **1.1~3.3%** | 주택가액별 |
-| 일반분양자 | 승계취득 (주택 외) | **4.6%** | |
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>납세의무자</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>취득원인</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>세율 합계</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>원조합원 (재개발)</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>원시취득 85㎡↓</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>감면</strong> (최소납부제)</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>청산금 기준</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>원조합원 (재개발)</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>원시취득 85㎡↑</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>3.16%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}></td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>승계조합원</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>원시취득 85㎡↓</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>2.96%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}></td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>승계조합원</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>원시취득 85㎡↑</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>3.16%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}></td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>일반분양자</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>승계취득</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>1.1~3.3%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>주택가액별</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>일반분양자</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>승계취득 (주택 외)</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>4.6%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}></td>
+    </tr>
+  </tbody>
+</table>
 
-<Outline level={2}>관련 법령
+### 관련 법령
 
-| 구분 | 법령명 | 조항 | 비고 |
-|------|--------|------|------|
-| 근거법 | 지방세법 | §11①3 | 원시취득 세율 2.8% |
-
-<Outline level={2}>주의사항
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>법령명</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>조항</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>근거법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§11①3</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>원시취득 세율 2.8%</td>
+    </tr>
+  </tbody>
+</table>
 
 <Callout type="caution">
 
@@ -494,77 +909,137 @@ tags: ["주택", "취득세", "세율", "유상거래", "상속", "증여", "원
 
 </Callout>
 
-<SectionNav sections={[
-  { id: "유상거래", label: "유상거래" },
-  { id: "상속", label: "상속" },
-  { id: "증여", label: "증여" },
-  { id: "원시취득", label: "원시취득" },
-  { id: "다주택자중과", label: "다주택자 중과" },
-  { id: "법인취득중과", label: "법인 취득 중과" },
-  { id: "고급주택중과", label: "고급주택 중과" }
-]} />
-
 ---
 
-<h2 id="다주택자중과">다주택자 중과</h2>
+<h2 id="multi-house">
+  <Outline level={1}>다주택자 중과</Outline>
+</h2>
 
 > 조정대상지역 내 다주택 취득 시 중과세율(8%~12%)을 적용하며, 주택수 산정에 분양권·입주권을 포함한다.
 
-<Outline level={2}>적용 대상
+### 적용 대상
 
 1. **조정대상지역 내** 주택을 취득하는 **다주택자** (개인 및 법인)
 2. 1세대 기준으로 주택수를 산정하며, **분양권·입주권**도 주택수에 포함 (지방세법 §13의3)
 3. 조정대상지역 **외** 주택 취득 시에는 일반세율(1~3%) 적용
 
-<Outline level={2}>주요 내용
+### 주요 내용
 
-<Outline level={3}>조정대상지역 내 중과세율
+#### 가. 조정대상지역 내 중과세율
 
 - **2주택** 취득: **8%** 중과세율 적용
 - **3주택 이상** 취득: **12%** 중과세율 적용
 - **법인**의 주택 취득: **12%** 중과세율 적용 (주택수 무관)
 - 1세대 **4주택 이상** 중과: 지방세법 §13의2①에 따라 12% 적용
 
-<Outline level={3}>조정대상지역 외 일반세율
+#### 나. 조정대상지역 외 일반세율
 
 - 주택수와 무관하게 **1~3%** 일반세율 적용
 - 6억원 이하: **1%**
 - 6억원 초과 ~ 9억원 이하: **1~3%** (구간별 차등)
 - 9억원 초과: **3%**
 
-<Outline level={3}>일시적 2주택 예외
+#### 다. 일시적 2주택 예외
 
 - 종전주택을 보유한 1세대가 신규주택을 취득하는 경우
 - 신규주택 취득일로부터 **3년 이내** 종전주택 처분 조건 충족 시 중과 제외
 - 처분기한 내 미처분 시 **중과세율 차액 추징**
 
-<Outline level={3}>주택수 산정 특례
+#### 라. 주택수 산정 특례
 
 - **분양권** 및 **입주권**은 주택수 산정에 포함 (지방세법 §13의3)
 - 주택 부속토지만 소유한 경우에도 주택수에 산입
 - 오피스텔 등 주거용 부동산은 사실상 주거 사용 여부에 따라 판단
 
-<Outline level={2}>세율·금액
+### 세율표
 
-| 구분 | 조정대상지역 내 | 조정대상지역 외 | 비고 |
-|------|-----------------|-----------------|------|
-| **1주택** | 1~3% | 1~3% | 일반세율 |
-| **2주택** | **8%** | 1~3% | 중과 적용 |
-| **3주택** | **12%** | 1~3% | 중과 적용 |
-| **4주택 이상** | **12%** | 1~3% | §13의2① |
-| **법인** | **12%** | **12%** | 주택수 무관 중과 |
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>조정대상지역 내</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>조정대상지역 외</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>1주택</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1~3%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1~3%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>일반세율</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>2주택</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>8%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1~3%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>중과 적용</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>3주택</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>12%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1~3%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>중과 적용</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>4주택 이상</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>12%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1~3%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§13의2①</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>법인</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>12%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>12%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>주택수 무관 중과</td>
+    </tr>
+  </tbody>
+</table>
 
-<Outline level={2}>관련 법령
+### 관련 법령
 
-| 구분 | 법령명 | 조항 | 비고 |
-|------|--------|------|------|
-| 근거법 | 지방세법 | §13의2 | 다주택 중과세율 |
-| 근거법 | 지방세법 | §13의2① | 1세대 4주택 중과 |
-| 근거법 | 지방세법 | §13의3 | 분양권·입주권 포함 |
-| 시행령 | 지방세법 시행령 | §28의2 | 조정대상지역 기준 |
-| 관련법 | 지방세법 | §11 | 일반 취득세율 |
-
-<Outline level={2}>주의사항
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>법령명</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>조항</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>근거법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§13의2</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>다주택 중과세율</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>근거법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§13의2①</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1세대 4주택 중과</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>근거법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§13의3</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>분양권·입주권 포함</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>시행령</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법 시행령</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§28의2</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>조정대상지역 기준</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>관련법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§11</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>일반 취득세율</td>
+    </tr>
+  </tbody>
+</table>
 
 <Callout type="caution">
 
@@ -575,80 +1050,160 @@ tags: ["주택", "취득세", "세율", "유상거래", "상속", "증여", "원
 
 </Callout>
 
-<SectionNav sections={[
-  { id: "유상거래", label: "유상거래" },
-  { id: "상속", label: "상속" },
-  { id: "증여", label: "증여" },
-  { id: "원시취득", label: "원시취득" },
-  { id: "다주택자중과", label: "다주택자 중과" },
-  { id: "법인취득중과", label: "법인 취득 중과" },
-  { id: "고급주택중과", label: "고급주택 중과" }
-]} />
-
 ---
 
-<h2 id="법인취득중과">법인 취득 중과</h2>
+<h2 id="corporate">
+  <Outline level={1}>법인</Outline>
+</h2>
 
 > 법인이 주택을 유상취득하는 경우 주택수와 무관하게 12% 중과세율이 적용되며, 과세표준에 연체료가 포함된다.
 
-<Outline level={2}>적용 대상
+### 적용 대상
 
 1. **법인**(영리·비영리 포함)이 **주택**을 취득하는 경우
 2. 취득 유형에 따라 중과 적용 여부가 달라짐 (유상취득, 원시취득, 상속·증여 등)
 3. 개인과 달리 **과세표준에 연체료 포함** (지방세법 관련 규정)
 
-<Outline level={2}>주요 내용
+### 주요 내용
 
-<Outline level={3}>법인 유상취득 중과
+#### 가. 법인 유상취득 중과
 
 - 법인이 매매 등 **유상취득**으로 주택을 취득하는 경우
 - **주택수와 무관**하게 **12%** 중과세율 적용 (지방세법 §13의2①3)
 - 조정대상지역 내·외 구분 없이 동일하게 12% 적용
 
-<Outline level={3}>법인 원시취득 (신축)
+#### 나. 법인 원시취득 (신축)
 
 - 법인이 주택을 **신축**하여 원시취득하는 경우
 - **2.8%** 원시취득세율 적용 (중과 미적용)
 - 건축허가를 받아 직접 건설하는 경우에 해당
 
-<Outline level={3}>법인 상속·증여 취득
+#### 다. 법인 상속·증여 취득
 
 - 법인이 **상속** 또는 **증여**로 주택을 취득하는 경우
 - **별도 세율체계** 적용 (중과 미적용)
 - 상속: 2.8% (농지 외), 증여: 3.5%
 
-<Outline level={3}>과세표준 특례 (연체료 포함)
+#### 라. 과세표준 특례 (연체료 포함)
 
 - **법인**의 경우 과세표준 산정 시 **연체료 포함**
 - **개인**의 경우 연체료는 과세표준에 **미포함**
 - 취득가액에 부대비용(연체료 등)이 합산되어 과세표준이 증가할 수 있음
 
-<Outline level={2}>세율·금액
+### 세율표
 
-| 취득 유형 | 세율 | 중과 여부 | 비고 |
-|-----------|------|-----------|------|
-| **유상취득** (매매 등) | **12%** | 중과 적용 | §13의2①3 |
-| **원시취득** (신축) | **2.8%** | 미적용 | 일반 원시취득세율 |
-| **상속** | **2.8%** | 미적용 | 별도 세율체계 |
-| **증여** | **3.5%** | 미적용 | 별도 세율체계 |
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>취득 유형</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>세율</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>중과 여부</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>유상취득</strong> (매매 등)</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>12%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>중과 적용</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§13의2①3</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>원시취득</strong> (신축)</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>2.8%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>미적용</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>일반 원시취득세율</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>상속</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>2.8%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>미적용</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>별도 세율체계</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>증여</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>3.5%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>미적용</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>별도 세율체계</td>
+    </tr>
+  </tbody>
+</table>
 
-| 과세표준 항목 | 법인 | 개인 | 비고 |
-|--------------|------|------|------|
-| 취득가액 | 포함 | 포함 | 동일 |
-| 부대비용 | 포함 | 포함 | 동일 |
-| **연체료** | **포함** | **미포함** | PDF Sec 06 참조 |
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>과세표준 항목</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>법인</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>개인</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득가액</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>포함</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>포함</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>동일</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>부대비용</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>포함</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>포함</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>동일</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>연체료</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>포함</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>미포함</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>PDF Sec 06 참조</td>
+    </tr>
+  </tbody>
+</table>
 
-<Outline level={2}>관련 법령
+### 관련 법령
 
-| 구분 | 법령명 | 조항 | 비고 |
-|------|--------|------|------|
-| 근거법 | 지방세법 | §13의2①3 | 법인 주택 중과 |
-| 근거법 | 지방세법 | §10 | 과세표준 산정 |
-| 근거법 | 지방세법 | §11 | 일반 취득세율 |
-| 시행령 | 지방세법 시행령 | §28 | 취득가액 산정 기준 |
-| 관련법 | 지방세법 | §13의2 | 다주택 중과 전체 |
-
-<Outline level={2}>주의사항
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>법령명</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>조항</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>근거법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§13의2①3</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>법인 주택 중과</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>근거법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§10</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>과세표준 산정</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>근거법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§11</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>일반 취득세율</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>시행령</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법 시행령</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§28</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득가액 산정 기준</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>관련법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§13의2</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>다주택 중과 전체</td>
+    </tr>
+  </tbody>
+</table>
 
 <Callout type="caution">
 
@@ -660,38 +1215,30 @@ tags: ["주택", "취득세", "세율", "유상거래", "상속", "증여", "원
 
 </Callout>
 
-<SectionNav sections={[
-  { id: "유상거래", label: "유상거래" },
-  { id: "상속", label: "상속" },
-  { id: "증여", label: "증여" },
-  { id: "원시취득", label: "원시취득" },
-  { id: "다주택자중과", label: "다주택자 중과" },
-  { id: "법인취득중과", label: "법인 취득 중과" },
-  { id: "고급주택중과", label: "고급주택 중과" }
-]} />
-
 ---
 
-<h2 id="고급주택중과">고급주택 중과</h2>
+<h2 id="luxury">
+  <Outline level={1}>고급주택 (사치성재산)</Outline>
+</h2>
 
 > 고급주택은 사치성재산으로 분류되어 표준세율에 8%를 가산한 중과세율이 적용되며, 상속 1가구1주택 감면에서도 제외된다.
 
-<Outline level={2}>적용 대상
+### 적용 대상
 
 1. **사치성재산**으로 분류되는 **고급주택**을 취득하는 경우 (개인·법인 모두)
 2. 지방세법 시행령 §28①에서 정하는 **고급주택 기준**에 해당하는 주택
 3. 취득 유형(유상취득, 원시취득, 상속, 증여)을 불문하고 중과 적용
 
-<Outline level={2}>주요 내용
+### 주요 내용
 
-<Outline level={3}>중과세율 산정
+#### 가. 중과세율 산정
 
 - **표준세율 + 중과기준세율 × 400%** (= 표준세율 + 8%)
 - 중과기준세율: **2%**
 - 중과 가산분: 2% x 400% = **8%**
 - 최종 적용세율: 일반세율(1~3%) + **8%** = **9~11%**
 
-<Outline level={3}>고급주택 판정 기준 (시행령 §28①)
+#### 나. 고급주택 판정 기준 (시행령 §28①)
 
 - **일반주택** (단독주택 등)
   - 건물 연면적 **331㎡ 초과** + 시가표준액 **9억원 초과**
@@ -702,40 +1249,145 @@ tags: ["주택", "취득세", "세율", "유상거래", "상속", "증여", "원
   - **개인용 수영장** 설치
   - 기타 사치성 부대시설
 
-<Outline level={3}>상속 감면 제외
+#### 다. 상속 감면 제외
 
 - 상속으로 인한 **1가구 1주택 취득세 감면** 적용 시
 - **고급주택은 감면 대상에서 제외** (PDF Sec 08 참조)
 - 고급주택에 해당하면 상속이라도 중과세율 적용
 
-<Outline level={2}>세율·금액
+### 세율표
 
-| 구분 | 표준세율 | 중과 가산 | 최종 세율 | 비고 |
-|------|----------|-----------|-----------|------|
-| **유상취득** (6억 이하) | 1% | +8% | **9%** | 고급주택 중과 |
-| **유상취득** (6~9억) | 1~3% | +8% | **9~11%** | 구간별 차등 |
-| **유상취득** (9억 초과) | 3% | +8% | **11%** | 고급주택 중과 |
-| **원시취득** (신축) | 2.8% | +8% | **10.8%** | 고급주택 중과 |
-| **상속** | 2.8% | +8% | **10.8%** | 감면 제외 |
-| **증여** | 3.5% | +8% | **11.5%** | 고급주택 중과 |
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>표준세율</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>중과 가산</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>최종 세율</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>유상취득</strong> (6억 이하)</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>+8%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>9%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>고급주택 중과</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>유상취득</strong> (6~9억)</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1~3%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>+8%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>9~11%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>구간별 차등</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>유상취득</strong> (9억 초과)</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>3%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>+8%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>11%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>고급주택 중과</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>원시취득</strong> (신축)</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>2.8%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>+8%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>10.8%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>고급주택 중과</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>상속</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>2.8%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>+8%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>10.8%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>감면 제외</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>증여</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>3.5%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>+8%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>11.5%</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>고급주택 중과</td>
+    </tr>
+  </tbody>
+</table>
 
-| 고급주택 기준 | 면적 요건 | 금액 요건 | 비고 |
-|--------------|-----------|-----------|------|
-| **단독주택 등** | 연면적 331㎡ 초과 | 시가표준액 9억원 초과 | 면적+금액 동시 충족 |
-| **공동주택** | 전용면적 245㎡ 초과 | 시가표준액 9억원 초과 | 면적+금액 동시 충족 |
-| **부대시설** | - | - | 엘리베이터·수영장 등 |
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>고급주택 기준</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>면적 요건</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>금액 요건</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>단독주택 등</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>연면적 331㎡ 초과</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>시가표준액 9억원 초과</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>면적+금액 동시 충족</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>공동주택</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>전용면적 245㎡ 초과</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>시가표준액 9억원 초과</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>면적+금액 동시 충족</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>부대시설</strong></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>-</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>-</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>엘리베이터·수영장 등</td>
+    </tr>
+  </tbody>
+</table>
 
-<Outline level={2}>관련 법령
+### 관련 법령
 
-| 구분 | 법령명 | 조항 | 비고 |
-|------|--------|------|------|
-| 근거법 | 지방세법 | §13⑤1 | 사치성재산 중과 |
-| 시행령 | 지방세법 시행령 | §28① | 고급주택 판정 기준 |
-| 관련법 | 지방세법 | §11 | 일반 취득세율 |
-| 관련법 | 지방세법 | §15 | 중과기준세율 |
-| 관련법 | 지방세특례제한법 | - | 상속 감면 시 고급주택 제외 |
-
-<Outline level={2}>주의사항
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>법령명</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>조항</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>근거법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§13⑤1</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>사치성재산 중과</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>시행령</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법 시행령</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§28①</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>고급주택 판정 기준</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>관련법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§11</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>일반 취득세율</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>관련법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§15</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>중과기준세율</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>관련법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세특례제한법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>-</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>상속 감면 시 고급주택 제외</td>
+    </tr>
+  </tbody>
+</table>
 
 <Callout type="caution">
 

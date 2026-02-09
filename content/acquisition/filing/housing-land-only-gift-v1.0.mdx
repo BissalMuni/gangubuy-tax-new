@@ -1,0 +1,94 @@
+---
+title: "주택의 토지만 증여할 때"
+section_id: "33"
+category: "취득세"
+subcategory: "증여"
+audience: "internal"
+source: "acquisitiontax.pdf"
+page_range: [61, 61]
+version: "1.0"
+effective_date: "2026-01-01"
+last_updated: "2026-02-08"
+status: "draft"
+law_reference: ""
+tags: ["증여", "토지", "주택", "안분계산", "시가표준액"]
+---
+
+# 주택의 토지만 증여할 때
+
+> 주택의 토지만 증여하는 경우 안분 계산식을 활용한 과세표준 산정 방법
+
+<SectionNav sections={[
+  { id: "계산방법", label: "계산 방법" },
+  { id: "입력방법", label: "입력 방법" },
+]} />
+
+---
+
+<h2 id="계산방법">
+  <Outline level={1}>계산 방법</Outline>
+</h2>
+
+주택의 토지만 증여하는 경우, 토지분에 해당하는 주택가격을 **안분 계산**하여 산정합니다.
+
+<Outline level={2}>계산식</Outline>
+
+```
+주택가격(토지분) = 원래주택가격 × (토지가격 ÷ 전체시가표준액)
+```
+
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>항목</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>원래주택가격</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>토지+건물 포함한 전체 주택가격</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>토지가격</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>증여 대상 토지의 시가표준액</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>전체시가표준액</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>토지 + 건물 시가표준액 합계</td>
+    </tr>
+  </tbody>
+</table>
+
+<SectionNav sections={[
+  { id: "계산방법", label: "계산 방법" },
+  { id: "입력방법", label: "입력 방법" },
+]} />
+
+---
+
+<h2 id="입력방법">
+  <Outline level={1}>입력 방법</Outline>
+</h2>
+
+<Outline level={2}>처리 순서</Outline>
+
+1. 기존 **주택가격을 지움**
+2. 토지가격/전체시가표준액 비율로 **안분 계산**
+3. 원래주택가격을 곱한 금액을 산출
+4. 계산된 금액을 **수기로 주택가격에 입력**
+
+<Callout type="caution">
+- 시스템에서 자동 계산되지 않으므로 **반드시 수기 입력** 필요
+- 안분 비율 계산시 소수점 이하 처리에 주의
+</Callout>
+
+<SectionNav sections={[
+  { id: "계산방법", label: "계산 방법" },
+  { id: "입력방법", label: "입력 방법" },
+]} />
+
+---
+
+> 본 자료는 지방세 정보 안내용이며, 법적 효력이 없습니다.
+> 정확한 내용은 관할 지자체 세무부서에 문의하세요.

@@ -9,7 +9,10 @@
     "lint": "next lint",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:coverage": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "comments:fetch": "tsx scripts/fetch-comments.ts",
+    "comments:process": "tsx scripts/run-pipeline.ts",
+    "comments:dry-run": "tsx scripts/run-pipeline.ts --dry-run"
   },
   "dependencies": {
     "@ant-design/icons": "^6.1.0",
@@ -39,10 +42,13 @@
     "@types/flexsearch": "^0.7.6",
     "@vitejs/plugin-react": "^5.1.2",
     "cross-env": "^10.1.0",
+    "dotenv": "^16.4.5",
     "eslint": "^9.39.2",
     "eslint-config-next": "^16.1.6",
     "jsdom": "^27.4.0",
+    "pdf-parse": "^1.1.1",
     "prettier": "^3.8.1",
+    "tsx": "^4.19.0",
     "vitest": "^4.0.18"
   }
 }

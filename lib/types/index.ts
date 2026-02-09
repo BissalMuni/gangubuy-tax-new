@@ -85,6 +85,10 @@ export interface Comment {
   body: string;
   created_at: string;
   updated_at: string;
+  // 자동 수정 시스템용 필드
+  processed?: boolean;
+  processed_at?: string;
+  commit_sha?: string;
 }
 
 // === Attachments (Supabase) ===

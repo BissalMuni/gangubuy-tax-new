@@ -1,23 +1,23 @@
 ---
-title: "고급주택 취득세 중과규정"
+title: "사치성재산 취득세 중과규정"
 section_id: "07"
 category: "취득세"
 subcategory: "중과규정"
 audience: "internal"
 version: "1.0"
-last_updated: "2026-02-05"
+last_updated: "2026-02-08"
 status: "draft"
-law_reference: "지방세법 §12⑤③, 시행령 §28"
-tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용면적", "벽체면적"]
+law_reference: "지방세법 §13⑤, 시행령 §28"
+tags: ["사치성재산", "중과", "별장", "골프장", "고급주택", "고급오락장", "고급선박", "중과세율", "면적기준", "시설기준", "전용면적", "벽체면적"]
 ---
 
-<AcquisitionThemeNav />
 
-# 고급주택 취득세 중과규정
+# 사치성재산 취득세 중과규정
 
-> 일정 기준을 초과하는 고급주택 취득 시 중과세율이 적용되는 경우를 정리한다.
+> 별장, 골프장, 고급주택, 고급오락장, 고급선박 등 사치성재산을 취득하는 경우 표준세율에 중과기준세율(2%)의 4배를 가산하여 중과한다.
 
 <SectionNav sections={[
+  { id: "사치성재산개요", label: "사치성재산 개요" },
   { id: "고급주택요건", label: "고급주택 요건" },
   { id: "면적기준", label: "면적기준" },
   { id: "시설기준", label: "시설기준" },
@@ -25,6 +25,99 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
   { id: "세율적용", label: "세율적용" },
   { id: "전용면적판단", label: "전용면적 판단" },
   { id: "벽체면적", label: "벽체면적" },
+  { id: "기타사치성재산", label: "기타 사치성재산" },
+  { id: "관련법령", label: "관련 법령" },
+  { id: "FAQ", label: "FAQ" }
+]} />
+
+---
+
+<h2 id="사치성재산개요">
+  <Outline level={1}>사치성재산 개요</Outline>
+</h2>
+
+<Outline level={2}>적용 대상</Outline>
+
+- **별장**: 주거용 건축물로서 상시 주거용이 아닌 휴양·피서 목적 건물
+- **골프장**: 회원제 골프장용 부동산
+- **고급주택**: [시행령 §28](https://www.law.go.kr/법령/지방세법시행령/제28조)에서 정하는 기준을 충족하는 주택
+- **고급오락장**: 카지노, 나이트클럽 등 유흥 목적 시설
+- **고급선박**: 비업무용 고급 선박
+
+<Outline level={2}>중과세율 산식</Outline>
+
+1. **중과세율** = 표준세율 + 중과기준세율(2%) × **400%**
+2. 즉, 기본세율에 **8%를 가산**
+3. 일반 부동산 취득세율(4%) 기준 시: 4% + 8% = **12%**
+
+<Outline level={2}>사치성재산별 세율 요약</Outline>
+
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '15%'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '15%'}}>표준세율</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '15%'}}>중과 가산</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '20%'}}>중과세율 합계</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>별장</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>4%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>+8%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#cf1322', fontWeight: 'bold'}}>12%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>상시 주거 외 목적</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>골프장</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>4%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>+8%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#cf1322', fontWeight: 'bold'}}>12%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>회원제 골프장</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>고급주택</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>1~3%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>+8%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#cf1322', fontWeight: 'bold'}}>9~11%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><a href="https://www.law.go.kr/법령/지방세법시행령/제28조" target="_blank">시행령 §28</a> 기준 충족</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>고급오락장</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>4%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>+8%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#cf1322', fontWeight: 'bold'}}>12%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>카지노, 나이트클럽 등</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>고급선박</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>2~3%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>+8%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#cf1322', fontWeight: 'bold'}}>10~11%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>비업무용 자가용 선박</td>
+    </tr>
+  </tbody>
+</table>
+
+<Callout type="info">
+
+- **중과 가산분**: 중과기준세율(2%) × 400% = **8%**
+- 지방교육세, 농어촌특별세는 별도 부과
+
+</Callout>
+
+<SectionNav sections={[
+  { id: "사치성재산개요", label: "사치성재산 개요" },
+  { id: "고급주택요건", label: "고급주택 요건" },
+  { id: "면적기준", label: "면적기준" },
+  { id: "시설기준", label: "시설기준" },
+  { id: "예외규정", label: "예외규정" },
+  { id: "세율적용", label: "세율적용" },
+  { id: "전용면적판단", label: "전용면적 판단" },
+  { id: "벽체면적", label: "벽체면적" },
+  { id: "기타사치성재산", label: "기타 사치성재산" },
   { id: "관련법령", label: "관련 법령" },
   { id: "FAQ", label: "FAQ" }
 ]} />
@@ -32,19 +125,19 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
 ---
 
 <h2 id="고급주택요건">
-  <Outline level={1}>고급주택 요건 (법 §12⑤③, 시행령 §28)</Outline>
+  <Outline level={1}>고급주택 요건 ([법 §12⑤③](https://www.law.go.kr/법령/지방세법/제12조), [시행령 §28](https://www.law.go.kr/법령/지방세법시행령/제28조))</Outline>
 </h2>
 
 <Outline level={2}>법적 근거</Outline>
 
-- **지방세법** 제12조 제5항 제3호
-- **지방세법 시행령** 제28조
+- [**지방세법** 제12조 제5항 제3호](https://www.law.go.kr/법령/지방세법/제12조)
+- [**지방세법 시행령** 제28조](https://www.law.go.kr/법령/지방세법시행령/제28조)
 
 <Outline level={2}>판단 기준</Outline>
 
 고급주택 여부는 다음 **두 가지 기준** 중 하나에 해당하면 고급주택으로 본다.
 
-<table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px'}}>
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)'}}>
   <thead>
     <tr style={{backgroundColor: '#f0f0f0'}}>
       <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '20%'}}>구분</th>
@@ -72,6 +165,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
 </Callout>
 
 <SectionNav sections={[
+  { id: "사치성재산개요", label: "사치성재산 개요" },
   { id: "고급주택요건", label: "고급주택 요건" },
   { id: "면적기준", label: "면적기준" },
   { id: "시설기준", label: "시설기준" },
@@ -79,6 +173,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
   { id: "세율적용", label: "세율적용" },
   { id: "전용면적판단", label: "전용면적 판단" },
   { id: "벽체면적", label: "벽체면적" },
+  { id: "기타사치성재산", label: "기타 사치성재산" },
   { id: "관련법령", label: "관련 법령" },
   { id: "FAQ", label: "FAQ" }
 ]} />
@@ -86,7 +181,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
 ---
 
 <h2 id="면적기준">
-  <Outline level={1}>면적기준 (시행령 §28④)</Outline>
+  <Outline level={1}>면적기준 ([시행령 §28④](https://www.law.go.kr/법령/지방세법시행령/제28조))</Outline>
 </h2>
 
 <Callout type="warning">
@@ -101,7 +196,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
 
 <Outline level={2}>① 단독주택</Outline>
 
-<table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px'}}>
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)'}}>
   <thead>
     <tr style={{backgroundColor: '#f0f0f0'}}>
       <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '25%'}}>구분</th>
@@ -125,7 +220,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
 
 <Outline level={2}>② 공동주택</Outline>
 
-<table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px'}}>
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)'}}>
   <thead>
     <tr style={{backgroundColor: '#f0f0f0'}}>
       <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '25%'}}>구분</th>
@@ -156,6 +251,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
 </Callout>
 
 <SectionNav sections={[
+  { id: "사치성재산개요", label: "사치성재산 개요" },
   { id: "고급주택요건", label: "고급주택 요건" },
   { id: "면적기준", label: "면적기준" },
   { id: "시설기준", label: "시설기준" },
@@ -163,6 +259,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
   { id: "세율적용", label: "세율적용" },
   { id: "전용면적판단", label: "전용면적 판단" },
   { id: "벽체면적", label: "벽체면적" },
+  { id: "기타사치성재산", label: "기타 사치성재산" },
   { id: "관련법령", label: "관련 법령" },
   { id: "FAQ", label: "FAQ" }
 ]} />
@@ -170,7 +267,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
 ---
 
 <h2 id="시설기준">
-  <Outline level={1}>시설기준 (시행령 §28④)</Outline>
+  <Outline level={1}>시설기준 ([시행령 §28④](https://www.law.go.kr/법령/지방세법시행령/제28조))</Outline>
 </h2>
 
 <Outline level={2}>적용 대상</Outline>
@@ -179,7 +276,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
 
 <Outline level={2}>해당 시설물</Outline>
 
-<table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px'}}>
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)'}}>
   <thead>
     <tr style={{backgroundColor: '#f0f0f0'}}>
       <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '10%'}}>번호</th>
@@ -213,6 +310,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
 </Callout>
 
 <SectionNav sections={[
+  { id: "사치성재산개요", label: "사치성재산 개요" },
   { id: "고급주택요건", label: "고급주택 요건" },
   { id: "면적기준", label: "면적기준" },
   { id: "시설기준", label: "시설기준" },
@@ -220,6 +318,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
   { id: "세율적용", label: "세율적용" },
   { id: "전용면적판단", label: "전용면적 판단" },
   { id: "벽체면적", label: "벽체면적" },
+  { id: "기타사치성재산", label: "기타 사치성재산" },
   { id: "관련법령", label: "관련 법령" },
   { id: "FAQ", label: "FAQ" }
 ]} />
@@ -234,7 +333,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
 
 다음의 경우 고급주택으로 **보지 않는다**.
 
-<table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px'}}>
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)'}}>
   <thead>
     <tr style={{backgroundColor: '#f0f0f0'}}>
       <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '25%'}}>구분</th>
@@ -265,6 +364,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
 </Callout>
 
 <SectionNav sections={[
+  { id: "사치성재산개요", label: "사치성재산 개요" },
   { id: "고급주택요건", label: "고급주택 요건" },
   { id: "면적기준", label: "면적기준" },
   { id: "시설기준", label: "시설기준" },
@@ -272,6 +372,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
   { id: "세율적용", label: "세율적용" },
   { id: "전용면적판단", label: "전용면적 판단" },
   { id: "벽체면적", label: "벽체면적" },
+  { id: "기타사치성재산", label: "기타 사치성재산" },
   { id: "관련법령", label: "관련 법령" },
   { id: "FAQ", label: "FAQ" }
 ]} />
@@ -291,7 +392,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
          = 일반 세율 + 8%
 ```
 
-<table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px'}}>
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)'}}>
   <thead>
     <tr style={{backgroundColor: '#f0f0f0'}}>
       <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>일반 세율</th>
@@ -323,6 +424,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
 </Callout>
 
 <SectionNav sections={[
+  { id: "사치성재산개요", label: "사치성재산 개요" },
   { id: "고급주택요건", label: "고급주택 요건" },
   { id: "면적기준", label: "면적기준" },
   { id: "시설기준", label: "시설기준" },
@@ -330,6 +432,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
   { id: "세율적용", label: "세율적용" },
   { id: "전용면적판단", label: "전용면적 판단" },
   { id: "벽체면적", label: "벽체면적" },
+  { id: "기타사치성재산", label: "기타 사치성재산" },
   { id: "관련법령", label: "관련 법령" },
   { id: "FAQ", label: "FAQ" }
 ]} />
@@ -350,7 +453,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
 
 <Outline level={2}>판단기준</Outline>
 
-<table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px'}}>
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)'}}>
   <thead>
     <tr style={{backgroundColor: '#f0f0f0'}}>
       <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '20%'}}>판단기준</th>
@@ -379,7 +482,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
 
 <Outline level={2}>세부 항목별 판단</Outline>
 
-<table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px'}}>
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)'}}>
   <thead>
     <tr style={{backgroundColor: '#f0f0f0'}}>
       <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '20%'}}>항목</th>
@@ -427,6 +530,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
 </table>
 
 <SectionNav sections={[
+  { id: "사치성재산개요", label: "사치성재산 개요" },
   { id: "고급주택요건", label: "고급주택 요건" },
   { id: "면적기준", label: "면적기준" },
   { id: "시설기준", label: "시설기준" },
@@ -434,6 +538,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
   { id: "세율적용", label: "세율적용" },
   { id: "전용면적판단", label: "전용면적 판단" },
   { id: "벽체면적", label: "벽체면적" },
+  { id: "기타사치성재산", label: "기타 사치성재산" },
   { id: "관련법령", label: "관련 법령" },
   { id: "FAQ", label: "FAQ" }
 ]} />
@@ -454,7 +559,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
 
 <Outline level={2}>면적 산정 기준 비교</Outline>
 
-<table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px'}}>
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)'}}>
   <thead>
     <tr style={{backgroundColor: '#f0f0f0'}}>
       <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '20%'}}>구분</th>
@@ -467,13 +572,13 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
     <tr>
       <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>공동주택</td>
       <td style={{border: '1px solid #d9d9d9', padding: '8px', color: '#1890ff', fontWeight: 'bold'}}>외벽의 내부선<br/>(안목치수)</td>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>「주택법 시행규칙」 제2조</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><a href="https://www.law.go.kr/법령/주택법시행규칙/제2조" target="_blank">「주택법 시행규칙」 제2조</a></td>
       <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>조심 2023지0226</td>
     </tr>
     <tr>
       <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>단독주택</td>
       <td style={{border: '1px solid #d9d9d9', padding: '8px', color: '#cf1322', fontWeight: 'bold'}}>외벽의 중심선</td>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>「건축법 시행령」 제119조</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><a href="https://www.law.go.kr/법령/건축법시행령/제119조" target="_blank">「건축법 시행령」 제119조</a></td>
       <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>대법원 94다28901</td>
     </tr>
   </tbody>
@@ -481,7 +586,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
 
 <Outline level={2}>실무 적용</Outline>
 
-<table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px'}}>
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)'}}>
   <thead>
     <tr style={{backgroundColor: '#f0f0f0'}}>
       <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구분</th>
@@ -514,6 +619,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
 </Callout>
 
 <SectionNav sections={[
+  { id: "사치성재산개요", label: "사치성재산 개요" },
   { id: "고급주택요건", label: "고급주택 요건" },
   { id: "면적기준", label: "면적기준" },
   { id: "시설기준", label: "시설기준" },
@@ -521,6 +627,131 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
   { id: "세율적용", label: "세율적용" },
   { id: "전용면적판단", label: "전용면적 판단" },
   { id: "벽체면적", label: "벽체면적" },
+  { id: "기타사치성재산", label: "기타 사치성재산" },
+  { id: "관련법령", label: "관련 법령" },
+  { id: "FAQ", label: "FAQ" }
+]} />
+
+---
+
+<h2 id="기타사치성재산">
+  <Outline level={1}>기타 사치성재산</Outline>
+</h2>
+
+<Outline level={2}>별장</Outline>
+
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '20%'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>내용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>정의</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>주거용 건축물과 그 부속 토지로서 **상시 주거 목적이 아닌** 휴양·피서용 건물</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>중과세율</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', color: '#cf1322', fontWeight: 'bold'}}>12% (4% + 8%)</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>주의사항</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>상시 주거 사실을 입증하지 못하는 한 중과 적용</td>
+    </tr>
+  </tbody>
+</table>
+
+<Outline level={2}>골프장</Outline>
+
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '20%'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>내용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>정의</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><a href="https://www.law.go.kr/법령/체육시설의설치·이용에관한법률" target="_blank">체육시설의 설치·이용에 관한 법률</a>에 따른 **회원제 골프장**</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>중과세율</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', color: '#cf1322', fontWeight: 'bold'}}>12% (4% + 8%)</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>주의사항</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>**대중골프장은 제외**됨</td>
+    </tr>
+  </tbody>
+</table>
+
+<Outline level={2}>고급오락장</Outline>
+
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '20%'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>내용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>정의</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>카지노, 나이트클럽, 유흥주점영업장 등 대통령령으로 정하는 시설</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>중과세율</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', color: '#cf1322', fontWeight: 'bold'}}>12% (4% + 8%)</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>주의사항</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>영업 허가·신고 내용이 아닌 **실제 사용 용도**를 기준으로 판단</td>
+    </tr>
+  </tbody>
+</table>
+
+<Outline level={2}>고급선박</Outline>
+
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '20%'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>내용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>정의</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>비업무용으로 사용하는 자가용 선박</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>중과세율</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', color: '#cf1322', fontWeight: 'bold'}}>10~11% (2~3% + 8%)</td>
+    </tr>
+  </tbody>
+</table>
+
+<Callout type="caution">
+
+- **별장**으로 판단되면 상시 주거 사실을 입증하지 못하는 한 중과 적용
+- **골프장**은 회원제에 한하여 중과되며, 대중골프장은 제외
+- **고급오락장**은 영업 허가·신고 내용이 아닌 실제 사용 용도를 기준으로 판단
+
+</Callout>
+
+<SectionNav sections={[
+  { id: "사치성재산개요", label: "사치성재산 개요" },
+  { id: "고급주택요건", label: "고급주택 요건" },
+  { id: "면적기준", label: "면적기준" },
+  { id: "시설기준", label: "시설기준" },
+  { id: "예외규정", label: "예외규정" },
+  { id: "세율적용", label: "세율적용" },
+  { id: "전용면적판단", label: "전용면적 판단" },
+  { id: "벽체면적", label: "벽체면적" },
+  { id: "기타사치성재산", label: "기타 사치성재산" },
   { id: "관련법령", label: "관련 법령" },
   { id: "FAQ", label: "FAQ" }
 ]} />
@@ -531,7 +762,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
   <Outline level={1}>관련 법령</Outline>
 </h2>
 
-<table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px'}}>
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)'}}>
   <thead>
     <tr style={{backgroundColor: '#f0f0f0'}}>
       <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '15%'}}>구분</th>
@@ -542,27 +773,33 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
   </thead>
   <tbody>
     <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>사치성재산 중과</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><a href="https://www.law.go.kr/법령/지방세법" target="_blank">지방세법</a></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><a href="https://www.law.go.kr/법령/지방세법/제13조" target="_blank">§13⑤</a></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>사치성재산 중과세율 규정</td>
+    </tr>
+    <tr>
       <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>근거법</td>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법</td>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§12⑤③</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><a href="https://www.law.go.kr/법령/지방세법" target="_blank">지방세법</a></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><a href="https://www.law.go.kr/법령/지방세법/제12조" target="_blank">§12⑤③</a></td>
       <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>고급주택 중과세율</td>
     </tr>
     <tr>
       <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>시행령</td>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법 시행령</td>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§28</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><a href="https://www.law.go.kr/법령/지방세법시행령" target="_blank">지방세법 시행령</a></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><a href="https://www.law.go.kr/법령/지방세법시행령/제28조" target="_blank">§28</a></td>
       <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>고급주택 판단 기준</td>
     </tr>
     <tr>
       <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>참조</td>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>주택법 시행규칙</td>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§2</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><a href="https://www.law.go.kr/법령/주택법시행규칙" target="_blank">주택법 시행규칙</a></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><a href="https://www.law.go.kr/법령/주택법시행규칙/제2조" target="_blank">§2</a></td>
       <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>공동주택 면적 산정</td>
     </tr>
     <tr>
       <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>참조</td>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>건축법 시행령</td>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§119</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><a href="https://www.law.go.kr/법령/건축법시행령" target="_blank">건축법 시행령</a></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><a href="https://www.law.go.kr/법령/건축법시행령/제119조" target="_blank">§119</a></td>
       <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>단독주택 면적 산정</td>
     </tr>
     <tr>
@@ -577,10 +814,17 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
       <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>94다28901</td>
       <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>단독주택 벽체 면적</td>
     </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>참조</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><a href="https://www.law.go.kr/법령/체육시설의설치·이용에관한법률" target="_blank">체육시설법</a></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>-</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>회원제 골프장 정의</td>
+    </tr>
   </tbody>
 </table>
 
 <SectionNav sections={[
+  { id: "사치성재산개요", label: "사치성재산 개요" },
   { id: "고급주택요건", label: "고급주택 요건" },
   { id: "면적기준", label: "면적기준" },
   { id: "시설기준", label: "시설기준" },
@@ -588,6 +832,7 @@ tags: ["고급주택", "중과세율", "면적기준", "시설기준", "전용�
   { id: "세율적용", label: "세율적용" },
   { id: "전용면적판단", label: "전용면적 판단" },
   { id: "벽체면적", label: "벽체면적" },
+  { id: "기타사치성재산", label: "기타 사치성재산" },
   { id: "관련법령", label: "관련 법령" },
   { id: "FAQ", label: "FAQ" }
 ]} />
