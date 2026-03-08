@@ -12,7 +12,16 @@
     "test:coverage": "vitest --coverage",
     "comments:fetch": "tsx scripts/fetch-comments.ts",
     "comments:process": "tsx scripts/run-pipeline.ts",
-    "comments:dry-run": "tsx scripts/run-pipeline.ts --dry-run"
+    "comments:dry-run": "tsx scripts/run-pipeline.ts --dry-run",
+    "inbox:scan": "tsx scripts/inbox-scanner.ts",
+    "orchestrate": "tsx scripts/orchestrator.ts",
+    "orchestrate:dry-run": "tsx scripts/orchestrator.ts --dry-run",
+    "orchestrate:inbox": "tsx scripts/orchestrator.ts --inbox-only",
+    "orchestrate:comments": "tsx scripts/orchestrator.ts --comments-only",
+    "orchestrate:docker": "tsx scripts/orchestrator.ts --docker",
+    "scheduler:up": "docker compose -f docker-compose.claude-scheduler.yml up -d --build",
+    "scheduler:down": "docker compose -f docker-compose.claude-scheduler.yml down",
+    "scheduler:logs": "docker compose -f docker-compose.claude-scheduler.yml logs -f"
   },
   "dependencies": {
     "@ant-design/icons": "^6.1.0",
