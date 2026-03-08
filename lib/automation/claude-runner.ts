@@ -1,5 +1,9 @@
 /**
  * Claude Code CLI 실행 모듈
+ *
+ * 두 가지 실행 모드 지원:
+ * - local: 로컬 claude CLI 직접 실행
+ * - docker: Docker 컨테이너에서 --dangerously-skip-permissions 모드로 실행
  */
 
 import { spawn } from 'child_process';
@@ -15,8 +19,14 @@ export interface ClaudeRunOptions {
   cwd?: string;
   /** 타임아웃 (ms) */
   timeout?: number;
-  /** dry run 모드 (실제 수정 안 함) */
+  /** dry run 모드 */
   dryRun?: boolean;
+  /**
+   * 실행 모드
+   * - 'local': 로컬 claude CLI 사용 (기본값)
+   * - 'docker': Docker 컨테이너에서 실행 (--dangerously-skip-permissions)
+   */
+  mode?: 'local' | 'docker';
 }
 
 export interface ClaudeRunResult {
@@ -37,26 +47,17 @@ export function getGuidelinesContent(): string {
 }
 
 /**
- * Claude Code CLI를 실행합니다
+ * 로컬 Claude Code CLI를 실행합니다
  */
-export async function runClaude(options: ClaudeRunOptions): Promise<ClaudeRunResult> {
-  const { prompt, cwd = process.cwd(), timeout = 300000, dryRun = false } = options;
-
+function runClaudeLocal(
+  prompt: string,
+  cwd: string,
+  timeout: number,
+): Promise<ClaudeRunResult> {
   return new Promise((resolve) => {
-    const args = ['-p', prompt];
+    console.log('[Claude Runner] 로컬 모드로 실행 중...');
 
-    // dry run 모드에서는 --dry-run 옵션 추가 (만약 지원된다면)
-    // Claude Code CLI는 실제로 이 옵션이 없을 수 있으므로
-    // dry run은 프롬프트에 명시하는 방식으로 처리
-
-    if (dryRun) {
-      args[1] = `[DRY RUN MODE - 실제 파일 수정 없이 변경 사항만 출력해주세요]\n\n${prompt}`;
-    }
-
-    console.log('[Claude Runner] Executing claude command...');
-    console.log('[Claude Runner] Prompt length:', prompt.length, 'chars');
-
-    const proc = spawn('claude', args, {
+    const proc = spawn('claude', ['-p', prompt, '--output-format', 'text'], {
       cwd,
       shell: true,
       timeout,
@@ -66,7 +67,9 @@ export async function runClaude(options: ClaudeRunOptions): Promise<ClaudeRunRes
     let stderr = '';
 
     proc.stdout?.on('data', (data) => {
-      stdout += data.toString();
+      const text = data.toString();
+      stdout += text;
+      process.stdout.write(text);
     });
 
     proc.stderr?.on('data', (data) => {
@@ -74,45 +77,143 @@ export async function runClaude(options: ClaudeRunOptions): Promise<ClaudeRunRes
     });
 
     proc.on('close', (code) => {
-      if (code === 0) {
-        resolve({
-          success: true,
-          output: stdout,
-        });
-      } else {
-        resolve({
-          success: false,
-          output: stdout,
-          error: stderr || `Process exited with code ${code}`,
-        });
-      }
+      resolve({
+        success: code === 0,
+        output: stdout,
+        error: code !== 0 ? stderr || `Exit code ${code}` : undefined,
+      });
     });
 
     proc.on('error', (err) => {
-      resolve({
-        success: false,
-        output: stdout,
-        error: err.message,
-      });
+      resolve({ success: false, output: stdout, error: err.message });
     });
   });
 }
 
 /**
- * MDX 수정을 위한 프롬프트를 생성합니다
+ * Docker 컨테이너에서 Claude Code를 --dangerously-skip-permissions 모드로 실행합니다
+ */
+function runClaudeDocker(
+  prompt: string,
+  cwd: string,
+  timeout: number,
+): Promise<ClaudeRunResult> {
+  return new Promise((resolve) => {
+    console.log('[Claude Runner] Docker 모드로 실행 중...');
+
+    // 프롬프트를 임시 파일로 저장 (명령행 길이 제한 우회)
+    const promptFile = path.join(cwd, '.claude-prompt-tmp.txt');
+    fs.writeFileSync(promptFile, prompt, 'utf-8');
+
+    // docker compose run으로 Claude Code 실행
+    // - --dangerously-skip-permissions: 권한 확인 건너뜀 (컨테이너 안전)
+    // - --output-format text: 텍스트 출력
+    // - 프롬프트는 파일 경로로 전달 (shell injection 방지)
+    const dockerArgs = [
+      'compose',
+      '-f',
+      'docker-compose.claude.yml',
+      'run',
+      '--rm',
+      'claude',
+      'bash',
+      '-c',
+      `claude --dangerously-skip-permissions -p "$(cat /workspace/.claude-prompt-tmp.txt)" --output-format text`,
+    ];
+
+    const proc = spawn('docker', dockerArgs, {
+      cwd,
+      shell: false,
+      timeout,
+    });
+
+    let stdout = '';
+    let stderr = '';
+
+    proc.stdout?.on('data', (data) => {
+      const text = data.toString();
+      stdout += text;
+      process.stdout.write(text);
+    });
+
+    proc.stderr?.on('data', (data) => {
+      const text = data.toString();
+      stderr += text;
+      // Docker 진행 메시지 (이미지 풀 등)는 stderr로 나옴
+      process.stderr.write(text);
+    });
+
+    proc.on('close', (code) => {
+      // 임시 프롬프트 파일 삭제
+      try {
+        fs.unlinkSync(promptFile);
+      } catch {
+        // 삭제 실패 무시
+      }
+
+      resolve({
+        success: code === 0,
+        output: stdout,
+        error: code !== 0 ? stderr || `Exit code ${code}` : undefined,
+      });
+    });
+
+    proc.on('error', (err) => {
+      try {
+        fs.unlinkSync(promptFile);
+      } catch {
+        // 삭제 실패 무시
+      }
+      resolve({ success: false, output: stdout, error: err.message });
+    });
+  });
+}
+
+/**
+ * Claude Code CLI를 실행합니다
+ */
+export async function runClaude(options: ClaudeRunOptions): Promise<ClaudeRunResult> {
+  const {
+    prompt,
+    cwd = process.cwd(),
+    timeout = 600000,
+    dryRun = false,
+    mode = 'local',
+  } = options;
+
+  // dry run 모드 처리
+  const actualPrompt = dryRun
+    ? `[DRY RUN MODE - 실제 파일 수정 없이 변경 사항만 출력]\n\n${prompt}`
+    : prompt;
+
+  console.log(`[Claude Runner] 모드: ${mode}, 프롬프트: ${prompt.length}자`);
+
+  if (mode === 'docker') {
+    return runClaudeDocker(actualPrompt, cwd, timeout);
+  }
+  return runClaudeLocal(actualPrompt, cwd, timeout);
+}
+
+/**
+ * MDX 수정을 위한 통합 프롬프트를 생성합니다
+ * (여러 댓글 또는 프롬프트 항목을 하나로 합침)
  */
 export function buildMdxEditPrompt(params: {
   mdxFilePath: string;
   mdxContent: string;
-  commentAuthor: string;
-  commentBody: string;
-  attachmentContent?: string;
+  requests: Array<{ label: string; body: string }>;
+  todayDate?: string;
 }): string {
-  const { mdxFilePath, mdxContent, commentAuthor, commentBody, attachmentContent } = params;
+  const { mdxFilePath, mdxContent, requests, todayDate } = params;
+  const today = todayDate ?? new Date().toISOString().split('T')[0];
 
   const guidelines = getGuidelinesContent();
 
-  let prompt = `# MDX 파일 수정 요청
+  const requestsSection = requests
+    .map((r, i) => `### 요청 ${i + 1}${r.label ? ` (${r.label})` : ''}\n${r.body}`)
+    .join('\n\n');
+
+  return `# MDX 파일 수정 요청
 
 ## 수정 원칙 (반드시 준수)
 ${guidelines}
@@ -122,32 +223,79 @@ ${guidelines}
 ## 대상 파일
 ${mdxFilePath}
 
-## 댓글 내용
-- 작성자: ${commentAuthor}
-- 내용: ${commentBody}
-`;
+## 수정 요청 (총 ${requests.length}개)
 
-  if (attachmentContent) {
-    prompt += `
-## 첨부파일 내용
-${attachmentContent}
-`;
-  }
+${requestsSection}
 
-  prompt += `
 ## 현재 MDX 파일 내용
 \`\`\`mdx
 ${mdxContent}
 \`\`\`
 
-## 요청
-위 댓글 내용을 참고하여 MDX 파일을 수정해주세요.
-- MDX_GUIDELINES.md의 모든 규칙을 반드시 준수하세요
-- frontmatter의 last_updated를 오늘 날짜로 갱신하세요
-- 법령 링크는 https://law.go.kr/법령/{법령명}/{조문} 형식을 사용하세요
-- 표는 반드시 HTML 형식으로 작성하세요
-- 수정이 필요 없다면 그 이유를 설명해주세요
-`;
+## 지시사항
+위 ${requests.length}개 요청을 **모두** 반영하여 MDX 파일을 수정해주세요.
 
-  return prompt;
+### 수정 규칙:
+1. MDX_GUIDELINES.md의 모든 규칙을 반드시 준수
+2. frontmatter의 last_updated를 오늘 날짜(${today})로 갱신
+3. 법령 링크는 https://law.go.kr/법령/{법령명}/{조문} 형식 사용
+4. 표는 반드시 HTML 형식으로 작성
+5. 색상: 헤더 #f0f0f0, 강조 #e6f7ff, 테두리 #d9d9d9, 중과 #cf1322
+6. 충돌 요청은 최신 요청 우선
+7. 확실하지 않은 정보는 추가하지 않음
+`;
+}
+
+/**
+ * PDF → MDX 변환 프롬프트를 생성합니다
+ *
+ * PDF 텍스트를 받아 MDX_GUIDELINES.md 형식의 MDX 파일로 변환하도록 Claude에게 요청합니다.
+ * Claude가 직접 파일을 작성합니다.
+ */
+export function buildPdfToMdxPrompt(params: {
+  pdfText: string;
+  targetFilePath: string;
+  category: string;
+  slug: string;
+  extraInstructions?: string;
+  todayDate?: string;
+}): string {
+  const { pdfText, targetFilePath, category, slug, extraInstructions, todayDate } = params;
+  const today = todayDate ?? new Date().toISOString().split('T')[0];
+
+  const guidelines = getGuidelinesContent();
+
+  return `# PDF → MDX 변환 요청
+
+## 변환 원칙 (반드시 준수)
+${guidelines}
+
+---
+
+## 변환 정보
+- **카테고리**: ${category}
+- **슬러그**: ${slug}
+- **저장 경로**: ${targetFilePath}
+- **오늘 날짜**: ${today}
+
+## PDF 원본 텍스트
+\`\`\`
+${pdfText}
+\`\`\`
+${extraInstructions ? `\n## 추가 지시사항\n${extraInstructions}\n` : ''}
+## 요청
+
+위 PDF 텍스트를 MDX_GUIDELINES.md 형식에 맞는 MDX 파일로 변환하여 **${targetFilePath}** 에 저장해주세요.
+
+### 변환 규칙:
+1. MDX_GUIDELINES.md의 모든 규칙을 반드시 준수
+2. 개조식 공문서 형식으로 작성 (서술형 금지)
+3. Frontmatter 필수 항목 모두 포함:
+   - title, category: "${category}", subcategory, version: "1.0", lastUpdated: "${today}"
+   - legalBasis (PDF에서 추출), effectiveDate (PDF에서 추출)
+4. 세율표는 반드시 HTML 표 형식
+5. 색상: 합계 헤더 #cf1322, 취득세 #1890ff, 지방교육세 #52c41a, 농특세 #fa8c16
+6. PDF에 없는 정보는 추가하지 않음
+7. 불명확한 부분은 ※ 주석으로 표시
+`;
 }

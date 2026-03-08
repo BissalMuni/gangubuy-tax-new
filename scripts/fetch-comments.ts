@@ -6,20 +6,22 @@ import 'dotenv/config';
 import { createClient } from '@supabase/supabase-js';
 import type { Comment, Attachment } from '../lib/types';
 
-const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-if (!supabaseUrl || !supabaseKey) {
-  throw new Error('Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY');
+// Supabase 클라이언트를 함수 호출 시점에 초기화 (모듈 로드 시 환경변수 없어도 OK)
+function getSupabaseClient() {
+  const url = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) {
+    throw new Error('Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY');
+  }
+  return { client: createClient(url, key), url };
 }
-
-const supabase = createClient(supabaseUrl, supabaseKey);
 
 /**
  * 처리되지 않은 모든 댓글을 조회합니다
  */
 export async function fetchUnprocessedComments(): Promise<Comment[]> {
-  const { data, error } = await supabase
+  const { client } = getSupabaseClient();
+  const { data, error } = await client
     .from('comments')
     .select('*')
     .or('processed.is.null,processed.eq.false')
@@ -38,7 +40,8 @@ export async function fetchUnprocessedComments(): Promise<Comment[]> {
  * 특정 content_path의 첨부파일을 조회합니다
  */
 export async function fetchAttachments(contentPath: string): Promise<Attachment[]> {
-  const { data, error } = await supabase
+  const { client, url } = getSupabaseClient();
+  const { data, error } = await client
     .from('attachments')
     .select('*')
     .eq('content_path', contentPath)
@@ -52,7 +55,7 @@ export async function fetchAttachments(contentPath: string): Promise<Attachment[
   // download_url 생성
   const attachmentsWithUrls = (data || []).map((att) => ({
     ...att,
-    download_url: `${supabaseUrl}/storage/v1/object/public/attachments/${att.storage_path}`,
+    download_url: `${url}/storage/v1/object/public/attachments/${att.storage_path}`,
   }));
 
   return attachmentsWithUrls as Attachment[];
@@ -62,7 +65,8 @@ export async function fetchAttachments(contentPath: string): Promise<Attachment[
  * 첨부파일 내용을 다운로드합니다 (텍스트 추출용)
  */
 export async function downloadAttachment(storagePath: string): Promise<Buffer | null> {
-  const { data, error } = await supabase.storage
+  const { client } = getSupabaseClient();
+  const { data, error } = await client.storage
     .from('attachments')
     .download(storagePath);
 
@@ -82,7 +86,8 @@ export async function markCommentProcessed(
   commentId: string,
   commitSha?: string,
 ): Promise<void> {
-  const { error } = await supabase
+  const { client } = getSupabaseClient();
+  const { error } = await client
     .from('comments')
     .update({
       processed: true,
