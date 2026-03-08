@@ -28,12 +28,15 @@ export default function TaxLayout({
   }, []);
 
   return (
-    <Layout style={{ minHeight: '100vh' }}>
-      <Header
-        showMenuButton={isMobile}
-        onMenuClick={() => setDrawerOpen(true)}
-      />
-      <Layout style={{ paddingTop: 48 }}>
+    <>
+      {/* 헤더: Ant Design Layout 바깥에 고정 */}
+      <div style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000 }}>
+        <Header
+          showMenuButton={isMobile}
+          onMenuClick={() => setDrawerOpen(true)}
+        />
+      </div>
+      <Layout style={{ minHeight: '100vh', paddingTop: 48 }}>
         {!isMobile && <Sidebar />}
         {isMobile && (
           <MobileNav open={drawerOpen} onClose={() => setDrawerOpen(false)} />
@@ -50,6 +53,6 @@ export default function TaxLayout({
           {children}
         </Content>
       </Layout>
-    </Layout>
+    </>
   );
 }

@@ -24,12 +24,6 @@ export function Header({ onMenuClick, showMenuButton }: HeaderProps) {
         height: 48,
         lineHeight: '48px',
         gap: 12,
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 1000,
-        width: '100%',
       }}
     >
       {showMenuButton && (
