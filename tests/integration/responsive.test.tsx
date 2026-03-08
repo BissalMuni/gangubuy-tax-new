@@ -68,8 +68,8 @@ describe('MobileNav (Responsive Layout)', () => {
     const onClose = vi.fn();
     render(<MobileNav open={true} onClose={onClose} />);
 
-    // Ant Design Drawer의 닫기 버튼 (aria-label="Close")
-    const closeBtn = screen.getByRole('button', { name: /close/i });
+    // Ant Design Drawer의 닫기 버튼 (CSS 클래스로 선택 - aria-label은 버전마다 다름)
+    const closeBtn = document.querySelector('.ant-drawer-close') as HTMLElement;
     fireEvent.click(closeBtn);
     expect(onClose).toHaveBeenCalled();
   });

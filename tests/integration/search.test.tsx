@@ -73,9 +73,9 @@ describe('SearchResults', () => {
     expect(container.firstChild?.firstChild).toBeNull();
   });
 
-  it('각 결과 항목이 올바른 링크를 가진다', () => {
+  it('각 결과 항목이 올바른 링크를 가진다', async () => {
     render(<SearchResults results={mockResults} query="세율" />);
-    const links = screen.getAllByRole('link');
+    const links = await screen.findAllByRole('link');
     expect(links[0]).toHaveAttribute('href', '/acquisition/rates/realestate/housing/housing');
     expect(links[1]).toHaveAttribute('href', '/acquisition/rates/realestate/farmland/farmland');
   });
