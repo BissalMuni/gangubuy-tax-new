@@ -33,7 +33,7 @@ export default function TaxLayout({
         showMenuButton={isMobile}
         onMenuClick={() => setDrawerOpen(true)}
       />
-      <Layout>
+      <Layout style={{ paddingTop: 48 }}>
         {!isMobile && <Sidebar />}
         {isMobile && (
           <MobileNav open={drawerOpen} onClose={() => setDrawerOpen(false)} />
