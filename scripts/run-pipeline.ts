@@ -207,7 +207,6 @@ async function runClaude(prompt: string): Promise<{ success: boolean; output: st
     });
 
     proc.on('close', (code) => {
-      try { fs.unlinkSync(promptFile); } catch { /* 무시 */ }
       if (code !== 0) {
         console.error('[Pipeline] Claude stderr:', stderr);
       }
@@ -218,7 +217,6 @@ async function runClaude(prompt: string): Promise<{ success: boolean; output: st
     });
 
     proc.on('error', (err) => {
-      try { fs.unlinkSync(promptFile); } catch { /* 무시 */ }
       resolve({
         success: false,
         output: err.message,
