@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useSections } from '@/lib/context/sections-context';
 
 interface Section {
   id: string;
@@ -13,6 +14,13 @@ interface SectionNavProps {
 
 export function SectionNav({ sections }: SectionNavProps) {
   const [activeSection, setActiveSection] = useState<string>(sections[0]?.id || '');
+  const { registerSections } = useSections();
+
+  useEffect(() => {
+    registerSections(sections);
+    // sections prop은 MDX에서 정적으로 정의되므로 최초 1회만 등록
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {

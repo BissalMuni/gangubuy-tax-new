@@ -180,11 +180,18 @@ async function runClaude(prompt: string): Promise<{ success: boolean; output: st
   return new Promise((resolve) => {
     console.log('[Pipeline] Running Claude Code...');
 
-    const proc = spawn('claude', ['-p', prompt], {
+    // -p - : stdin에서 프롬프트를 읽어 non-interactive 모드로 실행
+    const proc = spawn('claude', ['-p', '-', '--output-format', 'text'], {
       cwd: process.cwd(),
       shell: true,
       timeout: 600000, // 10분
+      stdio: ['pipe', 'pipe', 'pipe'],
     });
+
+    if (proc.stdin) {
+      proc.stdin.write(prompt);
+      proc.stdin.end();
+    }
 
     let stdout = '';
     let stderr = '';
@@ -200,6 +207,10 @@ async function runClaude(prompt: string): Promise<{ success: boolean; output: st
     });
 
     proc.on('close', (code) => {
+      try { fs.unlinkSync(promptFile); } catch { /* 무시 */ }
+      if (code !== 0) {
+        console.error('[Pipeline] Claude stderr:', stderr);
+      }
       resolve({
         success: code === 0,
         output: stdout || stderr,
@@ -207,6 +218,7 @@ async function runClaude(prompt: string): Promise<{ success: boolean; output: st
     });
 
     proc.on('error', (err) => {
+      try { fs.unlinkSync(promptFile); } catch { /* 무시 */ }
       resolve({
         success: false,
         output: err.message,
@@ -280,7 +292,7 @@ async function main() {
     const claudeResult = await runClaude(prompt);
 
     if (!claudeResult.success) {
-      console.error('[Error] Claude Code 실행 실패');
+      console.error('[Error] Claude Code 실행 실패:', claudeResult.output);
       errorCount += comments.length;
       continue;
     }

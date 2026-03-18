@@ -1,8 +1,9 @@
 'use client';
 
-import { Typography, Button, Popconfirm } from 'antd';
+import { Typography, Button, Popconfirm, Tag } from 'antd';
 import { DeleteOutlined, UserOutlined } from '@ant-design/icons';
 import type { Comment } from '@/lib/types';
+import type { Section } from '@/lib/context/sections-context';
 
 const { Text, Paragraph } = Typography;
 
@@ -10,9 +11,10 @@ interface CommentItemProps {
   comment: Comment;
   currentAuthor: string;
   onDelete: (id: string) => void;
+  sections?: Section[];
 }
 
-export function CommentItem({ comment, currentAuthor, onDelete }: CommentItemProps) {
+export function CommentItem({ comment, currentAuthor, onDelete, sections }: CommentItemProps) {
   const isOwner = comment.author === currentAuthor;
   const date = new Date(comment.created_at).toLocaleDateString('ko-KR', {
     year: 'numeric',
@@ -22,6 +24,10 @@ export function CommentItem({ comment, currentAuthor, onDelete }: CommentItemPro
     minute: '2-digit',
   });
 
+  const sectionLabel = comment.section
+    ? (sections?.find((s) => s.id === comment.section)?.label ?? comment.section)
+    : null;
+
   return (
     <div
       style={{
@@ -30,9 +36,14 @@ export function CommentItem({ comment, currentAuthor, onDelete }: CommentItemPro
       }}
     >
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
           <UserOutlined style={{ color: '#999' }} />
           <Text strong>{comment.author}</Text>
+          {sectionLabel && (
+            <Tag color="blue" style={{ margin: 0 }}>
+              {sectionLabel}
+            </Tag>
+          )}
           <Text type="secondary" style={{ fontSize: 12 }}>
             {date}
           </Text>

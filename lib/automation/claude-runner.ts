@@ -57,11 +57,18 @@ function runClaudeLocal(
   return new Promise((resolve) => {
     console.log('[Claude Runner] 로컬 모드로 실행 중...');
 
-    const proc = spawn('claude', ['-p', prompt, '--output-format', 'text'], {
+    // -p - : stdin에서 프롬프트를 읽어 non-interactive 모드로 실행
+    const proc = spawn('claude', ['-p', '-', '--output-format', 'text'], {
       cwd,
       shell: true,
       timeout,
+      stdio: ['pipe', 'pipe', 'pipe'],
     });
+
+    if (proc.stdin) {
+      proc.stdin.write(prompt);
+      proc.stdin.end();
+    }
 
     let stdout = '';
     let stderr = '';

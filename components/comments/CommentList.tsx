@@ -1,10 +1,11 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { Typography, Divider, Spin, App } from 'antd';
+import { Typography, Divider, Spin, App, Segmented } from 'antd';
 import { CommentOutlined } from '@ant-design/icons';
 import { CommentItem } from './CommentItem';
 import { CommentForm } from './CommentForm';
+import { useSections } from '@/lib/context/sections-context';
 import type { Comment } from '@/lib/types';
 
 const { Title } = Typography;
@@ -17,7 +18,9 @@ export function CommentList({ contentPath }: CommentListProps) {
   const [comments, setComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
+  const [activeFilter, setActiveFilter] = useState<string>('전체');
   const { message } = App.useApp();
+  const { sections } = useSections();
 
   const [currentAuthor, setCurrentAuthor] = useState('');
 
@@ -43,13 +46,13 @@ export function CommentList({ contentPath }: CommentListProps) {
     fetchComments();
   }, [fetchComments]);
 
-  const handleSubmit = async (author: string, body: string) => {
+  const handleSubmit = async (author: string, body: string, section?: string | null) => {
     setSubmitting(true);
     try {
       const res = await fetch('/api/comments', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ content_path: contentPath, author, body }),
+        body: JSON.stringify({ content_path: contentPath, author, body, section }),
       });
 
       if (!res.ok) {
@@ -87,6 +90,27 @@ export function CommentList({ contentPath }: CommentListProps) {
     }
   };
 
+  // 섹션 필터 옵션 생성 (댓글에 실제 사용된 섹션만 포함)
+  const usedSectionIds = new Set(comments.map((c) => c.section).filter(Boolean));
+  const filterOptions = [
+    { label: `전체 (${comments.length})`, value: '전체' },
+    ...sections
+      .filter((s) => usedSectionIds.has(s.id))
+      .map((s) => ({
+        label: `${s.label} (${comments.filter((c) => c.section === s.id).length})`,
+        value: s.id,
+      })),
+    ...(usedSectionIds.has(null) || comments.some((c) => !c.section)
+      ? [{ label: `기타 (${comments.filter((c) => !c.section).length})`, value: '__none__' }]
+      : []),
+  ];
+
+  const filteredComments = comments.filter((c) => {
+    if (activeFilter === '전체') return true;
+    if (activeFilter === '__none__') return !c.section;
+    return c.section === activeFilter;
+  });
+
   return (
     <div id="comments-section" style={{ marginTop: 48 }}>
       <Divider />
@@ -101,12 +125,22 @@ export function CommentList({ contentPath }: CommentListProps) {
         </div>
       ) : (
         <>
-          {comments.map((comment) => (
+          {sections.length > 0 && filterOptions.length > 1 && (
+            <div style={{ marginBottom: 16 }}>
+              <Segmented
+                options={filterOptions}
+                value={activeFilter}
+                onChange={(val) => setActiveFilter(val as string)}
+              />
+            </div>
+          )}
+          {filteredComments.map((comment) => (
             <CommentItem
               key={comment.id}
               comment={comment}
               currentAuthor={currentAuthor}
               onDelete={handleDelete}
+              sections={sections}
             />
           ))}
           <CommentForm onSubmit={handleSubmit} loading={submitting} />

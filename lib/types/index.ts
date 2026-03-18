@@ -81,6 +81,7 @@ export interface SearchResult {
 export interface Comment {
   id: string;
   content_path: string;
+  section?: string | null;
   author: string;
   body: string;
   created_at: string;
