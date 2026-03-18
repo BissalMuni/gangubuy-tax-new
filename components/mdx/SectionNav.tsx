@@ -12,7 +12,7 @@ interface SectionNavProps {
   sections: Section[];
 }
 
-export function SectionNav({ sections }: SectionNavProps) {
+export function SectionNav({ sections = [] }: SectionNavProps) {
   const [activeSection, setActiveSection] = useState<string>(sections[0]?.id || '');
   const { registerSections } = useSections();
 

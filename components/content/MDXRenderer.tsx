@@ -20,7 +20,15 @@ export function MDXRenderer({ meta, source, versions, contentPath }: MDXRenderer
       <ContentHeader meta={meta} versions={versions} showInteractionLinks={!!contentPath} />
       <SectionsProvider>
         <div style={{ fontSize: 'var(--content-font-size)' }}>
-          <MDXRemote source={source} components={mdxComponents} options={{ mdxOptions: { rehypePlugins: [rehypeSlug] } }} />
+          <MDXRemote
+            source={source}
+            components={mdxComponents}
+            options={{
+              mdxOptions: { rehypePlugins: [rehypeSlug] },
+              blockJS: false,
+              blockDangerousJS: false,
+            }}
+          />
         </div>
         {contentPath && (
           <div style={{ marginTop: 24 }}>
