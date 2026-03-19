@@ -5,6 +5,7 @@ import { ContentHeader } from './ContentHeader';
 import { CommentList } from '@/components/comments/CommentList';
 import { AttachmentList } from '@/components/attachments/AttachmentList';
 import { SectionsProvider } from '@/lib/context/sections-context';
+import { SectionCommentButtons } from '@/components/comments/SectionCommentButtons';
 import type { ContentMeta, ContentVersion } from '@/lib/types';
 
 interface MDXRendererProps {
@@ -30,6 +31,7 @@ export function MDXRenderer({ meta, source, versions, contentPath }: MDXRenderer
             }}
           />
         </div>
+        <SectionCommentButtons />
         {contentPath && (
           <div style={{ marginTop: 24 }}>
             <CommentList contentPath={contentPath} />
