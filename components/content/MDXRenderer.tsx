@@ -18,7 +18,7 @@ export function MDXRenderer({ meta, source, versions, contentPath }: MDXRenderer
   return (
     <article>
       <ContentHeader meta={meta} versions={versions} showInteractionLinks={!!contentPath} />
-      <SectionsProvider>
+      <SectionsProvider initialContentPath={contentPath}>
         <div style={{ fontSize: 'var(--content-font-size)' }}>
           <MDXRemote
             source={source}

@@ -2,6 +2,7 @@ import { Alert, Table as AntTable } from 'antd';
 import { SectionNav } from './SectionNav';
 import { AcquisitionThemeNav } from './AcquisitionThemeNav';
 import { Outline } from './Outline';
+import { SectionHeading } from './SectionHeading';
 
 interface CalloutProps {
   type?: 'info' | 'caution' | 'warning';
@@ -67,7 +68,7 @@ export const mdxComponents = {
     <h1 {...props} style={{ fontSize: '1.75em', marginTop: 24, marginBottom: 16 }} />
   ),
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h2 {...props} style={{ fontSize: '1.4em', marginTop: 20, marginBottom: 12 }} />
+    <SectionHeading {...props} />
   ),
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3 {...props} style={{ fontSize: '1.2em', marginTop: 16, marginBottom: 8 }} />

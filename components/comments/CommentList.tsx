@@ -46,6 +46,13 @@ export function CommentList({ contentPath }: CommentListProps) {
     fetchComments();
   }, [fetchComments]);
 
+  // 섹션 댓글 팝업에서 작성 시 새로고침
+  useEffect(() => {
+    const handler = () => fetchComments();
+    window.addEventListener('comments-refresh', handler);
+    return () => window.removeEventListener('comments-refresh', handler);
+  }, [fetchComments]);
+
   const handleSubmit = async (author: string, body: string, section?: string | null) => {
     setSubmitting(true);
     try {

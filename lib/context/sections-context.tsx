@@ -9,16 +9,27 @@ export interface Section {
 
 interface SectionsContextType {
   sections: Section[];
+  contentPath: string | null;
   registerSections: (sections: Section[]) => void;
+  setContentPath: (path: string) => void;
 }
 
 const SectionsContext = createContext<SectionsContextType>({
   sections: [],
+  contentPath: null,
   registerSections: () => {},
+  setContentPath: () => {},
 });
 
-export function SectionsProvider({ children }: { children: React.ReactNode }) {
+export function SectionsProvider({
+  children,
+  initialContentPath,
+}: {
+  children: React.ReactNode;
+  initialContentPath?: string;
+}) {
   const [sections, setSections] = useState<Section[]>([]);
+  const [contentPath, setContentPath] = useState<string | null>(initialContentPath ?? null);
 
   const registerSections = useCallback((newSections: Section[]) => {
     setSections((prev) => {
@@ -29,7 +40,7 @@ export function SectionsProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <SectionsContext.Provider value={{ sections, registerSections }}>
+    <SectionsContext.Provider value={{ sections, contentPath, registerSections, setContentPath }}>
       {children}
     </SectionsContext.Provider>
   );
