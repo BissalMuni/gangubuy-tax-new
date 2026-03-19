@@ -1,7 +1,7 @@
 'use client';
 
 import { Typography, Button, Popconfirm, Tag } from 'antd';
-import { DeleteOutlined, UserOutlined } from '@ant-design/icons';
+import { CheckCircleOutlined, DeleteOutlined, UserOutlined } from '@ant-design/icons';
 import type { Comment } from '@/lib/types';
 import type { Section } from '@/lib/context/sections-context';
 
@@ -47,6 +47,11 @@ export function CommentItem({ comment, currentAuthor, onDelete, sections }: Comm
           <Text type="secondary" style={{ fontSize: 12 }}>
             {date}
           </Text>
+          {comment.processed && (
+            <Tag icon={<CheckCircleOutlined />} color="success" style={{ margin: 0 }}>
+              반영됨
+            </Tag>
+          )}
         </div>
         {isOwner && (
           <Popconfirm
