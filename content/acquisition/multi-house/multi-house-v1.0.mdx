@@ -1211,37 +1211,46 @@ tags: ["다주택자", "중과", "취득세율표", "주택수산정", "일시�
   <Outline level={1}>분양권·입주권 취득시점 및 세율적용</Outline>
 </h2>
 
-<Outline level={2}>취득시점</Outline>
+<Outline level={2}>입주권과 주택분양권의 취득시점</Outline>
 
-<table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px', marginBottom: '16px'}}>
+- 입주권·분양권은 **최초취득**과 **승계취득**에 따라 취득시점이 다르므로 구분이 중요
+
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
   <thead>
     <tr style={{backgroundColor: '#f0f0f0'}}>
-      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구분</th>
-      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>최초취득/승계취득</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '120px'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '180px'}}>최초취득 / 승계취득</th>
       <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>취득 시점</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td rowSpan={2} style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>입주권</td>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>최초 취득 (원조합원)</td>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>"철거" 시점</strong> (철거 전까지는 '주택'으로 봄)</td>
+    <tr style={{backgroundColor: '#e6f7ff'}}>
+      <td rowSpan={2} style={{border: '1px solid #d9d9d9', padding: '10px', fontWeight: 'bold', backgroundColor: '#e6f7ff', verticalAlign: 'middle', textAlign: 'center', fontSize: '14px'}}>입주권</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '10px', fontWeight: 'bold'}}>최초 취득<br/><span style={{fontWeight: 'normal', color: '#666'}}>(원조합원)</span></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '10px'}}><strong style={{color: '#cf1322'}}>"철거" 시점</strong><br/>철거 전까지는 '주택'으로 봄 (입주권이 아닌 주택 보유로 판단)</td>
+    </tr>
+    <tr style={{backgroundColor: '#e6f7ff'}}>
+      <td style={{border: '1px solid #d9d9d9', padding: '10px', fontWeight: 'bold'}}>승계 취득<br/><span style={{fontWeight: 'normal', color: '#666'}}>(승계조합원)</span></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '10px'}}><strong style={{color: '#cf1322'}}>토지의 잔금 지급일</strong></td>
     </tr>
     <tr>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>승계 취득 (승계조합원)</td>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>토지의 잔금 지급일</td>
+      <td rowSpan={2} style={{border: '1px solid #d9d9d9', padding: '10px', fontWeight: 'bold', backgroundColor: '#fafafa', verticalAlign: 'middle', textAlign: 'center', fontSize: '14px'}}>주택분양권</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '10px', fontWeight: 'bold'}}>최초 취득<br/><span style={{fontWeight: 'normal', color: '#666'}}>(최초 수분양자)</span></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '10px'}}>분양회사와 수분양자의 <strong style={{color: '#cf1322'}}>분양계약일</strong></td>
     </tr>
     <tr>
-      <td rowSpan={2} style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>분양권</td>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>최초 취득 (최초 수분양자)</td>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>분양회사와 수분양자의 <strong>분양계약일</strong></td>
-    </tr>
-    <tr>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>승계 취득</td>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>분양권의 <strong>잔금 지급일</strong> (전매계약서)</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '10px', fontWeight: 'bold'}}>승계 취득<br/><span style={{fontWeight: 'normal', color: '#666'}}>(최초 수분양자로부터 분양권 승계취득자)</span></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '10px'}}>분양권의 <strong style={{color: '#cf1322'}}>잔금 지급일</strong> (전매계약서 기준)</td>
     </tr>
   </tbody>
 </table>
+
+<Callout type="info">
+
+- **입주권 원조합원**: 관리처분인가 후 기존 주택이 철거되는 시점에 '입주권'을 취득한 것으로 봄. 철거 전까지는 기존 주택 보유 상태
+- **주택분양권 승계취득**: 최초 수분양자로부터 전매로 분양권을 매수하는 경우, 전매계약서상 잔금 지급일이 취득시점
+
+</Callout>
 
 <Outline level={2}>분양권 취득시기별 세율적용</Outline>
 
