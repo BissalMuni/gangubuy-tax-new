@@ -29,10 +29,14 @@ export function SectionCommentButtons() {
         continue;
       }
 
+      // Outline 컴포넌트(div)가 있으면 그 안쪽 텍스트 옆에 붙이기
+      const target = heading.querySelector('div') || heading;
+
       const container = document.createElement('span');
       container.setAttribute('data-comment-portal', section.id);
       container.style.display = 'inline';
-      heading.appendChild(container);
+      container.style.verticalAlign = 'middle';
+      target.appendChild(container);
       newContainers.push({ sectionId: section.id, el: container });
     }
 
