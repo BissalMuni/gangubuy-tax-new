@@ -35,6 +35,7 @@ describe('Navigation Config', () => {
     expect(keys).toEqual([
       'home',
       'acquisition',
+      'corp-acquisition-tax',
       'property',
       'vehicle',
       'search',
