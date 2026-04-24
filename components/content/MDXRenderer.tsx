@@ -1,5 +1,6 @@
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
 import { mdxComponents } from '@/components/mdx';
 import { ContentHeader } from './ContentHeader';
 import { CommentList } from '@/components/comments/CommentList';
@@ -25,7 +26,7 @@ export function MDXRenderer({ meta, source, versions, contentPath }: MDXRenderer
             source={source}
             components={mdxComponents}
             options={{
-              mdxOptions: { rehypePlugins: [rehypeSlug] },
+              mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSlug] },
               blockJS: false,
               blockDangerousJS: false,
             }}
