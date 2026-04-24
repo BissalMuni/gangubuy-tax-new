@@ -6,4 +6,5 @@ node_modules
 *.tsbuildinfo
 
 .claude/settings.local.json
-tsconfig.tsbuildinfo	
+.claude/*.lock
+tsconfig.tsbuildinfo
