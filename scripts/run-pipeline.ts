@@ -348,7 +348,7 @@ async function main() {
     console.log(`[Git] 변경된 파일: ${modifiedFiles.join(', ')}`);
 
     // 커밋 메시지에 모든 댓글 ID 포함
-    const commentIds = comments.map((c) => c.id.substring(0, 8)).join(', ');
+    const commentIds = comments.map((c) => c.id?.substring(0, 8) ?? 'unknown').join(', ');
     const commitResult = commitAndPush(
       { ...comments[0], body: `${comments.length}개 댓글 반영 (${commentIds})` },
       mdxFilePath,
