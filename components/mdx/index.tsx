@@ -5,21 +5,23 @@ import { Outline } from './Outline';
 import { SectionHeading } from './SectionHeading';
 
 interface CalloutProps {
-  type?: 'info' | 'caution' | 'warning';
+  type?: 'info' | 'success' | 'caution' | 'warning' | 'error';
   children: React.ReactNode;
 }
 
 export function Callout({ type = 'info', children }: CalloutProps) {
   const typeMap = {
-    info: 'info' as const,
-    caution: 'warning' as const,
-    warning: 'error' as const,
-  };
+    info: 'info',
+    success: 'success',
+    caution: 'warning',
+    warning: 'error',
+    error: 'error',
+  } as const;
 
   return (
     <Alert
       type={typeMap[type]}
-      title={children}
+      message={children}
       showIcon
       style={{ marginBottom: 16 }}
     />
