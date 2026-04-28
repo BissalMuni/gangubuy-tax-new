@@ -26,7 +26,10 @@ export function MDXRenderer({ meta, source, versions, contentPath }: MDXRenderer
             source={source}
             components={mdxComponents}
             options={{
-              mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSlug] },
+              mdxOptions: {
+                remarkPlugins: [[remarkGfm, { singleTilde: false }]],
+                rehypePlugins: [rehypeSlug],
+              },
               blockJS: false,
               blockDangerousJS: false,
             }}
