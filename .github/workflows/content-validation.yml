@@ -1,0 +1,40 @@
+name: Content Validation
+
+on:
+  pull_request:
+    paths:
+      - 'content/**'
+      - 'lib/content/**'
+      - 'components/mdx/**'
+      - 'scripts/content-check.ts'
+      - 'scripts/lint-mdx.ts'
+      - 'package.json'
+      - 'package-lock.json'
+  push:
+    branches: [main]
+    paths:
+      - 'content/**'
+      - 'lib/content/**'
+      - 'components/mdx/**'
+      - 'scripts/content-check.ts'
+      - 'scripts/lint-mdx.ts'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate frontmatter (zod)
+        run: npm run content:check
+
+      - name: Lint MDX (LawLink rules)
+        run: npm run mdx:lint
