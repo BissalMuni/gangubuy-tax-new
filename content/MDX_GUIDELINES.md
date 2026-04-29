@@ -395,6 +395,8 @@ npm run mdx:lint
 | `lawlink-non-empty-children` | `<LawLink>...</LawLink>` 내부 텍스트 비어있으면 안 됨 (보이지 않는 링크 방지) | §4.3 |
 | `no-markdown-law-link` | `[text](https://law.go.kr/...)` 사용 금지. remark-gfm이 `<a>`로 렌더링해 LawLink 우회. `<LawLink>` 컴포넌트만 허용 | §4.1 |
 | `no-new-inline-table` | 파일별 `<table style={...}>` 카운트가 `scripts/lint-mdx-baseline.json` 초과 시 거부. 새 표는 컴포넌트로 추출 (ratchet) | §6, §13.2 |
+| `sectionnav-h2-match` | `<SectionNav sections={[{id, label}]}>`의 모든 `id`가 같은 파일 내 `<h2 id="...">`와 매치되어야 함 | §2.1 |
+| `h1-count` | 파일당 H1 (`#` 또는 `<h1>`) 정확히 1개. 하위 제목은 `<Outline level={N}>` 사용 | §3 |
 
 ### 13.2 규칙 추가 방법
 

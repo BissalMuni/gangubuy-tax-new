@@ -181,6 +181,65 @@ const rules: Rule[] = [
     },
   },
   {
+    id: 'sectionnav-h2-match',
+    description:
+      'Every id in <SectionNav sections={[...]} /> must have a matching <h2 id="..."> in the same file',
+    check(file, raw) {
+      const issues: Issue[] = [];
+      const h2Ids = new Set<string>();
+      const h2Re = /<h2\s+[^>]*id=["']([^"']+)["']/g;
+      let m: RegExpExecArray | null;
+      while ((m = h2Re.exec(raw)) !== null) h2Ids.add(m[1]);
+
+      const snRe = /<SectionNav\s+sections=\{(\[[\s\S]*?\])\}\s*\/?>/g;
+      while ((m = snRe.exec(raw)) !== null) {
+        const arrSrc = m[1];
+        const baseOffset = m.index + raw.slice(m.index, m.index).length;
+        const idRe = /\bid:\s*["']([^"']+)["']/g;
+        let im: RegExpExecArray | null;
+        while ((im = idRe.exec(arrSrc)) !== null) {
+          if (!h2Ids.has(im[1])) {
+            const absOffset = m.index + (m[0].indexOf(arrSrc) >= 0 ? m[0].indexOf(arrSrc) : 0) + im.index;
+            const { line, column } = locateOffset(raw, absOffset);
+            issues.push({
+              rule: 'sectionnav-h2-match',
+              file,
+              line,
+              column,
+              message: `SectionNav id "${im[1]}" has no matching <h2 id="${im[1]}"> in this file. Either fix the id or add the section heading.`,
+              excerpt: `id: "${im[1]}"`,
+            });
+          }
+        }
+        // suppress unused warning
+        void baseOffset;
+      }
+      return issues;
+    },
+  },
+  {
+    id: 'h1-count',
+    description: 'Each MDX file must have exactly one top-level heading (`# ...` or <h1>) below frontmatter',
+    check(file, raw) {
+      const fmEnd = raw.indexOf('---', 4);
+      const body = fmEnd > 0 ? raw.slice(fmEnd + 3) : raw;
+      const md = (body.match(/^# /gm) ?? []).length;
+      const jsx = (body.match(/<h1\b/g) ?? []).length;
+      const total = md + jsx;
+      if (total === 1) return [];
+      return [
+        {
+          rule: 'h1-count',
+          file,
+          line: 1,
+          column: 1,
+          message: `Expected exactly one H1, found ${total} (markdown=${md}, jsx=${jsx}). Use <Outline level={1}> for sub-section labels.`,
+          excerpt: `H1 count: ${total}`,
+        },
+      ];
+    },
+  },
+  {
     id: 'lawlink-non-empty-children',
     description:
       '<LawLink> must have visible text content (children); empty children renders an invisible link',
