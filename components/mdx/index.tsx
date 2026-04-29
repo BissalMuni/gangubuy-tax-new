@@ -5,6 +5,7 @@ import { Outline } from './Outline';
 import { SectionHeading } from './SectionHeading';
 import { AdjustmentAreaTable } from './AdjustmentAreaTable';
 import { MultiHouseRatesTable } from './MultiHouseRatesTable';
+import { LuxuryOverlapTable } from './LuxuryOverlapTable';
 import { LawLink } from './LawLink';
 
 interface CalloutProps {
@@ -38,6 +39,7 @@ export const mdxComponents = {
   Outline,
   AdjustmentAreaTable,
   MultiHouseRatesTable,
+  LuxuryOverlapTable,
   LawLink,
   table: (props: React.HTMLAttributes<HTMLTableElement>) => (
     <div style={{ overflowX: 'auto', marginBottom: 16 }}>
