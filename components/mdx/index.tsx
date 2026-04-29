@@ -6,6 +6,8 @@ import { SectionHeading } from './SectionHeading';
 import { AdjustmentAreaTable } from './AdjustmentAreaTable';
 import { MultiHouseRatesTable } from './MultiHouseRatesTable';
 import { LuxuryOverlapTable } from './LuxuryOverlapTable';
+import { PresaleRightsTimingTable } from './PresaleRightsTimingTable';
+import { PresaleRateTimelineTable } from './PresaleRateTimelineTable';
 import { LawLink } from './LawLink';
 
 interface CalloutProps {
@@ -40,6 +42,8 @@ export const mdxComponents = {
   AdjustmentAreaTable,
   MultiHouseRatesTable,
   LuxuryOverlapTable,
+  PresaleRightsTimingTable,
+  PresaleRateTimelineTable,
   LawLink,
   table: (props: React.HTMLAttributes<HTMLTableElement>) => (
     <div style={{ overflowX: 'auto', marginBottom: 16 }}>
