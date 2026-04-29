@@ -394,10 +394,21 @@ npm run mdx:lint
 | `lawlink-valid-article` | `<LawLink article="...">`는 `제N조` 또는 `제N조의M` 형태여야 함 | §4.2 |
 | `lawlink-non-empty-children` | `<LawLink>...</LawLink>` 내부 텍스트 비어있으면 안 됨 (보이지 않는 링크 방지) | §4.3 |
 | `no-markdown-law-link` | `[text](https://law.go.kr/...)` 사용 금지. remark-gfm이 `<a>`로 렌더링해 LawLink 우회. `<LawLink>` 컴포넌트만 허용 | §4.1 |
+| `no-new-inline-table` | 파일별 `<table style={...}>` 카운트가 `scripts/lint-mdx-baseline.json` 초과 시 거부. 새 표는 컴포넌트로 추출 (ratchet) | §6, §13.2 |
 
 ### 13.2 규칙 추가 방법
 
 `scripts/lint-mdx.ts`의 `rules: Rule[]` 배열에 항목을 추가한다. 각 규칙은 `(file, raw) => Issue[]` 형태의 순수 함수. 새 규칙은 본 §13.1 표에도 함께 등재한다.
+
+### 13.3 Inline-table ratchet 운용
+
+`no-new-inline-table` 규칙은 `scripts/lint-mdx-baseline.json`에 기록된 파일별 `<table style={...}>` 카운트를 천장으로 사용한다.
+
+- **새 파일**: baseline 미등록 → 카운트 0 허용. 인라인 표 작성 시 즉시 거부. 새 표는 `components/mdx/`에 컴포넌트로 추출하라.
+- **기존 dirty 파일**: 현재 카운트가 천장. 추가하면 거부, 빼면 통과.
+- **legitimate decrease (표를 컴포넌트로 추출)**: 변환 후 `npm run mdx:lint:update-baseline`로 천장을 새 카운트에 고정. 이렇게 ratchet이 한 단계 내려간다.
+
+목표는 모든 dirty 파일이 점진적으로 0에 도달하는 것. baseline은 진행 상황을 그대로 보여주는 누적 지표.
 
 ---
 

@@ -3,7 +3,28 @@ import path from 'path';
 import { LawName } from '../lib/content/law-link-schema';
 
 const CONTENT_DIR = path.join(process.cwd(), 'content');
+const BASELINE_PATH = path.join(process.cwd(), 'scripts', 'lint-mdx-baseline.json');
 const validLaws = new Set<string>(LawName.options);
+const UPDATE_BASELINE = process.argv.includes('--update-baseline');
+
+function relPath(abs: string): string {
+  return path.relative(process.cwd(), abs).replace(/\\/g, '/');
+}
+
+function countInlineTables(raw: string): number {
+  return (raw.match(/<table\b[^>]*style=\{/g) ?? []).length;
+}
+
+interface Baseline {
+  _comment?: string;
+  'no-new-inline-table': Record<string, number>;
+}
+
+function loadBaseline(): Baseline {
+  return JSON.parse(fs.readFileSync(BASELINE_PATH, 'utf-8')) as Baseline;
+}
+
+const baseline = loadBaseline();
 
 interface Issue {
   rule: string;
@@ -139,6 +160,27 @@ const rules: Rule[] = [
     },
   },
   {
+    id: 'no-new-inline-table',
+    description:
+      'Per-file count of <table style={...}> may not exceed scripts/lint-mdx-baseline.json. New tables: extract to a component (see MDX_GUIDELINES.md §6, §13.2).',
+    check(file, raw) {
+      const rel = relPath(file);
+      const current = countInlineTables(raw);
+      const allowed = baseline['no-new-inline-table'][rel] ?? 0;
+      if (current <= allowed) return [];
+      return [
+        {
+          rule: 'no-new-inline-table',
+          file,
+          line: 1,
+          column: 1,
+          message: `${rel} has ${current} inline-styled <table>, baseline allows ${allowed}. Extract new tables to a component, or run \`npm run mdx:lint:update-baseline\` if you intentionally lowered the count and want to lock the new ceiling.`,
+          excerpt: `count: ${current} > baseline ${allowed}`,
+        },
+      ];
+    },
+  },
+  {
     id: 'lawlink-non-empty-children',
     description:
       '<LawLink> must have visible text content (children); empty children renders an invisible link',
@@ -165,6 +207,27 @@ const rules: Rule[] = [
 ];
 
 const files = listMdxFiles(CONTENT_DIR);
+
+if (UPDATE_BASELINE) {
+  const next: Record<string, number> = {};
+  for (const file of files) {
+    const raw = fs.readFileSync(file, 'utf-8');
+    const c = countInlineTables(raw);
+    if (c > 0) next[relPath(file)] = c;
+  }
+  const sorted = Object.fromEntries(
+    Object.entries(next).sort(([a], [b]) => a.localeCompare(b)),
+  );
+  const out: Baseline = {
+    _comment: baseline._comment,
+    'no-new-inline-table': sorted,
+  };
+  fs.writeFileSync(BASELINE_PATH, JSON.stringify(out, null, 2) + '\n', 'utf-8');
+  const total = Object.values(sorted).reduce((a, b) => a + b, 0);
+  console.log(`Updated baseline: ${Object.keys(sorted).length} files, ${total} total <table style={...}>`);
+  process.exit(0);
+}
+
 const allIssues: Issue[] = [];
 
 for (const file of files) {

@@ -12,6 +12,7 @@
     "test:coverage": "vitest --coverage",
     "content:check": "tsx scripts/content-check.ts",
     "mdx:lint": "tsx scripts/lint-mdx.ts",
+    "mdx:lint:update-baseline": "tsx scripts/lint-mdx.ts --update-baseline",
     "comments:fetch": "tsx scripts/fetch-comments.ts",
     "comments:process": "tsx scripts/run-pipeline.ts",
     "comments:dry-run": "tsx scripts/run-pipeline.ts --dry-run",
