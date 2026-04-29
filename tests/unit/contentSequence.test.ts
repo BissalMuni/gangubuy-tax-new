@@ -5,7 +5,7 @@ import {
   getPrevPath,
   getSequencePosition,
 } from '@/lib/navigation/contentSequence';
-import { navigationConfig } from '@/lib/navigation/nav.config';
+import { navigationConfig } from '@/lib/navigation/tree';
 
 describe('contentSequence', () => {
   describe('getLeafPaths', () => {

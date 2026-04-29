@@ -2,9 +2,9 @@
 
 import { Layout } from 'antd';
 import { useState, useEffect } from 'react';
-import { Header } from '@/components/ui/Header';
-import { Sidebar } from '@/components/ui/Sidebar';
-import { MobileNav } from '@/components/ui/MobileNav';
+import { Header } from '@/components/layout/Header';
+import { Sidebar } from '@/components/layout/Sidebar';
+import { MobileNav } from '@/components/layout/MobileNav';
 
 const { Content } = Layout;
 

@@ -1,7 +1,7 @@
 # Implementation Plan: Local Tax Documentation Site
 
 **Branch**: `main` | **Date**: 2026-01-31 | **Spec**: [spec.md](./spec.md)
-**Input**: Feature specification from `/specs/1-local-tax-docs/spec.md`
+**Input**: Feature specification from `/specs/002-local-tax-docs/spec.md`
 
 ## Summary
 
@@ -38,7 +38,7 @@ Build an internal-facing local tax information site that renders MDX content wit
 ### Documentation (this feature)
 
 ```text
-specs/1-local-tax-docs/
+specs/002-local-tax-docs/
 ├── plan.md              # This file
 ├── research.md          # Phase 0 output
 ├── data-model.md        # Phase 1 output
@@ -147,7 +147,7 @@ content/
 
 lib/
 ├── navigation/
-│   └── nav.config.ts             # Navigation tree configuration (물건 기준 트리구조)
+│   └── tree.ts                   # Navigation tree configuration (물건 기준 트리구조)
 ├── content/
 │   ├── loader.ts                 # MDX content loader
 │   ├── versions.ts               # Version management

@@ -31,7 +31,7 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 });
 
-import { MobileNav } from '@/components/ui/MobileNav';
+import { MobileNav } from '@/components/layout/MobileNav';
 
 describe('MobileNav (Responsive Layout)', () => {
   beforeEach(() => {

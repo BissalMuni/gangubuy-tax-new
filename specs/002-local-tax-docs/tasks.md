@@ -1,6 +1,6 @@
 # Tasks: Local Tax Documentation Site
 
-**Input**: Design documents from `/specs/1-local-tax-docs/`
+**Input**: Design documents from `/specs/002-local-tax-docs/`
 **Prerequisites**: plan.md, spec.md, data-model.md, research.md, quickstart.md
 
 **Tests**: TDD is NON-NEGOTIABLE per Constitution. Tests MUST be written first and FAIL before implementation.
@@ -46,7 +46,7 @@
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
 - [x] T008 Create root layout with Ant Design ConfigProvider in app/layout.tsx
-- [x] T009 Create navigation configuration in lib/navigation/nav.config.ts
+- [x] T009 Create navigation configuration in lib/navigation/tree.ts
 - [x] T010 [P] Create MDX content loader utility with nested path support in lib/content/loader.ts
 - [x] T011 [P] Create sample MDX content file content/acquisition/rates/paid/sale/housing-v1.0.mdx (개조식 공문서 스타일, content-style-guide.md 참조)
 - [x] T012 Configure MDX support in next.config.mjs with @next/mdx

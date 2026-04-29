@@ -66,7 +66,7 @@ Your content here...
 ### 3. Update Navigation Config
 
 ```typescript
-// lib/navigation/nav.config.ts
+// lib/navigation/tree.ts
 export const navigation = {
   acquisition: {
     label: '취득세',

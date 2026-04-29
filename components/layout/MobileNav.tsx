@@ -11,7 +11,7 @@ import {
 } from '@ant-design/icons';
 import { usePathname, useRouter } from 'next/navigation';
 import { useMemo } from 'react';
-import { navigationConfig } from '@/lib/navigation/nav.config';
+import { navigationConfig } from '@/lib/navigation/tree';
 import type { NavigationNode } from '@/lib/types';
 import type { MenuProps } from 'antd';
 

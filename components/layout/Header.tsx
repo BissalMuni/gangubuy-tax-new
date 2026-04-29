@@ -3,8 +3,8 @@
 import { Layout, Typography, Button } from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
 import Link from 'next/link';
-import { FontSizeControl } from './FontSizeControl';
-import { DarkModeToggle } from './DarkModeToggle';
+import { FontSizeControl } from '@/components/ui/FontSizeControl';
+import { DarkModeToggle } from '@/components/ui/DarkModeToggle';
 
 const { Header: AntHeader } = Layout;
 

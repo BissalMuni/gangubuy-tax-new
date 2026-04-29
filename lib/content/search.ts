@@ -2,7 +2,7 @@ import { Index as FlexSearchIndex } from 'flexsearch';
 import { getMdxFiles, readMdxFile, getContentPath } from './loader';
 import { getContentDir } from './loader';
 import type { SearchResult, TaxCategory } from '@/lib/types';
-import { navigationConfig } from '@/lib/navigation/nav.config';
+import { navigationConfig } from '@/lib/navigation/tree';
 import type { NavigationNode } from '@/lib/types';
 
 interface SearchDocument {

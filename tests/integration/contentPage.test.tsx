@@ -31,7 +31,7 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 });
 
-import { Sidebar } from '@/components/ui/Sidebar';
+import { Sidebar } from '@/components/layout/Sidebar';
 
 describe('Sidebar (Content Page Navigation)', () => {
   beforeEach(() => {

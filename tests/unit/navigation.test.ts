@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { navigationConfig } from '@/lib/navigation/nav.config';
+import { navigationConfig } from '@/lib/navigation/tree';
 import type { NavigationNode } from '@/lib/types';
 
 function validateNode(node: NavigationNode, parentPath?: string) {

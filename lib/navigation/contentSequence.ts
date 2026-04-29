@@ -1,5 +1,5 @@
 import type { NavigationNode, TaxCategory } from '@/lib/types';
-import { navigationConfig } from './nav.config';
+import { navigationConfig } from './tree';
 
 /**
  * Get all leaf (non-category) paths from a navigation node via depth-first traversal.

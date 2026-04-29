@@ -148,7 +148,7 @@ TypeScript configuration file with type-safe navigation tree.
 Based on `.deprecated/src/config/menu.config.tsx` pattern, adapted for Next.js App Router.
 
 ```typescript
-// nav.config.ts
+// lib/navigation/tree.ts
 export const navigation: NavigationConfig = {
   home: { label: '홈', path: '/', icon: HomeOutlined },
   acquisition: {
