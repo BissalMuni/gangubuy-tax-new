@@ -4,5 +4,6 @@
 
 ## 2026년 4월
 
+- [2026-04-29 16:58 — LawLink 컴포넌트 + Phase 2 lint + Table 5 + CI 게이트](./2026-04-29-1658-lawlink-and-phase2-lint.md)
 - [2026-04-29 15:00 — Lean MDX 아키텍처 결정 + zod 검증 인프라 (Phase 0)](./2026-04-29-1500-lean-mdx-zod-phase0.md)
 - [2026-04-28 16:55 — MDX SSR 에러 디버깅 (luxury + GFM 단일 틸드 + AntdRegistry + hwpx 정리)](./2026-04-28-1655-mdx-ssr-debug-and-cleanup.md)
