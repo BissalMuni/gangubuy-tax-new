@@ -3,6 +3,7 @@ import { SectionNav } from './SectionNav';
 import { AcquisitionThemeNav } from './AcquisitionThemeNav';
 import { Outline } from './Outline';
 import { SectionHeading } from './SectionHeading';
+import { AdjustmentAreaTable } from './AdjustmentAreaTable';
 
 interface CalloutProps {
   type?: 'info' | 'success' | 'caution' | 'warning' | 'error';
@@ -33,6 +34,7 @@ export const mdxComponents = {
   SectionNav,
   AcquisitionThemeNav,
   Outline,
+  AdjustmentAreaTable,
   table: (props: React.HTMLAttributes<HTMLTableElement>) => (
     <div style={{ overflowX: 'auto', marginBottom: 16 }}>
       <table
