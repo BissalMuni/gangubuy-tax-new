@@ -4,6 +4,7 @@ import { AcquisitionThemeNav } from './AcquisitionThemeNav';
 import { Outline } from './Outline';
 import { SectionHeading } from './SectionHeading';
 import { AdjustmentAreaTable } from './AdjustmentAreaTable';
+import { MultiHouseRatesTable } from './MultiHouseRatesTable';
 
 interface CalloutProps {
   type?: 'info' | 'success' | 'caution' | 'warning' | 'error';
@@ -35,6 +36,7 @@ export const mdxComponents = {
   AcquisitionThemeNav,
   Outline,
   AdjustmentAreaTable,
+  MultiHouseRatesTable,
   table: (props: React.HTMLAttributes<HTMLTableElement>) => (
     <div style={{ overflowX: 'auto', marginBottom: 16 }}>
       <table

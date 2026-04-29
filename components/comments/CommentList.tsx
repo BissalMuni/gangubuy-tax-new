@@ -141,9 +141,9 @@ export function CommentList({ contentPath }: CommentListProps) {
               />
             </div>
           )}
-          {filteredComments.map((comment) => (
+          {filteredComments.map((comment, idx) => (
             <CommentItem
-              key={comment.id}
+              key={comment.id ?? `imported-${comment.commit_sha ?? idx}-${idx}`}
               comment={comment}
               currentAuthor={currentAuthor}
               onDelete={handleDelete}
