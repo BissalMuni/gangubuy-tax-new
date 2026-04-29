@@ -94,6 +94,8 @@ tags: ["태그1", "태그2"]             # 검색용 태그
 - `target="_blank" rel="noopener noreferrer"`
 - 런타임 검증 (zod): 잘못된 `law`·`article` 값은 즉시 에러
 
+> **금지**: 원시 `<a href="https://law.go.kr/...">` 및 markdown 링크 `[text](https://law.go.kr/...)` 모두 `<LawLink>` 우회 경로이므로 lint(§13)에서 차단된다.
+
 ### 4.2 props 스펙
 
 | prop | 타입 | 필수 | 설명 |
@@ -391,6 +393,7 @@ npm run mdx:lint
 | `lawlink-valid-law` | `<LawLink law="...">` 값이 `LawName` enum (lib/content/law-link-schema.ts) 내에 있어야 함 | §4.2 |
 | `lawlink-valid-article` | `<LawLink article="...">`는 `제N조` 또는 `제N조의M` 형태여야 함 | §4.2 |
 | `lawlink-non-empty-children` | `<LawLink>...</LawLink>` 내부 텍스트 비어있으면 안 됨 (보이지 않는 링크 방지) | §4.3 |
+| `no-markdown-law-link` | `[text](https://law.go.kr/...)` 사용 금지. remark-gfm이 `<a>`로 렌더링해 LawLink 우회. `<LawLink>` 컴포넌트만 허용 | §4.1 |
 
 ### 13.2 규칙 추가 방법
 

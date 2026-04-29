@@ -116,6 +116,29 @@ const rules: Rule[] = [
     },
   },
   {
+    id: 'no-markdown-law-link',
+    description:
+      'Markdown link [text](https://law.go.kr/...) is forbidden — it renders as <a> and bypasses LawLink. Use <LawLink>.',
+    check(file, raw) {
+      const issues: Issue[] = [];
+      const re = /\[[^\]]+\]\(https?:\/\/(?:www\.)?law\.go\.kr\/[^)]+\)/g;
+      let m: RegExpExecArray | null;
+      while ((m = re.exec(raw)) !== null) {
+        const { line, column } = locateOffset(raw, m.index);
+        issues.push({
+          rule: 'no-markdown-law-link',
+          file,
+          line,
+          column,
+          message:
+            'Markdown link to law.go.kr — convert to <LawLink law="…" article="…">…</LawLink> (see MDX_GUIDELINES.md §4.1)',
+          excerpt: m[0].slice(0, 120),
+        });
+      }
+      return issues;
+    },
+  },
+  {
     id: 'lawlink-non-empty-children',
     description:
       '<LawLink> must have visible text content (children); empty children renders an invisible link',
