@@ -8,3 +8,8 @@ node_modules
 .claude/settings.local.json
 .claude/*.lock
 tsconfig.tsbuildinfo
+
+# Docker Claude
+Dockerfile.claude
+docker-compose.claude.yml
+.claude-output/

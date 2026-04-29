@@ -20,7 +20,7 @@ export function FontSizeControl() {
   const displaySize = mounted ? fontSize : DEFAULT_FONT_SIZE;
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+    <div role="group" aria-label="글자 크기 조절" style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
       <Tooltip title="글자 축소">
         <Button
           size="small"
@@ -29,9 +29,10 @@ export function FontSizeControl() {
           disabled={displaySize <= MIN_FONT_SIZE}
           style={{ color: displaySize <= MIN_FONT_SIZE ? '#666' : '#ccc' }}
           onClick={decrease}
+          aria-label={`글자 축소 (현재 ${displaySize}px)`}
         />
       </Tooltip>
-      <span style={{ color: '#ccc', fontSize: 12, minWidth: 32, textAlign: 'center' }}>
+      <span aria-live="polite" style={{ color: '#ccc', fontSize: 12, minWidth: 32, textAlign: 'center' }}>
         {displaySize}px
       </span>
       <Tooltip title="글자 확대">
@@ -42,6 +43,7 @@ export function FontSizeControl() {
           disabled={displaySize >= MAX_FONT_SIZE}
           style={{ color: displaySize >= MAX_FONT_SIZE ? '#666' : '#ccc' }}
           onClick={increase}
+          aria-label={`글자 확대 (현재 ${displaySize}px)`}
         />
       </Tooltip>
     </div>

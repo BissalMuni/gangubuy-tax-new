@@ -31,12 +31,20 @@ describe('parseFilename', () => {
 });
 
 describe('getMdxFiles', () => {
+  // themes 디렉토리: luxury, trade (multi-house는 multi-house/ 디렉토리로 이동됨)
   it('finds mdx files in content/acquisition/themes', () => {
     const dir = path.join(process.cwd(), 'content', 'acquisition', 'themes');
     const files = getMdxFiles(dir);
-    expect(files.length).toBeGreaterThanOrEqual(2);
+    expect(files.length).toBeGreaterThanOrEqual(1);
+    expect(files.some((f) => f.includes('luxury'))).toBe(true);
+  });
+
+  // multi-house는 별도 디렉토리
+  it('finds mdx files in content/acquisition/multi-house', () => {
+    const dir = path.join(process.cwd(), 'content', 'acquisition', 'multi-house');
+    const files = getMdxFiles(dir);
+    expect(files.length).toBeGreaterThanOrEqual(1);
     expect(files.some((f) => f.includes('multi-house'))).toBe(true);
-    expect(files.some((f) => f.includes('first-time-buyer'))).toBe(true);
   });
 
   it('returns empty array for non-existent directory', () => {
@@ -46,12 +54,12 @@ describe('getMdxFiles', () => {
 });
 
 describe('readMdxFile', () => {
-  it('reads frontmatter from multi-house theme', () => {
+  it('reads frontmatter from multi-house file', () => {
     const filePath = path.join(
       process.cwd(),
       'content',
       'acquisition',
-      'themes',
+      'multi-house',
       'multi-house-v1.0.mdx',
     );
     const { meta, rawSource } = readMdxFile(filePath);
@@ -63,15 +71,17 @@ describe('readMdxFile', () => {
 });
 
 describe('findContentFile', () => {
-  it('finds multi-house theme file', () => {
-    const file = findContentFile('acquisition', ['themes', 'multi-house']);
+  // multi-house는 multi-house/ 디렉토리에 위치
+  it('finds multi-house file', () => {
+    const file = findContentFile('acquisition', ['multi-house', 'multi-house']);
     expect(file).toBeTruthy();
-    expect(file).toContain('multi-house-v1.0.mdx');
+    expect(file).toMatch(/multi-house-v1\.\d+\.mdx/);
   });
 
-  it('finds first-time-buyer theme file', () => {
+  // exemption 디렉토리에서 first-time-buyer 찾기
+  it('finds first-time-buyer exemption file', () => {
     const file = findContentFile('acquisition', [
-      'themes',
+      'exemption',
       'first-time-buyer',
     ]);
     expect(file).toBeTruthy();

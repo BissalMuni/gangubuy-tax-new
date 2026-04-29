@@ -48,12 +48,14 @@ describe('Navigation Config', () => {
     });
   });
 
-  it('acquisition has rates, themes, standard children', () => {
+  it('acquisition has rates, exemption, filing, admin, price children', () => {
     const children = navigationConfig.acquisition.children;
     expect(children).toBeDefined();
     expect(children!.rates).toBeDefined();
-    expect(children!.themes).toBeDefined();
-    expect(children!.standard).toBeDefined();
+    expect(children!.exemption).toBeDefined();
+    expect(children!.filing).toBeDefined();
+    expect(children!.admin).toBeDefined();
+    expect(children!.price).toBeDefined();
   });
 
   it('rates has realestate, non-realestate, common', () => {
@@ -64,25 +66,18 @@ describe('Navigation Config', () => {
     expect(rates.children!.common).toBeDefined();
   });
 
-  it('housing has all expected leaf nodes', () => {
-    const housing =
-      navigationConfig.acquisition.children!.rates.children!.realestate
-        .children!.housing;
-    expect(housing.children).toBeDefined();
-    const keys = Object.keys(housing.children!);
-    expect(keys).toContain('general');
-    expect(keys).toContain('inheritance');
-    expect(keys).toContain('gift');
-    expect(keys).toContain('original');
-    expect(keys).toContain('multi-house');
-    expect(keys).toContain('corporate');
-    expect(keys).toContain('luxury');
+  it('realestate has housing, farmland, non-farmland leaf nodes', () => {
+    const realestate = navigationConfig.acquisition.children!.rates.children!.realestate;
+    expect(realestate.children).toBeDefined();
+    const keys = Object.keys(realestate.children!);
+    expect(keys).toContain('housing');
+    expect(keys).toContain('farmland');
+    expect(keys).toContain('non-farmland');
   });
 
-  it('themes contains multi-house and first-time-buyer', () => {
-    const themes = navigationConfig.acquisition.children!.themes;
-    expect(themes.children).toBeDefined();
-    expect(themes.children!['multi-house']).toBeDefined();
-    expect(themes.children!['first-time-buyer']).toBeDefined();
+  it('multi-house and luxury are direct children of acquisition', () => {
+    const children = navigationConfig.acquisition.children!;
+    expect(children['multi-house']).toBeDefined();
+    expect(children['luxury']).toBeDefined();
   });
 });

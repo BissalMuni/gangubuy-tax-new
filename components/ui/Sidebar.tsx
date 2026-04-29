@@ -142,6 +142,8 @@ export function Sidebar() {
   return (
     <Sider
       width={260}
+      role="navigation"
+      aria-label="사이드바 메뉴"
       style={{
         background: '#fff',
         overflow: 'auto',

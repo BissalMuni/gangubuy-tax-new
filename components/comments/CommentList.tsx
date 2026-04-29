@@ -119,15 +119,15 @@ export function CommentList({ contentPath }: CommentListProps) {
   });
 
   return (
-    <div id="comments-section" style={{ marginTop: 48 }}>
+    <section id="comments-section" role="region" aria-label="댓글" style={{ marginTop: 48 }}>
       <Divider />
-      <Title level={5}>
+      <Title level={5} id="comments-heading">
         <CommentOutlined style={{ marginRight: 8 }} />
         댓글 ({comments.length})
       </Title>
 
       {loading ? (
-        <div style={{ textAlign: 'center', padding: 24 }}>
+        <div style={{ textAlign: 'center', padding: 24 }} aria-label="댓글 로딩 중">
           <Spin />
         </div>
       ) : (
@@ -153,6 +153,6 @@ export function CommentList({ contentPath }: CommentListProps) {
           <CommentForm onSubmit={handleSubmit} loading={submitting} />
         </>
       )}
-    </div>
+    </section>
   );
 }

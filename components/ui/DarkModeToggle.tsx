@@ -25,6 +25,7 @@ export function DarkModeToggle() {
         icon={isDark ? <SunOutlined /> : <MoonOutlined />}
         onClick={toggleDarkMode}
         style={{ color: '#ccc' }}
+        aria-label={isDark ? '라이트 모드로 전환' : '다크 모드로 전환'}
       />
     </Tooltip>
   );

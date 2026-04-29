@@ -20,7 +20,7 @@ pnpm install
 # Run development server
 pnpm dev
 
-# Open http://localhost:3000
+# Open http://localhost:3001
 ```
 
 ## Project Structure Overview
@@ -81,17 +81,6 @@ export const navigation = {
 ### ~~4. Update Content Sequence (for infinite scroll)~~ [REMOVED]
 > 제거됨: 무한 스크롤 기능 제거로 content sequence 설정이 불필요합니다.
 
-```typescript
-// lib/navigation/contentSequence.ts
-export const ACQUISITION_SEQUENCE = [
-  'rates',
-  'standard',
-  'requirements',
-  'special',
-  'new-topic', // Add new item
-];
-```
-
 ## Adding a New Version
 
 ```bash
@@ -134,12 +123,13 @@ pnpm start
 
 ## Environment Variables
 
-No environment variables required for basic functionality.
+No environment variables required for basic content browsing.
 
-Optional:
+댓글/첨부파일 기능 사용 시:
 ```bash
-# .env.local (for future features)
-# NEXT_PUBLIC_SITE_URL=https://your-domain.com
+# .env.local
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 ```
 
 ## Common Tasks
@@ -148,9 +138,8 @@ Optional:
 
 ```typescript
 // lib/stores/preferences.ts
-type FontSize = 'small' | 'medium' | 'large';
-
-// Modify CSS variables in globals.css for actual sizes
+// FontSize는 number 타입 (px 단위, 12~22px, 기본 15px)
+// lib/types/index.ts에서 MIN_FONT_SIZE, MAX_FONT_SIZE, FONT_SIZE_STEP 상수 수정
 ```
 
 ### Add Custom MDX Component
@@ -161,7 +150,7 @@ export function CustomComponent({ children }) {
   return <div className="custom">{children}</div>;
 }
 
-// Add to MDX components in lib/mdx/components.ts
+// Add to MDX components in components/mdx/index.tsx
 export const mdxComponents = {
   // ... existing
   CustomComponent,
@@ -205,10 +194,10 @@ export const mdxComponents = {
 ## Useful Commands
 
 ```bash
-pnpm dev          # Development server
-pnpm build        # Production build
-pnpm start        # Preview production
-pnpm test         # Run tests
-pnpm lint         # Run linter
-pnpm type-check   # TypeScript check
+pnpm dev              # Development server (port 3001)
+pnpm build            # Production build
+pnpm start            # Preview production
+pnpm test             # Run tests (vitest)
+pnpm test:coverage    # Test coverage report
+pnpm lint             # Run linter
 ```

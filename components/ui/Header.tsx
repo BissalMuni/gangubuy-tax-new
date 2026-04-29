@@ -16,6 +16,7 @@ interface HeaderProps {
 export function Header({ onMenuClick, showMenuButton }: HeaderProps) {
   return (
     <AntHeader
+      role="banner"
       style={{
         display: 'flex',
         alignItems: 'center',
@@ -32,9 +33,10 @@ export function Header({ onMenuClick, showMenuButton }: HeaderProps) {
           icon={<MenuOutlined style={{ color: '#fff', fontSize: 18 }} />}
           onClick={onMenuClick}
           style={{ padding: '4px 8px' }}
+          aria-label="메뉴 열기"
         />
       )}
-      <Link href="/" style={{ textDecoration: 'none', flex: 1 }}>
+      <Link href="/" style={{ textDecoration: 'none', flex: 1 }} aria-label="홈으로 이동">
         <Typography.Title
           level={4}
           style={{ color: '#fff', margin: 0, fontSize: 18 }}
