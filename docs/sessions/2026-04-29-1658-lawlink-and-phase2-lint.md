@@ -13,6 +13,9 @@ commits:
   - 021dca6 ci gate PRs on content:check + mdx:lint
   - 3eb7113 chore(content) ratchet inline-styled tables toward zero (lean MDX)
   - 8d0c0c8 feat(content) extract 고급주택 복합 중과 table to data + component
+  - 5097e38 chore(content) add 2 structure lint rules (sectionnav-h2-match, h1-count)
+  - cd8ec83 feat(content) extract 분양권/입주권 tables (2 of multi-house's 18)
+  - cf679df feat(content) extract 동일세대 판단 table to data + component
 files_changed:
   - path: lib/content/law-link-schema.ts
     change: created
@@ -250,26 +253,34 @@ CI 통합 후 **두 검증이 PR 게이트**. `package.json` 스크립트:
 ### 완료
 - [x] 1085 LawLink 변환 + 95 파일 검증
 - [x] markdown link 7건 변환
-- [x] 6개 lint 규칙 + negative test 모두 통과
+- [x] 8개 lint 규칙 + negative test 모두 통과
+  - LawLink: no-raw-law-link, lawlink-valid-law, lawlink-valid-article, lawlink-non-empty-children, no-markdown-law-link
+  - 인라인 표 ratchet: no-new-inline-table
+  - 구조: sectionnav-h2-match, h1-count
 - [x] CI 게이트
-- [x] Ratchet baseline 46 파일 / 224 표 수립
-- [x] Table 5 추출 (multi-house 19→18)
+- [x] Ratchet baseline 46 파일 / 225 표 수립 → 현재 221 표 (-4)
+- [x] Vertical slices (multi-house 19→15, -4):
+  - Table 5 고급주택 복합 중과 (LuxuryOverlapTable, 19→18)
+  - 분양권 취득시점 (PresaleRightsTimingTable, rowSpan 그룹)
+  - 분양권 세율적용 timeline (PresaleRateTimelineTable)
+  - 동일세대 판단 (HouseholdMembershipTable, 9 rows × statusKind)
 
 ### 후속 과제
-- [ ] **Ratchet migration drive**: 224 inline 표 → 0. 우선순위 높은 파일:
-  - housing-v1.0.mdx (25 표)
-  - multi-house-v1.0.mdx (남은 18 표 — 동일 세대, 가족 범위, 중위소득, 주택수 가산 등 다수 표)
-  - common-v1.0.mdx (14 표)
-  - luxury-v1.0.mdx (16 표)
+
+**Ratchet drive 진행률**: 225 → 221 (-4, 1.8%) — 70표 남음
+- 잔여: housing 25, common 14, luxury 16, multi-house 15 = 70표
+
+**가속 전략 후보** — generic 컴포넌트로 ROI 극대화:
+- "관련 법령" 4-col 표 ≈11개가 동일 구조 → `<LawReferenceTable refs={[...]} />` 한 컴포넌트
+- "세율표" 4–5col 표 ≈11개도 유사 패턴 → `<RateTable rows={[...]} />`
+- inline-prop 패턴(SectionNav과 동일)으로 데이터 파일 분리 없이 가능
+
+**기타**:
 - [ ] CI에서 첫 PR 한번 돌려서 워크플로우 동작 검증
-- [ ] **추가 lint 규칙 후보** (probe 시점 0건 / 추가 ROI):
-  - SectionNav id ↔ h2 id 미스매치 검출
-  - heading hierarchy (H1 1개, H2/H3 skip 검출)
-  - frontmatter `last_updated`이 git mtime과 너무 차이나면 경고
-- [ ] 다음 vertical slice 후보:
-  - 일시적 2주택 표
-  - 동일 세대 판단 기준 표
-  - 분양권/입주권 표
+- [ ] heading-hierarchy lint (보류 — 24파일 의도적 H2→H4 skip이 있어 노이즈)
+- [ ] frontmatter `last_updated`이 git mtime과 너무 차이나면 경고
+
+**일시적 2주택**: 표 없음 (bullet list만) — 슬라이스 불가로 확인됨
 
 ## 💡 인사이트
 
