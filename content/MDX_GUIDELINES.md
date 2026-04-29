@@ -388,6 +388,9 @@ npm run mdx:lint
 | 규칙 ID | 의미 | 가이드 |
 |---|---|---|
 | `no-raw-law-link` | `<a href="https://law.go.kr/...">` 사용 금지. `<LawLink>` 컴포넌트만 허용 | §4.1 |
+| `lawlink-valid-law` | `<LawLink law="...">` 값이 `LawName` enum (lib/content/law-link-schema.ts) 내에 있어야 함 | §4.2 |
+| `lawlink-valid-article` | `<LawLink article="...">`는 `제N조` 또는 `제N조의M` 형태여야 함 | §4.2 |
+| `lawlink-non-empty-children` | `<LawLink>...</LawLink>` 내부 텍스트 비어있으면 안 됨 (보이지 않는 링크 방지) | §4.3 |
 
 ### 13.2 규칙 추가 방법
 

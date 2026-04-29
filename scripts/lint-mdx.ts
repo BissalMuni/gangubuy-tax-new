@@ -1,7 +1,9 @@
 import fs from 'fs';
 import path from 'path';
+import { LawName } from '../lib/content/law-link-schema';
 
 const CONTENT_DIR = path.join(process.cwd(), 'content');
+const validLaws = new Set<string>(LawName.options);
 
 interface Issue {
   rule: string;
@@ -35,6 +37,9 @@ function locateOffset(raw: string, offset: number): { line: number; column: numb
   return { line: lines.length, column: lines[lines.length - 1].length + 1 };
 }
 
+const lawLinkRe =
+  /<LawLink\s+law=["']([^"']*)["'](?:\s+article=["']([^"']*)["'])?\s*>([\s\S]*?)<\/LawLink>/g;
+
 const rules: Rule[] = [
   {
     id: 'no-raw-law-link',
@@ -56,6 +61,80 @@ const rules: Rule[] = [
             'Raw law.go.kr anchor — convert to <LawLink law="…" article="…">…</LawLink> (see MDX_GUIDELINES.md §4.1)',
           excerpt: m[0].slice(0, 120),
         });
+      }
+      return issues;
+    },
+  },
+  {
+    id: 'lawlink-valid-law',
+    description:
+      '<LawLink law="..."> must use a value from the LawName enum (lib/content/law-link-schema.ts)',
+    check(file, raw) {
+      const issues: Issue[] = [];
+      lawLinkRe.lastIndex = 0;
+      let m: RegExpExecArray | null;
+      while ((m = lawLinkRe.exec(raw)) !== null) {
+        const law = m[1];
+        if (!validLaws.has(law)) {
+          const { line, column } = locateOffset(raw, m.index);
+          issues.push({
+            rule: 'lawlink-valid-law',
+            file,
+            line,
+            column,
+            message: `Unknown law name "${law}". Add to LawName enum first if this is a new law.`,
+            excerpt: m[0].slice(0, 120),
+          });
+        }
+      }
+      return issues;
+    },
+  },
+  {
+    id: 'lawlink-valid-article',
+    description:
+      '<LawLink article="..."> must match /^제\\d+조(의\\d+)?$/ (e.g. 제13조, 제58조의3)',
+    check(file, raw) {
+      const issues: Issue[] = [];
+      lawLinkRe.lastIndex = 0;
+      let m: RegExpExecArray | null;
+      while ((m = lawLinkRe.exec(raw)) !== null) {
+        const article = m[2];
+        if (article && !/^제\d+조(의\d+)?$/.test(article)) {
+          const { line, column } = locateOffset(raw, m.index);
+          issues.push({
+            rule: 'lawlink-valid-article',
+            file,
+            line,
+            column,
+            message: `Malformed article "${article}". Must look like "제13조" or "제58조의3".`,
+            excerpt: m[0].slice(0, 120),
+          });
+        }
+      }
+      return issues;
+    },
+  },
+  {
+    id: 'lawlink-non-empty-children',
+    description:
+      '<LawLink> must have visible text content (children); empty children renders an invisible link',
+    check(file, raw) {
+      const issues: Issue[] = [];
+      lawLinkRe.lastIndex = 0;
+      let m: RegExpExecArray | null;
+      while ((m = lawLinkRe.exec(raw)) !== null) {
+        if (!m[3].trim()) {
+          const { line, column } = locateOffset(raw, m.index);
+          issues.push({
+            rule: 'lawlink-non-empty-children',
+            file,
+            line,
+            column,
+            message: 'Empty <LawLink>…</LawLink> children — provide visible text.',
+            excerpt: m[0].slice(0, 120),
+          });
+        }
       }
       return issues;
     },
