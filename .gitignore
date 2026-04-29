@@ -8,3 +8,7 @@ node_modules
 .claude/settings.local.json
 .claude/*.lock
 tsconfig.tsbuildinfo
+
+# One-shot migration artifacts (LawLink slice baselines/inventories)
+docs/sessions/_law-link-baseline.json
+docs/sessions/_law-link-inventory.json
