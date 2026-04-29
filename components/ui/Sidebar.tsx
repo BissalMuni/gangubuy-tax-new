@@ -7,6 +7,7 @@ import {
   BankOutlined,
   CarOutlined,
   SearchOutlined,
+  ApartmentOutlined,
 } from '@ant-design/icons';
 import { usePathname, useRouter } from 'next/navigation';
 import { useMemo, useState, useCallback, useEffect } from 'react';
@@ -26,6 +27,7 @@ const iconMap: Record<string, React.ReactNode> = {
   bank: <BankOutlined />,
   car: <CarOutlined />,
   search: <SearchOutlined />,
+  apartment: <ApartmentOutlined />,
 };
 
 function nodeToMenuItem(

@@ -25,7 +25,12 @@ export function getLeafPaths(node: NavigationNode): string[] {
  */
 function getCategoryFromPath(path: string): TaxCategory | null {
   const segment = path.split('/').filter(Boolean)[0];
-  if (segment === 'acquisition' || segment === 'property' || segment === 'vehicle') {
+  if (
+    segment === 'acquisition' ||
+    segment === 'corp-acquisition-tax' ||
+    segment === 'property' ||
+    segment === 'vehicle'
+  ) {
     return segment;
   }
   return null;

@@ -8,7 +8,7 @@ source: "acquisitiontax.pdf"
 page_range: [2, 16]
 version: "1.0"
 effective_date: "2020-08-12"
-last_updated: "2026-01-31"
+last_updated: "2026-04-10"
 status: "draft"
 law_reference: "지방세법 §13의2, §13의3, 시행령 §28의2~§28의5"
 tags: ["다주택자", "중과", "취득세율표", "주택수산정", "일시적2주택", "조정대상지역"]
@@ -441,6 +441,65 @@ tags: ["다주택자", "중과", "취득세율표", "주택수산정", "일시�
 
 - 주택 취득자와 등본(<a href="https://law.go.kr/법령/주민등록법/제7조" target="_blank" rel="noopener noreferrer">주민등록법 §7</a>)에 함께 기재된 **민법상 가족** (동거인 제외)으로 구성된 세대
 
+<Outline level={2}>동일 세대로 보는 세대원 판단 기준</Outline>
+
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '140px'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '120px'}}>동일세대 여부</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>조건 / 비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{backgroundColor: '#e6f7ff'}}>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>배우자</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O (주소 불문)</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>법률혼만 해당, 사실혼 제외 / 이혼 후에도 생계 같이하면 포함</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>30세 미만 미혼 자녀</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O (주소 불문)</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>단, ①중위소득 40%↑ ②독립생계 ③성년 → 3가지 <strong>모두</strong> 충족 시 별도세대</td>
+    </tr>
+    <tr style={{backgroundColor: '#e6f7ff'}}>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>30세 이상 자녀</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>등본상 동거 시</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>별도 주소 시 별도세대</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>기혼 자녀</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>등본상 동거 시</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>별도 주소 시 별도세대 (연령 불문)</td>
+    </tr>
+    <tr style={{backgroundColor: '#e6f7ff'}}>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>직계존속 (부모)</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>등본상 동거 시</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득자가 30세 미만 미혼이면 <strong>항상</strong> 동일세대 / 65세↑ 봉양합가 시 별도세대 인정</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>형제자매</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>등본상 동거 시</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>등본 분리 시 별도세대</td>
+    </tr>
+    <tr style={{backgroundColor: '#e6f7ff'}}>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>직계혈족의 배우자<br/>(며느리·사위 등)</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>동거 + 생계 같이</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>인척 → <a href="https://law.go.kr/법령/민법/제779조" target="_blank" rel="noopener noreferrer">민법 §779</a> 생계를 같이해야 가족</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>배우자의 직계혈족<br/>(시부모·장인장모 등)</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>동거 + 생계 같이</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>인척 → <a href="https://law.go.kr/법령/민법/제779조" target="_blank" rel="noopener noreferrer">민법 §779</a> 생계를 같이해야 가족</td>
+    </tr>
+    <tr style={{backgroundColor: '#fafafa'}}>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', color: '#cf1322'}}>동거인</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#cf1322', fontWeight: 'bold'}}>X</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>가족이 아니므로 세대원에 해당하지 않음</td>
+    </tr>
+  </tbody>
+</table>
+
 <Outline level={2}>1세대로 보는 경우 (예외 있음)</Outline>
 
 {/* 배우자 */}
@@ -516,27 +575,31 @@ tags: ["다주택자", "중과", "취득세율표", "주택수산정", "일시�
   </tbody>
 </table>
 
-<Outline level={2}>별도 세대로 보는 경우</Outline>
+<Outline level={2}>별도 세대로 보는 경우 (<a href="https://law.go.kr/법령/지방세법시행령/제28조의3" target="_blank" rel="noopener noreferrer">시행령 §28조의3②</a>)</Outline>
 
 <table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px', marginBottom: '16px'}}>
   <thead>
     <tr style={{backgroundColor: '#f0f0f0'}}>
       <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '140px'}}>사유</th>
       <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>조건</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '120px'}}>근거조문</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>봉양합가</td>
       <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>65세 이상 직계존속 동거봉양 시 → 각각 독립세대로 인정</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><a href="https://law.go.kr/법령/지방세법시행령/제28조의3" target="_blank" rel="noopener noreferrer">시행령 §28조의3②1호</a></td>
     </tr>
     <tr>
       <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>해외체류</td>
       <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>세대 전원 90일 이상 출국 + 거주지를 다른 가족 주소로 신고</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><a href="https://law.go.kr/법령/지방세법시행령/제28조의3" target="_blank" rel="noopener noreferrer">시행령 §28조의3②2호</a></td>
     </tr>
     <tr>
       <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>60일내 전입</td>
       <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>세대분리 가능한 사람이 취득 주택으로 60일 내 주소이전</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><a href="https://law.go.kr/법령/지방세법시행령/제28조의3" target="_blank" rel="noopener noreferrer">시행령 §28조의3②3호</a></td>
     </tr>
   </tbody>
 </table>
@@ -693,7 +756,7 @@ tags: ["다주택자", "중과", "취득세율표", "주택수산정", "일시�
 
 </Callout>
 
-<Outline level={2}>3. 보유 주택에서 제외 (§28조의4⑥)</Outline>
+<Outline level={2}>3. 보유 주택에서 제외 (<a href="https://law.go.kr/법령/지방세법시행령/제28조의4" target="_blank" rel="noopener noreferrer">§28조의4⑥</a>)</Outline>
 
 기존 소유주택 수에서 제외
 
@@ -875,6 +938,139 @@ tags: ["다주택자", "중과", "취득세율표", "주택수산정", "일시�
 
 </Callout>
 
+<Outline level={2}>중과제외주택 vs 주택수합산배제 대상주택 구분</Outline>
+
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '160px'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>중과제외주택<br/>(<a href="https://law.go.kr/법령/지방세법시행령/제28조의2" target="_blank" rel="noopener noreferrer">시행령 §28조의2</a>)</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>주택수합산배제 대상주택<br/>(<a href="https://law.go.kr/법령/지방세법시행령/제28조의4" target="_blank" rel="noopener noreferrer">시행령 §28조의4⑥</a>)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{backgroundColor: '#e6f7ff'}}>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>의미</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>해당 주택 <strong>취득 시</strong> 중과세율 적용 배제 → <strong>일반세율</strong> 적용</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>보유 주택수 산정에서 <strong>제외</strong> → 다른 주택 취득 시 주택수에 불산입</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>효과</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>해당 주택 자체의 세율만 낮아짐</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>다른 주택 취득 시에도 주택수에서 빠지므로 <strong>전체 세율에 영향</strong></td>
+    </tr>
+    <tr style={{backgroundColor: '#e6f7ff'}}>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>적용 범위</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§28조의2 전체 (1~18호)</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§28조의2 중 <strong>일부</strong> (1·3·4·5·6·11·12·17·18호)만 해당</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>포함관계</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>중과제외이나 주택수에는 <strong>포함</strong>되는 유형 있음<br/>(예: 멸실목적 취득, 저당권실행 등)</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>주택수합산배제이면 반드시 <strong>중과제외</strong>에도 해당</td>
+    </tr>
+  </tbody>
+</table>
+
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>유형 (§28조의2)</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '100px', textAlign: 'center'}}>중과제외</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '100px', textAlign: 'center'}}>주택수 제외</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '200px'}}>실무 포인트</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{backgroundColor: '#e6f7ff'}}>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1호 저가주택</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득·보유 모두 주택수 불산입</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>2호 공공매입임대 공급목적</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#cf1322', fontWeight: 'bold'}}>X</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득 시만 중과배제, 주택수 산입</td>
+    </tr>
+    <tr style={{backgroundColor: '#e6f7ff'}}>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>3호 노인복지주택</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득·보유 모두 주택수 불산입</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>4호 문화유산 주택</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득·보유 모두 주택수 불산입</td>
+    </tr>
+    <tr style={{backgroundColor: '#e6f7ff'}}>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>5호 공공지원민간임대</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득·보유 모두 주택수 불산입</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>6호 가정어린이집</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득·보유 모두 주택수 불산입</td>
+    </tr>
+    <tr style={{backgroundColor: '#e6f7ff'}}>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>8호 멸실목적 취득</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#cf1322', fontWeight: 'bold'}}>X</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득 시만 중과배제, 주택수 산입</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>10호 저당권실행·채권변제</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#cf1322', fontWeight: 'bold'}}>X</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득 시만 중과배제, 주택수 산입</td>
+    </tr>
+    <tr style={{backgroundColor: '#e6f7ff'}}>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>11호 농어촌주택</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득·보유 모두 주택수 불산입</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>12호 사원임대용 (60㎡↓)</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득·보유 모두 주택수 불산입</td>
+    </tr>
+    <tr style={{backgroundColor: '#e6f7ff'}}>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>13호 물적분할·법인합병</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#cf1322', fontWeight: 'bold'}}>X</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득 시만 중과배제, 주택수 산입</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>17호 지방 미분양</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득·보유 모두 주택수 불산입</td>
+    </tr>
+    <tr style={{backgroundColor: '#e6f7ff'}}>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>18호 인구감소지역 임대</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득·보유 모두 주택수 불산입</td>
+    </tr>
+  </tbody>
+</table>
+
+<Callout type="info">
+
+- **중과제외(§28조의2)**: 18개 유형 모두 해당 주택 취득 시 중과세율 적용 배제
+- **주택수합산배제(§28조의4⑥1호)**: 위 중과제외 중 **1·3·4·5·6·11·12·17·18호**만 보유 주택수에서도 제외
+- 중과제외이지만 주택수에는 산입되는 유형(2·7~10·13~16호)은 **다른 주택 취득 시 주택수에 포함**되어 세율에 영향
+
+</Callout>
+
 <Outline level={2}>4. 공동소유/동시취득 처리 (§28조의4③④⑤)</Outline>
 
 <table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px', marginBottom: '16px'}}>
@@ -1015,37 +1211,46 @@ tags: ["다주택자", "중과", "취득세율표", "주택수산정", "일시�
   <Outline level={1}>분양권·입주권 취득시점 및 세율적용</Outline>
 </h2>
 
-<Outline level={2}>취득시점</Outline>
+<Outline level={2}>입주권과 주택분양권의 취득시점</Outline>
 
-<table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px', marginBottom: '16px'}}>
+- 입주권·분양권은 **최초취득**과 **승계취득**에 따라 취득시점이 다르므로 구분이 중요
+
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
   <thead>
     <tr style={{backgroundColor: '#f0f0f0'}}>
-      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구분</th>
-      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>최초취득/승계취득</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '120px'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '180px'}}>최초취득 / 승계취득</th>
       <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>취득 시점</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td rowSpan={2} style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>입주권</td>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>최초 취득 (원조합원)</td>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><strong>"철거" 시점</strong> (철거 전까지는 '주택'으로 봄)</td>
+    <tr style={{backgroundColor: '#e6f7ff'}}>
+      <td rowSpan={2} style={{border: '1px solid #d9d9d9', padding: '10px', fontWeight: 'bold', backgroundColor: '#e6f7ff', verticalAlign: 'middle', textAlign: 'center', fontSize: '14px'}}>입주권</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '10px', fontWeight: 'bold'}}>최초 취득<br/><span style={{fontWeight: 'normal', color: '#666'}}>(원조합원)</span></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '10px'}}><strong style={{color: '#cf1322'}}>"철거" 시점</strong><br/>철거 전까지는 '주택'으로 봄 (입주권이 아닌 주택 보유로 판단)<br/>※ 관리처분인가일이 아닌 실제 철거 시점 기준</td>
+    </tr>
+    <tr style={{backgroundColor: '#e6f7ff'}}>
+      <td style={{border: '1px solid #d9d9d9', padding: '10px', fontWeight: 'bold'}}>승계 취득<br/><span style={{fontWeight: 'normal', color: '#666'}}>(승계조합원)</span></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '10px'}}><strong style={{color: '#cf1322'}}>토지의 잔금 지급일</strong></td>
     </tr>
     <tr>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>승계 취득 (승계조합원)</td>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>토지의 잔금 지급일</td>
+      <td rowSpan={2} style={{border: '1px solid #d9d9d9', padding: '10px', fontWeight: 'bold', backgroundColor: '#fafafa', verticalAlign: 'middle', textAlign: 'center', fontSize: '14px'}}>주택분양권</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '10px', fontWeight: 'bold'}}>최초 취득<br/><span style={{fontWeight: 'normal', color: '#666'}}>(최초 수분양자)</span></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '10px'}}>분양회사와 수분양자의 <strong style={{color: '#cf1322'}}>분양계약일</strong></td>
     </tr>
     <tr>
-      <td rowSpan={2} style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>분양권</td>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>최초 취득 (최초 수분양자)</td>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>분양회사와 수분양자의 <strong>분양계약일</strong></td>
-    </tr>
-    <tr>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>승계 취득</td>
-      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>분양권의 <strong>잔금 지급일</strong> (전매계약서)</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '10px', fontWeight: 'bold'}}>승계 취득<br/><span style={{fontWeight: 'normal', color: '#666'}}>(최초 수분양자로부터 분양권 승계취득자)</span></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '10px'}}>분양권의 <strong style={{color: '#cf1322'}}>잔금 지급일</strong> (전매계약서 기준)</td>
     </tr>
   </tbody>
 </table>
+
+<Callout type="info">
+
+- **입주권 원조합원**: 관리처분인가 후 기존 주택이 철거되는 시점에 '입주권'을 취득한 것으로 봄. 철거 전까지는 기존 주택 보유 상태 (관리처분인가일이 아닌 실제 철거 시점 기준)
+- **주택분양권 승계취득**: 최초 수분양자로부터 전매로 분양권을 매수하는 경우, 전매계약서상 잔금 지급일이 취득시점
+
+</Callout>
 
 <Outline level={2}>분양권 취득시기별 세율적용</Outline>
 

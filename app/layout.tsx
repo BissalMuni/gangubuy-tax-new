@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { AntdProvider } from '@/components/providers/AntdProvider';
 import { FontSizeProvider } from '@/components/providers/FontSizeProvider';
 import './globals.css';
@@ -19,9 +20,11 @@ export default function RootLayout({
         <meta name="darkreader-lock" />
       </head>
       <body suppressHydrationWarning>
-        <AntdProvider>
-          <FontSizeProvider>{children}</FontSizeProvider>
-        </AntdProvider>
+        <AntdRegistry>
+          <AntdProvider>
+            <FontSizeProvider>{children}</FontSizeProvider>
+          </AntdProvider>
+        </AntdRegistry>
       </body>
     </html>
   );

@@ -34,11 +34,25 @@ try {
 
 /**
  * content_path로부터 MDX 파일 경로를 찾습니다
+ * 정확한 경로를 못 찾으면 slug 기반으로 전체 content 디렉토리를 검색합니다
  */
 function resolveContentPath(contentPath: string): string | null {
-  const dirPath = path.join(CONTENT_DIR, path.dirname(contentPath));
   const slug = path.basename(contentPath);
 
+  // 1차: 정확한 디렉토리 경로로 검색
+  const dirPath = path.join(CONTENT_DIR, path.dirname(contentPath));
+  const result = findVersionedMdx(dirPath, slug);
+  if (result) return result;
+
+  // 2차: slug 기반으로 전체 content 디렉토리 재귀 검색
+  const found = findMdxBySlug(CONTENT_DIR, slug);
+  if (found) {
+    console.log(`  [Resolve] 경로 변경 감지: ${contentPath} → ${path.relative(CONTENT_DIR, found)}`);
+  }
+  return found;
+}
+
+function findVersionedMdx(dirPath: string, slug: string): string | null {
   if (!fs.existsSync(dirPath)) return null;
 
   const entries = fs.readdirSync(dirPath);
@@ -52,6 +66,23 @@ function resolveContentPath(contentPath: string): string | null {
 
   if (versionedFiles.length === 0) return null;
   return path.join(dirPath, versionedFiles[0]);
+}
+
+function findMdxBySlug(dir: string, slug: string): string | null {
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      const result = findMdxBySlug(fullPath, slug);
+      if (result) return result;
+    } else if (entry.isFile()) {
+      const match = entry.name.match(/^(.+)-v(\d+\.\d+)\.mdx$/);
+      if (match && match[1] === slug) return fullPath;
+    }
+  }
+
+  return null;
 }
 
 /**
@@ -180,11 +211,23 @@ async function runClaude(prompt: string): Promise<{ success: boolean; output: st
   return new Promise((resolve) => {
     console.log('[Pipeline] Running Claude Code...');
 
-    const proc = spawn('claude', ['-p', prompt], {
+    // -p - : stdin에서 프롬프트를 읽어 non-interactive 모드로 실행
+    // --allowedTools : 비대화형 모드에서 파일 읽기/쓰기 권한 부여
+    const proc = spawn('claude', [
+      '-p', '-',
+      '--output-format', 'text',
+      '--allowedTools', 'Read,Edit,Write,Glob,Grep',
+    ], {
       cwd: process.cwd(),
       shell: true,
       timeout: 600000, // 10분
+      stdio: ['pipe', 'pipe', 'pipe'],
     });
+
+    if (proc.stdin) {
+      proc.stdin.write(prompt);
+      proc.stdin.end();
+    }
 
     let stdout = '';
     let stderr = '';
@@ -200,6 +243,9 @@ async function runClaude(prompt: string): Promise<{ success: boolean; output: st
     });
 
     proc.on('close', (code) => {
+      if (code !== 0) {
+        console.error('[Pipeline] Claude stderr:', stderr);
+      }
       resolve({
         success: code === 0,
         output: stdout || stderr,
@@ -280,7 +326,7 @@ async function main() {
     const claudeResult = await runClaude(prompt);
 
     if (!claudeResult.success) {
-      console.error('[Error] Claude Code 실행 실패');
+      console.error('[Error] Claude Code 실행 실패:', claudeResult.output);
       errorCount += comments.length;
       continue;
     }
@@ -302,7 +348,7 @@ async function main() {
     console.log(`[Git] 변경된 파일: ${modifiedFiles.join(', ')}`);
 
     // 커밋 메시지에 모든 댓글 ID 포함
-    const commentIds = comments.map((c) => c.id.substring(0, 8)).join(', ');
+    const commentIds = comments.map((c) => c.id?.substring(0, 8) ?? 'unknown').join(', ');
     const commitResult = commitAndPush(
       { ...comments[0], body: `${comments.length}개 댓글 반영 (${commentIds})` },
       mdxFilePath,

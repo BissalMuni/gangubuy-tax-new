@@ -32,7 +32,7 @@ function findNavLabel(path: string, node?: NavigationNode): string | null {
   return null;
 }
 
-const CATEGORIES: TaxCategory[] = ['acquisition', 'property', 'vehicle'];
+const CATEGORIES: TaxCategory[] = ['acquisition', 'corp-acquisition-tax', 'property', 'vehicle'];
 
 let indexInstance: FlexSearchIndex | null = null;
 let documentsMap: Map<number, SearchDocument> = new Map();

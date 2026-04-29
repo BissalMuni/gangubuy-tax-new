@@ -23,7 +23,7 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  let body: { content_path?: string; author?: string; body?: string };
+  let body: { content_path?: string; author?: string; body?: string; section?: string };
 
   try {
     body = await request.json();
@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const { content_path, author, body: commentBody } = body;
+  const { content_path, author, body: commentBody, section } = body;
 
   if (!content_path || !author || !commentBody) {
     return NextResponse.json(
@@ -47,6 +47,7 @@ export async function POST(request: NextRequest) {
   const trimmedAuthor = author.trim().slice(0, 100);
   const trimmedBody = commentBody.trim().slice(0, 5000);
   const trimmedPath = content_path.trim();
+  const trimmedSection = section ? section.trim().slice(0, 100) : null;
 
   if (!trimmedAuthor || !trimmedBody || !trimmedPath) {
     return NextResponse.json(
@@ -56,7 +57,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const data = await createComment(trimmedPath, trimmedAuthor, trimmedBody);
+    const data = await createComment(trimmedPath, trimmedAuthor, trimmedBody, trimmedSection);
     return NextResponse.json({ data }, { status: 201 });
   } catch {
     return NextResponse.json(

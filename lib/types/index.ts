@@ -13,6 +13,7 @@ export interface NavigationNode {
 export interface NavigationConfig {
   home: NavigationNode;
   acquisition: NavigationNode;
+  'corp-acquisition-tax': NavigationNode;
   property: NavigationNode;
   vehicle: NavigationNode;
   search: NavigationNode;
@@ -20,7 +21,7 @@ export interface NavigationConfig {
 
 // === Content ===
 
-export type TaxCategory = 'acquisition' | 'property' | 'vehicle';
+export type TaxCategory = 'acquisition' | 'corp-acquisition-tax' | 'property' | 'vehicle';
 
 export interface ContentMeta {
   id: string;
@@ -81,6 +82,7 @@ export interface SearchResult {
 export interface Comment {
   id: string;
   content_path: string;
+  section?: string | null;
   author: string;
   body: string;
   created_at: string;

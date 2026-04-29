@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
   }
 
   const { meta, rawSource } = readMdxFile(file);
-  const mdxSource = await serialize(rawSource);
+  const mdxSource = await serialize(rawSource, { blockJS: false, blockDangerousJS: false });
 
   return NextResponse.json({ meta, mdxSource });
 }

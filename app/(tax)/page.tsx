@@ -15,7 +15,7 @@ const categories = [
     title: '취득세',
     description: '부동산, 차량 등 취득 시 부과되는 세금',
     icon: <FileTextOutlined style={{ fontSize: 32, color: '#1677ff' }} />,
-    href: '/acquisition/themes/multi-house',
+    href: '/acquisition/multi-house/multi-house',
   },
   {
     title: '재산세',

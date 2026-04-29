@@ -1,9 +1,12 @@
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
 import { mdxComponents } from '@/components/mdx';
 import { ContentHeader } from './ContentHeader';
 import { CommentList } from '@/components/comments/CommentList';
 import { AttachmentList } from '@/components/attachments/AttachmentList';
+import { SectionsProvider } from '@/lib/context/sections-context';
+import { SectionCommentButtons } from '@/components/comments/SectionCommentButtons';
 import type { ContentMeta, ContentVersion } from '@/lib/types';
 
 interface MDXRendererProps {
@@ -17,15 +20,29 @@ export function MDXRenderer({ meta, source, versions, contentPath }: MDXRenderer
   return (
     <article>
       <ContentHeader meta={meta} versions={versions} showInteractionLinks={!!contentPath} />
-      <div style={{ fontSize: 'var(--content-font-size)' }}>
-        <MDXRemote source={source} components={mdxComponents} options={{ mdxOptions: { rehypePlugins: [rehypeSlug] } }} />
-      </div>
-      {contentPath && (
-        <div style={{ marginTop: 24 }}>
-          <CommentList contentPath={contentPath} />
-          <AttachmentList contentPath={contentPath} />
+      <SectionsProvider initialContentPath={contentPath}>
+        <div style={{ fontSize: 'var(--content-font-size)' }}>
+          <MDXRemote
+            source={source}
+            components={mdxComponents}
+            options={{
+              mdxOptions: {
+                remarkPlugins: [[remarkGfm, { singleTilde: false }]],
+                rehypePlugins: [rehypeSlug],
+              },
+              blockJS: false,
+              blockDangerousJS: false,
+            }}
+          />
         </div>
-      )}
+        <SectionCommentButtons />
+        {contentPath && (
+          <div style={{ marginTop: 24 }}>
+            <CommentList contentPath={contentPath} />
+            <AttachmentList contentPath={contentPath} />
+          </div>
+        )}
+      </SectionsProvider>
     </article>
   );
 }

@@ -2,23 +2,26 @@ import { Alert, Table as AntTable } from 'antd';
 import { SectionNav } from './SectionNav';
 import { AcquisitionThemeNav } from './AcquisitionThemeNav';
 import { Outline } from './Outline';
+import { SectionHeading } from './SectionHeading';
 
 interface CalloutProps {
-  type?: 'info' | 'caution' | 'warning';
+  type?: 'info' | 'success' | 'caution' | 'warning' | 'error';
   children: React.ReactNode;
 }
 
 export function Callout({ type = 'info', children }: CalloutProps) {
   const typeMap = {
-    info: 'info' as const,
-    caution: 'warning' as const,
-    warning: 'error' as const,
-  };
+    info: 'info',
+    success: 'success',
+    caution: 'warning',
+    warning: 'error',
+    error: 'error',
+  } as const;
 
   return (
     <Alert
       type={typeMap[type]}
-      title={children}
+      message={children}
       showIcon
       style={{ marginBottom: 16 }}
     />
@@ -67,7 +70,7 @@ export const mdxComponents = {
     <h1 {...props} style={{ fontSize: '1.75em', marginTop: 24, marginBottom: 16 }} />
   ),
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h2 {...props} style={{ fontSize: '1.4em', marginTop: 20, marginBottom: 12 }} />
+    <SectionHeading {...props} />
   ),
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3 {...props} style={{ fontSize: '1.2em', marginTop: 16, marginBottom: 8 }} />

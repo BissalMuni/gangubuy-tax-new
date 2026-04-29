@@ -46,7 +46,7 @@ export function commitChanges(
     execSync(`git add "${mdxFilePath}"`, { encoding: 'utf-8' });
 
     // 2. 커밋 메시지 생성
-    const message = `docs: MDX 자동 수정 (댓글 #${comment.id.substring(0, 8)})
+    const message = `docs: MDX 자동 수정 (댓글 #${comment.id?.substring(0, 8) ?? 'unknown'})
 
 - 파일: ${mdxFilePath}
 - 작성자: ${comment.author}
