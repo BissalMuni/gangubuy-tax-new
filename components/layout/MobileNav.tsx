@@ -80,15 +80,18 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
       open={open}
       width={280}
       styles={{ body: { padding: 0 } }}
+      aria-label="모바일 네비게이션"
     >
-      <Menu
-        mode="inline"
-        selectedKeys={[pathname]}
-        defaultOpenKeys={openKeys}
-        items={menuItems}
-        onClick={handleClick}
-        style={{ borderRight: 0 }}
-      />
+      <nav aria-label="모바일 메뉴">
+        <Menu
+          mode="inline"
+          selectedKeys={[pathname]}
+          defaultOpenKeys={openKeys}
+          items={menuItems}
+          onClick={handleClick}
+          style={{ borderRight: 0 }}
+        />
+      </nav>
     </Drawer>
   );
 }

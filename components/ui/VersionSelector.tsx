@@ -41,6 +41,7 @@ export function VersionSelector({
         value={currentVersion}
         onChange={handleChange}
         style={{ width: 100 }}
+        aria-label="문서 버전 선택"
         options={versions.map((v) => ({
           value: v.version,
           label: `v${v.version}${v.isLatest ? ' (최신)' : ''}`,

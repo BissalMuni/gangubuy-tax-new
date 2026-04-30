@@ -12,3 +12,8 @@ tsconfig.tsbuildinfo
 # One-shot migration artifacts (LawLink slice baselines/inventories)
 docs/sessions/_law-link-baseline.json
 docs/sessions/_law-link-inventory.json
+
+# Docker Claude
+Dockerfile.claude
+docker-compose.claude.yml
+.claude-output/

@@ -42,6 +42,7 @@ export default function TaxLayout({
           <MobileNav open={drawerOpen} onClose={() => setDrawerOpen(false)} />
         )}
         <Content
+          role="main"
           style={{
             padding: isMobile ? '16px' : '24px 32px',
             minHeight: 'calc(100vh - 48px)',

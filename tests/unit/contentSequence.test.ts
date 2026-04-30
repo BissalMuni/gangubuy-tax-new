@@ -20,8 +20,8 @@ describe('contentSequence', () => {
 
     it('should return paths in depth-first traversal order', () => {
       const leaves = getLeafPaths(navigationConfig.acquisition);
-      // First leaf should be housing (single file, no subpages)
-      expect(leaves[0]).toBe('/acquisition/rates/realestate/housing');
+      // First leaf should be multi-house (first direct child of acquisition)
+      expect(leaves[0]).toBe('/acquisition/multi-house/multi-house');
     });
 
     it('should not include category nodes (only leaf nodes)', () => {
@@ -44,12 +44,12 @@ describe('contentSequence', () => {
 
   describe('getNextPath', () => {
     it('should return the next leaf path in the category', () => {
-      const next = getNextPath('/acquisition/rates/realestate/housing');
-      expect(next).toBe('/acquisition/rates/realestate/farmland');
+      const next = getNextPath('/acquisition/rates/realestate/housing/housing');
+      expect(next).toBe('/acquisition/rates/realestate/farmland/farmland');
     });
 
     it('should cross parent boundaries to find next sibling', () => {
-      const next = getNextPath('/acquisition/rates/realestate/non-farmland');
+      const next = getNextPath('/acquisition/rates/realestate/non-farmland/non-farmland');
       // After non-farmland, should go to non-realestate
       expect(next).toBe('/acquisition/rates/non-realestate/non-realestate');
     });
@@ -69,8 +69,8 @@ describe('contentSequence', () => {
 
   describe('getPrevPath', () => {
     it('should return the previous leaf path', () => {
-      const prev = getPrevPath('/acquisition/rates/realestate/farmland');
-      expect(prev).toBe('/acquisition/rates/realestate/housing');
+      const prev = getPrevPath('/acquisition/rates/realestate/farmland/farmland');
+      expect(prev).toBe('/acquisition/rates/realestate/housing/housing');
     });
 
     it('should return null for the first leaf in the category', () => {
@@ -83,9 +83,10 @@ describe('contentSequence', () => {
 
   describe('getSequencePosition', () => {
     it('should return current index and total count', () => {
-      const pos = getSequencePosition('/acquisition/rates/realestate/housing');
+      const pos = getSequencePosition('/acquisition/rates/realestate/housing/housing');
       expect(pos).not.toBeNull();
-      expect(pos!.current).toBe(0);
+      // housing is not the first leaf (multi-house comes first)
+      expect(pos!.current).toBeGreaterThan(0);
       expect(pos!.total).toBeGreaterThan(1);
     });
 

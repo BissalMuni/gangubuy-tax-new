@@ -64,6 +64,7 @@ export function AttachmentUpload({ contentPath, onUploaded }: AttachmentUploadPr
         icon={<UploadOutlined />}
         loading={uploading}
         size="small"
+        aria-label="파일 업로드 (최대 10MB)"
       >
         파일 업로드
       </Button>

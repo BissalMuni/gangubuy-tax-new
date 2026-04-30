@@ -69,7 +69,7 @@
 
 - [x] T015 [P] [US1] Unit test for navigation config parsing in tests/unit/navigation.test.ts
 - [x] T016 [P] [US1] Unit test for MDX content loader in tests/unit/contentLoader.test.ts
-- [ ] T017 [P] [US1] Integration test for content page rendering in tests/integration/contentPage.test.tsx
+- [x] T017 [P] [US1] Integration test for content page rendering in tests/integration/contentPage.test.tsx
 
 ### Implementation for User Story 1
 
@@ -120,7 +120,7 @@
 
 ### Tests for User Story 3 ⚠️
 
-- [ ] T036 [P] [US3] Integration test for responsive layout in tests/integration/responsive.test.tsx
+- [x] T036 [P] [US3] Integration test for responsive layout in tests/integration/responsive.test.tsx
 
 ### Implementation for User Story 3
 
@@ -165,12 +165,12 @@
 ### Tests for User Story 5 ⚠️
 
 - [x] T048 [P] [US5] Unit test for version parsing and loading in tests/unit/versions.test.ts
-- [ ] T049 [P] [US5] Integration test for version selector in tests/integration/versionSelector.test.tsx
+- [x] T049 [P] [US5] Integration test for version selector in tests/integration/versionSelector.test.tsx
 
 ### Implementation for User Story 5
 
 - [x] T050 [US5] Create version management utility in lib/content/versions.ts
-- [ ] T051 [US5] Create additional versioned content file content/acquisition/rates-v1.1.mdx
+- [x] T051 [US5] Create additional versioned content file content/acquisition/multi-house/multi-house-v1.1.mdx
 - [x] T052 [US5] Create VersionSelector component in components/ui/VersionSelector.tsx
 - [x] T053 [US5] Integrate VersionSelector into ContentHeader
 - [x] T054 [US5] Add version query parameter handling (?v=1.0) to content pages
@@ -189,7 +189,7 @@
 ### Tests for User Story 6 ⚠️
 
 - [x] T056 [P] [US6] Unit test for search index and query in tests/unit/search.test.ts
-- [ ] T057 [P] [US6] Integration test for search page in tests/integration/search.test.tsx
+- [x] T057 [P] [US6] Integration test for search page in tests/integration/search.test.tsx
 
 ### Implementation for User Story 6
 
@@ -211,8 +211,8 @@
 
 ### Tests for User Story 7 ⚠️
 
-- [ ] T072 [P] [US7] Unit test for comment CRUD in tests/unit/comments.test.ts
-- [ ] T073 [P] [US7] Integration test for comment section in tests/integration/comments.test.tsx
+- [x] T072 [P] [US7] Unit test for comment CRUD in tests/unit/comments.test.ts
+- [x] T073 [P] [US7] Integration test for comment section in tests/integration/comments.test.tsx
 
 ### Implementation for User Story 7
 
@@ -236,8 +236,8 @@
 
 ### Tests for User Story 8 ⚠️
 
-- [ ] T080 [P] [US8] Unit test for attachment CRUD in tests/unit/attachments.test.ts
-- [ ] T081 [P] [US8] Integration test for attachment section in tests/integration/attachments.test.tsx
+- [x] T080 [P] [US8] Unit test for attachment CRUD in tests/unit/attachments.test.ts
+- [x] T081 [P] [US8] Integration test for attachment section in tests/integration/attachments.test.tsx
 
 ### Implementation for User Story 8
 
@@ -257,15 +257,21 @@
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T063 [P] Create acquisition/rates MDX files (유상취득: 매매-주택/농지/건물, 교환, 분할) - 개조식, 사례 제외
-- [ ] T064 [P] Create acquisition/rates MDX files (무상취득: 상속-주택/농지, 증여-주택/농지) - 개조식, 사례 제외
-- [ ] T065 [P] Create acquisition/rates MDX files (원시취득: 신축, 사치성: 고급주택/골프/과점주주) - 개조식, 사례 제외
+- [x] T063 [P] Create acquisition/rates/realestate MDX files: housing-v1.0.mdx (주택), farmland-v1.0.mdx (농지), non-farmland-v1.0.mdx (농지 외) — 물건 기준 구조, 개조식
+- [x] T064 [P] Create acquisition/rates/common/common-v1.0.mdx (공통 세율 규정) and rates/non-realestate/non-realestate-v1.0.mdx (부동산 외 세율) — 개조식
+- [x] T065 [P] Create additional rates MDX files: rates/officetel-use-change-v1.0.mdx, rates/multi-family-housing-tax-v1.0.mdx, rates/quasi-housing-v1.0.mdx, rates/actual-vs-official-status-v1.0.mdx — 개조식
 - [x] T066 [P] Add SEO metadata to all pages using Next.js Metadata API
 - [-] T067 Performance optimization: implement content pre-fetching for infinite scroll [REMOVED]
 - [x] T068 Add error boundary component for graceful error handling
-- [ ] T069 Run all tests and ensure 80%+ coverage
-- [ ] T070 Validate against quickstart.md scenarios
-- [ ] T071 Final accessibility check (keyboard navigation, ARIA labels)
+- [x] T088 [P] Create acquisition/filing MDX files (16개): general-purchase, presale-filing, reconstruction-redevelopment, inheritance-filing, bequest, gift, gift-with-encumbrance, housing-land-only-gift, divorce-property-division, land-expropriation, exchange-acquisition, co-ownership-partition, auction-acquisition, court-judgment, new-construction, vessel-acquisition — 개조식
+- [x] T089 [P] Create acquisition/exemption MDX files (11개): rental-business, first-time-buyer, childbirth-housing, veterans, religious-facility, affordable-housing, childcare-facility, senior-welfare, jeonse-fraud-support, knowledge-industry-center, minimum-tax-2025 — 개조식
+- [x] T090 [P] Create acquisition/admin MDX files (8개): internet-filing, post-approval-correction, old-registration-tax, extension-vs-major-repair, facility-vs-equipment, demolition-ledger, temporary-building, property-inquiry-response — 개조식
+- [x] T091 [P] Create acquisition/price MDX files (price-v1.0.mdx, tax-base-reform-2023-v1.0.mdx), acquisition/multi-house/multi-house-v1.0.mdx, acquisition/themes (luxury-v1.0.mdx, trade-v1.0.mdx), content/home/index.mdx — 개조식
+- [-] T092 [P] Create property tax MDX content files — 추후 제작 예정 [DEFERRED]
+- [-] T093 [P] Create vehicle tax MDX content files — 추후 제작 예정 [DEFERRED]
+- [x] T069 Run all tests and ensure 80%+ coverage
+- [x] T070 Validate against quickstart.md scenarios
+- [x] T071 Final accessibility check (keyboard navigation, ARIA labels)
 
 ---
 
@@ -285,7 +291,7 @@
 ### User Story Dependencies
 
 | Story | Depends On | Can Parallel With |
-|-------|------------|-------------------|
+| ----- | ---------- | ----------------- |
 | US1 (Browse) | Foundational | - |
 | ~~US2 (Infinite Scroll)~~ | ~~US1~~ | 제거됨 |
 | US3 (Responsive) | US1 (modifies layout) | US2, US4, US5, US6 |
@@ -364,7 +370,9 @@ T024, T025 can run in parallel
 - TDD required: Write tests first, verify they fail, then implement
 - Commit after each task or logical group
 - Each checkpoint = deployable increment
-- Total tasks: 89
-- Content structure: 취득원인 우선 트리구조 (유상→무상→원시→사치성)
+- Total tasks: 97 (T001-T093 + T007.1, T007.2, T075.1, T083.1)
+- Content structure: 물건 기준 트리구조 (주택/농지/농지외) + 취득원인 2차 분류 — plan.md 기준으로 변경됨
 - Content style: 개조식 공문서 형식 (content-style-guide.md 참조)
 - Content exclusion: .deprecated 사례 데이터 마이그레이션 안 함
+- 취득세 콘텐츠 현황: rates(9) + filing(16) + exemption(11) + admin(8) + price(2) + multi-house(1) + themes(2) = 49개 MDX 파일 구현 완료
+- 재산세/자동차세 콘텐츠: 미작성 (T092, T093)

@@ -73,10 +73,10 @@ export function AttachmentList({ contentPath }: AttachmentListProps) {
   };
 
   return (
-    <div id="attachments-section" style={{ marginTop: 32 }}>
+    <section id="attachments-section" role="region" aria-label="첨부파일" style={{ marginTop: 32 }}>
       <Divider />
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-        <Title level={5} style={{ margin: 0 }}>
+        <Title level={5} style={{ margin: 0 }} id="attachments-heading">
           <PaperClipOutlined style={{ marginRight: 8 }} />
           첨부파일 ({attachments.length})
         </Title>
@@ -84,7 +84,7 @@ export function AttachmentList({ contentPath }: AttachmentListProps) {
       </div>
 
       {loading ? (
-        <div style={{ textAlign: 'center', padding: 24 }}>
+        <div style={{ textAlign: 'center', padding: 24 }} aria-label="첨부파일 로딩 중">
           <Spin />
         </div>
       ) : attachments.length === 0 ? (
@@ -138,7 +138,7 @@ export function AttachmentList({ contentPath }: AttachmentListProps) {
                     okText="삭제"
                     cancelText="취소"
                   >
-                    <Button size="small" icon={<DeleteOutlined />} danger />
+                    <Button size="small" icon={<DeleteOutlined />} danger aria-label={`${item.file_name} 삭제`} />
                   </Popconfirm>
                 )}
               </div>
@@ -146,6 +146,6 @@ export function AttachmentList({ contentPath }: AttachmentListProps) {
           ))}
         </div>
       )}
-    </div>
+    </section>
   );
 }

@@ -5,11 +5,11 @@ describe('versions', () => {
   describe('getContentVersions', () => {
     it('should return versions for a content path with versioned files', () => {
       const versions = getContentVersions('acquisition', [
-        'themes',
+        'multi-house',
         'multi-house',
       ]);
-      expect(versions.length).toBeGreaterThanOrEqual(1);
-      expect(versions[0].version).toBe('1.0');
+      expect(versions.length).toBeGreaterThanOrEqual(2);
+      expect(versions[0].version).toBe('1.1');
     });
 
     it('should return empty array for non-existent content', () => {
@@ -22,7 +22,7 @@ describe('versions', () => {
 
     it('should mark the latest version correctly', () => {
       const versions = getContentVersions('acquisition', [
-        'themes',
+        'multi-house',
         'multi-house',
       ]);
       const latest = versions.filter((v) => v.isLatest);
@@ -31,7 +31,7 @@ describe('versions', () => {
 
     it('should sort versions in descending order', () => {
       const versions = getContentVersions('acquisition', [
-        'themes',
+        'multi-house',
         'multi-house',
       ]);
       for (let i = 1; i < versions.length; i++) {
@@ -43,10 +43,10 @@ describe('versions', () => {
   describe('getLatestVersion', () => {
     it('should return the latest version string', () => {
       const latest = getLatestVersion('acquisition', [
-        'themes',
+        'multi-house',
         'multi-house',
       ]);
-      expect(latest).toBe('1.0');
+      expect(latest).toBe('1.1');
     });
 
     it('should return null for non-existent content', () => {

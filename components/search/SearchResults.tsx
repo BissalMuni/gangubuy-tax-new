@@ -25,7 +25,7 @@ function highlightText(text: string, query: string): React.ReactNode {
 export function SearchResults({ results, query }: SearchResultsProps) {
   if (results.length === 0 && query) {
     return (
-      <div style={{ textAlign: 'center', padding: '48px 0' }}>
+      <div role="status" aria-live="polite" style={{ textAlign: 'center', padding: '48px 0' }}>
         <Text type="secondary">
           &quot;{query}&quot;에 대한 검색 결과가 없습니다.
         </Text>
@@ -34,7 +34,7 @@ export function SearchResults({ results, query }: SearchResultsProps) {
   }
 
   return (
-    <div>
+    <div role="region" aria-label={`검색 결과 ${results.length}건`} aria-live="polite">
       {results.map((item) => (
         <div key={item.path} style={{ padding: '12px 0', borderBottom: '1px solid #f0f0f0' }}>
           <Link href={item.path} style={{ textDecoration: 'none' }}>

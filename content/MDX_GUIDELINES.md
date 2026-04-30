@@ -6,23 +6,53 @@
 
 ## 1. Frontmatter 구조
 
+### 1.1 필드 정의
+
 ```yaml
 ---
 title: "문서 제목"
-section_id: "01"                    # 섹션 번호 (2자리)
-category: "취득세"                   # 대분류
-subcategory: "중과규정"              # 소분류
-audience: "internal"                # internal | public
-source: "원본파일명.pdf"             # 원본 자료
-page_range: [시작페이지, 끝페이지]    # 원본 페이지 범위
-version: "1.0"                      # 버전
-effective_date: "2020-08-12"        # 법령 시행일
-last_updated: "2026-01-31"          # 최종 수정일
+section_id: "01"                    # 섹션 번호 (2자리, 문서 목차 순서)
+category: "취득세"                   # 대분류: 취득세 | 재산세 | 자동차세
+subcategory: "중과규정"              # 소분류 (자유 텍스트)
+audience: "internal"                # internal (직원용) | public (대시민용)
+source: "원본파일명.pdf"             # 원본 자료 파일명
+page_range: [시작페이지, 끝페이지]    # 원본 페이지 범위 (배열)
+version: "1.0"                      # 버전 (major.minor)
+effective_date: "2020-08-12"        # 법령 시행일 (YYYY-MM-DD)
+last_updated: "2026-01-31"          # 최종 수정일 (자동 수정 파이프라인이 갱신)
 status: "draft"                     # draft | review | published
-law_reference: "지방세법 §13의2"     # 주요 근거법령
-tags: ["태그1", "태그2"]             # 검색용 태그
+law_reference: "지방세법 §13의2"     # 주요 근거법령 (§ 기호 사용)
+tags: ["태그1", "태그2"]             # 검색용 태그 (배열)
 ---
 ```
+
+### 1.2 실제 사용 예시 (multi-house-v1.0.mdx 기준)
+
+```yaml
+---
+title: "다주택자 취득세 중과규정"
+section_id: "02"
+category: "취득세"
+subcategory: "중과규정"
+audience: "internal"
+source: "acquisitiontax.pdf"
+page_range: [2, 16]
+version: "1.0"
+effective_date: "2020-08-12"
+last_updated: "2026-01-31"
+status: "draft"
+law_reference: "지방세법 §13의2, §13의3, 시행령 §28의2~§28의5"
+tags: ["다주택자", "중과", "취득세율표", "주택수산정", "일시적2주택", "조정대상지역"]
+---
+```
+
+### 1.3 자동 수정 파이프라인 처리 필드
+
+| 필드 | 처리 방식 |
+|------|-----------|
+| `last_updated` | 파이프라인이 수정 시 자동으로 오늘 날짜로 갱신 |
+| `status` | `draft` → `review` → `published` 수동 관리 |
+| `version` | 버전 업그레이드는 새 파일 생성 (예: `v1.0` → `v1.1`) |
 
 ---
 
@@ -59,10 +89,31 @@ tags: ["태그1", "태그2"]             # 검색용 태그
 </h2>
 ```
 
-### 2.2 섹션 구분
+### 2.2 실제 SectionNav 예시 (multi-house-v1.0.mdx 기준)
+
+```mdx
+# 다주택자 취득세 중과규정
+
+> 2020.7.10 부동산대책에 따른 다주택자 취득세 중과 규정을 정리한다.
+
+<SectionNav sections={[
+  { id: "중과세율", label: "중과세율" },
+  { id: "1세대", label: "1세대" },
+  { id: "주택수산정", label: "주택수" },
+  { id: "일시적2주택", label: "일시적 2주택" },
+  { id: "오피스텔", label: "오피스텔" },
+  { id: "분양권입주권", label: "분양권·입주권" },
+  { id: "경과조치", label: "경과조치" },
+  { id: "관련법령", label: "관련 법령" },
+  { id: "FAQ", label: "FAQ" }
+]} />
+```
+
+### 2.3 섹션 구분
 
 - `---` (수평선)으로 주요 섹션 구분
 - 각 섹션 끝에 `<SectionNav />` 반복 배치 (네비게이션 편의)
+- SectionNav의 `id` 값은 반드시 아래 `<h2 id="...">` 와 **정확히 일치**해야 함
 
 ---
 
@@ -74,6 +125,20 @@ tags: ["태그1", "태그2"]             # 검색용 태그
 | H2 | 대섹션 | `<h2 id="섹션ID"><Outline level={1}>제목</Outline></h2>` |
 | H3 | 중섹션 | `<Outline level={2}>제목</Outline>` |
 | H4 | 소섹션 | `<Outline level={3}>제목</Outline>` |
+
+### 3.1 실제 사용 예시
+
+```mdx
+<h2 id="중과세율">
+  <Outline level={1}>중과세율</Outline>
+</h2>
+
+<Outline level={2}>중과대상 주택</Outline>
+
+<Outline level={2}>조정대상지역</Outline>
+
+<Outline level={2}>유상취득 - 조정대상지역</Outline>
+```
 
 ---
 
@@ -120,7 +185,17 @@ tags: ["태그1", "태그2"]             # 검색용 태그
 <LawLink law="지방세특례제한법" article="제36조의5">지특법 §36의5①1호</LawLink>
 ```
 
-### 4.4 자동 조회 원칙
+### 4.4 법령 약어 표기
+
+| 법령 | 약어 | 예시 |
+|------|------|------|
+| 지방세법 | 법 | 법 §13의2 |
+| 지방세법 시행령 | 시행령 | 시행령 §28의4 |
+| 지방세법 시행규칙 | 시행규칙 | 시행규칙 §10 |
+| 민법 | 민법 | 민법 §779 |
+| 국세기본법 | 국기법 | 국기법 §13 |
+
+### 4.5 자동 조회 원칙
 
 - 본문에 법 조문 언급 시 → law.go.kr에서 현행 조문 확인
 - 조문 내용이 변경된 경우 → 최신 내용으로 갱신
@@ -143,6 +218,9 @@ font-size: 13px
 fontSize: 'var(--content-font-size, 13px)'
 font-size: var(--content-font-size, 13px)
 ```
+
+> **주의**: 기존 파일 중 `fontSize: '13px'`로 하드코딩된 표가 있음.
+> 자동 수정 파이프라인이 수정 시 CSS 변수 형식으로 교체한다.
 
 ### 5.2 적용 대상
 
@@ -185,28 +263,87 @@ font-size: var(--content-font-size, 13px)
 
 | 용도 | 색상 코드 | 적용 예시 |
 |------|-----------|-----------|
-| 헤더 배경 | `#f0f0f0` | 표 헤더 행 |
-| 소계/강조 배경 | `#fafafa` | 그룹 헤더, 소계 행 |
-| 하이라이트 배경 | `#e6f7ff` | 중요 데이터 행 |
+| 헤더 배경 | `#f0f0f0` | 표 헤더 행 (`<thead>` `backgroundColor`) |
+| 소계/강조 배경 | `#fafafa` | 그룹 헤더, 소계 행, rowSpan 셀 배경 |
+| 하이라이트 배경 | `#e6f7ff` | 중요 데이터 행 (예: 서울 조정대상지역) |
 | 테두리 | `#d9d9d9` | 모든 셀 테두리 |
-| 빨강 (위험/중과) | `#cf1322` | 중과세율, 경고 |
-| 파랑 (정보) | `#1890ff` | 취득세, 링크 |
-| 초록 (보조) | `#52c41a` | 지방교육세 |
-| 주황 (부가) | `#fa8c16` | 농특세 |
+| 빨강 (위험/중과) | `#cf1322` | 중과세율, 경고, 합계 컬럼 헤더 |
+| 파랑 (정보) | `#1890ff` | 취득세 컬럼 헤더/값 |
+| 초록 (보조) | `#52c41a` | 지방교육세 컬럼 헤더/값 |
+| 주황 (부가) | `#fa8c16` | 농특세 컬럼 헤더/값 |
 
-### 6.3 셀 병합
+### 6.3 세율표 컬럼 헤더 색상 적용 패턴
+
+세율표의 각 세목 컬럼 헤더는 색상으로 구분한다 (multi-house-v1.0.mdx 기준):
 
 ```jsx
-// 행 병합
-<td rowSpan={3} style={{...}}>내용</td>
-
-// 열 병합
-<td colSpan={2} style={{...}}>내용</td>
+<tr style={{backgroundColor: '#f0f0f0'}}>
+  <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>납세자</th>
+  <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>주택수</th>
+  <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>가격</th>
+  <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>면적</th>
+  <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', color: '#cf1322'}}>합계</th>
+  <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', color: '#1890ff'}}>취득세</th>
+  <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', color: '#52c41a'}}>지방교육세</th>
+  <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', color: '#fa8c16'}}>농특세</th>
+</tr>
 ```
 
-### 6.4 모든 표는 HTML 사용
+세율 값도 동일한 색상 적용:
+```jsx
+<td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', color: '#cf1322'}}>8.4%</td>
+<td style={{border: '1px solid #d9d9d9', padding: '8px', color: '#1890ff'}}>8.0%</td>
+<td style={{border: '1px solid #d9d9d9', padding: '8px', color: '#52c41a'}}>0.4%</td>
+<td style={{border: '1px solid #d9d9d9', padding: '8px', color: '#fa8c16'}}>0.0%</td>
+```
 
-- Markdown 표 사용 금지
+### 6.4 셀 병합 (rowSpan/colSpan)
+
+```jsx
+// 행 병합 - verticalAlign: 'top' 필수 지정
+<td rowSpan={3} style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa', verticalAlign: 'top'}}>내용</td>
+
+// 열 병합 (주석/출처 행)
+<td colSpan={2} style={{border: '1px solid #d9d9d9', padding: '8px', fontSize: '12px', color: '#666'}}>주석 내용</td>
+```
+
+> **규칙**: `rowSpan` 사용 시 반드시 `verticalAlign: 'top'`과 `backgroundColor: '#fafafa'` 추가
+
+### 6.5 시행일 변경 이력 표 패턴
+
+조정대상지역 등 시행일별 이력 표시 패턴 (multi-house-v1.0.mdx 기준):
+
+```jsx
+<table style={{width: '100%', borderCollapse: 'collapse', marginBottom: '16px'}}>
+  <thead>
+    <tr>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa', width: '120px'}}>시행일</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa', width: '80px'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>지역</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowSpan={3} style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa', verticalAlign: 'top'}}>2025.10.16</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#e6f7ff'}}>서울</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', backgroundColor: '#e6f7ff'}}>전 자치구 (25개구 전체)</td>
+    </tr>
+    <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>경기</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>성남, 수원, 과천, 광명 등</td>
+    </tr>
+    <tr>
+      <td colSpan={2} style={{border: '1px solid #d9d9d9', padding: '8px', fontSize: '12px', color: '#666'}}>
+        * <a href="링크URL" target="_blank" rel="noopener noreferrer">국토교통부공고 제XXXX-XXXX호</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### 6.6 모든 표는 HTML 사용
+
+- Markdown 표 사용 **금지**
 - 모든 표는 HTML `<table>` 태그로 작성
 - 기존 Markdown 표는 HTML 표로 변환 필요
 
@@ -224,11 +361,15 @@ font-size: var(--content-font-size, 13px)
 ]} />
 ```
 
+- 문서 상단과 각 주요 섹션 끝에 배치
+- `id` 값은 `<h2 id="...">` 와 반드시 일치
+- `label`은 화면 표시용 (짧게 작성)
+
 ### 7.2 Outline (개요/목차)
 
 ```jsx
-<Outline level={1}>대제목</Outline>
-<Outline level={2}>중제목</Outline>
+<Outline level={1}>대제목</Outline>   {/* <h2> 내부에 사용 */}
+<Outline level={2}>중제목</Outline>   {/* 독립 사용 가능 */}
 <Outline level={3}>소제목</Outline>
 ```
 
@@ -270,7 +411,7 @@ font-size: var(--content-font-size, 13px)
 | 용도 | 문법 | 결과 |
 |------|------|------|
 | 강조 | `**텍스트**` | **텍스트** |
-| 기술용어 | `\`용어\`` | `용어` |
+| 기술용어 | `` `용어` `` | `용어` |
 | 법조문 인용 | `> 인용문` | 블록인용 |
 
 ### 8.2 목록
@@ -289,6 +430,7 @@ font-size: var(--content-font-size, 13px)
 - 세율: 소수점 1자리 (`1.1%`, `8.4%`)
 - 면적: 단위 포함 (`85㎡`)
 - 조문: 한글 혼용 (`제13조의2`, `§13의2`)
+- 날짜: `2025.10.16` 형식 (본문) / `YYYY-MM-DD` 형식 (frontmatter)
 
 ---
 
@@ -330,10 +472,10 @@ MDX에서는 항상 §4.1의 `<LawLink>` 형태로 작성한다.
 
 ### 10.1 필수 확인 사항
 
-- [ ] frontmatter `last_updated` 갱신
+- [ ] frontmatter `last_updated` 갱신 (자동 수정 파이프라인이 처리)
 - [ ] 법령 링크 정상 작동 확인
 - [ ] SectionNav의 id와 실제 섹션 id 일치 확인
-- [ ] 표 스타일 일관성 유지
+- [ ] 표 스타일 일관성 유지 (CSS 변수 사용, 색상 코드 준수)
 - [ ] 숫자/금액/세율 표기 통일
 
 ### 10.2 법령 관련 확인
@@ -348,6 +490,7 @@ MDX에서는 항상 §4.1의 `<LawLink>` 형태로 작성한다.
 - [ ] 링크 깨짐 확인
 - [ ] 표 렌더링 정상 여부
 - [ ] 모바일 반응형 표시 확인
+- [ ] `fontSize: '13px'` 하드코딩 → `fontSize: 'var(--content-font-size, 13px)'` 교체 여부
 
 ---
 
@@ -357,21 +500,78 @@ MDX에서는 항상 §4.1의 `<LawLink>` 형태로 작성한다.
 {주제}-v{버전}.mdx
 
 예시:
-- multi-house-v1.0.mdx (다주택자 취득세 중과규정)
-- farmland-v1.0.mdx (농지 취득세)
-- temporary-2house-v1.0.mdx (일시적 2주택)
+- multi-house-v1.0.mdx    (다주택자 취득세 중과규정)
+- farmland-v1.0.mdx       (농지 취득세)
+- housing-v1.1.mdx        (주택 취득세 - 개정판)
+```
+
+### 11.1 디렉토리 구조
+
+```
+content/
+└── acquisition/
+    ├── multi-house/
+    │   └── multi-house-v1.0.mdx     # 독립 주제는 전용 디렉토리
+    ├── themes/
+    │   └── luxury-v1.0.mdx
+    ├── exemption/
+    │   ├── first-time-buyer-v1.0.mdx
+    │   └── rental-business-v1.0.mdx
+    └── rates/
+        └── realestate/
+            ├── housing/
+            │   └── housing-v1.0.mdx
+            ├── farmland/
+            │   └── farmland-v1.0.mdx
+            └── non-farmland/
+                └── non-farmland-v1.0.mdx
 ```
 
 ---
 
-## 12. 자동 수정 스크립트 연동
+## 12. 자동 수정 파이프라인 연동
 
-본 가이드라인은 자동화 스크립트에서 다음 용도로 사용됩니다:
+### 12.1 파이프라인 처리 흐름
 
-1. **법령 링크 자동 생성**: 조문 패턴(`§`, `제n조`) 감지 → law.go.kr 링크 자동 삽입
-2. **표 스타일 통일**: Markdown 표 → HTML 표 변환 시 스타일 적용
-3. **구조 검증**: frontmatter, SectionNav, Outline 구조 검증
-4. **법령 최신화**: law.go.kr API 연동하여 조문 변경 감지
+```
+[트리거]
+  Supabase 댓글 (processed=false)
+  또는 inbox/ 폴더 파일 추가
+        ↓
+[프롬프트 생성]
+  - 대상 MDX 파일 읽기
+  - 댓글/지시 내용 + 첨부파일 합산
+  - 이 가이드라인 전문 포함
+        ↓
+[Docker Claude 실행]
+  claude --dangerously-skip-permissions
+        ↓
+[검증]
+  pnpm test → 전체 통과 시에만 진행
+        ↓
+[Git 커밋 + Push]
+  docs: MDX 자동 수정 (댓글 #{id})
+```
+
+### 12.2 Claude가 수정 시 반드시 준수할 규칙
+
+1. 이 가이드라인(MDX_GUIDELINES.md) 전문을 먼저 읽고 준수
+2. frontmatter `last_updated`를 수정일로 갱신
+3. `fontSize: '13px'` → `fontSize: 'var(--content-font-size, 13px)'` 교체
+4. 새 표 작성 시 6.1~6.5 패턴 적용
+5. 법령 링크는 4.2 HTML 형식 사용
+6. Markdown 표 사용 금지 (HTML 표만)
+7. 확실하지 않은 정보는 추가하지 않음
+
+### 12.3 파이프라인이 자동 처리하는 항목
+
+| 항목 | 처리 방식 |
+|------|-----------|
+| `last_updated` | 오늘 날짜로 자동 갱신 |
+| 법령 링크 | `§13의2` 패턴 감지 → law.go.kr 링크 자동 삽입 |
+| 표 스타일 | Markdown 표 → HTML 표 자동 변환 |
+| CSS 변수 | `fontSize: '13px'` → CSS 변수 형식 교체 |
+| 처리 완료 마킹 | 댓글 `processed = true`로 업데이트 |
 
 ---
 
@@ -380,7 +580,7 @@ MDX에서는 항상 §4.1의 `<LawLink>` 형태로 작성한다.
 본 가이드의 일부 규칙은 `scripts/lint-mdx.ts`로 자동 검증된다. CI·로컬에서 다음으로 실행:
 
 ```bash
-npm run mdx:lint
+pnpm mdx:lint
 ```
 
 위반 시 비-0 종료 코드로 빠지므로 PR/빌드 게이트에 사용 가능. 출력은 위반 행·열·발췌·관련 가이드 섹션을 포함한다.
@@ -408,12 +608,12 @@ npm run mdx:lint
 
 - **새 파일**: baseline 미등록 → 카운트 0 허용. 인라인 표 작성 시 즉시 거부. 새 표는 `components/mdx/`에 컴포넌트로 추출하라.
 - **기존 dirty 파일**: 현재 카운트가 천장. 추가하면 거부, 빼면 통과.
-- **legitimate decrease (표를 컴포넌트로 추출)**: 변환 후 `npm run mdx:lint:update-baseline`로 천장을 새 카운트에 고정. 이렇게 ratchet이 한 단계 내려간다.
+- **legitimate decrease (표를 컴포넌트로 추출)**: 변환 후 `pnpm mdx:lint:update-baseline`로 천장을 새 카운트에 고정. 이렇게 ratchet이 한 단계 내려간다.
 
 목표는 모든 dirty 파일이 점진적으로 0에 도달하는 것. baseline은 진행 상황을 그대로 보여주는 누적 지표.
 
 ---
 
-> **문서 버전**: 1.0
-> **최종 수정**: 2026-01-31
+> **문서 버전**: 1.1
+> **최종 수정**: 2026-03-06
 > **관리자**: 세무팀
