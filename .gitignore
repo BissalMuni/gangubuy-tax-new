@@ -17,3 +17,4 @@ docs/sessions/_law-link-inventory.json
 Dockerfile.claude
 docker-compose.claude.yml
 .claude-output/
+.env.docker
