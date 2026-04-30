@@ -7,22 +7,36 @@ export async function getComments(contentPath: string): Promise<Comment[]> {
     .from('comments')
     .select('*')
     .eq('content_path', contentPath)
+    .is('deleted_at', null)
     .order('created_at', { ascending: true });
 
   if (error) throw error;
   return (data || []) as Comment[];
 }
 
-export async function createComment(
-  contentPath: string,
-  author: string,
-  body: string,
-  section?: string | null,
-): Promise<Comment> {
+export interface CreateCommentInput {
+  content_path: string;
+  body: string;
+  section?: string | null;
+  target_kind?: 'content' | 'structure';
+  /**
+   * Phase 2 전환 시 이메일 채워짐. Phase 1은 무기명이라 NULL.
+   */
+  author?: string | null;
+}
+
+export async function createComment(input: CreateCommentInput): Promise<Comment> {
   const supabase = getSupabase();
   const { data, error } = await supabase
     .from('comments')
-    .insert({ content_path: contentPath, author, body, section: section || null })
+    .insert({
+      content_path: input.content_path,
+      author: input.author ?? null,
+      body: input.body,
+      section: input.section || null,
+      target_kind: input.target_kind ?? 'content',
+      status: 'pending',
+    })
     .select()
     .single();
 

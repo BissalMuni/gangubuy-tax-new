@@ -19,6 +19,7 @@ export async function getAttachments(contentPath: string): Promise<Attachment[]>
     .from('attachments')
     .select('*')
     .eq('content_path', contentPath)
+    .is('deleted_at', null)
     .order('created_at', { ascending: false });
 
   if (error) throw error;
@@ -32,11 +33,22 @@ export async function getAttachments(contentPath: string): Promise<Attachment[]>
   })) as Attachment[];
 }
 
-export async function uploadAttachment(
-  file: File,
-  contentPath: string,
-  uploadedBy: string,
-): Promise<Attachment> {
+export interface UploadAttachmentInput {
+  file: File;
+  content_path: string;
+  /**
+   * Phase 2 전환 시 이메일 채워짐. Phase 1은 무기명이라 NULL.
+   */
+  uploaded_by?: string | null;
+  /**
+   * 댓글과 동시 제출 시 연결. 단독 첨부는 NULL.
+   */
+  comment_id?: string | null;
+}
+
+export async function uploadAttachment(input: UploadAttachmentInput): Promise<Attachment> {
+  const { file, content_path: contentPath, uploaded_by: uploadedBy = null, comment_id: commentId = null } = input;
+
   // Validate file size
   if (file.size > MAX_FILE_SIZE) {
     throw new Error('file size exceeds 10MB limit');
@@ -52,8 +64,6 @@ export async function uploadAttachment(
   }
 
   // Allow if either the MIME type or the file extension is on the allowlist.
-  // Browsers frequently report an empty MIME type for .hwpx, so the extension
-  // check is the primary path for that format.
   const mimeAllowed = (ALLOWED_MIME_TYPES as readonly string[]).includes(file.type);
   const extAllowed = (ALLOWED_FILE_EXTENSIONS as readonly string[]).includes(ext);
   if (!mimeAllowed && !extAllowed) {
@@ -87,6 +97,9 @@ export async function uploadAttachment(
       file_size: file.size,
       mime_type: contentType,
       uploaded_by: uploadedBy,
+      comment_id: commentId,
+      status: 'pending',
+      target_kind: 'content',
     })
     .select()
     .single();

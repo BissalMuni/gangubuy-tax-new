@@ -36,12 +36,12 @@
 **목표**: 댓글 폼에서 `EDITOR_PASSWORD` 입력 검증 → 무기명 제출.
 
 **산출물**:
-- [ ] `lib/auth/env-passwords.ts` (timing-safe 비교)
-- [ ] `app/api/comments/route.ts` 갱신 — `password` 필드 검증, `author=null` 인서트
-- [ ] `app/api/attachments/route.ts` 동일 갱신
-- [ ] `components/comments/SectionCommentButton.tsx` — 비번 입력 필드 추가
-- [ ] IP 레이트리밋 (10회/시간) — 인메모리 또는 Redis (선택)
-- [ ] env에 `EDITOR_PASSWORD` 추가 (Vercel + 로컬 `.env.local`)
+- [x] `lib/auth/env-passwords.ts` (timing-safe 비교)
+- [x] `app/api/comments/route.ts` 갱신 — `password` 필드 검증, `author=null` 인서트
+- [x] `app/api/attachments/route.ts` 동일 갱신
+- [x] `components/comments/SectionCommentButton.tsx` — 비번 입력 필드 추가
+- [x] IP 레이트리밋 (10회/시간) — `lib/auth/rate-limit.ts` (Upstash + 인메모리 fallback)
+- [ ] env에 `EDITOR_PASSWORD` 추가 (Vercel + 로컬 `.env.local`) _(호스트가 적용)_
 
 **테스트**:
 - 비번 일치 + 본문 → 201 + DB에 `author=null, status='pending'` 저장
@@ -59,12 +59,12 @@
 **목표**: `/admin/login`에서 비번 입력 → 쿠키 세션 → `/admin/*` 보호 동작.
 
 **산출물**:
-- [ ] `lib/auth/session.ts` (jose 기반 JWT 쿠키)
-- [ ] `app/admin/login/page.tsx` (비번 + 역할 선택 폼)
-- [ ] `app/api/auth/login/route.ts`
-- [ ] `app/api/auth/logout/route.ts`
-- [ ] `middleware.ts` — `/admin/*` 보호, `/admin/login` 예외
-- [ ] env에 `ADMIN_PASSWORD`, `APPROVER_PASSWORD`, `SESSION_SECRET` 추가
+- [x] `lib/auth/session.ts` (jose 기반 JWT 쿠키)
+- [x] `app/admin/login/page.tsx` (비번 + 역할 선택 폼)
+- [x] `app/api/auth/login/route.ts`
+- [x] `app/api/auth/logout/route.ts`
+- [x] `middleware.ts` — `/admin/*` 보호, `/admin/login` 예외
+- [ ] env에 `ADMIN_PASSWORD`, `APPROVER_PASSWORD`, `SESSION_SECRET` 추가 _(호스트가 적용)_
 
 **테스트**:
 - `/admin/changes` 미로그인 접근 → `/admin/login` 리다이렉트
@@ -82,12 +82,12 @@
 **목표**: `/admin/changes` 페이지에서 메뉴 트리 그룹 + 상태 필터 + 상세 보기.
 
 **산출물**:
-- [ ] `app/admin/changes/page.tsx` (서버 컴포넌트)
-- [ ] `app/api/admin/changes/route.ts` GET — status/path 필터, deleted 옵션
-- [ ] `lib/admin/group-tree.ts` — `lib/navigation/tree.ts` 기반 그룹핑
-- [ ] `components/admin/ChangeQueueTree.tsx` (클라 컴포넌트, 읽기만)
-- [ ] `components/admin/ChangeDetailPanel.tsx` (본문 + 첨부 미리보기)
-- [ ] `components/admin/FilterBar.tsx` (상태 다중 필터)
+- [x] `app/admin/changes/page.tsx` (서버 컴포넌트)
+- [x] `app/api/admin/changes/route.ts` GET — status/path 필터, deleted 옵션
+- [x] `lib/admin/group-tree.ts` — `lib/navigation/tree.ts` 기반 그룹핑
+- [x] `components/admin/ChangeQueueTree.tsx` (클라 컴포넌트, 읽기만)
+- [x] `components/admin/ChangeDetailPanel.tsx` (본문 + 첨부 미리보기)
+- [x] `components/admin/FilterBar.tsx` (상태 다중 필터)
 
 **테스트**:
 - pending/approved/applied 댓글 시딩 → 페이지에서 각각 필터로 표시
@@ -105,12 +105,12 @@
 **목표**: 체크박스 + 일괄 액션 버튼으로 승인/반려.
 
 **산출물**:
-- [ ] `lib/changes/status-machine.ts` (`canTransition`, `transition`, `recordAudit`)
-- [ ] `app/api/admin/changes/approve/route.ts` POST — 일괄 승인
-- [ ] `app/api/admin/changes/reject/route.ts` POST — 일괄 반려 (사유 입력)
-- [ ] `components/admin/ChangeQueueTree.tsx` 확장 — 체크박스 상태 (Set<id>)
-- [ ] `components/admin/BulkActionBar.tsx` (선택 N건 / 승인 / 반려 버튼)
-- [ ] 반려 시 사유 모달
+- [x] `lib/changes/status-machine.ts` (`canTransition`, `transition`, `recordAudit`)
+- [x] `app/api/admin/changes/approve/route.ts` POST — 일괄 승인
+- [x] `app/api/admin/changes/reject/route.ts` POST — 일괄 반려 (사유 입력)
+- [x] `components/admin/ChangeQueueTree.tsx` 확장 — 체크박스 상태 (Set<id>)
+- [x] `components/admin/BulkActionBar.tsx` (선택 N건 / 승인 / 반려 버튼)
+- [x] 반려 시 사유 모달
 
 **테스트**:
 - pending 5건 체크 → "선택 승인" → 모두 `approved`로 전환, `reviewer/reviewed_at` 기록
@@ -128,11 +128,11 @@
 **목표**: 관리자/승인자가 항목을 화면에서 숨기고 필요 시 복원.
 
 **산출물**:
-- [ ] `lib/changes/soft-delete.ts` (`softDelete`, `restore`)
-- [ ] `app/api/admin/changes/delete/route.ts` POST (승인자/관리자)
-- [ ] `app/api/admin/changes/restore/route.ts` POST (관리자만)
-- [ ] `components/admin/BulkActionBar.tsx` — "선택 삭제" 추가
-- [ ] `components/admin/ChangeDetailPanel.tsx` — soft-deleted 표시 + 복원 버튼 (관리자에게만)
+- [x] `lib/changes/soft-delete.ts` (`softDelete`, `restore`)
+- [x] `app/api/admin/changes/delete/route.ts` POST (승인자/관리자)
+- [x] `app/api/admin/changes/restore/route.ts` POST (관리자만)
+- [x] `components/admin/BulkActionBar.tsx` — "선택 삭제" 추가
+- [x] `components/admin/ChangeDetailPanel.tsx` — soft-deleted 표시 + 복원 버튼 (관리자에게만)
 
 **테스트**:
 - 일괄 삭제 → `deleted_at` 세팅, UI에서 즉시 숨김
@@ -150,16 +150,16 @@
 **목표**: 기존 즉시-AI-트리거 모델 폐기 → 상태 머신 기반 fetch.
 
 **산출물**:
-- [ ] `scripts/fetch-feedback.ts` (bash → ts 재작성)
+- [x] `scripts/fetch-feedback.ts` (bash → ts 재작성)
   - status 필터링 (manual: approved만 / auto: pending+approved)
   - deleted_at IS NOT NULL 제외
   - target_kind='structure' 항상 manual 처리
-- [ ] `scripts/load-prompt.ts` — DB에서 system_prompt 로드
-- [ ] `.github/workflows/review-feedback.yml` 갱신
+- [x] `scripts/load-prompt.ts` — DB에서 system_prompt 로드
+- [x] `.github/workflows/review-feedback.yml` 갱신
   - cron_enabled 검사 (false면 조기 종료)
   - DB에서 시스템 프롬프트 로드 후 `-p`로 전달
   - 처리 시작 시 `processing`, 성공 시 `applied + commit_sha`, 실패 시 `failed + error`
-- [ ] `processing` 30분 타임아웃 감지 (별도 스케줄러 또는 워크플로 시작 시 검사)
+- [x] `processing` 30분 타임아웃 감지 (워크플로 self-sweep + 마이그레이션 005의 pg_cron 5분 sweeper)
 
 **테스트**:
 - manual 모드 + pending 5 + approved 3 → fetch 결과 3건 (approved만)
@@ -177,12 +177,12 @@
 **목표**: 관리자가 모드를 UI에서 변경, 경로별 강제 지원.
 
 **산출물**:
-- [ ] `app/admin/settings/page.tsx`
-- [ ] `app/api/admin/settings/route.ts` GET/PUT
-- [ ] `lib/changes/path-overrides.ts` (minimatch 기반)
-- [ ] `components/admin/ModeToggle.tsx` (auto/manual 스위치)
-- [ ] `components/admin/PathOverrideEditor.tsx` (JSON 편집기 + 검증)
-- [ ] `scripts/fetch-feedback.ts`에 path_overrides 통합
+- [x] `app/admin/settings/page.tsx`
+- [x] `app/api/admin/settings/route.ts` GET/PUT
+- [x] `lib/changes/path-overrides.ts` (minimatch 기반)
+- [x] `components/admin/ModeToggle.tsx` (auto/manual 스위치)
+- [x] `components/admin/PathOverrideEditor.tsx` (JSON 편집기 + 검증)
+- [x] `scripts/fetch-feedback.ts`에 path_overrides 통합
 
 **테스트**:
 - 글로벌 manual + override `{"content/property-tax/**": "auto"}` → property-tax pending도 fetch
@@ -199,9 +199,9 @@
 **목표**: AI 시스템 프롬프트를 DB로 외부화. 변경 이력 + 롤백.
 
 **산출물**:
-- [ ] `app/api/admin/prompt-history/route.ts` GET
-- [ ] `components/admin/SystemPromptEditor.tsx` (textarea + 저장 + 이력 표시)
-- [ ] PUT `/admin/settings/route.ts`에서 prompt 변경 시 `system_prompt_history`에 이전 값 백업
+- [x] `app/api/admin/prompt-history/route.ts` GET
+- [x] `components/admin/SystemPromptEditor.tsx` (textarea + 저장 + 이력 표시)
+- [x] PUT `/admin/settings/route.ts`에서 prompt 변경 시 `system_prompt_history`에 이전 값 백업
 
 **테스트**:
 - 프롬프트 편집 + 저장 → DB 갱신, 이전 값 history에 적재
@@ -217,10 +217,10 @@
 **목표**: cron 즉시 정지 + 수동 실행 트리거.
 
 **산출물**:
-- [ ] `cron_enabled` 토글 UI (큰 빨간 버튼)
-- [ ] `app/api/admin/dispatch/route.ts` POST — GitHub API workflow_dispatch
-- [ ] env에 `GITHUB_TOKEN` (workflow scope) 추가
-- [ ] `.github/workflows/review-feedback.yml`이 dispatch 이벤트도 처리
+- [x] `cron_enabled` 토글 UI (`components/admin/ModeToggle.tsx`의 Switch)
+- [x] `app/api/admin/dispatch/route.ts` POST — GitHub API workflow_dispatch
+- [ ] env에 `GITHUB_TOKEN` (workflow scope) 추가 _(호스트가 적용)_
+- [x] `.github/workflows/review-feedback.yml`이 dispatch 이벤트도 처리 (`workflow_dispatch: {}`)
 
 **테스트**:
 - 비상 정지 클릭 → cron_enabled=false → 다음 cron 실행 시 즉시 종료
@@ -237,12 +237,12 @@
 **목표**: `target_kind='structure'` 항목은 PR 생성, 관리자만 머지.
 
 **산출물**:
-- [ ] 댓글 폼에 "구조 변경 의견" 토글 (target_kind='structure'로 저장)
-- [ ] `.github/workflows/review-structure.yml` 신규
+- [x] 댓글 폼에 "구조 변경 의견" 토글 (target_kind='structure'로 저장)
+- [x] `.github/workflows/review-structure.yml` 신규
   - 새 브랜치 생성 → AI 수정 → `gh pr create`
-  - 관리자에게 자동 reviewer 지정 (CODEOWNERS 또는 PR body)
-- [ ] `scripts/fetch-feedback.ts`에서 structure 항목은 별도 워크플로로 분기
-- [ ] 브랜치 보호 규칙: structure PR은 관리자 1명 승인 필요 (GitHub repo settings)
+  - 관리자에게 자동 reviewer 지정 (PR body에 명시)
+- [x] `scripts/fetch-feedback.ts`에서 structure 항목은 항상 manual 처리 (resolveMode가 강제)
+- [ ] 브랜치 보호 규칙: structure PR은 관리자 1명 승인 필요 (GitHub repo settings) _(호스트가 적용)_
 
 **테스트**:
 - target_kind='structure' 항목 승인 → review-structure 워크플로 실행 → PR 생성됨

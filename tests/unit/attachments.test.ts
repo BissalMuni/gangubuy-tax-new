@@ -11,16 +11,18 @@ import { getSupabase } from '@/lib/supabase/server';
 
 const mockGetSupabase = vi.mocked(getSupabase);
 
-// 공통 Supabase mock 체인 빌더
+// 공통 Supabase mock 체인 빌더 (vitest 4 호환: passthrough closure)
 function buildChain(result: { data: unknown; error: unknown }) {
-  return {
-    select: vi.fn().mockReturnThis(),
-    insert: vi.fn().mockReturnThis(),
-    delete: vi.fn().mockReturnThis(),
-    eq: vi.fn().mockReturnThis(),
-    order: vi.fn().mockResolvedValue(result),
-    single: vi.fn().mockResolvedValue(result),
-  };
+  const chain: Record<string, ReturnType<typeof vi.fn>> = {};
+  const passthrough = () => chain;
+  chain.select = vi.fn(passthrough);
+  chain.insert = vi.fn(passthrough);
+  chain.delete = vi.fn(passthrough);
+  chain.eq = vi.fn(passthrough);
+  chain.is = vi.fn(passthrough);
+  chain.order = vi.fn().mockResolvedValue(result);
+  chain.single = vi.fn().mockResolvedValue(result);
+  return chain;
 }
 
 // Supabase Storage mock 빌더
@@ -96,7 +98,9 @@ describe('attachments CRUD', () => {
 
       mockGetSupabase.mockReturnValue({} as ReturnType<typeof getSupabase>);
 
-      await expect(uploadAttachment(file, 'path', 'user')).rejects.toThrow('file size exceeds 10MB limit');
+      await expect(
+        uploadAttachment({ file, content_path: 'path' }),
+      ).rejects.toThrow('file size exceeds 10MB limit');
     });
 
     it('허용되지 않는 파일 타입이면 예외를 던진다', async () => {
@@ -105,17 +109,20 @@ describe('attachments CRUD', () => {
 
       mockGetSupabase.mockReturnValue({} as ReturnType<typeof getSupabase>);
 
-      await expect(uploadAttachment(file, 'path', 'user')).rejects.toThrow('file type not allowed');
+      await expect(
+        uploadAttachment({ file, content_path: 'path' }),
+      ).rejects.toThrow('file type not allowed');
     });
 
-    it('허용된 타입(PDF)은 통과한다', async () => {
+    it('허용된 타입(PDF)은 통과한다 (Phase 1: uploaded_by 미지정 → null)', async () => {
       const file = new File(['%PDF-1.4'], 'document.pdf', { type: 'application/pdf' });
       Object.defineProperty(file, 'size', { value: 1024 });
 
       const mockData = {
         id: '1', content_path: 'path', file_name: 'document.pdf',
         storage_path: 'path/uuid.pdf', file_size: 1024,
-        mime_type: 'application/pdf', uploaded_by: 'user', created_at: '',
+        mime_type: 'application/pdf', uploaded_by: null, created_at: '',
+        status: 'pending', target_kind: 'content',
       };
       const chain = buildChain({ data: mockData, error: null });
       mockGetSupabase.mockReturnValue({
@@ -123,9 +130,16 @@ describe('attachments CRUD', () => {
         storage: buildStorage(),
       } as ReturnType<typeof getSupabase>);
 
-      const result = await uploadAttachment(file, 'path', 'user');
+      const result = await uploadAttachment({ file, content_path: 'path' });
       expect(result.file_name).toBe('document.pdf');
       expect(result.download_url).toBeDefined();
+      expect(chain.insert).toHaveBeenCalledWith(
+        expect.objectContaining({
+          uploaded_by: null,
+          status: 'pending',
+          target_kind: 'content',
+        }),
+      );
     });
   });
 

@@ -1,0 +1,107 @@
+name: Review Structure
+on:
+  workflow_dispatch:
+    inputs:
+      change_id:
+        description: '구조 변경 댓글 ID'
+        required: true
+        type: string
+
+# 구조파일(`config/`, `lib/navigation/`, MDX frontmatter 외 메타) 변경은 main 직접 푸시 금지.
+# 본 워크플로는 별도 브랜치에서 작업 후 PR을 생성하며, 머지는 관리자만 가능 (FR-031/FR-032).
+jobs:
+  structure:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - run: pnpm install --frozen-lockfile
+
+      - name: Mark processing
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: pnpm tsx scripts/fetch-feedback.ts --mark-processing "${{ inputs.change_id }}"
+
+      - name: Create branch
+        run: |
+          BRANCH="auto/structure-${{ inputs.change_id }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          echo "BRANCH=$BRANCH" >> $GITHUB_ENV
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Load system prompt
+        id: prompt
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          {
+            echo 'value<<__PROMPT_EOF__'
+            pnpm tsx scripts/load-prompt.ts
+            echo
+            echo
+            echo '추가 절대 규칙 (구조 변경):'
+            echo '- config/ 와 lib/navigation/ 의 파일 변경 가능'
+            echo '- 기존 트리 ID/path는 유지 (renaming 금지)'
+            echo '- 단일 변경 의견 ID: ${{ inputs.change_id }} 만 처리'
+            echo '__PROMPT_EOF__'
+          } >> $GITHUB_OUTPUT
+
+      - name: Apply structure change
+        id: apply
+        continue-on-error: true
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          claude --print --dangerously-skip-permissions \
+            --allowedTools "Bash,Read,Edit,Write,Glob,Grep" \
+            -p "${{ steps.prompt.outputs.value }}"
+
+      - name: Commit + Open PR
+        if: steps.apply.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "no changes — closing without PR"
+            exit 0
+          fi
+          git commit -m "structure: change ${{ inputs.change_id }}
+
+          Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>"
+          git push origin "$BRANCH"
+          gh pr create \
+            --title "structure: review change ${{ inputs.change_id }}" \
+            --body "## 구조 변경 의견 반영
+
+          - change_id: \`${{ inputs.change_id }}\`
+          - 머지 권한: **관리자만** (브랜치 보호 규칙)
+          - 검토 후 머지 시 자동으로 \`applied\`로 전이됨 (별도 cron에서 main 커밋 추적)" \
+            --base main \
+            --head "$BRANCH"
+
+      - name: Mark failed if AI step failed
+        if: steps.apply.outcome == 'failure'
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: pnpm tsx scripts/fetch-feedback.ts --mark-failed "${{ inputs.change_id }}" "structure apply step failed"

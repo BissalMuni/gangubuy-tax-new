@@ -79,18 +79,40 @@ export interface SearchResult {
 
 // === Comments (Supabase) ===
 
+/**
+ * 변경 항목 상태 (data-model.md §상태 머신).
+ * Phase 1 마이그레이션 005에서 도입.
+ */
+export type ChangeStatus =
+  | 'pending'
+  | 'approved'
+  | 'processing'
+  | 'applied'
+  | 'rejected'
+  | 'failed';
+
+export type ChangeTargetKind = 'content' | 'structure';
+
 export interface Comment {
   id: string;
   content_path: string;
   section?: string | null;
-  author: string;
+  /** Phase 1: NULL (무기명) / Phase 2: 이메일 */
+  author: string | null;
   body: string;
   created_at: string;
   updated_at: string;
-  // 자동 수정 시스템용 필드
-  processed?: boolean;
-  processed_at?: string;
-  commit_sha?: string;
+
+  // === Phase 1 상태 머신 필드 (마이그레이션 005) ===
+  status?: ChangeStatus;
+  target_kind?: ChangeTargetKind;
+  reviewer?: string | null;
+  reviewed_at?: string | null;
+  applied_commit_sha?: string | null;
+  error_log?: string | null;
+  reject_reason?: string | null;
+  deleted_at?: string | null;
+  deleted_by?: string | null;
 }
 
 // === Attachments (Supabase) ===
@@ -102,9 +124,21 @@ export interface Attachment {
   storage_path: string;
   file_size: number;
   mime_type: string;
-  uploaded_by: string;
+  uploaded_by: string | null;
   created_at: string;
   download_url?: string;
+
+  // === Phase 1 상태 머신 필드 (마이그레이션 005) ===
+  status?: ChangeStatus;
+  target_kind?: ChangeTargetKind;
+  reviewer?: string | null;
+  reviewed_at?: string | null;
+  applied_commit_sha?: string | null;
+  error_log?: string | null;
+  reject_reason?: string | null;
+  deleted_at?: string | null;
+  deleted_by?: string | null;
+  comment_id?: string | null;
 }
 
 export const ALLOWED_MIME_TYPES = [

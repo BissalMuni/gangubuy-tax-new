@@ -10,16 +10,19 @@ import { getSupabase } from '@/lib/supabase/server';
 
 const mockGetSupabase = vi.mocked(getSupabase);
 
-// 공통 Supabase mock 체인 빌더
+// 공통 Supabase mock 체인 빌더 — vi.fn().mockReturnThis()는 vitest 4에서
+// `this` 바인딩이 일관되지 않아, 명시적으로 chain 객체 자체를 반환하도록 한다.
 function buildChain(result: { data: unknown; error: unknown }) {
-  return {
-    select: vi.fn().mockReturnThis(),
-    insert: vi.fn().mockReturnThis(),
-    delete: vi.fn().mockReturnThis(),
-    eq: vi.fn().mockReturnThis(),
-    order: vi.fn().mockResolvedValue(result),
-    single: vi.fn().mockResolvedValue(result),
-  };
+  const chain: Record<string, ReturnType<typeof vi.fn>> = {};
+  const passthrough = () => chain;
+  chain.select = vi.fn(passthrough);
+  chain.insert = vi.fn(passthrough);
+  chain.delete = vi.fn(passthrough);
+  chain.eq = vi.fn(passthrough);
+  chain.is = vi.fn(passthrough);
+  chain.order = vi.fn().mockResolvedValue(result);
+  chain.single = vi.fn().mockResolvedValue(result);
+  return chain;
 }
 
 describe('comments CRUD', () => {
@@ -34,8 +37,10 @@ describe('comments CRUD', () => {
         {
           id: '1',
           content_path: 'acquisition/rates',
-          author: '홍길동',
+          author: null,
           body: '좋은 정보입니다',
+          status: 'pending',
+          target_kind: 'content',
           created_at: '2026-01-01T00:00:00Z',
           updated_at: '2026-01-01T00:00:00Z',
         },
@@ -61,31 +66,67 @@ describe('comments CRUD', () => {
 
       await expect(getComments('acquisition/rates')).rejects.toThrow('DB connection failed');
     });
+
+    it('soft-deleted 항목은 제외된다 (deleted_at IS NULL 필터)', async () => {
+      const chain = buildChain({ data: [], error: null });
+      mockGetSupabase.mockReturnValue({ from: vi.fn().mockReturnValue(chain) } as ReturnType<typeof getSupabase>);
+
+      await getComments('acquisition/rates');
+      expect(chain.is).toHaveBeenCalledWith('deleted_at', null);
+    });
   });
 
   // --- createComment ---
   describe('createComment', () => {
-    it('댓글을 생성하고 반환한다', async () => {
+    it('Phase 1: 무기명(author=null) + status=pending으로 생성한다', async () => {
       const mockComment = {
         id: '2',
         content_path: 'acquisition/rates',
-        author: '김철수',
+        author: null,
         body: '세율 정보 감사합니다',
+        status: 'pending',
+        target_kind: 'content',
         created_at: '2026-01-02T00:00:00Z',
         updated_at: '2026-01-02T00:00:00Z',
       };
       const chain = buildChain({ data: mockComment, error: null });
       mockGetSupabase.mockReturnValue({ from: vi.fn().mockReturnValue(chain) } as ReturnType<typeof getSupabase>);
 
-      const result = await createComment('acquisition/rates', '김철수', '세율 정보 감사합니다');
+      const result = await createComment({
+        content_path: 'acquisition/rates',
+        body: '세율 정보 감사합니다',
+      });
       expect(result).toEqual(mockComment);
+      expect(chain.insert).toHaveBeenCalledWith(
+        expect.objectContaining({
+          author: null,
+          status: 'pending',
+          target_kind: 'content',
+        }),
+      );
+    });
+
+    it('target_kind=structure를 명시할 수 있다', async () => {
+      const chain = buildChain({ data: { id: '3' }, error: null });
+      mockGetSupabase.mockReturnValue({ from: vi.fn().mockReturnValue(chain) } as ReturnType<typeof getSupabase>);
+
+      await createComment({
+        content_path: 'config/navigation.ts',
+        body: '메뉴 추가 요청',
+        target_kind: 'structure',
+      });
+      expect(chain.insert).toHaveBeenCalledWith(
+        expect.objectContaining({ target_kind: 'structure' }),
+      );
     });
 
     it('DB 에러 시 예외를 던진다', async () => {
       const chain = buildChain({ data: null, error: new Error('insert failed') });
       mockGetSupabase.mockReturnValue({ from: vi.fn().mockReturnValue(chain) } as ReturnType<typeof getSupabase>);
 
-      await expect(createComment('path', 'user', 'body')).rejects.toThrow('insert failed');
+      await expect(
+        createComment({ content_path: 'path', body: 'body' }),
+      ).rejects.toThrow('insert failed');
     });
   });
 

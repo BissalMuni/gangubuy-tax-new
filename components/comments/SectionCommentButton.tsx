@@ -1,11 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { Button, Modal, Input, Upload, List, App } from 'antd';
+import { Button, Modal, Input, Upload, List, App, Checkbox } from 'antd';
 import {
   CommentOutlined,
   PaperClipOutlined,
   DeleteOutlined,
+  LockOutlined,
 } from '@ant-design/icons';
 import { useSections } from '@/lib/context/sections-context';
 import {
@@ -30,11 +31,44 @@ function formatSize(bytes: number): string {
   return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 }
 
+// Phase 1: 담당자 비번을 sessionStorage에 1회 캐시 → 같은 세션 내 재입력 불필요.
+// 단 보안상 localStorage 대신 sessionStorage(탭 닫으면 삭제)만 사용.
+const PASSWORD_CACHE_KEY = 'editor-password';
+
+function loadCachedPassword(): string {
+  if (typeof window === 'undefined') return '';
+  try {
+    return window.sessionStorage.getItem(PASSWORD_CACHE_KEY) ?? '';
+  } catch {
+    return '';
+  }
+}
+
+function saveCachedPassword(value: string): void {
+  if (typeof window === 'undefined') return;
+  try {
+    window.sessionStorage.setItem(PASSWORD_CACHE_KEY, value);
+  } catch {
+    // Ignore quota or privacy errors
+  }
+}
+
+function clearCachedPassword(): void {
+  if (typeof window === 'undefined') return;
+  try {
+    window.sessionStorage.removeItem(PASSWORD_CACHE_KEY);
+  } catch {
+    // ignore
+  }
+}
+
 export function SectionCommentButton({ sectionId }: SectionCommentButtonProps) {
   const [open, setOpen] = useState(false);
   const [body, setBody] = useState('');
+  const [password, setPassword] = useState(() => loadCachedPassword());
   const [files, setFiles] = useState<File[]>([]);
   const [submitting, setSubmitting] = useState(false);
+  const [isStructure, setIsStructure] = useState(false);
   const { sections, contentPath } = useSections();
   const { message } = App.useApp();
 
@@ -43,6 +77,7 @@ export function SectionCommentButton({ sectionId }: SectionCommentButtonProps) {
   const reset = () => {
     setBody('');
     setFiles([]);
+    // password는 sessionStorage에 남겨 다음 댓글에 재사용
   };
 
   const handleAddFile = (file: File): boolean => {
@@ -76,7 +111,13 @@ export function SectionCommentButton({ sectionId }: SectionCommentButtonProps) {
   const handleSubmit = async () => {
     if (!contentPath) return;
     const trimmedBody = body.trim();
+    const trimmedPassword = password.trim();
     if (!trimmedBody && files.length === 0) return;
+
+    if (!trimmedPassword) {
+      message.error('담당자 비밀번호를 입력해 주세요.');
+      return;
+    }
 
     setSubmitting(true);
     try {
@@ -87,11 +128,22 @@ export function SectionCommentButton({ sectionId }: SectionCommentButtonProps) {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             content_path: contentPath,
-            author: '익명',
             body: trimmedBody,
             section: sectionId,
+            password: trimmedPassword,
+            target_kind: isStructure ? 'structure' : 'content',
           }),
         });
+        if (res.status === 401) {
+          message.error('담당자 비밀번호가 올바르지 않습니다.');
+          clearCachedPassword();
+          setPassword('');
+          return;
+        }
+        if (res.status === 429) {
+          message.error('요청이 너무 많습니다. 잠시 후 다시 시도해 주세요.');
+          return;
+        }
         if (!res.ok) {
           const err = await res.json().catch(() => ({}));
           message.error(err.error || '댓글 작성에 실패했습니다.');
@@ -106,13 +158,19 @@ export function SectionCommentButton({ sectionId }: SectionCommentButtonProps) {
         const formData = new FormData();
         formData.append('file', file);
         formData.append('content_path', contentPath);
-        formData.append('uploaded_by', '익명');
+        formData.append('password', trimmedPassword);
         const res = await fetch('/api/attachments', {
           method: 'POST',
           body: formData,
         });
         if (res.ok) {
           uploaded += 1;
+        } else if (res.status === 401) {
+          failed += 1;
+          message.error('담당자 비밀번호가 올바르지 않습니다.');
+          clearCachedPassword();
+          setPassword('');
+          break;
         } else {
           failed += 1;
           const err = await res.json().catch(() => ({}));
@@ -125,8 +183,11 @@ export function SectionCommentButton({ sectionId }: SectionCommentButtonProps) {
       } else if (uploaded > 0) {
         message.success(`파일 ${uploaded}개가 업로드되었습니다.`);
       } else if (trimmedBody) {
-        message.success('댓글이 등록되었습니다.');
+        message.success('댓글이 등록되었습니다. 승인자 검토 후 반영됩니다.');
       }
+
+      // 성공 시 비번 캐시 (재입력 면제)
+      saveCachedPassword(trimmedPassword);
 
       if (failed === 0) {
         reset();
@@ -143,7 +204,8 @@ export function SectionCommentButton({ sectionId }: SectionCommentButtonProps) {
 
   if (!contentPath) return null;
 
-  const canSubmit = body.trim().length > 0 || files.length > 0;
+  const canSubmit =
+    (body.trim().length > 0 || files.length > 0) && password.trim().length > 0;
   const acceptAttr = (ALLOWED_FILE_EXTENSIONS as readonly string[])
     .map((e) => `.${e}`)
     .join(',');
@@ -173,6 +235,15 @@ export function SectionCommentButton({ sectionId }: SectionCommentButtonProps) {
         destroyOnClose
       >
         <div style={{ marginTop: 16 }}>
+          <Input.Password
+            placeholder="담당자 비밀번호"
+            prefix={<LockOutlined />}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            autoComplete="current-password"
+            style={{ marginBottom: 12 }}
+          />
+
           <TextArea
             rows={4}
             placeholder="의견을 입력하세요"
@@ -181,6 +252,15 @@ export function SectionCommentButton({ sectionId }: SectionCommentButtonProps) {
             maxLength={5000}
             autoFocus
           />
+
+          <div style={{ marginTop: 8 }}>
+            <Checkbox
+              checked={isStructure}
+              onChange={(e) => setIsStructure(e.target.checked)}
+            >
+              구조 변경 의견 (메뉴/네비게이션) — 별도 PR로 안전하게 처리됩니다
+            </Checkbox>
+          </div>
 
           <div style={{ marginTop: 12 }}>
             <Upload

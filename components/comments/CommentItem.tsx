@@ -15,7 +15,9 @@ interface CommentItemProps {
 }
 
 export function CommentItem({ comment, currentAuthor, onDelete, sections }: CommentItemProps) {
-  const isOwner = comment.author === currentAuthor;
+  // Phase 1: author가 NULL인 무기명 댓글은 본인 식별 불가 → 삭제 불가
+  const isOwner = comment.author !== null && comment.author === currentAuthor;
+  const displayAuthor = comment.author ?? '(무기명)';
   const date = new Date(comment.created_at).toLocaleDateString('ko-KR', {
     year: 'numeric',
     month: 'short',
@@ -28,9 +30,11 @@ export function CommentItem({ comment, currentAuthor, onDelete, sections }: Comm
     ? (sections?.find((s) => s.id === comment.section)?.label ?? comment.section)
     : null;
 
+  const isApplied = comment.status === 'applied';
+
   return (
     <article
-      aria-label={`${comment.author}의 댓글`}
+      aria-label={`${displayAuthor}의 댓글`}
       style={{
         padding: '12px 16px',
         borderBottom: '1px solid #f0f0f0',
@@ -39,7 +43,7 @@ export function CommentItem({ comment, currentAuthor, onDelete, sections }: Comm
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
           <UserOutlined style={{ color: '#999' }} aria-hidden="true" />
-          <Text strong>{comment.author}</Text>
+          <Text strong>{displayAuthor}</Text>
           {sectionLabel && (
             <Tag color="blue" style={{ margin: 0 }}>
               {sectionLabel}
@@ -48,7 +52,7 @@ export function CommentItem({ comment, currentAuthor, onDelete, sections }: Comm
           <Text type="secondary" style={{ fontSize: 12 }}>
             <time dateTime={comment.created_at}>{date}</time>
           </Text>
-          {comment.processed && (
+          {isApplied && (
             <Tag icon={<CheckCircleOutlined />} color="success" style={{ margin: 0 }}>
               반영됨
             </Tag>
