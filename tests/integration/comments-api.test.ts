@@ -24,11 +24,12 @@ function makeJsonRequest(body: unknown, ip = '10.0.0.50'): NextRequest {
 }
 
 function buildInsertChain(data: unknown) {
-  return {
-    insert: vi.fn().mockReturnThis(),
-    select: vi.fn().mockReturnThis(),
-    single: vi.fn().mockResolvedValue({ data, error: null }),
-  };
+  const chain: Record<string, ReturnType<typeof vi.fn>> = {};
+  const passthrough = () => chain;
+  chain.insert = vi.fn(passthrough);
+  chain.select = vi.fn(passthrough);
+  chain.single = vi.fn().mockResolvedValue({ data, error: null });
+  return chain;
 }
 
 describe('POST /api/comments — Phase 1 editor password gate', () => {

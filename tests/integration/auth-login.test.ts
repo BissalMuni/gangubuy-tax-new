@@ -10,7 +10,8 @@ const mockCookieDelete = vi.fn();
 const mockCookieGet = vi.fn();
 
 vi.mock('next/headers', () => ({
-  cookies: vi.fn(async () => ({
+  // Next 14: cookies()는 동기 함수
+  cookies: vi.fn(() => ({
     set: mockCookieSet,
     delete: mockCookieDelete,
     get: mockCookieGet,
