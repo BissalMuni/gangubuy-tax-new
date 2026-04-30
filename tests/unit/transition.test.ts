@@ -17,18 +17,36 @@ function buildClient(state: ChainState) {
   // 단순화: 모든 from() 호출이 동일 체인을 반환. select/update를 테스트마다 다르게 설정.
   const auditInsert = vi.fn().mockResolvedValue({ data: null, error: null });
 
-  const buildSelectChain = () => ({
-    select: vi.fn().mockReturnThis(),
-    eq: vi.fn().mockReturnThis(),
-    maybeSingle: vi.fn().mockResolvedValue(state.selectResult),
-  });
+  const buildSelectChain = () => {
+    const chain: Record<string, ReturnType<typeof vi.fn>> = {};
+    const passthrough = () => chain;
+    chain.select = vi.fn(passthrough);
+    chain.eq = vi.fn(passthrough);
+    chain.maybeSingle = vi.fn().mockResolvedValue(state.selectResult);
+    return chain;
+  };
 
-  const buildUpdateChain = () => ({
-    update: vi.fn().mockReturnThis(),
-    eq: vi.fn().mockReturnThis(),
-    select: vi.fn().mockReturnThis(),
-    maybeSingle: vi.fn().mockResolvedValue(state.updateResult),
-  });
+  const buildUpdateChain = () => {
+    const chain: Record<string, ReturnType<typeof vi.fn>> = {};
+    const passthrough = () => chain;
+    chain.update = vi.fn(passthrough);
+    chain.eq = vi.fn(passthrough);
+    chain.select = vi.fn(passthrough);
+    chain.maybeSingle = vi.fn().mockResolvedValue(state.updateResult);
+    return chain;
+  };
+
+  const buildFreshChain = () => {
+    const chain: Record<string, ReturnType<typeof vi.fn>> = {};
+    const passthrough = () => chain;
+    chain.select = vi.fn(passthrough);
+    chain.eq = vi.fn(passthrough);
+    chain.maybeSingle = vi.fn().mockResolvedValue({
+      data: state.freshResult ?? { id: 'x' },
+      error: null,
+    });
+    return chain;
+  };
 
   let callIdx = 0;
 
@@ -37,15 +55,9 @@ function buildClient(state: ChainState) {
       return { insert: auditInsert };
     }
     callIdx += 1;
-    // 호출 패턴: 1) select 2) update 3) (충돌 시) fresh select
     if (callIdx % 3 === 1) return buildSelectChain();
     if (callIdx % 3 === 2) return buildUpdateChain();
-    // fresh fetch
-    return {
-      select: vi.fn().mockReturnThis(),
-      eq: vi.fn().mockReturnThis(),
-      maybeSingle: vi.fn().mockResolvedValue({ data: state.freshResult ?? { id: 'x' }, error: null }),
-    };
+    return buildFreshChain();
   });
 
   return { client: { from: fromMock } as ReturnType<typeof getSupabase>, auditInsert };

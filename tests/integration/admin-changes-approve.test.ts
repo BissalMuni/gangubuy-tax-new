@@ -44,6 +44,25 @@ interface ChainState {
   updateResult: { data: unknown; error: unknown };
 }
 
+function buildSelectChain(result: { data: unknown; error: unknown }) {
+  const chain: Record<string, ReturnType<typeof vi.fn>> = {};
+  const passthrough = () => chain;
+  chain.select = vi.fn(passthrough);
+  chain.eq = vi.fn(passthrough);
+  chain.maybeSingle = vi.fn().mockResolvedValue(result);
+  return chain;
+}
+
+function buildUpdateChain(result: { data: unknown; error: unknown }) {
+  const chain: Record<string, ReturnType<typeof vi.fn>> = {};
+  const passthrough = () => chain;
+  chain.update = vi.fn(passthrough);
+  chain.eq = vi.fn(passthrough);
+  chain.select = vi.fn(passthrough);
+  chain.maybeSingle = vi.fn().mockResolvedValue(result);
+  return chain;
+}
+
 function buildClient(state: ChainState) {
   const auditInsert = vi.fn().mockResolvedValue({ data: null, error: null });
   let callIdx = 0;
@@ -53,21 +72,9 @@ function buildClient(state: ChainState) {
       return { insert: auditInsert };
     }
     callIdx += 1;
-    if (callIdx % 2 === 1) {
-      // select
-      return {
-        select: vi.fn().mockReturnThis(),
-        eq: vi.fn().mockReturnThis(),
-        maybeSingle: vi.fn().mockResolvedValue(state.selectResult),
-      };
-    }
-    // update
-    return {
-      update: vi.fn().mockReturnThis(),
-      eq: vi.fn().mockReturnThis(),
-      select: vi.fn().mockReturnThis(),
-      maybeSingle: vi.fn().mockResolvedValue(state.updateResult),
-    };
+    return callIdx % 2 === 1
+      ? buildSelectChain(state.selectResult)
+      : buildUpdateChain(state.updateResult);
   });
   return { client: { from: fromMock } as ReturnType<typeof getSupabase>, auditInsert };
 }
