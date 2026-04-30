@@ -113,10 +113,35 @@ export const ALLOWED_MIME_TYPES = [
   'application/vnd.ms-excel',
   'application/msword',
   'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-  'application/haansofthwp',
+  // hwpx (new Hangul format) — old hwp is intentionally excluded
+  'application/hwp+zip',
+  'application/vnd.hancom.hwpx',
+  'application/haansofthwpx',
+  'text/plain',
   'image/jpeg',
   'image/png',
   'image/gif',
+  'image/webp',
 ] as const;
+
+// Browsers often report an empty MIME type for hwpx, so the server also
+// accepts files whose extension is in this list.
+export const ALLOWED_FILE_EXTENSIONS = [
+  'pdf',
+  'xlsx',
+  'xls',
+  'doc',
+  'docx',
+  'hwpx',
+  'txt',
+  'jpg',
+  'jpeg',
+  'png',
+  'gif',
+  'webp',
+] as const;
+
+// Explicitly rejected even when the MIME type would otherwise be permissive.
+export const BLOCKED_FILE_EXTENSIONS = ['hwp'] as const;
 
 export const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB

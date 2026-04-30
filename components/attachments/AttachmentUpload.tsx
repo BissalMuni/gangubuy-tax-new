@@ -3,11 +3,19 @@
 import { useState } from 'react';
 import { Upload, Button, App } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-import { ALLOWED_MIME_TYPES, MAX_FILE_SIZE } from '@/lib/types';
+import {
+  ALLOWED_FILE_EXTENSIONS,
+  BLOCKED_FILE_EXTENSIONS,
+  MAX_FILE_SIZE,
+} from '@/lib/types';
 
 interface AttachmentUploadProps {
   contentPath: string;
   onUploaded: () => void;
+}
+
+function getExt(name: string): string {
+  return name.includes('.') ? (name.split('.').pop() || '').toLowerCase() : '';
 }
 
 export function AttachmentUpload({ contentPath, onUploaded }: AttachmentUploadProps) {
@@ -20,7 +28,14 @@ export function AttachmentUpload({ contentPath, onUploaded }: AttachmentUploadPr
       return false;
     }
 
-    if (!ALLOWED_MIME_TYPES.includes(file.type as (typeof ALLOWED_MIME_TYPES)[number])) {
+    const ext = getExt(file.name);
+
+    if ((BLOCKED_FILE_EXTENSIONS as readonly string[]).includes(ext)) {
+      message.error('hwp 파일은 업로드할 수 없습니다. hwpx 파일로 변환해 주세요.');
+      return false;
+    }
+
+    if (!(ALLOWED_FILE_EXTENSIONS as readonly string[]).includes(ext)) {
       message.error('허용되지 않는 파일 형식입니다.');
       return false;
     }
@@ -58,7 +73,7 @@ export function AttachmentUpload({ contentPath, onUploaded }: AttachmentUploadPr
     <Upload
       beforeUpload={handleUpload}
       showUploadList={false}
-      accept={ALLOWED_MIME_TYPES.join(',')}
+      accept={(ALLOWED_FILE_EXTENSIONS as readonly string[]).map((e) => `.${e}`).join(',')}
     >
       <Button
         icon={<UploadOutlined />}

@@ -52,6 +52,12 @@ export function AttachmentList({ contentPath }: AttachmentListProps) {
     fetchAttachments();
   }, [fetchAttachments]);
 
+  useEffect(() => {
+    const handler = () => fetchAttachments();
+    window.addEventListener('attachments-refresh', handler);
+    return () => window.removeEventListener('attachments-refresh', handler);
+  }, [fetchAttachments]);
+
   const handleDelete = async (id: string) => {
     try {
       const res = await fetch(

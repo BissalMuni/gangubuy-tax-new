@@ -1,8 +1,17 @@
 import { getSupabase } from './server';
 import type { Attachment } from '@/lib/types';
-import { ALLOWED_MIME_TYPES, MAX_FILE_SIZE } from '@/lib/types';
+import {
+  ALLOWED_MIME_TYPES,
+  ALLOWED_FILE_EXTENSIONS,
+  BLOCKED_FILE_EXTENSIONS,
+  MAX_FILE_SIZE,
+} from '@/lib/types';
 
 const BUCKET_NAME = 'attachments';
+
+function getFileExtension(name: string): string {
+  return name.includes('.') ? (name.split('.').pop() || '').toLowerCase() : '';
+}
 
 export async function getAttachments(contentPath: string): Promise<Attachment[]> {
   const supabase = getSupabase();
@@ -33,24 +42,37 @@ export async function uploadAttachment(
     throw new Error('file size exceeds 10MB limit');
   }
 
-  // Validate MIME type
-  if (!ALLOWED_MIME_TYPES.includes(file.type as (typeof ALLOWED_MIME_TYPES)[number])) {
+  const ext = getFileExtension(file.name);
+
+  // Reject explicitly blocked extensions (e.g. legacy .hwp; .hwpx is allowed instead)
+  if ((BLOCKED_FILE_EXTENSIONS as readonly string[]).includes(ext)) {
     throw new Error(
-      'file type not allowed. Allowed: pdf, xlsx, xls, doc, docx, hwp, jpg, jpeg, png, gif',
+      'file type not allowed: .hwp is not supported, please convert to .hwpx',
+    );
+  }
+
+  // Allow if either the MIME type or the file extension is on the allowlist.
+  // Browsers frequently report an empty MIME type for .hwpx, so the extension
+  // check is the primary path for that format.
+  const mimeAllowed = (ALLOWED_MIME_TYPES as readonly string[]).includes(file.type);
+  const extAllowed = (ALLOWED_FILE_EXTENSIONS as readonly string[]).includes(ext);
+  if (!mimeAllowed && !extAllowed) {
+    throw new Error(
+      'file type not allowed. Allowed: pdf, txt, hwpx, xlsx, xls, doc, docx, jpg, jpeg, png, gif, webp',
     );
   }
 
   const supabase = getSupabase();
   const uuid = crypto.randomUUID();
-  const ext = file.name.includes('.') ? file.name.split('.').pop() : '';
   const storagePath = `${contentPath}/${uuid}${ext ? `.${ext}` : ''}`;
+  const contentType = file.type || 'application/octet-stream';
 
   // Upload to Storage
   const buffer = Buffer.from(await file.arrayBuffer());
   const { error: uploadError } = await supabase.storage
     .from(BUCKET_NAME)
     .upload(storagePath, buffer, {
-      contentType: file.type,
+      contentType,
     });
 
   if (uploadError) throw uploadError;
@@ -63,7 +85,7 @@ export async function uploadAttachment(
       file_name: file.name,
       storage_path: storagePath,
       file_size: file.size,
-      mime_type: file.type,
+      mime_type: contentType,
       uploaded_by: uploadedBy,
     })
     .select()
