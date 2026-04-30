@@ -158,11 +158,22 @@ openssl rand -base64 32
 - 감사 로그(`change_audit.actor`)도 페이즈 1에서는 'approver(shared)' / 'admin(shared)'로만 기록
 - 진짜 행위자 추적이 필요하면 Phase 2 전환 필수
 
+### 댓글 삭제 정책 (Soft Delete)
+
+- **모든 삭제는 soft delete만**: `deleted_at` 타임스탬프 + `deleted_by` 액터 기록. DB 레코드는 영구 보존
+- **권한 (Phase 1)**: 승인자/관리자만 가능. 담당자는 무기명이라 본인 식별 불가 → 본인 삭제 불가
+- **삭제 ≠ 반려**: 둘은 별개 액션
+  - **반려(`rejected`)**: AI 반영 거부 결정. 큐 흐름 종료. 본문은 그대로 표시(승인자가 거절 사유 확인용)
+  - **삭제(`deleted_at`)**: 화면 표시에서 제외. status와 직교 — pending/approved/applied 어느 상태에서도 가능
+- **복원**: 관리자가 `/admin/changes`의 "삭제됨 보기" 토글 → 복원 버튼으로 `deleted_at = NULL` 처리
+- **AI 워크플로**: `deleted_at IS NOT NULL` 항목은 fetch 제외 (이미 `applied`라도 후속 처리 차단)
+
 ### 보존 정책
 
 - `applied` 항목: 영구 보존 (커밋 SHA로 추적 가능)
-- `rejected` 항목: 30일 후 본문 삭제 (메타만 보존)
+- `rejected` 항목: 30일 후 본문 익명화 (메타만 보존). 삭제는 하지 않음
 - `failed` 항목: 30일 후 자동 재시도 또는 수동 정리
+- `deleted_at` 항목: **영구 보존** (감사 추적용). hard delete는 GDPR 준수 등 법적 요구 시에만 별도 절차
 
 ## 7. 비상 대응
 

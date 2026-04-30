@@ -135,17 +135,29 @@ POST /api/admin/changes/approve { ids: [...] }
 → UPDATE status='approved', reviewer=<승인자 이메일>, reviewed_at=now()
 ```
 
-### 4-3. 본인 댓글 삭제 (Phase 1과 다른 정책)
+### 4-3. 본인 댓글 삭제 — Soft Delete (Phase 1과 다른 정책)
 
-Phase 1: 본인 삭제 불가 (무기명).
-Phase 2: **본인 삭제 가능** (이메일 일치 시).
+**공통 원칙**: 삭제는 항상 soft delete (`deleted_at` + `deleted_by` 세팅, DB 보존). Hard delete 없음.
+
+| 행위자 | Phase 1 | Phase 2 |
+|--------|--------|--------|
+| 담당자 본인 | 불가 (무기명) | **가능** (이메일 일치 + status='pending'에 한함) |
+| 승인자 | 가능 | 가능 |
+| 관리자 | 가능 | 가능 |
+
+**API 흐름 (Phase 2 본인 삭제)**:
 
 ```
-DELETE /api/comments/<id>
-→ session.user.email === comment.author ? OK : 403
-→ status='pending'인 경우만 본인 삭제 허용
-→ 'approved' 이상 상태는 승인자만 'rejected'로 전환 가능 (revert)
+POST /api/comments/<id>/delete
+→ session.user.email === comment.author && comment.status === 'pending' ? OK : 403
+→ UPDATE comments SET deleted_at = now(), deleted_by = <email> WHERE id = <id>
 ```
+
+- `status='approved'` 이상은 본인이 직접 soft delete 불가. 승인자에게 "삭제 요청"하거나, 승인자가 직접 처리
+- `deleted_at` 세팅 후 UI는 즉시 숨김. AI 워크플로도 fetch 대상에서 제외
+- 복원이 필요하면 관리자가 `/admin/changes` "삭제됨 보기" 토글 → 복원
+
+**삭제 ≠ 반려**: 페이즈 2에서도 동일. 반려는 status 전이(`rejected`), 삭제는 직교 플래그.
 
 ### 4-4. 모드 전환
 
@@ -187,19 +199,30 @@ INSERT INTO change_audit (
 );
 ```
 
-### 보존/삭제 권리 (GDPR-style)
+### Soft delete vs 익명화 vs Hard delete
 
-운영 정책에 따라 사용자가 "내 데이터 삭제" 요청 가능:
+| 액션 | 트리거 | DB 효과 | 사용 시점 |
+|------|-------|--------|---------|
+| **Soft delete** | 일반 삭제 (UI 숨김) | `deleted_at`, `deleted_by` 세팅, 본문 보존 | 사용자가 "이 댓글 안 보이게" 요청 |
+| **익명화** | 보존 정책 (`rejected` 30일 경과 등) | `author=NULL`, 본문은 그대로 | 식별 정보만 제거하고 데이터는 분석/감사에 유지 |
+| **Hard delete** | GDPR 등 법적 요청 | `DELETE` 실행, 감사 로그도 `(deleted)`로 마스킹 | "내 모든 데이터 영구 삭제" 요청 시에만 |
+
+**GDPR-style 영구 삭제 절차** (사용자가 "내 모든 데이터 삭제" 요청):
 
 ```sql
--- 1) 작성한 댓글의 식별 정보만 익명화 (감사 로그 무결성 보존)
-UPDATE comments SET author = NULL WHERE author = <email>;
+-- 1) 본인이 작성한 모든 댓글 hard delete
+DELETE FROM comments WHERE author = <email>;
+DELETE FROM attachments WHERE uploaded_by = <email>;
+
+-- 2) 감사 로그의 actor 마스킹 (감사 무결성을 위해 행 자체는 보존)
 UPDATE change_audit SET actor = '(deleted)' WHERE actor = <email>;
 
--- 2) 사용자 계정 비활성화
-UPDATE users SET active = false WHERE email = <email>;
--- 또는 완전 삭제: DELETE FROM auth.users WHERE id = <UUID>;
+-- 3) 사용자 계정 영구 삭제
+DELETE FROM auth.users WHERE id = <UUID>;
+-- (users 테이블은 ON DELETE CASCADE로 자동 정리)
 ```
+
+> ⚠️ Hard delete는 비가역적. 반드시 사용자 본인 확인 + 관리자 2인 승인 절차 후 실행 권장.
 
 ## 7. 비상 대응
 

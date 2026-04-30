@@ -182,44 +182,54 @@
   - `pending → approved` (승인자 승인) 또는 `pending → rejected` (승인자 반려)
   - `approved → processing` (워크플로 fetch)
   - `processing → applied` (커밋 성공) 또는 `processing → failed` (실패)
-- **FR-010**: 각 항목은 `author`(페이즈 1: null, 페이즈 2: email), `reviewer`, `reviewed_at`, `applied_commit_sha`, `target_kind`('content'|'structure'), `error_log`, `reject_reason` 컬럼을 기록해야 한다
-- **FR-011**: 본인 댓글 삭제는 **불가능**(무기명이므로 식별 불가). 삭제는 승인자 권한의 "반려"로만 가능
+- **FR-010**: 각 항목은 `author`(페이즈 1: null, 페이즈 2: email), `reviewer`, `reviewed_at`, `applied_commit_sha`, `target_kind`('content'|'structure'), `error_log`, `reject_reason`, `deleted_at`, `deleted_by` 컬럼을 기록해야 한다
+
+**삭제 정책 (Soft Delete)**
+- **FR-011**: 모든 삭제는 **soft delete**로만 처리한다. `deleted_at`(timestamp) + `deleted_by`(actor) 플래그만 세팅하고 DB 레코드는 영구 보존한다. Hard delete는 금지
+- **FR-012**: UI는 `deleted_at IS NOT NULL` 항목을 기본 숨김. AI 워크플로 fetch도 동일 조건으로 제외 (이미 `applied` 상태라도 후속 처리 차단)
+- **FR-013**: "삭제(soft)"와 "반려(rejected)"는 **별개 액션**:
+  - **반려**: AI 반영 거부 결정 (`status='rejected'`, `reject_reason` 기록). 큐 흐름 종료
+  - **삭제**: 화면 표시 제외 (`deleted_at` 세팅). status와 직교적 — pending/approved/applied 어느 상태에서도 가능
+- **FR-014**: 삭제 권한
+  - **페이즈 1**: 승인자/관리자만 가능 (담당자는 무기명 → 본인 식별 불가)
+  - **페이즈 2**: 본인(author 이메일 일치) + 승인자/관리자 가능
+- **FR-015**: 관리자는 `/admin/changes`에서 "삭제됨 보기" 토글로 soft-deleted 항목 조회 + 복원(`deleted_at = NULL`) 가능
 
 **관리 페이지 (`/admin/changes`)**
-- **FR-012**: 페이지는 메뉴 구조 트리뷰로 변경 항목을 그룹핑하여 표시해야 한다
-- **FR-013**: 상태별 다중 필터 + 검색(내용/경로)을 지원해야 한다
-- **FR-014**: 각 항목에 체크박스를 제공하고 "선택 승인 / 선택 반려 / 전체 승인" 일괄 작업을 지원해야 한다
-- **FR-015**: 항목 상세 패널은 본문, 첨부 인라인 미리보기, (선택) AI 드라이런 결과 diff를 표시해야 한다
-- **FR-016**: `applied` 항목은 커밋 SHA로 GitHub 커밋 페이지 링크를 제공해야 한다
+- **FR-016**: 페이지는 메뉴 구조 트리뷰로 변경 항목을 그룹핑하여 표시해야 한다
+- **FR-017**: 상태별 다중 필터 + 검색(내용/경로)을 지원해야 한다
+- **FR-018**: 각 항목에 체크박스를 제공하고 "선택 승인 / 선택 반려 / 선택 삭제(soft) / 전체 승인" 일괄 작업을 지원해야 한다
+- **FR-019**: 항목 상세 패널은 본문, 첨부 인라인 미리보기, (선택) AI 드라이런 결과 diff를 표시해야 한다
+- **FR-020**: `applied` 항목은 커밋 SHA로 GitHub 커밋 페이지 링크를 제공해야 한다
 
 **자동/수동 모드 + 경로 override**
-- **FR-017**: 시스템은 글로벌 모드 토글(`auto` | `manual`)을 지원해야 한다
-- **FR-018**: `automation_settings.path_overrides`로 경로 패턴별 모드 강제가 가능해야 한다 (예: `{ "content/acquisition-tax/**": "manual" }`)
-- **FR-019**: `manual` 모드에서 워크플로는 `status='approved'` 항목만 fetch해야 한다
-- **FR-020**: `auto` 모드에서 워크플로는 `pending+approved` 항목 모두 fetch하거나, 댓글 제출 시 즉시 `approved`로 마킹해야 한다
-- **FR-021**: 관리자는 `cron_enabled` 플래그로 cron 자체를 정지/재개할 수 있어야 한다 (비상 정지)
-- **FR-022**: 관리 페이지의 "지금 처리(workflow_dispatch)" 버튼으로 즉시 실행이 가능해야 한다
+- **FR-021**: 시스템은 글로벌 모드 토글(`auto` | `manual`)을 지원해야 한다
+- **FR-022**: `automation_settings.path_overrides`로 경로 패턴별 모드 강제가 가능해야 한다 (예: `{ "content/acquisition-tax/**": "manual" }`)
+- **FR-023**: `manual` 모드에서 워크플로는 `status='approved'` 항목만 fetch해야 한다
+- **FR-024**: `auto` 모드에서 워크플로는 `pending+approved` 항목 모두 fetch하거나, 댓글 제출 시 즉시 `approved`로 마킹해야 한다
+- **FR-025**: 관리자는 `cron_enabled` 플래그로 cron 자체를 정지/재개할 수 있어야 한다 (비상 정지)
+- **FR-026**: 관리 페이지의 "지금 처리(workflow_dispatch)" 버튼으로 즉시 실행이 가능해야 한다
 
 **AI 시스템 프롬프트**
-- **FR-023**: AI 시스템 프롬프트는 `automation_settings.system_prompt`에 저장되며 관리자만 편집할 수 있어야 한다
-- **FR-024**: 워크플로는 실행 시 DB에서 최신 프롬프트를 읽어 사용해야 한다
-- **FR-025**: 프롬프트 변경 이력은 `system_prompt_history`로 보존되어 롤백 가능해야 한다
+- **FR-027**: AI 시스템 프롬프트는 `automation_settings.system_prompt`에 저장되며 관리자만 편집할 수 있어야 한다
+- **FR-028**: 워크플로는 실행 시 DB에서 최신 프롬프트를 읽어 사용해야 한다
+- **FR-029**: 프롬프트 변경 이력은 `system_prompt_history`로 보존되어 롤백 가능해야 한다
 
 **구조파일 변경 안전장치**
-- **FR-026**: `target_kind='structure'` 항목은 글로벌 모드와 무관하게 **항상 manual**이어야 한다
-- **FR-027**: AI는 구조파일 수정 시 main 직접 push 대신 **PR을 생성**해야 한다
-- **FR-028**: 구조 변경 PR은 관리자만 머지 가능해야 한다 (CODEOWNERS 또는 브랜치 보호 규칙)
-- **FR-029**: AI의 직접 수정 가능 경로는 시스템 프롬프트 + 워크플로 `git add` 화이트리스트로 이중 제한되어야 한다
+- **FR-030**: `target_kind='structure'` 항목은 글로벌 모드와 무관하게 **항상 manual**이어야 한다
+- **FR-031**: AI는 구조파일 수정 시 main 직접 push 대신 **PR을 생성**해야 한다
+- **FR-032**: 구조 변경 PR은 관리자만 머지 가능해야 한다 (CODEOWNERS 또는 브랜치 보호 규칙)
+- **FR-033**: AI의 직접 수정 가능 경로는 시스템 프롬프트 + 워크플로 `git add` 화이트리스트로 이중 제한되어야 한다
 
 **감사/롤백**
-- **FR-030**: 모든 상태 전이는 `change_audit` 테이블에 기록되어야 한다 (`change_id, from_status, to_status, actor, at, reason`)
-- **FR-031**: `applied` 항목은 커밋 SHA로 GitHub revert가 가능해야 한다 (UI에서 revert PR 생성 버튼 — P3)
+- **FR-034**: 모든 상태 전이 + soft delete/복원은 `change_audit` 테이블에 기록되어야 한다 (`change_id, from_status, to_status, actor, at, reason`)
+- **FR-035**: `applied` 항목은 커밋 SHA로 GitHub revert가 가능해야 한다 (UI에서 revert PR 생성 버튼 — P3)
 
 ### Key Entities
 
 - **(페이즈 1) Session**: 쿠키 기반 단순 세션. `cookie_token, role('admin'|'approver'), expires_at` (담당자는 비번 통과 후 즉시 사용, 세션 불필요 또는 단명)
 - **(페이즈 2) User**: `id, email, role('admin'|'approver'|'editor'), active, created_at` — Supabase Auth `auth.users`와 1:1
-- **Change Item** (기존 `comments`/`attachments` 확장): `id, content_path, target_kind, body, attachments, author(nullable), status, reviewer, reviewed_at, applied_commit_sha, error_log, reject_reason, created_at`
+- **Change Item** (기존 `comments`/`attachments` 확장): `id, content_path, target_kind, body, attachments, author(nullable), status, reviewer, reviewed_at, applied_commit_sha, error_log, reject_reason, deleted_at(nullable), deleted_by(nullable), created_at`
 - **Automation Settings**: `mode, path_overrides(jsonb), cron_enabled, system_prompt, updated_by, updated_at`
 - **System Prompt History**: `id, prompt, updated_by, updated_at`
 - **Change Audit**: `change_id, from_status, to_status, actor, at, reason`
@@ -239,7 +249,7 @@
 |------|----------------|---------|
 | `comments.author` 텍스트 입력 | `author=null` (무기명) | `author=<email>` |
 | `comments.processed: bool` | `status: enum` (6단계) | 동일 |
-| 익명 이름 매칭 (작성자 일치 시 삭제) | 본인 삭제 불가, 반려만 | 본인 삭제 가능(이메일 일치) |
+| 익명 이름 매칭 → hard delete | Soft delete만 (UI 숨김 + DB 보존). 승인자/관리자만 가능. 담당자 본인 삭제 불가(무기명) | Soft delete + 본인(이메일 일치)도 가능 |
 | 워크플로 YAML 하드코딩 시스템 프롬프트 | DB 외부화 + 관리 UI + 이력 | 동일 |
 | 댓글 = 즉시 AI 트리거 | 승인 게이트 + 모드 토글 | 동일 |
 | (없음) | `/admin/changes` + 트리뷰 + 일괄 승인 | 동일 |
