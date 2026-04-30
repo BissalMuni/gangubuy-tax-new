@@ -17,10 +17,10 @@
 **목표**: Phase 1 스키마를 운영 DB에 적용. 기존 데이터 보존.
 
 **산출물**:
-- [ ] `supabase/migrations/005_phase1_role_approval.sql` 작성 ([data-model.md §Phase 1](data-model.md))
-- [ ] staging DB에서 dry-run, `processed` → `status` 변환 검증
-- [ ] 운영 DB 백업 후 적용
-- [ ] 적용 후 검증 쿼리 실행 (행 수 일치, status별 합계)
+- [x] `supabase/migrations/005_phase1_role_approval.sql` 작성 ([data-model.md §Phase 1](data-model.md))
+- [ ] staging DB에서 dry-run, `processed` → `status` 변환 검증 _(호스트가 적용)_
+- [ ] 운영 DB 백업 후 적용 _(호스트가 적용)_
+- [ ] 적용 후 검증 쿼리 실행 (행 수 일치, status별 합계) _(호스트가 적용)_
 
 **테스트**:
 - `SELECT status, COUNT(*) FROM comments GROUP BY status;` — 기존 processed=true 모두 'applied'로
