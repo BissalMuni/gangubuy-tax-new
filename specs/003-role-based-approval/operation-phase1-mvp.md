@@ -34,9 +34,32 @@ SUPABASE_SERVICE_ROLE_KEY=<service_role>
 NEXT_PUBLIC_SUPABASE_URL=https://xxx.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=<anon>
 
+# GitHub workflow_dispatch ("지금 처리" 버튼용)
+# Personal Access Token, scope: repo + workflow, 만료 90일 권장
+GITHUB_TOKEN=<github_pat_...>
+GITHUB_OWNER=BissalMuni
+GITHUB_REPO=gangubuy-tax-new
+
+# 레이트리밋 (선택, 인메모리 fallback이지만 Vercel 다중 인스턴스에서는 무용)
+# 미설정 시 일관된 레이트리밋 미보장. Phase 1 신뢰 그룹에서는 생략 가능
+UPSTASH_REDIS_REST_URL=https://xxx.upstash.io
+UPSTASH_REDIS_REST_TOKEN=<token>
+
 # 인증 페이즈 명시 (Phase 2 전환 시 토글)
 AUTH_PHASE=1
 ```
+
+### 환경 변수 책임 매트릭스
+
+| 변수 | 누설 시 영향 | 회전 주기 |
+|------|------------|---------|
+| `ADMIN_PASSWORD` | 시스템 전체 장악 가능 | 즉시 (사고 시) / 90일 (정기) |
+| `APPROVER_PASSWORD` | 큐 일괄 승인/반려/삭제 가능 | 90일 |
+| `EDITOR_PASSWORD` | 스팸 제출 가능 (AI 반영은 승인자가 막음) | 분기 1회 또는 누설 시 |
+| `SESSION_SECRET` | 모든 활성 세션 위장 가능 | 사고 시 즉시 (모두 강제 로그아웃됨) |
+| `SUPABASE_SERVICE_ROLE_KEY` | DB 전체 RLS 우회 | 사고 시 즉시 (Supabase 대시보드 회전) |
+| `GITHUB_TOKEN` | 워크플로 dispatch + repo 변경 가능 | 90일 / 사고 시 즉시 (GitHub 토큰 페이지) |
+| `UPSTASH_REDIS_REST_TOKEN` | 레이트리밋 카운터 변조 | 사고 시 (영향 제한적) |
 
 ### GitHub Actions Secrets
 

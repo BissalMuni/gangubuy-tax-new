@@ -32,6 +32,8 @@
 
 ## 역할 모델 (Roles)
 
+> *상위 정책 매핑*: 본 모델은 [docs/policy/manual-system-plan.md](../../docs/policy/manual-system-plan.md) §II~IV의 3등급 권한 체계와 정렬됨 — **작성자 = 담당자(Editor)**, **승인자 = 승인자(Approver)**, **총괄 = 관리자(Admin)**. AI는 정책 §III.3의 보조자 역할.
+
 4개 액터(인간 3 + AI 1):
 
 | 역할 | 권한 범위 | 페이즈 1 인증 | 페이즈 2 인증 |
@@ -288,6 +290,15 @@
 - AI 호출은 Claude Code via GitHub Actions로 유지
 - 콘텐츠 저장소는 git + MDX 유지 (별도 CMS 도입 안 함)
 - Supabase는 그대로 사용 (Postgres + Storage + 페이즈 2 Auth)
+
+### 본 spec의 범위 외 (별도 spec 후속)
+
+상위 정책 [manual-system-plan.md](../../docs/policy/manual-system-plan.md)에서 제시한 다음 두 기능은 **003 범위에 포함되지 않으며**, 별도 spec으로 후속 진행한다:
+
+- **004 (가칭) AI 형식·문장 자동화** — 정책 §III.3: 담당자가 내용만 작성 → AI가 표현 형식·용어·문장 자동 정리. 003은 "담당자 의견 → AI가 콘텐츠 수정" 흐름만 다룸
+- **005 (가칭) 법령·예규 변경 자동 감지** — 정책 §III.4: 외부 법령 DB 변경 감지 → 영향 부분 표시 → AI 초안 갱신 → 담당자 승인. 003은 사람이 트리거하는 의견만 처리
+
+위 두 spec은 003 안정 운영 후 착수 권장.
 
 ## Next Artifacts (spec-kit 컨벤션)
 
