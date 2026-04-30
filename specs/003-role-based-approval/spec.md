@@ -37,7 +37,7 @@
 | 역할 | 권한 범위 | 페이즈 1 인증 | 페이즈 2 인증 |
 |------|---------|------------|------------|
 | **관리자 (Admin)** | 구조파일(`config/`, 네비게이션, 템플릿), AI 시스템 프롬프트, 자동/수동 모드 토글, cron 정지/재개, 담당자/승인자 관리, 시크릿 | env `ADMIN_PASSWORD` + 쿠키 세션 | Supabase Auth Magic Link + `role='admin'` |
-| **승인자 (Approver)** | 변경 큐 일괄 승인/반려, 댓글 삭제(반려), 모드 토글 조회 | env `APPROVER_PASSWORD` (공유) + 쿠키 세션 | Magic Link + `role='approver'` |
+| **승인자 (Approver)** | 변경 큐 일괄 승인/반려/삭제(soft), 모드 토글 조회 (편집 불가) | env `APPROVER_PASSWORD` (공유) + 쿠키 세션 | Magic Link + `role='approver'` |
 | **담당자 (Editor)** | 의견(댓글) 제출, 첨부 업로드. **직접 파일 수정 불가**, **본인 댓글 삭제 불가** | env `EDITOR_PASSWORD` (공유) — **이름 입력 없음, 무기명** | Magic Link + `role='editor'` (개인 식별) |
 | **AI** | 승인된 큐만 처리. 시스템 프롬프트 범위 내에서 `content/` 및 (안전장치 통과 시) 구조파일 수정 | GitHub Actions secrets | 동일 |
 
@@ -182,6 +182,9 @@
   - `pending → approved` (승인자 승인) 또는 `pending → rejected` (승인자 반려)
   - `approved → processing` (워크플로 fetch)
   - `processing → applied` (커밋 성공) 또는 `processing → failed` (실패)
+  - `processing → failed` 자동: `processing` 상태로 30분 이상 지속된 항목은 시스템이 자동 `failed`로 전환하고 `error_log='timeout'` 기록 (워크플로 타임아웃 또는 좀비 작업 회수)
+  - `failed` → 재시도: 관리자가 수동으로 `failed → approved`로 되돌릴 수 있다 (재시도. 본 전이는 명시적 사용자 액션으로만 발생)
+- **FR-009a**: **동시성 제어**: 모든 상태 전이는 낙관적 락(`updated_at` 비교)을 사용한다. 클라이언트는 마지막으로 본 `updated_at`을 함께 보내고, 서버가 현재 값과 일치할 때만 전이를 적용한다. 불일치 시 409 Conflict 응답 + 최신 상태 동봉
 - **FR-010**: 각 항목은 `author`(페이즈 1: null, 페이즈 2: email), `reviewer`, `reviewed_at`, `applied_commit_sha`, `target_kind`('content'|'structure'), `error_log`, `reject_reason`, `deleted_at`, `deleted_by` 컬럼을 기록해야 한다
 
 **삭제 정책 (Soft Delete)**
@@ -207,7 +210,10 @@
 - **FR-022**: `automation_settings.path_overrides`로 경로 패턴별 모드 강제가 가능해야 한다 (예: `{ "content/acquisition-tax/**": "manual" }`)
 - **FR-023**: `manual` 모드에서 워크플로는 `status='approved'` 항목만 fetch해야 한다
 - **FR-024**: `auto` 모드에서 워크플로는 `pending+approved` 항목 모두 fetch하거나, 댓글 제출 시 즉시 `approved`로 마킹해야 한다
-- **FR-025**: 관리자는 `cron_enabled` 플래그로 cron 자체를 정지/재개할 수 있어야 한다 (비상 정지)
+- **FR-025**: 관리자는 `cron_enabled` 플래그로 cron 자체를 정지/재개할 수 있어야 한다 (비상 정지). 비상 정지의 영향 범위:
+  - **새 워크플로 실행 차단**: cron + workflow_dispatch 모두 즉시 거부 (단 관리자가 명시적으로 "강제 실행"을 누르면 dispatch는 통과 — UI에서 별도 확인 모달)
+  - **이미 `processing` 중인 항목**: 워크플로 자체는 GitHub 측에서 진행 중이라 강제 종료 불가. 30분 타임아웃(FR-009)으로 자연 종료되거나, 관리자가 GitHub Actions UI에서 수동 cancel
+  - **재개 후**: `cron_enabled=true`로 돌리면 다음 cron부터 정상 실행. 정지 중 누적된 `pending`/`approved`는 그대로 처리됨
 - **FR-026**: 관리 페이지의 "지금 처리(workflow_dispatch)" 버튼으로 즉시 실행이 가능해야 한다
 
 **AI 시스템 프롬프트**
@@ -227,7 +233,7 @@
 
 ### Key Entities
 
-- **(페이즈 1) Session**: 쿠키 기반 단순 세션. `cookie_token, role('admin'|'approver'), expires_at` (담당자는 비번 통과 후 즉시 사용, 세션 불필요 또는 단명)
+- **(페이즈 1) Session**: 쿠키 기반 단순 세션. `cookie_token, role('admin'|'approver'), expires_at(12h)`. 관리자/승인자만 발급. **담당자는 세션을 발급하지 않는다** — 매 댓글 제출 시 `EDITOR_PASSWORD`를 요청 본문에 포함시켜 1회용 게이트로만 검증
 - **(페이즈 2) User**: `id, email, role('admin'|'approver'|'editor'), active, created_at` — Supabase Auth `auth.users`와 1:1
 - **Change Item** (기존 `comments`/`attachments` 확장): `id, content_path, target_kind, body, attachments, author(nullable), status, reviewer, reviewed_at, applied_commit_sha, error_log, reject_reason, deleted_at(nullable), deleted_by(nullable), created_at`
 - **Automation Settings**: `mode, path_overrides(jsonb), cron_enabled, system_prompt, updated_by, updated_at`
@@ -242,6 +248,9 @@
 - **SC-004**: AI는 시스템 프롬프트와 워크플로 화이트리스트를 위반하여 허가 외 파일을 수정한 적이 0건이어야 한다
 - **SC-005**: `applied` 변경은 모두 커밋 SHA로 추적 가능하며 감사 로그가 30일 이상 보존된다
 - **SC-006**: 페이즈 2 마이그레이션 시 페이즈 1 데이터(무기명 댓글)는 100% 보존된다
+- **SC-007**: IP 단위 시도 횟수 제한이 동작해야 한다 — 댓글 제출 11회/시간 시 11번째는 429 응답, 로그인 6회/시간 시 6번째는 차단
+- **SC-008**: `processing` 상태로 30분을 초과한 항목은 다음 검사 사이클(최대 5분 내)에 자동 `failed`로 전환되어야 한다
+- **SC-009**: 동시 승인 경합 시 두 클라이언트 중 정확히 한 쪽만 200 OK, 다른 쪽은 409 Conflict로 거부되어야 한다 (낙관적 락)
 
 ## Migration / 기존 구조와의 관계
 
