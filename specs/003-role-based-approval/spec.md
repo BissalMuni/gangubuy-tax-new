@@ -2,7 +2,7 @@
 
 **Feature Branch**: `003-role-based-approval`
 **Created**: 2026-04-30
-**Updated**: 2026-04-30 (Open Questions resolved)
+**Updated**: 2026-04-30 (Open Questions resolved + 004 의존성: 복수 역할 / 자기-승인 / acting_role 반영)
 **Status**: Draft
 **Input**: 4-역할 모델(관리자/승인자/담당자/AI) + 변경 승인 큐 + 자동/수동 토글로 기존 댓글 자동 반영 구조 재설계
 
@@ -42,6 +42,15 @@
 | **승인자 (Approver)** | 변경 큐 일괄 승인/반려/삭제(soft), 모드 토글 조회 (편집 불가) | env `APPROVER_PASSWORD` (공유) + 쿠키 세션 | Magic Link + `role='approver'` |
 | **담당자 (Editor)** | 의견(댓글) 제출, 첨부 업로드. **직접 파일 수정 불가**, **본인 댓글 삭제 불가** | env `EDITOR_PASSWORD` (공유) — **이름 입력 없음, 무기명** | Magic Link + `role='editor'` (개인 식별) |
 | **AI** | 승인된 큐만 처리. 시스템 프롬프트 범위 내에서 `content/` 및 (안전장치 통과 시) 구조파일 수정 | GitHub Actions secrets | 동일 |
+
+### 복수 역할 보유 (Multi-Role)
+
+> **단일 사용자가 둘 이상의 역할을 동시에 보유할 수 있다.** (예: 관리자 + 승인자, 또는 승인자 + 담당자). 단, 한 *행위*(PR/커밋/댓글)는 하나의 *행동 컨텍스트*(acting_role)로만 수행됨 — 보유 권한과 행동 컨텍스트는 분리.
+
+- 페이즈 1: env 비번 보유로 권한 누적 (3개 비번을 모두 가진 운영자는 3역할 보유)
+- 페이즈 2: `users.roles TEXT[]` 컬럼으로 다중 역할 저장. 인증 시 토큰에 `roles` 배열 포함
+- 행동 컨텍스트는 PR 라벨(`mode:structure`/`mode:content`/`mode:refactor`) 또는 API 요청 헤더(`X-Acting-Role`)로 명시
+- **자기-승인 금지** (separation of duties): 동일 actor가 작성한 변경을 동일 actor가 승인 불가. 1인 운영 비상 모드는 운영 절차 문서로 정의
 
 ### 페이즈 전환
 
@@ -168,14 +177,18 @@
 ### Functional Requirements
 
 **역할 및 인증 (페이즈 1)**
-- **FR-001**: 시스템은 관리자/승인자/담당자/AI 4개 역할을 구분해야 한다
-- **FR-002**: 관리자/승인자는 각각 `ADMIN_PASSWORD`, `APPROVER_PASSWORD` env 비번 입력 후 쿠키 세션 발급으로 인증된다. `/admin/*` 경로는 Next.js middleware로 보호된다
+- **FR-001**: 시스템은 관리자/승인자/담당자/AI 4개 역할을 구분해야 한다. **단일 사용자가 둘 이상의 역할을 동시에 보유할 수 있다** (예: 관리자가 승인자 역할도 보유)
+- **FR-001a**: **복수 역할 보유**: 페이즈 1에서는 env 비번 보유로 권한 누적된다 (관리자가 `ADMIN_PASSWORD`, `APPROVER_PASSWORD`를 모두 알면 두 역할을 동시 보유). 페이즈 2에서는 `users.roles TEXT[]` 배열로 표현된다
+- **FR-001b**: **행동 컨텍스트 (acting_role)**: 한 행위(상태 전이, 댓글 제출, 매니페스트 편집 등)는 항상 하나의 acting_role로만 수행된다. 보유 권한과 행동 컨텍스트는 분리된다. acting_role은 `change_audit.acting_role`에 기록된다
+- **FR-001c**: **자기-승인 금지 (Separation of Duties)**: 동일 actor가 작성/제출한 변경을 동일 actor가 승인할 수 없다. 시스템은 `actor != reviewer` 제약을 모든 상태 전이에서 강제한다. 1인 운영 환경의 비상 우회는 운영 절차 문서에서 정의 (페이즈 1: 운영자 재량, 페이즈 2: 명시적 emergency 토글 + 감사 강조 표시)
+- **FR-002**: 관리자/승인자는 각각 `ADMIN_PASSWORD`, `APPROVER_PASSWORD` env 비번 입력 후 쿠키 세션 발급으로 인증된다. `/admin/*` 경로는 Next.js middleware로 보호된다. 세션은 보유 역할 집합(`roles`)을 토큰에 포함한다
 - **FR-003**: 담당자는 `EDITOR_PASSWORD` 입력만으로 댓글 제출이 허용된다. **이름/이메일 등 식별 정보 입력 없음(무기명)**
 - **FR-004**: 비번 불일치 시 401 응답, 시간당 시도 횟수를 IP 단위로 제한해야 한다 (예: 10회/시간)
-- **FR-005**: AI는 GitHub Actions secrets로만 인증되며, Supabase service_role key로 DB에 접근한다
+- **FR-005**: AI는 GitHub Actions secrets로만 인증되며, Supabase service_role key로 DB에 접근한다. AI의 acting_role은 항상 `'ai'`로 기록된다
 
 **역할 및 인증 (페이즈 2 — Supabase Auth)**
-- **FR-006**: 페이즈 2에서는 Supabase Auth Magic Link를 사용한다. `users` 테이블에 `email`, `role` 컬럼이 있고 사전 등록된 이메일만 매직링크 수신 가능
+- **FR-006**: 페이즈 2에서는 Supabase Auth Magic Link를 사용한다. `users` 테이블에 `email`, `roles TEXT[]` 컬럼이 있고 사전 등록된 이메일만 매직링크 수신 가능. `roles` 배열은 `{'admin','approver','editor'}`의 부분집합이며 비어 있을 수 없다
+- **FR-006a**: 페이즈 2 인증 토큰은 `roles` 배열을 포함하며, API 호출 시 `X-Acting-Role` 헤더로 명시된 역할이 보유 역할 집합에 포함되어야 한다 (포함되지 않으면 403)
 - **FR-007**: 페이즈 2 활성화 후 페이즈 1 비번 인증 경로는 비활성화되어야 한다 (선택: 관리자만 fallback 유지)
 
 **변경 큐 (상태 머신)**
@@ -188,6 +201,7 @@
   - `failed` → 재시도: 관리자가 수동으로 `failed → approved`로 되돌릴 수 있다 (재시도. 본 전이는 명시적 사용자 액션으로만 발생)
 - **FR-009a**: **동시성 제어**: 모든 상태 전이는 낙관적 락(`updated_at` 비교)을 사용한다. 클라이언트는 마지막으로 본 `updated_at`을 함께 보내고, 서버가 현재 값과 일치할 때만 전이를 적용한다. 불일치 시 409 Conflict 응답 + 최신 상태 동봉
 - **FR-010**: 각 항목은 `author`(페이즈 1: null, 페이즈 2: email), `reviewer`, `reviewed_at`, `applied_commit_sha`, `target_kind`('content'|'structure'), `error_log`, `reject_reason`, `deleted_at`, `deleted_by` 컬럼을 기록해야 한다
+- **FR-010a**: `change_audit` 테이블은 `actor`(누가) + `acting_role`(어떤 모자를 쓰고) 두 컬럼을 모두 기록해야 한다. acting_role은 `'admin'|'approver'|'editor'|'ai'` 중 하나이며, actor의 보유 역할 집합에 포함되어야 한다 (CI/서버에서 검증)
 
 **삭제 정책 (Soft Delete)**
 - **FR-011**: 모든 삭제는 **soft delete**로만 처리한다. `deleted_at`(timestamp) + `deleted_by`(actor) 플래그만 세팅하고 DB 레코드는 영구 보존한다. Hard delete는 금지
@@ -236,11 +250,11 @@
 ### Key Entities
 
 - **(페이즈 1) Session**: 쿠키 기반 단순 세션. `cookie_token, role('admin'|'approver'), expires_at(12h)`. 관리자/승인자만 발급. **담당자는 세션을 발급하지 않는다** — 매 댓글 제출 시 `EDITOR_PASSWORD`를 요청 본문에 포함시켜 1회용 게이트로만 검증
-- **(페이즈 2) User**: `id, email, role('admin'|'approver'|'editor'), active, created_at` — Supabase Auth `auth.users`와 1:1
+- **(페이즈 2) User**: `id, email, roles TEXT[] (subset of {'admin','approver','editor'}, non-empty), active, created_at` — Supabase Auth `auth.users`와 1:1. **단일 사용자 다중 역할 보유 가능**
 - **Change Item** (기존 `comments`/`attachments` 확장): `id, content_path, target_kind, body, attachments, author(nullable), status, reviewer, reviewed_at, applied_commit_sha, error_log, reject_reason, deleted_at(nullable), deleted_by(nullable), created_at`
 - **Automation Settings**: `mode, path_overrides(jsonb), cron_enabled, system_prompt, updated_by, updated_at`
 - **System Prompt History**: `id, prompt, updated_by, updated_at`
-- **Change Audit**: `change_id, from_status, to_status, actor, at, reason`
+- **Change Audit**: `change_id, from_status, to_status, actor, acting_role, at, reason, emergency_override(bool, default false)`
 
 ## Success Criteria *(mandatory)*
 
@@ -253,6 +267,8 @@
 - **SC-007**: IP 단위 시도 횟수 제한이 동작해야 한다 — 댓글 제출 11회/시간 시 11번째는 429 응답, 로그인 6회/시간 시 6번째는 차단
 - **SC-008**: `processing` 상태로 30분을 초과한 항목은 다음 검사 사이클(최대 5분 내)에 자동 `failed`로 전환되어야 한다
 - **SC-009**: 동시 승인 경합 시 두 클라이언트 중 정확히 한 쪽만 200 OK, 다른 쪽은 409 Conflict로 거부되어야 한다 (낙관적 락)
+- **SC-010**: 자기-승인 시도 (actor == reviewer) 시 모든 상태 전이가 403으로 거부되어야 한다. 단, 운영자가 명시적 emergency 토글을 켠 경우에 한해 허용되며 감사 로그에 `emergency_override=true`로 표시된다
+- **SC-011**: `change_audit.actor`가 보유하지 않은 역할이 `acting_role`로 기록되는 경우는 0건이어야 한다 (서버 측 검증)
 
 ## Migration / 기존 구조와의 관계
 
@@ -281,6 +297,8 @@
 | Q3 | 모드 토글 단위 | 글로벌 + 메뉴별 path override 지원 |
 | Q4 | 구조파일 변경 의견 허용 | 허용하되 안전장치 적용: 항상 manual / PR 생성 / 관리자만 머지 |
 | Q5 | 19개 미푸시 커밋 처리 | 본 작업은 새 브랜치 신설로 진행. 미푸시 커밋은 별도 결정 |
+| Q6 | 단일 사용자 복수 역할 허용 | **허용**. 페이즈 2 스키마는 `users.roles TEXT[]`. 행동 컨텍스트(`acting_role`)를 별도 기록하여 보유 권한과 행위 시점의 모자를 구분 (FR-001a, FR-001b) |
+| Q7 | 자기-승인 정책 | **금지** (separation of duties). `actor != reviewer` 강제. emergency 토글로 1인 운영 비상 우회 가능, 감사 로그 강조 표시 (FR-001c, SC-010) |
 
 ## Assumptions
 
@@ -293,12 +311,13 @@
 
 ### 본 spec의 범위 외 (별도 spec 후속)
 
-상위 정책 [manual-system-plan.md](../../docs/policy/manual-system-plan.md)에서 제시한 다음 두 기능은 **003 범위에 포함되지 않으며**, 별도 spec으로 후속 진행한다:
+상위 정책 [manual-system-plan.md](../../docs/policy/manual-system-plan.md)에서 제시한 다음 기능들은 **003 범위에 포함되지 않으며**, 별도 spec으로 후속 진행한다:
 
-- **004 (가칭) AI 형식·문장 자동화** — 정책 §III.3: 담당자가 내용만 작성 → AI가 표현 형식·용어·문장 자동 정리. 003은 "담당자 의견 → AI가 콘텐츠 수정" 흐름만 다룸
-- **005 (가칭) 법령·예규 변경 자동 감지** — 정책 §III.4: 외부 법령 DB 변경 감지 → 영향 부분 표시 → AI 초안 갱신 → 담당자 승인. 003은 사람이 트리거하는 의견만 처리
+- **[004 체계/내용 분리](../004-content-structure-separation/spec.md)** — 정책 §II.1, §III.1: 메뉴 트리(체계)와 MDX 본문(내용)을 단일 매니페스트 JSON으로 연결, 1 리프 = 1 ID = 1 파일 불변식 강제. 003의 권한 모델(특히 FR-001a 복수 역할, FR-001c 자기-승인 금지)을 전제로 사용
+- **(가칭) AI 형식·문장 자동화** — 정책 §III.3: 담당자가 내용만 작성 → AI가 표현 형식·용어·문장 자동 정리
+- **(가칭) 법령·예규 변경 자동 감지** — 정책 §III.4: 외부 법령 DB 변경 감지 → 영향 부분 표시 → AI 초안 갱신 → 담당자 승인
 
-위 두 spec은 003 안정 운영 후 착수 권장.
+위 spec은 003 안정 운영 후 착수 권장.
 
 ## Next Artifacts (spec-kit 컨벤션)
 

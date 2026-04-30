@@ -147,12 +147,14 @@ ALTER TABLE system_prompt_history ENABLE ROW LEVEL SECURITY;
 ```sql
 CREATE TABLE change_audit (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  change_kind TEXT NOT NULL CHECK (change_kind IN ('comment','attachment')),
-  change_id UUID NOT NULL,                       -- comments.id 또는 attachments.id
+  change_kind TEXT NOT NULL CHECK (change_kind IN ('comment','attachment','manifest')),  -- manifest: 004 트리 매니페스트 변경
+  change_id UUID NOT NULL,                       -- comments.id / attachments.id / manifest commit hash 등
   from_status change_status,                     -- 신규 생성 시 NULL
   to_status change_status,                       -- soft delete 등 status 변경 없을 때 NULL
   action TEXT NOT NULL,                          -- 'create','approve','reject','process','apply','fail','delete','restore'
   actor TEXT NOT NULL,                           -- 'editor(anonymous)' / 'approver(shared)' / 'admin(shared)' / Phase 2: email / 'ai'
+  acting_role TEXT NOT NULL CHECK (acting_role IN ('admin','approver','editor','ai')),  -- 행동 컨텍스트 (FR-001b)
+  emergency_override BOOLEAN NOT NULL DEFAULT FALSE,  -- 자기-승인 우회 여부 (FR-001c, SC-010)
   reason TEXT,
   metadata JSONB DEFAULT '{}'::jsonb,            -- 추가 컨텍스트 (commit_sha, error 등)
   at TIMESTAMPTZ NOT NULL DEFAULT now()
@@ -160,9 +162,12 @@ CREATE TABLE change_audit (
 
 CREATE INDEX idx_audit_change ON change_audit (change_kind, change_id);
 CREATE INDEX idx_audit_at ON change_audit (at DESC);
+CREATE INDEX idx_audit_emergency ON change_audit (at DESC) WHERE emergency_override = TRUE;  -- 비상 우회 추적
 
 ALTER TABLE change_audit ENABLE ROW LEVEL SECURITY;
 ```
+
+> **자기-승인 가드 (FR-001c)**: 상태 전이를 수행하는 API는 `actor != reviewer` 제약을 강제한다. emergency_override는 운영자가 명시적 토글을 켠 경우에만 TRUE로 기록되며, 향후 감사 리뷰 대상.
 
 ### 7. RLS 정책
 
@@ -253,7 +258,12 @@ CREATE TRIGGER trg_automation_settings_updated_at
 CREATE TABLE users (
   id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
   email TEXT NOT NULL UNIQUE,
-  role TEXT NOT NULL CHECK (role IN ('admin','approver','editor')),
+  -- 단일 사용자 다중 역할 보유 (FR-001a)
+  -- 비어 있을 수 없고 {'admin','approver','editor'} 의 부분집합
+  roles TEXT[] NOT NULL CHECK (
+    array_length(roles, 1) >= 1
+    AND roles <@ ARRAY['admin','approver','editor']::TEXT[]
+  ),
   active BOOLEAN NOT NULL DEFAULT TRUE,
   invited_by UUID REFERENCES users(id),
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
@@ -261,26 +271,36 @@ CREATE TABLE users (
 );
 
 CREATE INDEX idx_users_email ON users (email);
-CREATE INDEX idx_users_role ON users (role) WHERE active = true;
+-- GIN 인덱스로 ANY(roles) 쿼리 가속
+CREATE INDEX idx_users_roles ON users USING GIN (roles) WHERE active = true;
 
 ALTER TABLE users ENABLE ROW LEVEL SECURITY;
+
+-- 보유 역할 검사 헬퍼
+CREATE OR REPLACE FUNCTION user_has_role(uid UUID, target_role TEXT)
+RETURNS BOOLEAN AS $$
+  SELECT EXISTS (
+    SELECT 1 FROM users
+    WHERE id = uid AND active = true AND target_role = ANY(roles)
+  );
+$$ LANGUAGE sql STABLE;
 
 -- RLS: 본인 행 SELECT만 허용
 CREATE POLICY users_self_select ON users
   FOR SELECT TO authenticated
   USING (id = auth.uid());
 
--- 관리자만 모든 행 SELECT/UPDATE/INSERT
+-- 관리자만 모든 행 SELECT/UPDATE/INSERT (admin 역할 보유 검사)
 CREATE POLICY users_admin_all ON users
   FOR ALL TO authenticated
-  USING (
-    EXISTS (SELECT 1 FROM users WHERE id = auth.uid() AND role = 'admin' AND active = true)
-  );
+  USING (user_has_role(auth.uid(), 'admin'));
 
 CREATE TRIGGER trg_users_updated_at
   BEFORE UPDATE ON users
   FOR EACH ROW EXECUTE FUNCTION touch_updated_at();
 ```
+
+> **단일 컬럼 vs 조인 테이블 결정**: 페이즈 2 도입 단계에서 `roles TEXT[]` 단일 컬럼으로 진행. 향후 역할 부여/회수 이력이 별도 감사 대상이 되면 `user_roles(user_id, role, granted_at, granted_by, revoked_at)` 조인 테이블로 마이그레이션 가능. 현재 규모(운영자 1~10명)에서는 배열이 충분.
 
 ### 2. 기존 테이블에 `_user_id` 컬럼 추가 (선택, 강한 식별)
 
@@ -325,14 +345,19 @@ Phase 1 데이터는 `*_user_id`가 NULL인 채로 보존된다 (`author`/`revie
 - [ ] 기본 system_prompt 값 검증
 - [ ] 인덱스 생성 후 큐 fetch 성능 측정
 - [ ] 적용 후 기존 댓글 수 == 신규 status별 합계 확인
+- [ ] `change_audit.acting_role` 및 `emergency_override` 컬럼 검증 (FR-010a)
+- [ ] 005 적용 후 별도 마이그레이션(007 등)으로 acting_role 컬럼이 이미 추가된 경우 멱등성 확인
 
 ### Phase 2 적용 시 (마이그레이션 006)
 
-- [ ] users 테이블에 관리자 본인 사전 insert (admin role)
+- [ ] users 테이블에 관리자 본인 사전 insert (admin **역할 배열** `roles=ARRAY['admin']`)
+- [ ] 복수 역할 보유 운영자가 있다면 `roles=ARRAY['admin','approver']` 등으로 사전 입력
 - [ ] 모든 담당자/승인자 이메일 사전 등록
 - [ ] RLS 정책 검증 (본인 행만 보이는지, 관리자가 전체 보이는지)
+- [ ] `user_has_role()` 함수 동작 확인 (배열 안의 역할 보유 검사)
 - [ ] auth.users ↔ users 1:1 매핑 무결성 확인
 - [ ] AUTH_PHASE 환경변수 토글 후 즉시 검증
+- [ ] 자기-승인 가드 동작 확인: 동일 actor의 작성/승인 시도 시 403
 
 ---
 
@@ -348,3 +373,7 @@ Phase 1 데이터는 `*_user_id`가 NULL인 채로 보존된다 (`author`/`revie
 | `automation_settings.path_overrides` | 경로 패턴별 모드 강제. JSON 객체 |
 | `change_audit.action` | 'create','approve','reject','process','apply','fail','delete','restore' |
 | `change_audit.actor` | 행위자 식별 (Phase 1은 'shared' suffix, Phase 2는 이메일, AI는 'ai') |
+| `change_audit.acting_role` | 행위 시점의 역할 컨텍스트 ('admin'\|'approver'\|'editor'\|'ai'). 보유 역할 부분집합이어야 함 (FR-001b) |
+| `change_audit.emergency_override` | 자기-승인 비상 우회 여부. 일반 운영에서는 항상 FALSE (FR-001c, SC-010) |
+| `change_kind='manifest'` | 004 트리 매니페스트 변경 감사 — `change_id`에 매니페스트 커밋 hash 또는 매니페스트 version |
+| `users.roles` | TEXT[] 배열, `{'admin','approver','editor'}` 부분집합. 비어 있을 수 없음 (FR-001a) |

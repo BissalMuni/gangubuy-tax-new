@@ -1,12 +1,17 @@
 <!--
-Sync Impact Report (v1.1.0 → v1.1.1)
+Sync Impact Report (v1.1.1 → v1.2.0)
 ======================================
-Version Change: 1.1.0 → 1.1.1
-Bump Type: PATCH — Technical Standards and Development Workflow sections moved to
-  .spec/plan.md; constitution now contains only principles and governance.
+Version Change: 1.1.1 → 1.2.0
+Bump Type: MINOR — 원칙 X·XI 추가 (권한 분리, 체계/내용 분리). 003·004 spec의 상위 원칙으로 박음.
 
-Removed Sections (moved to .spec/plan.md):
-- Technical Standards (기술 스택, 코딩 컨벤션, MDX frontmatter 스키마, 버전 메타데이터 스키마)
+New Principles:
+- X. 권한 분리 (Permission Separation) — 설계자/담당자/승인자/AI 역할 분리.
+     단일 사용자 다중 역할 보유 가능, 자기-승인 금지. 003 spec의 상위 원칙.
+- XI. 체계와 내용의 분리 (Structure-Content Separation) — 메뉴 트리·파일경계(체계)와
+     MDX 본문(내용)을 매니페스트 JSON으로 연결. 1 리프 = 1 ID = 1 파일 불변식. 004 spec의 상위 원칙.
+
+Removed Sections (이전 PATCH에서 이동, .spec/plan.md):
+- Technical Standards (기술 스택, 코딩 컨벤션, MDX frontmatter 스키마)
 - Development Workflow (콘텐츠 업데이트 절차, 피드백 처리 절차, Docker 절차, Git 커밋 컨벤션)
 
 Follow-up TODOs:
@@ -134,6 +139,29 @@ Follow-up TODOs:
 **근거**: dangerous mode는 파일 시스템에 무제한 접근 권한을 부여한다.
 Docker 격리를 통해 호스트 시스템 보호와 재현 가능한 자동화 환경을 동시에 확보한다.
 
+### X. 권한 분리 (Permission Separation) (NON-NEGOTIABLE)
+
+설계자(체계) / 담당자(내용) / 승인자(검토) / AI(보조)의 4개 역할을 분리한다.
+
+- 단일 사용자가 둘 이상의 역할을 동시에 보유할 수 있다 (예: 관리자 + 승인자)
+- 그러나 한 *행위*(상태 전이·매니페스트 변경·승인)는 하나의 *행동 컨텍스트*(acting_role)로만 수행되며, 감사 로그에 기록한다
+- **자기-승인 금지** (Separation of Duties): 작성자(actor)와 승인자(reviewer)는 동일인일 수 없다. 1인 운영 비상 우회는 명시적 emergency 토글로만 가능하며 감사 로그에 강조 표시
+- 구체 스펙: [specs/003-role-based-approval/spec.md](../../specs/003-role-based-approval/spec.md) FR-001a, FR-001c, FR-010a
+
+**근거**: 정책 [docs/policy/manual-system-plan.md](../../docs/policy/manual-system-plan.md) §II.1·§IV의 "체계는 설계자, 내용은 담당자, AI는 보조" 원칙을 코드로 강제. 단일 사용자가 모든 모자를 쓰면 검토 누락이 발생하므로 보유와 행위를 분리하고 자기-승인을 막는 것이 신뢰의 기반.
+
+### XI. 체계와 내용의 분리 (Structure-Content Separation) (NON-NEGOTIABLE)
+
+메뉴 트리·파일 경계·식별자(체계)는 설계자가, MDX 본문(내용)은 담당자가 관리한다. 두 영역은 단일 매니페스트 JSON으로만 연결된다.
+
+- 매니페스트 (`config/tree-manifest.json`)가 트리·콘텐츠 연결의 단일 진실의 출처
+- 핵심 불변식: **1 트리 리프 = 1 contentId = 1 MDX 파일**. CI에서 강제
+- ID는 `kebab-slug` 전역 유니크, 발급 후 영구 불변, 재사용 영구 금지 (retire 시 tombstone)
+- order_label·label·content_path는 `mode:refactor` PR로만 일괄 변경 가능. 일반 PR에서는 변경 차단
+- 구체 스펙: [specs/004-content-structure-separation/spec.md](../../specs/004-content-structure-separation/spec.md)
+
+**근거**: 정책 §III.1의 "콘텐츠 구조 설계와 내용 채움의 분리". 이전 구조(`tree.ts` path 문자열)는 한쪽이 깨져도 빌드 통과하여 고아·죽은 링크가 누적됐다. 매니페스트 + CI 검증이 두 역할의 독립 작업을 안전하게 보장한다.
+
 ## Governance
 
 ### 원칙 수정 절차
@@ -154,5 +182,7 @@ Docker 격리를 통해 호스트 시스템 보호와 재현 가능한 자동화
 - **모든 PR**: 파일 구조, 네이밍 컨벤션, frontmatter 스키마 자동 검사
 - **원칙 II (대상 분리)** 위반은 어떤 경우에도 허용하지 않는다
 - **원칙 III (정보 정확성)**: 세율/법령 변경 콘텐츠는 법적 근거 명시 필수
+- **원칙 X (권한 분리)**: 자기-승인은 emergency 토글 외에 거부. acting_role 기록 누락 PR 머지 차단
+- **원칙 XI (체계/내용 분리)**: 매니페스트 ↔ MDX 1:1 매칭, ID 유일성·불변성 검증 실패 PR 머지 차단
 
-**Version**: 1.1.1 | **Ratified**: 2026-01-29 | **Last Amended**: 2026-03-06
+**Version**: 1.2.0 | **Ratified**: 2026-01-29 | **Last Amended**: 2026-04-30
