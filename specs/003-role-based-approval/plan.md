@@ -15,10 +15,84 @@
 - vitest
 - GitHub Actions + Claude Code CLI
 
-신규 의존성 후보:
-- `iron-session` 또는 `jose` — Phase 1 쿠키 세션 (HMAC 서명)
-- `bcrypt` — env 비번 해시 비교 (선택, timing-safe-equal로 충분할 수도)
-- `minimatch` — `path_overrides` 글롭 매칭
+신규 의존성 (확정):
+
+| 패키지 | 용도 | 결정 근거 |
+|--------|------|---------|
+| `jose` | Phase 1 쿠키 JWT 서명/검증 | iron-session보다 의존성 가벼움, Web Crypto API 기반(Edge runtime 호환), Next.js middleware에서 직접 사용 가능 |
+| `minimatch` | `path_overrides` 글롭 매칭 | 표준 글롭 문법, 작은 사이즈 |
+| `@upstash/redis` + `@upstash/ratelimit` | IP 레이트리밋 (Vercel serverless 다중 인스턴스 대응) | 인메모리는 Vercel에서 무용지물, Upstash REST API 기반이라 cold start 영향 적음. Phase 1 신뢰 그룹에서는 미설정 시 graceful degrade(레이트리밋 미적용 + 경고 로그) |
+
+선택했지만 채택 안 함:
+- ~~`iron-session`~~ — jose가 더 단순. iron-session은 추가 추상화만 줄 뿐
+- ~~`bcrypt`~~ — env 비번은 환경변수에서 평문으로 옴. `crypto.timingSafeEqual`로 충분(부하 없음). bcrypt는 DB 저장 비번에서만 의미
+
+---
+
+## 0-1. 핵심 메커니즘 결정
+
+### 0-1-1. `processing` 타임아웃 감지
+
+**결정**: **워크플로 시작 시 self-sweep + Supabase pg_cron 보강 (이중 안전망)**
+
+선택 이유: 외부 의존 최소화, 5분 이내 회수 보장(SC-008).
+
+```
+[1차: 워크플로 시작 시 (review-feedback.yml 시작 step)]
+  UPDATE comments
+  SET status='failed', error_log='timeout (>30min)'
+  WHERE status='processing' AND updated_at < now() - interval '30 minutes';
+
+[2차: Supabase pg_cron (5분마다)]
+  같은 SQL을 5분 주기로 자동 실행. 워크플로가 정지된 상태(cron_enabled=false)에서도 회수 동작
+```
+
+대안 검토:
+- ❌ Supabase Edge Function — 별도 배포 단위 추가, 운영 복잡도 ↑
+- ❌ 워크플로 시작 시만 — `cron_enabled=false` 상태에서 좀비 항목 회수 안 됨
+- ✅ pg_cron 단독도 가능하지만, 워크플로 시작 시 self-sweep을 추가하면 회수 지연이 0에 가까움
+
+### 0-1-2. 동시성 제어 (낙관적 락)
+
+**결정**: **PostgreSQL `UPDATE ... WHERE updated_at = $expected` 패턴**
+
+```typescript
+const { data, error, count } = await supabase
+  .from('comments')
+  .update({ status: 'approved', reviewer, reviewed_at: now })
+  .eq('id', id)
+  .eq('updated_at', expectedUpdatedAt)  // 낙관적 락
+  .select('*', { count: 'exact' });
+
+if (count === 0) {
+  // 다른 클라이언트가 이미 수정 → 409 Conflict + 최신 상태 동봉
+  const fresh = await fetchCurrent(id);
+  return Response.json({ error: 'conflict', current: fresh }, { status: 409 });
+}
+```
+
+`updated_at`은 `touch_updated_at()` 트리거로 자동 갱신되므로, 클라이언트는 fetch 시 받은 값을 그대로 보내면 됨.
+
+### 0-1-3. 레이트리밋 fallback
+
+```typescript
+import { Ratelimit } from '@upstash/ratelimit';
+import { Redis } from '@upstash/redis';
+
+const redis = process.env.UPSTASH_REDIS_REST_URL
+  ? Redis.fromEnv()
+  : null;
+
+export const commentRateLimit = redis
+  ? new Ratelimit({ redis, limiter: Ratelimit.slidingWindow(10, '1 h') })
+  : null;  // null이면 레이트리밋 미적용 + 경고 로그
+
+export const loginRateLimit = redis
+  ? new Ratelimit({ redis, limiter: Ratelimit.slidingWindow(5, '1 h') })
+  : null;
+```
+
+운영 시작 시 Upstash 무료 플랜(10K 요청/일)이면 충분.
 
 ---
 
@@ -591,9 +665,17 @@ await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/actions/workflows/rev
 
 ## 13. Open Implementation Questions
 
-- 첨부파일이 댓글 없이 단독으로 제출 가능한가? (현재 UI는 통합. 데이터 모델은 분리)
-- `processing` 30분 타임아웃 감지를 cron으로? 또는 Supabase Edge Function?
-- `/admin/users`(Phase 2) 디자인은 별도 spec 필요?
-- 구조파일 변경 PR 머지 후 자동으로 `applied`로 전환하는 트리거는? (GitHub webhook → Supabase RPC)
+### 결정됨 (이 plan에 반영)
+- ✅ 인증 라이브러리: `jose` (§0)
+- ✅ 레이트리밋: `@upstash/ratelimit` + Redis fallback graceful degrade (§0-1-3)
+- ✅ `processing` 30분 타임아웃: 워크플로 self-sweep + Supabase pg_cron 5분 주기 (§0-1-1)
+- ✅ 동시성 제어: `UPDATE ... WHERE updated_at = $expected` 낙관적 락 (§0-1-2)
 
-이 4개는 task 분할 단계에서 결정 또는 별도 클라리피케이션 진행.
+### 슬라이스 진입 시 결정
+
+- **첨부파일 단독 제출** (슬라이스 1): 현재 UI는 댓글+첨부 통합 모달. 데이터 모델은 분리(`attachments.comment_id` nullable). MVP는 통합만 노출, 단독 제출은 별도 스펙 또는 후순위
+- **`/admin/users`(Phase 2) 디자인** (슬라이스 12): 본 spec 범위 내. 별도 spec 불필요. 슬라이스 12에서 와이어프레임 작성
+- **구조 PR 머지 후 자동 `applied` 전환** (슬라이스 10): 두 옵션 중 결정 필요
+  - A. GitHub Webhook → Vercel API 라우트 → DB 업데이트 (실시간이지만 webhook secret 관리 필요)
+  - B. 워크플로 시작 시 main 최근 커밋의 SHA를 보고 일치하는 PR 머지 사실 추적 (단순, 5분 지연)
+  - 슬라이스 10 구현 시점에 운영 부담으로 B 채택 권장

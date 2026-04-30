@@ -229,12 +229,16 @@ CREATE TRIGGER trg_automation_settings_updated_at
     │        │
     ▼        ▼
 ┌────────┐ ┌────────┐
-│applied │ │ failed │
-└────────┘ └────────┘
+│applied │ │ failed │←─ retry (admin only)
+└────────┘ └───┬────┘
+               │
+               └─→ approved (수동 재시도, FR-009)
 ```
 
 - `deleted_at`은 status와 **직교**한다. 어느 status에서도 soft delete 가능
-- `processing` 상태가 30분 이상 지속되면 자동으로 `failed` 전환 (cron/스케줄러)
+- `processing → failed` 자동 전이: 30분 이상 `processing`인 항목은 (1) 워크플로 시작 시 self-sweep + (2) Supabase pg_cron 5분 주기로 자동 회수 (plan.md §0-1-1). FR-009 + SC-008
+- `failed → approved` 수동 재시도: 관리자가 명시적 액션으로만 가능. cron이나 시스템에 의해 자동 발생 안 함 (FR-009)
+- 모든 상태 전이는 낙관적 락(`updated_at` 비교) 사용 (plan.md §0-1-2). FR-009a + SC-009
 - `applied → revert` (선택, P3)는 별도 메커니즘 (revert PR)
 
 ---
