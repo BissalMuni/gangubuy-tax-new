@@ -4,5 +4,28 @@
       "Bash(git pull:*)",
       "Bash(git rm:*)"
     ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|NotebookEdit|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '\"- \" + (now | strftime(\"%H:%M:%S\")) + \" `\" + .tool_name + \"` \" + (.tool_input.file_path // .tool_input.command // .tool_input.path // \"\")' >> /workspace/.claude-output/progress.md"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '\\n- %s 🛑 세션 종료\\n' \"$(date '+%Y-%m-%d %H:%M:%S')\" >> /workspace/.claude-output/progress.md"
+          }
+        ]
+      }
+    ]
   }
 }
