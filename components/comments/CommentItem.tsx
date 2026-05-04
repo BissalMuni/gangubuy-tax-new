@@ -1,22 +1,40 @@
 'use client';
 
-import { Typography, Button, Popconfirm, Tag } from 'antd';
+import { Typography, Button, Popconfirm, Tag, Tooltip } from 'antd';
 import { CheckCircleOutlined, DeleteOutlined, UserOutlined } from '@ant-design/icons';
 import type { Comment } from '@/lib/types';
 import type { Section } from '@/lib/context/sections-context';
+import type { CurrentUserInfo } from './CommentList';
 
 const { Text, Paragraph } = Typography;
 
 interface CommentItemProps {
   comment: Comment;
-  currentAuthor: string;
+  currentUser: CurrentUserInfo;
   onDelete: (id: string) => void;
   sections?: Section[];
 }
 
-export function CommentItem({ comment, currentAuthor, onDelete, sections }: CommentItemProps) {
-  // Phase 1: author가 NULL인 무기명 댓글은 본인 식별 불가 → 삭제 불가
-  const isOwner = comment.author !== null && comment.author === currentAuthor;
+/**
+ * 본인 댓글 식별:
+ *   Phase 2 — comment.author_user_id === currentUser.userId (강한 식별)
+ *   Phase 1/legacy — comment.author === currentUser.legacyAuthor (무기명 댓글은 항상 false)
+ *
+ * 본인 pending 댓글만 삭제 가능 (FR-013, slice 13).
+ */
+function isOwnedBy(comment: Comment, user: CurrentUserInfo): boolean {
+  if (user.phase === 2 && user.userId) {
+    return Boolean(comment.author_user_id && comment.author_user_id === user.userId);
+  }
+  return Boolean(comment.author && user.legacyAuthor && comment.author === user.legacyAuthor);
+}
+
+export function CommentItem({ comment, currentUser, onDelete, sections }: CommentItemProps) {
+  const owned = isOwnedBy(comment, currentUser);
+  const status = comment.status ?? 'pending';
+  const canSelfDelete = owned && status === 'pending';
+  const isApplied = status === 'applied';
+
   const displayAuthor = comment.author ?? '(무기명)';
   const date = new Date(comment.created_at).toLocaleDateString('ko-KR', {
     year: 'numeric',
@@ -29,8 +47,6 @@ export function CommentItem({ comment, currentAuthor, onDelete, sections }: Comm
   const sectionLabel = comment.section
     ? (sections?.find((s) => s.id === comment.section)?.label ?? comment.section)
     : null;
-
-  const isApplied = comment.status === 'applied';
 
   return (
     <article
@@ -58,7 +74,7 @@ export function CommentItem({ comment, currentAuthor, onDelete, sections }: Comm
             </Tag>
           )}
         </div>
-        {isOwner && (
+        {canSelfDelete && (
           <Popconfirm
             title="댓글을 삭제하시겠습니까?"
             onConfirm={() => onDelete(comment.id)}
@@ -73,6 +89,17 @@ export function CommentItem({ comment, currentAuthor, onDelete, sections }: Comm
               aria-label="댓글 삭제"
             />
           </Popconfirm>
+        )}
+        {owned && !canSelfDelete && (
+          <Tooltip title="승인된 댓글은 본인이 직접 삭제할 수 없습니다. 관리자에게 문의하세요.">
+            <Button
+              type="text"
+              size="small"
+              icon={<DeleteOutlined />}
+              disabled
+              aria-label="승인 후 삭제 불가"
+            />
+          </Tooltip>
         )}
       </div>
       <Paragraph style={{ marginTop: 8, marginBottom: 0, whiteSpace: 'pre-wrap' }}>

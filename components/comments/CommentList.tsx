@@ -14,6 +14,14 @@ interface CommentListProps {
   contentPath: string;
 }
 
+export interface CurrentUserInfo {
+  phase: 1 | 2;
+  email: string | null;
+  userId: string | null;
+  /** Phase 1: localStorage 기반 무기명 식별. Phase 2: 미사용. */
+  legacyAuthor: string | null;
+}
+
 export function CommentList({ contentPath }: CommentListProps) {
   const [comments, setComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(true);
@@ -22,10 +30,46 @@ export function CommentList({ contentPath }: CommentListProps) {
   const { message } = App.useApp();
   const { sections } = useSections();
 
-  const [currentAuthor, setCurrentAuthor] = useState('');
+  const [currentUser, setCurrentUser] = useState<CurrentUserInfo>({
+    phase: 1,
+    email: null,
+    userId: null,
+    legacyAuthor: null,
+  });
 
+  // 사용자 정보 로드: /api/auth/me + Phase 1은 localStorage 폴백
   useEffect(() => {
-    setCurrentAuthor(localStorage.getItem('gangubuy-comment-author') || '');
+    const legacy = localStorage.getItem('gangubuy-comment-author') || '';
+    let cancelled = false;
+
+    fetch('/api/auth/me')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (cancelled || !data) return;
+        if (data.phase === 2 && data.email) {
+          setCurrentUser({
+            phase: 2,
+            email: data.email,
+            userId: data.userId ?? null,
+            legacyAuthor: null,
+          });
+        } else {
+          setCurrentUser({
+            phase: data.phase ?? 1,
+            email: null,
+            userId: null,
+            legacyAuthor: legacy,
+          });
+        }
+      })
+      .catch(() => {
+        // 네트워크 실패 시 Phase 1 + legacy로 fallback
+        setCurrentUser({ phase: 1, email: null, userId: null, legacyAuthor: legacy });
+      });
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const fetchComments = useCallback(async () => {
@@ -79,13 +123,18 @@ export function CommentList({ contentPath }: CommentListProps) {
 
   const handleDelete = async (id: string) => {
     try {
-      const res = await fetch(
-        `/api/comments/${id}?author=${encodeURIComponent(currentAuthor)}`,
-        { method: 'DELETE' },
-      );
+      // Phase 2: soft delete via authenticated session
+      // Phase 1/legacy: 기존 hard-delete by author 쿼리 (무기명은 동작 안 함)
+      const res =
+        currentUser.phase === 2
+          ? await fetch(`/api/comments/${id}/delete`, { method: 'POST' })
+          : await fetch(
+              `/api/comments/${id}?author=${encodeURIComponent(currentUser.legacyAuthor ?? '')}`,
+              { method: 'DELETE' },
+            );
 
       if (!res.ok) {
-        const err = await res.json();
+        const err = await res.json().catch(() => ({}));
         message.error(err.error || '삭제에 실패했습니다.');
         return;
       }
@@ -143,9 +192,9 @@ export function CommentList({ contentPath }: CommentListProps) {
           )}
           {filteredComments.map((comment, idx) => (
             <CommentItem
-              key={comment.id ?? `imported-${comment.commit_sha ?? idx}-${idx}`}
+              key={comment.id ?? `imported-${idx}`}
               comment={comment}
-              currentAuthor={currentAuthor}
+              currentUser={currentUser}
               onDelete={handleDelete}
               sections={sections}
             />

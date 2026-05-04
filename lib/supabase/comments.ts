@@ -20,9 +20,14 @@ export interface CreateCommentInput {
   section?: string | null;
   target_kind?: 'content' | 'structure';
   /**
-   * Phase 2 전환 시 이메일 채워짐. Phase 1은 무기명이라 NULL.
+   * Phase 2: 작성자 이메일. Phase 1은 무기명이라 NULL.
    */
   author?: string | null;
+  /**
+   * Phase 2: auth.users.id (강한 식별, FK). Phase 1에서는 NULL.
+   * 본인 댓글 soft delete 권한 검사에 사용 (slice 13).
+   */
+  author_user_id?: string | null;
 }
 
 export async function createComment(input: CreateCommentInput): Promise<Comment> {
@@ -32,6 +37,7 @@ export async function createComment(input: CreateCommentInput): Promise<Comment>
     .insert({
       content_path: input.content_path,
       author: input.author ?? null,
+      author_user_id: input.author_user_id ?? null,
       body: input.body,
       section: input.section || null,
       target_kind: input.target_kind ?? 'content',

@@ -113,6 +113,11 @@ export interface Comment {
   reject_reason?: string | null;
   deleted_at?: string | null;
   deleted_by?: string | null;
+
+  // === Phase 2 강한 식별 (마이그레이션 006) ===
+  author_user_id?: string | null;
+  reviewer_user_id?: string | null;
+  deleted_by_user_id?: string | null;
 }
 
 // === Attachments (Supabase) ===
