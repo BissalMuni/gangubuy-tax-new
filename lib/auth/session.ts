@@ -6,6 +6,10 @@ import { SignJWT, jwtVerify } from 'jose';
  * - 알고리즘: HS256 (대칭키, env SESSION_SECRET 32바이트 이상 권장)
  * - 만료: 12시간 (FR-002)
  * - 담당자(editor)는 세션을 발급하지 않는다 — 1회용 비번 게이트만 통과 (Key Entities §Session)
+ *
+ * Phase 2 (Supabase Auth Magic Link) 세션은 본 모듈을 사용하지 않는다.
+ * Phase 2 식별은 lib/supabase/auth-client.ts + lib/supabase/users.ts 참조.
+ * 통합 세션 추출은 lib/auth/role-guard.ts의 getCurrentSession() 사용.
  */
 
 export type SessionRole = 'admin' | 'approver';
@@ -20,6 +24,16 @@ export interface SessionPayload {
 
 export const SESSION_COOKIE_NAME = 'session';
 export const SESSION_TTL_SECONDS = 12 * 60 * 60; // 12시간
+
+/**
+ * 인증 페이즈 토글 (FR-001 운영 모드 분기).
+ *
+ * AUTH_PHASE=2 → Supabase Auth Magic Link
+ * 이외 (미설정 / '1' / 임의값) → Phase 1 비번 게이트 (안전 기본값)
+ */
+export function getAuthPhase(): 1 | 2 {
+  return process.env.AUTH_PHASE === '2' ? 2 : 1;
+}
 
 function getSecret(): Uint8Array {
   const raw = process.env.SESSION_SECRET;

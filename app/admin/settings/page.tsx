@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { Card, Space, Typography, Divider } from 'antd';
-import { getCurrentSession } from '@/lib/auth/role-guard';
+import { getCurrentSession, hasRole } from '@/lib/auth/role-guard';
 import { loadAutomationSettings } from '@/lib/supabase/automation-settings';
 import { ModeToggle } from '@/components/admin/ModeToggle';
 import { PathOverrideEditor } from '@/components/admin/PathOverrideEditor';
@@ -12,7 +12,7 @@ export const dynamic = 'force-dynamic';
 export default async function AdminSettingsPage() {
   const session = await getCurrentSession();
   if (!session) redirect('/admin/login?from=/admin/settings');
-  if (session.role !== 'admin') redirect('/admin/changes');
+  if (!hasRole(session, ['admin'])) redirect('/admin/changes');
 
   const settings = await loadAutomationSettings();
 

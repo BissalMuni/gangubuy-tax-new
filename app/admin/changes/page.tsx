@@ -1,6 +1,6 @@
 import { fetchQueueItems } from '@/lib/changes/queue';
 import { groupByMenuPath } from '@/lib/admin/group-tree';
-import { getCurrentSession } from '@/lib/auth/role-guard';
+import { getCurrentSession, hasRole, type Session } from '@/lib/auth/role-guard';
 import { redirect } from 'next/navigation';
 import type { ChangeStatus } from '@/lib/types';
 import { FilterBar } from '@/components/admin/FilterBar';
@@ -19,6 +19,10 @@ const VALID_STATUSES: ChangeStatus[] = [
 
 interface PageProps {
   searchParams: Promise<{ status?: string; deleted?: string }>;
+}
+
+function displayRole(session: Session): string {
+  return session.phase === 1 ? session.role : session.roles.join(', ');
 }
 
 function parseStatus(raw: string | undefined): ChangeStatus[] {
@@ -42,11 +46,11 @@ export default async function AdminChangesPage({ searchParams }: PageProps) {
   return (
     <div style={{ minHeight: '100vh' }}>
       <header style={{ padding: '16px 24px', borderBottom: '1px solid #f0f0f0' }}>
-        <h1 style={{ margin: 0, fontSize: 20 }}>변경 큐 — {session.role}</h1>
+        <h1 style={{ margin: 0, fontSize: 20 }}>변경 큐 — {displayRole(session)}</h1>
       </header>
       <FilterBar selected={status} showDeleted={showDeleted} />
       <div style={{ padding: 16 }}>
-        <ChangeQueueTree groups={groups} canRestore={session.role === 'admin'} />
+        <ChangeQueueTree groups={groups} canRestore={hasRole(session, ['admin'])} />
       </div>
     </div>
   );
