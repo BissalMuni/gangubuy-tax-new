@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>GanguBuy 지방세 정보시스템 — 실배포 방침서 (초안)</title>
+<style>
+  body {
+    font-family: "맑은 고딕", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 24px;
+    line-height: 1.7;
+    color: #222;
+    background: #fff;
+  }
+  h1 {
+    font-size: 24pt;
+    border-bottom: 3px solid #2c5282;
+    padding-bottom: 12px;
+    margin-top: 0;
+    color: #1a365d;
+  }
+  h2 {
+    font-size: 18pt;
+    border-bottom: 1px solid #cbd5e0;
+    padding-bottom: 6px;
+    margin-top: 36px;
+    color: #2c5282;
+  }
+  h3 {
+    font-size: 14pt;
+    margin-top: 24px;
+    color: #2d3748;
+  }
+  blockquote {
+    border-left: 4px solid #4299e1;
+    padding: 8px 16px;
+    margin: 16px 0;
+    background: #ebf8ff;
+    color: #2a4365;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 11pt;
+  }
+  th, td {
+    border: 1px solid #cbd5e0;
+    padding: 8px 12px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: #edf2f7;
+    font-weight: 600;
+  }
+  tr:nth-child(even) td {
+    background: #f7fafc;
+  }
+  pre {
+    background: #f7fafc;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
+    padding: 12px 16px;
+    overflow-x: auto;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 10.5pt;
+    line-height: 1.5;
+  }
+  code {
+    background: #edf2f7;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 10.5pt;
+  }
+  pre code { background: transparent; padding: 0; }
+  hr {
+    border: none;
+    border-top: 1px solid #cbd5e0;
+    margin: 32px 0;
+  }
+  ul, ol { padding-left: 28px; }
+  li { margin: 4px 0; }
+  strong { color: #1a365d; }
+  .meta {
+    color: #4a5568;
+    font-size: 10.5pt;
+    margin-bottom: 24px;
+  }
+  .meta p { margin: 2px 0; }
+  @media print {
+    body { margin: 0; padding: 16px; }
+    h2 { page-break-before: auto; }
+  }
+</style>
+</head>
+<body>
+
+<h1>GanguBuy 지방세 정보시스템 — 실배포 방침서 (초안)</h1>
+
+<div class="meta">
+  <p>작성일: 2026-04-09</p>
+  <p>버전: v0.1 (초안)</p>
+  <p>상태: 검토 대기</p>
+</div>
+
+<hr>
+
+<h2>1. 시스템 개요</h2>
+
+<h3>1.1 목적</h3>
+<p>강서구 지방세(취득세·재산세·자동차세) 정보를 체계적으로 관리·공개하기 위한 웹 기반 정보시스템</p>
+
+<h3>1.2 서비스 대상</h3>
+<table>
+  <thead>
+    <tr><th>단계</th><th>대상</th><th>범위</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Phase 1 (현재)</strong></td><td>세무부서 직원</td><td>취득세 내부 참조용</td></tr>
+    <tr><td><strong>Phase 2</strong></td><td>전 부서 직원</td><td>취득세 + 재산세 + 자동차세</td></tr>
+    <tr><td><strong>Phase 3</strong></td><td>대시민 공개</td><td>전 세목, 공개 가능 콘텐츠</td></tr>
+  </tbody>
+</table>
+
+<h3>1.3 핵심 원칙</h3>
+<ol>
+  <li><strong>법적 정확성</strong> — 모든 정보에 법령 근거 명시</li>
+  <li><strong>불변 버전 관리</strong> — 세법 개정 이력 완전 추적</li>
+  <li><strong>점진적 공개</strong> — 내부 검증 완료 후 단계적 확대</li>
+  <li><strong>단순성(YAGNI)</strong> — 불필요한 복잡성 배제</li>
+</ol>
+
+<hr>
+
+<h2>2. 기술 아키텍처</h2>
+
+<h3>2.1 스택 구성</h3>
+<table>
+  <thead>
+    <tr><th>계층</th><th>기술</th><th>비고</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>프론트엔드</td><td>Next.js 15 + React 19 + TypeScript</td><td>App Router, RSC</td></tr>
+    <tr><td>UI</td><td>Tailwind CSS 4 + Ant Design 6</td><td>반응형</td></tr>
+    <tr><td>콘텐츠</td><td>MDX (next-mdx-remote)</td><td>마크다운 + 컴포넌트</td></tr>
+    <tr><td>데이터베이스</td><td>Supabase (PostgreSQL)</td><td>댓글, 첨부파일</td></tr>
+    <tr><td>자동화</td><td>Claude API + Docker 스케줄러</td><td>댓글→MDX 자동 수정</td></tr>
+    <tr><td>배포</td><td>Vercel</td><td>자동 배포 (main push)</td></tr>
+    <tr><td>버전관리</td><td>GitHub</td><td>Private repository</td></tr>
+  </tbody>
+</table>
+
+<h3>2.2 시스템 구성도</h3>
+<pre><code>[사용자] → [Vercel CDN] → [Next.js SSR/RSC]
+                              ├── MDX 콘텐츠 (파일 시스템)
+                              └── Supabase (댓글/첨부파일)
+
+[Docker 스케줄러] → [Claude API] → MDX 자동 수정 → Git Push → Vercel 재배포</code></pre>
+
+<hr>
+
+<h2>3. 배포 환경 구성</h2>
+
+<h3>3.1 환경 분리</h3>
+<table>
+  <thead>
+    <tr><th>환경</th><th>URL</th><th>용도</th><th>배포 트리거</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Production</strong></td><td><code>tax.gangbuk.go.kr</code> (예정)</td><td>실서비스</td><td>main 브랜치 push</td></tr>
+    <tr><td><strong>Staging</strong></td><td>Vercel Preview URL</td><td>배포 전 검증</td><td>PR 생성 시 자동</td></tr>
+    <tr><td><strong>Development</strong></td><td>localhost:3001</td><td>로컬 개발</td><td>수동</td></tr>
+  </tbody>
+</table>
+
+<h3>3.2 필수 환경 변수</h3>
+<table>
+  <thead>
+    <tr><th>변수</th><th>설명</th><th>환경</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>NEXT_PUBLIC_SUPABASE_URL</code></td><td>Supabase 프로젝트 URL</td><td>전체</td></tr>
+    <tr><td><code>NEXT_PUBLIC_SUPABASE_ANON_KEY</code></td><td>Supabase 익명 키</td><td>전체</td></tr>
+    <tr><td><code>SUPABASE_SERVICE_ROLE_KEY</code></td><td>Supabase 서비스 키</td><td>서버/CLI만</td></tr>
+    <tr><td><code>ANTHROPIC_API_KEY</code></td><td>Claude API 키</td><td>자동화 서버만</td></tr>
+    <tr><td><code>NEXT_PUBLIC_SITE_URL</code></td><td>사이트 도메인</td><td>전체</td></tr>
+  </tbody>
+</table>
+
+<h3>3.3 도메인 및 네트워크</h3>
+<ul>
+  <li>☐ 도메인 확보 및 DNS 설정</li>
+  <li>☐ SSL 인증서 (Vercel 자동 발급 또는 기관 인증서)</li>
+  <li>☐ 내부망/외부망 접근 정책 수립 (Phase 1은 내부망 한정 가능)</li>
+</ul>
+
+<hr>
+
+<h2>4. 배포 전 점검 사항</h2>
+
+<h3>4.1 보안</h3>
+<table>
+  <thead>
+    <tr><th>항목</th><th>현재 상태</th><th>필요 조치</th><th>우선순위</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Supabase RLS</td><td>마이그레이션 작성됨 (미적용)</td><td>004_enable_rls.sql 적용</td><td><strong>긴급</strong></td></tr>
+    <tr><td>API 인증</td><td>미구현</td><td>댓글 API에 인증 추가</td><td><strong>긴급</strong></td></tr>
+    <tr><td>환경변수 노출</td><td>.env gitignore됨</td><td>Vercel 환경변수로 관리</td><td><strong>높음</strong></td></tr>
+    <tr><td>XSS 방어</td><td>MDX 렌더링 시 sanitize</td><td>검증 필요</td><td><strong>높음</strong></td></tr>
+    <tr><td>CORS 설정</td><td>기본값</td><td>프로덕션 도메인만 허용</td><td><strong>중간</strong></td></tr>
+    <tr><td>Rate Limiting</td><td>미구현</td><td>API 라우트에 적용</td><td><strong>중간</strong></td></tr>
+    <tr><td>CSP 헤더</td><td>미설정</td><td>Content-Security-Policy 추가</td><td><strong>중간</strong></td></tr>
+  </tbody>
+</table>
+
+<h3>4.2 콘텐츠 검증</h3>
+<table>
+  <thead>
+    <tr><th>항목</th><th>현재 상태</th><th>필요 조치</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>취득세 콘텐츠</td><td>50개 MDX 파일 완성</td><td>법령 근거 교차 검증</td></tr>
+    <tr><td>재산세 콘텐츠</td><td>미작성</td><td>Phase 2에서 작성</td></tr>
+    <tr><td>자동차세 콘텐츠</td><td>미작성</td><td>Phase 2에서 작성</td></tr>
+    <tr><td>법적 고지사항</td><td>미확인</td><td>법무팀 검토 필요</td></tr>
+    <tr><td>최종 수정일 표시</td><td>구현됨 (frontmatter)</td><td>정확성 확인</td></tr>
+  </tbody>
+</table>
+
+<h3>4.3 성능 및 품질</h3>
+<table>
+  <thead>
+    <tr><th>항목</th><th>목표</th><th>필요 조치</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Lighthouse 성능</td><td>90+</td><td>빌드 후 측정 및 최적화</td></tr>
+    <tr><td>접근성 (a11y)</td><td>WCAG 2.1 AA</td><td>키보드 네비게이션 검증, 스크린리더 테스트</td></tr>
+    <tr><td>모바일 대응</td><td>완전 반응형</td><td>실기기 테스트</td></tr>
+    <tr><td>브라우저 호환</td><td>Chrome, Edge, Safari 최신 2버전</td><td>크로스브라우저 테스트</td></tr>
+  </tbody>
+</table>
+
+<h3>4.4 테스트</h3>
+<table>
+  <thead>
+    <tr><th>유형</th><th>현재 상태</th><th>필요 조치</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>단위 테스트</td><td>Vitest 설정됨, 테스트 최소</td><td>핵심 로직 테스트 추가</td></tr>
+    <tr><td>E2E 테스트</td><td>미구현</td><td>Playwright 도입 검토</td></tr>
+    <tr><td>MDX 렌더링 테스트</td><td>없음</td><td>전체 콘텐츠 빌드 검증</td></tr>
+    <tr><td>API 테스트</td><td>없음</td><td>댓글/첨부파일 API 테스트</td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>5. 배포 절차</h2>
+
+<h3>5.1 초기 배포 (1회성)</h3>
+<pre><code>1. Supabase 프로덕션 프로젝트 생성
+2. 마이그레이션 전체 적용 (001~004)
+3. Vercel 프로젝트 생성 및 GitHub 연동
+4. 환경변수 설정 (Vercel Dashboard)
+5. 도메인 연결 및 SSL 확인
+6. 프로덕션 빌드 검증 (npm run build)
+7. main 브랜치 push → 자동 배포
+8. 배포 후 스모크 테스트</code></pre>
+
+<h3>5.2 일상 배포 (반복)</h3>
+<pre><code>1. feature 브랜치에서 개발
+2. PR 생성 → Vercel Preview 자동 배포
+3. Preview 환경에서 검증
+4. 코드 리뷰 및 승인
+5. main 머지 → 프로덕션 자동 배포
+6. 배포 후 확인 (주요 페이지 접속, 댓글 기능)</code></pre>
+
+<h3>5.3 자동화 파이프라인 배포</h3>
+<pre><code>1. Docker 호스트 서버 확보 (내부 서버 또는 클라우드)
+2. docker-compose.claude-scheduler.yml 배포
+3. 환경변수 설정 (.env)
+4. 스케줄러 시작: npm run scheduler:up
+5. 로그 모니터링: npm run scheduler:logs</code></pre>
+
+<hr>
+
+<h2>6. 운영 계획</h2>
+
+<h3>6.1 모니터링</h3>
+<table>
+  <thead>
+    <tr><th>항목</th><th>도구</th><th>비고</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>사이트 가용성</td><td>Vercel Analytics / UptimeRobot</td><td>다운 시 알림</td></tr>
+    <tr><td>에러 추적</td><td>Sentry (도입 필요)</td><td>런타임 에러</td></tr>
+    <tr><td>성능 모니터링</td><td>Vercel Speed Insights</td><td>Core Web Vitals</td></tr>
+    <tr><td>자동화 로그</td><td>Docker 로그</td><td>스케줄러 정상 동작 확인</td></tr>
+  </tbody>
+</table>
+
+<h3>6.2 백업</h3>
+<table>
+  <thead>
+    <tr><th>대상</th><th>방법</th><th>주기</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>MDX 콘텐츠</td><td>Git (GitHub)</td><td>실시간 (커밋 단위)</td></tr>
+    <tr><td>Supabase DB</td><td>Supabase 자동 백업</td><td>일 1회 (Pro 플랜)</td></tr>
+    <tr><td>환경변수</td><td>별도 보관 (비밀관리 시스템)</td><td>변경 시</td></tr>
+  </tbody>
+</table>
+
+<h3>6.3 콘텐츠 업데이트 프로세스</h3>
+<pre><code>세법 개정 발생
+  → 담당자가 댓글 또는 inbox에 수정 내용 등록
+  → Claude 자동화가 MDX 수정안 생성
+  → 담당자 검토 및 승인
+  → Git 커밋 → 자동 배포
+  → 기존 버전은 버전 이력으로 보존</code></pre>
+
+<h3>6.4 장애 대응</h3>
+<table>
+  <thead>
+    <tr><th>상황</th><th>대응</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>사이트 접속 불가</td><td>Vercel 상태 확인 → 재배포</td></tr>
+    <tr><td>잘못된 콘텐츠 배포</td><td>Git revert → 자동 재배포</td></tr>
+    <tr><td>Supabase 장애</td><td>콘텐츠 열람은 정상 (댓글만 불가)</td></tr>
+    <tr><td>자동화 오류</td><td>Docker 로그 확인, 스케줄러 재시작</td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>7. 일정 (안)</h2>
+<table>
+  <thead>
+    <tr><th>단계</th><th>작업</th><th>예상 기간</th><th>비고</th></tr>
+  </thead>
+  <tbody>
+    <tr><td rowspan="3"><strong>준비</strong></td><td>보안 점검 (RLS, API 인증)</td><td>1주</td><td>긴급</td></tr>
+    <tr><td>법령 근거 교차 검증</td><td>2주</td><td>병행 가능</td></tr>
+    <tr><td>프로덕션 Supabase 설정</td><td>1일</td><td></td></tr>
+    <tr><td rowspan="3"><strong>배포</strong></td><td>Vercel 프로덕션 설정</td><td>1일</td><td></td></tr>
+    <tr><td>도메인 연결</td><td>1~2일</td><td>IT 인프라팀 협조</td></tr>
+    <tr><td>스모크 테스트</td><td>1일</td><td></td></tr>
+    <tr><td rowspan="2"><strong>안정화</strong></td><td>내부 사용자 피드백 수집</td><td>2주</td><td></td></tr>
+    <tr><td>버그 수정 및 개선</td><td>1주</td><td></td></tr>
+    <tr><td rowspan="2"><strong>확대</strong></td><td>재산세·자동차세 콘텐츠 추가</td><td>4~8주</td><td>Phase 2</td></tr>
+    <tr><td>대시민 공개 검토</td><td>별도</td><td>Phase 3</td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>8. 역할 및 책임</h2>
+<table>
+  <thead>
+    <tr><th>역할</th><th>책임</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>프로젝트 관리자</strong></td><td>일정 관리, 이해관계자 조율, 의사결정</td></tr>
+    <tr><td><strong>개발 담당</strong></td><td>코드 개발, 배포, 기술 이슈 해결</td></tr>
+    <tr><td><strong>콘텐츠 담당 (세무부서)</strong></td><td>MDX 콘텐츠 작성·검증, 법령 정확성 확인</td></tr>
+    <tr><td><strong>법무 담당</strong></td><td>법적 고지사항 검토, 개인정보 처리방침</td></tr>
+    <tr><td><strong>IT 인프라</strong></td><td>도메인, 네트워크, 내부 서버 지원</td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>9. 리스크 및 대응</h2>
+<table>
+  <thead>
+    <tr><th>리스크</th><th>영향</th><th>대응 방안</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>잘못된 세금 정보 공개</td><td><strong>치명적</strong></td><td>내부 검증 필수, 점진적 공개, 법적 면책 고지</td></tr>
+    <tr><td>Supabase 서비스 장애</td><td>중간</td><td>콘텐츠는 정적 렌더링으로 독립 동작</td></tr>
+    <tr><td>Claude API 비용 초과</td><td>낮음</td><td>사용량 모니터링, 예산 상한 설정</td></tr>
+    <tr><td>보안 취약점</td><td>높음</td><td>RLS 적용, API 인증, 정기 보안 점검</td></tr>
+    <tr><td>콘텐츠 최신성 유지 실패</td><td>중간</td><td>자동화 파이프라인 + 담당자 정기 검토</td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>10. 승인</h2>
+<table>
+  <thead>
+    <tr><th>구분</th><th>성명</th><th>직위</th><th>일자</th><th>서명</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>작성</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>검토</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>승인</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<blockquote>본 문서는 초안이며, 관계자 검토를 거쳐 확정합니다.</blockquote>
+
+</body>
+</html>
