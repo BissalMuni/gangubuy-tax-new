@@ -212,6 +212,16 @@ When adding a new component, place it in the matching domain folder. If no exist
 - `src/lib/automation/` — Claude runner, resolver
 - `scripts/run-pipeline.ts` — 댓글 → 콘텐츠 수정 실행
 
+## Sister Project — math
+
+`d:\Coding\math`는 이 프로젝트의 **원본 자매 프로젝트**로, 동일한 4계층 아키텍처(basket → book → content → map)를 공유한다.
+
+- **구조 동기화 필수**: 한쪽에서 아키텍처·공통 로직(타입, 유틸, 인증, 관리자 등)을 변경하면 다른 쪽도 반영해야 한다.
+- **상호 파일 수정 권한 있음**: 이 프로젝트에서 작업 중이더라도 `math`의 파일을 직접 읽고 수정할 수 있다.
+- **경로 차이 주의**:
+  - math: `src/basket/`, `src/book/`, `src/map/`
+  - gangubuy-tax-new: `src/lib/basket/`, `src/lib/book/`, `src/lib/map/`
+
 ## Rules
 
 - Use pnpm as package manager
