@@ -1,0 +1,7 @@
+{
+  "id": "vehicle",
+  "basePath": "vehicle",
+  "title": "자동차세",
+  "description": "자동차 소유에 대해 부과되는 세금",
+  "children": []
+}

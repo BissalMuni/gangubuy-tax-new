@@ -21,7 +21,7 @@ import { commitAndPush, getModifiedMdxFiles } from './auto-commit';
 import type { Comment, Attachment } from '../lib/types';
 
 const DRY_RUN = process.argv.includes('--dry-run');
-const CONTENT_DIR = path.join(process.cwd(), 'content');
+const CONTENT_DIR = path.join(process.cwd(), 'src', 'content');
 const GUIDELINES_PATH = path.join(CONTENT_DIR, 'MDX_GUIDELINES.md');
 
 // pdf-parse 선택적 로드
@@ -58,7 +58,7 @@ function findVersionedMdx(dirPath: string, slug: string): string | null {
   const entries = fs.readdirSync(dirPath);
   const versionedFiles = entries
     .filter((f) => {
-      const match = f.match(/^(.+)-v(\d+\.\d+)\.mdx$/);
+      const match = f.match(/^(.+)-v(\d+\.\d+)\.(mdx|tsx)$/);
       return match && match[1] === slug;
     })
     .sort()
@@ -77,7 +77,7 @@ function findMdxBySlug(dir: string, slug: string): string | null {
       const result = findMdxBySlug(fullPath, slug);
       if (result) return result;
     } else if (entry.isFile()) {
-      const match = entry.name.match(/^(.+)-v(\d+\.\d+)\.mdx$/);
+      const match = entry.name.match(/^(.+)-v(\d+\.\d+)\.(mdx|tsx)$/);
       if (match && match[1] === slug) return fullPath;
     }
   }
@@ -181,8 +181,8 @@ ${mdxFilePath}
 ${commentsSection}
 ${attachmentSection}
 
-## 현재 MDX 파일 내용
-\`\`\`mdx
+## 현재 TSX 파일 내용
+\`\`\`tsx
 ${mdxContent}
 \`\`\`
 

@@ -12,7 +12,6 @@
  *   --dry-run         실제 수정 없이 미리보기
  *   --inbox-only      inbox만 처리 (Supabase 건너뜀)
  *   --comments-only   Supabase 댓글만 처리 (inbox 건너뜀)
- *   --docker          Claude Code를 Docker로 실행 (기본: local)
  */
 
 import 'dotenv/config';
@@ -30,10 +29,8 @@ import type { Comment, Attachment } from '../lib/types';
 const DRY_RUN = process.argv.includes('--dry-run');
 const INBOX_ONLY = process.argv.includes('--inbox-only');
 const COMMENTS_ONLY = process.argv.includes('--comments-only');
-const USE_DOCKER = process.argv.includes('--docker');
-const CLAUDE_MODE = USE_DOCKER ? 'docker' : 'local';
 
-const CONTENT_DIR = path.join(process.cwd(), 'content');
+const CONTENT_DIR = path.join(process.cwd(), 'src', 'content');
 
 // pdf-parse 선택적 로드
 let pdfParse: ((buffer: Buffer) => Promise<{ text: string }>) | null = null;
@@ -171,7 +168,7 @@ async function processComments(): Promise<{ processed: number; errors: number }>
     }
 
     // Claude 실행
-    const result = await runClaude({ prompt, mode: CLAUDE_MODE });
+    const result = await runClaude({ prompt });
 
     if (!result.success) {
       log(`  [오류] Claude 실행 실패: ${result.error}`);
@@ -320,8 +317,8 @@ async function processPdfToMdx(
   }
 
   // 대상 MDX 파일 경로 결정
-  const targetDir = path.join(process.cwd(), 'content', item.category, item.slug);
-  const targetFilePath = path.join(targetDir, `${item.slug}-v1.0.mdx`);
+  const targetDir = path.join(process.cwd(), 'src', 'content', item.category, item.slug);
+  const targetFilePath = path.join(targetDir, `${item.slug}-v1.0.tsx`);
 
   if (fs.existsSync(targetFilePath)) {
     log(`  [경고] 파일이 이미 존재합니다: ${path.relative(process.cwd(), targetFilePath)}`);
@@ -345,7 +342,7 @@ async function processPdfToMdx(
   }
 
   // Claude 실행 (파일 생성)
-  const result = await runClaude({ prompt, mode: CLAUDE_MODE });
+  const result = await runClaude({ prompt });
 
   if (!result.success) {
     log(`  [오류] Claude 실행 실패: ${result.error}`);
@@ -415,7 +412,7 @@ async function processPromptItem(
   }
 
   // Claude 실행
-  const result = await runClaude({ prompt, mode: CLAUDE_MODE });
+  const result = await runClaude({ prompt });
 
   if (!result.success) {
     log(`  [오류] Claude 실행 실패: ${result.error}`);

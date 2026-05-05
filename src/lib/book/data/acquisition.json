@@ -1,0 +1,323 @@
+{
+  "id": "acquisition",
+  "basePath": "acquisition",
+  "title": "취득세",
+  "description": "부동산, 차량 등 취득 시 부과되는 세금",
+  "children": [
+    {
+      "id": "acq-multi-house",
+      "slug": "multi-house",
+      "title": "다주택 중과",
+      "children": [
+        {
+          "id": "acq-multi-house-multi-house",
+          "slug": "multi-house",
+          "title": "다주택 중과"
+        }
+      ]
+    },
+    {
+      "id": "acq-themes",
+      "slug": "themes",
+      "title": "중과",
+      "children": [
+        {
+          "id": "acq-themes-luxury",
+          "slug": "luxury",
+          "title": "사치성재산 중과"
+        },
+        {
+          "id": "acq-themes-trade",
+          "slug": "trade",
+          "title": "매매사례"
+        }
+      ]
+    },
+    {
+      "id": "acq-exemption",
+      "slug": "exemption",
+      "title": "비과세/감면",
+      "children": [
+        {
+          "id": "acq-exemption-rental-business",
+          "slug": "rental-business",
+          "title": "임대사업자 감면"
+        },
+        {
+          "id": "acq-exemption-first-time-buyer",
+          "slug": "first-time-buyer",
+          "title": "생애최초 주택취득 감면"
+        },
+        {
+          "id": "acq-exemption-childbirth-housing",
+          "slug": "childbirth-housing",
+          "title": "출산·양육 주택 감면"
+        },
+        {
+          "id": "acq-exemption-veterans",
+          "slug": "veterans",
+          "title": "국가유공자 감면"
+        },
+        {
+          "id": "acq-exemption-religious-facility",
+          "slug": "religious-facility",
+          "title": "종교시설 감면"
+        },
+        {
+          "id": "acq-exemption-affordable-housing",
+          "slug": "affordable-housing",
+          "title": "서민주택 감면"
+        },
+        {
+          "id": "acq-exemption-childcare-facility",
+          "slug": "childcare-facility",
+          "title": "어린이집 감면"
+        },
+        {
+          "id": "acq-exemption-senior-welfare",
+          "slug": "senior-welfare",
+          "title": "노인복지시설 감면"
+        },
+        {
+          "id": "acq-exemption-jeonse-fraud-support",
+          "slug": "jeonse-fraud-support",
+          "title": "전세사기 피해지원"
+        },
+        {
+          "id": "acq-exemption-knowledge-industry-center",
+          "slug": "knowledge-industry-center",
+          "title": "지식산업센터 감면"
+        },
+        {
+          "id": "acq-exemption-minimum-tax-2025",
+          "slug": "minimum-tax-2025",
+          "title": "2025년 최저한세"
+        }
+      ]
+    },
+    {
+      "id": "acq-rates",
+      "slug": "rates",
+      "title": "세율",
+      "children": [
+        {
+          "id": "acq-rates-officetel-use-change",
+          "slug": "officetel-use-change",
+          "title": "오피스텔 용도변경"
+        },
+        {
+          "id": "acq-rates-multi-family-housing-tax",
+          "slug": "multi-family-housing-tax",
+          "title": "다가구주택 세금"
+        },
+        {
+          "id": "acq-rates-quasi-housing",
+          "slug": "quasi-housing",
+          "title": "준주택"
+        },
+        {
+          "id": "acq-rates-actual-vs-official-status",
+          "slug": "actual-vs-official-status",
+          "title": "실제 vs 공부상 현황"
+        },
+        {
+          "id": "acq-rates-realestate",
+          "slug": "realestate",
+          "title": "부동산",
+          "children": [
+            {
+              "id": "acq-rates-realestate-housing",
+              "slug": "housing",
+              "title": "주택"
+            },
+            {
+              "id": "acq-rates-realestate-farmland",
+              "slug": "farmland",
+              "title": "농지"
+            },
+            {
+              "id": "acq-rates-realestate-non-farmland",
+              "slug": "non-farmland",
+              "title": "농지 외"
+            }
+          ]
+        },
+        {
+          "id": "acq-rates-non-realestate",
+          "slug": "non-realestate",
+          "title": "부동산 외",
+          "children": [
+            {
+              "id": "acq-rates-non-realestate-non-realestate",
+              "slug": "non-realestate",
+              "title": "부동산 외"
+            }
+          ]
+        },
+        {
+          "id": "acq-rates-common",
+          "slug": "common",
+          "title": "공통",
+          "children": [
+            {
+              "id": "acq-rates-common-common",
+              "slug": "common",
+              "title": "공통"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acq-price",
+      "slug": "price",
+      "title": "취득가액",
+      "children": [
+        {
+          "id": "acq-price-price",
+          "slug": "price",
+          "title": "취득가액"
+        },
+        {
+          "id": "acq-price-tax-base-reform-2023",
+          "slug": "tax-base-reform-2023",
+          "title": "2023년 과세표준 개편"
+        }
+      ]
+    },
+    {
+      "id": "acq-filing",
+      "slug": "filing",
+      "title": "신고",
+      "children": [
+        {
+          "id": "acq-filing-general-purchase",
+          "slug": "general-purchase",
+          "title": "일반 매매"
+        },
+        {
+          "id": "acq-filing-presale-filing",
+          "slug": "presale-filing",
+          "title": "분양권 취득"
+        },
+        {
+          "id": "acq-filing-reconstruction-redevelopment",
+          "slug": "reconstruction-redevelopment",
+          "title": "재건축/재개발"
+        },
+        {
+          "id": "acq-filing-inheritance-filing",
+          "slug": "inheritance-filing",
+          "title": "상속"
+        },
+        {
+          "id": "acq-filing-bequest",
+          "slug": "bequest",
+          "title": "유증"
+        },
+        {
+          "id": "acq-filing-gift",
+          "slug": "gift",
+          "title": "증여"
+        },
+        {
+          "id": "acq-filing-gift-with-encumbrance",
+          "slug": "gift-with-encumbrance",
+          "title": "부담부증여"
+        },
+        {
+          "id": "acq-filing-housing-land-only-gift",
+          "slug": "housing-land-only-gift",
+          "title": "주택/토지 단독 증여"
+        },
+        {
+          "id": "acq-filing-divorce-property-division",
+          "slug": "divorce-property-division",
+          "title": "이혼재산분할"
+        },
+        {
+          "id": "acq-filing-land-expropriation",
+          "slug": "land-expropriation",
+          "title": "토지수용"
+        },
+        {
+          "id": "acq-filing-exchange-acquisition",
+          "slug": "exchange-acquisition",
+          "title": "교환"
+        },
+        {
+          "id": "acq-filing-co-ownership-partition",
+          "slug": "co-ownership-partition",
+          "title": "공유물분할"
+        },
+        {
+          "id": "acq-filing-auction-acquisition",
+          "slug": "auction-acquisition",
+          "title": "경매"
+        },
+        {
+          "id": "acq-filing-court-judgment",
+          "slug": "court-judgment",
+          "title": "법원판결"
+        },
+        {
+          "id": "acq-filing-new-construction",
+          "slug": "new-construction",
+          "title": "신축"
+        },
+        {
+          "id": "acq-filing-vessel-acquisition",
+          "slug": "vessel-acquisition",
+          "title": "선박취득"
+        }
+      ]
+    },
+    {
+      "id": "acq-admin",
+      "slug": "admin",
+      "title": "행정",
+      "children": [
+        {
+          "id": "acq-admin-internet-filing",
+          "slug": "internet-filing",
+          "title": "인터넷 신고"
+        },
+        {
+          "id": "acq-admin-post-approval-correction",
+          "slug": "post-approval-correction",
+          "title": "사후승인정정"
+        },
+        {
+          "id": "acq-admin-old-registration-tax",
+          "slug": "old-registration-tax",
+          "title": "구 등록세"
+        },
+        {
+          "id": "acq-admin-extension-vs-major-repair",
+          "slug": "extension-vs-major-repair",
+          "title": "증축 vs 대수선"
+        },
+        {
+          "id": "acq-admin-facility-vs-equipment",
+          "slug": "facility-vs-equipment",
+          "title": "시설 vs 설비"
+        },
+        {
+          "id": "acq-admin-demolition-ledger",
+          "slug": "demolition-ledger",
+          "title": "멸실대장"
+        },
+        {
+          "id": "acq-admin-temporary-building",
+          "slug": "temporary-building",
+          "title": "가설건축물"
+        },
+        {
+          "id": "acq-admin-property-inquiry-response",
+          "slug": "property-inquiry-response",
+          "title": "재산조회 회신"
+        }
+      ]
+    }
+  ]
+}

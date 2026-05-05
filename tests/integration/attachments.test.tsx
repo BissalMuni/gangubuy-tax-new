@@ -8,19 +8,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { App } from 'antd';
 import type { Attachment } from '@/lib/types';
-
-// matchMedia 모킹
-Object.defineProperty(window, 'matchMedia', {
-  writable: true,
-  value: vi.fn().mockImplementation((query: string) => ({
-    matches: false, media: query, onchange: null,
-    addListener: vi.fn(), removeListener: vi.fn(),
-    addEventListener: vi.fn(), removeEventListener: vi.fn(),
-    dispatchEvent: vi.fn(),
-  })),
-});
 
 import { AttachmentList } from '@/components/attachments/AttachmentList';
 
@@ -49,11 +37,6 @@ const mockAttachments: Attachment[] = [
   },
 ];
 
-// Ant Design App 래퍼
-function renderWithApp(component: React.ReactElement) {
-  return render(<App>{component}</App>);
-}
-
 describe('AttachmentList', () => {
   beforeEach(() => {
     vi.clearAllMocks();
@@ -66,7 +49,7 @@ describe('AttachmentList', () => {
       json: async () => ({ data: mockAttachments }),
     } as Response);
 
-    renderWithApp(<AttachmentList contentPath="acquisition/rates/realestate/housing/housing" />);
+    render(<AttachmentList contentPath="acquisition/rates/realestate/housing/housing" />);
 
     await waitFor(() => {
       expect(screen.getByText('취득세_세율표_2026.pdf')).toBeInTheDocument();
@@ -80,7 +63,7 @@ describe('AttachmentList', () => {
       json: async () => ({ data: mockAttachments }),
     } as Response);
 
-    renderWithApp(<AttachmentList contentPath="acquisition/rates/realestate/housing/housing" />);
+    render(<AttachmentList contentPath="acquisition/rates/realestate/housing/housing" />);
 
     await waitFor(() => {
       expect(screen.getByText('첨부파일 (2)')).toBeInTheDocument();
@@ -93,7 +76,7 @@ describe('AttachmentList', () => {
       json: async () => ({ data: [] }),
     } as Response);
 
-    renderWithApp(<AttachmentList contentPath="acquisition/rates/realestate/housing/housing" />);
+    render(<AttachmentList contentPath="acquisition/rates/realestate/housing/housing" />);
 
     await waitFor(() => {
       expect(screen.getByText('첨부파일이 없습니다')).toBeInTheDocument();
@@ -103,9 +86,10 @@ describe('AttachmentList', () => {
   it('로딩 중에는 스피너를 표시한다', () => {
     global.fetch = vi.fn().mockReturnValue(new Promise(() => {}));
 
-    renderWithApp(<AttachmentList contentPath="acquisition/rates/realestate/housing/housing" />);
+    render(<AttachmentList contentPath="acquisition/rates/realestate/housing/housing" />);
 
-    expect(document.querySelector('.ant-spin')).toBeInTheDocument();
+    // Tailwind animate-spin 스피너가 렌더링된다
+    expect(screen.getByLabelText('첨부파일 로딩 중')).toBeInTheDocument();
   });
 
   it('다운로드 링크가 올바른 URL을 가진다', async () => {
@@ -114,12 +98,11 @@ describe('AttachmentList', () => {
       json: async () => ({ data: mockAttachments }),
     } as Response);
 
-    renderWithApp(<AttachmentList contentPath="acquisition/rates/realestate/housing/housing" />);
+    render(<AttachmentList contentPath="acquisition/rates/realestate/housing/housing" />);
 
     await waitFor(() => {
       const downloadLinks = screen.getAllByText('다운로드');
       expect(downloadLinks).toHaveLength(2);
-      // 다운로드 버튼의 부모 a 태그가 올바른 href를 가진다
       expect(downloadLinks[0].closest('a')).toHaveAttribute(
         'href',
         'https://example.com/취득세_세율표_2026.pdf',
@@ -133,10 +116,9 @@ describe('AttachmentList', () => {
       json: async () => ({ data: [] }),
     } as Response);
 
-    renderWithApp(<AttachmentList contentPath="path" />);
+    render(<AttachmentList contentPath="path" />);
 
     await waitFor(() => {
-      // AttachmentUpload 컴포넌트의 업로드 버튼
       expect(screen.getByText('파일 업로드')).toBeInTheDocument();
     });
   });

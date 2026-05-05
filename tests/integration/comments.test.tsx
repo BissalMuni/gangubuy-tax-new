@@ -8,19 +8,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { App } from 'antd';
 import type { Comment } from '@/lib/types';
-
-// matchMedia 모킹
-Object.defineProperty(window, 'matchMedia', {
-  writable: true,
-  value: vi.fn().mockImplementation((query: string) => ({
-    matches: false, media: query, onchange: null,
-    addListener: vi.fn(), removeListener: vi.fn(),
-    addEventListener: vi.fn(), removeEventListener: vi.fn(),
-    dispatchEvent: vi.fn(),
-  })),
-});
+import { SectionsProvider } from '@/lib/context/sections-context';
 
 import { CommentList } from '@/components/comments/CommentList';
 
@@ -43,28 +32,27 @@ const mockComments: Comment[] = [
   },
 ];
 
-// Ant Design App 래퍼
-function renderWithApp(component: React.ReactElement) {
-  return render(<App>{component}</App>);
+// SectionsProvider 래퍼
+function renderWithProvider(component: React.ReactElement) {
+  return render(
+    <SectionsProvider>{component}</SectionsProvider>
+  );
 }
 
 describe('CommentList', () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    // localStorage 초기화
     localStorage.clear();
   });
 
   it('댓글 목록을 로드하고 표시한다', async () => {
-    // fetch 모킹: GET /api/comments
     global.fetch = vi.fn().mockResolvedValue({
       ok: true,
       json: async () => ({ data: mockComments }),
     } as Response);
 
-    renderWithApp(<CommentList contentPath="acquisition/rates/realestate/housing/housing" />);
+    renderWithProvider(<CommentList contentPath="acquisition/rates/realestate/housing/housing" />);
 
-    // 댓글이 로드될 때까지 대기
     await waitFor(() => {
       expect(screen.getByText('홍길동')).toBeInTheDocument();
       expect(screen.getByText('주택 세율 정보 감사합니다.')).toBeInTheDocument();
@@ -78,7 +66,7 @@ describe('CommentList', () => {
       json: async () => ({ data: mockComments }),
     } as Response);
 
-    renderWithApp(<CommentList contentPath="acquisition/rates/realestate/housing/housing" />);
+    renderWithProvider(<CommentList contentPath="acquisition/rates/realestate/housing/housing" />);
 
     await waitFor(() => {
       expect(screen.getByText('댓글 (2)')).toBeInTheDocument();
@@ -91,7 +79,7 @@ describe('CommentList', () => {
       json: async () => ({ data: [] }),
     } as Response);
 
-    renderWithApp(<CommentList contentPath="acquisition/rates/realestate/housing/housing" />);
+    renderWithProvider(<CommentList contentPath="acquisition/rates/realestate/housing/housing" />);
 
     await waitFor(() => {
       expect(screen.getByText('댓글 (0)')).toBeInTheDocument();
@@ -102,10 +90,10 @@ describe('CommentList', () => {
     // fetch가 resolve되지 않는 상태 유지
     global.fetch = vi.fn().mockReturnValue(new Promise(() => {}));
 
-    renderWithApp(<CommentList contentPath="acquisition/rates/realestate/housing/housing" />);
+    renderWithProvider(<CommentList contentPath="acquisition/rates/realestate/housing/housing" />);
 
-    // Ant Design Spin 컴포넌트가 렌더링된다
-    expect(document.querySelector('.ant-spin')).toBeInTheDocument();
+    // Tailwind animate-spin 스피너가 렌더링된다
+    expect(screen.getByLabelText('댓글 로딩 중')).toBeInTheDocument();
   });
 
   it('댓글 작성 폼이 렌더링된다', async () => {
@@ -114,7 +102,7 @@ describe('CommentList', () => {
       json: async () => ({ data: [] }),
     } as Response);
 
-    renderWithApp(<CommentList contentPath="path" />);
+    renderWithProvider(<CommentList contentPath="path" />);
 
     await waitFor(() => {
       // 댓글 textarea와 작성 버튼이 있다 (CommentForm 내부)

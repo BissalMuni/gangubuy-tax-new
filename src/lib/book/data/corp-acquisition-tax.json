@@ -1,0 +1,393 @@
+{
+  "id": "corp-acquisition-tax",
+  "basePath": "corp-acquisition-tax",
+  "title": "법인취득세",
+  "description": "법인의 부동산 취득 시 부과되는 세금",
+  "children": [
+    {
+      "id": "corp-heavy",
+      "slug": "heavy",
+      "title": "중과",
+      "children": [
+        {
+          "id": "corp-heavy-01-rate",
+          "slug": "01-rate",
+          "title": "중과 취득세율"
+        },
+        {
+          "id": "corp-heavy-02-practice",
+          "slug": "02-practice",
+          "title": "중과 실무"
+        },
+        {
+          "id": "corp-heavy-03-metro-exclusion",
+          "slug": "03-metro-exclusion",
+          "title": "대도시법인 중과제외"
+        },
+        {
+          "id": "corp-heavy-04-housing-exclusion",
+          "slug": "04-housing-exclusion",
+          "title": "주택취득 중과제외"
+        },
+        {
+          "id": "corp-heavy-05-supreme-court",
+          "slug": "05-supreme-court",
+          "title": "대법원 판례"
+        },
+        {
+          "id": "corp-heavy-06-qa-cases",
+          "slug": "06-qa-cases",
+          "title": "질의회신 사례"
+        },
+        {
+          "id": "corp-heavy-07-seoul-guide",
+          "slug": "07-seoul-guide",
+          "title": "서울시 교육자료"
+        }
+      ]
+    },
+    {
+      "id": "corp-reductions",
+      "slug": "reductions",
+      "title": "감면",
+      "children": [
+        {
+          "id": "corp-reductions-01-duplicate-exclusion",
+          "slug": "01-duplicate-exclusion",
+          "title": "중복감면 배제"
+        },
+        {
+          "id": "corp-reductions-02-incorporation",
+          "slug": "02-incorporation",
+          "title": "법인전환 (현물출자·사업양수도)"
+        },
+        {
+          "id": "corp-reductions-03-majority-shareholder",
+          "slug": "03-majority-shareholder",
+          "title": "간주취득 (과점주주)"
+        },
+        {
+          "id": "corp-reductions-04-financial-merger",
+          "slug": "04-financial-merger",
+          "title": "금융회사간 합병"
+        },
+        {
+          "id": "corp-reductions-05-donation",
+          "slug": "05-donation",
+          "title": "기부채납 비과세"
+        },
+        {
+          "id": "corp-reductions-06-rnd-lab",
+          "slug": "06-rnd-lab",
+          "title": "기업부설연구소"
+        },
+        {
+          "id": "corp-reductions-07-senior-welfare",
+          "slug": "07-senior-welfare",
+          "title": "노인복지시설"
+        },
+        {
+          "id": "corp-reductions-08-green-building",
+          "slug": "08-green-building",
+          "title": "녹색인증 건축물"
+        },
+        {
+          "id": "corp-reductions-09-farmer-loan",
+          "slug": "09-farmer-loan",
+          "title": "농어업인 융자"
+        },
+        {
+          "id": "corp-reductions-10-replacement",
+          "slug": "10-replacement",
+          "title": "대체취득 (토지수용)"
+        },
+        {
+          "id": "corp-reductions-11-corp-merger",
+          "slug": "11-corp-merger",
+          "title": "법인합병"
+        },
+        {
+          "id": "corp-reductions-12-corp-division",
+          "slug": "12-corp-division",
+          "title": "법인분할"
+        },
+        {
+          "id": "corp-reductions-13-restricted-land",
+          "slug": "13-restricted-land",
+          "title": "사권제한 토지"
+        },
+        {
+          "id": "corp-reductions-14-welfare-corp",
+          "slug": "14-welfare-corp",
+          "title": "사회복지법인"
+        },
+        {
+          "id": "corp-reductions-15-social-enterprise",
+          "slug": "15-social-enterprise",
+          "title": "사회적기업"
+        },
+        {
+          "id": "corp-reductions-16-community-credit",
+          "slug": "16-community-credit",
+          "title": "새마을금고"
+        },
+        {
+          "id": "corp-reductions-17-childcare",
+          "slug": "17-childcare",
+          "title": "어린이집·유치원"
+        },
+        {
+          "id": "corp-reductions-18-rental-housing",
+          "slug": "18-rental-housing",
+          "title": "임대주택 (SH·LH)"
+        },
+        {
+          "id": "corp-reductions-19-redevelopment",
+          "slug": "19-redevelopment",
+          "title": "재개발조합 체비지·보류지"
+        },
+        {
+          "id": "corp-reductions-20-local-public-corp",
+          "slug": "20-local-public-corp",
+          "title": "지방공기업"
+        },
+        {
+          "id": "corp-reductions-21-relocation",
+          "slug": "21-relocation",
+          "title": "지방이전"
+        },
+        {
+          "id": "corp-reductions-22-overseas-return",
+          "slug": "22-overseas-return",
+          "title": "해외진출기업 국내복귀"
+        },
+        {
+          "id": "corp-reductions-23-knowledge-center",
+          "slug": "23-knowledge-center",
+          "title": "지식산업센터"
+        },
+        {
+          "id": "corp-reductions-24-startup-venture",
+          "slug": "24-startup-venture",
+          "title": "창업벤처기업"
+        },
+        {
+          "id": "corp-reductions-25-startup-incubator",
+          "slug": "25-startup-incubator",
+          "title": "창업보육센터"
+        },
+        {
+          "id": "corp-reductions-26-lh-exemption",
+          "slug": "26-lh-exemption",
+          "title": "한국토지주택공사(LH)"
+        },
+        {
+          "id": "corp-reductions-27-research-scholarship",
+          "slug": "27-research-scholarship",
+          "title": "학술연구·장학단체"
+        },
+        {
+          "id": "corp-reductions-28-repurchase",
+          "slug": "28-repurchase",
+          "title": "환매권행사 매수부동산"
+        },
+        {
+          "id": "corp-reductions-29-minimum-tax",
+          "slug": "29-minimum-tax",
+          "title": "최소납부제"
+        },
+        {
+          "id": "corp-reductions-30-general-recapture",
+          "slug": "30-general-recapture",
+          "title": "일반적 추징규정"
+        }
+      ]
+    },
+    {
+      "id": "corp-types",
+      "slug": "types",
+      "title": "취득유형별",
+      "children": [
+        {
+          "id": "corp-types-01-renovation",
+          "slug": "01-renovation",
+          "title": "개수·시설·시설물"
+        },
+        {
+          "id": "corp-types-02-co-ownership-division",
+          "slug": "02-co-ownership-division",
+          "title": "공유물 분할"
+        },
+        {
+          "id": "corp-types-03-deposit",
+          "slug": "03-deposit",
+          "title": "공탁"
+        },
+        {
+          "id": "corp-types-04-exchange",
+          "slug": "04-exchange",
+          "title": "교환"
+        },
+        {
+          "id": "corp-types-05-auction",
+          "slug": "05-auction",
+          "title": "경매"
+        },
+        {
+          "id": "corp-types-06-court-judgment",
+          "slug": "06-court-judgment",
+          "title": "이행판결 취득일"
+        },
+        {
+          "id": "corp-types-07-gift",
+          "slug": "07-gift",
+          "title": "증여 (부담부)"
+        },
+        {
+          "id": "corp-types-08-dation",
+          "slug": "08-dation",
+          "title": "대물변제"
+        },
+        {
+          "id": "corp-types-09-trust",
+          "slug": "09-trust",
+          "title": "신탁"
+        },
+        {
+          "id": "corp-types-10-land-use-change",
+          "slug": "10-land-use-change",
+          "title": "지목변경"
+        },
+        {
+          "id": "corp-types-11-in-kind-contribution",
+          "slug": "11-in-kind-contribution",
+          "title": "현물출자"
+        },
+        {
+          "id": "corp-types-12-org-change",
+          "slug": "12-org-change",
+          "title": "조직변경"
+        }
+      ]
+    },
+    {
+      "id": "corp-references",
+      "slug": "references",
+      "title": "실무참고",
+      "children": [
+        {
+          "id": "corp-references-00-overview",
+          "slug": "00-overview",
+          "title": "목차·개요"
+        },
+        {
+          "id": "corp-references-01-appraisal-table",
+          "slug": "01-appraisal-table",
+          "title": "부동산 시가표준액표·용도지수"
+        },
+        {
+          "id": "corp-references-02-housing-bonds",
+          "slug": "02-housing-bonds",
+          "title": "국민주택채권"
+        },
+        {
+          "id": "corp-references-03-membership",
+          "slug": "03-membership",
+          "title": "회원권"
+        },
+        {
+          "id": "corp-references-04-non-member-land",
+          "slug": "04-non-member-land",
+          "title": "비조합원용 토지"
+        },
+        {
+          "id": "corp-references-05-ownership-restoration",
+          "slug": "05-ownership-restoration",
+          "title": "소유권회복·합의해제"
+        },
+        {
+          "id": "corp-references-06-just-cause",
+          "slug": "06-just-cause",
+          "title": "정당한 사유"
+        },
+        {
+          "id": "corp-references-07-unjust-enrichment",
+          "slug": "07-unjust-enrichment",
+          "title": "부당이득금 반환·소멸시효"
+        },
+        {
+          "id": "corp-references-08-penalty-tax",
+          "slug": "08-penalty-tax",
+          "title": "가산세"
+        },
+        {
+          "id": "corp-references-09-additional-charge",
+          "slug": "09-additional-charge",
+          "title": "가산금"
+        },
+        {
+          "id": "corp-references-10-late-payment-penalty",
+          "slug": "10-late-payment-penalty",
+          "title": "납부지연 가산세"
+        },
+        {
+          "id": "corp-references-11-registration-number",
+          "slug": "11-registration-number",
+          "title": "부동산등기용 등록번호"
+        },
+        {
+          "id": "corp-references-12-school-religious-residence",
+          "slug": "12-school-religious-residence",
+          "title": "학교·종교단체 사택 감면대상"
+        },
+        {
+          "id": "corp-references-13-profit-business",
+          "slug": "13-profit-business",
+          "title": "수익사업의 정의"
+        },
+        {
+          "id": "corp-references-14-property-tax-summary",
+          "slug": "14-property-tax-summary",
+          "title": "재산세 정리"
+        },
+        {
+          "id": "corp-references-15-industry-classification",
+          "slug": "15-industry-classification",
+          "title": "한국표준산업분류 동일업종 판단"
+        },
+        {
+          "id": "corp-references-16-business-code",
+          "slug": "16-business-code",
+          "title": "사업자등록증 업종코드"
+        },
+        {
+          "id": "corp-references-17-acquisition-timing",
+          "slug": "17-acquisition-timing",
+          "title": "취득의 시기"
+        },
+        {
+          "id": "corp-references-18-acquisition-price",
+          "slug": "18-acquisition-price",
+          "title": "취득가격 범위"
+        },
+        {
+          "id": "corp-references-19-land-grade",
+          "slug": "19-land-grade",
+          "title": "토지등급표"
+        }
+      ]
+    },
+    {
+      "id": "corp-registration",
+      "slug": "registration",
+      "title": "등록면허세",
+      "children": [
+        {
+          "id": "corp-registration-01-registration-license-tax",
+          "slug": "01-registration-license-tax",
+          "title": "등록면허세"
+        }
+      ]
+    }
+  ]
+}

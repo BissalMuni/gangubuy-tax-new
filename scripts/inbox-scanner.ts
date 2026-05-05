@@ -1,8 +1,8 @@
 /**
  * Inbox 폴더 스캐너
  *
- * inbox/content/  - 새 MDX 파일 (그대로 복사)
- * inbox/pdfs/     - PDF 파일 → Claude가 MDX로 변환
+ * inbox/content/  - 새 TSX 파일 (그대로 복사)
+ * inbox/pdfs/     - PDF 파일 → Claude가 TSX로 변환
  * inbox/prompts/  - 수정 요청 마크다운 파일
  * inbox/processed/ - 처리 완료된 파일 (자동 이동)
  */
@@ -15,7 +15,7 @@ const CONTENT_INBOX = path.join(INBOX_DIR, 'content');
 const PDFS_INBOX = path.join(INBOX_DIR, 'pdfs');
 const PROMPTS_INBOX = path.join(INBOX_DIR, 'prompts');
 const PROCESSED_DIR = path.join(INBOX_DIR, 'processed');
-const CONTENT_DIR = path.join(process.cwd(), 'content');
+const CONTENT_DIR = path.join(process.cwd(), 'src', 'content');
 
 export type WorkItemType = 'new-content' | 'pdf-to-mdx' | 'prompt';
 
@@ -23,7 +23,7 @@ export interface NewContentWorkItem {
   type: 'new-content';
   /** inbox 내 소스 경로 */
   sourcePath: string;
-  /** content/ 내 대상 경로 */
+  /** src/content/ 내 대상 경로 */
   targetPath: string;
   /** content_path (예: acquisition/multi-house/multi-house) */
   contentPath: string;
@@ -33,7 +33,7 @@ export interface NewContentWorkItem {
  * PDF 파일 변환 WorkItem
  *
  * PDF 파일명 형식: {category}-{slug}.pdf
- * 예: acquisition-multi-house.pdf → content/acquisition/multi-house/multi-house-v1.0.mdx 생성
+ * 예: acquisition-multi-house.pdf → src/content/acquisition/multi-house/multi-house-v1.0.tsx 생성
  *
  * 또는 파일명 옆에 동명의 .md 파일로 메타정보 제공:
  * acquisition-multi-house.pdf
@@ -77,13 +77,13 @@ function scanContentInbox(): NewContentWorkItem[] {
       const fullPath = path.join(dir, entry.name);
       if (entry.isDirectory()) {
         scanDir(fullPath);
-      } else if (entry.name.endsWith('.mdx') && entry.name !== '.gitkeep') {
+      } else if (entry.name.endsWith('.tsx') && entry.name !== '.gitkeep') {
         const relativeToCR = path.relative(CONTENT_INBOX, fullPath);
         const targetPath = path.join(CONTENT_DIR, relativeToCR);
 
         // content_path 추출 (파일명에서 버전 제거)
-        const match = entry.name.match(/^(.+)-v\d+\.\d+\.mdx$/);
-        const slug = match ? match[1] : entry.name.replace('.mdx', '');
+        const match = entry.name.match(/^(.+)-v\d+\.\d+\.tsx$/);
+        const slug = match ? match[1] : entry.name.replace('.tsx', '');
         const dir2 = path.dirname(relativeToCR);
         const contentPath = path.join(dir2, slug).replace(/\\/g, '/');
 
