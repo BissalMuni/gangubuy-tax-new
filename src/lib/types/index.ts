@@ -28,7 +28,6 @@ export interface ContentMeta {
   title: string;
   description: string;
   category: TaxCategory;
-  version: string;
   lastUpdated: string;
   legalBasis?: string;
   audience?: string;
@@ -41,10 +40,8 @@ export interface ContentItem {
 }
 
 export interface ContentVersion {
-  version: string;
   lastUpdated: string;
   filePath: string;
-  isLatest: boolean;
 }
 
 export interface ContentSequence {

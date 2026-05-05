@@ -1,0 +1,128 @@
+"use client";
+
+import { SectionNav } from "@/components/mdx/SectionNav";
+import { Outline } from "@/components/mdx/Outline";
+
+export const meta = {
+  title: "해외진출기업 국내복귀",
+  category: "corp-acquisition-tax",
+  group: "reductions",
+  groupLabel: "감면",
+  order: 22,
+  lastUpdated: "2026-04-23",
+  sourceBook: "corp-practice",
+  sourceBookTitle: "법인실무 (2025.12.31 반영)",
+  sourceLeaf: "corp-practice/Ⅰ_지특법_감면/22_해외진출기업_국내복귀_감면",
+  sourcePages: [132,132],
+  sourceTaxTypes: ["acquisition_tax","property_tax"],
+  sourceKeyLawRefs: ["지방세특례제한법 제58조의2"],
+  lawReference: "지방세특례제한법 제58조의2",
+};
+
+export default function Content22OverseasReturnV10() {
+  return (
+    <div className="space-y-6">
+
+      <h1 className="text-2xl font-bold mb-4">해외진출기업 국내복귀</h1>
+
+
+
+      <SectionNav sections={[
+      { id: "summary", label: "요약" },
+      { id: "concepts", label: "주요 개념" },
+      { id: "section-3", label: "관련 법조문" },
+      { id: "source", label: "원문" },
+      ]} />
+
+      <hr className="my-6" />
+
+      <h2 id="summary">
+      <Outline level={1}>요약</Outline>
+      </h2>
+
+      <p>본 리프는 지방세특례제한법 제58조의2에 따른 지식산업센터 관련 취득세·재산세 감면 요건, 감면율, 추징사유를 다룬다. 설립자와 분양입주자(중소기업)로 구분하여 감면율 및 적용 기간을 설명하고, 2023년 및 2026년 개정에 따른 변경 내용을 정리한다. 경로명은 '해외진출기업 국내복귀 감면'이나 본문 내용은 지식산업센터 감면에 관한 것으로, 경로와 본문 내용이 불일치한다.</p>
+
+
+      <h2 id="concepts">
+      <Outline level={1}>주요 개념</Outline>
+      </h2>
+
+      <ul className="list-disc pl-6 my-4 space-y-1">
+        <li><strong>지식산업센터</strong> — 산업집적활성화 및 공장설립에 관한 법률 제28조의2 제1항에 따라 설립승인을 받아 제조업·지식기반산업·정보통신산업·벤처기업 등을 위한 사업시설을 집적한 건축물.</li>
+        <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의2" target="_blank" rel="noopener noreferrer">지특법 §58의2</a></li>
+        <li><strong>지식산업센터 설립자</strong> — 지식산업센터를 신축 또는 증축하여 설립하는 자로, 2016년까지는 설립승인을 받은 자를 의미하며 취득세·재산세 감면 주체 중 하나.</li>
+        <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의2" target="_blank" rel="noopener noreferrer">지특법 §58의2 제1항</a></li>
+        <li><strong>분양입주자(입주기업)</strong> — 지식산업센터를 신·증축하여 설립한 자로부터 중소기업을 영위하는 자가 최초로 분양받아 사업시설용으로 직접 사용하기 위해 취득하는 자.</li>
+        <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의2" target="_blank" rel="noopener noreferrer">지특법 §58의2 제2항</a></li>
+        <li><strong>취득세 추징사유</strong> — 감면 후 정당한 사유 없이 미착공·미사용하거나 일정 기간 내 매각·증여·다른 용도 사용 시 감면된 취득세를 추징하는 사유로, 2023년 개정으로 요건이 변경됨.</li>
+        <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의2" target="_blank" rel="noopener noreferrer">지특법 §58의2</a></li>
+        <li><strong>재산세 감면기간</strong> — 지식산업센터 관련 재산세 감면 기간으로, 2011.12.31. 취득분까지 5년, 2012~2022년 취득분은 기간 제한 없음, 2023.1.1. 이후 취득분부터는 다시 5년으로 제한됨.</li>
+        <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의2" target="_blank" rel="noopener noreferrer">지특법 §58의2 제1항 제2호</a>, <a href="https://law.go.kr/법령/지방세특례제한법/제58조의2" target="_blank" rel="noopener noreferrer">지특법 §58의2 제2항 제2호</a></li>
+        <li><strong>수도권 감면율 축소</strong> — 2026년부터 수도권 소재 지식산업센터에 대한 취득세·재산세 감면율이 기존 35%에서 15%로 축소되는 개정 내용.</li>
+        <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의2" target="_blank" rel="noopener noreferrer">지특법 §58의2 제1항</a></li>
+        <li><strong>농어촌특별세 비과세</strong> — 지식산업센터 사업시설용 취득세 감면에 대해 농어촌특별세법 제4조 제7항 제5호에 따라 농어촌특별세가 비과세되는 특례.</li>
+        <li>관련 조문: <code className="bg-gray-100 px-1 rounded text-sm">농어촌특별세법/제4조 제7항 제5호</code>, <a href="https://law.go.kr/법령/지방세특례제한법/제58조의2" target="_blank" rel="noopener noreferrer">지특법 §58의2</a></li>
+      </ul>
+
+
+      <h2 id="section-3">
+      <Outline level={1}>관련 법조문</Outline>
+      </h2>
+
+      <ul className="list-disc pl-6 my-4 space-y-1">
+        <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제58조의2</code></li>
+      </ul>
+
+
+      <h2 id="source">
+      <Outline level={1}>원문</Outline>
+      </h2>
+
+      <p>⊙ 지식산업센터 감면 실무 및 사례</p>
+
+      <p>☞ 감면요건 및 감면세율 - 지방세특례제한법 제58조의 2</p>
+
+      <table>
+      <thead>
+      <tr><th>구  분</th><th>감면요건</th><th>감면율</th><th>감면 / 농특세</th><th>사업시설용 사업</th></tr>
+      </thead>
+      <tbody>
+      <tr><td>취득세</td><td>제1항 제1호 / 1. 지식산업센터를 설립하는자가 (2016년까지는 설립승인받은자) / 2. 사업시설용으로 직접사용하기 위해 신증축하거나 / 3. 사업시설용으로 중소기업에게 분양 또는 임대하기 위하여 / 신축 또는 증축하는 부동산</td><td>수도권-15% / (26년부터) / 35% / &#42;14&#126;16년:50%</td><td>비과세 / 농특세법 / 4조7항5호</td><td>제조업,지식기반산업, / 정보통신산업, / 벤처기업 / 지식산업, / 자원비축시설, / 대통령령으로정하는사업</td></tr>
+      <tr><td>제2항 제1호 / 지식산업센터를 신,증축하여 설립한 자로부터 / 2. 중소기업을 영위하는 자가 최초로 분양 받고 / 3. 사업시설용으로 직접 사용하기 위하여 취득하는 부동산</td><td>35% / &#42;14&#126;22년:50% / &#42;12&#126;13년:75% / &#42;  &#126;11년:100%</td><td></td><td></td><td></td></tr>
+      <tr><td>재산세</td><td>제1항 제2호 – 2023.1.1.취득일부터 5년간 경감 / 1. 지식산업센터를 설립하는자가 (2016년까지는 설립승인받은자) / 2. 사업시설용으로 직접사용하거나 과세기준일 현재 / 3. 사업시설용으로 분양 또는 임대업무에 직접 사용하는 부동산</td><td>수도권-15% / (26년부터) / 35% / (23년부터) / 기존: 37.5%</td><td></td><td></td></tr>
+      <tr><td>제2항 제2호 / 지식산업센터를 신,증축하여 설립한 자로부터 / 2. 중소기업을 영위하는 자가 최초로 분양 받고 과세기준일 현재 / 3. 사업시설용으로 직접 사용하는 부동산</td><td>35% / (2023.1.1. / 취득일로부터 5년간) / 기존: 37.5%</td><td></td><td></td><td></td></tr>
+      </tbody>
+      </table>
+
+      <p>※ 재산세 감면의 경우 부칙(2011.12.31에)의거 2011.12.31. 취득분까지는 5년간 감면, 2012년 취득분 부터는 감면기간 제한없음</p>
+
+      <p>2023.1.1. 취득분부터는 5년간 재산세 감면(기존감면분은 2023년부터 5년간 재산세 감면)</p>
+
+
+
+      <p>※ 부 칙&lt;법률제213099,205.12.31&gt;</p>
+
+      <p>제1조(시행일) 이 법은 2026년 1월 1일부터 시행한다.</p>
+
+      <p>제10조 (지식산업센터에 대한 지방세 경감에 관한 적용례 등) ① 제58조의2제1항의 개정규정은 이 법 시행 이후 납세의무가 성립하는 경우부터 적용한다.</p>
+
+      <p>② 이 법 시행 전에 수도권(인구감소지역은 제외한다)에서 「산업집적활성화 및 공장설립에 관한 법률」 제28조의2제1항에 따라 지식산업센터의 설립승인을 받은 경우에 대한 지방세의 경감에 관하여는 제58조의2제1항의 개정규정에도 불구하고 종전의 규정에 따른다.</p>
+
+
+
+      <p>☞ 취득세 추징사유: 2023.1.1. 이후 납세의무 성립분부터 개정 후 적용</p>
+
+      <table>
+      <thead>
+      <tr><th>구 분</th><th>개정전(2022.12.31.까지)</th><th>개정후(2023.1.1.부터)</th><th></th></tr>
+      </thead>
+      <tbody>
+      <tr><td>설립자 / (시행자)</td><td>직접사용</td><td>‧ 정당한 사유없이 취득일부터 / 1년이내 미착공 / ‧ 취득일부터 5년이내 매각‧ 증여‧ / 다른용도사용</td><td>‧ 정당한 사유없이 취득일부터 1년이내 미착공 / ‧ 정당한 사유없이 취득일부터 1년이내 / 사업시설용 직접 未사용 / ‧ 직접 사용기간 4년이내 매각‧증여‧ 다른용도사용</td></tr>
+      <tr><td>분양임대</td><td>‧ 정당한 사유없이 취득일부터 1년이내 미착공 / ‧ 취득일부터 5년 이내사업시설용 분양‧임대 않거나 / 다른 용도사용</td><td></td><td></td></tr>
+      <tr><td>분양입주자 / (입주기업)</td><td>직접사용</td><td>‧ 정당한 사유없이 취득일부터 / 1년이내 직접 미사용 / ‧ 취득일부터 5년이내 매각‧ 증여‧ / 다른 용도사용</td><td>‧ 정당한 사유없이 취득일부터 1년이내 직접 미사용 / ‧ 직접 사용기간 4년이내 매각‧증여‧ 다른용도사용</td></tr>
+      </tbody>
+      </table>
+
+    </div>
+  );
+}

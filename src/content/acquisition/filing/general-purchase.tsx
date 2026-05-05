@@ -1,0 +1,224 @@
+"use client";
+
+import { Callout } from "@/components/mdx/Callout";
+
+export const meta = {
+  title: "일반유상취득신고",
+  sectionId: "05",
+  category: "취득세",
+  subcategory: "신고",
+  audience: "internal",
+  source: "acquisitiontax.pdf",
+  pageRange: [20,20],
+  effectiveDate: "2019-12-04",
+  lastUpdated: "2026-02-08",
+  status: "draft",
+  lawReference: "지방세법 §11",
+  tags: ["유상취득","매매","신고","제출서류","검인","세율계산"],
+};
+
+export default function GeneralPurchaseV10() {
+  return (
+    <div className="space-y-6">
+
+      <h1 className="text-2xl font-bold mb-4">3. 일반유상취득신고</h1>
+
+      <blockquote className="border-l-4 border-gray-300 pl-4 my-4 text-gray-600 italic">
+        <p>매매, 수분양, 교환, 경매, 공매, 현물출자 등 유상거래를 통한 부동산 취득 시 신고 절차 및 제출서류 안내.</p>
+      </blockquote>
+
+      <hr className="my-6" />
+
+      <h2 id="1.-유상거래의-범위" className="text-xl font-semibold mt-8 mb-4">1. 유상거래의 범위</h2>
+
+      <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+      <thead>
+      <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>해당 여부</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>종류</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', color: '#1890ff'}}>유상거래</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', color: '#52c41a'}}>O</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>매매, 수분양, 교환, 경매, 공매, 현물출자</td>
+      </tr>
+      <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', color: '#8c8c8c'}}>유상거래 아님</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', color: '#cf1322'}}>X</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>신축(원시취득), 증여, 상속</td>
+      </tr>
+      </tbody>
+      </table>
+
+      <hr className="my-6" />
+
+      <h2 id="2.-기본-제출서류" className="text-xl font-semibold mt-8 mb-4">2. 기본 제출서류</h2>
+
+      <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+      <thead>
+      <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>서류</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>비고</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득세신고서</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>+ 취득상세내역서 (주택의 경우)</td>
+      </tr>
+      <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>매매(분양)계약서</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>분양의 경우 잔금납부확인서</td>
+      </tr>
+      <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>실거래신고필증 또는 검인</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>계약서에 검인을 받았으면 신고필증 필요없음</td>
+      </tr>
+      <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>가족관계증명서 및 등본</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>주택일 경우 (1세대4주택 확인)</td>
+      </tr>
+      </tbody>
+      </table>
+
+      <Callout type="info">
+
+      <p><strong>가족관계증명서, 등본 제출 조건:</strong></p>
+      <ul className="list-disc pl-6 my-4 space-y-1">
+        <li>① 주택이고 ② 계약일자 2019.12.4. 이후이면 제출</li>
+        <li><strong>외국인</strong>: 외국인 등록사실증명서(또는 국내거소사실증명) + 세대원정보 기재서식 또는 상세내역에 기재</li>
+      </ul>
+
+      </Callout>
+
+      <hr className="my-6" />
+
+      <h2 id="3.-부동산-거래-시-검인대상" className="text-xl font-semibold mt-8 mb-4">3. 부동산 거래 시 검인대상</h2>
+
+      <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+      <thead>
+      <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>대상</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>검인대상</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>
+      • 교환, 증여, 분할, 인낙<br/>
+      • 사용승인전 분양 (2017년 이후 일정규모 이상 분양계약은 신고필증)
+      </td>
+      </tr>
+      <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', backgroundColor: '#fafafa'}}>신고·검인대상 아님</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', color: '#cf1322'}}>상속분할협의서, 수용, 경매(공매)낙찰</td>
+      </tr>
+      </tbody>
+      </table>
+
+      <Callout type="caution">
+
+      <ul className="list-disc pl-6 my-4 space-y-1">
+        <li><strong>합의해제계약서</strong>는 검인받지 않음</li>
+      </ul>
+
+      </Callout>
+
+      <hr className="my-6" />
+
+      <h2 id="4.-6~9억원-구간-세율계산식" className="text-xl font-semibold mt-8 mb-4">4. 6~9억원 구간 세율계산식</h2>
+
+      <p>주택 취득가액이 <strong>6억원 초과 ~ 9억원 이하</strong>인 경우 다음 계산식 적용:</p>
+
+      <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+      <thead>
+      <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>계산식</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '16px', textAlign: 'center', fontSize: '15px'}}>
+      <strong>세율(%) = 취득가액 × (2 / 3억원) - 3</strong>
+      </td>
+      </tr>
+      </tbody>
+      </table>
+
+      <Callout type="info">
+
+      <ul className="list-disc pl-6 my-4 space-y-1">
+        <li>과세표준액 <strong>150만원</strong> 마다 <strong>0.01%</strong>씩 상승</li>
+        <li>소수점 <strong>3째자리 반올림</strong></li>
+      </ul>
+
+      </Callout>
+
+      <hr className="my-6" />
+
+      <h2 id="5.-1세대4주택-경과규정" className="text-xl font-semibold mt-8 mb-4">5. 1세대4주택 경과규정</h2>
+
+      <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+      <thead>
+      <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>대상</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>조건</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>적용세율</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>근거</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>공동주택 분양 (3년)</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>
+      • <strong>2019년 12월 3일</strong>까지 매매계약 체결<br/>
+      • <strong>2022년 12월 31일</strong>까지 잔금 지급하여 취득
+      </td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px', color: '#1890ff', fontWeight: 'bold'}}>종전 2%</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>부칙 제5조</td>
+      </tr>
+      </tbody>
+      </table>
+
+      <hr className="my-6" />
+
+      <h2 id="6.-관련-법령" className="text-xl font-semibold mt-8 mb-4">6. 관련 법령</h2>
+
+      <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+      <thead>
+      <tr style={{backgroundColor: '#f0f0f0'}}>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구분</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>법령명</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>조항</th>
+      <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>비고</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>근거법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><a href="https://law.go.kr/법령/지방세법/제11조" target="_blank" rel="noopener noreferrer">§11</a></td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득세 세율</td>
+      </tr>
+      <tr>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>경과규정</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방세법</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>부칙 §5</td>
+      <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1세대4주택 경과규정</td>
+      </tr>
+      </tbody>
+      </table>
+
+      <hr className="my-6" />
+
+      <blockquote className="border-l-4 border-gray-300 pl-4 my-4 text-gray-600 italic">
+        <p>본 자료는 지방세 정보 안내용이며, 법적 효력이 없습니다. 정확한 내용은 관할 지자체 세무부서에 문의하세요.</p>
+      </blockquote>
+
+    </div>
+  );
+}

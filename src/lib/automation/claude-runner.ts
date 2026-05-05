@@ -207,7 +207,7 @@ ${extraInstructions ? `\n## 추가 지시사항\n${extraInstructions}\n` : ''}
 1. MDX_GUIDELINES.md의 모든 규칙을 반드시 준수
 2. 개조식 공문서 형식으로 작성 (서술형 금지)
 3. Frontmatter 필수 항목 모두 포함:
-   - title, category: "${category}", subcategory, version: "1.0", lastUpdated: "${today}"
+   - title, category: "${category}", subcategory, lastUpdated: "${today}"
    - legalBasis (PDF에서 추출), effectiveDate (PDF에서 추출)
 4. 세율표는 반드시 HTML 표 형식
 5. 색상: 합계 헤더 #cf1322, 취득세 #1890ff, 지방교육세 #52c41a, 농특세 #fa8c16

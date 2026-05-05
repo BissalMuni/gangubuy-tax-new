@@ -20,8 +20,6 @@ export interface TreeNode {
   slug: string;
   /** 표시 이름 (예: "임대사업자 감면") */
   title: string;
-  /** 콘텐츠 파일 버전 (기본값: "1.0") */
-  version?: string;
   /** 하위 노드 (leaf node는 없음) */
   children?: TreeNode[];
 }

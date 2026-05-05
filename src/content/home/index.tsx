@@ -1,7 +1,6 @@
 "use client";
 
 export const meta = {
-  version: "1.0.0",
   title: "세금 정보 시스템",
   effectiveDate: "2026-01-29",
   lastUpdated: "2026-01-29",

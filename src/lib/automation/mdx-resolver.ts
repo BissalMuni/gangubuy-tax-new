@@ -1,75 +1,43 @@
 /**
- * MDX 파일 경로 해석 모듈
+ * 콘텐츠 파일 경로 해석 모듈
  * content_path → 실제 파일 경로 변환
  */
 
 import fs from 'fs';
 import path from 'path';
-/** 파일명에서 slug/version 파싱: "general-v1.0.mdx" → { slug: "general", version: "1.0" } */
-function parseFilename(filename: string): { slug: string; version: string } | null {
-  const match = filename.match(/^(.+)-v(\d+\.\d+)\.(mdx|tsx)$/);
-  if (!match) return null;
-  return { slug: match[1], version: match[2] };
-}
 
 const CONTENT_DIR = path.join(process.cwd(), 'src', 'content');
 
 /**
- * content_path로부터 MDX 파일 경로를 찾습니다
+ * content_path로부터 TSX 파일 경로를 찾습니다
  * @param contentPath - 예: "acquisition/themes/multi-house"
  * @returns 파일 경로 또는 null
  */
 export function resolveContentPath(contentPath: string): string | null {
-  // content_path: "acquisition/themes/multi-house"
-  // 실제 파일: "src/content/acquisition/themes/multi-house-v1.0.tsx"
-
-  const dirPath = path.join(CONTENT_DIR, path.dirname(contentPath));
-  const slug = path.basename(contentPath);
-
-  if (!fs.existsSync(dirPath)) {
-    return null;
-  }
-
-  const entries = fs.readdirSync(dirPath);
-
-  // 해당 slug의 최신 버전 파일 찾기
-  const versionedFiles = entries
-    .filter((f) => {
-      const parsed = parseFilename(f);
-      return parsed && parsed.slug === slug;
-    })
-    .sort()
-    .reverse();
-
-  if (versionedFiles.length === 0) {
-    return null;
-  }
-
-  return path.join(dirPath, versionedFiles[0]);
+  const filePath = path.join(CONTENT_DIR, `${contentPath}.tsx`);
+  if (!fs.existsSync(filePath)) return null;
+  return filePath;
 }
 
 /**
- * MDX 파일 경로에서 content_path를 추출합니다
- * @param filePath - 예: "src/content/acquisition/themes/multi-house-v1.0.tsx"
+ * TSX 파일 경로에서 content_path를 추출합니다
+ * @param filePath - 예: "src/content/acquisition/themes/multi-house.tsx"
  * @returns content_path - 예: "acquisition/themes/multi-house"
  */
 export function extractContentPath(filePath: string): string {
   const relative = path.relative(CONTENT_DIR, filePath);
-  const parsed = parseFilename(path.basename(relative));
-  if (!parsed) return relative.replace(/\.(mdx|tsx)$/, '');
-  const dir = path.dirname(relative);
-  return path.join(dir, parsed.slug).replace(/\\/g, '/');
+  return relative.replace(/\.tsx$/, '').replace(/\\/g, '/');
 }
 
 /**
- * MDX 파일 내용을 읽습니다
+ * 콘텐츠 파일 내용을 읽습니다
  */
 export function readMdxContent(filePath: string): string {
   return fs.readFileSync(filePath, 'utf-8');
 }
 
 /**
- * MDX 파일 내용을 씁니다
+ * 콘텐츠 파일 내용을 씁니다
  */
 export function writeMdxContent(filePath: string, content: string): void {
   fs.writeFileSync(filePath, content, 'utf-8');
@@ -96,5 +64,5 @@ export function getAllContentPaths(): string[] {
   }
 
   scanDir(CONTENT_DIR);
-  return [...new Set(paths)]; // 중복 제거 (여러 버전)
+  return paths;
 }
