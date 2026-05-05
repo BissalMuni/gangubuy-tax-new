@@ -12,7 +12,8 @@
         {
           "id": "acq-multi-house-multi-house",
           "slug": "multi-house",
-          "title": "다주택 중과"
+          "title": "다주택 중과",
+          "version": "1.1"
         }
       ]
     },
