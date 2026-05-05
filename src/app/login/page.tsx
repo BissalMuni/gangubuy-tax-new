@@ -1,18 +1,29 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { Suspense, useState, type FormEvent } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { invalidateSession } from "@/lib/auth/use-session";
 
 export default function LoginPage() {
+  return (
+    <Suspense fallback={<div className="flex min-h-full items-center justify-center">로딩...</div>}>
+      <LoginForm />
+    </Suspense>
+  );
+}
+
+function LoginForm() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const next = searchParams.get("next") || "/";
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    setLoading(true);
     setError("");
+    setLoading(true);
 
     try {
       const res = await fetch("/api/auth/login", {
@@ -28,38 +39,60 @@ export default function LoginPage() {
         return;
       }
 
-      router.push("/admin");
+      // 세션 캐시 무효화 후 원래 위치로
+      invalidateSession();
+      router.push(next);
+      router.refresh();
     } catch {
-      setError("네트워크 오류");
+      setError("서버 연결 실패");
     } finally {
       setLoading(false);
     }
-  };
+  }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 dark:bg-gray-900">
-      <form
-        onSubmit={handleSubmit}
-        className="w-full max-w-sm space-y-4 rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800"
-      >
-        <h1 className="text-lg font-semibold text-center">관리자 로그인</h1>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="비밀번호"
-          className="w-full rounded border border-gray-300 px-3 py-2 text-sm dark:border-gray-600 dark:bg-gray-900 dark:text-gray-100"
-          autoFocus
-        />
-        {error && <p className="text-sm text-red-500">{error}</p>}
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full rounded bg-blue-600 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:bg-gray-400"
-        >
-          {loading ? "로그인 중..." : "로그인"}
-        </button>
-      </form>
+    <div className="flex min-h-full items-center justify-center px-4">
+      <div className="w-full max-w-sm space-y-6">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold">관리자 로그인</h1>
+          <p className="mt-2 text-sm text-gray-500">
+            비밀번호를 입력하여 접근 권한을 확인합니다
+          </p>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
+              비밀번호
+            </label>
+            <input
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              autoFocus
+              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+              placeholder="관리 비밀번호 입력"
+            />
+          </div>
+
+          {error && (
+            <p className="text-sm text-red-600">{error}</p>
+          )}
+
+          <button
+            type="submit"
+            disabled={loading || !password}
+            className="w-full rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {loading ? "확인 중..." : "로그인"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

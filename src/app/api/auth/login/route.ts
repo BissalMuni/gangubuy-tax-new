@@ -1,8 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import { authenticate, createSession, sessionCookieOptions } from "@/lib/auth/session";
+import {
+  authenticate,
+  createSession,
+  sessionCookieOptions,
+} from "@/lib/auth/session";
+import { ROLE_LABELS } from "@/lib/auth/constants";
 
 export async function POST(request: NextRequest) {
-  let body: { password: string };
+  let body: { password?: string };
   try {
     body = await request.json();
   } catch {
@@ -11,18 +16,20 @@ export async function POST(request: NextRequest) {
 
   const { password } = body;
   if (!password) {
-    return NextResponse.json({ error: "비밀번호 필요" }, { status: 400 });
+    return NextResponse.json({ error: "비밀번호를 입력하세요" }, { status: 400 });
   }
 
   const role = authenticate(password);
   if (!role) {
-    return NextResponse.json({ error: "인증 실패" }, { status: 401 });
+    return NextResponse.json({ error: "비밀번호가 올바르지 않습니다" }, { status: 401 });
   }
 
   const token = await createSession(role);
-  const cookie = sessionCookieOptions(token);
+  const response = NextResponse.json({
+    role,
+    label: ROLE_LABELS[role],
+  });
 
-  const response = NextResponse.json({ success: true, role });
-  response.cookies.set(cookie);
+  response.cookies.set(sessionCookieOptions(token));
   return response;
 }

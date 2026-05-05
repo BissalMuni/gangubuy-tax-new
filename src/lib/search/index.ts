@@ -2,6 +2,8 @@ import { allBooks } from '@/lib/book';
 import type { Book, TreeNode } from '@/lib/book/types';
 import type { SearchResult } from '@/lib/types';
 
+export type { SearchResult } from '@/lib/types';
+
 /** 검색 인덱스 항목 (내부용) */
 interface IndexEntry {
   id: string;
