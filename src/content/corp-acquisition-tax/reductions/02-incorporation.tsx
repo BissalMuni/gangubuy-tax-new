@@ -1,24 +1,24 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
+import { CalcBox } from "@/components/content/shared";
 
-export const meta = {
-  title: "법인전환 (현물출자·사업양수도)",
-  category: "corp-acquisition-tax",
-  group: "reductions",
-  groupLabel: "감면",
-  order: 2,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅰ_지특법_감면/02_개인사업자_법인전환_현물출자_사업양수도",
-  sourcePages: [3,12],
-  sourceTaxTypes: ["acquisition_tax"],
-  sourceKeyLawRefs: ["지방세특례제한법 제57조의2","지방세특례제한법 시행령 제28조의2 제3항","지방세특례제한법 제57조의2 제4항","지방세법 제6조 제1호"],
-  lawReference: "지방세특례제한법 제57조의2, 지방세특례제한법 시행령 제28조의2 제3항, 지방세특례제한법 제57조의2 제4항, 지방세법 제6조 제1호",
-};
-
+/**
+ * meta:
+ *   title: "법인전환 (현물출자·사업양수도)"
+ *   category: "corp-acquisition-tax"
+ *   group: "reductions"
+ *   groupLabel: "감면"
+ *   order: 2
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅰ_지특법_감면/02_개인사업자_법인전환_현물출자_사업양수도"
+ *   sourcePages: [3,12]
+ *   sourceTaxTypes: ["acquisition_tax"]
+ *   sourceKeyLawRefs: ["지방세특례제한법 제57조의2","지방세특례제한법 시행령 제28조의2 제3항","지방세특례제한법 제57조의2 제4항","지방세법 제6조 제1호"]
+ *   lawReference: "지방세특례제한법 제57조의2, 지방세특례제한법 시행령 제28조의2 제3항, 지방세특례제한법 제57조의2 제4항, 지방세법 제6조 제1호"
+ */
 export default function Content02IncorporationV10() {
   return (
     <div className="space-y-6">
@@ -35,25 +35,20 @@ export default function Content02IncorporationV10() {
 
       <hr className="my-6" />
 
-      <h2 id="section-1">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      <CalcBox title="■ 관련 법조문" id="section-1">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제57조의2</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 시행령 제28조의2 제3항</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제57조의2 제4항</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세법 제6조 제1호</code></li>
       </ul>
+      </CalcBox>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
+      <CalcBox title="■ 원문" id="source">
+      </CalcBox>
 
-      <h2 id="section-3">
-      <Outline level={1}>개인사업자의 법인전환 및 사업양수도 관련 법률</Outline>
-      </h2>
+      <CalcBox title="■ 개인사업자의 법인전환 및 사업양수도 관련 법률" id="section-3">
 
       <p>```text</p>
       <p>지방세특례제한법 제57조의 2 【기업합병 분할등에 대한 감면】 / ④  현물출자 또는 사업 양도·양수에 따라 2027년 12월 31일까지 취득하는 사업용 고정자산(「통계법」 제22조에 따라 국가데이터처장이 고시하는 한국표준산업분류에 따른 부동산 임대 및 공급업에 대해서는 제외한다)에 대해서는 취득세의 100분의 50을 경감한다. 다만,  이내에 대통령령으로 정하는 정당한 사유 없이 해당 사업을 폐업하거나 해당 재산을 처분(임대를 포함한다) 또는 주식을 처분하는 경우에는 경감받은 취득세를 추징한다.(2025.10.01.개정)</p>
@@ -342,6 +337,7 @@ export default function Content02IncorporationV10() {
 
 
       <p>「지방세법 시행령」제26조 제1항 제31호에서「임대주택법」제6조에 따라 등록을 한 임대사업자가 경영하는 주택임대사업을 중과세의 예외로 규정하고 있으나, 청구법인은 이 건 부동산을 취득한 후에 임대사업자로 등록하였으므로 청구법인은 이 건 부동산을 취득할 당시「임대주택법」제6조에 따라 등록을 한 임대사업자에 해당한다고 보기 어렵다.</p>
+      </CalcBox>
 
     </div>
   );

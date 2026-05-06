@@ -1,24 +1,24 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
+import { CalcBox, SubSection } from "@/components/content/shared";
 
-export const meta = {
-  title: "기부채납 비과세",
-  category: "corp-acquisition-tax",
-  group: "reductions",
-  groupLabel: "감면",
-  order: 5,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅰ_지특법_감면/05_기부채납_귀속_비과세_지방세법9조2항",
-  sourcePages: [31,37],
-  sourceTaxTypes: ["acquisition_tax","property_tax"],
-  sourceKeyLawRefs: ["지방세특례제한법 제73조의2","지방세특례제한법 제73조의2 제1항","지방세법 제9조 제2항","지방세법 제106조 제2항","지방세법 제126조 제2항","지방세법 제106조","지방세법 제7조 제2항","지방세특례제한법 제46조"],
-  lawReference: "지방세특례제한법 제73조의2, 지방세특례제한법 제73조의2 제1항, 지방세법 제9조 제2항, 지방세법 제106조 제2항, 지방세법 제126조 제2항, 지방세법 제106조, 지방세법 제7조 제2항, 지방세특례제한법 제46조",
-};
-
+/**
+ * meta:
+ *   title: "기부채납 비과세"
+ *   category: "corp-acquisition-tax"
+ *   group: "reductions"
+ *   groupLabel: "감면"
+ *   order: 5
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅰ_지특법_감면/05_기부채납_귀속_비과세_지방세법9조2항"
+ *   sourcePages: [31,37]
+ *   sourceTaxTypes: ["acquisition_tax","property_tax"]
+ *   sourceKeyLawRefs: ["지방세특례제한법 제73조의2","지방세특례제한법 제73조의2 제1항","지방세법 제9조 제2항","지방세법 제106조 제2항","지방세법 제126조 제2항","지방세법 제106조","지방세법 제7조 제2항","지방세특례제한법 제46조"]
+ *   lawReference: "지방세특례제한법 제73조의2, 지방세특례제한법 제73조의2 제1항, 지방세법 제9조 제2항, 지방세법 제106조 제2항, 지방세법 제126조 제2항, 지방세법 제106조, 지방세법 제7조 제2항, 지방세특례제한법 제46조"
+ */
 export default function Content05DonationV10() {
   return (
     <div className="space-y-6">
@@ -40,16 +40,12 @@ export default function Content05DonationV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>지방세법 제9조 제2항에 따른 기부채납·귀속 조건 취득 부동산의 취득세 비과세 요건을 다룬다. 주택건설사업계획 승인 전후 기부채납 의사 합치 시점, 철거 예정 건축물의 비과세 적용 여부, 연부취득 시 비과세 취득시기 등이 핵심 쟁점이다.</p>
+      </CalcBox>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
+      <CalcBox title="■ 주요 개념" id="concepts">
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>기부채납 비과세</strong> — 국가 등에 귀속 또는 기부채납을 조건으로 취득하는 부동산 및 사회기반시설에 대해 취득세를 부과하지 않는 제도로, 해당 취득이 국가 등에 귀속시키기 위한 잠정적·일시적 조치에 불과하다는 점에 근거한다.</li>
@@ -67,81 +63,85 @@ export default function Content05DonationV10() {
         <li><strong>반대급부 감면</strong> — 기부채납의 반대급부로 국가 등 소유 부동산이나 사회기반시설을 무상으로 양여받은 경우에는 비과세가 아닌 50% 경감(지특법 제73조의2)이 적용된다.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제73조의2" target="_blank" rel="noopener noreferrer">지특법 §73의2</a></li>
       </ul>
+      </CalcBox>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>수록 판례 (4건)</Outline>
-      </h2>
-
-      <Outline level={2}>대법원2003다43346</Outline>
+      <CalcBox title="■ 수록 판례 (4건)" id="section-3">
+      <SubSection title="● 대법원2003다43346">
       <p><strong>쟁점</strong>: 주택건설사업계획 승인 이후 취득 토지만 기부채납 비과세 대상</p>
       <p><strong>판시사항</strong>: 국토이용계획변경결정만으로는 기부채납 합의를 인정하기 어렵고, 지방자치단체장이 주택건설사업계획 승인결정을 할 무렵 공공시설용지의 위치·면적이 특정되고 구체적으로 기부채납 승인조건이 부과된 때 비로소 의사의 합치가 있다. 따라서 사업승인결정 이후에 취득하는 토지만이 기부채납을 조건으로 취득하는 부동산으로 취득세 비과세 대상이 된다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제9조" target="_blank" rel="noopener noreferrer">법 §9 제2항</a></p>
+      </SubSection>
 
-      <Outline level={2}>대법원2005두14998</Outline>
+      <SubSection title="● 대법원2005두14998">
       <p><strong>쟁점</strong>: 기부채납 협의 진행 중인 경우 비과세 해당 여부 및 기부채납의 법적 성격</p>
       <p><strong>판시사항</strong>: 기부채납 최종승인 이전이라도 기부채납 목적물이 충분히 특정된 상태에서 구체적인 협의가 진행 중이었다면 비과세 대상인 '기부채납을 조건으로 취득하는 부동산'에 해당한다. 또한 기부채납은 기부자의 증여 의사표시와 국가·지방자치단체의 채납 승낙으로 성립하는 증여계약이며, 다른 경제적 이익 취득 목적이 있어도 기부채납 형식으로 이루어진 이상 비과세 대상에 해당한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제9조" target="_blank" rel="noopener noreferrer">법 §9 제2항</a></p>
+      </SubSection>
 
-      <Outline level={2}>대법원2010두6977</Outline>
+      <SubSection title="● 대법원2010두6977">
       <p><strong>쟁점</strong>: 기부채납 비과세 입법 취지</p>
       <p><strong>판시사항</strong>: 국가 등에 귀속 또는 기부채납을 조건으로 부동산을 취득하는 것은 그 부동산을 국가 등에 귀속시키기 위한 잠정적·일시적 조치에 불과하므로 국가 등이 직접 취득하는 경우와 동일하게 평가할 수 있어 취득세를 비과세한다는 취지이다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제9조" target="_blank" rel="noopener noreferrer">법 §9 제2항</a></p>
+      </SubSection>
 
-      <Outline level={2}>대법원2020두35295</Outline>
+      <SubSection title="● 대법원2020두35295">
       <p><strong>쟁점</strong>: 철거 예정 건축물은 기부채납 비과세 대상 부동산에 해당하지 않음</p>
       <p><strong>판시사항</strong>: 지방세법 제9조 제2항은 귀속 또는 기부채납을 조건으로 취득하는 당해 부동산 자체에 대한 비과세를 규정할 뿐, 이를 목적으로 취득하는 다른 부동산에까지 적용되지 않는다. 국가에 귀속·기부채납되지 않고 처음부터 철거가 예정된 건축물은 비과세 규정이 적용되지 않는다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제9조" target="_blank" rel="noopener noreferrer">법 §9 제2항</a>, <a href="https://law.go.kr/법령/지방세법/제9조" target="_blank" rel="noopener noreferrer">법 §9 제1항</a></p>
+      </SubSection>
+      </CalcBox>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>조심 판례 (3건)</Outline>
-      </h2>
-
-      <Outline level={2}>조심2017지0436</Outline>
+      <CalcBox title="■ 조심 판례 (3건)" id="section-4">
+      <SubSection title="● 조심2017지0436">
       <p><strong>쟁점</strong>: 신탁으로 인한 명의변경은 추징사유인 매각·증여에 해당하지 않음</p>
       <p><strong>판시사항</strong>: 신탁으로 인한 명의변경은 매각 등에 해당하지 않으므로 기부채납 비과세의 추징사유에 해당하지 않는다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제9조" target="_blank" rel="noopener noreferrer">법 §9 제2항</a></p>
+      </SubSection>
 
-      <Outline level={2}>조심2011지0311</Outline>
+      <SubSection title="● 조심2011지0311">
       <p><strong>쟁점</strong>: 취득 이후 기부채납 승낙을 받은 경우 비과세 요건 불충족</p>
       <p><strong>판시사항</strong>: 부동산 취득 전에 국가에 기부채납 의사표시를 하고 국가로부터 승낙의 의사표시를 얻었어야 하나, 취득 이후 승낙을 받은 경우에는 비과세 요건을 충족하지 못하므로 추징은 정당하다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제9조" target="_blank" rel="noopener noreferrer">법 §9 제2항</a></p>
+      </SubSection>
 
-      <Outline level={2}>조심2008지0233</Outline>
+      <SubSection title="● 조심2008지0233">
       <p><strong>쟁점</strong>: 연부취득 부동산의 취득시기 판단 기준</p>
       <p><strong>판시사항</strong>: 연부로 취득한 부동산에 적용되는 취득한 날은 사실상 잔금지급일로 해석함이 타당하다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제7조" target="_blank" rel="noopener noreferrer">법 §7 제2항</a>, <a href="https://law.go.kr/법령/지방세법시행령/제20조" target="_blank" rel="noopener noreferrer">시행령 §20 제5항</a></p>
+      </SubSection>
+      </CalcBox>
 
 
-      <h2 id="section-5">
-      <Outline level={1}>예규 (4건)</Outline>
-      </h2>
-
-      <Outline level={2}>부동산세제과-2912</Outline>
+      <CalcBox title="■ 예규 (4건)" id="section-5">
+      <SubSection title="● 부동산세제과-2912">
       <p><strong>쟁점</strong>: 사업계획승인 전 기부채납 협의 진행 중 취득한 토지의 비과세 여부</p>
       <p><strong>판시사항</strong>: 기부채납 면적·위치가 구체적으로 특정된 조치계획 제출 이후 취득한 토지는 사업계획승인 전이라도 기부채납을 목적으로 취득한 토지로서 취득세 비과세 대상에 해당한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제9조" target="_blank" rel="noopener noreferrer">법 §9 제2항</a></p>
+      </SubSection>
 
-      <Outline level={2}>지방세운영과-393</Outline>
+      <SubSection title="● 지방세운영과-393">
       <p><strong>쟁점</strong>: 기부채납 예정 건축물의 재산세 납세의무자</p>
       <p><strong>판시사항</strong>: 재산세 납세의무자인 사실상 소유자는 재산세 과세기준일 현재 해당 재산에 대한 사용·수익·처분권을 행사할 수 있는 지위에 있는 자이다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제107조" target="_blank" rel="noopener noreferrer">법 §107</a></p>
+      </SubSection>
 
-      <Outline level={2}>지방세운영과-2200</Outline>
+      <SubSection title="● 지방세운영과-2200">
       <p><strong>쟁점</strong>: 취득일 이후 기부채납확약서 제출 시 비과세 해당 여부</p>
       <p><strong>판시사항</strong>: 주택건설사업계획 승인 이행조건으로 토지 취득일 이후 기부채납확약서를 제출한 경우, 이는 기부채납을 조건으로 취득하는 부동산으로 볼 수 없어 비과세 대상에 해당하지 않는다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제9조" target="_blank" rel="noopener noreferrer">법 §9 제2항</a></p>
+      </SubSection>
 
-      <Outline level={2}>세제과-14937</Outline>
+      <SubSection title="● 세제과-14937">
       <p><strong>쟁점</strong>: 연부취득 기간 중 기부채납 사업계획 승인된 토지의 비과세 취득시기</p>
       <p><strong>판시사항</strong>: 연부취득 기간 중 일부 토지에 대해 기부채납 사업계획이 승인된 경우, 연부금 완납 시점에 사실상 취득이 이루어진 것으로 보므로 완납시점 이전에 기부채납 승인된 토지에 대해 기납부된 연부금액에 대한 취득세는 비과세에 해당한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제9조" target="_blank" rel="noopener noreferrer">법 §9 제2항</a>, <a href="https://law.go.kr/법령/지방세법/제7조" target="_blank" rel="noopener noreferrer">법 §7 제2항</a></p>
+      </SubSection>
+      </CalcBox>
 
 
-      <h2 id="section-6">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
+      <CalcBox title="■ 관련 법조문" id="section-6">
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제73조의2</code></li>
@@ -153,11 +153,10 @@ export default function Content05DonationV10() {
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세법 제7조 제2항</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제46조</code></li>
       </ul>
+      </CalcBox>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
+      <CalcBox title="■ 원문" id="source">
 
       <p>```text</p>
       <p>구분 | 비과세요건 | 감면율 | 최소납부제 | 농특세</p>
@@ -432,13 +431,14 @@ export default function Content05DonationV10() {
 
 
 
-      <h2 id="section-8">
-      <Outline level={1}>기업부설연구소에 대한 감면 관련 법률</Outline>
-      </h2>
+      </CalcBox>
+
+      <CalcBox title="■ 기업부설연구소에 대한 감면 관련 법률" id="section-8">
 
       <p>```text</p>
       <p>지방세특례제한법 제46조 【연구개발 지원을 위한 감면】 / ① 기업이 대통령령으로 정하는 기업부설연구소(이하 이 조에서“기업부설연구소”라 한다)에 직접 사용하기 위하여 취득하는 부동산(부속토지는 건축물 바닥면적의 7배 이내인 것으로 한정한다. 이하 이 조에서 같다)에 대해서는 다음 각 호에서 정하는 바에 따라 지방세를 경감한다.&lt;2025.12.31. 개정&gt; / 1. 「중소기업기본법」 제2조제1항에 따른 중소기업(이하 이 장에서 "중소기업"이라 한다)이 기업부설연구소에 직접 사용하기 위하여 취득하는 부동산에 대해서는 취득세의 100분의 60[수도권(인구감소지역은 제외한다)에 소재하는 부동산에 대해서는 100분의 45]을, 과세기준일 현재 기업부설연구소에 직접 사용하는 부동산에 대해서는 재산세의 100분의 60[수도권(인구감소지역은 제외한다)에 소재하는 부동산에 대해서는 100분의 45]을 각각 2028년 12월 31일까지 경감한다. / 2. 「독점규제 및 공정거래에 관한 법률」 제31조제1항에 따른 상호출자제한기업집단이 기업부설연구소에 직접 사용하기 위하여 취득하는 부동산[수도권(인구감소지역은 제외한다)에 소재하는 부동산은 제외한다. 이하 이 호에서 같다]에 대해서는 취득세의 100분의 35를, 과세기준일 현재 기업부설연구소에 직접 사용하는 부동산에 대해서는 재산세의 100분의 35를 각각 2028년 12월 31일까지 경감한다. / 3. 제1호 및 제2호에 따른 기업 외의 기업이 기업부설연구소에 직접 사용하기 위하여 취득하는 부동산에 대해서는 취득세의 100분의 45[수도권(인구감소지역은 제외한다)에 소재하는 부동산에 대해서는 100분의 30]를, 과세기준일 현재 기업부설연구소에 직접 사용하는 부동산에 대해서는 재산세의 100분의 45[수도권(인구감소지역은 제외한다)에 소재하는 부동산에 대해서는 100분의 30]를 각각 2028년 12월 31일까지 경감한다.</p>
       <p>```</p>
+      </CalcBox>
 
     </div>
   );

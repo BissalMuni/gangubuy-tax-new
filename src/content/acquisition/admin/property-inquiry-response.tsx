@@ -1,23 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "재산조회 회신 가능여부",
-  sectionId: "41",
-  category: "취득세",
-  subcategory: "재산조회",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [70,70],
-  effectiveDate: "2026-01-01",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "",
-  tags: ["재산조회","회신","개인정보","법원","세무서"],
-};
-
+/**
+ * meta:
+ *   title: "재산조회 회신 가능여부"
+ *   sectionId: "41"
+ *   category: "취득세"
+ *   subcategory: "재산조회"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [70, 70]
+ *   effectiveDate: "2026-01-01"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: ""
+ *   tags: ["재산조회", "회신", "개인정보", "법원", "세무서"]
+ */
 export default function PropertyInquiryResponseV10() {
   return (
     <div className="space-y-6">
@@ -35,9 +35,7 @@ export default function PropertyInquiryResponseV10() {
 
       <hr className="my-6" />
 
-      <h2 id="회신가능">
-      <Outline level={1}>회신 가능한 경우</Outline>
-      </h2>
+      <CalcBox title="■ 회신 가능한 경우" id="회신가능">
 
       <p>법률에서 <strong>구체적(명시적)</strong>으로 규정이 된 경우:</p>
 
@@ -72,6 +70,8 @@ export default function PropertyInquiryResponseV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <SectionNav sections={[
       { id: "회신가능", label: "회신 가능" },
       { id: "회신불가", label: "회신 불가" },
@@ -79,9 +79,7 @@ export default function PropertyInquiryResponseV10() {
 
       <hr className="my-6" />
 
-      <h2 id="회신불가">
-      <Outline level={1}>법규에 해당사항이 없는 경우</Outline>
-      </h2>
+      <CalcBox title="■ 법규에 해당사항이 없는 경우" id="회신불가">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -109,6 +107,8 @@ export default function PropertyInquiryResponseV10() {
       </tr>
       </tbody>
       </table>
+
+      </CalcBox>
 
       <SectionNav sections={[
       { id: "회신가능", label: "회신 가능" },

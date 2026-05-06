@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-import { Callout } from "@/components/mdx/Callout";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "취득세 신고 결재후 정정",
-  sectionId: "30",
-  category: "취득세",
-  subcategory: "결재후정정",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [58,58],
-  effectiveDate: "2026-01-01",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "",
-  tags: ["결재후정정","고지서수정","정정처리","대장반영"],
-};
-
+/**
+ * meta:
+ *   title: "취득세 신고 결재후 정정"
+ *   sectionId: "30"
+ *   category: "취득세"
+ *   subcategory: "결재후정정"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [58, 58]
+ *   effectiveDate: "2026-01-01"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: ""
+ *   tags: ["결재후정정", "고지서수정", "정정처리", "대장반영"]
+ */
 export default function PostApprovalCorrectionV10() {
   return (
     <div className="space-y-6">
@@ -37,15 +36,15 @@ export default function PostApprovalCorrectionV10() {
 
       <hr className="my-6" />
 
-      <h2 id="적용대상">
-      <Outline level={1}>적용 대상</Outline>
-      </h2>
+      <CalcBox title="■ 적용 대상" id="적용대상">
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>취득신고</strong> 완료 후</li>
         <li><strong>취득세 납부</strong> 완료 후</li>
         <li><strong>고지서 내용 수정</strong>이 필요한 경우</li>
       </ul>
+
+      </CalcBox>
 
       <SectionNav sections={[
       { id: "적용대상", label: "적용 대상" },
@@ -55,17 +54,17 @@ export default function PostApprovalCorrectionV10() {
 
       <hr className="my-6" />
 
-      <h2 id="처리절차">
-      <Outline level={1}>처리 절차</Outline>
-      </h2>
+      <CalcBox title="■ 처리 절차" id="처리절차">
 
-      <Outline level={2}>메뉴 경로</Outline>
+      <SubSection title="● 메뉴 경로">
 
       <p>```</p>
       <p>취득신고분 화면 → 부메뉴 → [취득세부동산 결재후 정정]</p>
       <p>```</p>
 
-      <Outline level={2}>단계별 처리</Outline>
+      </SubSection>
+
+      <SubSection title="● 단계별 처리">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -104,6 +103,10 @@ export default function PostApprovalCorrectionV10() {
       </tbody>
       </table>
 
+      </SubSection>
+
+      </CalcBox>
+
       <SectionNav sections={[
       { id: "적용대상", label: "적용 대상" },
       { id: "처리절차", label: "처리 절차" },
@@ -112,17 +115,17 @@ export default function PostApprovalCorrectionV10() {
 
       <hr className="my-6" />
 
-      <h2 id="주의사항">
-      <Outline level={1}>주의사항</Outline>
-      </h2>
+      <CalcBox title="■ 주의사항" id="주의사항">
 
-      <Callout type="caution">
+      <Insight>
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>결재 완료 후</strong> 반드시 다시 해당 화면으로 진입하여 <strong>[정정내역 대장반영]</strong> 처리 필요</li>
         <li>대장반영을 하지 않으면 정정 내용이 실제 대장에 반영되지 않음</li>
         <li>처리 완료 후 민원인에게 안내할 것</li>
       </ul>
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <SectionNav sections={[
       { id: "적용대상", label: "적용 대상" },

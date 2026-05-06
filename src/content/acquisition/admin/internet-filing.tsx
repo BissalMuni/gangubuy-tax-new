@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-import { Callout } from "@/components/mdx/Callout";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "취득세를 인터넷신고한 경우",
-  sectionId: "29",
-  category: "취득세",
-  subcategory: "인터넷신고",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [57,57],
-  effectiveDate: "2026-01-01",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "",
-  tags: ["인터넷신고","E-TAX","WETAX","위택스","이택스","전자신고"],
-};
-
+/**
+ * meta:
+ *   title: "취득세를 인터넷신고한 경우"
+ *   sectionId: "29"
+ *   category: "취득세"
+ *   subcategory: "인터넷신고"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [57, 57]
+ *   effectiveDate: "2026-01-01"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: ""
+ *   tags: ["인터넷신고", "E-TAX", "WETAX", "위택스", "이택스", "전자신고"]
+ */
 export default function InternetFilingV10() {
   return (
     <div className="space-y-6">
@@ -39,9 +38,7 @@ export default function InternetFilingV10() {
 
       <hr className="my-6" />
 
-      <h2 id="과세번호">
-      <Outline level={1}>과세번호 체계</Outline>
-      </h2>
+      <CalcBox title="■ 과세번호 체계" id="과세번호">
 
       <p>인터넷 신고분은 <strong>접수번호가 아닌 과세번호</strong>로 조회합니다.</p>
 
@@ -67,6 +64,8 @@ export default function InternetFilingV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <SectionNav sections={[
       { id: "과세번호", label: "과세번호 체계" },
       { id: "조회방법", label: "조회 방법" },
@@ -77,11 +76,9 @@ export default function InternetFilingV10() {
 
       <hr className="my-6" />
 
-      <h2 id="조회방법">
-      <Outline level={1}>조회 방법</Outline>
-      </h2>
+      <CalcBox title="■ 조회 방법" id="조회방법">
 
-      <Outline level={2}>부과조회 경로</Outline>
+      <SubSection title="● 부과조회 경로">
 
       <p>```</p>
       <p>부과관리 → 통합취득세(부동산) → 부동산과세자료조회 → [부과조회] 클릭</p>
@@ -92,6 +89,10 @@ export default function InternetFilingV10() {
         <li><strong>33번</strong>: 위택스 신고분 조회</li>
       </ul>
 
+      </SubSection>
+
+      </CalcBox>
+
       <SectionNav sections={[
       { id: "과세번호", label: "과세번호 체계" },
       { id: "조회방법", label: "조회 방법" },
@@ -102,11 +103,9 @@ export default function InternetFilingV10() {
 
       <hr className="my-6" />
 
-      <h2 id="처리절차">
-      <Outline level={1}>처리 절차</Outline>
-      </h2>
+      <CalcBox title="■ 처리 절차" id="처리절차">
 
-      <Outline level={2}>기본 처리 흐름</Outline>
+      <SubSection title="● 기본 처리 흐름">
 
       <p>1. <strong>취득세 신고분화면</strong>에서 과세번호로 불러들이기</p>
       <p>2. <strong>오류검토</strong> 실행</p>
@@ -114,15 +113,21 @@ export default function InternetFilingV10() {
       <p>4. <strong>첨부서류 다운로드</strong></p>
       <p>5. <strong>결재처리</strong> 진행</p>
 
-      <Outline level={2}>상세물건 등록</Outline>
+      </SubSection>
 
-      <Callout type="caution">
+      <SubSection title="● 상세물건 등록">
+
+      <Insight>
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>상세물건내역은 <strong>자동 생성되지 않음</strong></li>
         <li>신고분 화면에서 조회 후 <strong>상세물건을 수동 등록</strong> 필요</li>
         <li><strong>신고분 일일결재 전</strong>에 반드시 작업 완료할 것</li>
       </ul>
-      </Callout>
+      </Insight>
+
+      </SubSection>
+
+      </CalcBox>
 
       <SectionNav sections={[
       { id: "과세번호", label: "과세번호 체계" },
@@ -134,9 +139,7 @@ export default function InternetFilingV10() {
 
       <hr className="my-6" />
 
-      <h2 id="출력물">
-      <Outline level={1}>출력물</Outline>
-      </h2>
+      <CalcBox title="■ 출력물" id="출력물">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -165,6 +168,8 @@ export default function InternetFilingV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <SectionNav sections={[
       { id: "과세번호", label: "과세번호 체계" },
       { id: "조회방법", label: "조회 방법" },
@@ -175,11 +180,9 @@ export default function InternetFilingV10() {
 
       <hr className="my-6" />
 
-      <h2 id="주의사항">
-      <Outline level={1}>주의사항</Outline>
-      </h2>
+      <CalcBox title="■ 주의사항" id="주의사항">
 
-      <Outline level={2}>신고서가 없을 때</Outline>
+      <SubSection title="● 신고서가 없을 때">
 
       <p>```</p>
       <p>통합취득세(부동산) → 부동산과세자료조회 → 납세자 주민번호로 조회</p>
@@ -189,7 +192,9 @@ export default function InternetFilingV10() {
         <li>신고서 및 기타 첨부서류 출력 가능</li>
       </ul>
 
-      <Outline level={2}>위임장 출력 (대리인 신고시)</Outline>
+      </SubSection>
+
+      <SubSection title="● 위임장 출력 (대리인 신고시)">
 
       <p>위임장은 신고서와 같은 양식으로, 아래 경로에서 조회합니다.</p>
 
@@ -202,12 +207,16 @@ export default function InternetFilingV10() {
         <li><strong>납세자 주민번호</strong>로 조회</li>
       </ul>
 
-      <Callout type="info">
+      <Insight>
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>위임장 양식은 신고서와 동일</li>
         <li>대리인 신고 건만 해당</li>
       </ul>
-      </Callout>
+      </Insight>
+
+      </SubSection>
+
+      </CalcBox>
 
       <SectionNav sections={[
       { id: "과세번호", label: "과세번호 체계" },

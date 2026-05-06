@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-import { Callout } from "@/components/mdx/Callout";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "시설과 시설물",
-  sectionId: "38",
-  category: "취득세",
-  subcategory: "시설/시설물",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [67,67],
-  effectiveDate: "2026-01-01",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "지방세법 제6조, 제7조",
-  tags: ["시설","시설물","구축물","엘리베이터","발코니","주차장"],
-};
-
+/**
+ * meta:
+ *   title: "시설과 시설물"
+ *   sectionId: "38"
+ *   category: "취득세"
+ *   subcategory: "시설/시설물"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [67, 67]
+ *   effectiveDate: "2026-01-01"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: "지방세법 제6조, 제7조"
+ *   tags: ["시설", "시설물", "구축물", "엘리베이터", "발코니", "주차장"]
+ */
 export default function FacilityVsEquipmentV10() {
   return (
     <div className="space-y-6">
@@ -39,9 +38,7 @@ export default function FacilityVsEquipmentV10() {
 
       <hr className="my-6" />
 
-      <h2 id="구분">
-      <Outline level={1}>시설 vs 시설물 비교</Outline>
-      </h2>
+      <CalcBox title="■ 시설 vs 시설물 비교" id="구분">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -75,6 +72,8 @@ export default function FacilityVsEquipmentV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <SectionNav sections={[
       { id: "구분", label: "시설 vs 시설물" },
       { id: "시설", label: "시설(구축물)" },
@@ -85,11 +84,9 @@ export default function FacilityVsEquipmentV10() {
 
       <hr className="my-6" />
 
-      <h2 id="시설">
-      <Outline level={1}>시설 (구축물)</Outline>
-      </h2>
+      <CalcBox title="■ 시설 (구축물)" id="시설">
 
-      <Outline level={2}>특징</Outline>
+      <SubSection title="● 특징">
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>건물과 별도로</strong> 있으면 시설</li>
@@ -99,7 +96,9 @@ export default function FacilityVsEquipmentV10() {
         <li><strong>독립된 개체</strong>로 과세가능 건축물 (법 제6조④호)</li>
       </ul>
 
-      <Outline level={2}>취득 구분</Outline>
+      </SubSection>
+
+      <SubSection title="● 취득 구분">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -120,6 +119,10 @@ export default function FacilityVsEquipmentV10() {
       </tbody>
       </table>
 
+      </SubSection>
+
+      </CalcBox>
+
       <SectionNav sections={[
       { id: "구분", label: "시설 vs 시설물" },
       { id: "시설", label: "시설(구축물)" },
@@ -130,11 +133,9 @@ export default function FacilityVsEquipmentV10() {
 
       <hr className="my-6" />
 
-      <h2 id="시설물">
-      <Outline level={1}>시설물 (부수시설물)</Outline>
-      </h2>
+      <CalcBox title="■ 시설물 (부수시설물)" id="시설물">
 
-      <Outline level={2}>특징</Outline>
+      <SubSection title="● 특징">
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>건축물에 딸려</strong> 건축물의 <strong>효용가치를 증대</strong>시킬 때 과세대상</li>
@@ -145,7 +146,9 @@ export default function FacilityVsEquipmentV10() {
         <li>건축물과 <strong>별개로 독립적 존재</strong>시 과세대상 <strong>제외</strong></li>
       </ul>
 
-      <Outline level={2}>취득세율</Outline>
+      </SubSection>
+
+      <SubSection title="● 취득세율">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -166,13 +169,17 @@ export default function FacilityVsEquipmentV10() {
       </tbody>
       </table>
 
-      <Callout type="info">
+      <Insight>
       <p><strong>5층 이상 상가건물</strong>은 엘리베이터 없으면 <strong>감산</strong>되니 반드시 넣어야 함</p>
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>층당 <strong>5%씩 가산</strong>됨</li>
         <li>건물 시가표준액이 올라감</li>
       </ul>
-      </Callout>
+      </Insight>
+
+      </SubSection>
+
+      </CalcBox>
 
       <SectionNav sections={[
       { id: "구분", label: "시설 vs 시설물" },
@@ -184,22 +191,24 @@ export default function FacilityVsEquipmentV10() {
 
       <hr className="my-6" />
 
-      <h2 id="발코니">
-      <Outline level={1}>발코니 증축통보시</Outline>
-      </h2>
+      <CalcBox title="■ 발코니 증축통보시" id="발코니">
 
-      <Outline level={2}>행자부지침 (2005.12.26.)</Outline>
+      <SubSection title="● 행자부지침 (2005.12.26.)">
 
       <blockquote className="border-l-4 border-gray-300 pl-4 my-4 text-gray-600 italic">
         <p>발코니는 독립적인 취득세 과세대상인 건축물의 건축으로 볼 수 <strong>없음</strong></p>
       </blockquote>
 
-      <Callout type="info">
+      <Insight>
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>발코니(노대)</strong>는 <strong>과세면적이 아님</strong></li>
         <li>발코니확장으로 위법건축물 통보가 와도 <strong>무시</strong>한다</li>
       </ul>
-      </Callout>
+      </Insight>
+
+      </SubSection>
+
+      </CalcBox>
 
       <SectionNav sections={[
       { id: "구분", label: "시설 vs 시설물" },
@@ -211,18 +220,18 @@ export default function FacilityVsEquipmentV10() {
 
       <hr className="my-6" />
 
-      <h2 id="주의사항">
-      <Outline level={1}>주의사항</Outline>
-      </h2>
+      <CalcBox title="■ 주의사항" id="주의사항">
 
-      <Callout type="caution">
+      <Insight>
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>시설</strong>: 건물과 별도 → 재산세 과세, 독립 과세 가능</li>
         <li><strong>시설물</strong>: 건축물에 포함 → 재산세 과세대상 아님, 독립시 과세대상 제외</li>
         <li>5층 이상 상가 <strong>엘리베이터</strong> 설치 여부 확인 필수 (시가표준액 영향)</li>
         <li><strong>발코니 확장</strong> 위법건축물 통보 → 과세 불필요</li>
       </ul>
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <SectionNav sections={[
       { id: "구분", label: "시설 vs 시설물" },

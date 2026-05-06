@@ -1,22 +1,22 @@
 "use client";
 
-import { Callout } from "@/components/mdx/Callout";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "판결에 의한 취득시",
-  sectionId: "22",
-  category: "취득세",
-  subcategory: "신고",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [48],
-  effectiveDate: "2020-08-12",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "지방세법 시행령 §20②1",
-  tags: ["판결","시효취득","취득일","이행판결"],
-};
-
+/**
+ * meta:
+ *   title: "판결에 의한 취득시"
+ *   sectionId: "22"
+ *   category: "취득세"
+ *   subcategory: "신고"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [48]
+ *   effectiveDate: "2020-08-12"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: "지방세법 시행령 §20②1"
+ *   tags: ["판결", "시효취득", "취득일", "이행판결"]
+ */
 export default function CourtJudgmentV10() {
   return (
     <div className="space-y-6">
@@ -29,7 +29,7 @@ export default function CourtJudgmentV10() {
 
       <hr className="my-6" />
 
-      <h2 id="1.-구비서류" className="text-xl font-semibold mt-8 mb-4">1. 구비서류</h2>
+      <CalcBox title="■ 구비서류" id="1.-구비서류">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -53,9 +53,11 @@ export default function CourtJudgmentV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="2.-신고-기준" className="text-xl font-semibold mt-8 mb-4">2. 신고 기준</h2>
+      <CalcBox title="■ 신고 기준" id="2.-신고-기준">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -84,19 +86,21 @@ export default function CourtJudgmentV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="3.-취득일-판단-기준" className="text-xl font-semibold mt-8 mb-4">3. 취득일 판단 기준</h2>
+      <CalcBox title="■ 취득일 판단 기준" id="3.-취득일-판단-기준">
 
-      <Callout type="info">
+      <Insight>
 
       <p>판결의 취득일은 <strong>사실상의 잔금지급일</strong> (시행령 §20②1호)</p>
 
       <p>판결문에 취득의 시기 없는 이행판결은 <strong>취득일자를 신고일자</strong>로 한다.</p>
 
-      </Callout>
+      </Insight>
 
-      <h3 className="text-lg font-semibold mt-6 mb-3">원인별 취득일</h3>
+      <SubSection title="● 원인별 취득일">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -121,18 +125,22 @@ export default function CourtJudgmentV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>판결문에 <strong>취득일 확인</strong>이 되면, 해당 날짜가 취득일이며, <strong>부과제척기간 지나면 취득세 부과 못함</strong></li>
         <li><strong>취득시기가 명시되지 않은 판결문</strong> (예: "~까지 원인으로 소유권이전이행하라") → <strong>등기등록일</strong>을 취득일로 한다</li>
       </ul>
 
-      </Callout>
+      </Insight>
+
+      </SubSection>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="4.-관련-법령" className="text-xl font-semibold mt-8 mb-4">4. 관련 법령</h2>
+      <CalcBox title="■ 관련 법령" id="4.-관련-법령">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -152,6 +160,8 @@ export default function CourtJudgmentV10() {
       </tr>
       </tbody>
       </table>
+
+      </CalcBox>
 
       <hr className="my-6" />
 

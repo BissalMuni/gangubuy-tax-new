@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-import { Callout } from "@/components/mdx/Callout";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "2025년 최소납부세제 적용대상",
-  sectionId: "42",
-  category: "취득세",
-  subcategory: "최소납부세제",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [71,71],
-  effectiveDate: "2025-01-01",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "지방세특례제한법 제177조의2",
-  tags: ["최소납부세제","감면","어린이집","임대주택","지역아동센터","마을회"],
-};
-
+/**
+ * meta:
+ *   title: "2025년 최소납부세제 적용대상"
+ *   sectionId: "42"
+ *   category: "취득세"
+ *   subcategory: "최소납부세제"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [71, 71]
+ *   effectiveDate: "2025-01-01"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: "지방세특례제한법 제177조의2"
+ *   tags: ["최소납부세제", "감면", "어린이집", "임대주택", "지역아동센터", "마을회"]
+ */
 export default function MinimumTax2025V10() {
   return (
     <div className="space-y-6">
@@ -35,9 +34,7 @@ export default function MinimumTax2025V10() {
 
       <hr className="my-6" />
 
-      <h2 id="적용대상">
-      <Outline level={1}>적용 대상</Outline>
-      </h2>
+      <CalcBox title="■ 적용 대상" id="적용대상">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -102,9 +99,11 @@ export default function MinimumTax2025V10() {
       </tbody>
       </table>
 
-      <Callout type="info">
+      <Insight>
       <p>위 목록은 주요 항목만 발췌한 것이며, 전체 목록은 지방세특례제한법 제177조의2를 참조하세요.</p>
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <SectionNav sections={[
       { id: "적용대상", label: "적용 대상" },

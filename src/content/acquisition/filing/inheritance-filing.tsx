@@ -1,22 +1,22 @@
 "use client";
 
-import { Callout } from "@/components/mdx/Callout";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "상속 신고시",
-  sectionId: "08",
-  category: "취득세",
-  subcategory: "신고",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [23,26],
-  effectiveDate: "2020-08-12",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "지방세법 §15",
-  tags: ["상속","세율특례","1가구1주택","법정지분","대습상속","재협의분할"],
-};
-
+/**
+ * meta:
+ *   title: "상속 신고시"
+ *   sectionId: "08"
+ *   category: "취득세"
+ *   subcategory: "신고"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [23, 26]
+ *   effectiveDate: "2020-08-12"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: "지방세법 §15"
+ *   tags: ["상속", "세율특례", "1가구1주택", "법정지분", "대습상속", "재협의분할"]
+ */
 export default function InheritanceFilingV10() {
   return (
     <div className="space-y-6">
@@ -29,9 +29,9 @@ export default function InheritanceFilingV10() {
 
       <hr className="my-6" />
 
-      <h2 id="1.-상속·증여-세율" className="text-xl font-semibold mt-8 mb-4">1. 상속·증여 세율</h2>
+      <CalcBox title="■ 상속·증여 세율" id="1.-상속·증여-세율">
 
-      <Callout type="info">
+      <Insight>
 
       <p>상속·증여 취득은 <strong>다주택이라도 별도의 세율체계 적용</strong></p>
       <ul className="list-disc pl-6 my-4 space-y-1">
@@ -39,11 +39,13 @@ export default function InheritanceFilingV10() {
         <li><strong>그 외(증여 포함)</strong>: 3.5%</li>
       </ul>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="2.-일반-상속신고-구비서류" className="text-xl font-semibold mt-8 mb-4">2. 일반 상속신고 구비서류</h2>
+      <CalcBox title="■ 일반 상속신고 구비서류" id="2.-일반-상속신고-구비서류">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -97,9 +99,11 @@ export default function InheritanceFilingV10() {
         <li>세율특례 시 추가서류: <strong>상</strong>(속인 기준) - <strong>가</strong>(족관계증명), <strong>등</strong>(본)</li>
       </ul>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="3.-1가구1주택-상속감면" className="text-xl font-semibold mt-8 mb-4">3. 1가구1주택 상속감면</h2>
+      <CalcBox title="■ 1가구1주택 상속감면" id="3.-1가구1주택-상속감면">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -123,7 +127,7 @@ export default function InheritanceFilingV10() {
       </tbody>
       </table>
 
-      <h3 className="text-lg font-semibold mt-6 mb-3">1가구1주택 상속감면 추가서류</h3>
+      <SubSection title="● 1가구1주택 상속감면 추가서류">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -148,7 +152,7 @@ export default function InheritanceFilingV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>재외국민</strong>은 상속 세율특례 적용 <strong>불가</strong> (외국인 배우자는 가능) - 지방세법 §15①②가목</li>
@@ -156,9 +160,11 @@ export default function InheritanceFilingV10() {
         <li><strong>상속인 기준</strong>에서만 결정 / 피상속인 주택수 관계없이</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
-      <h3 className="text-lg font-semibold mt-6 mb-3">1가구1주택의 범위</h3>
+      </SubSection>
+
+      <SubSection title="● 1가구1주택의 범위">
 
       <p>"세대별주민등록표"에 기재되어 있는 <strong>상속인과 그 가족</strong>으로 구성된 1가구</p>
       <ul className="list-disc pl-6 my-4 space-y-1">
@@ -170,9 +176,13 @@ export default function InheritanceFilingV10() {
       <p>→ 각각 상속인과 같은 세대별 주민등록표에 기재되어 있지 않아도 <strong>포함하여 판단</strong></p>
       <p>→ <strong>동거인은 제외</strong></p>
 
+      </SubSection>
+
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="4.-상속신고납부기한" className="text-xl font-semibold mt-8 mb-4">4. 상속신고납부기한</h2>
+      <CalcBox title="■ 상속신고납부기한" id="4.-상속신고납부기한">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -197,9 +207,11 @@ export default function InheritanceFilingV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="5.-취득세-상속순위-(1가구1주택-판단)" className="text-xl font-semibold mt-8 mb-4">5. 취득세 상속순위 (1가구1주택 판단)</h2>
+      <CalcBox title="■ 취득세 상속순위 (1가구1주택 판단)" id="5.-취득세-상속순위-(1가구1주택-판단)">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -226,9 +238,11 @@ export default function InheritanceFilingV10() {
 
       <p>→ 1주택을 여러 사람이 공동상속 받는 경우 <strong>1순위 주택상속자 한 사람의 소유주택</strong>으로 1가구1주택 판단</p>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="6.-재협의분할로-상속인-변경-시" className="text-xl font-semibold mt-8 mb-4">6. 재협의분할로 상속인 변경 시</h2>
+      <CalcBox title="■ 재협의분할로 상속인 변경 시" id="6.-재협의분할로-상속인-변경-시">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -251,15 +265,17 @@ export default function InheritanceFilingV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <p>법정지분으로 특례감면받은 후 재협의분할로 상속인 변경시 <strong>과소신고가산세</strong> 적용됨에 유의</p>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="7.-민법상-상속순위" className="text-xl font-semibold mt-8 mb-4">7. 민법상 상속순위</h2>
+      <CalcBox title="■ 민법상 상속순위" id="7.-민법상-상속순위">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -293,9 +309,11 @@ export default function InheritanceFilingV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="8.-법정상속시-지분계산법-예시" className="text-xl font-semibold mt-8 mb-4">8. 법정상속시 지분계산법 예시</h2>
+      <CalcBox title="■ 법정상속시 지분계산법 예시" id="8.-법정상속시-지분계산법-예시">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -331,11 +349,13 @@ export default function InheritanceFilingV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="9.-무허가건축물과-일반주택-상속" className="text-xl font-semibold mt-8 mb-4">9. 무허가건축물과 일반주택 상속</h2>
+      <CalcBox title="■ 무허가건축물과 일반주택 상속" id="9.-무허가건축물과-일반주택-상속">
 
-      <Callout type="info">
+      <Insight>
 
       <p><strong>무허가건축물(주택)</strong>과 <strong>일반주택</strong>을 상속받는 경우:</p>
       <ul className="list-disc pl-6 my-4 space-y-1">
@@ -345,11 +365,13 @@ export default function InheritanceFilingV10() {
         <li>무허가주택, 오피스텔은 1가구1주택 산입 <strong>적용배제</strong></li>
       </ul>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="10.-관련-법령" className="text-xl font-semibold mt-8 mb-4">10. 관련 법령</h2>
+      <CalcBox title="■ 관련 법령" id="10.-관련-법령">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -387,6 +409,8 @@ export default function InheritanceFilingV10() {
       </tr>
       </tbody>
       </table>
+
+      </CalcBox>
 
       <hr className="my-6" />
 

@@ -1,22 +1,22 @@
 "use client";
 
-import { Callout } from "@/components/mdx/Callout";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "부담부증여",
-  sectionId: "12",
-  category: "취득세",
-  subcategory: "신고",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [34,35],
-  effectiveDate: "2020-08-12",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "지방세법 §7⑫",
-  tags: ["부담부증여","채무승계","유상취득","무상취득","소득증빙"],
-};
-
+/**
+ * meta:
+ *   title: "부담부증여"
+ *   sectionId: "12"
+ *   category: "취득세"
+ *   subcategory: "신고"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [34, 35]
+ *   effectiveDate: "2020-08-12"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: "지방세법 §7⑫"
+ *   tags: ["부담부증여", "채무승계", "유상취득", "무상취득", "소득증빙"]
+ */
 export default function GiftWithEncumbranceV10() {
   return (
     <div className="space-y-6">
@@ -29,19 +29,21 @@ export default function GiftWithEncumbranceV10() {
 
       <hr className="my-6" />
 
-      <h2 id="1.-부담부증여의-정의" className="text-xl font-semibold mt-8 mb-4">1. 부담부증여의 정의</h2>
+      <CalcBox title="■ 부담부증여의 정의" id="1.-부담부증여의-정의">
 
-      <Callout type="info">
+      <Insight>
 
       <p><strong>지방세법 §7⑫</strong>: 증여자의 채무를 인수하는 부담부(負擔附) 증여의 경우에는 그 채무액에 상당하는 부분은 부동산등을 <strong>유상으로 취득</strong>하는 것으로 본다.</p>
 
       <p><strong>단,</strong> 배우자 또는 직계존비속으로부터의 부동산등의 부담부 증여의 경우에는 <strong>제11항(증여로 간주)</strong>을 적용한다.</p>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="2.-세율-적용" className="text-xl font-semibold mt-8 mb-4">2. 세율 적용</h2>
+      <CalcBox title="■ 세율 적용" id="2.-세율-적용">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -75,9 +77,11 @@ export default function GiftWithEncumbranceV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="3.-구비서류" className="text-xl font-semibold mt-8 mb-4">3. 구비서류</h2>
+      <CalcBox title="■ 구비서류" id="3.-구비서류">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -127,24 +131,28 @@ export default function GiftWithEncumbranceV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="4.-과세표준-적용" className="text-xl font-semibold mt-8 mb-4">4. 과세표준 적용</h2>
+      <CalcBox title="■ 과세표준 적용" id="4.-과세표준-적용">
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>채권액(채무승계액)이 시가표준액보다 높은 경우</strong> → 채권액으로 적용 ('23 운영요령 p18)</li>
         <li><strong>부채잔액증명</strong>의 금액으로 하고 채권최고액(X)으로 하지 않음</li>
       </ul>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="5.-예시" className="text-xl font-semibold mt-8 mb-4">5. 예시</h2>
+      <CalcBox title="■ 예시" id="5.-예시">
 
-      <h3 className="text-lg font-semibold mt-6 mb-3">예시 1: 1주택 보유자</h3>
+      <SubSection title="● 예시 1: 1주택 보유자">
 
       <p><strong>조건</strong>: 시가표준액 6억 / 부담부 유상입증액 4억</p>
 
@@ -170,15 +178,21 @@ export default function GiftWithEncumbranceV10() {
       </tbody>
       </table>
 
-      <h3 className="text-lg font-semibold mt-6 mb-3">예시 2: 4주택 보유자 (조정지역)</h3>
+      </SubSection>
+
+      <SubSection title="● 예시 2: 4주택 보유자 (조정지역)">
 
       <p><strong>조건</strong>: 4주택 보유자가 6억짜리 주택을 같은 1세대 자녀에게 부담부증여 (유상입증 3.5억)</p>
 
       <p>→ 해당 주택이 <strong>조정지역 내</strong>에 있는 주택이라면 <strong>유상, 무상 증여 모두 12% 세율</strong> 적용</p>
 
+      </SubSection>
+
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="6.-qna-(2020-행안부-운영요령)" className="text-xl font-semibold mt-8 mb-4">6. QnA (2020 행안부 운영요령)</h2>
+      <CalcBox title="■ QnA (2020 행안부 운영요령)" id="6.-qna-(2020-행안부-운영요령)">
 
       <details>
       <summary>Q1. 부부간 매매인데 수증자가 소득증빙 못하는 경우?</summary>
@@ -206,16 +220,18 @@ export default function GiftWithEncumbranceV10() {
 
       </details>
 
-      <Callout type="caution">
+      <Insight>
 
       <p><strong>소득증빙(대금지급 자금증빙)이 안되면 전체가 증여세율이 된다.</strong></p>
       <p>(유권해석변경 행안부 2020.6.24.)</p>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="7.-관련-법령" className="text-xl font-semibold mt-8 mb-4">7. 관련 법령</h2>
+      <CalcBox title="■ 관련 법령" id="7.-관련-법령">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -241,6 +257,8 @@ export default function GiftWithEncumbranceV10() {
       </tr>
       </tbody>
       </table>
+
+      </CalcBox>
 
       <hr className="my-6" />
 

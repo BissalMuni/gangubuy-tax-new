@@ -1,27 +1,27 @@
 "use client";
 
-import { Callout } from "@/components/mdx/Callout";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "출산양육 주택취득 감면",
-  sectionId: "04",
-  category: "취득세",
-  subcategory: "감면",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [19,19],
-  effectiveDate: "2023-12-29",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "지방세특례제한법 §36의5",
-  tags: ["출산","양육","주택취득","감면","실거주","1가구1주택"],
-};
-
+/**
+ * meta:
+ *   title: "출산양육 주택취득 감면"
+ *   sectionId: "04"
+ *   category: "취득세"
+ *   subcategory: "감면"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [19, 19]
+ *   effectiveDate: "2023-12-29"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: "지방세특례제한법 §36의5"
+ *   tags: ["출산", "양육", "주택취득", "감면", "실거주", "1가구1주택"]
+ */
 export default function ChildbirthHousingV10() {
   return (
     <div className="space-y-6">
 
-      <h1 className="text-2xl font-bold mb-4">2-1. 출산양육 주택취득 감면</h1>
+      <h1 className="text-2xl font-bold mb-4">출산양육 주택취득 감면</h1>
 
       <blockquote className="border-l-4 border-gray-300 pl-4 my-4 text-gray-600 italic">
         <p>출산을 지원하기 위해 자녀 출생 후 주택을 취득하는 부모에게 취득세를 500만원 한도 내 100% 감면하는 제도. 2023.12.29 신설.</p>
@@ -29,7 +29,7 @@ export default function ChildbirthHousingV10() {
 
       <hr className="my-6" />
 
-      <h2 id="1.-감면-대상-및-한도" className="text-xl font-semibold mt-8 mb-4">1. 감면 대상 및 한도</h2>
+      <CalcBox title="■ 감면 대상 및 한도" id="감면-대상-및-한도">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -48,18 +48,20 @@ export default function ChildbirthHousingV10() {
       </tbody>
       </table>
 
-      <Callout type="info">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>유상취득</strong> 뿐만 아니라 <strong>무상취득, 원시취득</strong>도 포함</li>
         <li><strong>최소납부세제 적용 배제</strong></li>
       </ul>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="2.-감면-요건" className="text-xl font-semibold mt-8 mb-4">2. 감면 요건</h2>
+      <CalcBox title="■ 감면 요건" id="감면-요건">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -92,9 +94,11 @@ export default function ChildbirthHousingV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="3.-적용-시기" className="text-xl font-semibold mt-8 mb-4">3. 적용 시기</h2>
+      <CalcBox title="■ 적용 시기" id="적용-시기">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -118,18 +122,20 @@ export default function ChildbirthHousingV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>출생 기한: <strong>~2025.12.31.까지</strong> 출생하는 자녀에 한함</li>
         <li>다주택자는 출산지원 목적에 맞지 않아 <strong>감면 배제</strong></li>
       </ul>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="4.-관련-법령" className="text-xl font-semibold mt-8 mb-4">4. 관련 법령</h2>
+      <CalcBox title="■ 관련 법령" id="관련-법령">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -161,6 +167,8 @@ export default function ChildbirthHousingV10() {
       </tr>
       </tbody>
       </table>
+
+      </CalcBox>
 
       <hr className="my-6" />
 

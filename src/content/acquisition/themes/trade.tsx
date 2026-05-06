@@ -1,19 +1,19 @@
 "use client";
 
-import { Outline } from "@/components/mdx/Outline";
 import { AcquisitionThemeNav } from "@/components/mdx/AcquisitionThemeNav";
+import { CalcBox } from "@/components/content/shared";
 
-export const meta = {
-  title: "유상거래 취득세",
-  sectionId: "01",
-  category: "취득세",
-  subcategory: "유상거래",
-  audience: "internal",
-  lastUpdated: "2026-02-04",
-  status: "draft",
-  tags: ["유상거래","매매","교환","경매","취득세율"],
-};
-
+/**
+ * meta:
+ *   title: "유상거래 취득세"
+ *   sectionId: "01"
+ *   category: "취득세"
+ *   subcategory: "유상거래"
+ *   audience: "internal"
+ *   lastUpdated: "2026-02-04"
+ *   status: "draft"
+ *   tags: ["유상거래", "매매", "교환", "경매", "취득세율"]
+ */
 export default function TradeV10() {
   return (
     <div className="space-y-6">
@@ -28,11 +28,11 @@ export default function TradeV10() {
 
       <hr className="my-6" />
 
-      <Outline level={1}>개요</Outline>
-
-      <ul className="list-disc pl-6 my-4 space-y-1">
-        <li>준비 중입니다.</li>
-      </ul>
+      <CalcBox title="■ 개요">
+        <ul className="list-disc pl-6 my-4 space-y-1">
+          <li>준비 중입니다.</li>
+        </ul>
+      </CalcBox>
 
     </div>
   );

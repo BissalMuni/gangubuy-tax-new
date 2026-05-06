@@ -1,24 +1,24 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
+import { CalcBox, SubSection } from "@/components/content/shared";
 
-export const meta = {
-  title: "기업부설연구소",
-  category: "corp-acquisition-tax",
-  group: "reductions",
-  groupLabel: "감면",
-  order: 6,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅰ_지특법_감면/06_기업부설연구소_지특법46조",
-  sourcePages: [38,50],
-  sourceTaxTypes: ["acquisition_tax","property_tax"],
-  sourceKeyLawRefs: ["지방세특례제한법 시행령 제23조","지방세특례제한법 제46조","지방세법 제282조","지방세법 시행령 제228조","지방세특례제한법 제20조","지방세특례제한법 시행령 제8조의4","지방세특례제한법 제177조의2"],
-  lawReference: "지방세특례제한법 시행령 제23조, 지방세특례제한법 제46조, 지방세법 제282조, 지방세법 시행령 제228조, 지방세특례제한법 제20조, 지방세특례제한법 시행령 제8조의4, 지방세특례제한법 제177조의2",
-};
-
+/**
+ * meta:
+ *   title: "기업부설연구소"
+ *   category: "corp-acquisition-tax"
+ *   group: "reductions"
+ *   groupLabel: "감면"
+ *   order: 6
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅰ_지특법_감면/06_기업부설연구소_지특법46조"
+ *   sourcePages: [38,50]
+ *   sourceTaxTypes: ["acquisition_tax","property_tax"]
+ *   sourceKeyLawRefs: ["지방세특례제한법 시행령 제23조","지방세특례제한법 제46조","지방세법 제282조","지방세법 시행령 제228조","지방세특례제한법 제20조","지방세특례제한법 시행령 제8조의4","지방세특례제한법 제177조의2"]
+ *   lawReference: "지방세특례제한법 시행령 제23조, 지방세특례제한법 제46조, 지방세법 제282조, 지방세법 시행령 제228조, 지방세특례제한법 제20조, 지방세특례제한법 시행령 제8조의4, 지방세특례제한법 제177조의2"
+ */
 export default function Content06RndLabV10() {
   return (
     <div className="space-y-6">
@@ -39,16 +39,12 @@ export default function Content06RndLabV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>지방세특례제한법 제46조에 따른 기업부설연구소 취득세·재산세 감면 요건, 감면율(일반 30%, 중소기업 45%), 추징 요건을 다룬다. 공용면적의 안분 포함 여부, 재산세 소급 감면 가능 여부, 건축 중 재산세 감면 기준일 판단 등 실무 쟁점을 판례·결정례·예규를 통해 해설한다.</p>
+      </CalcBox>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
+      <CalcBox title="■ 주요 개념" id="concepts">
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>기업부설연구소</strong> — 과학기술정보통신부장관(실무상 한국산업기술진흥협회)으로부터 연구전담요원 및 독립 연구시설 기준을 충족하여 인정받은 기업 내 부설 연구기관으로, 지특법 제46조 감면의 핵심 요건이다.</li>
@@ -66,51 +62,49 @@ export default function Content06RndLabV10() {
         <li><strong>과세기준일 건축 착수</strong> — 재산세 과세기준일(6월 1일) 현재 터파기 공사 등 본격적인 공사에 착수한 상태를 의미하며, 준비작업 단계는 포함되지 않는다.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제46조" target="_blank" rel="noopener noreferrer">지특법 §46</a></li>
       </ul>
+      </CalcBox>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>수록 판례 (1건)</Outline>
-      </h2>
-
-      <Outline level={2}>대법원2015두39477</Outline>
+      <CalcBox title="■ 수록 판례 (1건)" id="section-3">
+      <SubSection title="● 대법원2015두39477">
       <p><strong>쟁점</strong>: 기업부설연구소 공용면적 안분 감면 및 재산세 소급 면제 여부</p>
       <p><strong>판시사항</strong>: 토지 또는 건축물을 취득한 후 4년 이내에 기업부설연구소로 인정을 받았다면 취득세뿐만 아니라 재산세에 관하여도 취득 시점부터 소급하여 면제를 받아야 한다. 건축물 전체 전용면적에서 기업부설연구소용으로 인정받은 전용면적이 차지하는 비율에 해당하는 공용부분 면적도 기업부설연구소용에 직접 사용되고 있다고 보아야 한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제46조" target="_blank" rel="noopener noreferrer">지특법 §46</a></p>
+      </SubSection>
+      </CalcBox>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>조심 판례 (2건)</Outline>
-      </h2>
-
-      <Outline level={2}>조심2016지564</Outline>
+      <CalcBox title="■ 조심 판례 (2건)" id="section-4">
+      <SubSection title="● 조심2016지564">
       <p><strong>쟁점</strong>: 재산세 과세기준일 현재 건축 착수 여부 판단 기준</p>
       <p><strong>판시사항</strong>: 기업부설연구소에 직접 사용할 건축물을 건축 중이라 함은 재산세 과세기준일(6월 1일) 현재 터파기 공사 등 본격적인 공사에 착수한 경우를 말하며, 착공에 필요한 준비작업에 불과한 경우는 포함되지 않는다. 따라서 과세기준일 하루 전날 착공한 경우를 건축 중인 것으로 보기 어렵다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제46조" target="_blank" rel="noopener noreferrer">지특법 §46</a></p>
+      </SubSection>
 
-      <Outline level={2}>조심2013지0484</Outline>
+      <SubSection title="● 조심2013지0484">
       <p><strong>쟁점</strong>: 기업부설연구소 인정 공간을 다른 용도로 사용한 경우 취득세 추징 적법성</p>
       <p><strong>판시사항</strong>: 기업부설연구소로 인정받은 공간을 영업부 직원 및 타 업체 직원의 회의실로 사용하는 등 연구소 외 본점 사무실로 사용한 사실이 인정되면, 취득세 및 등록세가 면제되는 기업부설연구소에 해당하지 않으므로 기 면제한 취득세 등을 추징한 처분은 적법하다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제46조" target="_blank" rel="noopener noreferrer">지특법 §46</a></p>
+      </SubSection>
+      </CalcBox>
 
 
-      <h2 id="section-5">
-      <Outline level={1}>예규 (2건)</Outline>
-      </h2>
-
-      <Outline level={2}>지방세특례제도과-4001</Outline>
+      <CalcBox title="■ 예규 (2건)" id="section-5">
+      <SubSection title="● 지방세특례제도과-4001">
       <p><strong>쟁점</strong>: 기업부설연구소 인정 전용면적 외 공용면적의 감면 포함 여부</p>
       <p><strong>판시사항</strong>: 기업부설연구소로 인정받은 면적이 전용면적만인 경우, 전용면적을 기준으로 기업부설연구소가 직접 사용하는 부분을 한정하고 공용면적 비율을 산정하여 감면함이 타당하다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제46조" target="_blank" rel="noopener noreferrer">지특법 §46</a></p>
+      </SubSection>
 
-      <Outline level={2}>지방세운영과-2335</Outline>
+      <SubSection title="● 지방세운영과-2335">
       <p><strong>쟁점</strong>: 토지 취득 후 30일 이내 감면신청 미이행시 감면 가능 여부</p>
       <p><strong>판시사항</strong>: 토지 취득 이후 30일 이내에 기업부설연구소로 사용하겠다는 감면신청이 없었더라도 토지 취득 후 4년 이내에 기업부설연구소를 설립한 경우에는 감면 대상에 해당한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제46조" target="_blank" rel="noopener noreferrer">지특법 §46</a></p>
+      </SubSection>
+      </CalcBox>
 
 
-      <h2 id="section-6">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
+      <CalcBox title="■ 관련 법조문" id="section-6">
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 시행령 제23조</code></li>
@@ -121,11 +115,10 @@ export default function Content06RndLabV10() {
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 시행령 제8조의4</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제177조의2</code></li>
       </ul>
+      </CalcBox>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
+      <CalcBox title="■ 원문" id="source">
 
       <p>```text</p>
       <p>② 제1항에 따라 취득세 또는 재산세를 경감하는 경우로서 해당 기업부설연구소가 다음 각 호의 어느 하나에 해당하는 경우에는 취득세 또는 재산세의 100분의 15를 추가로 경감한다. &lt;개정 2025.12.31&gt; / 1. 대통령령으로 정하는 신성장·원천기술 분야를 연구하기 위한 기업부설연구소 / 2. 대통령령으로 정하는 국가전략기술 분야를 연구하기 위한 기업부설연구소 / ③ 제1항 및 제2항을 적용할 때 다음 각 호의 어느 하나에 해당하는 경우 그 해당 부분에 대해서는 경감된 취득세 및 재산세를 추징한다. &lt;개정 2025.12.31.&gt; / 1. 정당한 사유 없이 토지 또는 건축물을 취득한 후 1년(「건축법」에 따라 건축물을 신축하는 경우 / 해당 토지에 대해서는 2년) 이내에 기업부설연구소로 인정받지 못한 경우 / 2. 기업부설연구소로 인정받은 날부터 3년 이내에 대통령령으로 정하는 위원회로부터 해당 기업부설 / 연구소의 연구개발 대상 기술이 대통령령으로 정하는 신성장·원천기술 또는 국가전략기술에 해당된      다는 심의 결과를 받지 못한 경우(제2항에 따라 추가로 경감된 부분에 한정한다) / 3. 기업부설연구소 설치 후 4년 이내에 정당한 사유 없이 연구소를 폐쇄하거나 다른 용도로 사용하는 경우 / ④ 삭제 &lt;2025.12.31&gt; / ⑤ 삭제 &lt;2025.12.31&gt;</p>
@@ -447,7 +440,7 @@ export default function Content06RndLabV10() {
 
 
 
-      <Outline level={2}>2018년 2월 1일 현재 대기업집단(57개)의 소속회사 수는 모두 1,991개로 집계됐다.</Outline>
+      <SubSection title="● 2018년 2월 1일 현재 대기업집단(57개)의 소속회사 수는 모두 1,991개로 집계됐다.">
 
 
 
@@ -539,6 +532,8 @@ export default function Content06RndLabV10() {
       <tr><td>유료노인복지시설</td><td>재산세 감면 25% / 도시세 감면 없음 / 지역세 감면 없음</td><td>○</td><td></td><td></td></tr>
       </tbody>
       </table>
+      </SubSection>
+      </CalcBox>
 
     </div>
   );

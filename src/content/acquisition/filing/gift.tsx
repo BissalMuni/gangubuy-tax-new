@@ -1,22 +1,22 @@
 "use client";
 
-import { Callout } from "@/components/mdx/Callout";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "증여",
-  sectionId: "10",
-  category: "취득세",
-  subcategory: "신고",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [28,29],
-  effectiveDate: "2020-08-12",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "지방세법 §7⑪, §13의2②",
-  tags: ["증여","중과세율","배우자","직계존비속","합의해제","부담부증여"],
-};
-
+/**
+ * meta:
+ *   title: "증여"
+ *   sectionId: "10"
+ *   category: "취득세"
+ *   subcategory: "신고"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [28, 29]
+ *   effectiveDate: "2020-08-12"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: "지방세법 §7⑪, §13의2②"
+ *   tags: ["증여", "중과세율", "배우자", "직계존비속", "합의해제", "부담부증여"]
+ */
 export default function GiftV10() {
   return (
     <div className="space-y-6">
@@ -29,9 +29,9 @@ export default function GiftV10() {
 
       <hr className="my-6" />
 
-      <h2 id="1.-증여-세율-기본" className="text-xl font-semibold mt-8 mb-4">1. 증여 세율 기본</h2>
+      <CalcBox title="■ 증여 세율 기본" id="1.-증여-세율-기본">
 
-      <Callout type="info">
+      <Insight>
 
       <p>상속·증여는 <strong>별도의 세율체계 적용</strong></p>
       <ul className="list-disc pl-6 my-4 space-y-1">
@@ -40,11 +40,13 @@ export default function GiftV10() {
         <li><strong>감정평가서 제출시</strong> 신고가액 인정</li>
       </ul>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="2.-증여취득시-중과세율" className="text-xl font-semibold mt-8 mb-4">2. 증여취득시 중과세율</h2>
+      <CalcBox title="■ 증여취득시 중과세율" id="2.-증여취득시-중과세율">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -80,7 +82,7 @@ export default function GiftV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>부담부증여</strong>도 무상부분은 <strong>중과판단대상</strong></li>
@@ -90,11 +92,13 @@ export default function GiftV10() {
         <li>증여계약서 상 증여계약일이 <strong>2020.8.11. 이전</strong>이면 종전세율(3.5%) 적용</li>
       </ul>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="3.-일반증여-vs-배우자·직계존비속-간-유상취득" className="text-xl font-semibold mt-8 mb-4">3. 일반증여 vs 배우자·직계존비속 간 유상취득</h2>
+      <CalcBox title="■ 일반증여 vs 배우자·직계존비속 간 유상취득" id="3.-일반증여-vs-배우자·직계존비속-간-유상취득">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -121,9 +125,11 @@ export default function GiftV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="4.-배우자·직계존비속-간의-증여의제규정-(법-§7⑪)" className="text-xl font-semibold mt-8 mb-4">4. 배우자·직계존비속 간의 증여의제규정 (법 §7⑪)</h2>
+      <CalcBox title="■ 배우자·직계존비속 간의 증여의제규정 (법 §7⑪)" id="4.-배우자·직계존비속-간의-증여의제규정-(법-§7⑪)">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -142,7 +148,7 @@ export default function GiftV10() {
       </tbody>
       </table>
 
-      <h3 className="text-lg font-semibold mt-6 mb-3">유상취득 인정 요건</h3>
+      <SubSection title="● 유상취득 인정 요건">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -171,9 +177,13 @@ export default function GiftV10() {
       </tbody>
       </table>
 
+      </SubSection>
+
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="5.-부부간·본인과-직계존비속-간-거래" className="text-xl font-semibold mt-8 mb-4">5. 부부간·본인과 직계존비속 간 거래</h2>
+      <CalcBox title="■ 부부간·본인과 직계존비속 간 거래" id="5.-부부간·본인과-직계존비속-간-거래">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -197,7 +207,7 @@ export default function GiftV10() {
       </tbody>
       </table>
 
-      <Callout type="info">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>대금지급 사실</strong> 입증해야 함</li>
@@ -205,26 +215,30 @@ export default function GiftV10() {
         <li>객관적으로 입증되는 부분만 유상거래 인정, <strong>나머지는 증여</strong>로 봄</li>
       </ul>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="6.-특수관계인으로부터-저가취득-시" className="text-xl font-semibold mt-8 mb-4">6. 특수관계인으로부터 저가취득 시</h2>
+      <CalcBox title="■ 특수관계인으로부터 저가취득 시" id="6.-특수관계인으로부터-저가취득-시">
 
       <p>차액이 <strong>3억원 이상</strong>이거나 시가인정액의 <strong>5% 상당 금액 이상</strong>인 경우 → <strong>시가인정액</strong> 취득가액 결정</p>
 
-      <Callout type="info">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>증여취득의 과표는 원칙적으로 <strong>시가인정액</strong> 적용 (법 §10조의2①)</li>
         <li>시가인정액을 산정하기 어려운 경우 <strong>시가표준액</strong> 적용 (법 §10조의2②)</li>
       </ul>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="7.-합의해제-필수요건-(시행령-§20)" className="text-xl font-semibold mt-8 mb-4">7. 합의해제 필수요건 (시행령 §20)</h2>
+      <CalcBox title="■ 합의해제 필수요건 (시행령 §20)" id="7.-합의해제-필수요건-(시행령-§20)">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -253,7 +267,7 @@ export default function GiftV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>시행령 §20②1호에 의해 <strong>국가, 판결, 공매, 법인의 취득</strong>은 합의해제규정이 없음 (계약해제 불인정)</li>
@@ -261,11 +275,13 @@ export default function GiftV10() {
         <li><strong>계약해제신고서는 검인 불필요</strong></li>
       </ul>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="8.-관련-법령" className="text-xl font-semibold mt-8 mb-4">8. 관련 법령</h2>
+      <CalcBox title="■ 관련 법령" id="8.-관련-법령">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -297,6 +313,8 @@ export default function GiftV10() {
       </tr>
       </tbody>
       </table>
+
+      </CalcBox>
 
       <hr className="my-6" />
 

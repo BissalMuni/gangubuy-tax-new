@@ -1,27 +1,27 @@
 "use client";
 
-import { Callout } from "@/components/mdx/Callout";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "영유아 보육시설 감면",
-  sectionId: "15",
-  category: "취득세",
-  subcategory: "감면",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [38],
-  effectiveDate: "2020-08-12",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "지특법 §19",
-  tags: ["영유아","보육시설","감면","어린이집"],
-};
-
+/**
+ * meta:
+ *   title: "영유아 보육시설 감면"
+ *   sectionId: "15"
+ *   category: "취득세"
+ *   subcategory: "감면"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [38]
+ *   effectiveDate: "2020-08-12"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: "지특법 §19"
+ *   tags: ["영유아", "보육시설", "감면", "어린이집"]
+ */
 export default function ChildcareFacilityV10() {
   return (
     <div className="space-y-6">
 
-      <h1 className="text-2xl font-bold mb-4">10. 영유아 보육시설 감면시</h1>
+      <h1 className="text-2xl font-bold mb-4">영유아 보육시설 감면시</h1>
 
       <blockquote className="border-l-4 border-gray-300 pl-4 my-4 text-gray-600 italic">
         <p>영유아 보육시설(어린이집) 취득 시 취득세 감면 신청에 필요한 구비서류 안내.</p>
@@ -29,17 +29,19 @@ export default function ChildcareFacilityV10() {
 
       <hr className="my-6" />
 
-      <h2 id="1.-법적-근거" className="text-xl font-semibold mt-8 mb-4">1. 법적 근거</h2>
+      <CalcBox title="■ 법적 근거" id="법적-근거">
 
-      <Callout type="info">
+      <Insight>
 
       <p><strong>지방세특례제한법 §19</strong>: 영유아 보육시설 등에 대한 감면</p>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="2.-구비서류" className="text-xl font-semibold mt-8 mb-4">2. 구비서류</h2>
+      <CalcBox title="■ 구비서류" id="구비서류">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -76,9 +78,11 @@ export default function ChildcareFacilityV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="3.-관련-법령" className="text-xl font-semibold mt-8 mb-4">3. 관련 법령</h2>
+      <CalcBox title="■ 관련 법령" id="관련-법령">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -98,6 +102,8 @@ export default function ChildcareFacilityV10() {
       </tr>
       </tbody>
       </table>
+
+      </CalcBox>
 
       <hr className="my-6" />
 

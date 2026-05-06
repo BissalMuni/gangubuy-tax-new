@@ -1,24 +1,24 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
+import { CalcBox } from "@/components/content/shared";
 
-export const meta = {
-  title: "간주취득 (과점주주)",
-  category: "corp-acquisition-tax",
-  group: "reductions",
-  groupLabel: "감면",
-  order: 3,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅰ_지특법_감면/03_간주취득_과점주주_지방세법7조5항",
-  sourcePages: [13,28],
-  sourceTaxTypes: ["acquisition_tax"],
-  sourceKeyLawRefs: ["지방세법 제7조","지방세법 시행령 제10조의2","지방세법 시행령 제11조","지방세법 제10조","지방세기본법 제46조 제2호","지방세특례제한법 제57조의2 제5항","지방세법 제7조 제5항","지방세법 시행령 제10조의2 제2항","지방세법 제105조 제7항","지방세기본법 제44조 제1항"],
-  lawReference: "지방세법 제7조, 지방세법 시행령 제10조의2, 지방세법 시행령 제11조, 지방세법 제10조, 지방세기본법 제46조 제2호, 지방세특례제한법 제57조의2 제5항, 지방세법 제7조 제5항, 지방세법 시행령 제10조의2 제2항, 지방세법 제105조 제7항, 지방세기본법 제44조 제1항",
-};
-
+/**
+ * meta:
+ *   title: "간주취득 (과점주주)"
+ *   category: "corp-acquisition-tax"
+ *   group: "reductions"
+ *   groupLabel: "감면"
+ *   order: 3
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅰ_지특법_감면/03_간주취득_과점주주_지방세법7조5항"
+ *   sourcePages: [13,28]
+ *   sourceTaxTypes: ["acquisition_tax"]
+ *   sourceKeyLawRefs: ["지방세법 제7조","지방세법 시행령 제10조의2","지방세법 시행령 제11조","지방세법 제10조","지방세기본법 제46조 제2호","지방세특례제한법 제57조의2 제5항","지방세법 제7조 제5항","지방세법 시행령 제10조의2 제2항","지방세법 제105조 제7항","지방세기본법 제44조 제1항"]
+ *   lawReference: "지방세법 제7조, 지방세법 시행령 제10조의2, 지방세법 시행령 제11조, 지방세법 제10조, 지방세기본법 제46조 제2호, 지방세특례제한법 제57조의2 제5항, 지방세법 제7조 제5항, 지방세법 시행령 제10조의2 제2항, 지방세법 제105조 제7항, 지방세기본법 제44조 제1항"
+ */
 export default function Content03MajorityShareholderV10() {
   return (
     <div className="space-y-6">
@@ -36,10 +36,7 @@ export default function Content03MajorityShareholderV10() {
 
       <hr className="my-6" />
 
-      <h2 id="section-1">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      <CalcBox title="■ 관련 법조문" id="section-1">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세법 제7조</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세법 시행령 제10조의2</code></li>
@@ -59,15 +56,13 @@ export default function Content03MajorityShareholderV10() {
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세기본법 시행령 제2조</code> ⚠️ _범위 밖_</li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세기본법 시행령 제24조</code> ⚠️ _범위 밖_</li>
       </ul>
+      </CalcBox>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
+      <CalcBox title="■ 원문" id="source">
+      </CalcBox>
 
-      <h2 id="section-3">
-      <Outline level={1}>간주취득 관련 법률</Outline>
-      </h2>
+      <CalcBox title="■ 간주취득 관련 법률" id="section-3">
 
       <p>```text</p>
       <p>납세의무자      과세요건               과표             실무적용 / 2차납세의무     특수관계인의 범위       연대납세의무      사례모음</p>
@@ -286,9 +281,9 @@ export default function Content03MajorityShareholderV10() {
 
 
 
-      <h2 id="section-4">
-      <Outline level={1}>특수관계인</Outline>
-      </h2>
+      </CalcBox>
+
+      <CalcBox title="■ 특수관계인" id="section-4">
 
       <p>가. 친족관계 (2024.3.26. 개정)</p>
 
@@ -790,6 +785,7 @@ export default function Content03MajorityShareholderV10() {
       <p>기법47…2.2-4【생계를 유지하는 사람】</p>
 
       <p>「지방세기본법 시행령」제2조의2제2항제2호에서 “생계를 유지하는 사람”이라 함은 당해 주주 등으로부터 급부받은 금전, 기타의 재산 및 그 급부받은 금전이나 기타 재산의 운용에 의하여 발생하는 수입을 일상생활비의 주된 원천으로 하고 있는 자를 말한다.</p>
+      </CalcBox>
 
     </div>
   );

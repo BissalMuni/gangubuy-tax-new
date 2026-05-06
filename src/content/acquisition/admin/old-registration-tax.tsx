@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-import { Callout } from "@/components/mdx/Callout";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "구(舊)등록세 과세방법",
-  sectionId: "31",
-  category: "취득세",
-  subcategory: "구등록세",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [59,59],
-  effectiveDate: "2026-01-01",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "",
-  tags: ["구등록세","등록세","부과제척기간","상속미등기","신축보존등기"],
-};
-
+/**
+ * meta:
+ *   title: "구(舊)등록세 과세방법"
+ *   sectionId: "31"
+ *   category: "취득세"
+ *   subcategory: "구등록세"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [59, 59]
+ *   effectiveDate: "2026-01-01"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: ""
+ *   tags: ["구등록세", "등록세", "부과제척기간", "상속미등기", "신축보존등기"]
+ */
 export default function OldRegistrationTaxV10() {
   return (
     <div className="space-y-6">
@@ -39,9 +38,7 @@ export default function OldRegistrationTaxV10() {
 
       <hr className="my-6" />
 
-      <h2 id="적용대상">
-      <Outline level={1}>적용 대상</Outline>
-      </h2>
+      <CalcBox title="■ 적용 대상" id="적용대상">
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>2011년 통합취득세 시행 이전</strong>에 취득된 물건</li>
@@ -49,12 +46,16 @@ export default function OldRegistrationTaxV10() {
         <li>구법 적용으로 <strong>등록세만 과세</strong></li>
       </ul>
 
-      <Outline level={2}>주요 사례</Outline>
+      <SubSection title="● 주요 사례">
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>상속 미등기</strong> (가장 많음)</li>
         <li>미등기 건물 <strong>신축보존등기</strong> (가끔)</li>
       </ul>
+
+      </SubSection>
+
+      </CalcBox>
 
       <SectionNav sections={[
       { id: "적용대상", label: "적용 대상" },
@@ -66,9 +67,7 @@ export default function OldRegistrationTaxV10() {
 
       <hr className="my-6" />
 
-      <h2 id="세율적용">
-      <Outline level={1}>세율 적용</Outline>
-      </h2>
+      <CalcBox title="■ 세율 적용" id="세율적용">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -92,13 +91,15 @@ export default function OldRegistrationTaxV10() {
       </tbody>
       </table>
 
-      <Callout type="info">
+      <Insight>
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>등록세만</strong> 선택해서 과세</li>
         <li><strong>가산세 없음</strong></li>
         <li>취득세분(2%)은 <strong>부과제척기간 5년 경과</strong>로 과세 불가</li>
       </ul>
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <SectionNav sections={[
       { id: "적용대상", label: "적용 대상" },
@@ -110,11 +111,9 @@ export default function OldRegistrationTaxV10() {
 
       <hr className="my-6" />
 
-      <h2 id="과세화면">
-      <Outline level={1}>과세 화면</Outline>
-      </h2>
+      <CalcBox title="■ 과세 화면" id="과세화면">
 
-      <Outline level={2}>메뉴 경로</Outline>
+      <SubSection title="● 메뉴 경로">
 
       <p>```</p>
       <p>구부과관리 → 취등록세(부동산) → 신고분관리 → 부동산(신고분)</p>
@@ -124,6 +123,10 @@ export default function OldRegistrationTaxV10() {
         <li><strong>세목구분</strong>: 등록세로만 선택</li>
       </ul>
 
+      </SubSection>
+
+      </CalcBox>
+
       <SectionNav sections={[
       { id: "적용대상", label: "적용 대상" },
       { id: "세율적용", label: "세율 적용" },
@@ -134,9 +137,7 @@ export default function OldRegistrationTaxV10() {
 
       <hr className="my-6" />
 
-      <h2 id="입력항목">
-      <Outline level={1}>입력 항목</Outline>
-      </h2>
+      <CalcBox title="■ 입력 항목" id="입력항목">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -177,6 +178,8 @@ export default function OldRegistrationTaxV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <SectionNav sections={[
       { id: "적용대상", label: "적용 대상" },
       { id: "세율적용", label: "세율 적용" },
@@ -187,17 +190,17 @@ export default function OldRegistrationTaxV10() {
 
       <hr className="my-6" />
 
-      <h2 id="주의사항">
-      <Outline level={1}>주의사항</Outline>
-      </h2>
+      <CalcBox title="■ 주의사항" id="주의사항">
 
-      <Callout type="caution">
+      <Insight>
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>신축보존등기</strong>시 시가표준액은 <strong>토지 제외</strong>, 건물만 불러올 것</li>
         <li>등록분과 취득분을 구분하여 과세해야 함</li>
         <li>취득세분(2%)은 부과제척기간 5년 경과로 <strong>과세 불가</strong></li>
       </ul>
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <SectionNav sections={[
       { id: "적용대상", label: "적용 대상" },

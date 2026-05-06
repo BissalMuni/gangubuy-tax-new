@@ -1,22 +1,22 @@
 "use client";
 
-import { Callout } from "@/components/mdx/Callout";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "교환 취득시",
-  sectionId: "19",
-  category: "취득세",
-  subcategory: "신고",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [44],
-  effectiveDate: "2013-10-11",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "지방세법 시행령 §18의4",
-  tags: ["교환","유상승계취득","시가인정액","보충금","채무승계"],
-};
-
+/**
+ * meta:
+ *   title: "교환 취득시"
+ *   sectionId: "19"
+ *   category: "취득세"
+ *   subcategory: "신고"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [44]
+ *   effectiveDate: "2013-10-11"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: "지방세법 시행령 §18의4"
+ *   tags: ["교환", "유상승계취득", "시가인정액", "보충금", "채무승계"]
+ */
 export default function ExchangeAcquisitionV10() {
   return (
     <div className="space-y-6">
@@ -29,20 +29,22 @@ export default function ExchangeAcquisitionV10() {
 
       <hr className="my-6" />
 
-      <h2 id="1.-관련-지침" className="text-xl font-semibold mt-8 mb-4">1. 관련 지침</h2>
+      <CalcBox title="■ 관련 지침" id="1.-관련-지침">
 
-      <Callout type="info">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>행정안전부 지방세운영과-2590</strong> ('13.10.11)</li>
         <li><strong>서울시 세무과-21973</strong> ('13.10.15)</li>
       </ul>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="2.-산출-기준" className="text-xl font-semibold mt-8 mb-4">2. 산출 기준</h2>
+      <CalcBox title="■ 산출 기준" id="2.-산출-기준">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -67,9 +69,11 @@ export default function ExchangeAcquisitionV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="3.-취득가격-산출-요소" className="text-xl font-semibold mt-8 mb-4">3. 취득가격 산출 요소</h2>
+      <CalcBox title="■ 취득가격 산출 요소" id="3.-취득가격-산출-요소">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -122,15 +126,17 @@ export default function ExchangeAcquisitionV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="4.-취득가격-산출-예시" className="text-xl font-semibold mt-8 mb-4">4. 취득가격 산출 예시</h2>
+      <CalcBox title="■ 취득가격 산출 예시" id="4.-취득가격-산출-예시">
 
-      <Callout type="info">
+      <Insight>
 
       <p>"시가인정액" 없고, <strong>시가표준액만 있다</strong> 가정</p>
 
-      </Callout>
+      </Insight>
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: '12px', marginBottom: '16px'}}>
       <thead>
@@ -200,34 +206,44 @@ export default function ExchangeAcquisitionV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="5.-산출-요령-해설" className="text-xl font-semibold mt-8 mb-4">5. 산출 요령 해설</h2>
+      <CalcBox title="■ 산출 요령 해설" id="5.-산출-요령-해설">
 
-      <h3 className="text-lg font-semibold mt-6 mb-3">자기물건 평가액</h3>
+      <SubSection title="● 자기물건 평가액">
 
       <p>통상적으로 성립된다고 인정되는 가액으로서 교환에 있어서는 물건 취득을 위한 일체의 비용에 해당되므로 취득가격에 포함하되, <strong>탈루방지를 위해 시가표준액과 비교하여 높은 것</strong>으로 함</p>
 
-      <h3 className="text-lg font-semibold mt-6 mb-3">승계채무액</h3>
+      </SubSection>
+
+      <SubSection title="● 승계채무액">
 
       <p>승계하는 채무액은 취득가격에서 <strong>차감</strong>하되 승계받는 채무액이 더 많다면 그 차액은 비용에 해당하므로 취득가격에 <strong>포함</strong></p>
 
-      <Callout type="info">
+      <Insight>
 
       <p>교환물건에 대한 채권설정액 등으로서 교환은 유상취득이므로 반영할 필요가 없다는 견해가 있으나 <strong>보충금에 영향을 미치므로 반영</strong></p>
 
-      </Callout>
+      </Insight>
 
-      <h3 className="text-lg font-semibold mt-6 mb-3">보충금</h3>
+      </SubSection>
+
+      <SubSection title="● 보충금">
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>지급하는 경우</strong>: 비용에 해당되므로 취득가격에 <strong>포함</strong></li>
         <li><strong>지급받는 경우</strong>: 비용이 절감되므로 취득가격에서 <strong>차감</strong></li>
       </ul>
 
+      </SubSection>
+
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="6.-관련-법령" className="text-xl font-semibold mt-8 mb-4">6. 관련 법령</h2>
+      <CalcBox title="■ 관련 법령" id="6.-관련-법령">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -247,6 +263,8 @@ export default function ExchangeAcquisitionV10() {
       </tr>
       </tbody>
       </table>
+
+      </CalcBox>
 
       <hr className="my-6" />
 

@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-import { Callout } from "@/components/mdx/Callout";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "증축과 대수선의 차이점, 그리고 개수",
-  sectionId: "37",
-  category: "취득세",
-  subcategory: "증축/대수선",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [65,66],
-  effectiveDate: "2026-01-01",
-  lastUpdated: "2026-04-10",
-  status: "draft",
-  lawReference: "지방세법 제9조①항⑥호, 시행령 제12조의2",
-  tags: ["증축","대수선","개수","공동주택","충전시설","비과세"],
-};
-
+/**
+ * meta:
+ *   title: "증축과 대수선의 차이점, 그리고 개수"
+ *   sectionId: "37"
+ *   category: "취득세"
+ *   subcategory: "증축/대수선"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [65, 66]
+ *   effectiveDate: "2026-01-01"
+ *   lastUpdated: "2026-04-10"
+ *   status: "draft"
+ *   lawReference: "지방세법 제9조①항⑥호, 시행령 제12조의2"
+ *   tags: ["증축", "대수선", "개수", "공동주택", "충전시설", "비과세"]
+ */
 export default function ExtensionVsMajorRepairV10() {
   return (
     <div className="space-y-6">
@@ -40,9 +39,7 @@ export default function ExtensionVsMajorRepairV10() {
 
       <hr className="my-6" />
 
-      <h2 id="정의비교">
-      <Outline level={1}>정의 비교</Outline>
-      </h2>
+      <CalcBox title="■ 정의 비교" id="정의비교">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -76,6 +73,8 @@ export default function ExtensionVsMajorRepairV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <SectionNav sections={[
       { id: "정의비교", label: "정의 비교" },
       { id: "과세방법", label: "과세 방법" },
@@ -87,11 +86,9 @@ export default function ExtensionVsMajorRepairV10() {
 
       <hr className="my-6" />
 
-      <h2 id="과세방법">
-      <Outline level={1}>과세 방법</Outline>
-      </h2>
+      <CalcBox title="■ 과세 방법" id="과세방법">
 
-      <Outline level={2}>대수선 과세</Outline>
+      <SubSection title="● 대수선 과세">
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>착공신고서</strong>에 설계, 시공, 감리 가격 기재됨</li>
@@ -100,7 +97,9 @@ export default function ExtensionVsMajorRepairV10() {
         <li><strong>법인시공비율 90% 이상</strong>이어야 가격 인정</li>
       </ul>
 
-      <Outline level={2}>증축 과세</Outline>
+      </SubSection>
+
+      <SubSection title="● 증축 과세">
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>법인시공의 경우 <strong>착공신고서 첨부서류</strong>에 설계·시공·감리의 도급금액 기재</li>
@@ -108,7 +107,9 @@ export default function ExtensionVsMajorRepairV10() {
         <li>추가된 비용은 <strong>별도로</strong> 받음</li>
       </ul>
 
-      <Outline level={2}>시스템 입력 방법</Outline>
+      </SubSection>
+
+      <SubSection title="● 시스템 입력 방법">
 
       <p><strong>대수선 신고입력:</strong></p>
       <p>1. 취득원인: <strong>개수</strong></p>
@@ -122,6 +123,10 @@ export default function ExtensionVsMajorRepairV10() {
         <li>증개축은 건드리지 말고 <strong>대수선지수만</strong> 대수선허가로 변경하여 <strong>일괄적용</strong></li>
       </ul>
 
+      </SubSection>
+
+      </CalcBox>
+
       <SectionNav sections={[
       { id: "정의비교", label: "정의 비교" },
       { id: "과세방법", label: "과세 방법" },
@@ -133,11 +138,9 @@ export default function ExtensionVsMajorRepairV10() {
 
       <hr className="my-6" />
 
-      <h2 id="개수">
-      <Outline level={1}>개수</Outline>
-      </h2>
+      <CalcBox title="■ 개수" id="개수">
 
-      <Outline level={2}>정의</Outline>
+      <SubSection title="● 정의">
 
       <p><strong>'개수'</strong>란 건축물을 대수선하거나 건축물에 포함되는 시설 등을 수선하거나 건축물에 딸린 시설물 등을 설치·수선하는 것</p>
 
@@ -164,6 +167,10 @@ export default function ExtensionVsMajorRepairV10() {
       </tbody>
       </table>
 
+      </SubSection>
+
+      </CalcBox>
+
       <SectionNav sections={[
       { id: "정의비교", label: "정의 비교" },
       { id: "과세방법", label: "과세 방법" },
@@ -175,11 +182,9 @@ export default function ExtensionVsMajorRepairV10() {
 
       <hr className="my-6" />
 
-      <h2 id="공동주택비과세">
-      <Outline level={1}>공동주택 개수 취득세 비과세</Outline>
-      </h2>
+      <CalcBox title="■ 공동주택 개수 취득세 비과세" id="공동주택비과세">
 
-      <Outline level={2}>비과세 요건</Outline>
+      <SubSection title="● 비과세 요건">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -208,6 +213,10 @@ export default function ExtensionVsMajorRepairV10() {
         <li>근거: <a href="https://law.go.kr/법령/지방세법/제9조" target="_blank" rel="noopener noreferrer">지방세법 제9조(비과세)①항⑥호</a> 및 시행령 제12조의2</li>
       </ul>
 
+      </SubSection>
+
+      </CalcBox>
+
       <SectionNav sections={[
       { id: "정의비교", label: "정의 비교" },
       { id: "과세방법", label: "과세 방법" },
@@ -219,11 +228,9 @@ export default function ExtensionVsMajorRepairV10() {
 
       <hr className="my-6" />
 
-      <h2 id="충전시설">
-      <Outline level={1}>친환경자동차 충전시설 설치신고</Outline>
-      </h2>
+      <CalcBox title="■ 친환경자동차 충전시설 설치신고" id="충전시설">
 
-      <Outline level={2}>과세 기준</Outline>
+      <SubSection title="● 과세 기준">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -252,16 +259,22 @@ export default function ExtensionVsMajorRepairV10() {
       </tbody>
       </table>
 
-      <Outline level={2}>면세점 기준 적용 (2020.3.9. 행안부 적용요령통보)</Outline>
+      </SubSection>
+
+      <SubSection title="● 면세점 기준 적용 (2020.3.9. 행안부 적용요령통보)">
 
       <p>공동주택의 공용시설로서 충전시설을 설치한 경우:</p>
 
       <p>1. 공동주택 세대별 소유자의 <strong>공용면적 소유비율</strong>에 따라 안분</p>
       <p>2. <strong>세대별 취득가액</strong>이 면세점 기준 <strong>50만원</strong>에 부합하는지 판단</p>
 
-      <Callout type="info">
+      <Insight>
       <p>(지방세운영과-3555, 2010.8.13.) 아파트 단지 일부 동 승강기 개수시 전체 아파트 단지의 승강기 개수로 볼 수 없고, 해당 동 아파트 소유자가 각자 소유한 <strong>공용부분 면적의 비율</strong>에 따라 취득세를 납부하는 것이 타당</p>
-      </Callout>
+      </Insight>
+
+      </SubSection>
+
+      </CalcBox>
 
       <SectionNav sections={[
       { id: "정의비교", label: "정의 비교" },
@@ -274,18 +287,18 @@ export default function ExtensionVsMajorRepairV10() {
 
       <hr className="my-6" />
 
-      <h2 id="주의사항">
-      <Outline level={1}>주의사항</Outline>
-      </h2>
+      <CalcBox title="■ 주의사항" id="주의사항">
 
-      <Callout type="caution">
+      <Insight>
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>대수선</strong> 시 <strong>신축연도를 재계산</strong>하여 변경입력 (시가표준액책자 p25 참조)</li>
         <li>대수선은 경과연수에 따른 <strong>잔가율 적용하지 않는다는 행안부 해석</strong>이 있음 (단, 지방세 시가표준액 조사산정 업무요령에는 잔가율 미적용 내용 없음)</li>
         <li>법인시공비율 <strong>90% 이상</strong>이어야 법인장부가격 인정</li>
         <li>공동주택 충전시설 설치시 <strong>세대별 취득가액</strong> 면세점(50만원) 확인 필수</li>
       </ul>
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <SectionNav sections={[
       { id: "정의비교", label: "정의 비교" },

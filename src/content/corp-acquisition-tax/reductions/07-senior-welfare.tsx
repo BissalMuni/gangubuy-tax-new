@@ -1,24 +1,24 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
+import { CalcBox, SubSection } from "@/components/content/shared";
 
-export const meta = {
-  title: "노인복지시설",
-  category: "corp-acquisition-tax",
-  group: "reductions",
-  groupLabel: "감면",
-  order: 7,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅰ_지특법_감면/07_노인복지시설_감면_지특법20조",
-  sourcePages: [51,53],
-  sourceTaxTypes: ["acquisition_tax","property_tax"],
-  sourceKeyLawRefs: ["지방세특례제한법 제47조의2"],
-  lawReference: "지방세특례제한법 제47조의2",
-};
-
+/**
+ * meta:
+ *   title: "노인복지시설"
+ *   category: "corp-acquisition-tax"
+ *   group: "reductions"
+ *   groupLabel: "감면"
+ *   order: 7
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅰ_지특법_감면/07_노인복지시설_감면_지특법20조"
+ *   sourcePages: [51,53]
+ *   sourceTaxTypes: ["acquisition_tax","property_tax"]
+ *   sourceKeyLawRefs: ["지방세특례제한법 제47조의2"]
+ *   lawReference: "지방세특례제한법 제47조의2"
+ */
 export default function Content07SeniorWelfareV10() {
   return (
     <div className="space-y-6">
@@ -40,16 +40,12 @@ export default function Content07SeniorWelfareV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>지방세특례제한법 제20조상 노인복지시설 감면에서 시설 설치자(소유자)와 시설장이 다른 경우에도 직접 사용 요건을 충족하는지, 그리고 무료 노인복지시설의 요건(장기요양급여 수급자 구성 등)에 해당하는지 여부가 주요 쟁점이다. 행안부 질의회신과 조세심판원이 초기에 상이한 입장을 보였으나 이후 일치하여 설치자가 직접 사용한 것으로 보아야 한다고 판단하였다.</p>
+      </CalcBox>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
+      <CalcBox title="■ 주요 개념" id="concepts">
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>무료 노인복지시설</strong> — 입소비용 전액을 국가·지방자치단체가 부담하거나 입소자 전부가 장기요양급여수급자로 구성되어 본인부담금·비급여 비용만 지급하면 되는 노인복지시설을 의미하며, 취득세 등 면제요건의 핵심 개념이다.</li>
@@ -63,56 +59,55 @@ export default function Content07SeniorWelfareV10() {
         <li><strong>노인복지시설 설치신고확인증</strong> — 노인복지법 시행규칙에 따라 시설의 설치자(법인은 대표자)와 시설의 장을 구분하여 기재하는 공식 증명서로, 설치자와 시설장의 동일 여부를 확인하는 서류.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제20조" target="_blank" rel="noopener noreferrer">지특법 §20</a></li>
       </ul>
+      </CalcBox>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>수록 판례 (1건)</Outline>
-      </h2>
-
-      <Outline level={2}>대법원2017두73945</Outline>
+      <CalcBox title="■ 수록 판례 (1건)" id="section-3">
+      <SubSection title="● 대법원2017두73945">
       <p><strong>쟁점</strong>: 무료 노인복지시설의 의미 및 요건</p>
       <p><strong>판시사항</strong>: 무료 노인복지시설이란 입소비용 전액을 국가·지방자치단체가 부담하거나 입소자 전부가 장기요양급여수급자이거나 비용을 부담하지 않는 노인들로 구성된 시설을 의미한다. 입소자로부터 급식·요양 등 일상생활 편의 제공에 따른 일체의 비용을 지급받은 경우 무료 노인복지시설에 해당하지 않는다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제20조" target="_blank" rel="noopener noreferrer">지특법 §20</a></p>
+      </SubSection>
+      </CalcBox>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>조심 판례 (2건)</Outline>
-      </h2>
-
-      <Outline level={2}>조심2022지1291</Outline>
+      <CalcBox title="■ 조심 판례 (2건)" id="section-4">
+      <SubSection title="● 조심2022지1291">
       <p><strong>쟁점</strong>: 노인복지시설 설치·운영자와 시설장이 다른 경우 직접 사용 해당 여부</p>
       <p><strong>판시사항</strong>: 근로계약서상 모든 종사자(시설장 포함)는 법인 및 대표자와 계약을 체결하고, 행정처분이 설치운영자에게 귀속되므로, 노인복지시설의 설치운영자인 청구인은 부동산을 직접 사용하고 있다고 보는 것이 타당하다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제20조" target="_blank" rel="noopener noreferrer">지특법 §20</a></p>
+      </SubSection>
 
-      <Outline level={2}>조심2023지0098</Outline>
+      <SubSection title="● 조심2023지0098">
       <p><strong>쟁점</strong>: 노인복지시설 설치·운영자와 시설장이 다른 경우 직접 사용 해당 여부</p>
       <p><strong>판시사항</strong>: 시설 설치·운영자가 시설장과 근로계약을 맺고 행정처분도 설치운영자에게 귀속되는 경우, 시설장을 고용하여 운영하더라도 설치자가 해당 시설을 직접 사용하는 것으로 보아 취득세 감면 대상에 해당한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제20조" target="_blank" rel="noopener noreferrer">지특법 §20</a></p>
+      </SubSection>
+      </CalcBox>
 
 
-      <h2 id="section-5">
-      <Outline level={1}>예규 (3건)</Outline>
-      </h2>
-
-      <Outline level={2}>지방세특례제도과-971</Outline>
+      <CalcBox title="■ 예규 (3건)" id="section-5">
+      <SubSection title="● 지방세특례제도과-971">
       <p><strong>쟁점</strong>: 노인요양시설 설치자와 시설장이 다른 경우 취득세 감면 가능 여부</p>
       <p><strong>판시사항</strong>: 노인복지시설 설치자가 시설장과 관련 법령에 따른 근로계약을 체결하고 행정처분이 설치자에게 귀속되는 경우, 시설장을 고용하여 운영하는 경우라도 직접 사용으로 보아 취득세 감면 대상에 해당한다. 조세심판원 의견과 일치.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제20조" target="_blank" rel="noopener noreferrer">지특법 §20</a></p>
+      </SubSection>
 
-      <Outline level={2}>지방세특례제도과-974</Outline>
+      <SubSection title="● 지방세특례제도과-974">
       <p><strong>쟁점</strong>: 노인요양시설 설치자와 시설장이 다른 경우 취득세 감면 가능 여부</p>
       <p><strong>판시사항</strong>: 노인복지시설의 설치자가 시설의 장과 관련 법령에 따른 근로계약을 체결하고, 관련 시설에 대한 행정처분이 설치자에게 부과되는 등 시설의 설치와 운영에 관한 권한 및 책임이 설치자에게 귀속되는 경우라면, 시설의 장을 고용하여 운영하는 경우라도 노인복지시설의 설치자가 해당 시설을 직접 사용하는 것으로 보아 취득세 감면 대상에 해당한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제20조" target="_blank" rel="noopener noreferrer">지특법 §20</a>, <a href="https://law.go.kr/법령/지방세특례제한법/제178조" target="_blank" rel="noopener noreferrer">지특법 §178</a></p>
+      </SubSection>
 
-      <Outline level={2}>지방세특례제도과-1570</Outline>
+      <SubSection title="● 지방세특례제도과-1570">
       <p><strong>쟁점</strong>: 무료노인복지시설에서 일반 환자 일시 입소 시 유료시설로 추징 가능 여부</p>
       <p><strong>판시사항</strong>: 입소자 대부분이 장기요양급여 대상자로 운영되는 무료노인복지시설에서 일반 환자 2명이 단기간(각 15일·18일) 입소한 경우, 전체적인 이용실태를 살펴볼 때 무료노인복지시설로 보는 것이 타당하므로 유료시설로 추징할 수 없다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제20조" target="_blank" rel="noopener noreferrer">지특법 §20</a></p>
+      </SubSection>
+      </CalcBox>
 
 
-      <h2 id="section-6">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
+      <CalcBox title="■ 관련 법조문" id="section-6">
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제47조의2</code></li>

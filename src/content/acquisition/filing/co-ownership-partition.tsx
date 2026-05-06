@@ -1,22 +1,22 @@
 "use client";
 
-import { Callout } from "@/components/mdx/Callout";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "공유물분할 취득시",
-  sectionId: "20",
-  category: "취득세",
-  subcategory: "신고",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [45,46],
-  effectiveDate: "2021-02-04",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "지방세법 §11①5, §15①4",
-  tags: ["공유물분할","지분","중과세율","대법원판례"],
-};
-
+/**
+ * meta:
+ *   title: "공유물분할 취득시"
+ *   sectionId: "20"
+ *   category: "취득세"
+ *   subcategory: "신고"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [45, 46]
+ *   effectiveDate: "2021-02-04"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: "지방세법 §11①5, §15①4"
+ *   tags: ["공유물분할", "지분", "중과세율", "대법원판례"]
+ */
 export default function CoOwnershipPartitionV10() {
   return (
     <div className="space-y-6">
@@ -29,19 +29,21 @@ export default function CoOwnershipPartitionV10() {
 
       <hr className="my-6" />
 
-      <h2 id="1.-세율" className="text-xl font-semibold mt-8 mb-4">1. 세율</h2>
+      <CalcBox title="■ 세율" id="1.-세율">
 
-      <Callout type="info">
+      <Insight>
 
       <p><strong>공유물분할 세율</strong>: 23/1000 → 세율특례에서 20/1000을 제외하게 규정</p>
 
       <p><strong>최종 세율: 3/1000 (0.3%)</strong></p>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="2.-공유물분할-예시" className="text-xl font-semibold mt-8 mb-4">2. 공유물분할 예시</h2>
+      <CalcBox title="■ 공유물분할 예시" id="2.-공유물분할-예시">
 
       <p><strong>조건</strong>: 시흥동 1번지 100㎡ - A 40㎡, B 60㎡ 소유 공유물</p>
 
@@ -72,7 +74,7 @@ export default function CoOwnershipPartitionV10() {
       </tbody>
       </table>
 
-      <Callout type="info">
+      <Insight>
 
       <p><strong>공유물분할이란?</strong></p>
 
@@ -80,11 +82,13 @@ export default function CoOwnershipPartitionV10() {
 
       <p><strong>예외</strong>: 공동신축한 집합건물(각 호수별로 A, B가 50%씩 보유중)을 호수분할하지 않고 소유자별로 호수를 나누는 것도 공유물분할로 본다는 사례가 있음</p>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="3.-주택-중과세율-적용-여부" className="text-xl font-semibold mt-8 mb-4">3. 주택 중과세율 적용 여부</h2>
+      <CalcBox title="■ 주택 중과세율 적용 여부" id="3.-주택-중과세율-적용-여부">
 
       <p><strong>부동산세제과-3646 (2020.12.29)</strong></p>
 
@@ -95,11 +99,13 @@ export default function CoOwnershipPartitionV10() {
         <li>단, <strong>기존에 보유하고 있는 주택 수</strong>로 판단함 (새로운 주택 취득으로는 보지 않음)</li>
       </ul>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="4.-대법원-판례-(2020두53972,-2021.2.4.)" className="text-xl font-semibold mt-8 mb-4">4. 대법원 판례 (2020두53972, 2021.2.4.)</h2>
+      <CalcBox title="■ 대법원 판례 (2020두53972, 2021.2.4.)" id="4.-대법원-판례-(2020두53972,-2021.2.4.)">
 
-      <Callout type="caution">
+      <Insight>
 
       <p><strong>핵심 판결</strong>:</p>
       <ul className="list-disc pl-6 my-4 space-y-1">
@@ -107,9 +113,9 @@ export default function CoOwnershipPartitionV10() {
         <li>그러나 <strong>지분비율은 지분에 따른 가액(교환가치)비율을 인정</strong>함</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
-      <h3 className="text-lg font-semibold mt-6 mb-3">사례</h3>
+      <SubSection title="● 사례">
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>개인A와 B법인이 공동소유 물건에 대하여 10%, 90% 공유물을 분할 (감정가 200억)</li>
@@ -158,7 +164,7 @@ export default function CoOwnershipPartitionV10() {
 
       <p>※ 신고가액 22억보다 높은 <strong>시가표준액 30억을 과세표준액</strong>으로 정하는 것은 서로 인정</p>
 
-      <Callout type="caution">
+      <Insight>
 
       <p><strong>개인의 경우 특히 유의할 것</strong></p>
 
@@ -168,11 +174,15 @@ export default function CoOwnershipPartitionV10() {
         <li><strong>당사자간 비율을 시가표준액 비율로 고치면 안됨</strong></li>
       </ul>
 
-      </Callout>
+      </Insight>
+
+      </SubSection>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="5.-관련-질의회신" className="text-xl font-semibold mt-8 mb-4">5. 관련 질의회신</h2>
+      <CalcBox title="■ 관련 질의회신" id="5.-관련-질의회신">
 
       <details>
       <summary>서울세제-16231 (2016.11.15) - 공동주택 신축 후 대지권등기를 위한 토지 지분취득시</summary>
@@ -187,9 +197,11 @@ export default function CoOwnershipPartitionV10() {
 
       </details>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="6.-관련-법령" className="text-xl font-semibold mt-8 mb-4">6. 관련 법령</h2>
+      <CalcBox title="■ 관련 법령" id="6.-관련-법령">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -227,6 +239,8 @@ export default function CoOwnershipPartitionV10() {
       </tr>
       </tbody>
       </table>
+
+      </CalcBox>
 
       <hr className="my-6" />
 

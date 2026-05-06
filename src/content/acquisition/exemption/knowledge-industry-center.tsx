@@ -1,27 +1,27 @@
 "use client";
 
-import { Callout } from "@/components/mdx/Callout";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "지식산업센터 최초분양감면",
-  sectionId: "27",
-  category: "취득세",
-  subcategory: "감면",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [54],
-  effectiveDate: "2020-08-12",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "지특법 §58②",
-  tags: ["지식산업센터","최초분양","감면","재산세"],
-};
-
+/**
+ * meta:
+ *   title: "지식산업센터 최초분양감면"
+ *   sectionId: "27"
+ *   category: "취득세"
+ *   subcategory: "감면"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [54]
+ *   effectiveDate: "2020-08-12"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: "지특법 §58②"
+ *   tags: ["지식산업센터", "최초분양", "감면", "재산세"]
+ */
 export default function KnowledgeIndustryCenterV10() {
   return (
     <div className="space-y-6">
 
-      <h1 className="text-2xl font-bold mb-4">19. 지식산업센터 최초분양감면시</h1>
+      <h1 className="text-2xl font-bold mb-4">지식산업센터 최초분양감면시</h1>
 
       <blockquote className="border-l-4 border-gray-300 pl-4 my-4 text-gray-600 italic">
         <p>지식산업센터 최초분양 시 취득세 감면 요건, 구비서류 및 재산세 대장정리방법 안내.</p>
@@ -29,9 +29,9 @@ export default function KnowledgeIndustryCenterV10() {
 
       <hr className="my-6" />
 
-      <h2 id="1.-감면-내용" className="text-xl font-semibold mt-8 mb-4">1. 감면 내용</h2>
+      <CalcBox title="■ 감면 내용" id="감면-내용">
 
-      <Callout type="info">
+      <Insight>
 
       <p><strong>지특법 §58②</strong>: 취득세 <strong>50% 감면</strong></p>
 
@@ -40,11 +40,13 @@ export default function KnowledgeIndustryCenterV10() {
         <li>농특세 취득분의 10% 적용</li>
       </ul>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="2.-구비서류" className="text-xl font-semibold mt-8 mb-4">2. 구비서류</h2>
+      <CalcBox title="■ 구비서류" id="구비서류">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -101,9 +103,11 @@ export default function KnowledgeIndustryCenterV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="3.-지센감면-재산세-대장정리방법" className="text-xl font-semibold mt-8 mb-4">3. 지센감면 재산세 대장정리방법</h2>
+      <CalcBox title="■ 지센감면 재산세 대장정리방법" id="지센감면-재산세-대장정리방법">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -136,9 +140,11 @@ export default function KnowledgeIndustryCenterV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="4.-관련-법령" className="text-xl font-semibold mt-8 mb-4">4. 관련 법령</h2>
+      <CalcBox title="■ 관련 법령" id="관련-법령">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -158,6 +164,8 @@ export default function KnowledgeIndustryCenterV10() {
       </tr>
       </tbody>
       </table>
+
+      </CalcBox>
 
       <hr className="my-6" />
 

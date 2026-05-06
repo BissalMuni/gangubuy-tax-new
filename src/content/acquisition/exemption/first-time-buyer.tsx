@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-import { Callout } from "@/components/mdx/Callout";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "생애최초 주택취득 감면",
-  sectionId: "03",
-  category: "취득세",
-  subcategory: "감면",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [17,18],
-  effectiveDate: "2026-02-01",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "지방세특례제한법 §36의3",
-  tags: ["생애최초","주택취득","감면","실거주","추징","인구감소지역"],
-};
-
+/**
+ * meta:
+ *   title: "생애최초 주택취득 감면"
+ *   sectionId: "03"
+ *   category: "취득세"
+ *   subcategory: "감면"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [17, 18]
+ *   effectiveDate: "2026-02-01"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: "지방세특례제한법 §36의3"
+ *   tags: ["생애최초", "주택취득", "감면", "실거주", "추징", "인구감소지역"]
+ */
 export default function FirstTimeBuyerV10() {
   return (
     <div className="space-y-6">
@@ -40,9 +39,7 @@ export default function FirstTimeBuyerV10() {
 
       <hr className="my-6" />
 
-      <h2 id="감면대상">
-      <Outline level={1}>감면 대상 및 한도</Outline>
-      </h2>
+      <CalcBox title="■ 감면 대상 및 한도" id="감면대상">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -84,7 +81,7 @@ export default function FirstTimeBuyerV10() {
       </tbody>
       </table>
 
-      <Callout type="info">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>혼인여부, 연령과 <strong>무관</strong> (단, 미성년자 제외)</li>
@@ -95,7 +92,9 @@ export default function FirstTimeBuyerV10() {
         <li>중과규정(<a href="https://law.go.kr/법령/지방세법/제13조의2" target="_blank" rel="noopener noreferrer">법 §13의2</a>) 세율 <strong>적용하지 않음</strong></li>
       </ul>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <SectionNav sections={[
       { id: "감면대상", label: "감면 대상 및 한도" },
@@ -108,9 +107,7 @@ export default function FirstTimeBuyerV10() {
 
       <hr className="my-6" />
 
-      <h2 id="감면요건">
-      <Outline level={1}>감면 요건</Outline>
-      </h2>
+      <CalcBox title="■ 감면 요건" id="감면요건">
 
       <p>1. 주택 취득일 현재 <strong>본인 및 배우자</strong>가 주택을 소유한 사실이 없는 경우</p>
       <ul className="list-disc pl-6 my-4 space-y-1">
@@ -121,13 +118,17 @@ export default function FirstTimeBuyerV10() {
       <p>2. 취득당시 가액이 <strong>12억원 이하</strong> 주택 유상거래 (부담부증여 제외)</p>
       <p>3. 주택취득자가 <strong>실제 거주</strong>해야 함</p>
 
-      <Outline level={2}>주택의 범위</Outline>
+      <SubSection title="● 주택의 범위">
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>단독주택, 아파트, 다세대, 연립 등 공동주택 (<a href="https://law.go.kr/법령/주택법/제2조" target="_blank" rel="noopener noreferrer">주택법 §2①</a>)</li>
         <li><strong>제외</strong>: 오피스텔, 분양권</li>
         <li>무허가주택도 소유한 것으로 <strong>보지 않음</strong></li>
       </ul>
+
+      </SubSection>
+
+      </CalcBox>
 
       <SectionNav sections={[
       { id: "감면대상", label: "감면 대상 및 한도" },
@@ -140,11 +141,9 @@ export default function FirstTimeBuyerV10() {
 
       <hr className="my-6" />
 
-      <h2 id="추징요건">
-      <Outline level={1}>추징요건 (<a href="https://law.go.kr/법령/지방세특례제한법/제36조의3" target="_blank" rel="noopener noreferrer">§36의3④</a>)</Outline>
-      </h2>
+      <CalcBox title="■ 추징요건 (§36의3④)" id="추징요건">
 
-      <p>취득일부터 <strong>3년 이내</strong>에 다음 중 하나에 해당하면 감면된 취득세를 <strong>추징</strong>합니다.</p>
+      <p>취득일부터 <strong>3년 이내</strong>에 다음 중 하나에 해당하면 감면된 취득세를 <strong>추징</strong>합니다. (<a href="https://law.go.kr/법령/지방세특례제한법/제36조의3" target="_blank" rel="noopener noreferrer">§36의3④</a>)</p>
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -169,29 +168,33 @@ export default function FirstTimeBuyerV10() {
       </tbody>
       </table>
 
-      <Outline level={2}>추징 기산일 특례</Outline>
+      <SubSection title="● 추징 기산일 특례">
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>임대인 지위 승계</strong> 시: 취득한 주택에 임차인이 계속 거주 중인 경우(잔여 임대차기간 1년 이내 한정), <strong>임대차기간 만료일</strong>부터 3년 이내로 계산</li>
       </ul>
 
-      <Callout type="info">
+      <Insight>
 
       <p><strong>추징 제외 사유</strong></p>
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>배우자</strong>에게 지분을 매각·증여하는 경우는 추징하지 않음</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>본인 <strong>거주 목적</strong> 취득이 아닌 경우(전·월세, 갭투자 등) 감면 대상 아님</li>
         <li>세부 기준은 행정안전부장관 고시 참조 (<a href="https://law.go.kr/법령/지방세특례제한법/제36조의3" target="_blank" rel="noopener noreferrer">§36의3⑤</a>)</li>
       </ul>
 
-      </Callout>
+      </Insight>
+
+      </SubSection>
+
+      </CalcBox>
 
       <SectionNav sections={[
       { id: "감면대상", label: "감면 대상 및 한도" },
@@ -204,9 +207,9 @@ export default function FirstTimeBuyerV10() {
 
       <hr className="my-6" />
 
-      <h2 id="예외조항">
-      <Outline level={1}>예외조항 — 주택 소유 사실이 없는 것으로 보는 경우 (<a href="https://law.go.kr/법령/지방세특례제한법/제36조의3" target="_blank" rel="noopener noreferrer">§36의3③</a>)</Outline>
-      </h2>
+      <CalcBox title="■ 예외조항 — 주택 소유 사실이 없는 것으로 보는 경우" id="예외조항">
+
+      <p>(<a href="https://law.go.kr/법령/지방세특례제한법/제36조의3" target="_blank" rel="noopener noreferrer">§36의3③</a>)</p>
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -243,6 +246,8 @@ export default function FirstTimeBuyerV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <SectionNav sections={[
       { id: "감면대상", label: "감면 대상 및 한도" },
       { id: "감면요건", label: "감면 요건" },
@@ -254,9 +259,7 @@ export default function FirstTimeBuyerV10() {
 
       <hr className="my-6" />
 
-      <h2 id="증빙서류">
-      <Outline level={1}>증빙서류</Outline>
-      </h2>
+      <CalcBox title="■ 증빙서류" id="증빙서류">
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>가족관계증명서</li>
@@ -266,6 +269,8 @@ export default function FirstTimeBuyerV10() {
         <li>경정청구 시: 경정청구서 / 환급청구서 / 통장사본 + 신분증사본</li>
       </ul>
 
+      </CalcBox>
+
       <SectionNav sections={[
       { id: "감면대상", label: "감면 대상 및 한도" },
       { id: "감면요건", label: "감면 요건" },
@@ -277,9 +282,7 @@ export default function FirstTimeBuyerV10() {
 
       <hr className="my-6" />
 
-      <h2 id="관련법령">
-      <Outline level={1}>관련 법령</Outline>
-      </h2>
+      <CalcBox title="■ 관련 법령" id="관련법령">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -317,6 +320,8 @@ export default function FirstTimeBuyerV10() {
       </tr>
       </tbody>
       </table>
+
+      </CalcBox>
 
       <SectionNav sections={[
       { id: "감면대상", label: "감면 대상 및 한도" },

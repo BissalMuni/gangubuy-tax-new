@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-import { Callout } from "@/components/mdx/Callout";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "철거 대장정리",
-  sectionId: "39",
-  category: "취득세",
-  subcategory: "대장정리",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [68,68],
-  effectiveDate: "2026-01-01",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "",
-  tags: ["철거","대장정리","건축허가","착공","말소신고","토지형태코드"],
-};
-
+/**
+ * meta:
+ *   title: "철거 대장정리"
+ *   sectionId: "39"
+ *   category: "취득세"
+ *   subcategory: "대장정리"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [68, 68]
+ *   effectiveDate: "2026-01-01"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: ""
+ *   tags: ["철거", "대장정리", "건축허가", "착공", "말소신고", "토지형태코드"]
+ */
 export default function DemolitionLedgerV10() {
   return (
     <div className="space-y-6">
@@ -39,9 +38,7 @@ export default function DemolitionLedgerV10() {
 
       <hr className="my-6" />
 
-      <h2 id="절차">
-      <Outline level={1}>철거 절차</Outline>
-      </h2>
+      <CalcBox title="■ 철거 절차" id="절차">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -80,6 +77,8 @@ export default function DemolitionLedgerV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <SectionNav sections={[
       { id: "절차", label: "철거 절차" },
       { id: "착공시처리", label: "착공시 처리" },
@@ -90,9 +89,7 @@ export default function DemolitionLedgerV10() {
 
       <hr className="my-6" />
 
-      <h2 id="착공시처리">
-      <Outline level={1}>착공시 처리</Outline>
-      </h2>
+      <CalcBox title="■ 착공시 처리" id="착공시처리">
 
       <p>착공신고가 처리되면 거의 대부분의 건축물이 철거된 상태이므로:</p>
 
@@ -103,6 +100,8 @@ export default function DemolitionLedgerV10() {
 
       <p>2. <strong>토지는 0201(별도합산)으로 변경</strong></p>
 
+      </CalcBox>
+
       <SectionNav sections={[
       { id: "절차", label: "철거 절차" },
       { id: "착공시처리", label: "착공시 처리" },
@@ -113,17 +112,17 @@ export default function DemolitionLedgerV10() {
 
       <hr className="my-6" />
 
-      <h2 id="주택가격">
-      <Outline level={1}>주택가격 처리</Outline>
-      </h2>
+      <CalcBox title="■ 주택가격 처리" id="주택가격">
 
-      <Callout type="caution">
+      <Insight>
       <p>세무종합 건물대장을 삭제함과 동시에 <strong>주택가격 등록 및 수정 메뉴</strong>에서 산정된 주택가격을 <strong>과표미반영</strong>으로 바꿔주어야 함</p>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>이렇게 하지 않으면 취득신고시 주택가격이 시가표준액으로 끌어와짐</li>
       </ul>
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <SectionNav sections={[
       { id: "절차", label: "철거 절차" },
@@ -135,9 +134,7 @@ export default function DemolitionLedgerV10() {
 
       <hr className="my-6" />
 
-      <h2 id="토지형태코드">
-      <Outline level={1}>토지형태코드 정리</Outline>
-      </h2>
+      <CalcBox title="■ 토지형태코드 정리" id="토지형태코드">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -162,6 +159,8 @@ export default function DemolitionLedgerV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <SectionNav sections={[
       { id: "절차", label: "철거 절차" },
       { id: "착공시처리", label: "착공시 처리" },
@@ -172,11 +171,9 @@ export default function DemolitionLedgerV10() {
 
       <hr className="my-6" />
 
-      <h2 id="주의사항">
-      <Outline level={1}>주의사항</Outline>
-      </h2>
+      <CalcBox title="■ 주의사항" id="주의사항">
 
-      <Callout type="caution">
+      <Insight>
       <p><strong>철거는 했는데 대장말소 안한 것</strong></p>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
@@ -184,7 +181,9 @@ export default function DemolitionLedgerV10() {
         <li>말소통보 후 <strong>6개월 경과</strong>된 것은 과세기준일 현재 지상정착물이 없는 것으로 판단</li>
         <li><strong>종합합산(0107)</strong>으로 변경할 것</li>
       </ul>
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <SectionNav sections={[
       { id: "절차", label: "철거 절차" },

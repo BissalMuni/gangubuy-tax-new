@@ -1,23 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "가설건축물",
-  sectionId: "40",
-  category: "취득세",
-  subcategory: "가설건축물",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [69,69],
-  effectiveDate: "2026-01-01",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "",
-  tags: ["가설건축물","임시건축물","존치기간","재산세","비과세"],
-};
-
+/**
+ * meta:
+ *   title: "가설건축물"
+ *   sectionId: "40"
+ *   category: "취득세"
+ *   subcategory: "가설건축물"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [69, 69]
+ *   effectiveDate: "2026-01-01"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: ""
+ *   tags: ["가설건축물", "임시건축물", "존치기간", "재산세", "비과세"]
+ */
 export default function TemporaryBuildingV10() {
   return (
     <div className="space-y-6">
@@ -36,17 +36,19 @@ export default function TemporaryBuildingV10() {
 
       <hr className="my-6" />
 
-      <h2 id="대장입력">
-      <Outline level={1}>대장 입력</Outline>
-      </h2>
+      <CalcBox title="■ 대장 입력" id="대장입력">
 
-      <Outline level={2}>입력 항목</Outline>
+      <SubSection title="● 입력 항목">
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>건물요약</strong>에 가설건축물로 입력</li>
         <li><strong>존치기간</strong>도 넣어줌</li>
         <li><strong>비고란</strong>에 문서번호와 통보일자, 가설건축물 번호 기재</li>
       </ul>
+
+      </SubSection>
+
+      </CalcBox>
 
       <SectionNav sections={[
       { id: "대장입력", label: "대장 입력" },
@@ -56,9 +58,7 @@ export default function TemporaryBuildingV10() {
 
       <hr className="my-6" />
 
-      <h2 id="존치기간">
-      <Outline level={1}>존치기간별 과세</Outline>
-      </h2>
+      <CalcBox title="■ 존치기간별 과세" id="존치기간">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -82,7 +82,7 @@ export default function TemporaryBuildingV10() {
       </tbody>
       </table>
 
-      <Outline level={2}>1년 이하 존치 시 재산세 대장 입력</Outline>
+      <SubSection title="● 1년 이하 존치 시 재산세 대장 입력">
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>재산세 대장에 심고 <strong>3개 코드 모두</strong> <code className="bg-gray-100 px-1 rounded text-sm">7지방세법비과세</code> 설정:</li>
@@ -95,6 +95,10 @@ export default function TemporaryBuildingV10() {
         <li>재산세 과세기준일 현재 <strong>1년 미만 임시건축물</strong>로 입력</li>
       </ul>
 
+      </SubSection>
+
+      </CalcBox>
+
       <SectionNav sections={[
       { id: "대장입력", label: "대장 입력" },
       { id: "존치기간", label: "존치기간별 과세" },
@@ -103,9 +107,7 @@ export default function TemporaryBuildingV10() {
 
       <hr className="my-6" />
 
-      <h2 id="세율">
-      <Outline level={1}>세율</Outline>
-      </h2>
+      <CalcBox title="■ 세율" id="세율">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -128,6 +130,8 @@ export default function TemporaryBuildingV10() {
       </tr>
       </tbody>
       </table>
+
+      </CalcBox>
 
       <SectionNav sections={[
       { id: "대장입력", label: "대장 입력" },

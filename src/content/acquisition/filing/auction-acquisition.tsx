@@ -1,22 +1,22 @@
 "use client";
 
-import { Callout } from "@/components/mdx/Callout";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "경매(공매) 낙찰 취득시",
-  sectionId: "21",
-  category: "취득세",
-  subcategory: "신고",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [47],
-  effectiveDate: "2020-08-12",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "지방세법 시행령 §18",
-  tags: ["경매","공매","낙찰","미말소채권액","취득가액"],
-};
-
+/**
+ * meta:
+ *   title: "경매(공매) 낙찰 취득시"
+ *   sectionId: "21"
+ *   category: "취득세"
+ *   subcategory: "신고"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [47]
+ *   effectiveDate: "2020-08-12"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: "지방세법 시행령 §18"
+ *   tags: ["경매", "공매", "낙찰", "미말소채권액", "취득가액"]
+ */
 export default function AuctionAcquisitionV10() {
   return (
     <div className="space-y-6">
@@ -29,7 +29,7 @@ export default function AuctionAcquisitionV10() {
 
       <hr className="my-6" />
 
-      <h2 id="1.-구비서류" className="text-xl font-semibold mt-8 mb-4">1. 구비서류</h2>
+      <CalcBox title="■ 구비서류" id="1.-구비서류">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -70,17 +70,19 @@ export default function AuctionAcquisitionV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="2.-취득가액-확인-주의사항" className="text-xl font-semibold mt-8 mb-4">2. 취득가액 확인 주의사항</h2>
+      <CalcBox title="■ 취득가액 확인 주의사항" id="2.-취득가액-확인-주의사항">
 
-      <Callout type="caution">
+      <Insight>
 
       <p><strong>가액이 현저히 낮다면 매각물건명세서를 확인</strong>해서 누락된 취득가액이 있는지 확인할 수 있음 (영 §18조)</p>
 
-      </Callout>
+      </Insight>
 
-      <h3 className="text-lg font-semibold mt-6 mb-3">미말소채권액</h3>
+      <SubSection title="● 미말소채권액">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -109,11 +111,15 @@ export default function AuctionAcquisitionV10() {
       </tbody>
       </table>
 
+      </SubSection>
+
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="3.-배당요구-확인" className="text-xl font-semibold mt-8 mb-4">3. 배당요구 확인</h2>
+      <CalcBox title="■ 배당요구 확인" id="3.-배당요구-확인">
 
-      <Callout type="info">
+      <Insight>
 
       <p><strong>스피드옥션</strong> (http://www.speedauction.co.kr)</p>
       <ul className="list-disc pl-6 my-4 space-y-1">
@@ -123,11 +129,13 @@ export default function AuctionAcquisitionV10() {
 
       <p>에서 배당요구 확인 가능</p>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="4.-관련-법령" className="text-xl font-semibold mt-8 mb-4">4. 관련 법령</h2>
+      <CalcBox title="■ 관련 법령" id="4.-관련-법령">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -155,6 +163,8 @@ export default function AuctionAcquisitionV10() {
       </tr>
       </tbody>
       </table>
+
+      </CalcBox>
 
       <hr className="my-6" />
 

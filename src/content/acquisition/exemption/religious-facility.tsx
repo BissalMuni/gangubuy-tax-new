@@ -1,27 +1,27 @@
 "use client";
 
-import { Callout } from "@/components/mdx/Callout";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "종교시설 면제",
-  sectionId: "23",
-  category: "취득세",
-  subcategory: "감면",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [49],
-  effectiveDate: "2020-08-12",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "지특법 §50",
-  tags: ["종교시설","교회","면제","향교","추징"],
-};
-
+/**
+ * meta:
+ *   title: "종교시설 면제"
+ *   sectionId: "23"
+ *   category: "취득세"
+ *   subcategory: "감면"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [49]
+ *   effectiveDate: "2020-08-12"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: "지특법 §50"
+ *   tags: ["종교시설", "교회", "면제", "향교", "추징"]
+ */
 export default function ReligiousFacilityV10() {
   return (
     <div className="space-y-6">
 
-      <h1 className="text-2xl font-bold mb-4">16. 종교시설 면제</h1>
+      <h1 className="text-2xl font-bold mb-4">종교시설 면제</h1>
 
       <blockquote className="border-l-4 border-gray-300 pl-4 my-4 text-gray-600 italic">
         <p>종교단체 부동산 취득 시 취득세 면제 요건, 구비서류 및 추징사유 안내.</p>
@@ -29,9 +29,9 @@ export default function ReligiousFacilityV10() {
 
       <hr className="my-6" />
 
-      <h2 id="1.-감면-내용" className="text-xl font-semibold mt-8 mb-4">1. 감면 내용</h2>
+      <CalcBox title="■ 감면 내용" id="감면-내용">
 
-      <Callout type="info">
+      <Insight>
 
       <p><strong>지특법 §50</strong>: 취득세 <strong>100% 면제</strong>, 최저한세 미적용, 농특세 면제</p>
 
@@ -40,11 +40,13 @@ export default function ReligiousFacilityV10() {
         <li>종교단체 또는 향교가 <strong>제3자의 부동산을 무상으로 해당 사업에 사용</strong>하는 경우를 포함</li>
       </ul>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="2.-구비서류" className="text-xl font-semibold mt-8 mb-4">2. 구비서류</h2>
+      <CalcBox title="■ 구비서류" id="구비서류">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -89,11 +91,13 @@ export default function ReligiousFacilityV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="3.-취득세-추징사유" className="text-xl font-semibold mt-8 mb-4">3. 취득세 추징사유</h2>
+      <CalcBox title="■ 취득세 추징사유" id="취득세-추징사유">
 
-      <Callout type="caution">
+      <Insight>
 
       <p>다음의 경우 감면받은 취득세가 <strong>추징</strong>됩니다:</p>
 
@@ -101,11 +105,13 @@ export default function ReligiousFacilityV10() {
       <p>2. 정당한 사유 없이 그 취득일부터 <strong>3년이 경과</strong>할 때까지 해당 용도로 직접 사용하지 아니하는 경우</p>
       <p>3. 해당 용도로 직접 사용한 기간이 <strong>2년 미만</strong>인 상태에서 매각·증여하거나 다른 용도로 사용하는 경우</p>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="4.-관련-법령" className="text-xl font-semibold mt-8 mb-4">4. 관련 법령</h2>
+      <CalcBox title="■ 관련 법령" id="관련-법령">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -125,6 +131,8 @@ export default function ReligiousFacilityV10() {
       </tr>
       </tbody>
       </table>
+
+      </CalcBox>
 
       <hr className="my-6" />
 

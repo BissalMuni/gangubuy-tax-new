@@ -1,22 +1,22 @@
 "use client";
 
-import { Callout } from "@/components/mdx/Callout";
+import { CalcBox, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "협의이혼 재산분할 취득시",
-  sectionId: "13",
-  category: "취득세",
-  subcategory: "세율특례",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [36,36],
-  effectiveDate: "2020-01-01",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "지방세법 §15①6",
-  tags: ["이혼","재산분할","세율특례","중과제외"],
-};
-
+/**
+ * meta:
+ *   title: "협의이혼 재산분할 취득시"
+ *   sectionId: "13"
+ *   category: "취득세"
+ *   subcategory: "세율특례"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [36, 36]
+ *   effectiveDate: "2020-01-01"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: "지방세법 §15①6"
+ *   tags: ["이혼", "재산분할", "세율특례", "중과제외"]
+ */
 export default function DivorcePropertyDivisionV10() {
   return (
     <div className="space-y-6">
@@ -29,7 +29,7 @@ export default function DivorcePropertyDivisionV10() {
 
       <hr className="my-6" />
 
-      <h2 id="1.-구비서류" className="text-xl font-semibold mt-8 mb-4">1. 구비서류</h2>
+      <CalcBox title="■ 구비서류" id="1.-구비서류">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -63,9 +63,11 @@ export default function DivorcePropertyDivisionV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="2.-취득시기-및-과세표준" className="text-xl font-semibold mt-8 mb-4">2. 취득시기 및 과세표준</h2>
+      <CalcBox title="■ 취득시기 및 과세표준" id="2.-취득시기-및-과세표준">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -86,9 +88,11 @@ export default function DivorcePropertyDivisionV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="3.-세율-적용" className="text-xl font-semibold mt-8 mb-4">3. 세율 적용</h2>
+      <CalcBox title="■ 세율 적용" id="3.-세율-적용">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -112,18 +116,20 @@ export default function DivorcePropertyDivisionV10() {
       </tbody>
       </table>
 
-      <Callout type="info">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>재산분할로 인한 주택취득</strong>은 다주택자라도 <strong>중과세 제외</strong> (시행령 §28의6②2호)</li>
         <li>상가나 85㎡ 이상의 주택은 <strong>감면세액의 20%</strong>를 감면분농특세로 과세</li>
       </ul>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="4.-관련-법령" className="text-xl font-semibold mt-8 mb-4">4. 관련 법령</h2>
+      <CalcBox title="■ 관련 법령" id="4.-관련-법령">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -149,6 +155,8 @@ export default function DivorcePropertyDivisionV10() {
       </tr>
       </tbody>
       </table>
+
+      </CalcBox>
 
       <hr className="my-6" />
 

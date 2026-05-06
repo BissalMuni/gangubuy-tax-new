@@ -1,24 +1,24 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
+import { CalcBox, SubSection } from "@/components/content/shared";
 
-export const meta = {
-  title: "새마을금고",
-  category: "corp-acquisition-tax",
-  group: "reductions",
-  groupLabel: "감면",
-  order: 16,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅰ_지특법_감면/16_새마을금고_감면_지특법87조",
-  sourcePages: [95,95],
-  sourceTaxTypes: ["acquisition_tax","property_tax"],
-  sourceKeyLawRefs: ["지방세특례제한법 제19조"],
-  lawReference: "지방세특례제한법 제19조",
-};
-
+/**
+ * meta:
+ *   title: "새마을금고"
+ *   category: "corp-acquisition-tax"
+ *   group: "reductions"
+ *   groupLabel: "감면"
+ *   order: 16
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅰ_지특법_감면/16_새마을금고_감면_지특법87조"
+ *   sourcePages: [95, 95]
+ *   sourceTaxTypes: ["acquisition_tax", "property_tax"]
+ *   sourceKeyLawRefs: ["지방세특례제한법 제19조"]
+ *   lawReference: "지방세특례제한법 제19조"
+ */
 export default function Content16CommunityCreditV10() {
   return (
     <div className="space-y-6">
@@ -37,116 +37,109 @@ export default function Content16CommunityCreditV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
-      <p>본 리프는 어린이집·유치원 부동산에 대한 취득세·재산세 감면 요건(지방세특례제한법 제19조)을 다루며, 특히 부동산 소유자와 운영자 동일 여부, 직장어린이집 위탁운영 시 감면 적용 여부가 핵심 쟁점이다. 조심 사례를 통해 소유자와 운영자가 다른 경우 직접 사용으로 보기 어렵다는 원칙과, 법인이 고용한 근로자가 대표자인 경우 직접 운영으로 인정한다는 예외적 판단이 정리되어 있다.</p>
+      <CalcBox title="■ 요약" id="summary">
+        <p>본 리프는 어린이집·유치원 부동산에 대한 취득세·재산세 감면 요건(지방세특례제한법 제19조)을 다루며, 특히 부동산 소유자와 운영자 동일 여부, 직장어린이집 위탁운영 시 감면 적용 여부가 핵심 쟁점이다. 조심 사례를 통해 소유자와 운영자가 다른 경우 직접 사용으로 보기 어렵다는 원칙과, 법인이 고용한 근로자가 대표자인 경우 직접 운영으로 인정한다는 예외적 판단이 정리되어 있다.</p>
+      </CalcBox>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
-      <ul className="list-disc pl-6 my-4 space-y-1">
-        <li><strong>직접 사용</strong> — 부동산 소유자와 해당 시설 운영자가 동일인인 경우에 한하여 인정되는 감면 요건으로, 소유자와 운영자가 상이하면 직접 사용으로 보지 않는 것이 원칙이다.</li>
-        <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제19조" target="_blank" rel="noopener noreferrer">지특법 §19</a></li>
-        <li><strong>직장어린이집 위탁운영</strong> — 사업주가 설치한 직장어린이집을 법인·개인에게 위탁하여 운영하는 형태로, 2023년 이전에는 취득세 면제 대상 제외, 2023~2024년에는 50% 감면, 2025~2027년에는 100% 면제가 적용된다.</li>
-        <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제19조" target="_blank" rel="noopener noreferrer">지특법 §19</a></li>
-        <li><strong>소유자·운영자 동일성</strong> — 어린이집 감면 요건으로서 부동산 소유자가 해당 시설을 직접 운영하는지를 판단하는 기준으로, 법인이 고용한 근로자가 운영자인 경우에는 법인의 직접 운영으로 인정될 수 있다.</li>
-        <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제19조" target="_blank" rel="noopener noreferrer">지특법 §19</a></li>
-        <li><strong>최소납부제</strong> — 감면세율 적용 후에도 일정 비율(15%)의 세액은 반드시 납부하도록 하는 제도로, 취득세 감면 시에도 적용된다.</li>
-        <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제19조" target="_blank" rel="noopener noreferrer">지특법 §19</a></li>
-        <li><strong>가정어린이집 세율</strong> — 가정어린이집으로 사용할 목적으로 취득하는 경우 일반세율이 적용되며, 건축물이 85㎡ 미만이면 농특세 비과세 대상이다.</li>
-        <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제19조" target="_blank" rel="noopener noreferrer">지특법 §19</a></li>
-      </ul>
+      <CalcBox title="■ 주요 개념" id="concepts">
+        <ul className="list-disc pl-6 my-4 space-y-1">
+          <li><strong>직접 사용</strong> — 부동산 소유자와 해당 시설 운영자가 동일인인 경우에 한하여 인정되는 감면 요건으로, 소유자와 운영자가 상이하면 직접 사용으로 보지 않는 것이 원칙이다.</li>
+          <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제19조" target="_blank" rel="noopener noreferrer">지특법 §19</a></li>
+          <li><strong>직장어린이집 위탁운영</strong> — 사업주가 설치한 직장어린이집을 법인·개인에게 위탁하여 운영하는 형태로, 2023년 이전에는 취득세 면제 대상 제외, 2023~2024년에는 50% 감면, 2025~2027년에는 100% 면제가 적용된다.</li>
+          <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제19조" target="_blank" rel="noopener noreferrer">지특법 §19</a></li>
+          <li><strong>소유자·운영자 동일성</strong> — 어린이집 감면 요건으로서 부동산 소유자가 해당 시설을 직접 운영하는지를 판단하는 기준으로, 법인이 고용한 근로자가 운영자인 경우에는 법인의 직접 운영으로 인정될 수 있다.</li>
+          <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제19조" target="_blank" rel="noopener noreferrer">지특법 §19</a></li>
+          <li><strong>최소납부제</strong> — 감면세율 적용 후에도 일정 비율(15%)의 세액은 반드시 납부하도록 하는 제도로, 취득세 감면 시에도 적용된다.</li>
+          <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제19조" target="_blank" rel="noopener noreferrer">지특법 §19</a></li>
+          <li><strong>가정어린이집 세율</strong> — 가정어린이집으로 사용할 목적으로 취득하는 경우 일반세율이 적용되며, 건축물이 85㎡ 미만이면 농특세 비과세 대상이다.</li>
+          <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제19조" target="_blank" rel="noopener noreferrer">지특법 §19</a></li>
+        </ul>
+      </CalcBox>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>조심 판례 (3건)</Outline>
-      </h2>
+      <CalcBox title="■ 조심 판례 (3건)" id="section-3">
+        <SubSection title="● 조심2014지1462">
+          <p><strong>쟁점</strong>: 어린이집 부동산 취득세 감면 - 소유자와 운영자 불일치 시 직접 사용 부정</p>
+          <p><strong>판시사항</strong>: 영유아어린이집 설치·운영을 위해 취득한 부동산을 해당 용도로 직접 사용한다는 의미는 부동산 소유자와 어린이집 운영자가 다른 경우까지 포함하지 않으므로, 소유자와 운영자가 상이한 경우 직접 사용으로 보기 어렵다.</p>
+          <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제19조" target="_blank" rel="noopener noreferrer">지특법 §19</a></p>
+        </SubSection>
 
-      <Outline level={2}>조심2014지1462</Outline>
-      <p><strong>쟁점</strong>: 어린이집 부동산 취득세 감면 - 소유자와 운영자 불일치 시 직접 사용 부정</p>
-      <p><strong>판시사항</strong>: 영유아어린이집 설치·운영을 위해 취득한 부동산을 해당 용도로 직접 사용한다는 의미는 부동산 소유자와 어린이집 운영자가 다른 경우까지 포함하지 않으므로, 소유자와 운영자가 상이한 경우 직접 사용으로 보기 어렵다.</p>
-      <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제19조" target="_blank" rel="noopener noreferrer">지특법 §19</a></p>
+        <SubSection title="● 조심2014지858">
+          <p><strong>쟁점</strong>: 직장어린이집 위탁운영 시 취득세 면제 대상 해당 여부</p>
+          <p><strong>판시사항</strong>: 부동산을 취득한 사업주가 설치한 직장어린이집을 법인·개인에게 위탁하여 운영하는 경우 취득세 면제 대상에 포함되지 않는다(2023년부터는 50% 감면 적용).</p>
+          <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제19조" target="_blank" rel="noopener noreferrer">지특법 §19</a></p>
+        </SubSection>
 
-      <Outline level={2}>조심2014지858</Outline>
-      <p><strong>쟁점</strong>: 직장어린이집 위탁운영 시 취득세 면제 대상 해당 여부</p>
-      <p><strong>판시사항</strong>: 부동산을 취득한 사업주가 설치한 직장어린이집을 법인·개인에게 위탁하여 운영하는 경우 취득세 면제 대상에 포함되지 않는다(2023년부터는 50% 감면 적용).</p>
-      <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제19조" target="_blank" rel="noopener noreferrer">지특법 §19</a></p>
-
-      <Outline level={2}>조심2013지541</Outline>
-      <p><strong>쟁점</strong>: 법인이 고용한 근로자가 어린이집 대표자인 경우 직접 운영 인정 여부</p>
-      <p><strong>판시사항</strong>: 청구법인이 쟁점부동산의 소유자로서 어린이집을 직접 운영하고, 어린이집 대표자가 청구법인이 고용한 근로소득자임이 확인됨에도 법인 대표자와 어린이집 대표자가 상이하다는 이유만으로 직접 사용이 아니라고 보는 것은 잘못이다.</p>
-      <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제19조" target="_blank" rel="noopener noreferrer">지특법 §19</a></p>
-
-
-      <h2 id="section-4">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
-      <ul className="list-disc pl-6 my-4 space-y-1">
-        <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제19조</code></li>
-      </ul>
+        <SubSection title="● 조심2013지541">
+          <p><strong>쟁점</strong>: 법인이 고용한 근로자가 어린이집 대표자인 경우 직접 운영 인정 여부</p>
+          <p><strong>판시사항</strong>: 청구법인이 쟁점부동산의 소유자로서 어린이집을 직접 운영하고, 어린이집 대표자가 청구법인이 고용한 근로소득자임이 확인됨에도 법인 대표자와 어린이집 대표자가 상이하다는 이유만으로 직접 사용이 아니라고 보는 것은 잘못이다.</p>
+          <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제19조" target="_blank" rel="noopener noreferrer">지특법 §19</a></p>
+        </SubSection>
+      </CalcBox>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
+      <CalcBox title="■ 관련 법조문" id="section-4">
+        <ul className="list-disc pl-6 my-4 space-y-1">
+          <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제19조</code></li>
+        </ul>
+      </CalcBox>
 
-      <p>☞ 감면요건 및 감면세율 - 지방세특례제한법 제19조 (어린이집은 사회기반시설사업에 해당하여 중과예외)</p>
 
-      <table>
-      <thead>
-      <tr><th>구  분</th><th>감면요건</th><th>감 면 율</th><th>최소납부제</th><th>농특세</th></tr>
-      </thead>
-      <tbody>
-      <tr><td>취득세 / (1항)</td><td>1. 부동산 취득자가 시설의 운영자(대표자)이고 / 부동산을 어린이집,유치원에 직접사용</td><td>면 제</td><td>15% 과세</td><td>감면농특세 비과세 / (농특세법시행령 제4조제7항제5호</td></tr>
-      <tr><td>직장어린이집 사업주가 법인이나 개인에게 위탁하여 운영하기위해 취득하는 부동산 / ※ 직장어린이집 직접운영은 100%감면임</td><td>100%면제 / (2027.12.31.까지) / 50% / (2023.1.1.&#126;2024.12.31.)</td><td>15% 과세 / -</td><td></td><td></td></tr>
-      <tr><td>재산세 / (2항)</td><td>1. 부동산 소유자가 직접 사용하거나, / 2. 부동산소유자의 배우자 또는 직계혈족이 운영에     직접종사하거나 공동으로 부동산소유하거나, / 3. 소유자가 종교단체이면서 사용자가 종교단체        대표자이거나 종교법인인 경우 해당부동산 / 4. 위탁하여 운영 or 사업주가 공동으로 설치운영하는 직장어린이집</td><td>재산세       면제 / 도시계획세    면제 / 지역자원시설세 과세</td><td>15% 과세</td><td></td></tr>
-      </tbody>
-      </table>
+      <CalcBox title="■ 원문" id="source">
+        <p>☞ 감면요건 및 감면세율 - 지방세특례제한법 제19조 (어린이집은 사회기반시설사업에 해당하여 중과예외)</p>
 
-      <p>※ 구립어린이집(직장어린이집 포함)을 위탁 운영하는 경우: 재산세 감면대상(사례참조)</p>
+        <table>
+        <thead>
+        <tr><th>구  분</th><th>감면요건</th><th>감 면 율</th><th>최소납부제</th><th>농특세</th></tr>
+        </thead>
+        <tbody>
+        <tr><td>취득세 / (1항)</td><td>1. 부동산 취득자가 시설의 운영자(대표자)이고 / 부동산을 어린이집,유치원에 직접사용</td><td>면 제</td><td>15% 과세</td><td>감면농특세 비과세 / (농특세법시행령 제4조제7항제5호</td></tr>
+        <tr><td>직장어린이집 사업주가 법인이나 개인에게 위탁하여 운영하기위해 취득하는 부동산 / ※ 직장어린이집 직접운영은 100%감면임</td><td>100%면제 / (2027.12.31.까지) / 50% / (2023.1.1.&#126;2024.12.31.)</td><td>15% 과세 / -</td><td></td><td></td></tr>
+        <tr><td>재산세 / (2항)</td><td>1. 부동산 소유자가 직접 사용하거나, / 2. 부동산소유자의 배우자 또는 직계혈족이 운영에     직접종사하거나 공동으로 부동산소유하거나, / 3. 소유자가 종교단체이면서 사용자가 종교단체        대표자이거나 종교법인인 경우 해당부동산 / 4. 위탁하여 운영 or 사업주가 공동으로 설치운영하는 직장어린이집</td><td>재산세       면제 / 도시계획세    면제 / 지역자원시설세 과세</td><td>15% 과세</td><td></td></tr>
+        </tbody>
+        </table>
 
-      <p>※ 직장어린이집: 운영자를 고용하여 운영하는 경우(취득세 면제),</p>
+        <p>※ 구립어린이집(직장어린이집 포함)을 위탁 운영하는 경우: 재산세 감면대상(사례참조)</p>
 
-      <p>위탁운영하는 경우(23년~24년 50%감면/2025년~2027년 : 100%면제)</p>
+        <p>※ 직장어린이집: 운영자를 고용하여 운영하는 경우(취득세 면제),</p>
+
+        <p>위탁운영하는 경우(23년~24년 50%감면/2025년~2027년 : 100%면제)</p>
 
 
 
-      <p>◉ 사례</p>
+        <p>◉ 사례</p>
 
-      <p>조심2014지1462(2015.4.16.) / 조심2014지858(2014.10.1.)</p>
+        <p>조심2014지1462(2015.4.16.) / 조심2014지858(2014.10.1.)</p>
 
-      <p>영유아어린이집을 설치.운영하기 위하여 취득한 부동산을 해당 용도로 직접 사용한다는 의미는 당해 부동산의 소유자와 영유아어린이집의 운영자가 다른 경우까지를 포함하는 것은 아니라 할 것이므로 청구인이 이 건 부동산을 어린이집에 직접 사용한 것으로 보기 어려움</p>
-
-
-
-      <p>부동산을 취득한 사업주가 설치한 직장어린이집을 법인, 개인에게 위탁하여 운영하는 경우 취득세 면제 대상에 포함되지 않음(2023년부터는 50%감면) 법제처21-0469(20211018)</p>
+        <p>영유아어린이집을 설치.운영하기 위하여 취득한 부동산을 해당 용도로 직접 사용한다는 의미는 당해 부동산의 소유자와 영유아어린이집의 운영자가 다른 경우까지를 포함하는 것은 아니라 할 것이므로 청구인이 이 건 부동산을 어린이집에 직접 사용한 것으로 보기 어려움</p>
 
 
 
-      <p>직장어린이집을 직접 운영하는 경우 감면대상.</p>
-
-      <p>청구법인은 쟁점부동산의 소유자로서 어린이집을 직접 운영하고 있는 사실이 제출된 자료에 의하여 확인되고 있고, 어린이집의 대표자는 청구법인이 고용한 근로소득자에 해당하는 사실이 소득금액증명서 등에 의하여 확인되고 있음에도 법인의 대표자와 어린이집의 대표자가 상이하다는 사유로 쟁점부동산을 어린이집에 직접 사용하지 아니하는 것으로 보는 것은 잘못임(조심2013지541, 2013.10.22.)</p>
+        <p>부동산을 취득한 사업주가 설치한 직장어린이집을 법인, 개인에게 위탁하여 운영하는 경우 취득세 면제 대상에 포함되지 않음(2023년부터는 50%감면) 법제처21-0469(20211018)</p>
 
 
 
-      <p>가정어린이집(15년 지방세법 취득세 시행(7.24)관련 추가 운영요령)</p>
+        <p>직장어린이집을 직접 운영하는 경우 감면대상.</p>
 
-      <ul className="list-disc pl-6 my-4 space-y-1">
-        <li>가정어린이집으로 사용 할 목적으로 취득하는 경우에는 일반세율 적용</li>
-      </ul>
+        <p>청구법인은 쟁점부동산의 소유자로서 어린이집을 직접 운영하고 있는 사실이 제출된 자료에 의하여 확인되고 있고, 어린이집의 대표자는 청구법인이 고용한 근로소득자에 해당하는 사실이 소득금액증명서 등에 의하여 확인되고 있음에도 법인의 대표자와 어린이집의 대표자가 상이하다는 사유로 쟁점부동산을 어린이집에 직접 사용하지 아니하는 것으로 보는 것은 잘못임(조심2013지541, 2013.10.22.)</p>
 
-      <ul className="list-disc pl-6 my-4 space-y-1">
-        <li>반대로 종전 가정어린이집으로 사용하던 건축물을 주택으로 사용하기 위하여 취득하는 경우에는 주택세율 적용.</li>
-      </ul>
 
-      <ul className="list-disc pl-6 my-4 space-y-1">
-        <li>가정어린이집 등 농특세 : 해당 건축물이 85㎡ 미만이면 농특세 비과세 대상임.(지침에 따라)</li>
-      </ul>
+
+        <p>가정어린이집(15년 지방세법 취득세 시행(7.24)관련 추가 운영요령)</p>
+
+        <ul className="list-disc pl-6 my-4 space-y-1">
+          <li>가정어린이집으로 사용 할 목적으로 취득하는 경우에는 일반세율 적용</li>
+        </ul>
+
+        <ul className="list-disc pl-6 my-4 space-y-1">
+          <li>반대로 종전 가정어린이집으로 사용하던 건축물을 주택으로 사용하기 위하여 취득하는 경우에는 주택세율 적용.</li>
+        </ul>
+
+        <ul className="list-disc pl-6 my-4 space-y-1">
+          <li>가정어린이집 등 농특세 : 해당 건축물이 85㎡ 미만이면 농특세 비과세 대상임.(지침에 따라)</li>
+        </ul>
+      </CalcBox>
 
     </div>
   );

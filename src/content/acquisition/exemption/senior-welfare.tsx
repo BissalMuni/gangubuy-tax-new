@@ -1,27 +1,27 @@
 "use client";
 
-import { Callout } from "@/components/mdx/Callout";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "노인복지시설 감면",
-  sectionId: "24",
-  category: "취득세",
-  subcategory: "감면",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [50],
-  effectiveDate: "2020-08-12",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "지특법 §20",
-  tags: ["노인복지시설","장기요양기관","감면","추징"],
-};
-
+/**
+ * meta:
+ *   title: "노인복지시설 감면"
+ *   sectionId: "24"
+ *   category: "취득세"
+ *   subcategory: "감면"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [50]
+ *   effectiveDate: "2020-08-12"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: "지특법 §20"
+ *   tags: ["노인복지시설", "장기요양기관", "감면", "추징"]
+ */
 export default function SeniorWelfareV10() {
   return (
     <div className="space-y-6">
 
-      <h1 className="text-2xl font-bold mb-4">17. 노인복지시설 감면</h1>
+      <h1 className="text-2xl font-bold mb-4">노인복지시설 감면</h1>
 
       <blockquote className="border-l-4 border-gray-300 pl-4 my-4 text-gray-600 italic">
         <p>노인복지시설 취득 시 취득세·재산세 감면 요건, 구비서류 및 추징사유 안내.</p>
@@ -29,13 +29,13 @@ export default function SeniorWelfareV10() {
 
       <hr className="my-6" />
 
-      <h2 id="1.-감면-내용" className="text-xl font-semibold mt-8 mb-4">1. 감면 내용</h2>
+      <CalcBox title="■ 감면 내용" id="감면-내용">
 
-      <Callout type="info">
+      <Insight>
 
       <p><strong>지특법 §20</strong>: 취득세 <strong>100%</strong> (최저한세 미적용), 농특세 일반적용 / 감농특 없음</p>
 
-      </Callout>
+      </Insight>
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -62,9 +62,11 @@ export default function SeniorWelfareV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="2.-구비서류" className="text-xl font-semibold mt-8 mb-4">2. 구비서류</h2>
+      <CalcBox title="■ 구비서류" id="구비서류">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -97,11 +99,13 @@ export default function SeniorWelfareV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="3.-취득세-추징사유" className="text-xl font-semibold mt-8 mb-4">3. 취득세 추징사유</h2>
+      <CalcBox title="■ 취득세 추징사유" id="취득세-추징사유">
 
-      <Callout type="caution">
+      <Insight>
 
       <p>다음의 경우 감면받은 취득세가 <strong>추징</strong>됩니다:</p>
 
@@ -109,11 +113,13 @@ export default function SeniorWelfareV10() {
 
       <p>2. 해당 용도로 직접 사용한 기간이 <strong>2년 미만</strong>인 상태에서 부동산을 매각·증여하거나 다른 용도로 사용하는 경우</p>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="4.-관련-법령" className="text-xl font-semibold mt-8 mb-4">4. 관련 법령</h2>
+      <CalcBox title="■ 관련 법령" id="관련-법령">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -133,6 +139,8 @@ export default function SeniorWelfareV10() {
       </tr>
       </tbody>
       </table>
+
+      </CalcBox>
 
       <hr className="my-6" />
 

@@ -1,24 +1,24 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
+import { CalcBox, SubSection } from "@/components/content/shared";
 
-export const meta = {
-  title: "중복감면 배제",
-  category: "corp-acquisition-tax",
-  group: "reductions",
-  groupLabel: "감면",
-  order: 1,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅰ_지특법_감면/01_중복감면배제",
-  sourcePages: [2,2],
-  sourceTaxTypes: ["common"],
-  sourceKeyLawRefs: ["지방세특례제한법 제180조","지방세특례제한법 제33조 제1항"],
-  lawReference: "지방세특례제한법 제180조, 지방세특례제한법 제33조 제1항",
-};
-
+/**
+ * meta:
+ *   title: "중복감면 배제"
+ *   category: "corp-acquisition-tax"
+ *   group: "reductions"
+ *   groupLabel: "감면"
+ *   order: 1
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅰ_지특법_감면/01_중복감면배제"
+ *   sourcePages: [2,2]
+ *   sourceTaxTypes: ["common"]
+ *   sourceKeyLawRefs: ["지방세특례제한법 제180조","지방세특례제한법 제33조 제1항"]
+ *   lawReference: "지방세특례제한법 제180조, 지방세특례제한법 제33조 제1항"
+ */
 export default function Content01DuplicateExclusionV10() {
   return (
     <div className="space-y-6">
@@ -38,17 +38,12 @@ export default function Content01DuplicateExclusionV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>지방세특례제한법 제180조는 동일한 과세대상에 둘 이상의 감면 규정이 적용될 때 감면율이 높은 하나만을 적용하는 중복감면배제 원칙을 규정한다. 건축물과 그 부속토지가 동일한 과세물건에 해당하는지 여부 및 집합건물 개별 호수에 대한 각각의 감면 적용 가능 여부가 실무상 주요 쟁점이다.</p>
+      </CalcBox>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      <CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>중복감면배제</strong> — 동일한 과세대상에 둘 이상의 감면 규정이 적용될 때 감면율이 높은 하나만을 적용하는 원칙.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제180조" target="_blank" rel="noopener noreferrer">지특법 §180</a></li>
@@ -59,41 +54,36 @@ export default function Content01DuplicateExclusionV10() {
         <li><strong>감면율 우선 적용</strong> — 중복감면 상황에서 감면율이 높은 규정 하나만을 선택하여 적용하는 방식.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제180조" target="_blank" rel="noopener noreferrer">지특법 §180</a></li>
       </ul>
+      </CalcBox>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>예규 (2건)</Outline>
-      </h2>
-
-      <Outline level={2}>지방세특례제도과-479</Outline>
+      <CalcBox title="■ 예규 (2건)" id="section-3">
+      <SubSection title="● 지방세특례제도과-479">
       <p><strong>쟁점</strong>: 건축물과 부속토지에 대해 서로 다른 감면조항 적용 가능 여부</p>
       <p><strong>판시사항</strong>: 건축물과 그 부속토지는 하나의 유기적인 관계에 있는 동일한 과세물건에 해당하므로, 건축물에는 산업단지 감면, 부속토지에는 기업부설연구소 감면을 각각 달리 적용할 수 없다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제180조" target="_blank" rel="noopener noreferrer">지특법 §180</a></p>
+      </SubSection>
 
-      <Outline level={2}>서울세제-7048</Outline>
+      <SubSection title="● 서울세제-7048">
       <p><strong>쟁점</strong>: 공동주택 세대별 구분에 따른 각각의 감면율 적용 가능 여부</p>
       <p><strong>판시사항</strong>: 조세특례제한법 제120조 제4항 제3호와 지특법 제33조 제1항이 동시에 적용되는 경우, 공동주택의 전용면적을 기준으로 각 세대별로 구분하여 각각의 감면율을 적용하는 것이 타당하다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제180조" target="_blank" rel="noopener noreferrer">지특법 §180</a>, <a href="https://law.go.kr/법령/지방세특례제한법/제33조" target="_blank" rel="noopener noreferrer">지특법 §33 제1항</a></p>
+      </SubSection>
+      </CalcBox>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      <CalcBox title="■ 관련 법조문" id="section-4">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제180조</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제33조 제1항</code></li>
       </ul>
+      </CalcBox>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
+      <CalcBox title="■ 원문" id="source">
+      </CalcBox>
 
-      <h2 id="section-6">
-      <Outline level={1}>중복감면배제</Outline>
-      </h2>
-
+      <CalcBox title="■ 중복감면배제" id="section-6">
       <p>```text</p>
       <p>지방세특례제한법 제180조 【중복감면의 배제】 / 동일한 과세대상에 대하여 지방세를 감면할 때 둘 이상의 감면 규정이 적용되는 경우에는 그 중 감면율이 높은 것 하나만을 적용한다. 다만, 제66조제1항, 제73조, 제74조의2제1항, 제92조 및 제92조의2와 다른 지방세 특례 규정이 함께 적용되는 경우에는 해당 특례 규정을 모두 적용하되, 제66조제1항, 제73조, 제74조의2제1항 및 제92조 간에 중복되는 경우에는 그 중 감면되는 세액이 큰 것 하나만을 적용한다.</p>
       <p>```</p>
@@ -127,6 +117,7 @@ export default function Content01DuplicateExclusionV10() {
       <p>서울세제-7048(20130605)</p>
 
       <p>조세특례제한법 제120조 제4항 제3호에 의해서도 감면대상이 되고 지특법 제33조 제1항의 규정에 의해서도 감면대상이 되는 경우라면 공동주택의 전용면적을 기준으로 각 세대별로 구분하여 각각의 감면율을 적용하는 것이 타당하다 할 것</p>
+      </CalcBox>
 
     </div>
   );

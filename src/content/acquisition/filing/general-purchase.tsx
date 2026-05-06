@@ -1,22 +1,22 @@
 "use client";
 
-import { Callout } from "@/components/mdx/Callout";
+import { CalcBox, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "일반유상취득신고",
-  sectionId: "05",
-  category: "취득세",
-  subcategory: "신고",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [20,20],
-  effectiveDate: "2019-12-04",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "지방세법 §11",
-  tags: ["유상취득","매매","신고","제출서류","검인","세율계산"],
-};
-
+/**
+ * meta:
+ *   title: "일반유상취득신고"
+ *   sectionId: "05"
+ *   category: "취득세"
+ *   subcategory: "신고"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [20, 20]
+ *   effectiveDate: "2019-12-04"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: "지방세법 §11"
+ *   tags: ["유상취득", "매매", "신고", "제출서류", "검인", "세율계산"]
+ */
 export default function GeneralPurchaseV10() {
   return (
     <div className="space-y-6">
@@ -29,7 +29,7 @@ export default function GeneralPurchaseV10() {
 
       <hr className="my-6" />
 
-      <h2 id="1.-유상거래의-범위" className="text-xl font-semibold mt-8 mb-4">1. 유상거래의 범위</h2>
+      <CalcBox title="■ 유상거래의 범위" id="1.-유상거래의-범위">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -53,9 +53,11 @@ export default function GeneralPurchaseV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="2.-기본-제출서류" className="text-xl font-semibold mt-8 mb-4">2. 기본 제출서류</h2>
+      <CalcBox title="■ 기본 제출서류" id="2.-기본-제출서류">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -84,7 +86,7 @@ export default function GeneralPurchaseV10() {
       </tbody>
       </table>
 
-      <Callout type="info">
+      <Insight>
 
       <p><strong>가족관계증명서, 등본 제출 조건:</strong></p>
       <ul className="list-disc pl-6 my-4 space-y-1">
@@ -92,11 +94,13 @@ export default function GeneralPurchaseV10() {
         <li><strong>외국인</strong>: 외국인 등록사실증명서(또는 국내거소사실증명) + 세대원정보 기재서식 또는 상세내역에 기재</li>
       </ul>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="3.-부동산-거래-시-검인대상" className="text-xl font-semibold mt-8 mb-4">3. 부동산 거래 시 검인대상</h2>
+      <CalcBox title="■ 부동산 거래 시 검인대상" id="3.-부동산-거래-시-검인대상">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -120,17 +124,19 @@ export default function GeneralPurchaseV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>합의해제계약서</strong>는 검인받지 않음</li>
       </ul>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="4.-6~9억원-구간-세율계산식" className="text-xl font-semibold mt-8 mb-4">4. 6~9억원 구간 세율계산식</h2>
+      <CalcBox title="■ 6~9억원 구간 세율계산식" id="4.-6~9억원-구간-세율계산식">
 
       <p>주택 취득가액이 <strong>6억원 초과 ~ 9억원 이하</strong>인 경우 다음 계산식 적용:</p>
 
@@ -149,18 +155,20 @@ export default function GeneralPurchaseV10() {
       </tbody>
       </table>
 
-      <Callout type="info">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>과세표준액 <strong>150만원</strong> 마다 <strong>0.01%</strong>씩 상승</li>
         <li>소수점 <strong>3째자리 반올림</strong></li>
       </ul>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="5.-1세대4주택-경과규정" className="text-xl font-semibold mt-8 mb-4">5. 1세대4주택 경과규정</h2>
+      <CalcBox title="■ 1세대4주택 경과규정" id="5.-1세대4주택-경과규정">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -184,9 +192,11 @@ export default function GeneralPurchaseV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="6.-관련-법령" className="text-xl font-semibold mt-8 mb-4">6. 관련 법령</h2>
+      <CalcBox title="■ 관련 법령" id="6.-관련-법령">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -212,6 +222,8 @@ export default function GeneralPurchaseV10() {
       </tr>
       </tbody>
       </table>
+
+      </CalcBox>
 
       <hr className="my-6" />
 

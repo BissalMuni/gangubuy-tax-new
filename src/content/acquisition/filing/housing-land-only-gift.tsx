@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-import { Callout } from "@/components/mdx/Callout";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "주택의 토지만 증여할 때",
-  sectionId: "33",
-  category: "취득세",
-  subcategory: "증여",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [61,61],
-  effectiveDate: "2026-01-01",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "",
-  tags: ["증여","토지","주택","안분계산","시가표준액"],
-};
-
+/**
+ * meta:
+ *   title: "주택의 토지만 증여할 때"
+ *   sectionId: "33"
+ *   category: "취득세"
+ *   subcategory: "증여"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [61, 61]
+ *   effectiveDate: "2026-01-01"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: ""
+ *   tags: ["증여", "토지", "주택", "안분계산", "시가표준액"]
+ */
 export default function HousingLandOnlyGiftV10() {
   return (
     <div className="space-y-6">
@@ -36,13 +35,11 @@ export default function HousingLandOnlyGiftV10() {
 
       <hr className="my-6" />
 
-      <h2 id="계산방법">
-      <Outline level={1}>계산 방법</Outline>
-      </h2>
+      <CalcBox title="■ 계산 방법" id="계산방법">
 
       <p>주택의 토지만 증여하는 경우, 토지분에 해당하는 주택가격을 <strong>안분 계산</strong>하여 산정합니다.</p>
 
-      <Outline level={2}>계산식</Outline>
+      <SubSection title="● 계산식">
 
       <p>```</p>
       <p>주택가격(토지분) = 원래주택가격 × (토지가격 ÷ 전체시가표준액)</p>
@@ -71,6 +68,10 @@ export default function HousingLandOnlyGiftV10() {
       </tbody>
       </table>
 
+      </SubSection>
+
+      </CalcBox>
+
       <SectionNav sections={[
       { id: "계산방법", label: "계산 방법" },
       { id: "입력방법", label: "입력 방법" },
@@ -78,23 +79,25 @@ export default function HousingLandOnlyGiftV10() {
 
       <hr className="my-6" />
 
-      <h2 id="입력방법">
-      <Outline level={1}>입력 방법</Outline>
-      </h2>
+      <CalcBox title="■ 입력 방법" id="입력방법">
 
-      <Outline level={2}>처리 순서</Outline>
+      <SubSection title="● 처리 순서">
 
       <p>1. 기존 <strong>주택가격을 지움</strong></p>
       <p>2. 토지가격/전체시가표준액 비율로 <strong>안분 계산</strong></p>
       <p>3. 원래주택가격을 곱한 금액을 산출</p>
       <p>4. 계산된 금액을 <strong>수기로 주택가격에 입력</strong></p>
 
-      <Callout type="caution">
+      <Insight>
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>시스템에서 자동 계산되지 않으므로 <strong>반드시 수기 입력</strong> 필요</li>
         <li>안분 비율 계산시 소수점 이하 처리에 주의</li>
       </ul>
-      </Callout>
+      </Insight>
+
+      </SubSection>
+
+      </CalcBox>
 
       <SectionNav sections={[
       { id: "계산방법", label: "계산 방법" },

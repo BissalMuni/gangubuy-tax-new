@@ -1,27 +1,27 @@
 "use client";
 
-import { Callout } from "@/components/mdx/Callout";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "서민주택 1가구1주택 감면시",
-  sectionId: "14",
-  category: "취득세",
-  subcategory: "감면",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [37,37],
-  effectiveDate: "2020-01-01",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "지방세특례제한법 §33②",
-  tags: ["서민주택","1가구1주택","감면","추징","실거주"],
-};
-
+/**
+ * meta:
+ *   title: "서민주택 1가구1주택 감면시"
+ *   sectionId: "14"
+ *   category: "취득세"
+ *   subcategory: "감면"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [37, 37]
+ *   effectiveDate: "2020-01-01"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: "지방세특례제한법 §33②"
+ *   tags: ["서민주택", "1가구1주택", "감면", "추징", "실거주"]
+ */
 export default function AffordableHousingV10() {
   return (
     <div className="space-y-6">
 
-      <h1 className="text-2xl font-bold mb-4">9. 서민주택 1가구1주택 감면시</h1>
+      <h1 className="text-2xl font-bold mb-4">서민주택 1가구1주택 감면시</h1>
 
       <blockquote className="border-l-4 border-gray-300 pl-4 my-4 text-gray-600 italic">
         <p>서민주택 취득 시 1가구1주택 감면 요건 및 추징사유 안내. 지방세특례제한법 §33② / 시행령 §14.</p>
@@ -29,7 +29,7 @@ export default function AffordableHousingV10() {
 
       <hr className="my-6" />
 
-      <h2 id="1.-감면-요건" className="text-xl font-semibold mt-8 mb-4">1. 감면 요건</h2>
+      <CalcBox title="■ 감면 요건" id="감면-요건">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -58,18 +58,20 @@ export default function AffordableHousingV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>주민등록법상 외국인 제외</strong></li>
         <li><strong>재외국민도 제외</strong></li>
       </ul>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="2.-구비서류" className="text-xl font-semibold mt-8 mb-4">2. 구비서류</h2>
+      <CalcBox title="■ 구비서류" id="구비서류">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -103,9 +105,11 @@ export default function AffordableHousingV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="3.-추징사유" className="text-xl font-semibold mt-8 mb-4">3. 추징사유</h2>
+      <CalcBox title="■ 추징사유" id="추징사유">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -134,9 +138,11 @@ export default function AffordableHousingV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="4.-관련-법령" className="text-xl font-semibold mt-8 mb-4">4. 관련 법령</h2>
+      <CalcBox title="■ 관련 법령" id="관련-법령">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -162,6 +168,8 @@ export default function AffordableHousingV10() {
       </tr>
       </tbody>
       </table>
+
+      </CalcBox>
 
       <hr className="my-6" />
 

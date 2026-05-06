@@ -1,22 +1,22 @@
 "use client";
 
-import { Callout } from "@/components/mdx/Callout";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
-export const meta = {
-  title: "유증",
-  sectionId: "09",
-  category: "취득세",
-  subcategory: "신고",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [27,27],
-  effectiveDate: "2020-01-01",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "지방세법 §15",
-  tags: ["유증","유언공정증서","상속","증여","유언대용신탁"],
-};
-
+/**
+ * meta:
+ *   title: "유증"
+ *   sectionId: "09"
+ *   category: "취득세"
+ *   subcategory: "신고"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [27, 27]
+ *   effectiveDate: "2020-01-01"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: "지방세법 §15"
+ *   tags: ["유증", "유언공정증서", "상속", "증여", "유언대용신탁"]
+ */
 export default function BequestV10() {
   return (
     <div className="space-y-6">
@@ -29,7 +29,7 @@ export default function BequestV10() {
 
       <hr className="my-6" />
 
-      <h2 id="1.-유증-시-세율-및-신고기한" className="text-xl font-semibold mt-8 mb-4">1. 유증 시 세율 및 신고기한</h2>
+      <CalcBox title="■ 유증 시 세율 및 신고기한" id="1.-유증-시-세율-및-신고기한">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -56,18 +56,20 @@ export default function BequestV10() {
       </tbody>
       </table>
 
-      <Callout type="info">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>포괄유증</strong>은 상속으로 봄 (조심2015지1855)</li>
         <li><strong>유언공정증서</strong>가 상속분할협의서나 증여계약서를 대신함</li>
       </ul>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="2.-유언대용신탁" className="text-xl font-semibold mt-8 mb-4">2. 유언대용신탁</h2>
+      <CalcBox title="■ 유언대용신탁" id="2.-유언대용신탁">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -92,22 +94,26 @@ export default function BequestV10() {
       </tbody>
       </table>
 
+      </CalcBox>
+
       <hr className="my-6" />
 
-      <h2 id="3.-유류분반환청구소송" className="text-xl font-semibold mt-8 mb-4">3. 유류분반환청구소송</h2>
+      <CalcBox title="■ 유류분반환청구소송" id="3.-유류분반환청구소송">
 
-      <Callout type="info">
+      <Insight>
 
       <p><strong>유류분</strong>: 법률상 상속받을 수 있는 지분</p>
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>피상속인의 재산처분 자유에 일정한 비율의 제한을 두어 특정상속인에 대한 최소한의 상속권리를 보장하기 위한 제도</li>
       </ul>
 
-      </Callout>
+      </Insight>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
-      <h2 id="4.-관련-법령" className="text-xl font-semibold mt-8 mb-4">4. 관련 법령</h2>
+      <CalcBox title="■ 관련 법령" id="4.-관련-법령">
 
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
       <thead>
@@ -133,6 +139,8 @@ export default function BequestV10() {
       </tr>
       </tbody>
       </table>
+
+      </CalcBox>
 
       <hr className="my-6" />
 
