@@ -2,8 +2,8 @@ import { getSessionFromCookies } from "@/lib/auth/session";
 import { hasPermission } from "@/lib/auth/constants";
 import { redirect } from "next/navigation";
 import { StructurePageTabs } from "@/components/admin/structure-page-tabs";
-import { allBooks } from "@/lib/book";
-import { allBaskets } from "@/lib/basket";
+import { allBooks } from "@/book";
+import { allBaskets } from "@/basket";
 
 export default async function AdminStructurePage() {
   const session = await getSessionFromCookies();

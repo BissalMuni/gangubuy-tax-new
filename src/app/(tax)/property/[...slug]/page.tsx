@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
-import { property } from '@/lib/book/property';
-import { findNodeBySlugs } from '@/lib/book';
+import { property } from '@/book/property';
+import { findNodeBySlugs } from '@/book';
 import { TopicPage } from '@/components/content/topic-page';
 
 export default async function PropertyCatchAll({

@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
-import { acquisition } from '@/lib/book/acquisition';
-import { findNodeBySlugs } from '@/lib/book';
+import { acquisition } from '@/book/acquisition';
+import { findNodeBySlugs } from '@/book';
 import { TopicPage } from '@/components/content/topic-page';
 
 export default async function AcquisitionCatchAll({

@@ -1,6 +1,6 @@
 import { TopicContent } from "@/components/content/topic-content";
 import { SectionsProvider } from "@/lib/context/sections-context";
-import { isLeafNode, type TreeNode, type Book } from "@/lib/book";
+import { isLeafNode, type TreeNode, type Book } from "@/book";
 import Link from "next/link";
 
 /** 소단원(leaf) 콘텐츠 페이지 또는 중간 노드 목록 */

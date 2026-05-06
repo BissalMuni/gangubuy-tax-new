@@ -9,7 +9,7 @@ export function toPascalCase(kebab: string): string {
   return camel.charAt(0).toUpperCase() + camel.slice(1);
 }
 
-/** src/lib/basket/{id}.ts — 바구니 정의 */
+/** src/basket/{id}.ts — 바구니 정의 */
 export function genBasketFile(id: string, title: string, bookIds: string[]): string {
   const camel = toCamelCase(id);
   const bookIdsStr = bookIds.map((b) => `"${b}"`).join(", ");
@@ -23,7 +23,7 @@ export const ${camel}Basket: Basket = {
 `;
 }
 
-/** src/lib/basket/index.ts — 전체 재생성 */
+/** src/basket/index.ts — 전체 재생성 */
 export function genBasketIndex(baskets: { id: string }[]): string {
   const imports = baskets.map((b) => {
     const camel = toCamelCase(b.id);

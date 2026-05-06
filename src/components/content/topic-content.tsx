@@ -3,8 +3,8 @@
 import { Suspense, useRef } from "react";
 import { AutoSectionComment } from "@/components/feedback/auto-section-comment";
 import { SectionComment } from "@/components/feedback/section-comment";
-import { getContentComponent } from "@/lib/map";
-import type { Book, TreeNode } from "@/lib/book";
+import { getContentComponent } from "@/map";
+import type { Book, TreeNode } from "@/book";
 
 /** 소단원 콘텐츠 표시 + 모든 section h2/h3 옆에 의견 버튼 자동 주입 */
 export function TopicContent({

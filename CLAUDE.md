@@ -11,10 +11,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 | 계층 | 책임 | 위치 |
 |---|---|---|
-| **basket** | 책을 묶는 UX 라벨 (책 ID 참조만) | `src/lib/basket/` |
-| **book** | 학습 단위. URL·폴더·관리의 독립 기준 | `src/lib/book/` |
+| **basket** | 책을 묶는 UX 라벨 (책 ID 참조만) | `src/basket/` |
+| **book** | 학습 단위. URL·폴더·관리의 독립 기준 | `src/book/` |
 | **content** | leaf별 단일 TSX 파일 | `src/content/` |
-| **map** | book + leaf → content 컴포넌트 | `src/lib/map/` |
+| **map** | book + leaf → content 컴포넌트 | `src/map/` |
 
 ### 현재 책 (4권)
 
@@ -32,21 +32,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 > 트리 구조 모델·깊이 규칙·노드 명명·콘텐츠 헤딩 형식은 모두 `CONVENTION_TREE.md`와 `CONVENTION_CONTENT.md`에 정의됨. 이 섹션은 **이 코드베이스에서의 위치와 라우팅**만 다룬다.
 
 ### book/ — 책 데이터·로더
-- `src/lib/book/data/*.json` — 책별 원본 트리 (`acquisition.json`, `corp-acquisition-tax.json`, `property.json`, `vehicle.json`)
-- `src/lib/book/<book-id>.ts` — 각 JSON을 `Book`으로 import하는 얇은 로더 (4개)
-- `src/lib/book/index.ts` — `allBooks` (4권), `getBookByPath` 노출
-- `src/lib/book/types.ts` — `Book`, `TreeNode` 타입 + `findNodePath`, `findNodeBySlugs`, `isLeafNode` 유틸
+- `src/book/data/*.json` — 책별 원본 트리 (`acquisition.json`, `corp-acquisition-tax.json`, `property.json`, `vehicle.json`)
+- `src/book/<book-id>.ts` — 각 JSON을 `Book`으로 import하는 얇은 로더 (4개)
+- `src/book/index.ts` — `allBooks` (4권), `getBookByPath` 노출
+- `src/book/types.ts` — `Book`, `TreeNode` 타입 + `findNodePath`, `findNodeBySlugs`, `isLeafNode` 유틸
 
 ### basket/ — 바구니 메타
-- `src/lib/basket/index.ts` — 바구니 정의 (`taxBasket`)
-- `src/lib/basket/types.ts` — `Basket` 타입
+- `src/basket/index.ts` — 바구니 정의 (`taxBasket`)
+- `src/basket/types.ts` — `Basket` 타입
 
 ### content/ — leaf TSX
 - `src/content/<book-id>/.../<leaf-slug>-v<version>.tsx` — 1 leaf = 1 파일
 - 작성 규칙: `CONVENTION_CONTENT.md`
 
 ### map/ — 라우팅 컨벤션
-- `src/lib/map/index.ts` — book + leaf → content 컴포넌트 동적 import (`getContentComponent`)
+- `src/map/index.ts` — book + leaf → content 컴포넌트 동적 import (`getContentComponent`)
 
 ### URL 매핑
 - 책 `basePath`가 URL prefix: `/acquisition/...`, `/corp-acquisition-tax/...`, `/property/...`, `/vehicle/...`
@@ -173,7 +173,7 @@ When adding a new component, place it in the matching domain folder. If no exist
 - **TSX 작성 규칙**: `CONVENTION_CONTENT.md`
 - **트리 구조·명명 규칙**: `CONVENTION_TREE.md`
 
-기존 단원 구조·명칭의 단일 진실은 `src/lib/book/data/*.json`.
+기존 단원 구조·명칭의 단일 진실은 `src/book/data/*.json`.
 
 ### 콘텐츠 형식
 
@@ -191,13 +191,13 @@ When adding a new component, place it in the matching domain folder. If no exist
 
 ### 새 책 추가
 
-1. `src/lib/book/data/<book-id>.json` 작성 — `id`, `basePath`, `title`, `description`, `children`
-2. `src/lib/book/<book-id>.ts` 로더 작성
-3. `src/lib/book/index.ts` `allBooks`에 추가
-4. `src/lib/map/index.ts`에 derive 함수 + switch case 추가
+1. `src/book/data/<book-id>.json` 작성 — `id`, `basePath`, `title`, `description`, `children`
+2. `src/book/<book-id>.ts` 로더 작성
+3. `src/book/index.ts` `allBooks`에 추가
+4. `src/map/index.ts`에 derive 함수 + switch case 추가
 5. `src/app/(tax)/<book-id>/[...slug]/page.tsx` 생성
 6. `src/content/<book-id>/` 폴더에 leaf TSX 작성
-7. `src/lib/basket/index.ts`에 등록
+7. `src/basket/index.ts`에 등록
 
 ### 바구니 관리
 
@@ -218,9 +218,7 @@ When adding a new component, place it in the matching domain folder. If no exist
 
 - **구조 동기화 필수**: 한쪽에서 아키텍처·공통 로직(타입, 유틸, 인증, 관리자 등)을 변경하면 다른 쪽도 반영해야 한다.
 - **상호 파일 수정 권한 있음**: 이 프로젝트에서 작업 중이더라도 `math`의 파일을 직접 읽고 수정할 수 있다.
-- **경로 차이 주의**:
-  - math: `src/basket/`, `src/book/`, `src/map/`
-  - gangubuy-tax-new: `src/lib/basket/`, `src/lib/book/`, `src/lib/map/`
+- **공통 경로**: 두 프로젝트 모두 `src/basket/`, `src/book/`, `src/map/` 동일 (basket·book·map은 도메인 핵심이므로 lib 하위가 아닌 src 루트에 위치)
 
 ## Rules
 

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requirePermission } from "@/lib/auth/require-role";
-import { allBaskets } from "@/lib/basket";
-import { allBooks } from "@/lib/book";
+import { allBaskets } from "@/basket";
+import { allBooks } from "@/book";
 import { getGitHubConfig, commitFiles } from "@/lib/admin/github";
 import { genBasketFile, genBasketIndex } from "@/lib/admin/templates";
 
@@ -93,12 +93,12 @@ export async function PUT(request: NextRequest) {
   try {
     // 파일 생성: 각 바구니 파일 + index.ts
     const files: { path: string; content: string }[] = baskets.map((b) => ({
-      path: `src/lib/basket/${b.id}.ts`,
+      path: `src/basket/${b.id}.ts`,
       content: genBasketFile(b.id, b.title, b.bookIds),
     }));
 
     files.push({
-      path: "src/lib/basket/index.ts",
+      path: "src/basket/index.ts",
       content: genBasketIndex(baskets),
     });
 

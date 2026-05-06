@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { allBooks, getFirstLeafPath } from '@/lib/book';
+import { allBooks, getFirstLeafPath } from '@/book';
 
 export default function Home() {
   return (

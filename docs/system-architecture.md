@@ -17,13 +17,13 @@
 ┌─────────────────────────────────────────────────────────────┐
 │  📦  basket · 바구니                                         │
 │      책을 묶는 UX 라벨 · 사이드바 그룹                          │
-│      📁 src/lib/basket/                                       │
+│      📁 src/basket/                                       │
 └─────────────────────────────────────────────────────────────┘
                           ▼ 참조 (bookIds)
 ┌─────────────────────────────────────────────────────────────┐
 │  📖  book · 책                                               │
 │      학습 단위 · URL · 폴더 · 관리의 독립 기준                   │
-│      📁 src/lib/book/data/*.json + 로더                       │
+│      📁 src/book/data/*.json + 로더                       │
 └─────────────────────────────────────────────────────────────┘
                           ▼ leaf 노드
 ┌─────────────────────────────────────────────────────────────┐
@@ -35,7 +35,7 @@
 ┌─────────────────────────────────────────────────────────────┐
 │  🗺️  map · 매핑                                              │
 │      book + leaf → content 컴포넌트                           │
-│      📁 src/lib/map/index.ts                                  │
+│      📁 src/map/index.ts                                  │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -43,14 +43,14 @@
 
 #### 📦 basket — 바구니
 - **책임**: 책을 묶는 UX 라벨 (사이드바 그룹)
-- **위치**: [src/lib/basket/](../src/lib/basket/)
+- **위치**: [src/basket/](../src/basket/)
 - **예시**: `taxBasket` = "지방세"
   - `bookIds: [acquisition, corp-acquisition-tax, property, vehicle]`
 - **특징**: 한 책이 여러 바구니에 속할 수 있음 (다대다 관계)
 
 #### 📖 book — 책
 - **책임**: 학습 단위 · URL · 폴더 · 관리의 독립 기준
-- **위치**: [src/lib/book/data/](../src/lib/book/data/) + 로더
+- **위치**: [src/book/data/](../src/book/data/) + 로더
 - **구성**: `id` · `basePath` · `title` · `description` · `children[TreeNode]`
 - **특징**: 각 JSON이 트리의 단일 진실(single source of truth)
 - **새 책 추가**: 새 JSON + 로더 + 라우트 + content/ 폴더
@@ -66,7 +66,7 @@
 
 #### 🗺️ map — 매핑
 - **책임**: book + leaf → content 컴포넌트
-- **위치**: [src/lib/map/index.ts](../src/lib/map/index.ts)
+- **위치**: [src/map/index.ts](../src/map/index.ts)
 - **규칙**: `{basePath}/{ancestor-slugs}/{leaf-slug}`
 - **동작**: `getContentComponent()` → React.lazy 동적 import
 - **누락 시**: 파일 없으면 `null` → "준비 중" 표시

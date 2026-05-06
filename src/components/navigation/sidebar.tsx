@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { allBooks, type TreeNode, type Book } from "@/lib/book";
-import { allBaskets, type Basket } from "@/lib/basket";
+import { allBooks, type TreeNode, type Book } from "@/book";
+import { allBaskets, type Basket } from "@/basket";
 import { SidebarAuth } from "@/components/navigation/sidebar-auth";
 import { SearchDialog } from "@/components/search/search-dialog";
 import { DarkModeToggle } from "@/components/ui/DarkModeToggle";

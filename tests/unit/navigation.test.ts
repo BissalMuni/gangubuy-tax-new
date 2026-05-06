@@ -8,8 +8,8 @@ import {
   isLeafNode,
   findNodeBySlugs,
   findNodePath,
-} from '@/lib/book';
-import type { TreeNode } from '@/lib/book';
+} from '@/book';
+import type { TreeNode } from '@/book';
 
 /** 재귀적으로 모든 노드가 유효한 id/slug/title을 가지는지 검증 */
 function validateNode(node: TreeNode) {

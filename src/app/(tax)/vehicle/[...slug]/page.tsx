@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
-import { vehicle } from '@/lib/book/vehicle';
-import { findNodeBySlugs } from '@/lib/book';
+import { vehicle } from '@/book/vehicle';
+import { findNodeBySlugs } from '@/book';
 import { TopicPage } from '@/components/content/topic-page';
 
 export default async function VehicleCatchAll({

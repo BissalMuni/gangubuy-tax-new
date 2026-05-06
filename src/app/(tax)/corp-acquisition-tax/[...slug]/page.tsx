@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
-import { corpAcquisitionTax } from '@/lib/book/corp-acquisition-tax';
-import { findNodeBySlugs } from '@/lib/book';
+import { corpAcquisitionTax } from '@/book/corp-acquisition-tax';
+import { findNodeBySlugs } from '@/book';
 import { TopicPage } from '@/components/content/topic-page';
 
 export default async function CorpAcquisitionTaxCatchAll({

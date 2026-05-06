@@ -185,7 +185,7 @@ async function main() {
   const mod = await import(pathToFileURL(configPath).href);
   const config: Record<string, NavigationNode> = mod.navigationConfig;
 
-  const outputDir = path.resolve(__dirname, '../lib/book/data');
+  const outputDir = path.resolve(__dirname, '../src/book/data');
   fs.mkdirSync(outputDir, { recursive: true });
 
   let totalLeaves = 0;

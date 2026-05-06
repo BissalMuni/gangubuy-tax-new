@@ -1,5 +1,5 @@
 import { type ComponentType, lazy } from 'react';
-import { findNodePath, type Book, type TreeNode } from '@/lib/book';
+import { findNodePath, type Book, type TreeNode } from '@/book';
 
 /**
  * 세금 콘텐츠 경로 도출

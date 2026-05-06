@@ -1,5 +1,5 @@
-import { allBooks } from '@/lib/book';
-import type { Book, TreeNode } from '@/lib/book/types';
+import { allBooks } from '@/book';
+import type { Book, TreeNode } from '@/book/types';
 import type { SearchResult } from '@/lib/types';
 
 export type { SearchResult } from '@/lib/types';

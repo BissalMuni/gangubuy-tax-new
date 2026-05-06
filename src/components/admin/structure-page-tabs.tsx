@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import type { Book } from "@/lib/book/types";
-import type { Basket } from "@/lib/basket/types";
+import type { Book } from "@/book/types";
+import type { Basket } from "@/basket/types";
 import { BasketManager } from "./basket-manager";
 
 type TabKey = "books" | "baskets";
