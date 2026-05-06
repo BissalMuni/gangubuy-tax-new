@@ -2,7 +2,7 @@ import { getSupabase } from './server';
 import type { Attachment } from '@/lib/types';
 import { ALLOWED_MIME_TYPES, MAX_FILE_SIZE } from '@/lib/types';
 
-const BUCKET_NAME = 'attachments';
+const BUCKET_NAME = 'tax-attachments';
 
 export async function getAttachments(contentPath: string): Promise<Attachment[]> {
   const supabase = getSupabase();

@@ -1,4 +1,5 @@
 import { TopicContent } from "@/components/content/topic-content";
+import { SectionsProvider } from "@/lib/context/sections-context";
 import { isLeafNode, type TreeNode, type Book } from "@/lib/book";
 import Link from "next/link";
 
@@ -19,9 +20,11 @@ export function TopicPage({
   // leaf 노드 → 콘텐츠 표시
   if (isLeafNode(node)) {
     return (
-      <div className="max-w-4xl mx-auto px-6 py-12 lg:pl-8">
-        <TopicContent node={node} contentPath={contentPath} book={book} />
-      </div>
+      <SectionsProvider initialContentPath={contentPath}>
+        <div className="max-w-4xl mx-auto px-6 py-12 lg:pl-8">
+          <TopicContent node={node} contentPath={contentPath} book={book} />
+        </div>
+      </SectionsProvider>
     );
   }
 

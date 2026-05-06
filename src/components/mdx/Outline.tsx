@@ -10,12 +10,13 @@ interface OutlineProps {
  * 기존의 "1.", "가.", "나." 등의 기호를 대체하여 폰트 크기와 색상으로 계층을 구분
  */
 export function Outline({ level, children }: OutlineProps) {
+  // 색상은 CSS 변수로 위임 → 다크 모드에서 자동 전환 (globals.css 참조)
   const styles: Record<1 | 2 | 3 | 4, React.CSSProperties> = {
     1: {
       // "1.", "2.", "3." 대체 - 최상위 계층
       fontSize: '1.5rem',
       fontWeight: 700,
-      color: '#1a1a1a',
+      color: 'var(--outline-1-color)',
       marginTop: '2rem',
       marginBottom: '1rem',
       borderLeft: '4px solid #1890ff',
@@ -26,7 +27,7 @@ export function Outline({ level, children }: OutlineProps) {
       // "가.", "나.", "다." 대체 - 2차 계층
       fontSize: '1.25rem',
       fontWeight: 600,
-      color: '#333333',
+      color: 'var(--outline-2-color)',
       marginTop: '1.5rem',
       marginBottom: '0.75rem',
       borderLeft: '3px solid #52c41a',
@@ -38,7 +39,7 @@ export function Outline({ level, children }: OutlineProps) {
       // "1)", "2)", "3)" 대체 - 3차 계층
       fontSize: '1.1rem',
       fontWeight: 500,
-      color: '#555555',
+      color: 'var(--outline-3-color)',
       marginTop: '1rem',
       marginBottom: '0.5rem',
       paddingLeft: '1rem',
@@ -49,7 +50,7 @@ export function Outline({ level, children }: OutlineProps) {
       // "•", "-" 대체 - 4차 계층
       fontSize: '1rem',
       fontWeight: 400,
-      color: '#666666',
+      color: 'var(--outline-4-color)',
       marginTop: '0.5rem',
       marginBottom: '0.25rem',
       paddingLeft: '0.5rem',

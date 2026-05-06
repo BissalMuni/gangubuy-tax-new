@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<title>지방세 시스템 다이어그램</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, "Segoe UI", "Malgun Gothic", "맑은 고딕", "Apple SD Gothic Neo", sans-serif;
+    background: linear-gradient(135deg, #f1f5f9 0%, #e0e7ff 100%);
+    color: #0f172a;
+    line-height: 1.6;
+    padding: 32px 16px;
+    min-height: 100vh;
+  }
+
+  .doc {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(15,23,42,.12);
+    overflow: hidden;
+  }
+
+  .doc-header {
+    background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+    color: #fff;
+    padding: 32px 40px;
+  }
+  .doc-meta {
+    font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    opacity: .75; margin-bottom: 8px;
+  }
+  .doc-title {
+    font-size: 28px; font-weight: 800; letter-spacing: -.5px;
+  }
+  .doc-subtitle {
+    font-size: 14px; opacity: .85; margin-top: 6px;
+  }
+
+  .tabs {
+    display: flex;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 0 40px;
+  }
+  .tab {
+    background: none; border: none;
+    padding: 16px 24px;
+    font-size: 14px; font-weight: 600;
+    color: #64748b;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all .2s;
+    font-family: inherit;
+  }
+  .tab:hover { color: #1e293b; background: #f1f5f9; }
+  .tab.active {
+    color: #1e293b;
+    border-bottom-color: #6366f1;
+    background: #fff;
+  }
+
+  .panel {
+    display: none;
+    padding: 32px 40px 48px;
+  }
+  .panel.active { display: block; }
+
+  .panel-title {
+    font-size: 22px; font-weight: 700;
+    margin-bottom: 8px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .panel-title .badge {
+    background: #6366f1; color: #fff;
+    padding: 4px 10px; border-radius: 6px;
+    font-size: 12px; font-weight: 600;
+  }
+  .panel-desc {
+    color: #64748b; font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  .diagram-frame {
+    background: #fafbff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    overflow-x: auto;
+  }
+  .mermaid {
+    text-align: center;
+    font-family: inherit !important;
+  }
+
+  .legend {
+    margin-top: 20px;
+    display: flex; gap: 16px; flex-wrap: wrap;
+    padding: 16px 20px;
+    background: #f8fafc;
+    border-radius: 10px;
+    border-left: 4px solid #6366f1;
+    font-size: 13px;
+  }
+  .legend-item {
+    display: flex; align-items: center; gap: 6px;
+  }
+  .legend-swatch {
+    width: 16px; height: 16px; border-radius: 4px;
+    display: inline-block;
+  }
+
+  .actions {
+    padding: 16px 40px;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    display: flex; gap: 8px; flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .btn {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 12px; font-weight: 600;
+    color: #334155;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all .15s;
+  }
+  .btn:hover { background: #6366f1; color: #fff; border-color: #6366f1; }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .doc { box-shadow: none; }
+    .tabs, .actions { display: none; }
+    .panel { display: block !important; page-break-after: always; padding: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <header class="doc-header">
+    <div class="doc-meta">SYSTEM DIAGRAM · v1.0 · 2026-05-06</div>
+    <h1 class="doc-title">지방세 정보 시스템 다이어그램</h1>
+    <p class="doc-subtitle">전체 아키텍처 [정적 구조] + 자동화 파이프라인 [동적 흐름]</p>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-target="panel-a">📐 A. 전체 시스템 아키텍처</button>
+    <button class="tab" data-target="panel-d">🔄 D. 자동화 파이프라인 플로우</button>
+  </nav>
+
+  <!-- ============ PANEL A: SYSTEM ARCHITECTURE ============ -->
+  <section id="panel-a" class="panel active">
+    <h2 class="panel-title">
+      <span class="badge">A</span>
+      전체 시스템 아키텍처
+    </h2>
+    <p class="panel-desc">
+      사용자 → 브라우저 → Next.js [미들웨어 · 라우트 · API] → 데이터 [파일 · Supabase] · 외부 서비스 [Claude · GitHub]<br/>
+      모든 컴포넌트의 정적 연결 관계를 한 장에 표현.
+    </p>
+
+    <div class="diagram-frame">
+<pre class="mermaid">
+graph TB
+  subgraph USERS["👥 사용자 계층"]
+    direction LR
+    U1["👁 reader<br/>읽기 전용"]
+    U2["✏ editor<br/>편집자"]
+    U3["⚙ subadmin<br/>부관리자"]
+    U4["🛠 admin<br/>관리자"]
+    U5["👑 superadmin<br/>최고관리자"]
+  end
+
+  BROWSER["🌐 Browser<br/>Chrome · Edge · Mobile"]
+
+  subgraph NEXTJS["⚡ Next.js 14 App Router"]
+    MW["🔐 middleware.ts<br/>JWT 검증 + 라우트 권한 체크"]
+
+    subgraph PUBLIC["📖 공개 라우트 RSC"]
+      P1["메인 페이지 /"]
+      P2["콘텐츠 라우트<br/>/acquisition · /property<br/>/vehicle · /corp-acquisition-tax"]
+    end
+
+    subgraph ADMIN["🛠 관리자 라우트"]
+      A1["/admin<br/>대시보드"]
+      A2["/admin/structure<br/>책·바구니 [subadmin↑]"]
+      A3["/admin/super/structure<br/>구조 편집 [superadmin]"]
+    end
+
+    subgraph APIROUTES["🔌 API 라우트"]
+      AP1["/api/comments<br/>/api/attachments"]
+      AP2["/api/content<br/>/api/search"]
+      AP3["/api/admin/baskets<br/>/api/admin/structure<br/>/api/admin/rollback"]
+    end
+  end
+
+  subgraph DATA["💾 데이터 계층"]
+    subgraph FS["📁 파일시스템 [Git 관리]"]
+      D1["src/lib/basket/<br/>📦 바구니 정의"]
+      D2["src/lib/book/data/*.json<br/>📖 책 트리 4권"]
+      D3["src/content/.../*.tsx<br/>📝 콘텐츠 1 leaf 1 파일"]
+      D4["src/lib/map/<br/>🗺 동적 import 매핑"]
+    end
+
+    subgraph SUPA["☁ Supabase"]
+      S1["💬 comments 테이블"]
+      S2["📎 attachments Storage"]
+    end
+
+    SEARCH["🔎 FlexSearch<br/>인메모리 인덱스"]
+  end
+
+  subgraph EXTERNAL["🌍 외부 서비스"]
+    CLAUDE["🤖 Claude API<br/>콘텐츠 생성·수정"]
+    GITHUB["🐙 GitHub<br/>자동 커밋·푸시"]
+  end
+
+  AUTO["⚙ Automation Scripts<br/>scripts/orchestrator.ts<br/>pnpm orchestrate"]
+
+  U1 --> BROWSER
+  U2 --> BROWSER
+  U3 --> BROWSER
+  U4 --> BROWSER
+  U5 --> BROWSER
+  BROWSER -->|HTTPS 요청| MW
+
+  MW -->|공개 통과| PUBLIC
+  MW -->|JWT 검증 후| ADMIN
+  MW -->|JWT 검증 후| APIROUTES
+
+  PUBLIC -->|getContentComponent| D4
+  D4 -->|React.lazy| D3
+  PUBLIC -->|allBaskets / allBooks| D1
+  PUBLIC -->|book 트리 로딩| D2
+  PUBLIC -->|index 조회| SEARCH
+
+  AP1 -->|CRUD| S1
+  AP1 -->|업로드 다운로드| S2
+  AP3 -->|구조 편집| D1
+  AP3 -->|책 JSON 수정| D2
+
+  AUTO -->|미처리 댓글 fetch| S1
+  AUTO -->|첨부 다운로드| S2
+  AUTO -->|inbox 스캔| FS
+  AUTO -->|프롬프트 호출| CLAUDE
+  CLAUDE -.->|TSX 응답| AUTO
+  AUTO -->|TSX 덮어쓰기| D3
+  AUTO -->|commit + push| GITHUB
+  GITHUB -.->|webhook 선택| NEXTJS
+
+  classDef userClass fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#78350f
+  classDef nextClass fill:#dbeafe,stroke:#3b82f6,stroke-width:2px,color:#1e3a8a
+  classDef mwClass fill:#fce7f3,stroke:#ec4899,stroke-width:3px,color:#831843
+  classDef dataClass fill:#d1fae5,stroke:#10b981,stroke-width:2px,color:#064e3b
+  classDef extClass fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#7f1d1d
+  classDef autoClass fill:#ede9fe,stroke:#8b5cf6,stroke-width:3px,color:#4c1d95
+  classDef browserClass fill:#e0f2fe,stroke:#0ea5e9,stroke-width:2px,color:#0c4a6e
+
+  class U1,U2,U3,U4,U5 userClass
+  class P1,P2,A1,A2,A3,AP1,AP2,AP3 nextClass
+  class MW mwClass
+  class D1,D2,D3,D4,S1,S2,SEARCH dataClass
+  class CLAUDE,GITHUB extClass
+  class AUTO autoClass
+  class BROWSER browserClass
+</pre>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item"><span class="legend-swatch" style="background:#fef3c7;border:2px solid #f59e0b;"></span> 사용자 [5단계 역할]</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#e0f2fe;border:2px solid #0ea5e9;"></span> Browser</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#fce7f3;border:2px solid #ec4899;"></span> 미들웨어 [관문]</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#dbeafe;border:2px solid #3b82f6;"></span> Next.js 라우트</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#d1fae5;border:2px solid #10b981;"></span> 데이터 [파일·Supabase]</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#ede9fe;border:2px solid #8b5cf6;"></span> 자동화 스크립트</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#fee2e2;border:2px solid #ef4444;"></span> 외부 서비스</div>
+    </div>
+  </section>
+
+  <!-- ============ PANEL D: AUTOMATION FLOW ============ -->
+  <section id="panel-d" class="panel">
+    <h2 class="panel-title">
+      <span class="badge">D</span>
+      자동화 파이프라인 플로우
+    </h2>
+    <p class="panel-desc">
+      <code>pnpm orchestrate</code> 실행 시 일어나는 모든 분기와 조건. <br/>
+      입력 소스 [2종] → 첨부 처리 [분기] → Claude 호출 → dry-run 분기 → 저장 · 커밋 · 마킹.
+    </p>
+
+    <div class="diagram-frame">
+<pre class="mermaid">
+flowchart TD
+  START(["🚀 pnpm orchestrate 실행"])
+  CLI{"CLI 옵션 분기"}
+  START --> CLI
+  CLI -->|"inbox only 모드"| INBOX_START
+  CLI -->|"comments only 모드"| FETCH
+  CLI -->|"기본 또는 dry run"| FETCH
+
+  subgraph CMT_FLOW["💬 Supabase 댓글 입력"]
+    FETCH["fetchUnprocessedComments<br/>미처리 댓글 조회"]
+    HASATT{"첨부 있음?"}
+    DOWNLOAD["downloadAttachment<br/>Storage에서 파일 받기"]
+    EXTRACT{"파일 형식?"}
+    PDF["pdf parse<br/>텍스트 추출"]
+    IMG["이미지 URL 보존"]
+    SKIP["지원 안 함<br/>스킵"]
+    CTX1["📦 컨텍스트 결합<br/>댓글 + 첨부 텍스트"]
+
+    FETCH --> HASATT
+    HASATT -->|YES| DOWNLOAD
+    HASATT -->|NO| CTX1
+    DOWNLOAD --> EXTRACT
+    EXTRACT -->|"application pdf"| PDF
+    EXTRACT -->|image| IMG
+    EXTRACT -->|기타| SKIP
+    PDF --> CTX1
+    IMG --> CTX1
+    SKIP --> CTX1
+  end
+
+  subgraph INBOX_FLOW["📥 inbox 폴더 입력"]
+    INBOX_START["scanInbox<br/>inbox 폴더 스캔"]
+    INBOX_TYPE{"WorkItem 종류?"}
+    PROMPT_FILE["prompt.txt<br/>지시문 읽기"]
+    CONTENT_FILE["콘텐츠 파일<br/>PDF · MDX 등"]
+    CTX2["📦 컨텍스트 결합<br/>prompt + 파일 내용"]
+
+    INBOX_START --> INBOX_TYPE
+    INBOX_TYPE -->|prompt 요청| PROMPT_FILE
+    INBOX_TYPE -->|새 콘텐츠| CONTENT_FILE
+    PROMPT_FILE --> CTX2
+    CONTENT_FILE --> CTX2
+  end
+
+  RESOLVE["🎯 resolveContentPath<br/>대상 TSX 경로 해석<br/>book + leaf slug 역추적"]
+  PATH_OK{"경로 유효?"}
+  PATH_FAIL["⚠ 에러 로그 + 스킵"]
+
+  PROMPT_BUILD{"프롬프트 종류?"}
+  P_EDIT["buildMdxEditPrompt<br/>기존 TSX 수정"]
+  P_NEW["buildPdfToMdxPrompt<br/>새 TSX 생성"]
+
+  CLAUDE["🤖 runClaude<br/>Claude API 호출<br/>model claude opus 4"]
+  RESPONSE{"응답 유효?"}
+  RETRY["⚠ 재시도 또는 실패 로그"]
+
+  DRY{"dry run 모드?"}
+  PREVIEW["📋 콘솔 출력만<br/>파일 변경 없음"]
+
+  WRITE["💾 TSX 파일 덮어쓰기<br/>src 콘텐츠 폴더 내 .tsx"]
+  GIT_DIFF["getModifiedMdxFiles<br/>변경 감지"]
+  HAS_DIFF{"변경 있음?"}
+  COMMIT["🚀 commitAndPush<br/>git add 후 commit 후 push"]
+
+  MARK_CMT["✅ Supabase<br/>processed true 마킹"]
+  MARK_INBOX["📦 inbox 파일을<br/>processed 폴더로 이동"]
+
+  END_OK(["✅ 완료"])
+  END_FAIL(["⚠ 부분 실패 로그"])
+
+  CTX1 --> RESOLVE
+  CTX2 --> RESOLVE
+  RESOLVE --> PATH_OK
+  PATH_OK -->|NO| PATH_FAIL
+  PATH_OK -->|YES| PROMPT_BUILD
+  PROMPT_BUILD -->|기존 수정| P_EDIT
+  PROMPT_BUILD -->|새 생성| P_NEW
+  P_EDIT --> CLAUDE
+  P_NEW --> CLAUDE
+  CLAUDE --> RESPONSE
+  RESPONSE -->|NO| RETRY
+  RESPONSE -->|YES| DRY
+  DRY -->|YES| PREVIEW
+  PREVIEW --> END_OK
+  DRY -->|NO| WRITE
+  WRITE --> GIT_DIFF
+  GIT_DIFF --> HAS_DIFF
+  HAS_DIFF -->|NO| END_OK
+  HAS_DIFF -->|YES| COMMIT
+  COMMIT --> MARK_CMT
+  COMMIT --> MARK_INBOX
+  MARK_CMT --> END_OK
+  MARK_INBOX --> END_OK
+  PATH_FAIL --> END_FAIL
+  RETRY --> END_FAIL
+
+  classDef startEnd fill:#1e293b,stroke:#0f172a,stroke-width:2px,color:#fff
+  classDef decision fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#78350f
+  classDef cmt fill:#dbeafe,stroke:#3b82f6,stroke-width:2px,color:#1e3a8a
+  classDef inbox fill:#e0e7ff,stroke:#6366f1,stroke-width:2px,color:#312e81
+  classDef process fill:#d1fae5,stroke:#10b981,stroke-width:2px,color:#064e3b
+  classDef ai fill:#fee2e2,stroke:#ef4444,stroke-width:3px,color:#7f1d1d
+  classDef output fill:#ede9fe,stroke:#8b5cf6,stroke-width:2px,color:#4c1d95
+  classDef warn fill:#fed7aa,stroke:#f97316,stroke-width:2px,color:#7c2d12
+
+  class START,END_OK startEnd
+  class END_FAIL warn
+  class CLI,HASATT,EXTRACT,INBOX_TYPE,PATH_OK,PROMPT_BUILD,RESPONSE,DRY,HAS_DIFF decision
+  class FETCH,DOWNLOAD,PDF,IMG,SKIP,CTX1 cmt
+  class INBOX_START,PROMPT_FILE,CONTENT_FILE,CTX2 inbox
+  class RESOLVE,P_EDIT,P_NEW,WRITE,GIT_DIFF,PREVIEW process
+  class CLAUDE ai
+  class COMMIT,MARK_CMT,MARK_INBOX output
+  class PATH_FAIL,RETRY warn
+</pre>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item"><span class="legend-swatch" style="background:#1e293b;"></span> 시작/종료</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#fef3c7;border:2px solid #f59e0b;"></span> 분기 조건</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#dbeafe;border:2px solid #3b82f6;"></span> Supabase 댓글 흐름</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#e0e7ff;border:2px solid #6366f1;"></span> inbox 흐름</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#d1fae5;border:2px solid #10b981;"></span> 처리 단계</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#fee2e2;border:2px solid #ef4444;"></span> Claude API 호출</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#ede9fe;border:2px solid #8b5cf6;"></span> 출력/저장</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#fed7aa;border:2px solid #f97316;"></span> 경고/실패</div>
+    </div>
+  </section>
+
+  <!-- ============ ACTIONS ============ -->
+  <div class="actions">
+    <button class="btn" onclick="window.print()">🖨 인쇄 / PDF 저장</button>
+    <button class="btn" onclick="downloadSVG('panel-a')">⬇ A 다이어그램 SVG 저장</button>
+    <button class="btn" onclick="downloadSVG('panel-d')">⬇ D 다이어그램 SVG 저장</button>
+  </div>
+
+</div>
+
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'default',
+    themeVariables: {
+      fontFamily: '-apple-system, "Segoe UI", "Malgun Gothic", sans-serif',
+      fontSize: '14px'
+    },
+    flowchart: {
+      curve: 'basis',
+      padding: 20,
+      nodeSpacing: 50,
+      rankSpacing: 60,
+      htmlLabels: true
+    },
+    securityLevel: 'loose'
+  });
+
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.target;
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(target).classList.add('active');
+    });
+  });
+
+  function downloadSVG(panelId) {
+    const svg = document.querySelector('#' + panelId + ' .mermaid svg');
+    if (!svg) {
+      alert('다이어그램이 아직 렌더링되지 않았습니다. 잠시 후 다시 시도하세요.');
+      return;
+    }
+    const serializer = new XMLSerializer();
+    const source = '<?xml version="1.0" standalone="no"?>\r\n' + serializer.serializeToString(svg);
+    const blob = new Blob([source], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = panelId + '-diagram.svg';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+</script>
+</body>
+</html>

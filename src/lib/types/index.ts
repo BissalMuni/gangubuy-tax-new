@@ -74,20 +74,46 @@ export interface SearchResult {
   score: number;
 }
 
-// === Comments (Supabase) ===
+// === Comments (Supabase, tax schema) ===
 
+/** 의견 편집 종류 */
+export type FeedbackType = 'content' | 'structure';
+
+/** 의견 대상 목차 레벨 */
+export type FeedbackLevel = 'major' | 'medium' | 'minor' | 'section';
+
+/** 의견(댓글) — math 프로젝트와 동일한 분류 체계 */
 export interface Comment {
   id: string;
   content_path: string;
-  section?: string | null;
   author: string;
   body: string;
+  /** 소목차/섹션 제목 (예: "주택 취득세율") */
+  section_title?: string | null;
+  /** 편집 종류: content(내용 편집) | structure(구조 편집) */
+  feedback_type: FeedbackType;
+  /** 목차 레벨: major(대목차) | medium(중목차) | minor(소목차) | section(h2 섹션) */
+  level: FeedbackLevel;
   created_at: string;
-  updated_at: string;
   // 자동 수정 시스템용 필드
   processed?: boolean;
   processed_at?: string;
   commit_sha?: string;
+}
+
+/** 콘텐츠 수정 이력 (admin 감사용) */
+export interface ContentChange {
+  id: string;
+  role: string;
+  actor: string;
+  change_type: 'content_edit' | 'structure_edit' | 'automated_feedback' | 'rollback';
+  file_path: string;
+  diff?: string | null;
+  before_content?: string | null;
+  after_content?: string | null;
+  commit_sha?: string | null;
+  metadata?: Record<string, unknown> | null;
+  created_at: string;
 }
 
 // === Attachments (Supabase) ===
