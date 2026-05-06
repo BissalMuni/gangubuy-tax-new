@@ -6,7 +6,16 @@ const config: Config = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "sidebar-bg": "var(--sidebar-bg)",
+        "sidebar-border": "var(--sidebar-border)",
+        accent: "var(--accent)",
+        "accent-light": "var(--accent-light)",
+        muted: "var(--muted)",
+        foreground: "var(--foreground)",
+      },
+    },
   },
   plugins: [],
   corePlugins: {

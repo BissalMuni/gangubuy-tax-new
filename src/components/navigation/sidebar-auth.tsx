@@ -10,14 +10,14 @@ export function SidebarAuth() {
   const { session, loading } = useSession();
 
   if (loading) {
-    return <span className="text-[10px] text-gray-400">…</span>;
+    return <span className="text-[10px] text-muted">…</span>;
   }
 
   if (!session) {
     return (
       <Link
         href="/login"
-        className="rounded-full border border-gray-200 px-2 py-0.5 text-[10px] text-gray-500 hover:border-blue-400 hover:text-blue-600 transition-colors"
+        className="rounded-full border border-sidebar-border px-2 py-0.5 text-[10px] text-muted hover:border-accent hover:text-accent transition-colors"
       >
         로그인
       </Link>
@@ -39,13 +39,13 @@ export function SidebarAuth() {
       {canAccessAdmin && (
         <Link
           href="/admin"
-          className="rounded-full border border-gray-200 px-2 py-0.5 text-[10px] text-gray-500 hover:border-blue-400 hover:text-blue-600 transition-colors"
+          className="rounded-full border border-sidebar-border px-2 py-0.5 text-[10px] text-muted hover:border-accent hover:text-accent transition-colors"
         >
           관리자
         </Link>
       )}
       <span
-        className="rounded-full bg-blue-50 px-2 py-0.5 text-[10px] text-blue-600"
+        className="rounded-full bg-accent/10 px-2 py-0.5 text-[10px] text-accent"
         title={`역할: ${session.label}`}
       >
         {session.label}
@@ -53,7 +53,7 @@ export function SidebarAuth() {
       <button
         type="button"
         onClick={handleLogout}
-        className="text-[10px] text-gray-400 hover:text-red-500 transition-colors"
+        className="text-[10px] text-muted hover:text-red-500 transition-colors"
       >
         로그아웃
       </button>

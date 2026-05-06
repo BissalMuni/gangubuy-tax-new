@@ -7,6 +7,7 @@ import { allBooks, type TreeNode, type Book } from "@/lib/book";
 import { allBaskets, type Basket } from "@/lib/basket";
 import { SidebarAuth } from "@/components/navigation/sidebar-auth";
 import { SearchDialog } from "@/components/search/search-dialog";
+import { DarkModeToggle } from "@/components/ui/DarkModeToggle";
 
 /** 사이드바 네비게이션 — 바구니 → 책 → 트리 3단 */
 export function Sidebar() {
@@ -18,7 +19,7 @@ export function Sidebar() {
       {/* 모바일 토글 버튼 */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-4 left-4 z-50 rounded-lg bg-white border border-gray-200 p-2 lg:hidden"
+        className="fixed top-4 left-4 z-50 rounded-lg bg-sidebar-bg border border-sidebar-border p-2 lg:hidden"
         aria-label={isOpen ? "메뉴 닫기" : "메뉴 열기"}
       >
         {isOpen ? "✕" : "☰"}
@@ -36,7 +37,7 @@ export function Sidebar() {
       <aside
         className={`
           fixed top-0 left-0 z-40 h-full w-72 overflow-y-auto
-          border-r border-gray-200 bg-white
+          border-r border-sidebar-border bg-sidebar-bg
           transition-transform lg:relative lg:translate-x-0
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
         `}
@@ -46,6 +47,9 @@ export function Sidebar() {
             <Link href="/" className="text-lg font-bold" onClick={() => setIsOpen(false)}>
               📋 GanguBuy Tax
             </Link>
+            <div className="flex justify-start">
+              <DarkModeToggle />
+            </div>
             <SidebarAuth />
           </div>
 
@@ -53,7 +57,7 @@ export function Sidebar() {
           <button
             type="button"
             onClick={() => setSearchOpen(true)}
-            className="mb-4 flex w-full items-center gap-2 rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-500 hover:border-blue-400 hover:text-blue-600 transition-colors"
+            className="mb-4 flex w-full items-center gap-2 rounded-lg border border-sidebar-border px-3 py-2 text-sm text-muted hover:border-accent hover:text-accent transition-colors"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -68,7 +72,7 @@ export function Sidebar() {
               />
             </svg>
             <span>검색...</span>
-            <kbd className="ml-auto rounded border border-gray-200 px-1 py-0.5 text-[10px]">
+            <kbd className="ml-auto rounded border border-sidebar-border px-1 py-0.5 text-[10px]">
               /
             </kbd>
           </button>
@@ -107,7 +111,7 @@ function BasketSection({
 
   return (
     <div className="mb-4">
-      <h3 className="flex items-center gap-1.5 px-2 mb-1 text-[11px] font-bold tracking-wide text-gray-500 uppercase">
+      <h3 className="flex items-center gap-1.5 px-2 mb-1 text-[11px] font-bold tracking-wide text-muted uppercase">
         <span aria-hidden>🧺</span>
         {basket.title}
       </h3>
@@ -137,7 +141,7 @@ function BookSection({
       <button
         type="button"
         onClick={() => setIsExpanded(!isExpanded)}
-        className="flex w-full items-center gap-1.5 rounded px-2 py-1.5 text-sm font-semibold hover:bg-blue-50"
+        className="flex w-full items-center gap-1.5 rounded px-2 py-1.5 text-sm font-semibold hover:bg-accent-light"
       >
         <span className="text-xs">{isExpanded ? "▼" : "▶"}</span>
         <span aria-hidden>📖</span>
@@ -185,7 +189,7 @@ function TreeNavNode({
         onClick={onNavigate}
         className={`
           block rounded px-2 py-1 text-sm
-          ${isActive ? "bg-blue-50 text-blue-600 font-medium" : "text-gray-600 hover:bg-blue-50 hover:text-gray-900"}
+          ${isActive ? "bg-accent-light text-accent font-medium" : "text-muted hover:bg-accent-light hover:text-foreground"}
         `}
         style={{ paddingLeft: `${(depth + 1) * 8 + 8}px` }}
       >
@@ -199,10 +203,10 @@ function TreeNavNode({
       <button
         type="button"
         onClick={() => setIsExpanded(!isExpanded)}
-        className="flex w-full items-center gap-1 rounded px-2 py-1 text-sm hover:bg-blue-50"
+        className="flex w-full items-center gap-1 rounded px-2 py-1 text-sm hover:bg-accent-light"
         style={{ paddingLeft: `${depth * 8 + 8}px` }}
       >
-        <span className="text-[10px] text-gray-400">{isExpanded ? "▼" : "▶"}</span>
+        <span className="text-[10px] text-muted">{isExpanded ? "▼" : "▶"}</span>
         <span className="truncate">{node.title}</span>
       </button>
       {isExpanded && node.children && (
