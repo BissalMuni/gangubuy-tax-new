@@ -45,7 +45,7 @@ export function Sidebar() {
         <div className="p-4">
           <div className="flex flex-col gap-3 mb-4">
             <Link href="/" className="text-lg font-bold" onClick={() => setIsOpen(false)}>
-              📋 GanguBuy Tax
+              📋 지방세 실무 매뉴얼 시스템
             </Link>
             <div className="flex justify-start">
               <DarkModeToggle />
