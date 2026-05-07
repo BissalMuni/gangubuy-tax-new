@@ -1,0 +1,118 @@
+name: Review Feedback (Content)
+on:
+  schedule:
+    - cron: '17 3 * * *' # 매일 03:17 UTC (한국시간 12:17)
+  workflow_dispatch: {} # 수동 실행 가능
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      # 1) 레포 체크아웃
+      - uses: actions/checkout@v4
+
+      # 2) Node.js 설치
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # 3) 미처리 내용 수정 의견 확인 — 없으면 조기 종료
+      - name: Check unprocessed content comments
+        id: check
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          COMMENTS=$(bash scripts/fetch-feedback.sh --type=content)
+          if [ "$COMMENTS" = "[]" ]; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            COUNT=$(echo "$COMMENTS" | node -e "let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>console.log(JSON.parse(d).length))")
+            echo "skip=false" >> $GITHUB_OUTPUT
+            echo "count=$COUNT" >> $GITHUB_OUTPUT
+          fi
+
+      # 4) Claude Code 설치
+      - name: Install Claude Code
+        if: steps.check.outputs.skip == 'false'
+        run: npm install -g @anthropic-ai/claude-code
+
+      # 5) Claude Code로 내용 피드백 반영
+      - name: Apply content feedback
+        if: steps.check.outputs.skip == 'false'
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          claude --print --dangerously-skip-permissions \
+            --allowedTools "Bash,Read,Edit,Write,Glob,Grep" \
+            -p "$(cat CONVENTION_CONTENT.md CONVENTION_TREE.md)
+
+          이 레포에서 내용 피드백 반영 작업을 수행해줘.
+
+          == 헤딩 계층 (절대 변경 금지) ==
+          h1 = 페이지 제목 (TopicContent 자동 렌더, TSX에 직접 작성 금지)
+          h2 = CalcBox (title=\"■ ...\")
+          h3 = SubSection (title=\"● ...\")
+          → 이 컴포넌트 사용 방식과 ■/● prefix 규칙은 절대 바꾸지 말 것
+
+          == 허용되는 변경 ==
+          src/content/**/*.tsx 안에서:
+          - 텍스트(한국어 설명 문장) 수정·추가·삭제
+          - 표(HTML table) 셀 내용·행·열 수정·추가·삭제
+          - **CalcBox(h2) 섹션 추가/삭제** — 단, 반드시 <CalcBox title=\"■ ...\">로 작성
+          - **SubSection(h3) 섹션 추가/삭제** — 단, 반드시 <SubSection title=\"● ...\">로 작성
+          - Step, Insight, Callout 등 본문 컴포넌트 추가/삭제
+
+          == 금지 ==
+          - 구조 변경 (관리자 페이지에서 처리):
+            · src/basket/, src/book/, src/map/ 수정 금지 (읽기만)
+            · 새 leaf TSX 파일 생성 금지, 기존 파일 삭제 금지
+            · src/components/** 수정 금지
+          - 헤딩 규약 위반:
+            · <h1>/<h2>/<h3> 직접 작성 금지 (반드시 CalcBox/SubSection 사용)
+            · ■/● prefix 제거·변경 금지
+            · CalcBox 대신 div, SubSection 대신 p 등으로 대체 금지
+          - 다음도 변경 금지:
+            · import 문, export default 함수 시그니처
+            · 최상위 <div className=\"space-y-8\"> 래퍼
+
+          == 절차 ==
+          - bash scripts/fetch-feedback.sh --type=content 로 미처리 내용 의견 조회
+          - 의견이 위 \"허용되는 변경\" 범위 안이면 반영
+          - 비합리적·단순 감상·금지 범위 요청이면 processed만 표시
+          - 변경 후 bash scripts/fetch-feedback.sh --type=content --mark-all-unprocessed 실행
+          - git commit/push는 하지 말 것 (아래 step에서 처리)"
+
+      # 6) 변경사항 커밋 & main에 푸시
+      - name: Commit and push
+        id: commit
+        if: steps.check.outputs.skip == 'false'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A src/content/
+          if git diff --cached --quiet; then
+            echo "No content changes to commit"
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            git commit -m "$(cat <<'EOF'
+          Apply content feedback (${{ steps.check.outputs.count }} comments)
+
+          Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
+          EOF
+          )"
+            git push
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      # 7) 수정 이력을 Supabase에 기록
+      - name: Log content changes
+        if: steps.check.outputs.skip == 'false' && steps.commit.outputs.has_changes == 'true'
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: bash scripts/log-content-changes.sh
