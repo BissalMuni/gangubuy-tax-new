@@ -33,13 +33,13 @@ export function SearchInput({ value, onChange, onSearch, loading }: SearchInputP
           value={value}
           onChange={(e) => onChange(e.target.value)}
           onKeyDown={handleKeyDown}
-          className="w-full rounded-l-lg border border-r-0 border-gray-300 px-4 py-2.5 text-base outline-none transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+          className="w-full rounded-l-lg border border-r-0 border-gray-300 bg-white px-4 py-2.5 text-base outline-none transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-100"
         />
         {value && (
           <button
             type="button"
             onClick={handleClear}
-            className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+            className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
             aria-label="입력 지우기"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">

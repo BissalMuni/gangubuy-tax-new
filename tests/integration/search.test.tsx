@@ -8,7 +8,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import type { SearchResult } from '@/lib/types';
+import type { SearchResult } from '@/lib/search';
 
 // next/link 모킹 (jsdom에서 Link 컴포넌트 사용)
 vi.mock('next/link', () => ({
@@ -17,7 +17,7 @@ vi.mock('next/link', () => ({
   ),
 }));
 
-import { SearchResults } from '@/components/search/SearchResults';
+import { SearchResults } from '@/components/search/search-results';
 
 const mockResults: SearchResult[] = [
   {

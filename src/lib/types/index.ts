@@ -63,17 +63,6 @@ export interface UserPreferences {
   expandedNavKeys: string[];
 }
 
-// === Search ===
-
-export interface SearchResult {
-  id: string;
-  title: string;
-  category: string;
-  path: string;
-  snippet: string;
-  score: number;
-}
-
 // === Comments (Supabase, tax schema) ===
 
 /** 의견 편집 종류 */

@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import { SearchInput } from '@/components/search/SearchInput';
-import { SearchResults } from '@/components/search/SearchResults';
-import type { SearchResult } from '@/lib/types';
+import { SearchInput } from '@/components/search/search-input';
+import { SearchResults } from '@/components/search/search-results';
+import type { SearchResult } from '@/lib/search';
 
 export default function SearchPage() {
   const [query, setQuery] = useState('');

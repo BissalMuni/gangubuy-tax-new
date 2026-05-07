@@ -54,9 +54,9 @@ export function SearchDialog({
       />
 
       {/* 다이얼로그 */}
-      <div className="fixed inset-x-4 top-[10vh] z-[101] mx-auto max-w-lg rounded-xl border border-gray-200 bg-white shadow-2xl">
+      <div className="fixed inset-x-4 top-[10vh] z-[101] mx-auto max-w-lg rounded-xl border border-gray-200 bg-white shadow-2xl dark:border-gray-700 dark:bg-gray-900">
         {/* 검색 입력 */}
-        <div className="flex items-center border-b border-gray-200 px-4">
+        <div className="flex items-center border-b border-gray-200 px-4 dark:border-gray-700">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5 shrink-0 text-gray-400"
@@ -77,7 +77,7 @@ export function SearchDialog({
             placeholder="검색어를 입력하세요..."
             className="flex-1 border-0 bg-transparent px-3 py-3 text-sm outline-none placeholder:text-gray-400"
           />
-          <kbd className="hidden rounded border border-gray-200 px-1.5 py-0.5 text-[10px] text-gray-400 sm:inline-block">
+          <kbd className="hidden rounded border border-gray-200 px-1.5 py-0.5 text-[10px] text-gray-400 sm:inline-block dark:border-gray-600">
             ESC
           </kbd>
         </div>
@@ -94,17 +94,17 @@ export function SearchDialog({
               key={item.path}
               href={item.path}
               onClick={onClose}
-              className="block rounded-lg px-3 py-2 hover:bg-gray-100"
+              className="block rounded-lg px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-800"
             >
               <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-gray-900">
+                <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
                   {item.title}
                 </span>
-                <span className="rounded bg-blue-50 px-1.5 py-0.5 text-[10px] text-blue-600">
+                <span className="rounded bg-blue-50 px-1.5 py-0.5 text-[10px] text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
                   {item.category}
                 </span>
               </div>
-              <p className="mt-0.5 text-xs text-gray-500">
+              <p className="mt-0.5 text-xs text-gray-500 dark:text-gray-400">
                 {item.snippet}
               </p>
             </Link>

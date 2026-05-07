@@ -1,8 +1,15 @@
 import { allBooks } from '@/book';
 import type { Book, TreeNode } from '@/book/types';
-import type { SearchResult } from '@/lib/types';
 
-export type { SearchResult } from '@/lib/types';
+/** 검색 결과 타입 */
+export interface SearchResult {
+  id: string;
+  title: string;
+  category: string;
+  path: string;
+  snippet: string;
+  score: number;
+}
 
 /** 검색 인덱스 항목 (내부용) */
 interface IndexEntry {
