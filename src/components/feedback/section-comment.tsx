@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import type { Comment, FeedbackLevel } from "@/lib/types";
+import type { Comment, FeedbackLevel, Attachment } from "@/lib/types";
 import { useSession } from "@/lib/auth/use-session";
+import { AttachmentUpload } from "@/components/attachments/AttachmentUpload";
 
 const LEVEL_LABELS: Record<FeedbackLevel, string> = {
   major: "대목차",
@@ -63,8 +64,15 @@ export function SectionComment({
       sectionTitle={sectionTitle}
       level={level}
       canDelete={canDelete}
+      uploaderLabel={session.label}
     />
   );
+}
+
+function formatFileSize(bytes: number): string {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 }
 
 /** 내용 편집 의견 버튼 + 폼 */
@@ -73,14 +81,17 @@ function ContentFeedbackButton({
   sectionTitle,
   level,
   canDelete,
+  uploaderLabel,
 }: {
   contentPath: string;
   sectionTitle: string;
   level: FeedbackLevel;
   canDelete: boolean;
+  uploaderLabel: string;
 }) {
   const [open, setOpen] = useState(false);
   const [comments, setComments] = useState<Comment[]>([]);
+  const [attachments, setAttachments] = useState<Attachment[]>([]);
   const [body, setBody] = useState("");
   const [loading, setLoading] = useState(false);
   const [fetched, setFetched] = useState(false);
@@ -101,12 +112,42 @@ function ContentFeedbackButton({
     }
   }, [contentPath]);
 
+  const fetchAttachments = useCallback(async () => {
+    try {
+      const res = await fetch(
+        `/api/attachments?content_path=${encodeURIComponent(contentPath)}`
+      );
+      const data = await res.json();
+      setAttachments(data.data || []);
+    } catch {
+      // 무시
+    }
+  }, [contentPath]);
+
+  // 폼이 처음 열릴 때 첨부 목록도 같이 로드
+  useEffect(() => {
+    if (open) fetchAttachments();
+  }, [open, fetchAttachments]);
+
   const handleToggle = () => {
     setOpen((v) => {
       const next = !v;
       if (next && !fetched) fetchComments();
       return next;
     });
+  };
+
+  const handleDeleteAttachment = async (id: string) => {
+    if (!confirm("첨부파일을 삭제하시겠습니까?")) return;
+    try {
+      await fetch(
+        `/api/attachments/${id}?uploaded_by=${encodeURIComponent(uploaderLabel)}`,
+        { method: "DELETE" }
+      );
+      await fetchAttachments();
+    } catch {
+      // 무시
+    }
   };
 
   const handleSubmit = async () => {
@@ -211,6 +252,47 @@ function ContentFeedbackButton({
             </ul>
           )}
 
+          {/* 첨부파일 목록 */}
+          {attachments.length > 0 && (
+            <ul className="space-y-1">
+              {attachments.map((a) => (
+                <li
+                  key={a.id}
+                  className="flex items-center gap-2 text-xs group"
+                >
+                  <span className="shrink-0 text-muted">📎</span>
+                  {a.download_url ? (
+                    <a
+                      href={a.download_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 truncate text-accent hover:underline"
+                    >
+                      {a.file_name}
+                    </a>
+                  ) : (
+                    <span className="flex-1 truncate">{a.file_name}</span>
+                  )}
+                  <span className="shrink-0 text-muted">
+                    {formatFileSize(a.file_size)}
+                  </span>
+                  <span className="shrink-0 text-[10px] text-muted">
+                    {a.uploaded_by}
+                  </span>
+                  {a.uploaded_by === uploaderLabel && (
+                    <button
+                      type="button"
+                      onClick={() => handleDeleteAttachment(a.id)}
+                      className="shrink-0 text-[10px] text-muted opacity-0 group-hover:opacity-100 hover:text-red-500 transition-opacity"
+                    >
+                      삭제
+                    </button>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+
           {error && <p className="text-xs text-red-500">{error}</p>}
 
           {/* 입력 폼 */}
@@ -234,6 +316,18 @@ function ContentFeedbackButton({
             >
               {loading ? "..." : "등록"}
             </button>
+          </div>
+
+          {/* 파일 첨부 영역 */}
+          <div className="flex items-center gap-2 text-[11px] text-muted">
+            <AttachmentUpload
+              contentPath={contentPath}
+              uploadedBy={uploaderLabel}
+              onUploaded={fetchAttachments}
+              label="파일 첨부"
+              compact
+            />
+            <span>최대 10MB · PDF/문서/이미지</span>
           </div>
         </div>
       )}

@@ -6,9 +6,18 @@ import { ALLOWED_MIME_TYPES, MAX_FILE_SIZE } from '@/lib/types';
 interface AttachmentUploadProps {
   contentPath: string;
   onUploaded: () => void;
+  uploadedBy?: string;
+  label?: string;
+  compact?: boolean;
 }
 
-export function AttachmentUpload({ contentPath, onUploaded }: AttachmentUploadProps) {
+export function AttachmentUpload({
+  contentPath,
+  onUploaded,
+  uploadedBy = '익명',
+  label = '파일 업로드',
+  compact = false,
+}: AttachmentUploadProps) {
   const [uploading, setUploading] = useState(false);
   const [toast, setToast] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -45,7 +54,7 @@ export function AttachmentUpload({ contentPath, onUploaded }: AttachmentUploadPr
       const formData = new FormData();
       formData.append('file', file);
       formData.append('content_path', contentPath);
-      formData.append('uploaded_by', '익명');
+      formData.append('uploaded_by', uploadedBy);
 
       const res = await fetch('/api/attachments', {
         method: 'POST',
@@ -81,7 +90,11 @@ export function AttachmentUpload({ contentPath, onUploaded }: AttachmentUploadPr
         type="button"
         onClick={() => fileInputRef.current?.click()}
         disabled={uploading}
-        className="inline-flex items-center gap-1 rounded border border-gray-300 px-2 py-1 text-xs text-gray-700 transition-colors hover:bg-gray-50 disabled:opacity-50"
+        className={
+          compact
+            ? 'inline-flex items-center gap-1 rounded-lg border border-sidebar-border px-2 py-1 text-xs text-muted transition-colors hover:border-accent hover:text-accent disabled:opacity-50'
+            : 'inline-flex items-center gap-1 rounded border border-gray-300 px-2 py-1 text-xs text-gray-700 transition-colors hover:bg-gray-50 disabled:opacity-50'
+        }
       >
         {uploading ? (
           <svg className="h-3.5 w-3.5 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -93,7 +106,7 @@ export function AttachmentUpload({ contentPath, onUploaded }: AttachmentUploadPr
             <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clipRule="evenodd" />
           </svg>
         )}
-        파일 업로드
+        {label}
       </button>
 
       {/* 토스트 메시지 */}
