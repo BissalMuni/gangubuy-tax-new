@@ -1,22 +1,22 @@
 "use client";
 
-import { Callout } from "@/components/mdx/Callout";
 
-export const meta = {
-  title: "토지수용 대체취득",
-  sectionId: "18",
-  category: "취득세",
-  subcategory: "감면",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [43],
-  effectiveDate: "2020-08-12",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "지특법 §73",
-  tags: ["토지수용","대체취득","감면","부재지주","보상금"],
-};
-
+import { Insight } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "토지수용 대체취득"
+ *   sectionId: "18"
+ *   category: "취득세"
+ *   subcategory: "감면"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [43]
+ *   effectiveDate: "2020-08-12"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: "지특법 §73"
+ *   tags: ["토지수용","대체취득","감면","부재지주","보상금"]
+ */
 export default function LandExpropriationV10() {
   return (
     <div className="space-y-6">
@@ -31,11 +31,11 @@ export default function LandExpropriationV10() {
 
       <h2 id="1.-감면-내용" className="text-xl font-semibold mt-8 mb-4">1. 감면 내용</h2>
 
-      <Callout type="info">
+      <Insight>
 
       <p><strong>지특법 §73</strong>: 취득세 <strong>면제 100%</strong>, 농특세 면제</p>
 
-      </Callout>
+      </Insight>
 
       <hr className="my-6" />
 
@@ -91,7 +91,7 @@ export default function LandExpropriationV10() {
 
       <h2 id="3.-감면-제외-사유" className="text-xl font-semibold mt-8 mb-4">3. 감면 제외 사유</h2>
 
-      <Callout type="caution">
+      <Insight>
 
       <p>다음의 경우 <strong>대체취득 감면대상에서 제외</strong>됩니다:</p>
 
@@ -106,9 +106,9 @@ export default function LandExpropriationV10() {
         <li><strong>재건축</strong>은 감면제외, 재개발은 도정법·공토법에 근거하여 감면가능</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
-      <Callout type="info">
+      <Insight>
 
       <p><strong>재건축 vs 재개발 구분</strong></p>
       <ul className="list-disc pl-6 my-4 space-y-1">
@@ -120,7 +120,7 @@ export default function LandExpropriationV10() {
 
       <p><strong>※ 대체취득감면 판단시에는 사업주체를 먼저 확인해볼 것</strong></p>
 
-      </Callout>
+      </Insight>
 
       <hr className="my-6" />
 
@@ -164,14 +164,14 @@ export default function LandExpropriationV10() {
       </tbody>
       </table>
 
-      <Callout type="info">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>농지의 경우</strong>: 수용된 농지소재지로부터 <strong>20킬로미터 이내</strong>의 지역에 거주 (사업자는 직접사업)해야 함</li>
         <li><strong>임대사업자</strong>: 제3자에게 임대하고 있던 부동산이 수용된 경우 사업자로 보아 <strong>부재지주가 아닌 것으로</strong> 감면 가능</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       <hr className="my-6" />
 

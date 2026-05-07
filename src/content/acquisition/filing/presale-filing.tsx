@@ -1,22 +1,22 @@
 "use client";
 
-import { Callout } from "@/components/mdx/Callout";
 
-export const meta = {
-  title: "분양신고시 (아파트, 오피스텔)",
-  sectionId: "06",
-  category: "취득세",
-  subcategory: "신고",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [21,21],
-  effectiveDate: "2020-01-01",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "지방세법 §10",
-  tags: ["분양","아파트","오피스텔","분양권","과세표준","프리미엄"],
-};
-
+import { Insight } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "분양신고시 (아파트, 오피스텔)"
+ *   sectionId: "06"
+ *   category: "취득세"
+ *   subcategory: "신고"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [21,21]
+ *   effectiveDate: "2020-01-01"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: "지방세법 §10"
+ *   tags: ["분양","아파트","오피스텔","분양권","과세표준","프리미엄"]
+ */
 export default function PresaleFilingV10() {
   return (
     <div className="space-y-6">
@@ -67,11 +67,11 @@ export default function PresaleFilingV10() {
       </tbody>
       </table>
 
-      <Callout type="info">
+      <Insight>
 
       <p><strong>주택임대사업자 감면대상</strong>: 아파트 및 오피스텔 <strong>전용면적 60㎡ 이하</strong>에 한함</p>
 
-      </Callout>
+      </Insight>
 
       <hr className="my-6" />
 
@@ -116,13 +116,13 @@ export default function PresaleFilingV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>사용승인일 이전 취득</strong>은 <strong>사용승인일</strong>을 취득일로 본다</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       <hr className="my-6" />
 

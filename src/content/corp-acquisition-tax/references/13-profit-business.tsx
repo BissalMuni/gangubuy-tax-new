@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "수익사업의 정의",
-  category: "corp-acquisition-tax",
-  group: "references",
-  groupLabel: "실무참고",
-  order: 14,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅲ_기타_참고/13_수익사업의_정의",
-  sourcePages: [237,239],
-  sourceTaxTypes: ["acquisition_tax","property_tax"],
-  sourceKeyLawRefs: ["지방세법 제104조","지방세법 시행령 제5조","지방세법 시행령 제137조","지방세법 시행령 제138조","지방세법 제106조","지방세법 시행령 제102조 제1항","지방세법 시행령 제102조 제2항","지방세법 시행령 제102조 제3항","지방세법 시행령 제102조 제5항","지방세법 시행령 제101조"],
-  lawReference: "지방세법 제104조, 지방세법 시행령 제5조, 지방세법 시행령 제137조, 지방세법 시행령 제138조, 지방세법 제106조, 지방세법 시행령 제102조 제1항, 지방세법 시행령 제102조 제2항, 지방세법 시행령 제102조 제3항, 지방세법 시행령 제102조 제5항, 지방세법 시행령 제101조",
-};
-
+import { CalcBox, SubSection } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "수익사업의 정의"
+ *   category: "corp-acquisition-tax"
+ *   group: "references"
+ *   groupLabel: "실무참고"
+ *   order: 14
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅲ_기타_참고/13_수익사업의_정의"
+ *   sourcePages: [237,239]
+ *   sourceTaxTypes: ["acquisition_tax","property_tax"]
+ *   sourceKeyLawRefs: ["지방세법 제104조","지방세법 시행령 제5조","지방세법 시행령 제137조","지방세법 시행령 제138조","지방세법 제106조","지방세법 시행령 제102조 제1항","지방세법 시행령 제102조 제2항","지방세법 시행령 제102조 제3항","지방세법 시행령 제102조 제5항","지방세법 시행령 제101조"]
+ *   lawReference: "지방세법 제104조, 지방세법 시행령 제5조, 지방세법 시행령 제137조, 지방세법 시행령 제138조, 지방세법 제106조, 지방세법 시행령 제102조 제1항, 지방세법 시행령 제102조 제2항, 지방세법 시행령 제102조 제3항, 지방세법 시행령 제102조 제5항, 지방세법 시행령 제101조"
+ */
 export default function Content13ProfitBusinessV10() {
   return (
     <div className="space-y-6">
@@ -39,17 +38,12 @@ export default function Content13ProfitBusinessV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>이 리프는 재산세 과세대상(토지·건축물·주택)의 구분 및 종합합산·별도합산·분리과세 토지의 범위를 다룬다. 건축 중인 건축물의 별도합산 해당 여부, 공사 중단 시 '정당한 사유'의 의미, 주택건설용 토지의 분리과세 요건 등이 주요 쟁점이다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>별도합산과세대상 토지</strong> — 건축물의 부속토지, 차고용 토지, 물류단지시설용 토지 등 경제활동에 활용되는 토지로서 누진세율이 적용되는 종합합산과 달리 별도의 누진세율로 과세되는 토지.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세법/제106조" target="_blank" rel="noopener noreferrer">법 §106</a>, <a href="https://law.go.kr/법령/지방세법시행령/제101조" target="_blank" rel="noopener noreferrer">시행령 §101</a></li>
@@ -66,35 +60,32 @@ export default function Content13ProfitBusinessV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>조심 판례 (1건)</Outline>
-      </h2>
-
-      <Outline level={2}>조심2008중448</Outline>
+      
+      </CalcBox><CalcBox title="■ 조심 판례 (1건)" id="section-3">
+      <SubSection title="● 조심2008중448">
       <p><strong>쟁점</strong>: 공사 중단 시 '정당한 사유' 해당 여부</p>
       <p><strong>판시사항</strong>: 경기침체로 인한 분양저조 및 소송 등으로 인한 공사재개의 어려움은 사업주체 내부사정에 불과하여 정당한 사유로 보기 어렵다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제106조" target="_blank" rel="noopener noreferrer">법 §106</a>, <a href="https://law.go.kr/법령/지방세법시행령/제103조" target="_blank" rel="noopener noreferrer">시행령 §103</a></p>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>예규 (2건)</Outline>
-      </h2>
-
-      <Outline level={2}>부동산세제과-1312</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 예규 (2건)" id="section-4">
+      <SubSection title="● 부동산세제과-1312">
       <p><strong>쟁점</strong>: 주택건설사업자 등이 주택건설을 위해 소유하는 토지의 분리과세 해당 여부</p>
       <p><strong>판시사항</strong>: 주택건설사업자·지역주택조합·재개발조합 등이 주택건설을 위하여 승인받은 토지로서 주택건설사업에 제공되고 있는 토지는 분리과세 대상에 해당한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제106조" target="_blank" rel="noopener noreferrer">법 §106</a>, <a href="https://law.go.kr/법령/지방세법시행령/제102조" target="_blank" rel="noopener noreferrer">시행령 §102</a></p>
 
-      <Outline level={2}>지방세정팀-474</Outline>
+      
+        </SubSection><SubSection title="● 지방세정팀-474">
       <p><strong>쟁점</strong>: 건축 중인 건축물의 공사 중단 시 '정당한 사유'의 의미</p>
       <p><strong>판시사항</strong>: 정당한 사유란 사업주체 외부의 불가항력적 사정(천재지변, 건축 금지·제한, 법령상 사실상 장애, 행정관청의 중지명령 등)으로 인하여 불가피하게 공사를 진행할 수 없는 사유를 말한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법시행령/제103조" target="_blank" rel="noopener noreferrer">시행령 §103</a></p>
 
 
-      <h2 id="section-5">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 관련 법조문" id="section-5">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세법 제104조</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세법 시행령 제5조</code></li>
@@ -112,10 +103,8 @@ export default function Content13ProfitBusinessV10() {
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
       <p>1. 유형자산 및 무형자산의 처분일(「지방자치분권 및 지역균형발전에 관한 특별법」 제25조에 따라 이전하는 공공기관의 경우에는 공공기관 이전일을 말한다. 이하 이 항에서 같다) 현재 3년 이상 계속하여 고유목적사업에 직접 사용한 경우: 해당 자산의 처분으로 인하여 생기는 수입. 이 경우 비영리내국법인이 수익사업에 속하는 자산을 고유목적사업에 전입한 후 처분하는 경우에는 전입 당시의 시가로 평가한 가액을 그 자산의 취득가액으로 한다.</p>
 
 
@@ -127,12 +116,9 @@ export default function Content13ProfitBusinessV10() {
 
 
 
-      <h2 id="section-7">
-      <Outline level={1}>재산세 정리</Outline>
-      </h2>
-
-      <Outline level={2}>지방세법제104조【정의】 재산세에서 사용하는 용어의 뜻은 다음과 같다</Outline>
-
+      
+      </CalcBox><CalcBox title="■ 재산세 정리" id="section-7">
+      <SubSection title="● 지방세법제104조【정의】 재산세에서 사용하는 용어의 뜻은 다음과 같다">
       <p>1. "토지"란 「공간정보의 구축 및 관리 등에 관한 법률」에 따라 지적공부의 등록대상이 되는 토지와 그 밖에 사용되고 있는 사실상의 토지를 말한다.</p>
 
       <p>2. "건축물"이란 제6조제4호에 따른 건축물을 말한다. : 건축법에 따른 건축물과 시설</p>
@@ -141,8 +127,8 @@ export default function Content13ProfitBusinessV10() {
 
       <p>3. "주택"이란 「주택법」 제2조제1호에 따른 주택을 말한다. 이 경우 토지와 건축물의 범위에서 주택은 제외한다.</p>
 
-      <Outline level={2}>건축물 과세대상</Outline>
-
+      
+        </SubSection><SubSection title="● 건축물 과세대상">
       <table>
       <thead>
       <tr><th>구분</th><th>건축물</th><th>시설</th><th>시설물</th><th>비고</th></tr>
@@ -157,8 +143,8 @@ export default function Content13ProfitBusinessV10() {
 
 
 
-      <Outline level={2}>토지 과세대상 - 지방세법제106조【과세대상의 구분 등】</Outline>
-
+      
+        </SubSection><SubSection title="● 토지 과세대상 - 지방세법제106조【과세대상의 구분 등】">
       <p>| 구분 | 과세대상(지방세법 제106조) | 세율 |</p>
       <p>| --- | --- | --- |</p>
       <p>| 종합합산 / (1항1호) | 별도합산,분리과세대상이 되는 토지를 제외한 토지 | 누진세율 |</p>
@@ -223,6 +209,8 @@ export default function Content13ProfitBusinessV10() {
 
       <p>11. 「주차장법 시행령」 제6조에 따른 부설주차장 설치기준면적 이내의 토지(법 제106조제1항제3호다목에 따른 토지 안의 부설주차장은 제외한다). 다만, 「관광진흥법 시행령」 제2조제1항제3호가목·나목에 따른 전문휴양업·종합휴양업 및 같은 항 제5호에 따른 유원시설업에 해당하는 시설의 부설주차장으로서 「도시교통정비 촉진법」 제15조 및 제17조에 따른 교통영향평가서의 심의 결과에 따라 설치된 주차장의 경우에는 해당 검토 결과에 규정된 범위 이내의 주차장용 토지를 말한다.</p>
 
-    </div>
+    
+      
+        </SubSection></CalcBox></div>
   );
 }

@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "법인분할",
-  category: "corp-acquisition-tax",
-  group: "reductions",
-  groupLabel: "감면",
-  order: 12,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅰ_지특법_감면/12_법인분할_분할실무_지특법57조의2제3항제2호",
-  sourcePages: [76,83],
-  sourceTaxTypes: ["acquisition_tax"],
-  sourceKeyLawRefs: ["법인세법 제47조","법인세법 제46조의3","법인세법 시행령 제82조의2 제8항","법인세법 시행령 제82조의4","지방세법 시행령 제27조 제4항","법인세법 제46조 제2항","지방세특례제한법 제57조의2 제3항","지방세법 제10조의5 제3항","법인세법 제46조의3 제3항","법인세법 제47조 제3항"],
-  lawReference: "법인세법 제47조, 법인세법 제46조의3, 법인세법 시행령 제82조의2 제8항, 법인세법 시행령 제82조의4, 지방세법 시행령 제27조 제4항, 법인세법 제46조 제2항, 지방세특례제한법 제57조의2 제3항, 지방세법 제10조의5 제3항, 법인세법 제46조의3 제3항, 법인세법 제47조 제3항",
-};
-
+import { CalcBox, SubSection } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "법인분할"
+ *   category: "corp-acquisition-tax"
+ *   group: "reductions"
+ *   groupLabel: "감면"
+ *   order: 12
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅰ_지특법_감면/12_법인분할_분할실무_지특법57조의2제3항제2호"
+ *   sourcePages: [76,83]
+ *   sourceTaxTypes: ["acquisition_tax"]
+ *   sourceKeyLawRefs: ["법인세법 제47조","법인세법 제46조의3","법인세법 시행령 제82조의2 제8항","법인세법 시행령 제82조의4","지방세법 시행령 제27조 제4항","법인세법 제46조 제2항","지방세특례제한법 제57조의2 제3항","지방세법 제10조의5 제3항","법인세법 제46조의3 제3항","법인세법 제47조 제3항"]
+ *   lawReference: "법인세법 제47조, 법인세법 제46조의3, 법인세법 시행령 제82조의2 제8항, 법인세법 시행령 제82조의4, 지방세법 시행령 제27조 제4항, 법인세법 제46조 제2항, 지방세특례제한법 제57조의2 제3항, 지방세법 제10조의5 제3항, 법인세법 제46조의3 제3항, 법인세법 제47조 제3항"
+ */
 export default function Content12CorpDivisionV10() {
   return (
     <div className="space-y-6">
@@ -38,17 +37,12 @@ export default function Content12CorpDivisionV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>이 리프는 지방세특례제한법 제57조의2 제3항 제2호에 따른 법인분할(인적분할·물적분할) 시 취득세 감면요건, 감면세율, 추징사유, 과세표준 및 세율을 실무적으로 정리한다. 아울러 대도시 외 법인이 분할하여 대도시 내에 신설법인을 설립하는 경우 중과세 제외대상에 해당하지 않는다는 해석례와, 사권제한 토지(장기미집행 도시계획시설)에 대한 재산세 감면(지방세특례제한법 제84조)도 부가적으로 다룬다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>인적분할</strong> — 분할대가로 받는 주식을 분할한 회사의 주주에게 귀속시키는 분할 방식으로, 무상취득으로 보아 취득세율 3.5%가 적용된다.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제57조의2" target="_blank" rel="noopener noreferrer">지특법 §57의2 제3항</a>, <a href="https://law.go.kr/법령/지방세법/제10조의5" target="_blank" rel="noopener noreferrer">법 §10의5 제3항</a>, <a href="https://law.go.kr/법령/법인세법/제46조" target="_blank" rel="noopener noreferrer">법인세법 §46 제2항</a>, <a href="https://law.go.kr/법령/법인세법/제46조의3" target="_blank" rel="noopener noreferrer">법인세법 §46의3 제3항</a></li>
@@ -67,25 +61,23 @@ export default function Content12CorpDivisionV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>예규 (2건)</Outline>
-      </h2>
-
-      <Outline level={2}>지방세운영과-2718</Outline>
+      
+      </CalcBox><CalcBox title="■ 예규 (2건)" id="section-3">
+      <SubSection title="● 지방세운영과-2718">
       <p><strong>쟁점</strong>: 대도시 외 소재 법인이 분할하여 대도시 내에 신설법인을 설립하는 경우 중과세 제외 해당 여부</p>
       <p><strong>판시사항</strong>: 취득세 중과세 제외대상에 해당하는 분할법인의 지역적 범위는 대도시 내 소재한 법인으로 한정된다. 대도시 외에 소재하는 B법인이 분할하여 대도시 내에 C법인을 설립하는 경우 중과세 제외대상에 해당하지 아니한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법시행령/제27조" target="_blank" rel="noopener noreferrer">시행령 §27 제4항</a>, <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제2항 제1호</a></p>
 
-      <Outline level={2}>지방세특례제도과-3552</Outline>
+      
+        </SubSection><SubSection title="● 지방세특례제도과-3552">
       <p><strong>쟁점</strong>: 미집행 토지가 사업시행자에게 소유권 이전된 경우 장기미집행 토지 감면 해당 여부</p>
       <p><strong>판시사항</strong>: 미집행 토지가 토지소유자로부터 사업시행자에게 수용 등의 방법으로 소유권이 이전된 경우에는 미집행 토지에 해당하지 않아 감면대상이 아니다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제84조" target="_blank" rel="noopener noreferrer">지특법 §84</a></p>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 관련 법조문" id="section-4">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">법인세법 제47조</code> ⚠️ _범위 밖_</li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">법인세법 제46조의3</code> ⚠️ _범위 밖_</li>
@@ -104,10 +96,8 @@ export default function Content12CorpDivisionV10() {
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
       <p>※법인세법제47조【물적분할 시 분할법인에 대한 과세특례】 ① 분할법인이 물적분할에 의하여 분할신설법인의 주식등을 취득한 경우로서 제46조제2항및 제3항에 따른 적격분할의 요건(같은 조 제2항제2호의 경우에는 분할대가의 전액이 주식등인 경우로 한정한다)을 갖춘 경우 그 주식등의 가액 중 물적분할로 인하여 발생한 자산의 양도차익에 상당하는 금액은 대통령령으로 정하는 바에 따라 분할등기일이 속하는 사업연도의 소득금액을 계산할 때 손금에 산입할 수 있다. 다만, 대통령령으로 정하는 부득이한 사유가 있는 경우에는 제46조제2항제2호·제3호 또는 제4호의 요건을 갖추지 못한 경우에도 자산의 양도차익에 상당하는 금액을 대통령령으로 정하는 바에 따라 손금에 산입할 수 있다.</p>
 
       <p>③ 제1항에 따라 양도차익 상당액을 손금에 산입한 분할법인은 분할등기일부터 3년의 범위에서 대통령령으로 정하는 기간 이내에 다음 각 호의 어느 하나에 해당하는 사유가 발생하는 경우에는 제1항에 따라 손금에 산입한 금액 중 제2항에 따라 익금에 산입하고 남은 금액을 그 사유가 발생한 날이 속하는 사업연도의 소득금액을 계산할 때 익금에 산입한다. 다만, 대통령령으로 정하는 부득이한 사유가 있는 경우에는 그러하지 아니하다.(추징규정)</p>
@@ -321,10 +311,8 @@ export default function Content12CorpDivisionV10() {
 
 
 
-      <h2 id="section-6">
-      <Outline level={1}>사권제한 토지에 대한 감면 관련 법률</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 사권제한 토지에 대한 감면 관련 법률" id="section-6">
       <p>```text</p>
       <p>지방세특례제한법 제84조 【사권제한토지에 대한 감면】 / ① 「국토의 계획 및 이용에 관한 법률」 제2조제7호에 따른 도시․군계획시설로서 같은 법 제30조에 따른 도시·군관리계획의 결정(다른 법률에 따라 의제되는 경우를 포함한다. 이하 제2항에서 같다) 및 같은 법 제32조에 따른 도시·군관리계획에 관한 지형도면의 고시(다른 법률에 따라 같은 법 제30조에 따른 도시·군관리계획의 결정이 의제되는 경우로서 「토지이용규제 기본법」 제8조에 따라 지형도면이 고시되는 경우를 포함한다. 이하 제2항에서 같다)가 된 후 과세기준일 현재 10년 이상 장기간 미집행된 토지, 지상건축물, 「지방세법」 제104조제3호에 따른 주택의 경우 각 해당 부분에  대해서는 2027년 12월 31일까지 재산세의 100분의 50을 경감하고, 한다. / ② 에 따른 공공시설을 위한 토지(주택의 부속토지를 포함한다)로서  및 에 따른 도시·군관리계획의 결정 및 같은 법 제32조에 따른 도시·군관리계획에 관한 지형도면의 고시가 된 후 과세기준일 현재 미집행된 토지의 경우 해당 부분에 대해서는 재산세의 100분의 50을 2027년 12월 31일까지 경감한다. / ③ 제1항 및 제2항에서 "미집행"이란 「국토의 계획 및 이용에 관한 법률」 제88조에 따른 실시계획의 인가(다른 법률에 따라 의제되는 경우를 포함한다)나 그에 상당하는 절차가 진행되지 아니한 경우를 말한다. 다만, 「도시 및 주거환경정비법」 제35조에 따른 조합설립인가를 받은 날부터 3년이 되는 날까지 같은 법 제50조에 따른 사업시행계획인가를 신청(해당 신청을 통하여 같은 법 제57조에 따라 「국토의 계획 및 이용에 관한 법률」 제88조에 따른 실시계획의 인가가 의제되지 아니한 경우는 신청이 없었던 것으로 본다)하지 아니한 경우는 제외한다. &lt;신설 2025.12.31&gt; / ④ 「철도안전법」 제45조에 따라 건축 등이 제한된 토지의 경우 해당 부분에 대해서는 재산세의 100분의 50을 2027년 12월 31일까지 경감한다.</p>
       <p>```</p>
@@ -370,6 +358,7 @@ export default function Content12CorpDivisionV10() {
 
       <p>2항의 미집행토지는 토지소유자에게서 사업시행자에게 수용등의 방법으로 소유권이 이전된 경우 미집행토지에 해당하지 않아 감면대상 아님.(지방세특례제도과-3552. 2018.10.1.)</p>
 
-    </div>
+    
+      </CalcBox></div>
   );
 }

@@ -1,22 +1,21 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "서울시 교육자료",
-  category: "corp-acquisition-tax",
-  group: "heavy",
-  groupLabel: "중과",
-  order: 7,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-heavy",
-  sourceBookTitle: "법인 중과 실무 (2026년)",
-  sourceLeaf: "corp-heavy/Ⅰ_법인_중과_실무/07_서울시_교육자료",
-  sourcePages: [17,23],
-  sourceTaxTypes: ["acquisition_tax"],
-};
-
+import { CalcBox, SubSection } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "서울시 교육자료"
+ *   category: "corp-acquisition-tax"
+ *   group: "heavy"
+ *   groupLabel: "중과"
+ *   order: 7
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-heavy"
+ *   sourceBookTitle: "법인 중과 실무 (2026년)"
+ *   sourceLeaf: "corp-heavy/Ⅰ_법인_중과_실무/07_서울시_교육자료"
+ *   sourcePages: [17,23]
+ *   sourceTaxTypes: ["acquisition_tax"]
+ */
 export default function Content07SeoulGuideV10() {
   return (
     <div className="space-y-6">
@@ -36,17 +35,12 @@ export default function Content07SeoulGuideV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>서울시 교육자료(2019년)로, 대도시(과밀억제권역) 내 법인 취득세 중과세 요건을 본점 사업용 부동산 취득, 법인 설립·설치·전입 관련 부동산 취득, 중과제외업종, 휴면법인 인수 등 4개 주제로 구분하여 실무 사례별 판단 기준을 제시한다. 각 쟁점에 대해 대법원 판결, 조세심판원 결정, 행정청 예규를 관련 근거로 인용하며, 지방세법 제13조 제1항·제2항의 중과세 요건 해석이 핵심이다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>과밀억제권역</strong> — 수도권정비계획법 제6조에 따라 지정된 권역으로, 서울 전체, 경기 일부(의정부시 등 14개 시), 인천 일부(강화군 등 제외)가 해당하며 대도시 취득세 중과세의 지리적 기준이 된다.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제1항</a>, <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제2항</a>, <code className="bg-gray-100 px-1 rounded text-sm">수도권정비계획법/제6조</code></li>
@@ -67,115 +61,125 @@ export default function Content07SeoulGuideV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>수록 판례 (8건)</Outline>
-      </h2>
-
-      <Outline level={2}>대법원2005두13469</Outline>
+      
+      </CalcBox><CalcBox title="■ 수록 판례 (8건)" id="section-3">
+      <SubSection title="● 대법원2005두13469">
       <p><strong>쟁점</strong>: 위탁관리 직원이 상주하는 경우 인적설비 해당 여부</p>
       <p><strong>판시사항</strong>: 취득세 중과요건 중 인적설비란 당해 법인의 지휘·감독하에 인원이 상주하는 것을 뜻할 뿐이고, 반드시 당해 법인에 직속하는 고용형태를 요구하지 않으므로 위탁관리 회사 직원이 상주하는 경우도 인적설비를 갖춘 것으로 보아 취득세 중과세 대상이 된다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제2항</a></p>
 
-      <Outline level={2}>대법원2008두6325</Outline>
+      
+        </SubSection><SubSection title="● 대법원2008두6325">
       <p><strong>쟁점</strong>: 공장 신·증설 중과 미해당 시 지점 설치 관련 중과 가부</p>
       <p><strong>판시사항</strong>: 지방세법 제13조 제2항 제2호(공장 신·증설)에 따른 부동산 취득에 해당하지 않아 중과세 되지 않더라도, 제13조 제2항 제1호(지점 설치 등)와 관련한 부동산 취득에 해당하는 경우라면 취득세를 중과세할 수 있다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제2항</a></p>
 
-      <Outline level={2}>대법원2012두13511</Outline>
+      
+        </SubSection><SubSection title="● 대법원2012두13511">
       <p><strong>쟁점</strong>: 성남시 법인 설립 후 서울시 부동산 취득 시 중과 여부</p>
       <p><strong>판시사항</strong>: 경기도 성남시와 서울시는 하나의 대도시에 해당하므로, 성남시에서 법인을 설립한 후 5년 이내에 서울시 소재 부동산을 취득한 경우 취득세 중과대상이 된다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제2항</a></p>
 
-      <Outline level={2}>대법원2012두20984</Outline>
+      
+        </SubSection><SubSection title="● 대법원2012두20984">
       <p><strong>쟁점</strong>: 본점 전입 관련 취득세 중과 부동산의 범위</p>
       <p><strong>판시사항</strong>: 법인이 본점의 사무실 용도로 직접 사용하기 위한 부동산뿐만 아니라 인적·물적 설비를 갖추어 본점의 사업활동 장소로 사용하기 위해 취득하는 부동산도 취득세 중과대상에 포함된다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제2항</a></p>
 
-      <Outline level={2}>대법원2012두6551</Outline>
+      
+        </SubSection><SubSection title="● 대법원2012두6551">
       <p><strong>쟁점</strong>: 동일 과밀억제권역 내 본점 이전 시 취득세 중과 여부</p>
       <p><strong>판시사항</strong>: 동일한 과밀억제권역 내 기존 본점에서 신축한 곳으로 본점을 이전해 오는 경우에도 취득세 중과대상에 해당한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제1항</a></p>
 
-      <Outline level={2}>대법원2014두1116</Outline>
+      
+        </SubSection><SubSection title="● 대법원2014두1116">
       <p><strong>쟁점</strong>: 본점 일부 조직 이전 시 중과 여부</p>
       <p><strong>판시사항</strong>: 취득세 중과대상인 본점은 전체 영업활동을 총괄하는 것이나 반드시 하나만 존재하는 것은 아니므로, 동일한 대도시 내 본점의 일부 조직을 신축 건축물로 이전한 경우도 취득세 중과대상이 된다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제1항</a></p>
 
-      <Outline level={2}>대법원2014두4023</Outline>
+      
+        </SubSection><SubSection title="● 대법원2014두4023">
       <p><strong>쟁점</strong>: 위탁사업장에 대한 지휘·감독권 없는 경우 지점 설치 불인정</p>
       <p><strong>판시사항</strong>: 위탁사업장에 대한 지휘·감독권이 없는 경우에는 지점의 설치로 보아 취득세를 중과세할 수 없다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제2항</a></p>
 
-      <Outline level={2}>대법원2016두33872</Outline>
+      
+        </SubSection><SubSection title="● 대법원2016두33872">
       <p><strong>쟁점</strong>: 지점 설치 관련 중과세 대상 부동산의 범위(숙박업 전체)</p>
       <p><strong>판시사항</strong>: 지점 설치에 따른 부동산 취득으로 보아 취득세를 중과세하는 경우, 사무실 용도 사용 부분만이 아니라 숙박업에 사용하고 있는 부동산 전체가 취득세 중과대상이 된다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제2항</a></p>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>조심 판례 (8건)</Outline>
-      </h2>
-
-      <Outline level={2}>조심2010지0328</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 조심 판례 (8건)" id="section-4">
+      <SubSection title="● 조심2010지0328">
       <p><strong>쟁점</strong>: 본점 신·증축 후 매각·재신축 이전 시 중과세 범위</p>
       <p><strong>판시사항</strong>: 취득세 중과대상은 본점용 사무실 면적의 증가분에 한하는 것이다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제1항</a></p>
 
-      <Outline level={2}>조심2010지340</Outline>
+      
+        </SubSection><SubSection title="● 조심2010지340">
       <p><strong>쟁점</strong>: 대내적 업무만 처리하는 장소의 지점 해당 여부</p>
       <p><strong>판시사항</strong>: 본점 이외의 장소에서 경리·인사 등 대외적 거래와 직접적 관련이 없는 내부적 업무만을 처리하는 경우는 지점에 해당하지 않는다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제2항</a></p>
 
-      <Outline level={2}>조심2011지0490</Outline>
+      
+        </SubSection><SubSection title="● 조심2011지0490">
       <p><strong>쟁점</strong>: 대내적 업무만 처리하는 장소의 지점 해당 여부(보조 사례)</p>
       <p><strong>판시사항</strong>: 대외적인 거래업무 없이 내부적 업무만 처리하는 장소는 지점에 해당하지 않는다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제2항</a></p>
 
-      <Outline level={2}>조심2013지0459</Outline>
+      
+        </SubSection><SubSection title="● 조심2013지0459">
       <p><strong>쟁점</strong>: 공장 신·증설 미해당 시 지점 설치 관련 중과세 가부(심판 사례)</p>
       <p><strong>판시사항</strong>: 공장 신·증설에 해당하지 않더라도 지점 설치와 관련한 부동산 취득에 해당하는 경우 취득세를 중과세할 수 있다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제2항</a></p>
 
-      <Outline level={2}>조심2014지0591</Outline>
+      
+        </SubSection><SubSection title="● 조심2014지0591">
       <p><strong>쟁점</strong>: 지점 설치 중과세 대상 부동산 범위(숙박업 사례 심판)</p>
       <p><strong>판시사항</strong>: 숙박업 전체 부동산에 대해 지점 설치 관련 취득세 중과세를 적용한다는 처분을 기각하였으며, 이후 대법원2016두33872 판결로 이어졌다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제2항</a></p>
 
-      <Outline level={2}>조심2012지0710</Outline>
+      
+        </SubSection><SubSection title="● 조심2012지0710">
       <p><strong>쟁점</strong>: 산업단지 내 법인의 산업단지 외 본점 이전 관련 중과 여부</p>
       <p><strong>판시사항</strong>: 산업단지 내 법인이 산업단지 밖으로 본점을 이전하는 경우 대도시 외에서 대도시로의 전입에 해당하여, 이전 전·후 5년 이내 부동산 취득은 중과대상이 된다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제2항</a></p>
 
-      <Outline level={2}>조심2016지1201</Outline>
+      
+        </SubSection><SubSection title="● 조심2016지1201">
       <p><strong>쟁점</strong>: 취득 이후 주택건설사업자 등록 시 중과 제외 여부</p>
       <p><strong>판시사항</strong>: 취득일 현재 주택건설사업자 자격요건을 갖추지 못한 법인이 부동산 취득 이후 주택건설사업자로 등록하더라도 이미 성립한 중과세 납세의무에 영향을 미칠 수 없으므로 취득세 중과대상이 된다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제2항</a>, <a href="https://law.go.kr/법령/지방세법시행령/제26조" target="_blank" rel="noopener noreferrer">시행령 §26 제1항</a></p>
 
-      <Outline level={2}>조심2015지0594</Outline>
+      
+        </SubSection><SubSection title="● 조심2015지0594">
       <p><strong>쟁점</strong>: 취득 후 임대사업자 등록 시 중과세 여부</p>
       <p><strong>판시사항</strong>: 부동산을 취득할 당시 등록을 한 임대사업자가 아니므로 취득세 중과대상에 해당한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제2항</a>, <a href="https://law.go.kr/법령/지방세법시행령/제26조" target="_blank" rel="noopener noreferrer">시행령 §26 제1항</a></p>
 
 
-      <h2 id="section-5">
-      <Outline level={1}>예규 (2건)</Outline>
-      </h2>
-
-      <Outline level={2}>세제과-5885</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 예규 (2건)" id="section-5">
+      <SubSection title="● 세제과-5885">
       <p><strong>쟁점</strong>: 법인격 없는 단체의 취득세 중과 여부</p>
       <p><strong>판시사항</strong>: 지방세에서 법인 설립등기를 하지 않은 법인격 없는 단체는 법인으로 보지 않으므로, 취득세 중과세 요건을 충족하더라도 취득의 주체가 법인격 없는 단체라면 취득세 중과대상에 해당하지 않는다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제2항</a></p>
 
-      <Outline level={2}>지방세운영과-1064</Outline>
+      
+        </SubSection><SubSection title="● 지방세운영과-1064">
       <p><strong>쟁점</strong>: 오피스텔 임대사업의 중과제외업종 해당 여부</p>
       <p><strong>판시사항</strong>: 오피스텔이라 하더라도 관계법령에 따라 주택임대사업에 사용된다면 지방세법 시행령 제26조 제1항 제31호의 중과제외업종인 주택임대사업에 포함된다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법시행령/제26조" target="_blank" rel="noopener noreferrer">시행령 §26 제1항</a></p>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 원문" id="source">
       <p>```text</p>
       <p>대도시 내 법인 취득세 중과여부 확인 매뉴얼</p>
       <p>```</p>
@@ -598,6 +602,7 @@ export default function Content07SeoulGuideV10() {
         <li>대도시 내에서 법인을 설립한 이후 5년 이내에 취득하는 부동산에 해당하여 취득세 중과대상이 됨</li>
       </ul>
 
-    </div>
+    
+      </CalcBox></div>
   );
 }

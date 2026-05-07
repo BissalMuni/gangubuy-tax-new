@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "부동산등기용 등록번호",
-  category: "corp-acquisition-tax",
-  group: "references",
-  groupLabel: "실무참고",
-  order: 12,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅲ_기타_참고/11_부동산등기용_등록번호_부여방법",
-  sourcePages: [229,233],
-  sourceTaxTypes: ["common"],
-  sourceKeyLawRefs: ["지방세법 제107조 제1호"],
-  lawReference: "지방세법 제107조 제1호",
-};
-
+import { CalcBox, SubSection } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "부동산등기용 등록번호"
+ *   category: "corp-acquisition-tax"
+ *   group: "references"
+ *   groupLabel: "실무참고"
+ *   order: 12
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅲ_기타_참고/11_부동산등기용_등록번호_부여방법"
+ *   sourcePages: [229,233]
+ *   sourceTaxTypes: ["common"]
+ *   sourceKeyLawRefs: ["지방세법 제107조 제1호"]
+ *   lawReference: "지방세법 제107조 제1호"
+ */
 export default function Content11RegistrationNumberV10() {
   return (
     <div className="space-y-6">
@@ -39,17 +38,12 @@ export default function Content11RegistrationNumberV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>이 리프는 학교법인·종교단체·선교단체 등 비영리사업자가 소유하는 부동산을 '해당 사업에 직접 사용'하는지 여부의 판단 기준을 다룬다. 사택·숙소 제공 시 해당 구성원이 사업에 필요불가결한 중추적 지위에 있는지를 기준으로 취득세·재산세 비과세 여부를 판단한다. 학교 구내 매점·식당 등 위탁운영시설과 부목사·관리집사 사택의 비과세 적용 여부도 함께 검토된다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>목적사업 직접사용</strong> — 비영리사업자가 소유하는 부동산의 사용용도가 해당 비영리사업 자체에 현실적으로 직접 사용되는 것을 의미하며, 사업목적과 취득목적을 고려하여 실제 사용관계를 기준으로 객관적으로 판단한다.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세법/제107조" target="_blank" rel="noopener noreferrer">법 §107</a>, <a href="https://law.go.kr/법령/지방세법/제127조" target="_blank" rel="noopener noreferrer">법 §127 제1항</a></li>
@@ -64,59 +58,57 @@ export default function Content11RegistrationNumberV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>수록 판례 (5건)</Outline>
-      </h2>
-
-      <Outline level={2}>대법원2004다58901</Outline>
+      
+      </CalcBox><CalcBox title="■ 수록 판례 (5건)" id="section-3">
+      <SubSection title="● 대법원2004다58901">
       <p><strong>쟁점</strong>: 비영리사업자의 부동산 '사업에 사용' 의미 및 판단기준</p>
       <p><strong>판시사항</strong>: 비영리사업자가 당해 부동산을 '그 사업에 사용'한다 함은 현실적으로 당해 부동산의 사용용도가 비영리사업 자체에 직접 사용되는 것을 뜻하고, 그 범위는 사업목적과 취득목적을 고려하여 실제의 사용관계를 기준으로 객관적으로 판단하여야 한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제107조" target="_blank" rel="noopener noreferrer">법 §107</a>, <a href="https://law.go.kr/법령/지방세법/제127조" target="_blank" rel="noopener noreferrer">법 §127 제1항</a></p>
 
-      <Outline level={2}>대법원2004두9265</Outline>
+      
+        </SubSection><SubSection title="● 대법원2004두9265">
       <p><strong>쟁점</strong>: 대학교 캠퍼스 내 위탁운영 매점·식당 등의 교육사업 해당 여부</p>
       <p><strong>판시사항</strong>: 대학교 캠퍼스 내에서 운영하는 매점, 식당, 서점, 주점 등에 대해서는 해당 시설을 직접 운영하지 않고 위탁을 주었더라도 학교 운영에 필요한 교육사업으로 본다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제107조" target="_blank" rel="noopener noreferrer">법 §107</a></p>
 
-      <Outline level={2}>대법원2009두4708</Outline>
+      
+        </SubSection><SubSection title="● 대법원2009두4708">
       <p><strong>쟁점</strong>: 교회 부목사 사택의 종교단체 목적사업 직접사용 해당 여부</p>
       <p><strong>판시사항</strong>: 부목사는 담임목사를 보좌하는 임기 1년의 임시목사로서 종교 활동에 필요불가결한 중추적인 지위에 있다고 할 수 없으므로, 부목사 사택으로 제공된 부동산은 교회의 목적사업에 직접 사용되는 것이라 할 수 없어 비과세 대상에 해당하지 않는다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제107조" target="_blank" rel="noopener noreferrer">법 §107 제1호</a>, <a href="https://law.go.kr/법령/지방세법/제127조" target="_blank" rel="noopener noreferrer">법 §127 제1항 제1호</a></p>
 
-      <Outline level={2}>대법원2013두21953</Outline>
+      
+        </SubSection><SubSection title="● 대법원2013두21953">
       <p><strong>쟁점</strong>: 비영리사업자 구성원 사택의 목적사업 직접사용 판단기준</p>
       <p><strong>판시사항</strong>: 비영리사업자가 구성원에게 사택이나 숙소를 제공한 경우, 그 구성원이 사업 활동에 필요불가결한 중추적인 지위에 있어 체류가 직무 수행의 성격을 겸비한다면 목적사업에 직접 사용되는 것으로 볼 수 있지만, 단지 편의 제공에 그치거나 직무 수행과 크게 관련되지 않는다면 목적사업 직접 사용으로 볼 수 없다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제107조" target="_blank" rel="noopener noreferrer">법 §107</a></p>
 
-      <Outline level={2}>대법원2016두48249</Outline>
+      
+        </SubSection><SubSection title="● 대법원2016두48249">
       <p><strong>쟁점</strong>: 선교단체 대표이사 숙소의 종교단체 직접사용 부동산 해당 여부</p>
       <p><strong>판시사항</strong>: 선교단체 대표이사와 그 가족이 거주하는 주택도 종교단체가 해당 사업에 직접 사용하는 부동산에 해당된다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제107조" target="_blank" rel="noopener noreferrer">법 §107</a></p>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>조심 판례 (1건)</Outline>
-      </h2>
-
-      <Outline level={2}>조심2014지1271</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 조심 판례 (1건)" id="section-4">
+      <SubSection title="● 조심2014지1271">
       <p><strong>쟁점</strong>: 학교법인 부동산의 교육사업 '직접 사용' 의미</p>
       <p><strong>판시사항</strong>: 비영리사업자인 학교법인이 당해 부동산을 그 사업에 '직접 사용'한다는 의미는 사립학교법 규정에 따라 교육용 기본재산으로 등재되고, 실제 사용 용도도 교지·교사·체육장·실습 또는 연구시설 등 교육사업 자체에 직접 사용되어야 한다. 쟁점부동산 중 1층 상가 일부를 제외한 부분은 학교 비품창고 및 학생 다용도실로 사용하므로 유예기간 내 고유 업무에 직접 사용하는 것으로 인정된다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제107조" target="_blank" rel="noopener noreferrer">법 §107</a></p>
 
 
-      <h2 id="section-5">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 관련 법조문" id="section-5">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세법 제107조 제1호</code></li>
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
       <p>국가·지방자치단체·국제기관·외국정부 등록번호</p>
 
 
@@ -129,10 +121,8 @@ export default function Content11RegistrationNumberV10() {
 
 
 
-      <h2 id="section-7">
-      <Outline level={1}>학교(41조) 및 종교단체(50조)의 사택감면대상 등</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 학교(41조) 및 종교단체(50조)의 사택감면대상 등" id="section-7">
       <table>
       <thead>
       <tr><th>구  분</th><th>내  외</th><th>감   면</th><th>과  세</th></tr>
@@ -237,6 +227,7 @@ export default function Content11RegistrationNumberV10() {
 
       <p>비영리사업자가 구성원에게 사택이나 숙소를 제공한 경우 그 구성원이 비영리사업자의 사업 활동에 필요불가결한 중추적인 지위에 있어 사택이나 숙소에 체류하는 것이 직무 수행의 성격도 겸비한다면 당해 사택이나 숙소는 목적사업에 직접 사용되는 것으로 볼 수 있지만, 사택이나 숙소의 제공이 단지 구성원에 대한 편의를 도모하기 위한 것이거나 그곳에 체류하는 것이 직무 수행과 크게 관련되지 않는다면 그 사택이나 숙소는 비영리사업자의 목적사업에 직접 사용되는 것으로 볼 수 없다.</p>
 
-    </div>
+    
+      </CalcBox></div>
   );
 }

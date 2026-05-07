@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "대체취득 (토지수용)",
-  category: "corp-acquisition-tax",
-  group: "reductions",
-  groupLabel: "감면",
-  order: 10,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅰ_지특법_감면/10_대체취득_토지수용_감면_지특법73조",
-  sourcePages: [60,65],
-  sourceTaxTypes: ["acquisition_tax"],
-  sourceKeyLawRefs: ["지방세특례제한법 제73조","지방세법 제111조 제5항","지방세특례제한법 제57조의2","법인세법 제44조"],
-  lawReference: "지방세특례제한법 제73조, 지방세법 제111조 제5항, 지방세특례제한법 제57조의2, 법인세법 제44조",
-};
-
+import { CalcBox, SubSection } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "대체취득 (토지수용)"
+ *   category: "corp-acquisition-tax"
+ *   group: "reductions"
+ *   groupLabel: "감면"
+ *   order: 10
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅰ_지특법_감면/10_대체취득_토지수용_감면_지특법73조"
+ *   sourcePages: [60,65]
+ *   sourceTaxTypes: ["acquisition_tax"]
+ *   sourceKeyLawRefs: ["지방세특례제한법 제73조","지방세법 제111조 제5항","지방세특례제한법 제57조의2","법인세법 제44조"]
+ *   lawReference: "지방세특례제한법 제73조, 지방세법 제111조 제5항, 지방세특례제한법 제57조의2, 법인세법 제44조"
+ */
 export default function Content10ReplacementV10() {
   return (
     <div className="space-y-6">
@@ -39,17 +38,12 @@ export default function Content10ReplacementV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>지방세특례제한법 제73조에 따른 토지수용 대체취득 취득세 감면 요건(사업인정, 대체취득 시기, 대체취득 가능 지역, 부재부동산 소유자 해당 여부)을 다룬다. 주요 쟁점은 대체취득 시기의 기산일, 보상금 수령 시점, 부재부동산 소유자 범위 판단 기준이다. 조심 결정례 및 예규·질의회신을 통해 각 요건의 해석 기준을 제시한다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>대체취득 감면</strong> — 공익사업으로 부동산이 매수·수용·철거된 자가 일정 요건을 갖추어 대체 부동산을 취득하는 경우 취득세를 면제하는 제도.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제73조" target="_blank" rel="noopener noreferrer">지특법 §73</a></li>
@@ -68,55 +62,56 @@ export default function Content10ReplacementV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>조심 판례 (2건)</Outline>
-      </h2>
-
-      <Outline level={2}>조심2015지1764</Outline>
+      
+      </CalcBox><CalcBox title="■ 조심 판례 (2건)" id="section-3">
+      <SubSection title="● 조심2015지1764">
       <p><strong>쟁점</strong>: 수용된 부동산 소유자와 대체취득자 동일인 요건 — 상속 후 대체취득 감면 적용 여부</p>
       <p><strong>판시사항</strong>: 수용되는 부동산의 소유자와 대체취득하는 부동산의 소유자가 동일인일 때 취득세가 면제되므로, 상속인이 수용된 부동산의 보상금으로 대체부동산을 취득하더라도 대체취득 감면을 적용할 수 없다. 피상속인으로부터 상속받은 것이 이주자택지 분양권에 불과하고 쟁점부동산을 상속받은 것이 아니므로 감면 대상에 해당하지 않는다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제73조" target="_blank" rel="noopener noreferrer">지특법 §73</a></p>
 
-      <Outline level={2}>조심2015지79</Outline>
+      
+        </SubSection><SubSection title="● 조심2015지79">
       <p><strong>쟁점</strong>: 사업인정고시일 이전 매매계약 체결 — 대체취득 감면 요건 충족 여부</p>
       <p><strong>판시사항</strong>: 지방세특례제한법 제73조 제1항은 대체부동산 취득 계약을 계약일 또는 사업인정고시일 이후에 체결하여야 한다고 명확히 규정하고 있으므로, 사업인정고시일 전에 매매계약을 체결한 쟁점토지는 대체취득 감면 대상에 해당하지 않는다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제73조" target="_blank" rel="noopener noreferrer">지특법 §73 제1항</a></p>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>예규 (5건)</Outline>
-      </h2>
-
-      <Outline level={2}>세제과-4861</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 예규 (5건)" id="section-4">
+      <SubSection title="● 세제과-4861">
       <p><strong>쟁점</strong>: 이주자택지 특별분양 시 '취득이 가능한 날' 판단 기준</p>
       <p><strong>판시사항</strong>: 사업인정을 받은 자에게 토지를 수용당하여 새로이 조성되는 이주자택지를 공급받는 경우, 잔금지급일을 취득이 가능한 날로 보되 잔금지급일에 토지 사용이 불가능한 경우에는 토지 사용가능시기를 취득이 가능한 날로 보아야 한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제73조" target="_blank" rel="noopener noreferrer">지특법 §73</a></p>
 
-      <Outline level={2}>지방세특례제도과-1373</Outline>
+      
+        </SubSection><SubSection title="● 지방세특례제도과-1373">
       <p><strong>쟁점</strong>: 이의신청·행정소송 없이 공탁금 수령을 지연한 경우 대체취득 기산일</p>
       <p><strong>판시사항</strong>: 이의신청이나 행정소송 없이 공탁금 수령에도 제약이 없는 상태에서 단순히 공탁금 수령을 늦게 한 경우, 보상금 공탁일(공탁통지를 받은 날)이 토지 등 수용을 당한 자에게는 보상금을 마지막으로 받은 날(양도시기)이 된다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제73조" target="_blank" rel="noopener noreferrer">지특법 §73</a></p>
 
-      <Outline level={2}>지방세운영과-143</Outline>
+      
+        </SubSection><SubSection title="● 지방세운영과-143">
       <p><strong>쟁점</strong>: 재개발정비사업조합이 '사업인정을 받은 자'에 포함되는지 여부</p>
       <p><strong>판시사항</strong>: 뉴타운 주택 재개발정비사업조합이 사업시행인가를 받았다면, 도시 및 주거환경정비법 제40조에 따라 토지·물건 또는 권리를 수용 또는 사용할 수 있는 '사업인정을 받은 자'에 포함된다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제73조" target="_blank" rel="noopener noreferrer">지특법 §73</a></p>
 
-      <Outline level={2}>서울세제과-6805</Outline>
+      
+        </SubSection><SubSection title="● 서울세제과-6805">
       <p><strong>쟁점</strong>: 농지 외 물건 수용 시 '잇닿아 있는' 구의 의미 — 부재부동산 소유자 판단</p>
       <p><strong>판시사항</strong>: '잇닿아 있는'이란 서로 이어져 맞닿아 있는 경우로서 서울시 각 구의 경계선에 맞닿아 있으면 잇닿아 있는 것으로 보아야 한다. 동작구와 구로구 사이에 수정구가 있는 경우는 연접한 구에 해당하지 않아 부재부동산 소유자에 해당한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제73조" target="_blank" rel="noopener noreferrer">지특법 §73</a>, <a href="https://law.go.kr/법령/지방세특례제한법시행령/제34조" target="_blank" rel="noopener noreferrer">지특령 §34 제2항</a></p>
 
-      <Outline level={2}>서울세제-4861</Outline>
+      
+        </SubSection><SubSection title="● 서울세제-4861">
       <p><strong>쟁점</strong>: 이주자택지 취득이 가능한 날 및 연부취득 시 감면 범위</p>
       <p><strong>판시사항</strong>: 잔금지급일을 취득이 가능한 날로 보되 토지 사용이 불가능한 경우에는 사용가능시기를 기준으로 하고, 연부취득 시 보상금을 마지막으로 받은 날(또는 취득이 가능한 날)로부터 1년 이내에 불입되는 계약금 및 연부금에 대해 감면된다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제73조" target="_blank" rel="noopener noreferrer">지특법 §73</a></p>
 
 
-      <h2 id="section-5">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 관련 법조문" id="section-5">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제73조</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세법 제111조 제5항</code></li>
@@ -125,10 +120,8 @@ export default function Content10ReplacementV10() {
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
       <p>가. 국가, 지방자치단체 또는 「지방자치법」 제176조제1항에 따른 지방자치단체조합으로부터의 취득</p>
 
       <p>나. 외국으로부터의 수입에 의한 취득</p>
@@ -281,10 +274,8 @@ export default function Content10ReplacementV10() {
       <p>|  | 직인 |</p>
       <p>| --- | --- |</p>
 
-      <h2 id="section-7">
-      <Outline level={1}>법인합병에 대한 감면 관련 법률</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 법인합병에 대한 감면 관련 법률" id="section-7">
       <p>```text</p>
       <p>지방세특례제한법 제57조의 2 【기업합병 분할등에 대한 감면】 / ① 「법인세법」 제44조제2항 또는 제3항에 해당하는 합병으로서 대통령령으로 정하는 합병 중 법인으로서 「중소기업기본법」에 따른 중소기업 간 합병 및 법인이 대통령령으로 정하는 기술혁신형사업법인과의 합병에 따라 양수하는 사업용 재산을 2027년 12월 31일까지 취득하는 경우에는「 / 에 따라 산출한 취득세의 100분의 60을 경감하되, 해당 재산이 / 에는 경감된 취득세를 추징한다. &lt;개정 2024.12.31.&gt; / ②  다음 각 호에서 정하는 법인이 「법인세법」 제44조제2항에 따른 합병으로 양수받은 사업용 재산에 대해서는 취득세를 2027년 12월 31일까지 면제하고, 합병으로 양수받아 3년 이내에 등기하는 재산에 대해서는 2027년 12월 31일까지 등록면허세의 100분의 50을 경감한다. 다만, 합병등기일부터 3년 이내에 「법인세법」 제44조의3제3항 각 호의 어느 하나에 해당하는 사유가 발생하는 경우(같은 항 각 호 외의 부분 단서에 해당하는 경우는 제외한다)에는 면제된 취득세를 추징한다. / 1. 「농업협동조합법」, 「수산업협동조합법」 및 「산림조합법」에 따라 설립된 조합 간의 합병 / 2. 「새마을금고법」에 따라 설립된 새마을금고 간의 합병 / 3. 「신용협동조합법」에 따라 설립된 신용협동조합 간의 합병 / ⑧ 「기업 활력 제고를 위한 특별법」 제4조제1항에 해당하는 내국법인이 같은 법 제10조 또는 제12조에 따라 주무부처의 장이 승인 또는 변경승인한 사업재편계획에 의해 합병 등 사업재편을 추진하는 경우 해당 사업재편에 따라 설립 또는 변경되는 법인에 대한 법인등기에 대하여 등록면허세의 100분의 50을 2027년 12월 31일까지 경감한다. 다만, 같은 법 제13조에 따라 사업재편계획 승인이 취소된 경우에는 경감된 등록면허세를 추징한다.</p>
       <p>```</p>
@@ -297,6 +288,7 @@ export default function Content10ReplacementV10() {
 
       <p>1. 합병등기일 현재 1년 이상 사업을 계속하던 내국법인 간의 합병일 것. 다만, 다른법인과 합병하는 것을 유일한 목적으로 하는 법인으로서 대통령령으로 정하는 법인의 경우는 본문의 요건을 갖춘 것으로 본다.(사업의계속성)</p>
 
-    </div>
+    
+      </CalcBox></div>
   );
 }

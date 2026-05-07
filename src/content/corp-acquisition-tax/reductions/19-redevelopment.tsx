@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "재개발조합 체비지·보류지",
-  category: "corp-acquisition-tax",
-  group: "reductions",
-  groupLabel: "감면",
-  order: 19,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅰ_지특법_감면/19_재개발조합_체비지_보류지_지특법74조",
-  sourcePages: [113,125],
-  sourceTaxTypes: ["acquisition_tax"],
-  sourceKeyLawRefs: ["지방세특례제한법 시행령 제35조","지방세특례제한법 제74조","지방세특례제한법 제73조의2 제1항","지방세특례제한법 시행령 제35조 제2항","지방세특례제한법 제74조 제3항","지방세법 제109조 제3항","지방세특례제한법 제85조의2","지방세특례제한법 시행령 제41조의2","지방세특례제한법 시행령 제6조","지방세특례제한법 제31조"],
-  lawReference: "지방세특례제한법 시행령 제35조, 지방세특례제한법 제74조, 지방세특례제한법 제73조의2 제1항, 지방세특례제한법 시행령 제35조 제2항, 지방세특례제한법 제74조 제3항, 지방세법 제109조 제3항, 지방세특례제한법 제85조의2, 지방세특례제한법 시행령 제41조의2, 지방세특례제한법 시행령 제6조, 지방세특례제한법 제31조",
-};
-
+import { CalcBox, SubSection } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "재개발조합 체비지·보류지"
+ *   category: "corp-acquisition-tax"
+ *   group: "reductions"
+ *   groupLabel: "감면"
+ *   order: 19
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅰ_지특법_감면/19_재개발조합_체비지_보류지_지특법74조"
+ *   sourcePages: [113,125]
+ *   sourceTaxTypes: ["acquisition_tax"]
+ *   sourceKeyLawRefs: ["지방세특례제한법 시행령 제35조","지방세특례제한법 제74조","지방세특례제한법 제73조의2 제1항","지방세특례제한법 시행령 제35조 제2항","지방세특례제한법 제74조 제3항","지방세법 제109조 제3항","지방세특례제한법 제85조의2","지방세특례제한법 시행령 제41조의2","지방세특례제한법 시행령 제6조","지방세특례제한법 제31조"]
+ *   lawReference: "지방세특례제한법 시행령 제35조, 지방세특례제한법 제74조, 지방세특례제한법 제73조의2 제1항, 지방세특례제한법 시행령 제35조 제2항, 지방세특례제한법 제74조 제3항, 지방세법 제109조 제3항, 지방세특례제한법 제85조의2, 지방세특례제한법 시행령 제41조의2, 지방세특례제한법 시행령 제6조, 지방세특례제한법 제31조"
+ */
 export default function Content19RedevelopmentV10() {
   return (
     <div className="space-y-6">
@@ -39,17 +38,12 @@ export default function Content19RedevelopmentV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>본 리프는 재개발조합 관련 체비지·보류지에 대한 취득세 감면(지방세특례제한법 제74조)을 다룬다. 원조합원·승계조합원의 과세표준 산정 방식, 사업시행자가 대지 조성을 위해 취득하는 부동산의 감면 범위(정비구역 내 한정), 체비지·보류지 비과세 요건(환지처분 공고 또는 분양처분 고시 이후 취득)을 중심으로 설명한다. 아울러 지방공기업에 대한 취득세·재산세 감면(지특법 제85조의2)도 부수적으로 소개된다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>체비지</strong> — 도시개발사업에서 사업시행자가 사업비 충당을 위해 환지계획에서 미리 정하여 환지처분 공고 후 취득하는 토지로, 취득세 면제 대상이 됨.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제74조" target="_blank" rel="noopener noreferrer">지특법 §74 제1항</a></li>
@@ -74,50 +68,47 @@ export default function Content19RedevelopmentV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>수록 판례 (2건)</Outline>
-      </h2>
-
-      <Outline level={2}>대법원2007두3275</Outline>
+      
+      </CalcBox><CalcBox title="■ 수록 판례 (2건)" id="section-3">
+      <SubSection title="● 대법원2007두3275">
       <p><strong>쟁점</strong>: 체비지·보류지 취득세 비과세 인정 범위 및 관리처분계획 인가 절차 미이행 시 적용 불가</p>
       <p><strong>판시사항</strong>: 취득세가 비과세되는 체비지 등은 사업시행자가 미리 환지계획이나 관리처분계획에서 체비지 등으로 정하여 환지처분의 공고나 분양처분의 고시가 있은 후에 취득하는 것만을 의미한다. 도심재개발사업 시행자가 관리처분계획 인가 절차를 거치지 않은 채 사업을 시행하여 신축 건물 소유권을 취득한 경우 구 지방세법 제109조 제3항의 비과세 규정이 적용될 수 없다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제74조" target="_blank" rel="noopener noreferrer">지특법 §74 제1항</a></p>
 
-      <Outline level={2}>대법원2014두40975</Outline>
+      
+        </SubSection><SubSection title="● 대법원2014두40975">
       <p><strong>쟁점</strong>: 재개발사업 시행자의 대지조성용 부동산 취득세 면제 범위(정비구역 외 부동산 제외)</p>
       <p><strong>판시사항</strong>: 지방세특례제한법 제74조 제3항에서 취득세가 면제되는 부동산을 '주택재개발사업을 위하여 취득하는 부동산'이 아니라 '대지 조성을 위하여 취득하는 부동산'으로 한정 규정하고 있으므로, 주택재개발사업의 시행자가 정비구역 외 지역에서 취득하는 부동산은 대지 조성을 위하여 취득하는 부동산에 해당하지 않아 면제 대상이 아니다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제74조" target="_blank" rel="noopener noreferrer">지특법 §74 제3항</a></p>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>조심 판례 (1건)</Outline>
-      </h2>
-
-      <Outline level={2}>조심2015지689</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 조심 판례 (1건)" id="section-4">
+      <SubSection title="● 조심2015지689">
       <p><strong>쟁점</strong>: 체비지(쟁점토지) 지목변경에 의한 간주취득과 환지처분 공고 이후 취득 모두 취득세 면제 대상 해당 여부</p>
       <p><strong>판시사항</strong>: 청구법인은 환지처분 공고일 다음 날에 체비지를 취득한 것으로 보아 그 전에 이루어진 지목변경에 대한 납세의무가 청구법인에게 있다고 보기 어렵다. 지목변경에 의한 간주취득이든 체비지의 직접 취득이든 취득시기·과세대상에 관계없이 도시개발사업 시행자가 취득하는 경우 취득세 면제 대상으로 보는 것이 타당하다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제74조" target="_blank" rel="noopener noreferrer">지특법 §74 제1항</a></p>
 
 
-      <h2 id="section-5">
-      <Outline level={1}>예규 (2건)</Outline>
-      </h2>
-
-      <Outline level={2}>지방세운영과-3536</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 예규 (2건)" id="section-5">
+      <SubSection title="● 지방세운영과-3536">
       <p><strong>쟁점</strong>: 분양권 프리미엄의 취득세 과세표준 적용요령(승계조합원과의 구분)</p>
       <p><strong>판시사항</strong>: 최초분양자로부터 분양권을 전매받아 부동산을 취득할 경우 분양가에 프리미엄을 포함하여 과세표준을 산정하는 것이며, 이는 승계조합원 과세표준 산정과는 별개의 문제이다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제74조" target="_blank" rel="noopener noreferrer">지특법 §74 제1항</a></p>
 
-      <Outline level={2}>지방세특례제도과-1606</Outline>
+      
+        </SubSection><SubSection title="● 지방세특례제도과-1606">
       <p><strong>쟁점</strong>: 지방공사가 주택 외 건축물 임대 시 목적사업 직접사용 해당 여부(감면 불가)</p>
       <p><strong>판시사항</strong>: 지방공사가 주택이 아닌 건축물(근린생활시설 등)을 임대하는 경우 목적사업에 따른 직접 사용에 해당하지 않으므로 취득세 감면 대상이 아니다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제85조의2" target="_blank" rel="noopener noreferrer">지특법 §85의2</a></p>
 
 
-      <h2 id="section-6">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 관련 법조문" id="section-6">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 시행령 제35조</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제74조</code></li>
@@ -132,10 +123,8 @@ export default function Content19RedevelopmentV10() {
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
       <p>```text</p>
       <p>처음으로 / ※ 지방세특례제한법시행령 제35조【환지계획 등에 따른 취득부동산의 초과액 산정기준 등】 / ① 법 제74조제1항의 환지계획 등에 따른 취득부동산은 그 토지의 지목이 사실상 변경되는 부동산을 포함한다.(지목변경 감면 )                                         &lt;2023.3.14. 삭제&gt; / ② 법 제74조제2항에 따른 초과액은 같은 조 제1항의 환지계획 등에 따른 취득부동산의 과세표준(지방세법」제10조제5항에 따른 사실상의 취득가격이 증명되는 경우에는 사실상의 취득가격을 말한다)에서 환지 이전의 부동산의 과세표준(승계취득할 당시의 취득세 과세표준을 말한다)을 뺀 금액으로 한다. (조합원분양가 – 승계시취득가액)                                  &lt;2023.3.14. 삭제&gt; / ※부칙&lt;법률 제16865호, 2020.1.15.&gt; 2020.1.1.이후 사업시행계획 인가부터 75% → 50% / 제5조(도시개발사업 등에 대한 감면에 관한 적용례) / ① 제74조제1항 및 제3항의 개정규정은 「도시개발법」 제2조제1항제2호에 따른 도시개발사업 또는 「도시 및 주거환경정비법」 제2조제2호나목에 따른 재개발사업으로서 2020년 1월 1일 이후 「도시개발법」 제17조에 따른 실시계획 인가를 받거나 「도시 및 주거환경정비법」 제50조에 따른 사업시행계획 인가를 받는 사업부터 적용한다. / ② 제74조제4항제1호 및 제3호와 제5항의 개정규정은 「도시 및 주거환경정비법」 제2조제2호가목에 따른 주거환경개선사업 또는 같은 호 나목에 따른 재개발사업으로서 2020년 1월 1일 이후 「도시 및 주거환경정비법」 제50조에 따른 사업시행계획 인가를 받는 사업부터 적용한다. / ※부칙&lt;법률 제9232, 2023.3.14.&gt; / 제11조(도시개발사업 등에 대한 감면에 관한 경과조치) ① 2023년 1월 1일 전에 「도시개발법」 제29조에 따른 환지계획 인가 또는 「도시 및 주거환경정비법」 제74조에 따른 관리처분계획 인가를 받은 도시개발사업 또는 재개발사업의 시행으로 해당 사업의 대상이 되는 부동산의 소유자가 2023년 1월 1일 이후 취득(토지상환채권으로 취득하는 경우를 포함한다)하는 부동산에 대해서는 제74조제1항 및 제2항의 개정규정에도 불구하고 종전의 제74조제1항 및 제2항에 따라 취득세를 면제하거나 부과한다. 이 경우 종전의 제74조제1항 각 호 외의 부분 본문 중 “2022년 12월 31일”은 “2028년 12월 31일”로 본다. &lt;개정 2025. 12. 31.&gt; / ② 제1항에 따라 취득세가 부과되는 자에 대해서는 종전의 제74조제5항제3호에 따라 2028년 12월 31일까지 그 취득세를 경감한다. &lt;개정 2025. 12. 31.&gt; / ③ 2023년 1월 1일 전에 종전의 제74조제5항제3호에 따라 청산금에 상당하는 부동산을 취득하여 해당 부동산에 대한 취득세를 경감받았거나 제2항에 따라 취득세를 경감받는 경우 그 경감 취득세에 관하여는 제74조제5항 각 호 외의 부분 단서에 따라 추징한다.</p>
       <p>```</p>
@@ -462,6 +451,7 @@ export default function Content19RedevelopmentV10() {
       <p>※ 31조4항에 따른 재산세 감면시 대상물건의 공시가격 한도액 【건설임대:공시 9억↓, 매입임대:공시 6억↓, 오피스텔:시가표준4억↓】</p>
       <p>```</p>
 
-    </div>
+    
+      </CalcBox></div>
   );
 }

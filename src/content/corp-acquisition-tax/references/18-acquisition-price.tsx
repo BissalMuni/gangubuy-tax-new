@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "취득가격 범위",
-  category: "corp-acquisition-tax",
-  group: "references",
-  groupLabel: "실무참고",
-  order: 19,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅲ_기타_참고/18_취득가격_범위",
-  sourcePages: [259,271],
-  sourceTaxTypes: ["acquisition_tax"],
-  sourceKeyLawRefs: ["지방세법 시행령 제18조 제1항 제5호"],
-  lawReference: "지방세법 시행령 제18조 제1항 제5호",
-};
-
+import { CalcBox } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "취득가격 범위"
+ *   category: "corp-acquisition-tax"
+ *   group: "references"
+ *   groupLabel: "실무참고"
+ *   order: 19
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅲ_기타_참고/18_취득가격_범위"
+ *   sourcePages: [259,271]
+ *   sourceTaxTypes: ["acquisition_tax"]
+ *   sourceKeyLawRefs: ["지방세법 시행령 제18조 제1항 제5호"]
+ *   lawReference: "지방세법 시행령 제18조 제1항 제5호"
+ */
 export default function Content18AcquisitionPriceV10() {
   return (
     <div className="space-y-6">
@@ -35,19 +34,14 @@ export default function Content18AcquisitionPriceV10() {
 
       <hr className="my-6" />
 
-      <h2 id="section-1">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      <CalcBox title="■ 관련 법조문" id="section-1">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세법 시행령 제18조 제1항 제5호</code></li>
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
       <p>간접비용 포함여부</p>
 
       <table>
@@ -375,10 +369,8 @@ export default function Content18AcquisitionPriceV10() {
 
 
 
-      <h2 id="section-3">
-      <Outline level={1}>토지등급표</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 토지등급표" id="section-3">
       <p>| 등급 | 가격 |  | 등급 | 가격 |  | 등급 | 가격 |  | 등급 | 가격 |</p>
       <p>| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |</p>
       <p>| 1 | 1 |  | 41 | 42 |  | 81 | 242 |  | 121 | 1,640 |</p>
@@ -512,6 +504,7 @@ export default function Content18AcquisitionPriceV10() {
       <p>| 359 | 166,250,000 |  |  |  |</p>
       <p>| 360 | 171,800,000 |  |  |  |</p>
 
-    </div>
+    
+      </CalcBox></div>
   );
 }

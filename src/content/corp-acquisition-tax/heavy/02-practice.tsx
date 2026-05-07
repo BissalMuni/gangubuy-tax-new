@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "중과 실무",
-  category: "corp-acquisition-tax",
-  group: "heavy",
-  groupLabel: "중과",
-  order: 2,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-heavy",
-  sourceBookTitle: "법인 중과 실무 (2026년)",
-  sourceLeaf: "corp-heavy/Ⅰ_법인_중과_실무/02_중과_실무",
-  sourcePages: [3,4],
-  sourceTaxTypes: ["acquisition_tax"],
-  sourceKeyLawRefs: ["지방세법 제13조 제2항","지방세법 제13조 제1항","지방세법 제13조의2","지방세법 시행규칙 제6조","지방세법 제13조 제3항","지방세법 제20조 제2항","지방세법 시행령 제45조 제5항"],
-  lawReference: "지방세법 제13조 제2항, 지방세법 제13조 제1항, 지방세법 제13조의2, 지방세법 시행규칙 제6조, 지방세법 제13조 제3항, 지방세법 제20조 제2항, 지방세법 시행령 제45조 제5항",
-};
-
+import { CalcBox, SubSection } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "중과 실무"
+ *   category: "corp-acquisition-tax"
+ *   group: "heavy"
+ *   groupLabel: "중과"
+ *   order: 2
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-heavy"
+ *   sourceBookTitle: "법인 중과 실무 (2026년)"
+ *   sourceLeaf: "corp-heavy/Ⅰ_법인_중과_실무/02_중과_실무"
+ *   sourcePages: [3,4]
+ *   sourceTaxTypes: ["acquisition_tax"]
+ *   sourceKeyLawRefs: ["지방세법 제13조 제2항","지방세법 제13조 제1항","지방세법 제13조의2","지방세법 시행규칙 제6조","지방세법 제13조 제3항","지방세법 제20조 제2항","지방세법 시행령 제45조 제5항"]
+ *   lawReference: "지방세법 제13조 제2항, 지방세법 제13조 제1항, 지방세법 제13조의2, 지방세법 시행규칙 제6조, 지방세법 제13조 제3항, 지방세법 제20조 제2항, 지방세법 시행령 제45조 제5항"
+ */
 export default function Content02PracticeV10() {
   return (
     <div className="space-y-6">
@@ -38,17 +37,12 @@ export default function Content02PracticeV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>본 리프는 법인 취득세 중과 실무를 다루며, 대도시(과밀억제권역) 내 법인 설립·전입에 따른 취득세 중과, 본점 신·증축 중과, 주택 취득세 중과 등 세 가지 유형의 중과 기준과 세율을 정리한다. 설립일·지점설치일 판단, 직접사용 여부, 임대용 부동산 처리, 추징사유 및 가산세 적용 등 실무상 쟁점을 포함한다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>대도시</strong> — 산업단지를 제외한 과밀억제권역으로, 대도시 내 법인 설립·전입에 따른 취득세 중과 적용 지역이다.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제2항</a></li>
@@ -71,35 +65,32 @@ export default function Content02PracticeV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>조심 판례 (2건)</Outline>
-      </h2>
-
-      <Outline level={2}>조심2010지85</Outline>
+      
+      </CalcBox><CalcBox title="■ 조심 판례 (2건)" id="section-3">
+      <SubSection title="● 조심2010지85">
       <p><strong>쟁점</strong>: 지점설치일의 판단 기준</p>
       <p><strong>판시사항</strong>: 지점설치일은 사업자 등록 여부에도 불구하고 등록대상 사업장으로 인적 및 물적 설비를 갖추고 사업 등을 행하여지는 장소가 된 때를 의미한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제2항</a></p>
 
-      <Outline level={2}>조심2019지1817</Outline>
+      
+        </SubSection><SubSection title="● 조심2019지1817">
       <p><strong>쟁점</strong>: 중과 및 중과제외업종 겸업 시 중과 면적 범위</p>
       <p><strong>판시사항</strong>: 중과 및 중과제외업종을 구분하기 어려운 본점 등의 경우 겸업하는 면적 전체가 중과 대상이다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13</a></p>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>질의회신 (1건)</Outline>
-      </h2>
-
-      <Outline level={2}>서울세제과-4838</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 질의회신 (1건)" id="section-4">
+      <SubSection title="● 서울세제과-4838">
       <p><strong>쟁점</strong>: 법인 설립일 및 지점설치일 판단, 직접사용 범위</p>
       <p><strong>판시사항</strong>: 법인 설립일은 등기부등본상 법인 설립일이며, 본점 설치일은 설립등기일, 지점설치일은 인적·물적 설비를 갖추고 사업이 행하여지는 장소가 된 때를 의미한다. 매입 부동산 전체를 임대하고 본점에서 관리하는 경우 취득세 중과 대상이 아니다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제2항</a>, <a href="https://law.go.kr/법령/지방세법시행규칙/제6조" target="_blank" rel="noopener noreferrer">시행규칙 §6</a></p>
 
 
-      <h2 id="section-5">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 관련 법조문" id="section-5">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세법 제13조 제2항</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세법 제13조 제1항</code></li>
@@ -111,12 +102,9 @@ export default function Content02PracticeV10() {
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
-      <Outline level={2}>법인 중과 실무(舊취득세:과밀억제권역, 舊등록세:대도시,중과예외법인)</Outline>
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
+      <SubSection title="● 법인 중과 실무(舊취득세:과밀억제권역, 舊등록세:대도시,중과예외법인)">
       <p>```text</p>
       <p>대도시 설립·전입에 따른 취득세  대도시란? 산업단지를 제외한 과밀억제권역 / (지방세법 제13조 제2항)                 직접사용이란? 기본적으로 임대를 제외한 모든 사무소임</p>
       <p>설립·전입  전(前) / 부동산취득 / ☞ 부동산 / 취득 후 / 본‧지점사용 | 부동산 취득후 / 5년이내 / 본점.지점 이전 | 대도시 외   →  대도시 내 | 직접사용 중과○ / 임대용   중과× | 중과시 / 세  율 / -매매- / 취)8% / 농)0.2% / 교)1.2% / 합)9.4% / -신축- / 취)4.4% / 농)0.2% / 교)0.48% / 합)5.08% / -증여- / 취)6.5% / 농)0.2% / 교)0.9% / 합)7.6%</p>
@@ -167,6 +155,8 @@ export default function Content02PracticeV10() {
       <p>중과 및 제외업종을 구분 / 하기 어려운 본점등의 경우 | 겸업하는 면적 전체중과 / (조심2019지1817)</p>
       <p>```</p>
 
-    </div>
+    
+      
+        </SubSection></CalcBox></div>
   );
 }

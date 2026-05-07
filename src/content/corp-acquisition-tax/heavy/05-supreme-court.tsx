@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "대법원 판례",
-  category: "corp-acquisition-tax",
-  group: "heavy",
-  groupLabel: "중과",
-  order: 5,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-heavy",
-  sourceBookTitle: "법인 중과 실무 (2026년)",
-  sourceLeaf: "corp-heavy/Ⅰ_법인_중과_실무/05_대법원_판례",
-  sourcePages: [7,11],
-  sourceTaxTypes: ["acquisition_tax"],
-  sourceKeyLawRefs: ["지방세법 제112조 제3항","지방세법 시행령 제102조 제2항","지방세법 제138조 제1항 제3호","지방세법 제138조 제1항"],
-  lawReference: "지방세법 제112조 제3항, 지방세법 시행령 제102조 제2항, 지방세법 제138조 제1항 제3호, 지방세법 제138조 제1항",
-};
-
+import { CalcBox, SubSection } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "대법원 판례"
+ *   category: "corp-acquisition-tax"
+ *   group: "heavy"
+ *   groupLabel: "중과"
+ *   order: 5
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-heavy"
+ *   sourceBookTitle: "법인 중과 실무 (2026년)"
+ *   sourceLeaf: "corp-heavy/Ⅰ_법인_중과_실무/05_대법원_판례"
+ *   sourcePages: [7,11]
+ *   sourceTaxTypes: ["acquisition_tax"]
+ *   sourceKeyLawRefs: ["지방세법 제112조 제3항","지방세법 시행령 제102조 제2항","지방세법 제138조 제1항 제3호","지방세법 제138조 제1항"]
+ *   lawReference: "지방세법 제112조 제3항, 지방세법 시행령 제102조 제2항, 지방세법 제138조 제1항 제3호, 지방세법 제138조 제1항"
+ */
 export default function Content05SupremeCourtV10() {
   return (
     <div className="space-y-6">
@@ -37,17 +36,12 @@ export default function Content05SupremeCourtV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>본 리프는 법인 중과세 관련 대법원 판례들을 다루며, 주요 쟁점은 ①주상복합 신축 시 토지분 등록세 중과 기산일, ②과밀억제권역 내 본점 신증축 후 동일 권역 내 이전 시 취득세 중과 여부, ③대도시 내 지점·분사무소의 의미와 인적 요건, ④법인 설립·지점 설치 이후 5년 이내 부동산 취득 시 중과 요건이다. 각 판례는 구 지방세법 제112조, 제138조 등의 해석을 통해 중과세 적용 범위를 구체화하고 있다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>과밀억제권역</strong> — 수도권정비계획법 제6조에 따른 권역으로, 인구유입과 산업집중을 억제하기 위해 법인 본점 신증축 등에 취득세 중과세를 적용하는 지역적 범위.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세법/제112조" target="_blank" rel="noopener noreferrer">법 §112 제3항</a>, <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제2항 제1호</a></li>
@@ -66,60 +60,65 @@ export default function Content05SupremeCourtV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>수록 판례 (9건)</Outline>
-      </h2>
-
-      <Outline level={2}>대법원2012두6407</Outline>
+      
+      </CalcBox><CalcBox title="■ 수록 판례 (9건)" id="section-3">
+      <SubSection title="● 대법원2012두6407">
       <p><strong>쟁점</strong>: 주상복합(판매시설 포함) 신축 시 토지분 등록세 중과 추징 기산일</p>
       <p><strong>판시사항</strong>: 주택건설사업자가 주상복합아파트를 신축할 경우 판매시설 부지에 해당하는 토지 부분은 등록세 중과세 대상이 되며, 착공 시점이 중과세 추징 사유 발생일이다. 취득 시 판매시설 면적이 미확정인 경우 구 지방세법 제150조의2 제2항에 따라 착공일로부터 30일 이내에 신고·납부하여야 한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제150조의2" target="_blank" rel="noopener noreferrer">법 §150의2 제2항</a></p>
 
-      <Outline level={2}>대법원2012두6551</Outline>
+      
+        </SubSection><SubSection title="● 대법원2012두6551">
       <p><strong>쟁점</strong>: 과밀억제권역 내 본점 신증축 후 동일 권역 내 이전 시 구 취득세 중과 여부</p>
       <p><strong>판시사항</strong>: 과밀억제권역 안에서 본점 또는 주사무소용 건축물을 신축 또는 증축하여 취득하는 경우, 동일한 과밀억제권역 안에 있던 기존 본점 또는 주사무소에서 이전해 오더라도 구 지방세법 제112조 제3항에 의한 취득세 중과대상에 해당한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제112조" target="_blank" rel="noopener noreferrer">법 §112 제3항</a></p>
 
-      <Outline level={2}>대법원2012두20984</Outline>
+      
+        </SubSection><SubSection title="● 대법원2012두20984">
       <p><strong>쟁점</strong>: 본점 용도 직접 사용 부동산의 범위(사무실 외 사업활동 장소 포함 여부)</p>
       <p><strong>판시사항</strong>: 구 지방세법 시행령 제102조 제2항 전문의 '법인이 본점의 용도로 직접 사용하기 위하여 취득하는 부동산'에는 본점 사무실 용도뿐만 아니라 법인이 인적·물적 설비를 갖추어 본점의 사업활동 장소로 사용하기 위하여 취득하는 부동산도 포함된다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제138조" target="_blank" rel="noopener noreferrer">법 §138 제1항 제3호</a>, <a href="https://law.go.kr/법령/지방세법시행령/제102조" target="_blank" rel="noopener noreferrer">시행령 §102 제2항</a>, <a href="https://law.go.kr/법령/지방세법시행규칙/제55조의2" target="_blank" rel="noopener noreferrer">시행규칙 §55의2</a></p>
 
-      <Outline level={2}>대법원2000두222</Outline>
+      
+        </SubSection><SubSection title="● 대법원2000두222">
       <p><strong>쟁점</strong>: 본점에 영업장소가 함께 설치되는 경우 영업장 부분의 취득세 중과 여부</p>
       <p><strong>판시사항</strong>: 과밀억제권역 안에서 법인의 본점 또는 주사무소에 영업장소가 함께 설치되는 경우, 백화점 매장이나 은행 영업장 등 그 영업장소 및 부대시설 부분은 취득세 중과세 대상에 해당하지 않는다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제112조" target="_blank" rel="noopener noreferrer">법 §112 제3항</a>, <a href="https://law.go.kr/법령/지방세법시행령/제84조의2" target="_blank" rel="noopener noreferrer">시행령 §84의2 제3항</a></p>
 
-      <Outline level={2}>대법원2003두7620</Outline>
+      
+        </SubSection><SubSection title="● 대법원2003두7620">
       <p><strong>쟁점</strong>: 등록세 중과대상 '일체의 부동산등기'의 의미 및 다른 지점 관련 부동산 포함 여부</p>
       <p><strong>판시사항</strong>: 등록세 중과대상인 '일체의 부동산등기'는 당해 법인(본점) 또는 당해 지점 등과 관계되어 설립·설치·전입 이후 5년 이내에 취득하는 부동산등기를 의미하며, 다른 지점 등과 관계되어 취득한 부동산의 등기까지 포함하지 않는다. 또한 중과세율은 납세의무 성립 당시 시행 중인 법령에 의한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제138조" target="_blank" rel="noopener noreferrer">법 §138 제1항 제3호</a>, <a href="https://law.go.kr/법령/지방세법시행령/제102조" target="_blank" rel="noopener noreferrer">시행령 §102 제2항</a></p>
 
-      <Outline level={2}>대법원2005두13469</Outline>
+      
+        </SubSection><SubSection title="● 대법원2005두13469">
       <p><strong>쟁점</strong>: 대도시 내 지점·분사무소의 의미 및 인적 조직 고용형식 요건</p>
       <p><strong>판시사항</strong>: 지점 또는 분사무소란 인적·물적 설비를 갖추고 계속하여 당해 법인의 사무 또는 사업이 행하여지는 장소로, 인적설비는 당해 법인의 지휘·감독하에 인원이 상주하는 것을 뜻하며 고용형식이 반드시 당해 법인에 직속하는 형태일 필요는 없다. 독립 법인 형태를 취하더라도 실질적으로 투자회사의 지점 업무를 처리하면 지점에 해당한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제138조" target="_blank" rel="noopener noreferrer">법 §138 제1항 제3호</a>, <a href="https://law.go.kr/법령/지방세법시행령/제102조" target="_blank" rel="noopener noreferrer">시행령 §102 제2항</a>, <a href="https://law.go.kr/법령/지방세법시행규칙/제55조의2" target="_blank" rel="noopener noreferrer">시행규칙 §55의2</a></p>
 
-      <Outline level={2}>대법원2008두18496</Outline>
+      
+        </SubSection><SubSection title="● 대법원2008두18496">
       <p><strong>쟁점</strong>: 대도시 내 지점·분사무소의 의미 및 입법목적 배치 여부에 따른 적용 차별 가부</p>
       <p><strong>판시사항</strong>: 지점 또는 분사무소는 인적·물적 설비를 갖추고 계속하여 당해 법인의 사무 또는 사업이 행하여지는 장소이며, 인적설비는 직속 고용형식을 요구하지 않는다. 일단 규정 요건사실이 충족되면 일률적으로 규정을 적용하여야 하고, 구체적 사안에서 입법목적과의 배치 여부를 따져 적용 여부를 결정할 수 없다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제138조" target="_blank" rel="noopener noreferrer">법 §138 제1항 제3호</a>, <a href="https://law.go.kr/법령/지방세법시행령/제102조" target="_blank" rel="noopener noreferrer">시행령 §102 제2항</a>, <a href="https://law.go.kr/법령/지방세법시행규칙/제55조의2" target="_blank" rel="noopener noreferrer">시행규칙 §55의2</a></p>
 
-      <Outline level={2}>대법원2008두17080</Outline>
+      
+        </SubSection><SubSection title="● 대법원2008두17080">
       <p><strong>쟁점</strong>: 기존 지점이 있어도 새 부동산으로 이전하여 다른 업종 시작 시 지점 설치 해당 여부</p>
       <p><strong>판시사항</strong>: 이미 지점이 설치되어 있었다 하더라도 새로운 부동산으로 이전하여 다른 업종을 새로이 시작한 것은 사실상 해당 업종을 위한 지점을 새로이 설치한 것에 해당하므로 등록세 중과 대상이 된다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제138조" target="_blank" rel="noopener noreferrer">법 §138 제1항 제3호</a></p>
 
-      <Outline level={2}>대법원2012두13511</Outline>
+      
+        </SubSection><SubSection title="● 대법원2012두13511">
       <p><strong>쟁점</strong>: 대도시 내 법인 설립·지점 설치 시와 그 이후 5년 내 부동산 취득 시 중과 요건 구분</p>
       <p><strong>판시사항</strong>: 법인 설립·지점 설치·전입에 따라 부동산을 취득하는 경우에는 본점·주사무소·지점 또는 분사무소의 용도로 직접 사용할 목적인 경우에 한하여 취득세 중과 대상이 되고, 설립·설치·전입 이후 5년 이내 취득의 경우에는 용도를 불문하고 취득세 중과 대상이 된다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제2항 제1호</a>, <a href="https://law.go.kr/법령/지방세법시행령/제27조" target="_blank" rel="noopener noreferrer">시행령 §27 제3항</a></p>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 관련 법조문" id="section-4">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세법 제112조 제3항</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세법 시행령 제102조 제2항</code></li>
@@ -128,14 +127,9 @@ export default function Content05SupremeCourtV10() {
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
-      <Outline level={2}>대법원 사례</Outline>
-
-
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
+      <SubSection title="● 대법원 사례">
       <p>주택건설사업자 주상복합(판매시설포함) 신축시 토지분 등록세 중과추징시 사유발생일은 착공일임.</p>
 
       <p>```text</p>
@@ -235,6 +229,8 @@ export default function Content05SupremeCourtV10() {
       <p>2007구합24111▷ 2008누1919 ▷ 2008두17080 / (가) 먼저 ○○원이 이 사건 부동산으로 설비를 이전하기 전에 ○○동 부동산에 구지방세법 제138조 제1항 소정의 "지점"이 이미 설치되어 있었는지에 관하여 살피건대, 갑 1 내지 16, 22호증, 을 1, 2호증(각 가지번호 포함)의 각 기재, 증인 이○○의 증언에 변론 전체의 취지를 종합하여 보면 원고의 위 주장사실은 이를 모두 인정할 수 있으나, 위 주장사실에 의하더라도 ○○원은 "○○동 부동산을 사업장으로 한 사업자등록"이 아닌 "원고의 주사무소 소재지(본점)를 사업장으로 한 사업자등록"에 따라 ○○동 부동산에서 사업을 행하여 왔다는 것인바, 원고가 ○○동 부동산을 사업장으로 한 사업자등록을 마치는 것이 불가능하였던 사정에 관한 아무런 주장ㆍ입증이 없는 이상(설령 그러한 사업자등록이 불필요하였다고 하더라도), ○○동 부동산에는 구지방세법 제138조 제1항 소정의 "지점"이 설치되어 있었다고 볼 수 없고, 따라서 이와 다른 전제에서 이 사건 등기가 "지점의 이전에 따른 부동산등기"에 해당한다고 볼 수는 없다. / (나) 나아가, 가사 ○○동 부동산에 구지방세법 제138조 제1항 소정의 "지점"이 이미 설치되어 있었다고 하더라도, 구지방세법 제138조 제1항 제3호의 입법취지를 고려할 때, ○○원이 ○○동 부동산에서 이 사건 부동산으로 설비를 이전함과 동시에 이 사건 쟁점 부동산 전부를 사용하여 (○○동 부동산에서 행하던 고유목적사업이 아닌)임대업을 새로이 시작한 것은 사실상 "이 사건 쟁점 부동산에 임대업을 위한 지점을 새로이 설치한 것"에 해당한다고 봄이 상당하므로(만약 이와 같이 해석하지 아니한다면, 법인이 실질적으로는 새로이 임대업을 영위할 목적으로 부동산을 취득하면서 종래 그 대도시 내의 다른 곳에서 다른 종류의 사업을 행하여 오던 지점을 그 부동산으로 이전시켜 형식적으로만 "대도시 내 지점 이전"의 외양을 갖춘 경우, 언제나 해당 부동산등기 전부에 대하여 중과세율을 적용할 수 없게 되는 불합리ㆍ불공정한 결과가 발생한다), 이 사건 쟁점 부동산에 대한 등기인 이 사건 쟁점 등기는 구지방세법 제138조 제1항 제3호 소정의 "대도시 내에서의 지점의 설치에 따른 부동산등기"에 해당한다고 할 것이다. / ※ 2008구합56893(2019.5.2.)백광산업</p>
       <p>```</p>
 
-    </div>
+    
+      
+        </SubSection></CalcBox></div>
   );
 }

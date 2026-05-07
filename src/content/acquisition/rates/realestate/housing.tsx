@@ -1,22 +1,20 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-import { Callout } from "@/components/mdx/Callout";
-
-export const meta = {
-  title: "주택 취득세율",
-  category: "취득세",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  sourceSections: [2,4,5,6,7,8,9,10],
-  effectiveDate: "2026-01-01",
-  lastUpdated: "2026-01-31",
-  status: "draft",
-  lawReference: "지방세법 §11, §13, §13의2, §13의3, §15",
-  tags: ["주택","취득세","세율","유상거래","상속","증여","원시취득","다주택","법인","고급주택"],
-};
-
+import { CalcBox, Insight } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "주택 취득세율"
+ *   category: "취득세"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   sourceSections: [2,4,5,6,7,8,9,10]
+ *   effectiveDate: "2026-01-01"
+ *   lastUpdated: "2026-01-31"
+ *   status: "draft"
+ *   lawReference: "지방세법 §11, §13, §13의2, §13의3, §15"
+ *   tags: ["주택","취득세","세율","유상거래","상속","증여","원시취득","다주택","법인","고급주택"]
+ */
 export default function HousingV10() {
   return (
     <div className="space-y-6">
@@ -41,10 +39,7 @@ export default function HousingV10() {
 
       <hr className="my-6" />
 
-      <h2 id="general">
-      <Outline level={1}>유상거래 (일반)</Outline>
-      </h2>
-
+      <CalcBox title="■ 유상거래 (일반)" id="general">
       <blockquote className="border-l-4 border-gray-300 pl-4 my-4 text-gray-600 italic">
         <p>매매·분양·교환·경매·공매·현물출자 등 유상거래로 주택을 취득하는 경우의 세율 및 신고 안내</p>
       </blockquote>
@@ -160,7 +155,7 @@ export default function HousingV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>유상거래는 <strong>신축(원시취득), 증여, 상속과 별도 세율</strong> 체계 적용</li>
@@ -169,14 +164,12 @@ export default function HousingV10() {
         <li>외국인의 경우 별도 서류 필요 (외국인 등록사실증명서 등)</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       <hr className="my-6" />
 
-      <h2 id="inheritance">
-      <Outline level={1}>상속</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 상속" id="inheritance">
       <blockquote className="border-l-4 border-gray-300 pl-4 my-4 text-gray-600 italic">
         <p>상속·유증에 의한 주택 취득 시 세율, 감면요건, 구비서류 및 실무 안내</p>
       </blockquote>
@@ -208,7 +201,7 @@ export default function HousingV10() {
         <li>대위등기 시: 대위등기 신청서 사본, 가압류·가처분 결정서, 금전채권증서</li>
       </ul>
 
-      <Callout type="info">
+      <Insight>
 
       <p><strong>간단 암기법: 〈망가기, 특상가등〉</strong></p>
       <ul className="list-disc pl-6 my-4 space-y-1">
@@ -216,7 +209,7 @@ export default function HousingV10() {
         <li>세율특례 추가: <strong>상</strong>(속인 기준) - <strong>가</strong>(족관계증명), <strong>등</strong>(본)</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       <p>#### 나. 법정지분 신고</p>
 
@@ -311,14 +304,14 @@ export default function HousingV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>법정지분으로 특례감면 후 재협의분할 시 <strong>과소신고가산세</strong> 적용</li>
         <li>무신고가산세는 연대의무로 가산세 없음</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       <p>#### 아. 유증 (유언공정증서)</p>
 
@@ -495,7 +488,7 @@ export default function HousingV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>상속·증여는 다주택이라도 <strong>별도 세율체계</strong> 적용 (유상거래 중과세율 미적용)</li>
@@ -505,14 +498,12 @@ export default function HousingV10() {
         <li>법정지분 감면 후 재협의분할 시 <strong>과소신고가산세</strong> 유의</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       <hr className="my-6" />
 
-      <h2 id="gift">
-      <Outline level={1}>증여</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 증여" id="gift">
       <blockquote className="border-l-4 border-gray-300 pl-4 my-4 text-gray-600 italic">
         <p>증여에 의한 주택 취득 시 세율(일반/중과), 증여의제 규정, 구비서류 및 실무 안내</p>
       </blockquote>
@@ -544,7 +535,7 @@ export default function HousingV10() {
         <li>증여는 주택수 제외 규정 없음</li>
       </ul>
 
-      <Callout type="info">
+      <Insight>
 
       <p><strong>Q. 상속주택 1채 포함 2채 보유 중 기존 주택을 자녀에게 증여 시 세율은?</strong></p>
       <ul className="list-disc pl-6 my-4 space-y-1">
@@ -552,7 +543,7 @@ export default function HousingV10() {
         <li>상속주택 5년간 소유주택수 제외는 <strong>유상취득의 경우에 한정</strong></li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       <p>#### 나. 과세표준</p>
 
@@ -633,14 +624,14 @@ export default function HousingV10() {
         <li>계약해제관련서류(증여해제계약서) 및 <strong>양측 인감증명서</strong> 첨부</li>
       </ul>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>국가·판결·공매·법인의 취득은 합의해제 규정 없음 (§20②1호)</li>
         <li>등기 후 합의해제: 취득세 환급 없이 기타등록세(7,200원)와 합의해제계약서로 말소등기</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       <h3 className="text-lg font-semibold mt-6 mb-3">세율표</h3>
 
@@ -744,7 +735,7 @@ export default function HousingV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>배우자·직계존비속</strong> 간 매매는 소득 증빙 없으면 <strong>증여(3.5%)</strong>로 과세</li>
@@ -754,14 +745,12 @@ export default function HousingV10() {
         <li>상속주택 포함 2채 보유 시 <strong>1세대1주택자 아님</strong> → 12% 중과 가능</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       <hr className="my-6" />
 
-      <h2 id="original">
-      <Outline level={1}>원시취득 (신축)</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 원시취득 (신축)" id="original">
       <blockquote className="border-l-4 border-gray-300 pl-4 my-4 text-gray-600 italic">
         <p>재건축·재개발 등 원시취득(신축)에 의한 주택 취득 시 세율, 과세표준, 납세의무자별 안내</p>
       </blockquote>
@@ -989,7 +978,7 @@ export default function HousingV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>원조합원과 승계조합원의 세율 및 과세표준이 <strong>다름</strong>에 유의</li>
@@ -998,14 +987,12 @@ export default function HousingV10() {
         <li>승계조합원의 과세표준에는 <strong>프리미엄</strong>이 포함됨</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       <hr className="my-6" />
 
-      <h2 id="multi-house">
-      <Outline level={1}>다주택자 중과</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 다주택자 중과" id="multi-house">
       <blockquote className="border-l-4 border-gray-300 pl-4 my-4 text-gray-600 italic">
         <p>조정대상지역 내 다주택 취득 시 중과세율(8%~12%)을 적용하며, 주택수 산정에 분양권·입주권을 포함한다.</p>
       </blockquote>
@@ -1142,7 +1129,7 @@ export default function HousingV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>일시적 2주택 예외</strong>를 적용받은 경우, 3년 이내 종전주택을 반드시 처분해야 하며 미처분 시 중과세율 차액이 추징된다.</li>
@@ -1151,14 +1138,12 @@ export default function HousingV10() {
         <li>증여를 통한 다주택 취득도 중과 대상에 해당하며, <strong>증여 취득세율 3.5%</strong> 대신 중과세율이 적용될 수 있다.</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       <hr className="my-6" />
 
-      <h2 id="corporate">
-      <Outline level={1}>법인</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 법인" id="corporate">
       <blockquote className="border-l-4 border-gray-300 pl-4 my-4 text-gray-600 italic">
         <p>법인이 주택을 유상취득하는 경우 주택수와 무관하게 12% 중과세율이 적용되며, 과세표준에 연체료가 포함된다.</p>
       </blockquote>
@@ -1318,7 +1303,7 @@ export default function HousingV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>법인의 주택 유상취득은 <strong>주택수와 무관</strong>하게 12% 중과가 적용되므로, 1주택이라도 중과 대상이다.</li>
@@ -1328,14 +1313,12 @@ export default function HousingV10() {
         <li>법인 전환 시 취득 시기에 따라 중과 적용 여부가 달라질 수 있으므로, 전환 일자를 확인해야 한다.</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       <hr className="my-6" />
 
-      <h2 id="luxury">
-      <Outline level={1}>고급주택 (사치성재산)</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 고급주택 (사치성재산)" id="luxury">
       <blockquote className="border-l-4 border-gray-300 pl-4 my-4 text-gray-600 italic">
         <p>고급주택은 사치성재산으로 분류되어 표준세율에 8%를 가산한 중과세율이 적용되며, 상속 1가구1주택 감면에서도 제외된다.</p>
       </blockquote>
@@ -1512,7 +1495,7 @@ export default function HousingV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>고급주택 판정은 <strong>면적 요건</strong>과 <strong>금액 요건</strong>을 <strong>동시에 충족</strong>해야 하며, 하나만 충족하는 경우 중과 대상이 아니다.</li>
@@ -1522,7 +1505,7 @@ export default function HousingV10() {
         <li>리모델링 등으로 면적이 변경된 경우, <strong>변경 후 면적</strong> 기준으로 고급주택 여부를 재판정한다.</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       <hr className="my-6" />
 
@@ -1530,6 +1513,7 @@ export default function HousingV10() {
         <p>본 자료는 지방세 정보 안내용이며, 법적 효력이 없습니다. 정확한 내용은 관할 지자체 세무부서에 문의하세요.</p>
       </blockquote>
 
-    </div>
+    
+      </CalcBox></div>
   );
 }

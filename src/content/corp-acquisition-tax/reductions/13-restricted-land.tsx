@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "사권제한 토지",
-  category: "corp-acquisition-tax",
-  group: "reductions",
-  groupLabel: "감면",
-  order: 13,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅰ_지특법_감면/13_사권제한토지_감면_지특법84조",
-  sourcePages: [84,85],
-  sourceTaxTypes: ["property_tax"],
-  sourceKeyLawRefs: ["지방세특례제한법 제22조","지방세특례제한법 시행령 제10조"],
-  lawReference: "지방세특례제한법 제22조, 지방세특례제한법 시행령 제10조",
-};
-
+import { CalcBox } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "사권제한 토지"
+ *   category: "corp-acquisition-tax"
+ *   group: "reductions"
+ *   groupLabel: "감면"
+ *   order: 13
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅰ_지특법_감면/13_사권제한토지_감면_지특법84조"
+ *   sourcePages: [84,85]
+ *   sourceTaxTypes: ["property_tax"]
+ *   sourceKeyLawRefs: ["지방세특례제한법 제22조","지방세특례제한법 시행령 제10조"]
+ *   lawReference: "지방세특례제한법 제22조, 지방세특례제한법 시행령 제10조"
+ */
 export default function Content13RestrictedLandV10() {
   return (
     <div className="space-y-6">
@@ -37,17 +36,12 @@ export default function Content13RestrictedLandV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>본 리프는 지방세특례제한법 제22조에 따른 사회복지법인 및 사회복지시설 운영법인에 대한 취득세·재산세 감면 규정을 다룬다. 사회복지법인(및 한국한센복지협회)은 취득세·재산세 면제, 사회복지시설 운영법인은 유료·무료 사용 여부에 따라 차등 경감이 적용되며, 감면 후 추징 요건 및 의료기관 경영 시 별도 경감율도 규정한다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>사회복지법인</strong> — 사회복지사업법에 따라 설립된 법인으로, 사회복지사업을 목적으로 하며 취득세·재산세 면제 대상이 되는 주체</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제22조" target="_blank" rel="noopener noreferrer">지특법 §22</a></li>
@@ -70,24 +64,18 @@ export default function Content13RestrictedLandV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 관련 법조문" id="section-3">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제22조</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 시행령 제10조</code></li>
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
-      <h2 id="section-5">
-      <Outline level={1}>사회복지법인 에 대한 감면 관련 법률</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
+      
+      </CalcBox><CalcBox title="■ 사회복지법인 에 대한 감면 관련 법률" id="section-5">
       <p>```text</p>
       <p>지방세특례제한법 제22조 【사회복지법인등에 대한 감면】 / ① 「사회복지사업법」에 따른 사회복지사업(이하 이 조에서 “사회복지사업”이라 한다)을 목적으로 하는        법인 또는 단체가 해당 사회복지사업에 직접 사용하기 위하여 취득하는 부동산에 대해서는 다음 각       호에서  정하는 바에 따라 취득세를 2028년 12월 31일까지 감면한다. / 1. 「사회복지사업법」에 따른 사회복지법인(이하 이 조에서 “사회복지법인”이라 한다) 또는 한센인 권익ㆍ복지의 / 증진ㆍ개선 등을 목적으로 설립된 법인ㆍ단체로서 대통령령으로 정하는 법인ㆍ단체에 대해서는 취득세를 면제한다. / ☞ 사회복지법인 및 한국한센복지협회가 사회복지사업에 직접사용하기 위하여 취득하는 부동산 / 2. 「사회복지사업법」에 따른 사회복지시설(이하 이 조에서 “사회복지시설”이라 한다)을 설치ㆍ운영하는 법인 / 또는 단체 중 대통령령으로 정하는 법인 또는 단체에 대해서는 취득세의 100분의 25를 경감한다. 다만, 사회복지 / 시설의 입소자 및 이용자가 입소 및 이용에 대한 비용을 부담하지 아니하는 사회복지시설의 경우에는 취득세를 면제한다. / ☞ 사회복지시설 운영법인 및 민법에 따라 설립된 비영리법인 등: 유료사용(25%감면), 무료사용(면제) / ※ 2023년 세법개정으로 인해 일부 사회복지시설운영법인 →  전체 사회복지시설 운영법인으로 감면대상 확대 / ② 제1항에 따라 취득세를 감면받은 법인 또는 단체가 다음 각 호의 어느 하나에 해당하는 경우 그 해당     부분에 대해서는 감면된 취득세를 추징한다. / 1. 부동산을 취득한 날부터 5년 이내에 수익사업에 사용하는 경우 / 2. 정당한 사유 없이 부동산의 취득일부터 3년이 경과할 때까지 해당 용도로 직접 사용하지 아니하는 경우 / 3. 해당 용도로 직접 사용한 기간이 2년 미만인 상태에서 부동산을 매각ㆍ증여하거나 다른 용도로 사용하는 경우     4. 부동산을 취득한 날부터 3년 이내에 사회복지법인이 해산되거나 「사회복지사업법」 제26조에 따라 사회복지법인의      설립허가가 취소된 경우  &lt;2025.12.31. 신설&gt; / 5. 부동산을 취득한 날부터 3년 이내에 「사회복지사업법」 제38조에 따라 사회복지시설의 폐지 신고가 되거나 같은 법     제40조에 따라 사회복지시설의 폐쇄 명령을 받은 경우  &lt;2025.12.31. 신설&gt; / ③ 제1항 각 호에 해당하는 법인 또는 단체(이하 이 조에서 “사회복지법인등”이라 한다)가 과세기준일 현재     해당 사회복지사업에 직접 사용(종교단체의 경우 해당부동산의 소유자가 아닌 그 대표자 또는 종교 법인이 해당     부동산을 사회복지사업의 용도로 사용하는 경우를 포함한다. 이하 이 조에서 같다)하는 부동산(대통령령으로 정하는     건축물의 부속토지를 포함한다)에 대해서는 다음 각 호에서 정하는 바에 따라 지방세를 2028년 12월 31일까지     각각 감면한다. 다만, 수익사업에 사용하는 경우와 해당 재산이 유료로 사용되는 경우의 그 재산 및 해당     재산의 일부가 그 목적에 직접 사용되지 아니하는 경우의 그 일부 재산에 대해서는 감면하지 아니한다. / 1. 제1항제1호에 해당하는 법인 또는 단체에 대해서는 재산세(「지방세법」 제112조에 따른 부과액을 포함한다) 및      「지방세법」 제146조제3항에 따른 지역자원시설세를 각각 면제한다.  ☞ 사회복지법인 및 한국한센복지협회 / 2. 제1항제2호에 해당하는 법인 또는 단체에 대해서는 재산세의 100분의 25를 경감한다. 다만, 사회복지시설의 입소자      및 이용자가 입소 및 이용에 대한 비용을 부담하지 아니하는 사회복지시설의 경우에는 재산세의 100분의 50을 경감한다. / ☞ 사회복지시설 운영법인 및 민법에 따라 설립된 비영리법인 등 (유료사용:25%감면, 무료사용:50%감면) / ⑦ 사회복지법인의 설립등기 및 합병등기에 대한 등록면허세와 사회복지시설을 경영하는 자에 대하여 해당 / 사회복지시설 사업장에 과세되는 주민세 사업소분(「지방세법」 제81조제1항제1호에 따라 부과되는 세액으로 한정한다)을 각각 2028년 12월 31일까지 면제한다.</p>
       <p>```</p>
@@ -146,6 +134,7 @@ export default function Content13RestrictedLandV10() {
 
       <p>자. 「성폭력방지 및 피해자보호 등에 관한 법률」 차. 「입양특례법」</p>
 
-    </div>
+    
+      </CalcBox></div>
   );
 }

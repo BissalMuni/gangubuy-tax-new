@@ -1,22 +1,22 @@
 "use client";
 
-import { Callout } from "@/components/mdx/Callout";
 
-export const meta = {
-  title: "재건축/재개발",
-  sectionId: "07",
-  category: "취득세",
-  subcategory: "신고",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [22,22],
-  effectiveDate: "2023-01-01",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "지방세법 §11",
-  tags: ["재건축","재개발","조합원","청산금","승계조합원","일반분양"],
-};
-
+import { Insight } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "재건축/재개발"
+ *   sectionId: "07"
+ *   category: "취득세"
+ *   subcategory: "신고"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [22,22]
+ *   effectiveDate: "2023-01-01"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: "지방세법 §11"
+ *   tags: ["재건축","재개발","조합원","청산금","승계조합원","일반분양"]
+ */
 export default function ReconstructionRedevelopmentV10() {
   return (
     <div className="space-y-6">
@@ -156,11 +156,11 @@ export default function ReconstructionRedevelopmentV10() {
       </tbody>
       </table>
 
-      <Callout type="info">
+      <Insight>
 
       <p><strong>조합원 취득시기</strong>: 사용승인일</p>
 
-      </Callout>
+      </Insight>
 
       <hr className="my-6" />
 

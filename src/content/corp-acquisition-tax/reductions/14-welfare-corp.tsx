@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "사회복지법인",
-  category: "corp-acquisition-tax",
-  group: "reductions",
-  groupLabel: "감면",
-  order: 14,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅰ_지특법_감면/14_사회복지법인_감면_지특법22조",
-  sourcePages: [86,93],
-  sourceTaxTypes: ["acquisition_tax","property_tax"],
-  sourceKeyLawRefs: ["지방세특례제한법 제22조","지방세특례제한법 제22조 제1항","지방세특례제한법 제2조 제1항 제2호","지방세특례제한법 제22조의4","지방세특례제한법 제87조"],
-  lawReference: "지방세특례제한법 제22조, 지방세특례제한법 제22조 제1항, 지방세특례제한법 제2조 제1항 제2호, 지방세특례제한법 제22조의4, 지방세특례제한법 제87조",
-};
-
+import { CalcBox, SubSection } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "사회복지법인"
+ *   category: "corp-acquisition-tax"
+ *   group: "reductions"
+ *   groupLabel: "감면"
+ *   order: 14
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅰ_지특법_감면/14_사회복지법인_감면_지특법22조"
+ *   sourcePages: [86,93]
+ *   sourceTaxTypes: ["acquisition_tax","property_tax"]
+ *   sourceKeyLawRefs: ["지방세특례제한법 제22조","지방세특례제한법 제22조 제1항","지방세특례제한법 제2조 제1항 제2호","지방세특례제한법 제22조의4","지방세특례제한법 제87조"]
+ *   lawReference: "지방세특례제한법 제22조, 지방세특례제한법 제22조 제1항, 지방세특례제한법 제2조 제1항 제2호, 지방세특례제한법 제22조의4, 지방세특례제한법 제87조"
+ */
 export default function Content14WelfareCorpV10() {
   return (
     <div className="space-y-6">
@@ -41,17 +40,12 @@ export default function Content14WelfareCorpV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>지방세특례제한법 제22조에 따른 사회복지법인·사회복지시설에 대한 취득세·재산세 감면요건(직접 사용, 감면율, 추징사유)을 다루며, 감면 주체의 범위가 열거적·한정적 규정임을 판례·예규를 통해 해설한다. 사회복지시설을 직접 운영하지 않는 단체나 자연인은 감면 대상에 해당하지 않으며, 조세법률주의에 따른 엄격해석 원칙이 적용됨을 강조한다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>사회복지법인</strong> — 사회복지사업법에 따라 사회복지사업을 할 목적으로 설립된 법인으로, 취득세·재산세 감면의 주요 주체.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제22조" target="_blank" rel="noopener noreferrer">지특법 §22 제1항</a>, <a href="https://law.go.kr/법령/지방세특례제한법/제22조" target="_blank" rel="noopener noreferrer">지특법 §22 제3항</a></li>
@@ -72,65 +66,65 @@ export default function Content14WelfareCorpV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>수록 판례 (4건)</Outline>
-      </h2>
-
-      <Outline level={2}>대법원2002두9537</Outline>
+      
+      </CalcBox><CalcBox title="■ 수록 판례 (4건)" id="section-3">
+      <SubSection title="● 대법원2002두9537">
       <p><strong>쟁점</strong>: 조세감면요건의 엄격해석 원칙</p>
       <p><strong>판시사항</strong>: 조세법률주의 원칙상 과세요건이거나 비과세요건 또는 조세감면요건을 막론하고 조세법규의 해석은 특별한 사정이 없는 한 법문대로 해석할 것이고, 합리적 이유 없이 확장해석하거나 유추해석하는 것은 허용되지 아니하며, 특히 감면요건 규정 가운데 명백히 특혜규정이라고 볼 수 있는 것은 엄격하게 해석하는 것이 조세공평의 원칙에 부합한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제22조" target="_blank" rel="noopener noreferrer">지특법 §22</a></p>
 
-      <Outline level={2}>대법원2003두7392</Outline>
+      
+        </SubSection><SubSection title="● 대법원2003두7392">
       <p><strong>쟁점</strong>: 조세감면요건의 엄격해석 원칙(재확인)</p>
       <p><strong>판시사항</strong>: 조세법률주의 원칙에서 파생되는 엄격해석의 원칙상, 조세법규의 해석은 과세요건이거나 비과세요건 또는 조세감면요건을 막론하고 특별한 사정이 없는 한 법문대로 해석하여야 한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제22조" target="_blank" rel="noopener noreferrer">지특법 §22 제1항</a></p>
 
-      <Outline level={2}>대법원2009두8892</Outline>
+      
+        </SubSection><SubSection title="● 대법원2009두8892">
       <p><strong>쟁점</strong>: 사회복지시설 직접 운영 단체에 한정한 취득세 감면 주체 요건</p>
       <p><strong>판시사항</strong>: 사회복지시설을 직접 운영하지 아니하고 지원만 하는 비영리법인은 취득세가 비과세되는 사회복지법인이 아니다. 사회복지시설을 직접 운영하는 단체가 그 사업에 사용하기 위하여 취득한 부동산에 한하여 취득세를 면제하는 것으로 해석하지 않으면 비과세 대상 부동산의 범위가 지나치게 확대되고 조세공평을 해친다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제22조" target="_blank" rel="noopener noreferrer">지특법 §22</a>, <a href="https://law.go.kr/법령/지방세법시행령/제79조" target="_blank" rel="noopener noreferrer">시행령 §79 제1항</a></p>
 
-      <Outline level={2}>대법원2012두24276</Outline>
+      
+        </SubSection><SubSection title="● 대법원2012두24276">
       <p><strong>쟁점</strong>: 사회복지사업을 목적으로 하는 단체의 범위가 열거적·한정적 규정임</p>
       <p><strong>판시사항</strong>: 구 지방세법 시행령 제79조 제1항 제4호 등에서 말하는 '양로원·보육원·모자원·한센병자 치료보호시설 등 사회복지사업을 목적으로 하는 단체'는 열거된 사회복지시설을 직접 운영하는 단체로 한정된다. 민법상 비영리사단법인이라 하더라도 위 열거된 사회복지시설을 직접 운영하는 단체가 아닌 이상 비과세요건 중 주체 요건을 충족하였다고 보기 어렵다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법시행령/제79조" target="_blank" rel="noopener noreferrer">시행령 §79 제1항</a>, <a href="https://law.go.kr/법령/지방세특례제한법/제22조" target="_blank" rel="noopener noreferrer">지특법 §22</a></p>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>조심 판례 (1건)</Outline>
-      </h2>
-
-      <Outline level={2}>조심2016지1287</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 조심 판례 (1건)" id="section-4">
+      <SubSection title="● 조심2016지1287">
       <p><strong>쟁점</strong>: 자연인이 사회복지시설 용도로 부동산 취득 시 감면 해당 여부</p>
       <p><strong>판시사항</strong>: 청구인이 부동산을 취득하여 지적장애인을 위한 장애인복지시설로 이용하더라도, 청구인은 사회복지법인이나 사회복지사업을 목적으로 하는 단체가 아닌 자연인에 불과하므로 감면요건을 충족하지 못한 것으로 보아 경정청구를 거부한 처분은 잘못이 없다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제22조" target="_blank" rel="noopener noreferrer">지특법 §22</a></p>
 
 
-      <h2 id="section-5">
-      <Outline level={1}>예규 (3건)</Outline>
-      </h2>
-
-      <Outline level={2}>지방세특례제도과-796</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 예규 (3건)" id="section-5">
+      <SubSection title="● 지방세특례제도과-796">
       <p><strong>쟁점</strong>: 사회복지사업을 목적으로 하는 단체 범위의 한정적·열거적 해석</p>
       <p><strong>판시사항</strong>: 구 지방세특례제한법 제22조 제1항에 따라 대통령령으로 정하는 사회복지사업을 목적으로 하는 단체의 범위는 한정적·열거적 규정으로 보아야 하며, 사회복지시설을 직접 운영하기 위하여 설립된 단체가 아닌 이상 지방세 경감 대상으로 볼 수 없다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제22조" target="_blank" rel="noopener noreferrer">지특법 §22 제1항</a></p>
 
-      <Outline level={2}>지방세특례제도과-1804</Outline>
+      
+        </SubSection><SubSection title="● 지방세특례제도과-1804">
       <p><strong>쟁점</strong>: 출연재산의 대표자 개인 명의 취득 시 사회복지법인 취득세 감면 해당 여부</p>
       <p><strong>판시사항</strong>: 건물을 사회복지사업의 목적에 사용하더라도 해당 부동산을 취득 등기한 자가 대표자 개인이라면, 그 부동산의 소유자 또는 사실상 취득자의 지위에서 사회복지법인의 해당 업무 자체에 직접 사용하는 것으로 보기 어렵다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제22조" target="_blank" rel="noopener noreferrer">지특법 §22 제1항</a></p>
 
-      <Outline level={2}>지방세특례제도과-1708</Outline>
+      
+        </SubSection><SubSection title="● 지방세특례제도과-1708">
       <p><strong>쟁점</strong>: 사회복지법인이 운영하는 어린이집에 대한 취득세 감면 여부</p>
       <p><strong>판시사항</strong>: 법인세법상 어린이집은 수익사업에서 제외되므로, 사회복지법인이 설치·운영하는 어린이집에 대하여 지방세특례제한법 제19조 및 제22조 감면규정 모두 적용할 수 있으며, 둘 이상의 감면 규정이 적용될 경우 감면율이 높은 것 하나만을 적용한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제22조" target="_blank" rel="noopener noreferrer">지특법 §22</a>, <a href="https://law.go.kr/법령/지방세특례제한법/제19조" target="_blank" rel="noopener noreferrer">지특법 §19</a>, <a href="https://law.go.kr/법령/지방세특례제한법/제180조" target="_blank" rel="noopener noreferrer">지특법 §180</a></p>
 
 
-      <h2 id="section-6">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 관련 법조문" id="section-6">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제22조</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제22조 제1항</code></li>
@@ -140,10 +134,8 @@ export default function Content14WelfareCorpV10() {
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
       <p>카. 「일제하 일본군위안부 피해자에 대한 생활안정지원 및 기념사업 등에 관한 법률」</p>
 
       <p>타. 「사회복지공동모금회법」 파. 「장애인·노인·임산부 등의 편의증진 보장에 관한 법률」</p>
@@ -263,10 +255,8 @@ export default function Content14WelfareCorpV10() {
 
 
 
-      <h2 id="section-8">
-      <Outline level={1}>사회적기업에 대한 감면 관련 법률</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 사회적기업에 대한 감면 관련 법률" id="section-8">
       <p>```text</p>
       <p>지방세특례제한법 제22조의4 【사회적기업에 대한 감면】 / 「사회적기업 육성법」 제2조제1호에 따른 사회적기업(「상법」에 따른 회사인 경우에는 「중소기업기본법」 제2조제1항에 따른 중소기업으로 한정한다)에 대해서는 다음 각 호에서 정하는 바에 따라 지방세를 2027년 12월 31일까지 경감한다. / 1. 그 고유업무에 직접 사용하기 위하여 취득하는 부동산에 대해서는 취득세의 100분의 50을 경감한다. 다만, 다음 각 목의 어느 하나에 해당하는 경우 그 해당 부분에 대해서는 경감된 취득세를 추징한다. / 가. 그 취득일부터 3년 이내에 「사회적기업 육성법」 제18조에 따라 사회적기업의 인증이 취소되는 경우 / 나. 정당한 사유 없이 그 취득일부터 1년이 경과할 때까지 해당 용도로 직접 사용하지 아니하는 경우 / 다. 해당 용도로 직접 사용한 기간이 2년 미만인 상태에서 매각·증여하거나 다른 용도로 사용하는 경우 / 2. 그 법인등기에 대해서는 등록면허세의 100분의 50을 경감한다.(2012.12.28.삭제) / 3. 과세기준일 현재 그 고유업무에 직접 사용하는 부동산에 대해서는 재산세의 100분의 25를 경감한다.</p>
       <p>```</p>
@@ -304,10 +294,8 @@ export default function Content14WelfareCorpV10() {
 
       <p>☞ 사회적기업리스트 확인방법 : 사회적기업진흥원 홈페이지▷ 사회적기업정보▷ 사회적기업리스트</p>
 
-      <h2 id="section-9">
-      <Outline level={1}>새마을금고 등에 대한 감면</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 새마을금고 등에 대한 감면" id="section-9">
       <p>```text</p>
       <p>지방세특례제한법 제87조 【새마을금고 등에 대한 감면】 / ① 「신용협동조합법」에 따라 설립된 신용협동조합(중앙회는 제외하며, 이하 제1호 및 제2호에서 "신용협동조합"이라 한다)에 대해서는 다음 각 호에서 정하는 바에 따라 지방세를 각각 감면한다. / 1. 신용협동조합이 「신용협동조합법」 제39조제1항제1호의 업무에 직접 사용하기 위하여 취득하는 부동산에 대해서는 취득세를, 과세기준일 현재 그 업무에 직접 사용하는 부동산에 대해서는 재산세를 각각 20263년 12월 31일까지 면제한다. / 2. 신용협동조합이 「신용협동조합법」 제39조제1항제2호 및 제4호의 업무에 직접 사용하기 위하여 취득하는 부동산에 대해서는 취득세를, 과세기준일 현재 그 업무에 직접 사용하는 부동산에 대해서는 재산세를 각각 2026년 12월 31일까지 면제한다. / 3. 「신용협동조합법」에 따라 설립된 신용협동조합중앙회가 같은 법 제78조제1항제1호 및 제2호의 업무에 직접 사용하기 위하여 취득하는 부동산에 대해서는 취득세의 100분의 25를, 과세기준일 현재 그 사업에 직접 사용하는 부동산에 대해서는 재산세의 100분의 25를 각각 2017년 12월 31일까지 경감한다.    &lt;일몰&gt; / ② 「새마을금고법」에 따라 설립된 새마을금고(중앙회는 제외하며, 이하 제1호 및 제2호에서 "새마을금고"라 한다)에 대해서는 다음 각 호에서 정하는 바에 따라 지방세를 각각 감면한다. / 1. 새마을금고가 「새마을금고법」 제28조제1항제1호의 업무에 직접 사용하기 위하여 취득하는 부동산에 대해서는 취득세를, 과세기준일 현재 그 업무에 직접 사용하는 부동산에 대해서는 재산세를 각각 2026년 12월 31일까지 면제한다. / 2. 새마을금고가 「새마을금고법」 제28조제1항제2호부터 제4호까지의 업무에 직접 사용하기 위하여 취득하는 부동산에 대해서는 취득세를, 과세기준일 현재 그 업무에 직접 사용하는 부동산에 대해서는 재산세를 각각 2026년 12월 31일까지 면제한다. / 3. 「새마을금고법」에 따라 설립된 새마을금고중앙회가 같은 법 제67조제1항제1호 및 제2호의 업무에 직접 사용하기 위하여 취득하는 부동산에 대해서는 취득세의 100분의 25를, 과세기준일 현재 그 사업에 직접 사용하는 부동산에 대해서는 재산세의 100분의 25를 각각 2017년 12월 31일까지 경감한다. &lt;일몰&gt;</p>
       <p>```</p>
@@ -326,6 +314,7 @@ export default function Content14WelfareCorpV10() {
       </tbody>
       </table>
 
-    </div>
+    
+      </CalcBox></div>
   );
 }

@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "지식산업센터",
-  category: "corp-acquisition-tax",
-  group: "reductions",
-  groupLabel: "감면",
-  order: 23,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅰ_지특법_감면/23_지식산업센터_감면_지특법58조의2",
-  sourcePages: [133,143],
-  sourceTaxTypes: ["acquisition_tax","property_tax"],
-  sourceKeyLawRefs: ["지방세법 시행령 제102조 제8항 제5호","지방세법 시행령 제102조","지방세특례제한법 제58조의2","지방세특례제한법 제58조의3"],
-  lawReference: "지방세법 시행령 제102조 제8항 제5호, 지방세법 시행령 제102조, 지방세특례제한법 제58조의2, 지방세특례제한법 제58조의3",
-};
-
+import { CalcBox, SubSection } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "지식산업센터"
+ *   category: "corp-acquisition-tax"
+ *   group: "reductions"
+ *   groupLabel: "감면"
+ *   order: 23
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅰ_지특법_감면/23_지식산업센터_감면_지특법58조의2"
+ *   sourcePages: [133,143]
+ *   sourceTaxTypes: ["acquisition_tax","property_tax"]
+ *   sourceKeyLawRefs: ["지방세법 시행령 제102조 제8항 제5호","지방세법 시행령 제102조","지방세특례제한법 제58조의2","지방세특례제한법 제58조의3"]
+ *   lawReference: "지방세법 시행령 제102조 제8항 제5호, 지방세법 시행령 제102조, 지방세특례제한법 제58조의2, 지방세특례제한법 제58조의3"
+ */
 export default function Content23KnowledgeCenterV10() {
   return (
     <div className="space-y-6">
@@ -40,17 +39,12 @@ export default function Content23KnowledgeCenterV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>본 리프는 지방세특례제한법 제58조의2에 따른 지식산업센터 감면(취득세·재산세)의 적용 요건과 추징 사유를 다룬다. 사업시행자(설립자) 감면과 최초분양 입주자 감면의 요건, 신탁 관련 설립자 지위 인정 여부, 분양·임대 조건 위반 시 추징 기준 등이 주요 쟁점이다. 또한 재산세 분리과세 적용 요령 및 관련 산업집적활성화법상 사업시설용 업종 범위도 상세히 설명한다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>지식산업센터 설립자</strong> — 산집법 제28조의2에 따라 지식산업센터의 설립승인을 받은 자 또는 설립승인 전이라도 부동산 취득 후 설립승인을 받아 착공하려는 자로, 취득세·재산세 감면 대상인 사업시행자.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의2" target="_blank" rel="noopener noreferrer">지특법 §58의2 제1항</a>, <code className="bg-gray-100 px-1 rounded text-sm">산업집적활성화 및 공장설립에 관한 법률/제28조의2</code></li>
@@ -71,74 +65,76 @@ export default function Content23KnowledgeCenterV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>수록 판례 (2건)</Outline>
-      </h2>
-
-      <Outline level={2}>대법원2012두6407</Outline>
+      
+      </CalcBox><CalcBox title="■ 수록 판례 (2건)" id="section-3">
+      <SubSection title="● 대법원2012두6407">
       <p><strong>쟁점</strong>: 주상복합 신축 토지 취득 시 등록세 중과 대상 부지 확정 시점</p>
       <p><strong>판시사항</strong>: 토지 취득·등기 시에는 판매시설 부지 지분을 특정할 수 없어 등록세 중과 대상에서 제외되나, 이후 건축허가에 따른 착공 시점에 판매시설 부지 지분이 특정되어 중과세 대상이 된다. 따라서 착공일을 기준으로 중과 여부가 확정된다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제138조" target="_blank" rel="noopener noreferrer">법 §138 제1항</a></p>
 
-      <Outline level={2}>대법원2016두53951</Outline>
+      
+        </SubSection><SubSection title="● 대법원2016두53951">
       <p><strong>쟁점</strong>: 지식산업센터 설립사업 마무리 단계 신탁 시 위탁자의 설립자 지위 인정 여부</p>
       <p><strong>판시사항</strong>: 지식산업센터 설립사업의 마무리 단계에서 신탁된 사정만으로 위탁자가 설립자로서의 자격을 상실했다고 보는 것은 산업집적법의 취지에 어긋난다. 따라서 위탁자는 지방세 감면 대상 설립자에 해당한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의2" target="_blank" rel="noopener noreferrer">지특법 §58의2</a></p>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>조심 판례 (4건)</Outline>
-      </h2>
-
-      <Outline level={2}>조심2021지0744</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 조심 판례 (4건)" id="section-4">
+      <SubSection title="● 조심2021지0744">
       <p><strong>쟁점</strong>: 설립자가 사업시설용으로 분양하였으나 수분양자가 다른 용도로 사용한 경우 설립자에 대한 추징 가능 여부</p>
       <p><strong>판시사항</strong>: 설립자가 사업시설용으로 사용하는 조건으로 분양한 것이 확인된다면 다른 용도로 분양·임대한 것으로 보기 어렵고, '다른 용도로 사용하는 경우'는 수분양자에게 적용되는 규정이므로 설립자에게까지 확장 적용할 수 없어 추징 대상에 해당하지 않는다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의2" target="_blank" rel="noopener noreferrer">지특법 §58의2 제1항</a></p>
 
-      <Outline level={2}>조심2017지0199</Outline>
+      
+        </SubSection><SubSection title="● 조심2017지0199">
       <p><strong>쟁점</strong>: 지식산업센터용 토지의 신탁등기가 추징 대상인 매각에 해당하는지 여부</p>
       <p><strong>판시사항</strong>: 신탁법상 신탁은 지방세특례제한법 제58조의2 제1항의 추징 대상인 '매각·증여'의 법률행위로 보기 어렵다. 설립승인 전이라도 부동산 취득 후 설립승인을 받아 착공하려는 자도 감면 대상에 포함되며, 신탁등기는 추징 대상인 매각에 해당하지 않는다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의2" target="_blank" rel="noopener noreferrer">지특법 §58의2 제1항</a></p>
 
-      <Outline level={2}>조심2013지483</Outline>
+      
+        </SubSection><SubSection title="● 조심2013지483">
       <p><strong>쟁점</strong>: 지식산업센터 설립승인 전 부동산 취득자의 감면 대상 해당 여부</p>
       <p><strong>판시사항</strong>: 설립승인을 받기 전이라도 부동산 취득 후 설립승인을 받아 착공하려는 자는 감면 규정의 '설립승인을 받은 자'의 범위에 포함되는 것으로 보는 것이 입법취지상 합리적이다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의2" target="_blank" rel="noopener noreferrer">지특법 §58의2 제1항</a></p>
 
-      <Outline level={2}>조심2015지732</Outline>
+      
+        </SubSection><SubSection title="● 조심2015지732">
       <p><strong>쟁점</strong>: 예비벤처기업의 법인설립등기 등록면허세 면제 적용 범위</p>
       <p><strong>판시사항</strong>: 벤처기업육성에 관한 특별조치법 제2조의2제1항제2호 다목에 따라 창업 중에 벤처기업으로 확인받은 중소기업이 확인일부터 1년 이내에 하는 법인설립등기에 대해 등록면허세를 면제한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의3" target="_blank" rel="noopener noreferrer">지특법 §58의3 제3항</a></p>
 
 
-      <h2 id="section-5">
-      <Outline level={1}>예규 (4건)</Outline>
-      </h2>
-
-      <Outline level={2}>지방세특례제도과-798</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 예규 (4건)" id="section-5">
+      <SubSection title="● 지방세특례제도과-798">
       <p><strong>쟁점</strong>: 설립자가 입주 불가 업종 수분양자와 분양계약 체결 또는 수분양자 임대 전환 시 취득세 추징 여부</p>
       <p><strong>판시사항</strong>: 지식산업센터 설립자가 분양계약 체결 당시 입주 불가능한 업종을 영위하는 자와 분양계약을 체결하거나, 수분양자가 계약 이후 임대업으로 변경하거나 직접 사용하지 않고 임대하는 경우에는 기 감면한 취득세를 추징하는 것이 타당하다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의2" target="_blank" rel="noopener noreferrer">지특법 §58의2 제1항</a></p>
 
-      <Outline level={2}>지방세운영-685</Outline>
+      
+        </SubSection><SubSection title="● 지방세운영-685">
       <p><strong>쟁점</strong>: 토지와 건축물 일괄 취득 시 건축물 가액 '0'원 기재 경우 과세표준 산정 방법</p>
       <p><strong>판시사항</strong>: 토지와 건축물을 일괄 취득할 때 건축물 가액을 '0'원으로 기재한 경우, 토지 및 건축물의 과세표준은 시가표준액 비율로 나눈 금액을 각각의 취득가격으로 판단하여야 한다.</p>
 
-      <Outline level={2}>지방세특례제도과-1475</Outline>
+      
+        </SubSection><SubSection title="● 지방세특례제도과-1475">
       <p><strong>쟁점</strong>: 신탁계약 종료 후 위탁자에게 귀속된 미분양 물건을 취득한 자의 최초분양 입주자 해당 여부</p>
       <p><strong>판시사항</strong>: 신탁계약의 종료로 위탁자에게 귀속된 미분양 물건을 최초로 분양받은 입주자는 신탁관계에도 불구하고 지식산업센터를 설립한 자로부터 최초로 분양받은 입주자로 보는 것이 입법취지에 비추어 합리적이다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의2" target="_blank" rel="noopener noreferrer">지특법 §58의2 제2항</a></p>
 
-      <Outline level={2}>지방세특례제도과-1573</Outline>
+      
+        </SubSection><SubSection title="● 지방세특례제도과-1573">
       <p><strong>쟁점</strong>: 지식산업센터 감면 대상 사업시설용 범위(어린이집·기숙사 등 지원시설 제외 여부)</p>
       <p><strong>판시사항</strong>: 지방세특례제한법 제58조의2 감면 대상은 산집법 제28조의5 제1항 제1호 및 제2호의 사업시설용(제조업·지식산업·정보통신산업·벤처기업·첨단산업)에 한정되며, 제3호의 어린이집·기숙사 등 복지시설은 취득세 감면 대상인 사업시설용에서 제외된다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의2" target="_blank" rel="noopener noreferrer">지특법 §58의2</a>, <code className="bg-gray-100 px-1 rounded text-sm">산업집적활성화 및 공장설립에 관한 법률/제28조의5 제1항</code></p>
 
 
-      <h2 id="section-6">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 관련 법조문" id="section-6">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세법 시행령 제102조 제8항 제5호</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세법 시행령 제102조</code></li>
@@ -147,10 +143,8 @@ export default function Content23KnowledgeCenterV10() {
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
       <p>☞최초분양자 감면시 준비서류</p>
 
       <p>#### 취득세 신고서 및 감면신청서</p>
@@ -212,8 +206,7 @@ export default function Content23KnowledgeCenterV10() {
 
       <p>지식산업센터 설립사업의 마무리 단계에서 신탁되었다 할지라도 설립자로서의 지위에는 영향을 미치지 아니함.(감면대상에 해당)</p>
 
-      <Outline level={2}>토지와 건축물 일괄 취득시 건축물 가액을 “0”원으로 기재했을 경우 토지 및 건축물의 과세표준은 시가표준액 비율로</Outline>
-
+      <SubSection title="● 토지와 건축물 일괄 취득시 건축물 가액을 “0”원으로 기재했을 경우 토지 및 건축물의 과세표준은 시가표준액 비율로">
       <p>나눈금액을 각각의 취득가격으로 판단하여야 함(지방세운영-685(2017.10.17.))</p>
 
       <p>지식산업센터 토지입력 : (항동246-1 에스케이건설)포함 (착공여부 관계없음)</p>
@@ -240,8 +233,8 @@ export default function Content23KnowledgeCenterV10() {
 
       <p>#### 제8항제6호 : 지식산업센터를 신증축하여 설립한 자로부터 최초로 해당 지식산업센터를 분양받은 입주자(중소기업)로서 제조업, 지식산업, 정보통신산업 등에 직접사용(임대 및 60일 이상 휴업중인 경우는 제외)하는 토지는 5년간 분리과세</p>
 
-      <Outline level={2}>적용요령</Outline>
-
+      
+        </SubSection><SubSection title="● 적용요령">
       <p>▫ 산업단지 내 지식산업센터 (산업단지)</p>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
@@ -664,10 +657,9 @@ export default function Content23KnowledgeCenterV10() {
 
 
 
-      <h2 id="section-8">
-      <Outline level={1}>창업벤처에 대한 감면 관련 법률</Outline>
-      </h2>
-
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 창업벤처에 대한 감면 관련 법률" id="section-8">
       <p>지방세특례제한법 제58조의 3 【창업중소기업등에 대한 감면】</p>
 
       <p>① 2026년 12월 31일까지 과밀억제권역 외의 지역에서 창업하는 중소기업(이하 이 조에서 “창업중소기업”이라 한다)이 이라 한다)부터 4년 이내(대통령령으로 정하는 청년창업기업의 경우에는 5년 이내)에 취득하는 부동산에 대해서는 다음 각 호에서 정하는 바에 따라 지방세를 경감한다. ※서울시의 경우 창업중소기업 없음</p>
@@ -756,6 +748,7 @@ export default function Content23KnowledgeCenterV10() {
 
       <p>3. 최초 사용일부터 계속하여 2년간 해당 사업에 직접 사용하지 아니하고 다른 용도로 사용하거나 매각ㆍ증여하는 경우</p>
 
-    </div>
+    
+      </CalcBox></div>
   );
 }

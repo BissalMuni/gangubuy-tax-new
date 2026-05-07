@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "일반적 추징규정",
-  category: "corp-acquisition-tax",
-  group: "reductions",
-  groupLabel: "감면",
-  order: 30,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅰ_지특법_감면/30_지특법_일반적_추징규정_지특법178조",
-  sourcePages: [166,168],
-  sourceTaxTypes: ["common"],
-  sourceKeyLawRefs: ["지방세특례제한법 제180조의2 제1항 제3호","지방세특례제한법 제178조 제1항","지방세특례제한법 제180조의2 제1항","지방세법 제6조","지방세법 제9조 제6항","지방세법 시행령 제76조 제2호","지방세법 시행령 제76조","지방세법 시행령 제137조","지방세법 시행령 제138조"],
-  lawReference: "지방세특례제한법 제180조의2 제1항 제3호, 지방세특례제한법 제178조 제1항, 지방세특례제한법 제180조의2 제1항, 지방세법 제6조, 지방세법 제9조 제6항, 지방세법 시행령 제76조 제2호, 지방세법 시행령 제76조, 지방세법 시행령 제137조, 지방세법 시행령 제138조",
-};
-
+import { CalcBox, SubSection } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "일반적 추징규정"
+ *   category: "corp-acquisition-tax"
+ *   group: "reductions"
+ *   groupLabel: "감면"
+ *   order: 30
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅰ_지특법_감면/30_지특법_일반적_추징규정_지특법178조"
+ *   sourcePages: [166,168]
+ *   sourceTaxTypes: ["common"]
+ *   sourceKeyLawRefs: ["지방세특례제한법 제180조의2 제1항 제3호","지방세특례제한법 제178조 제1항","지방세특례제한법 제180조의2 제1항","지방세법 제6조","지방세법 제9조 제6항","지방세법 시행령 제76조 제2호","지방세법 시행령 제76조","지방세법 시행령 제137조","지방세법 시행령 제138조"]
+ *   lawReference: "지방세특례제한법 제180조의2 제1항 제3호, 지방세특례제한법 제178조 제1항, 지방세특례제한법 제180조의2 제1항, 지방세법 제6조, 지방세법 제9조 제6항, 지방세법 시행령 제76조 제2호, 지방세법 시행령 제76조, 지방세법 시행령 제137조, 지방세법 시행령 제138조"
+ */
 export default function Content30GeneralRecaptureV10() {
   return (
     <div className="space-y-6">
@@ -39,17 +38,12 @@ export default function Content30GeneralRecaptureV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>이 리프는 지방세특례제한법 제178조의 일반적 추징규정 적용 범위를 다룬다. 주요 쟁점은 ①영농조합법인의 설립요건 미충족 시 감면된 취득세 추징 가능 여부, ②프로젝트금융투자회사에 대한 중과세율 적용배제 특례(제180조의2)가 일반적 추징규정의 적용 대상인지 여부이며, 아울러 개수(改修)의 개념 및 취득세 과세 여부(승강기, 태양광 발전시설, 중앙조절식 에어컨 등)도 함께 설명된다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>일반적 추징규정</strong> — 지방세특례제한법 제178조 제1항에 규정된 규정으로, 부동산 감면을 적용한 후 해당 용도로 직접 사용하지 않는 경우 감면세액을 추징하는 사후관리 조항.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제178조" target="_blank" rel="noopener noreferrer">지특법 §178 제1항</a></li>
@@ -66,55 +60,56 @@ export default function Content30GeneralRecaptureV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>조심 판례 (4건)</Outline>
-      </h2>
-
-      <Outline level={2}>조심2022지1472</Outline>
+      
+      </CalcBox><CalcBox title="■ 조심 판례 (4건)" id="section-3">
+      <SubSection title="● 조심2022지1472">
       <p><strong>쟁점</strong>: 프로젝트금융투자회사의 중과세율 배제 특례와 일반적 추징규정의 관계</p>
       <p><strong>판시사항</strong>: 지방세특례제한법 제180조의2 제1항은 제178조 제1항의 특별규정에 해당하므로, 프로젝트금융투자회사가 취득한 부동산에 대하여는 대도시 취득세 중과세율 규정뿐만 아니라 그 사후관리(추징) 규정도 적용하지 않는 것이 타당하다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제178조" target="_blank" rel="noopener noreferrer">지특법 §178 제1항</a>, <a href="https://law.go.kr/법령/지방세특례제한법/제180조의2" target="_blank" rel="noopener noreferrer">지특법 §180의2 제1항</a></p>
 
-      <Outline level={2}>조심2022지1476</Outline>
+      
+        </SubSection><SubSection title="● 조심2022지1476">
       <p><strong>쟁점</strong>: 프로젝트금융투자회사에 대한 일반적 추징규정 적용 배제</p>
       <p><strong>판시사항</strong>: 지방세특례제한법 제180조의2 제1항은 제178조 제1항에 대한 특별규정으로 볼 수 있으므로, 해당 부동산에 대하여 일반적 추징규정인 제178조 제1항을 적용할 수 없다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제178조" target="_blank" rel="noopener noreferrer">지특법 §178 제1항</a>, <a href="https://law.go.kr/법령/지방세특례제한법/제180조의2" target="_blank" rel="noopener noreferrer">지특법 §180의2 제1항</a></p>
 
-      <Outline level={2}>조심2008지1037</Outline>
+      
+        </SubSection><SubSection title="● 조심2008지1037">
       <p><strong>쟁점</strong>: 승강기 개수 관련 취득세 과세 적법 여부</p>
       <p><strong>판시사항</strong>: 승강기를 구성하는 카, 권양기, 가이드레일, 카운터웨이트, 와이어로프 등은 승강기 운행에 필수적인 시설이므로, 취득세 과세표준에 포함되어야 한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제6조" target="_blank" rel="noopener noreferrer">법 §6 제6호</a></p>
 
-      <Outline level={2}>조심2015지857</Outline>
+      
+        </SubSection><SubSection title="● 조심2015지857">
       <p><strong>쟁점</strong>: 중앙조절식 에어컨의 취득세 과세 대상 해당 여부</p>
       <p><strong>판시사항</strong>: 시간당 7천560킬로칼로리급 이상이고 중앙컨트롤러세트를 설치한 에어컨은 중앙조절식에 해당하므로, 지방세법 제6조 제6호의 시설물로 보아 취득세를 부과한 처분은 잘못이 없다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제6조" target="_blank" rel="noopener noreferrer">법 §6 제6호</a></p>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>예규 (3건)</Outline>
-      </h2>
-
-      <Outline level={2}>지방세특례제도과-1497</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 예규 (3건)" id="section-4">
+      <SubSection title="● 지방세특례제도과-1497">
       <p><strong>쟁점</strong>: 영농조합법인 설립요건 미충족 시 감면된 취득세 추징 여부</p>
       <p><strong>판시사항</strong>: 부동산 취득 당시 감면요건을 충족하였고, 이후 영농조합법인의 설립요건 미충족에 대한 별도의 추징규정이 없는 한 감면된 취득세를 추징할 수 없다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제178조" target="_blank" rel="noopener noreferrer">지특법 §178 제1항</a></p>
 
-      <Outline level={2}>지방세운영과-4095</Outline>
+      
+        </SubSection><SubSection title="● 지방세운영과-4095">
       <p><strong>쟁점</strong>: 태양광 발전시설의 취득세 과세대상(개수) 해당 여부</p>
       <p><strong>판시사항</strong>: 전기사업자가 판매목적으로 전력을 생산·공급하기 위해 옥외 토지상에 설치한 태양광 발전시설은 건축물에 부수되어 효용을 증가시키는 시설물이 아닌 발전사업용 생산시설이므로, 지방세법 시행령 제76조 제2호에 따른 취득세 과세대상으로 볼 수 없다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법시행령/제76조" target="_blank" rel="noopener noreferrer">시행령 §76 제2호</a></p>
 
-      <Outline level={2}>지방세운영과-682</Outline>
+      
+        </SubSection><SubSection title="● 지방세운영과-682">
       <p><strong>쟁점</strong>: 태양광 발전시설의 취득세 과세표준 포함 및 개수 해당 여부</p>
       <p><strong>판시사항</strong>: 건물 유지관리용(20kw 미만 포함)으로 설치된 태양광 발전시설은 신축건축물의 취득세 과세표준에 포함되며, 공장 생산시설 가동용 또는 발전사업용 태양광 발전시설은 취득세 과세대상인 개수에 해당하지 않는다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법시행령/제76조" target="_blank" rel="noopener noreferrer">시행령 §76 제2호</a>, <a href="https://law.go.kr/법령/지방세법/제6조" target="_blank" rel="noopener noreferrer">법 §6 제6호</a></p>
 
 
-      <h2 id="section-5">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 관련 법조문" id="section-5">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제180조의2 제1항 제3호</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제178조 제1항</code></li>
@@ -128,10 +123,8 @@ export default function Content30GeneralRecaptureV10() {
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
       <p>농업법인을 설립하여 농지 취득시 감면을 받고 영농 목적으로 사용하고 있으나 추징 유예기간 내에 설립요건을 미충족하게 된 경우 추징 여부.세무과-25863(2017.11.6.)/지방세특례제도과-1497(2017.11.02)</p>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
@@ -158,10 +151,8 @@ export default function Content30GeneralRecaptureV10() {
 
 
 
-      <h2 id="section-7">
-      <Outline level={1}>개수 : 지방세법 제6조 6호</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 개수 : 지방세법 제6조 6호" id="section-7">
       <p>```text</p>
       <p>개수란 ?  대수선, 시설 수선 , 부수시설물 설치 및 수선 / 시설(시행령제5조) - 수선시설물(시행령제5조) - 설치 및 수선- 레저시설(옥외수영장, 롤러스케이트장, 기타스케이트장       20타석이상골프연습장, 감시탑·전망대, 옥외스탠드        옥외오락시설)- 저장시설(수조,저유조, 등 옥외저장시설)- 도관시설(송유관, 가스관, 열수송관)- 급.배수시설(송수관, 옥외하수도, 기계관정)- 에너지공급시설(유류저장조, 환경친화적 자동차  충전시설,주유기,압축기,가스주입기,송전철탑 등)  - 기타시설 (잔교, 옥외기계식주차시설, 자동세차시설  철골조립식(자주식)주차장, 무선통신기지국용철탑 등)- 승강기(엘리베이터,덤웨이터, 에스컬레이터         옥내기계식주차시설, 휠체어리프트)  - 시간당 20킬로와트 이상 발전기(공장용 발전시설 제외)- 난방용·욕탕용(보일러, 온풍난방설비, 히트펌프,              전기온돌난방설비 등)  - 7천560킬로칼로리급 이상의 중앙조절식 에어컨- 부착된 금고, 교환시설  - 건물의 냉난방, 급수·배수, 방화, 방범 등의 자동관리를 위하여  설치하는 인텔리전트 빌딩시스템 시설  - 구내수전시설, 변압기 / 시설(시행령제5조) - 수선 / 시설물(시행령제5조) - 설치 및 수선 / - 레저시설(옥외수영장, 롤러스케이트장, 기타스케이트장 / 20타석이상골프연습장, 감시탑·전망대, 옥외스탠드 / 옥외오락시설) / - 저장시설(수조,저유조, 등 옥외저장시설) / - 도관시설(송유관, 가스관, 열수송관) / - 급.배수시설(송수관, 옥외하수도, 기계관정) / - 에너지공급시설(유류저장조, 환경친화적 자동차 / 충전시설,주유기,압축기,가스주입기,송전철탑 등) / - 기타시설 (잔교, 옥외기계식주차시설, 자동세차시설 / 철골조립식(자주식)주차장, 무선통신기지국용철탑 등) / - 승강기(엘리베이터,덤웨이터, 에스컬레이터 / 옥내기계식주차시설, 휠체어리프트) / - 시간당 20킬로와트 이상 발전기(공장용 발전시설 제외) / - 난방용·욕탕용(보일러, 온풍난방설비, 히트펌프, / 전기온돌난방설비 등) / - 7천560킬로칼로리급 이상의 중앙조절식 에어컨 / - 부착된 금고, 교환시설 / - 건물의 냉난방, 급수·배수, 방화, 방범 등의 자동관리를 위하여 / 설치하는 인텔리전트 빌딩시스템 시설 / - 구내수전시설, 변압기 / ▸ 대수선: 건축물의 기둥, 보, 내력벽, 주계단 등의 구조나 외부 형태를 수선ㆍ변경하거나 증설하는 것 / ▸ 엘리베이터   : 모터,카,균형추,와이어로프,롤러,시브,도르레,제어반 등 수선 / ▸ 에스컬레이터 : 레일,모터,핸드레일(손잡이),발판,스텝체인(발판체인),롤러등 수선 / ※ 공동주택의 개수인 경우 취득세 비과세(지방세법 제9조 제6항 및 시행령 제12조의2)시가표준액 9억이하 / - 시설을 설치하는 경우는 개수에 해당하지 않으므로 신고납부대상임.</p>
       <p>```</p>
@@ -218,8 +209,7 @@ export default function Content30GeneralRecaptureV10() {
 
 
 
-      <Outline level={2}>건축물에 대한 지방세 과세여부</Outline>
-
+      <SubSection title="● 건축물에 대한 지방세 과세여부">
       <table>
       <thead>
       <tr><th>구분</th><th>건축물</th><th>시설</th><th>시설물</th><th>비고</th></tr>
@@ -232,6 +222,8 @@ export default function Content30GeneralRecaptureV10() {
       </tbody>
       </table>
 
-    </div>
+    
+      
+        </SubSection></CalcBox></div>
   );
 }

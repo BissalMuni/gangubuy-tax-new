@@ -1,22 +1,22 @@
 "use client";
 
-import { Callout } from "@/components/mdx/Callout";
 
-export const meta = {
-  title: "신축건물 신축 보존등기 신고시",
-  sectionId: "26",
-  category: "취득세",
-  subcategory: "신고",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [52,53],
-  effectiveDate: "2020-08-12",
-  lastUpdated: "2026-02-08",
-  status: "draft",
-  lawReference: "지특법 §31①1",
-  tags: ["신축","보존등기","원시취득","도급계약서","건설임대"],
-};
-
+import { Insight } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "신축건물 신축 보존등기 신고시"
+ *   sectionId: "26"
+ *   category: "취득세"
+ *   subcategory: "신고"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [52,53]
+ *   effectiveDate: "2020-08-12"
+ *   lastUpdated: "2026-02-08"
+ *   status: "draft"
+ *   lawReference: "지특법 §31①1"
+ *   tags: ["신축","보존등기","원시취득","도급계약서","건설임대"]
+ */
 export default function NewConstructionV10() {
   return (
     <div className="space-y-6">
@@ -31,19 +31,19 @@ export default function NewConstructionV10() {
 
       <h2 id="1.-신축-취득세율" className="text-xl font-semibold mt-8 mb-4">1. 신축 취득세율</h2>
 
-      <Callout type="info">
+      <Insight>
 
       <p><strong>신(증)축시 취득세율</strong>: 취득세 2.8% + 지방교육세 0.16% + 농특세 0.2% = <strong>총 3.16%</strong></p>
 
       <p>→ <strong>다주택자라도 별도세율체계(원시취득) 적용</strong>한다.</p>
 
-      </Callout>
+      </Insight>
 
       <hr className="my-6" />
 
       <h2 id="2.-신고접수요령" className="text-xl font-semibold mt-8 mb-4">2. 신고접수요령</h2>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>사용승인이 접수되면 건물 심으면서 면허세, 세외수입 등 <strong>제비용도 미리 뽑아두자</strong></li>
@@ -54,7 +54,7 @@ export default function NewConstructionV10() {
         <li>취득신고시 <strong>대지권지분표</strong>도 받아서 [토지물건]에 입력 → 며칠 후 등기 완료되면 등기부등본 열람하여 서로 비교 후 등기된 면적으로 수정 후 <strong>미공시주택가격 산정의뢰</strong></li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       <hr className="my-6" />
 
@@ -170,25 +170,25 @@ export default function NewConstructionV10() {
 
       <h2 id="4.-신축-시공자가-개인인-경우" className="text-xl font-semibold mt-8 mb-4">4. 신축 시공자가 개인인 경우</h2>
 
-      <Callout type="info">
+      <Insight>
 
       <p>시공자가 개인이라도 기본적으로 위 구비서류로 과세할 수 있으나, 증빙이 어렵다면 <strong>공사비내역서 없이 시가표준액으로 산출</strong>하여 과세할 수 있다.</p>
 
-      </Callout>
+      </Insight>
 
-      <Callout type="caution">
+      <Insight>
 
       <p><strong>다중주택</strong>은 국민주택이 아니므로 신축은 농특세 부가세가 과세되니 <strong>부가세를 빼주지만</strong>, <strong>다가구·다세대</strong>는 부가세가 없음에 유의</p>
 
       <p>(부가세 붙여오면 빼서 오라고 해야함)</p>
 
-      </Callout>
+      </Insight>
 
       <hr className="my-6" />
 
       <h2 id="5.-신축-건설임대사업자-감면-처리" className="text-xl font-semibold mt-8 mb-4">5. 신축 건설임대사업자 감면 처리</h2>
 
-      <Callout type="info">
+      <Insight>
 
       <p><strong>건축(건설)임대사업자 감면</strong> (지특법 §31①1호)</p>
       <ul className="list-disc pl-6 my-4 space-y-1">
@@ -196,7 +196,7 @@ export default function NewConstructionV10() {
         <li>농특세 면제</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       <p>감면분과 비감면분의 취득가액을 <strong>면적대비로 안분</strong>하여 각각 과세한다.</p>
 

@@ -1,20 +1,20 @@
 "use client";
 
-import { Callout } from "@/components/mdx/Callout";
 
-export const meta = {
-  title: "농지 취득세율",
-  category: "취득세",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  sourceSections: [],
-  effectiveDate: "2026-01-01",
-  lastUpdated: "2026-01-31",
-  status: "draft",
-  lawReference: "지방세법 §11①1가, §11①1나, §11①2, 지특법 §6",
-  tags: ["농지","취득세","세율","유상거래","상속","증여","자경농민"],
-};
-
+import { Insight } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "농지 취득세율"
+ *   category: "취득세"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   sourceSections: []
+ *   effectiveDate: "2026-01-01"
+ *   lastUpdated: "2026-01-31"
+ *   status: "draft"
+ *   lawReference: "지방세법 §11①1가, §11①1나, §11①2, 지특법 §6"
+ *   tags: ["농지","취득세","세율","유상거래","상속","증여","자경농민"]
+ */
 export default function FarmlandV10() {
   return (
     <div className="space-y-6">
@@ -167,7 +167,7 @@ export default function FarmlandV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>농지 여부 판단</strong>은 공부상 지목이 아닌 <strong>사실상 용도</strong>를 기준으로 하므로, 지목이 '전·답'이라도 실제 영농에 사용되지 않으면 농지 세율 적용 불가</li>
@@ -176,7 +176,7 @@ export default function FarmlandV10() {
         <li>농지취득자격증명 발급 여부와 취득세 세율 적용은 <strong>별개</strong> 사안임</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       </section>
 
@@ -311,7 +311,7 @@ export default function FarmlandV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>상속 농지의 과세표준은 <strong>시가표준액</strong>(개별공시지가)이며, 실거래가가 아님에 유의</li>
@@ -321,7 +321,7 @@ export default function FarmlandV10() {
         <li>1가구 1주택 상속과는 별도로, 농지 상속은 <strong>농지 관련 감면 규정</strong>이 적용됨</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       </section>
 
@@ -452,7 +452,7 @@ export default function FarmlandV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>2023년 개정으로 증여 취득세 과세표준이 <strong>시가인정액</strong>으로 변경되었으므로, 종전 시가표준액 기준과 혼동하지 않도록 유의</li>
@@ -462,7 +462,7 @@ export default function FarmlandV10() {
         <li>시가인정액 산정 시 증여일 전 6개월~후 3개월 범위의 매매사례가액 등 활용</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       </section>
 

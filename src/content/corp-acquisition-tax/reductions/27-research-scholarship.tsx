@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "학술연구·장학단체",
-  category: "corp-acquisition-tax",
-  group: "reductions",
-  groupLabel: "감면",
-  order: 27,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅰ_지특법_감면/27_학술연구_장학단체_감면_지특법45조",
-  sourcePages: [160,161],
-  sourceTaxTypes: ["acquisition_tax","property_tax"],
-  sourceKeyLawRefs: ["지방세특례제한법 제73조","지방세특례제한법 제73조 제3항","지방세특례제한법 제177조의2"],
-  lawReference: "지방세특례제한법 제73조, 지방세특례제한법 제73조 제3항, 지방세특례제한법 제177조의2",
-};
-
+import { CalcBox, SubSection } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "학술연구·장학단체"
+ *   category: "corp-acquisition-tax"
+ *   group: "reductions"
+ *   groupLabel: "감면"
+ *   order: 27
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅰ_지특법_감면/27_학술연구_장학단체_감면_지특법45조"
+ *   sourcePages: [160,161]
+ *   sourceTaxTypes: ["acquisition_tax","property_tax"]
+ *   sourceKeyLawRefs: ["지방세특례제한법 제73조","지방세특례제한법 제73조 제3항","지방세특례제한법 제177조의2"]
+ *   lawReference: "지방세특례제한법 제73조, 지방세특례제한법 제73조 제3항, 지방세특례제한법 제177조의2"
+ */
 export default function Content27ResearchScholarshipV10() {
   return (
     <div className="space-y-6">
@@ -39,17 +38,12 @@ export default function Content27ResearchScholarshipV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>본 리프는 공익사업을 위한 토지 등의 취득 및 보상에 관한 법률에 따른 환매권 행사 시 취득세 면제(지방세특례제한법 제73조 제3항) 요건과 재산세 납세의무자 판단, 그리고 최소납부제(지방세특례제한법 제177조의2) 적용 범위를 다룬다. 환매권 행사 전까지 공부상 소유자인 사업시행자가 재산세 납세의무자이며, 취득세 면제 시에도 일반세율의 15%는 최소납부세액으로 과세됨을 설명한다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>환매권 행사</strong> — 토지의 협의취득일 또는 수용 개시일부터 10년 이내에 사업 폐지·변경 등으로 취득 토지가 불필요해진 경우 원소유자 또는 포괄승계인이 보상금 상당액을 지급하고 토지를 되찾는 권리의 행사.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제73조" target="_blank" rel="noopener noreferrer">지특법 §73</a>, <code className="bg-gray-100 px-1 rounded text-sm">공익사업을 위한 토지 등의 취득 및 보상에 관한 법률/제91조</code></li>
@@ -64,25 +58,23 @@ export default function Content27ResearchScholarshipV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>예규 (2건)</Outline>
-      </h2>
-
-      <Outline level={2}>지방세운영과-2006</Outline>
+      
+      </CalcBox><CalcBox title="■ 예규 (2건)" id="section-3">
+      <SubSection title="● 지방세운영과-2006">
       <p><strong>쟁점</strong>: 환매권 행사 전 재산세 납세의무자 판단</p>
       <p><strong>판시사항</strong>: 환매권자가 환매권을 행사하여 소유권을 돌려받기 전까지는 쟁점토지에 대한 공부상 소유자이면서 개발사업에 사용하고 있는 사업시행자가 재산세를 납부해야 한다. 환매특약부 존치부지 매매계약을 체결하여 소유권을 이전한 경우, 토지를 도시개발사업에 사용하는 사업시행자를 재산세 납세의무자로 보는 것이 타당하다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제73조" target="_blank" rel="noopener noreferrer">지특법 §73</a></p>
 
-      <Outline level={2}>세제과-1038</Outline>
+      
+        </SubSection><SubSection title="● 세제과-1038">
       <p><strong>쟁점</strong>: 환매특약에 따른 취득세 및 농어촌특별세 경감 여부</p>
       <p><strong>판시사항</strong>: 공익사업을 위한 토지 등의 취득 및 보상에 관한 법률에 따른 환매권을 행사하여 매수하는 부동산에 대하여는 취득세를 면제하도록 규정하고 있으며, 해당 필지가 공익사업을 위한 환매권 행사 부동산이라면 취득세 및 농어촌특별세가 경감되나 사실관계를 면밀히 검토 후 과세권자가 판단해야 한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제73조" target="_blank" rel="noopener noreferrer">지특법 §73</a></p>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 관련 법조문" id="section-4">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제73조</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제73조 제3항</code></li>
@@ -90,14 +82,10 @@ export default function Content27ResearchScholarshipV10() {
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
-      <h2 id="section-6">
-      <Outline level={1}>환매권행사 매수부동산 감면</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
+      
+      </CalcBox><CalcBox title="■ 환매권행사 매수부동산 감면" id="section-6">
       <p>```text</p>
       <p>지방세특례제한법 제73조 【토지수용등으로 인한 감면】 / ③  「공익사업을 위한 토지 등의 취득 및 보상에 관한 법률」에 따른 환매권을 행사하여 매수하는 부동산에 대해서는 취득세를 면제한다.</p>
       <p>```</p>
@@ -140,16 +128,15 @@ export default function Content27ResearchScholarshipV10() {
 
       <p>공익사업을 위한 토지 등의 취득 및 보상에 관한 법률에 따른 환매권을 행사하여 매수하는 부동산에 대하여는 취득세를 면제하도록 규정하고 있다. 따라서, 해당 필지가 서울 천왕2지구 국민임대주택단지 지구지정에 해당되고 공익사업을 위한 환매권을 행사하여 매수하는 부동산이라면 취득세 및 농어촌특별세가 경감되나, 이에 대하여는 사실관계 등을 면밀히 검토 후 과세권자가 판단해야 한다.</p>
 
-      <h2 id="section-7">
-      <Outline level={1}>최소납부제(감면특례의 제한)</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 최소납부제(감면특례의 제한)" id="section-7">
       <p>```text</p>
       <p>지방세특례제한법 제177조의2 【지방세 감면 특례의 제한】 / ① 이 법에 따라 취득세 또는 재산세가 면제(지방세 특례 중에서 세액감면율이 100분의 100인 경우와 세율경감률이 「지방세법」에 따른 해당 과세대상에 대한 세율 전부를 감면하는 것을 말한다. 이하 이 조에서 같다)되는 경우에는 이 법에 따른 취득세 또는 재산세의 면제규정에도 불구하고 100분의 85에 해당하는 감면율(은 적용하지 아니한 감면율을 말한다)을 적용한다. ※중과세율은 적용하지 아니하고 일반세율의 15%만 과세 / 다만, 다음 각 호의 어느 하나에 해당하는 경우에는 그러하지 아니하다. / 1. 「지방세법」에 따라 산출한 취득세의 세액(연부로 부동산을 취득하는 경우 매회 세액을 합산한 것을 말하며, 1년 이내에 동일한 소유자로부터 부동산을 취득하는 경우 또는 1년 이내에 연접한 부동산을 취득하는 경우에는 각각의 부동산에 대하여 산출한 취득세의 세액을 합산한 것을 말한다) 및 재산세의 세액이 다음 각 목의 어느 하나에 해당하는 경우 / 가. 취득세: 200만원 이하 / 나. 재산세: 50만원 이하(「지방세법」 제122조에 따른 세 부담의 상한을 적용하기 이전의 산출액을 말한다) / 2. , , , (20241231추가)(, , , , , , , , (2025.12.31.추가), , , (2024.12.31.추가), (2023.12.29.추가), / , (2023년 추가)·제5항(241231추가),,, (2020년 12월 31일까지로 한정한다), , , , , , , ·제3항(241231추가), ·제3항(2024.12.31.추가), , / , ,·제5호(2024.12.31.추가),  및 에 따른 감면  (100% 면제) (※ 농협과 새마을금고는 2018.1.1.부터 최소납부제 면제에서 빠짐, 도시개발사업(74조제1항)은 2022년부터 100% 면제,  2023.1.1.부터 농업법인,사권제한토지 최소납부 면제에서 빠짐 ) / ② 제4조에 따라 지방자치단체 감면조례로 취득세 또는 재산세를 면제하는 경우에도 제1항을 따른다. / ③ 제2항에도 불구하고 제1항의 적용 여부와 그 적용 시기는 해당 지방자치단체의 감면조례로 정할 수 있다.</p>
       <p>```</p>
 
       <p>☞ 신고납부시 중과세율을 적용하지 않고 일반세율의 15%만 과세(주택은 중과세액의 15%임) 하나, 추징사유 발생시에는 전체를 중과세율 계산한 세액에서 일반세율로 신고납부 한 최소납부세액을 뺀 취득세액 추징.</p>
 
-    </div>
+    
+      </CalcBox></div>
   );
 }

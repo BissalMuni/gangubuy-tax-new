@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "부당이득금 반환·소멸시효",
-  category: "corp-acquisition-tax",
-  group: "references",
-  groupLabel: "실무참고",
-  order: 8,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅲ_기타_참고/07_부당이득금반환_소멸시효",
-  sourcePages: [218,219],
-  sourceTaxTypes: ["common"],
-  sourceKeyLawRefs: ["지방세기본법 제52조","지방세기본법 제57조"],
-  lawReference: "지방세기본법 제52조, 지방세기본법 제57조",
-};
-
+import { CalcBox, SubSection } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "부당이득금 반환·소멸시효"
+ *   category: "corp-acquisition-tax"
+ *   group: "references"
+ *   groupLabel: "실무참고"
+ *   order: 8
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅲ_기타_참고/07_부당이득금반환_소멸시효"
+ *   sourcePages: [218,219]
+ *   sourceTaxTypes: ["common"]
+ *   sourceKeyLawRefs: ["지방세기본법 제52조","지방세기본법 제57조"]
+ *   lawReference: "지방세기본법 제52조, 지방세기본법 제57조"
+ */
 export default function Content07UnjustEnrichmentV10() {
   return (
     <div className="space-y-6">
@@ -39,17 +38,12 @@ export default function Content07UnjustEnrichmentV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>이 리프는 지방세 가산세(무신고·과소신고·납부불성실)의 연혁, 적용요령 및 감면 기준을 다룬다. 특히 취득세 감면 신청 착오 시 과소신고가산세 부과 여부에 관한 대법원 판례(2022두49311)와 행정해석의 상충, 그리고 등록면허세 관련 정당한 사유로 가산세를 면제한 조심 결정(2023지3665)을 중심으로 검토한다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>과소신고가산세</strong> — 납세의무자가 신고하여야 할 납부세액보다 적게 신고한 경우 부과하는 가산세로, 과소신고 세액의 10%에 해당한다.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세기본법/제54조" target="_blank" rel="noopener noreferrer">지기법 §54</a></li>
@@ -66,54 +60,48 @@ export default function Content07UnjustEnrichmentV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>수록 판례 (2건)</Outline>
-      </h2>
-
-      <Outline level={2}>대법원2001두7886</Outline>
+      
+      </CalcBox><CalcBox title="■ 수록 판례 (2건)" id="section-3">
+      <SubSection title="● 대법원2001두7886">
       <p><strong>쟁점</strong>: 가산세 부과의 정당한 사유 기준</p>
       <p><strong>판시사항</strong>: 납세의무자가 그 의무를 알지 못한 것이 무리가 아니었다고 할 수 있어서 그를 정당시 할 수 있는 사정이 있거나, 그 의무의 이행을 당사자에게 기대하는 것이 무리라고 하는 사정이 있는 등 의무해태를 탓할 수 없는 정당한 사유가 있는 경우에는 가산세를 부과할 수 없다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세기본법/제57조" target="_blank" rel="noopener noreferrer">지기법 §57</a></p>
 
-      <Outline level={2}>대법원2022두49311</Outline>
+      
+        </SubSection><SubSection title="● 대법원2022두49311">
       <p><strong>쟁점</strong>: 취득세 감면 착오 신청 시 신고불성실가산세 부과 가부</p>
       <p><strong>판시사항</strong>: 취득세 납세의무자가 각 과세표준에 세율을 곱한 산출세액을 정당하게 신고한 이상, 감면세액에 관한 판단을 그르쳐 최종 납부할 세액을 잘못 신고하였다 하더라도 취득세의 신고불성실가산세(과소신고가산세)를 부과할 수 없다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세기본법/제53조" target="_blank" rel="noopener noreferrer">지기법 §53</a>, <a href="https://law.go.kr/법령/지방세기본법/제54조" target="_blank" rel="noopener noreferrer">지기법 §54</a></p>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>조심 판례 (2건)</Outline>
-      </h2>
-
-      <Outline level={2}>조심2018지0609</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 조심 판례 (2건)" id="section-4">
+      <SubSection title="● 조심2018지0609">
       <p><strong>쟁점</strong>: 감면 신고 후 착오 감면 시 과소신고가산세 부과 여부</p>
       <p><strong>판시사항</strong>: 감면신고 후 착오 감면이었던 경우 과소신고가산세 부과 대상에 해당한다고 판단하였다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세기본법/제54조" target="_blank" rel="noopener noreferrer">지기법 §54</a></p>
 
-      <Outline level={2}>조심2023지3665</Outline>
+      
+        </SubSection><SubSection title="● 조심2023지3665">
       <p><strong>쟁점</strong>: 지방세법과 채무자회생법의 등록면허세 과세 규정 충돌 시 가산세 면제 정당한 사유</p>
       <p><strong>판시사항</strong>: 지방세법 제26조 제2항 제1호와 채무자회생 및 파산에 관한 법률 제25조 제4항이 동일한 등기행위에 대해 등록면허세 과세여부를 달리 정하고 있어 납세자가 신고·납부하지 않은 것은 법률의 단순한 부지·오해로 보기 어려우며, 이는 가산세를 면제할 정당한 사유에 해당하므로 납부지연가산세 부과처분은 잘못이다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세기본법/제57조" target="_blank" rel="noopener noreferrer">지기법 §57</a>, <a href="https://law.go.kr/법령/지방세법/제26조" target="_blank" rel="noopener noreferrer">법 §26</a></p>
 
 
-      <h2 id="section-5">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 관련 법조문" id="section-5">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세기본법 제52조</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세기본법 제57조</code></li>
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
-      <h2 id="section-7">
-      <Outline level={1}>가산세</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
+      
+      </CalcBox><CalcBox title="■ 가산세" id="section-7">
       <p>지방세기본법 제52조【가산세의부과】, 제53조【무신고가산세】, 제54조【과소신고】 , 제55조【납부불성실】</p>
 
       <p>가산세 연혁</p>
@@ -197,6 +185,7 @@ export default function Content07UnjustEnrichmentV10() {
 
       <p>따라서, 청구법인이 이 건 등록면허세 등을 신고ㆍ납부하지 않은데 에는 납세자의 의무해태를 탓할 수 없는 정당한 사유가 있다고 보이므로 처분청이 이 건 등록면허세 등을 부과하면서 쟁점가산세를 부과한 처분은 잘못이 있다고 판단된다.</p>
 
-    </div>
+    
+      </CalcBox></div>
   );
 }

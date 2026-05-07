@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "지방공기업",
-  category: "corp-acquisition-tax",
-  group: "reductions",
-  groupLabel: "감면",
-  order: 20,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅰ_지특법_감면/20_지방공기업_감면_지특법85조의2",
-  sourcePages: [126,129],
-  sourceTaxTypes: ["acquisition_tax","property_tax"],
-  sourceKeyLawRefs: ["지방세특례제한법 제85조의2 제1항","지방세특례제한법 제85조의2 제2항","지방세특례제한법 제85조의2 제3항","지방세특례제한법 제79조","지방세특례제한법 제80조","지방세특례제한법 시행령 제39조","지방세특례제한법 시행규칙 제7조","지방세법 제137조","지방세법 제274조","지방세법 제274조 제1항"],
-  lawReference: "지방세특례제한법 제85조의2 제1항, 지방세특례제한법 제85조의2 제2항, 지방세특례제한법 제85조의2 제3항, 지방세특례제한법 제79조, 지방세특례제한법 제80조, 지방세특례제한법 시행령 제39조, 지방세특례제한법 시행규칙 제7조, 지방세법 제137조, 지방세법 제274조, 지방세법 제274조 제1항",
-};
-
+import { CalcBox, SubSection } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "지방공기업"
+ *   category: "corp-acquisition-tax"
+ *   group: "reductions"
+ *   groupLabel: "감면"
+ *   order: 20
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅰ_지특법_감면/20_지방공기업_감면_지특법85조의2"
+ *   sourcePages: [126,129]
+ *   sourceTaxTypes: ["acquisition_tax","property_tax"]
+ *   sourceKeyLawRefs: ["지방세특례제한법 제85조의2 제1항","지방세특례제한법 제85조의2 제2항","지방세특례제한법 제85조의2 제3항","지방세특례제한법 제79조","지방세특례제한법 제80조","지방세특례제한법 시행령 제39조","지방세특례제한법 시행규칙 제7조","지방세법 제137조","지방세법 제274조","지방세법 제274조 제1항"]
+ *   lawReference: "지방세특례제한법 제85조의2 제1항, 지방세특례제한법 제85조의2 제2항, 지방세특례제한법 제85조의2 제3항, 지방세특례제한법 제79조, 지방세특례제한법 제80조, 지방세특례제한법 시행령 제39조, 지방세특례제한법 시행규칙 제7조, 지방세법 제137조, 지방세법 제274조, 지방세법 제274조 제1항"
+ */
 export default function Content20LocalPublicCorpV10() {
   return (
     <div className="space-y-6">
@@ -39,17 +38,12 @@ export default function Content20LocalPublicCorpV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>지방세특례제한법 제85조의2에 따른 지방공사·지방공단·지방출자출연기관의 취득세·재산세 감면요건과 감면세율을 정리하고, 비축용 토지가 고유업무 직접사용 부동산에 해당하는지를 대법원 판례로 확인한다. 아울러 지방세특례제한법 제79조·제80조에 따른 법인·공장의 지방이전 감면요건 및 대도시 내 산업단지 이전 시 면제 불가 여부를 예규로 보완한다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>고유업무 직접사용</strong> — 지방공사·공단 등이 설립 목적과 직접 관계되는 사업 및 그 사업에 필수적으로 부대되는 사업에 해당 부동산의 소유자 또는 사실상 취득자의 지위에서 현실적으로 사용하는 것을 의미한다.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제85조의2" target="_blank" rel="noopener noreferrer">지특법 §85의2</a></li>
@@ -66,35 +60,32 @@ export default function Content20LocalPublicCorpV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>수록 판례 (1건)</Outline>
-      </h2>
-
-      <Outline level={2}>대법원2016두40306</Outline>
+      
+      </CalcBox><CalcBox title="■ 수록 판례 (1건)" id="section-3">
+      <SubSection title="● 대법원2016두40306">
       <p><strong>쟁점</strong>: 지방공사 비축용 토지가 고유업무 직접사용 부동산에 해당하는지 여부</p>
       <p><strong>판시사항</strong>: 지방공사가 취득한 비축용 토지는 취득세 감면대상인 고유업무에 직접 사용하기 위하여 취득하는 부동산에 해당한다. 당장 특정 용도에 현실적으로 사용하고 있지 않더라도 토지비축이라는 고유업무에 직접 사용하는 것으로 보아 감면한 취득세를 추징할 수 없다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제85조의2" target="_blank" rel="noopener noreferrer">지특법 §85의2</a>, <code className="bg-gray-100 px-1 rounded text-sm">구 경기도 도세 감면조례/제13조 제1항</code></p>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>질의회신 (2건)</Outline>
-      </h2>
-
-      <Outline level={2}>지방세특례제도과-1606</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 질의회신 (2건)" id="section-4">
+      <SubSection title="● 지방세특례제도과-1606">
       <p><strong>쟁점</strong>: 지방공사 부속 근린생활시설·사옥 내 상가를 제3자에게 임대한 경우 감면 해당 여부</p>
       <p><strong>판시사항</strong>: 지방공사가 임대주택과 함께 신축한 부속 근린생활시설(상가) 및 사옥건축물 내 상가를 설립 목적과 직접 관계되는 사업 또는 그에 필수적으로 부대되는 사업이 아닌 제3자에게 임대한 경우에는 지방세 감면대상에 해당하지 않는다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제85조의2" target="_blank" rel="noopener noreferrer">지특법 §85의2</a></p>
 
-      <Outline level={2}>지방세정팀-167</Outline>
+      
+        </SubSection><SubSection title="● 지방세정팀-167">
       <p><strong>쟁점</strong>: 대도시 내 법인이 같은 대도시 내 산업단지로 본점 이전 시 취득세·등록세 면제 여부</p>
       <p><strong>판시사항</strong>: 대도시 내 법인이 같은 대도시 내 소재 산업단지로 본점을 이전하는 경우는 취득세·등록세 면제대상이 되지 않으며, 다른 대도시 내 산업단지로 이전하는 경우에도 면제대상이 아니고 소정 등록세를 납부하여야 한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제274조" target="_blank" rel="noopener noreferrer">법 §274</a>, <a href="https://law.go.kr/법령/지방세법/제137조" target="_blank" rel="noopener noreferrer">법 §137</a></p>
 
 
-      <h2 id="section-5">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 관련 법조문" id="section-5">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제85조의2 제1항</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제85조의2 제2항</code></li>
@@ -110,10 +101,8 @@ export default function Content20LocalPublicCorpV10() {
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
       <p>※ 임대형기숙사(건설 or 최초분양) - 취득세 100% 면제(최소납부제 15%)</p>
 
       <p>임대형기숙사(30년이상 임대) - 재산세/도시세 면제, (30년미만 임대) - 재사세/도시세 50%면제</p>
@@ -187,10 +176,8 @@ export default function Content20LocalPublicCorpV10() {
 
 
 
-      <h2 id="section-7">
-      <Outline level={1}>지방이전 등에 대한 감면</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 지방이전 등에 대한 감면" id="section-7">
       <p>```text</p>
       <p>지방세특례제한법 제79조 【법인의 지방이전에 대한 감면】 / ① 대통령령으로 정하는 대도시(이하 이 절에서 “대도시”라 한다)에 본점 또는 주사무소를 설치하여 사업을 직접 하는 법인이 해당 본점 또는 주사무소를 매각하거나 임차를 종료하고 과밀억제권역 외의 지역으로 본점 또는 주사무소를 이전하는 경우에 해당 사업을 직접 하기 위하여 취득하는 부동산에 대해서는 취득세를 2027 12월 31일까지 면제하고, 재산세의 경우 그 부동산에 대한 재산세의 납세의무가 최초로 성립하는 날부터 5년간 면제하며 그 다음 3년간 재산세의 100분의 50을 경감한다. 다만, 다음 각 호의 어느 하나에 해당하는 경우에는 감면한 취득세 및 재산세를 추징한다 / (2022년부터 “대도시”를 “과밀억제권역” 개정함, 산업단지로의 이전은 해당안됨. 다툼여지 없음.) / 1. 법인을 이전하여 5년 이내에 법인이 해산된 경우(합병ㆍ분할 또는 분할합병으로 인한 경우는 제외한다)와 법인을 이전하여 과세감면을 받고 있는 기간에 과밀억제권역에서 이전 전에 생산하던 제품을 생산하는 법인을 다시 설치한 경우 / 2. 해당 사업에 직접 사용한 기간이 2년 미만인 상태에서 매각ㆍ증여하거나 다른 용도로 사용하는 경우 / ② 대도시에 등기되어 있는 법인이 과밀억제권역 외의 지역으로 본점 또는 주사무소를 이전하는 경우에 그 이전에 따른 법인등기 및 부동산등기에 대해서는 2027년 12월 31일까지 등록면허세를 면제한다. / ③ 제1항 및 제2항에 따른 과밀억제권역 외의 지역으로 이전하는 본점 또는 주사무소의 범위와 감면 등의 적용기준은 행정안전부령으로 정한다. / 지방세특례제한법 제80조 【공장의 지방이전에 대한 감면】 / ① 대도시에서 공장시설을 갖추고 사업을 직접 하는 자가 그 공장을 폐쇄하고 과밀억제권역 외의 지역으로서 공장 설치가 금지되거나 제한되지 아니한 지역으로 이전한 후 해당 사업을 계속하기 위하여 취득하는 부동산에 대해서는 취득세를 2027년 12월 31일까지 면제하고, 재산세의 경우 그 부동산에 대한 납세의무가 최초로 성립하는 날부터 5년간 면제하고 그 다음 3년간 재산세의 100분의 50을 경감한다. 다만, 다음 각 호의 어느 하나에 해당하는 경우에는 감면한 취득세 및 재산세를 추징한다. / 1. 공장을 이전하여 지방세를 감면받고 있는 기간에 대도시에서 이전 전에 생산하던 제품을 생산하는 공장을 다시 설치한 경우 / 2. 해당 사업에 직접 사용한 기간이 2년 미만인 상태에서 매각ㆍ증여하거나 다른 용도로 사용하는 경우 / ② 제1항에 따른 공장의 업종 및 그 규모, 감면 등의 적용기준은 행정안전부령으로 정한다</p>
       <p>```</p>
@@ -249,6 +236,7 @@ export default function Content20LocalPublicCorpV10() {
 
       <p>나. 대도시내에서 설립한 법인이 대도시(과밀억제권역)외 지방으로 법인의 본점 또는 주사무소를 이전하는 경우 그 이전에 따른 법인등기 및 부동산 등기에 대하여 취득세와 등록세의 면제대상이 되는 것이므로 대도시내의 법인이 같은 대도시내에 소재한 산업단지내로 이전하는 경우라면 상기 규정에 의한 취득세와 등록세의 면제대상이 되지 않는 것이며, 대도시내에 소재한 법인이 다른 대도시내의 산업단지로 법인의 본점을 이전하는 경우에는 지방세법 제137조 제1항 제4호 규정에 의한 75,000원의 등록세를 납부하는 것이 타당합니다.</p>
 
-    </div>
+    
+      </CalcBox></div>
   );
 }

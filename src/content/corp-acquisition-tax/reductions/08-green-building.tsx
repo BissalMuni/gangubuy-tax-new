@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "녹색인증 건축물",
-  category: "corp-acquisition-tax",
-  group: "reductions",
-  groupLabel: "감면",
-  order: 8,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅰ_지특법_감면/08_녹색인증건축물_감면_지특법47조의2_3",
-  sourcePages: [54,57],
-  sourceTaxTypes: ["acquisition_tax","property_tax"],
-  sourceKeyLawRefs: ["지방세특례제한법 시행령 제24조","지방세특례제한법 제47조의2","지방세특례제한법 제10조"],
-  lawReference: "지방세특례제한법 시행령 제24조, 지방세특례제한법 제47조의2, 지방세특례제한법 제10조",
-};
-
+import { CalcBox, SubSection } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "녹색인증 건축물"
+ *   category: "corp-acquisition-tax"
+ *   group: "reductions"
+ *   groupLabel: "감면"
+ *   order: 8
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅰ_지특법_감면/08_녹색인증건축물_감면_지특법47조의2_3"
+ *   sourcePages: [54,57]
+ *   sourceTaxTypes: ["acquisition_tax","property_tax"]
+ *   sourceKeyLawRefs: ["지방세특례제한법 시행령 제24조","지방세특례제한법 제47조의2","지방세특례제한법 제10조"]
+ *   lawReference: "지방세특례제한법 시행령 제24조, 지방세특례제한법 제47조의2, 지방세특례제한법 제10조"
+ */
 export default function Content08GreenBuildingV10() {
   return (
     <div className="space-y-6">
@@ -39,17 +38,12 @@ export default function Content08GreenBuildingV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>본 리프는 지방세특례제한법 제47조의2·3에 따른 녹색인증건축물(녹색건축 인증, 제로에너지건축물, 에너지절약형 친환경주택, 신재생에너지 인증건축물)의 취득세·재산세 감면 요건 및 감면율을 다룬다. 취득 전 예비인증만 받은 경우의 감면 인정 여부, 에너지효율등급 인증 시점(취득 전후)과 감면 요건 충족 여부가 주요 쟁점이며, 2019년 개정으로 취득일로부터 일정 기간(녹색건축 70일, 제로에너지 100일) 이내 인증 시에도 감면이 가능하도록 요건이 완화되었다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>녹색건축 인증등급</strong> — 녹색건축물 조성 지원법 제16조에 따라 인증받은 등급으로, 최우수·우수 등급이 취득세 및 재산세 감면 요건이 된다.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제47조의2" target="_blank" rel="noopener noreferrer">지특법 §47의2</a>, <a href="https://law.go.kr/법령/지방세특례제한법시행령/제24조" target="_blank" rel="noopener noreferrer">지특령 §24 제1항</a>, <code className="bg-gray-100 px-1 rounded text-sm">녹색건축물 조성 지원법/제16조</code></li>
@@ -68,40 +62,38 @@ export default function Content08GreenBuildingV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>조심 판례 (2건)</Outline>
-      </h2>
-
-      <Outline level={2}>조심2018지0516</Outline>
+      
+      </CalcBox><CalcBox title="■ 조심 판례 (2건)" id="section-3">
+      <SubSection title="● 조심2018지0516">
       <p><strong>쟁점</strong>: 취득 이후 에너지효율등급 인증을 받은 경우 녹색건축 감면 요건 충족 여부</p>
       <p><strong>판시사항</strong>: 관련 법령에서 에너지효율등급의 인증 시기를 감면요건으로 별도로 규정하고 있지 아니한 이상, 취득 당시 건축물의 상태를 기준으로 감면요건 충족 여부를 판단하여야 한다. 인증원장이 취득 당시 상태를 기준으로 심사하여 인증서를 발급하였으므로 취득세 감면요건을 충족한 것으로 판단된다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제47조의2" target="_blank" rel="noopener noreferrer">지특법 §47의2</a></p>
 
-      <Outline level={2}>조심2017지0641</Outline>
+      
+        </SubSection><SubSection title="● 조심2017지0641">
       <p><strong>쟁점</strong>: 설계단계 예비인증 후 본인증을 받은 경우 녹색건축 인증 건축물 감면 요건 충족 여부</p>
       <p><strong>판시사항</strong>: 청구법인이 설계단계에서 받은 예비인증은 인증기관이 설계에 반영된 내용을 심사하여 발급한 것이므로 친환경건축물 감면의 입법취지에 부합한다. 취득 전 예비인증을 받고 그 후 본인증을 받았으므로 친환경건축물에 대한 취득세 감면요건을 충족한 것으로 보는 것이 타당하다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제47조의2" target="_blank" rel="noopener noreferrer">지특법 §47의2 제1항</a></p>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>예규 (2건)</Outline>
-      </h2>
-
-      <Outline level={2}>지방세특례제도과-1807</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 예규 (2건)" id="section-4">
+      <SubSection title="● 지방세특례제도과-1807">
       <p><strong>쟁점</strong>: 녹색건축 예비인증만 받은 경우 감면 대상 여부</p>
       <p><strong>판시사항</strong>: 건축주가 예비인증을 받았다 하더라도, 예비인증보다 높은 등급으로 본인증을 받은 경우 예비인증에 대한 감면 적용에 혼란이 있으므로, 예비인증을 감면대상으로 보는 것은 타당하다고 볼 수 없다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제47조의2" target="_blank" rel="noopener noreferrer">지특법 §47의2</a>, <code className="bg-gray-100 px-1 rounded text-sm">녹색건축물 조성 지원법/제16조</code></p>
 
-      <Outline level={2}>서울세제-4067</Outline>
+      
+        </SubSection><SubSection title="● 서울세제-4067">
       <p><strong>쟁점</strong>: 녹색건축 인증 건축물에 대한 재산세 감면 시기 및 기간</p>
       <p><strong>판시사항</strong>: 일몰시한(2018.12.31.) 이전에 녹색건축 등의 인증을 받은 건축물에 대해 재산세를 한 차례에 한정하여 경감하되, 재산세 경감 시기는 인증을 받은 날 또는 준공일 전에 인증을 받은 경우 준공일로 보아 5년간 감면한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제47조의2" target="_blank" rel="noopener noreferrer">지특법 §47의2 제5항</a></p>
 
 
-      <h2 id="section-5">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 관련 법조문" id="section-5">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 시행령 제24조</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제47조의2</code></li>
@@ -109,10 +101,8 @@ export default function Content08GreenBuildingV10() {
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
       <p>※지방세특례제한법 시행령 제24조(친환경건축물의 감면)</p>
 
       <p>① 법 제47조의2제1항 각 호 외의 부분에 따른 취득세의 경감률은 다음 각 호와 같다.</p>
@@ -280,10 +270,8 @@ export default function Content08GreenBuildingV10() {
 
 
 
-      <h2 id="section-7">
-      <Outline level={1}>농어업인 융자관련 감면</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 농어업인 융자관련 감면" id="section-7">
       <p>```text</p>
       <p>지방세특례제한법 제10조 【농어업인 등에 대한 융자관련 감면】 / ① 다음 각 호의 조합 및 그 중앙회 등이 「농어업경영체 육성 및 지원에 관한 법률」제4조제1항에 따라 농어업경영정보를 등록한 농어업인[영농조합법인, 영어조합법인(營漁組合法人) 및 농업회사법인을 포함한다. 이하 이 조에서 같다]에게 융자할 때에 제공받는 담보물(20톤 미만 소형어선에 대한 담보물 등록을 포함한다)에 관한 등기에 대해서는 등록면허세의 100분의 50을 2028년 12월 31일까지 경감한다. 다만, 중앙회, 농협은행 및 수협은행에 대해서는 영농자금·영어자금·영림자금(營林資金) 또는 축산자금을 융자하는 경우로 한정한다.(중앙회,농협은행,수협은행은 영농자금대출확인서가 필요함) / 1. 「농업협동조합법」에 따라 설립된 조합 및 농협은행 / 2. 「수산업협동조합법」에 따라 설립된 조합(어촌계를 포함한다) 및 수협은행 / 3. 「산림조합법」에 따라 설립된 산림조합 및 그 중앙회 / 4. 「신용협동조합법」에 따라 설립된 신용협동조합 및 그 중앙회 / 5. 「새마을금고법」에 따라 설립된 새마을금고 및 그 중앙회</p>
       <p>```</p>
@@ -318,6 +306,7 @@ export default function Content08GreenBuildingV10() {
       <p>| --- | --- | --- | --- |</p>
       <p>| 등록면허세 | 1. 농업인이 영농자금으로 대출받을 때 제공하는 담보물 / 확인서류 : 농지원부(1천㎡이상경작여부) / <em> 중앙회·농협은행·수협은행 : 농지원부 또는 농업경영체등록확인서, / 근저당설정계약서, 영농자금대출확인서, / </em> 농협,수협,신협,새마을금고 등 : 농지원부 또는 농업경영체등록확인서. / 근저당설정계약서, | 등록면허세 / 2022년까지 / 50% 감면 | 감면농특세 비과세 / (농특세법시행령 제4조제1항제3호 |</p>
 
-    </div>
+    
+      </CalcBox></div>
   );
 }

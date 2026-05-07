@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "이행판결 취득일",
-  category: "corp-acquisition-tax",
-  group: "types",
-  groupLabel: "취득유형별",
-  order: 6,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅱ_취득_유형별/06_이행판결_취득일",
-  sourcePages: [184,184],
-  sourceTaxTypes: ["acquisition_tax"],
-  sourceKeyLawRefs: ["지방세법 시행령 제27조 제3항","지방세법 시행령 제18조의4"],
-  lawReference: "지방세법 시행령 제27조 제3항, 지방세법 시행령 제18조의4",
-};
-
+import { CalcBox, SubSection } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "이행판결 취득일"
+ *   category: "corp-acquisition-tax"
+ *   group: "types"
+ *   groupLabel: "취득유형별"
+ *   order: 6
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅱ_취득_유형별/06_이행판결_취득일"
+ *   sourcePages: [184,184]
+ *   sourceTaxTypes: ["acquisition_tax"]
+ *   sourceKeyLawRefs: ["지방세법 시행령 제27조 제3항","지방세법 시행령 제18조의4"]
+ *   lawReference: "지방세법 시행령 제27조 제3항, 지방세법 시행령 제18조의4"
+ */
 export default function Content06CourtJudgmentV10() {
   return (
     <div className="space-y-6">
@@ -40,17 +39,12 @@ export default function Content06CourtJudgmentV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>대물변제로 부동산을 취득하는 경우의 취득시기(소유권이전등기일), 과세표준(대물변제액과 시가인정액 중 높은 가액, 2024.1.1. 개정), 그리고 중과 적용 여부를 다룬다. 대물변제는 소유권이전등기 완료 시 성립하므로 등기일이 취득시기가 되며, 과세표준은 실제 사실상의 취득가액으로 보아야 한다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>대물변제</strong> — 본래의 채무에 갈음하여 다른 급부를 현실적으로 하는 때에 성립하는 요물계약으로, 부동산 소유권이전의 경우 등기 완료 시 기존 채무가 소멸한다.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세법/제10조의5" target="_blank" rel="noopener noreferrer">법 §10의5</a>, <a href="https://law.go.kr/법령/지방세법시행령/제18조의4" target="_blank" rel="noopener noreferrer">시행령 §18의4</a></li>
@@ -65,64 +59,57 @@ export default function Content06CourtJudgmentV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>수록 판례 (1건)</Outline>
-      </h2>
-
-      <Outline level={2}>대법원98두17067</Outline>
+      
+      </CalcBox><CalcBox title="■ 수록 판례 (1건)" id="section-3">
+      <SubSection title="● 대법원98두17067">
       <p><strong>쟁점</strong>: 대물변제에 의한 부동산 취득의 취득시기 및 과세표준</p>
       <p><strong>판시사항</strong>: 대물변제는 다른 급부가 부동산 소유권이전인 때에 그 소유권이전등기를 완료하여야만 성립되어 기존 채무가 소멸한다. 금전채무에 갈음하여 부동산으로 급부하는 경우 채권액이 취득의 대가로서 취득세 과세표준에 해당한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제10조의5" target="_blank" rel="noopener noreferrer">법 §10의5</a></p>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>조심 판례 (1건)</Outline>
-      </h2>
-
-      <Outline level={2}>조심2017지0166</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 조심 판례 (1건)" id="section-4">
+      <SubSection title="● 조심2017지0166">
       <p><strong>쟁점</strong>: 대물변제 취득시기(소유권이전등기일)</p>
       <p><strong>판시사항</strong>: 대물변제로 인한 부동산 취득의 취득시기는 소유권이전등기일이다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제10조의5" target="_blank" rel="noopener noreferrer">법 §10의5</a></p>
 
 
-      <h2 id="section-5">
-      <Outline level={1}>예규 (3건)</Outline>
-      </h2>
-
-      <Outline level={2}>지방세정팀-1528</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 예규 (3건)" id="section-5">
+      <SubSection title="● 지방세정팀-1528">
       <p><strong>쟁점</strong>: 대물변제 취득시기(소유권이전등기일)</p>
       <p><strong>판시사항</strong>: 대물변제로 인한 부동산 취득의 취득시기는 소유권이전등기일이 된다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제10조의5" target="_blank" rel="noopener noreferrer">법 §10의5</a></p>
 
-      <Outline level={2}>지방세운영과-3440</Outline>
+      
+        </SubSection><SubSection title="● 지방세운영과-3440">
       <p><strong>쟁점</strong>: 대물변제 취득의 중과 해당 여부</p>
       <p><strong>판시사항</strong>: 대물변제에 의한 취득은 중과에 해당하지 않으나, 채권을 보전하거나 행사할 목적으로 하는 부동산 취득 후 5년 이내 지점을 설치하는 경우 중과대상에 해당한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법시행령/제27조" target="_blank" rel="noopener noreferrer">시행령 §27 제3항</a></p>
 
-      <Outline level={2}>행심2006-370</Outline>
+      
+        </SubSection><SubSection title="● 행심2006-370">
       <p><strong>쟁점</strong>: 대물변제 취득 시 과세표준 산정(사실상 취득가액)</p>
       <p><strong>판시사항</strong>: 법인이 대물변제계약으로 부동산을 취득한 경우 과세표준액은 실제 거래가액이 제대로 반영되지 않은 대물변제계약서상의 금액이 아닌 사실상의 취득가액으로 보아야 한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제10조의5" target="_blank" rel="noopener noreferrer">법 §10의5</a>, <a href="https://law.go.kr/법령/지방세법시행령/제18조의4" target="_blank" rel="noopener noreferrer">시행령 §18의4</a></p>
 
 
-      <h2 id="section-6">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 관련 법조문" id="section-6">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세법 시행령 제27조 제3항</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세법 시행령 제18조의4</code></li>
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
-      <h2 id="section-8">
-      <Outline level={1}>대물변제</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
+      
+      </CalcBox><CalcBox title="■ 대물변제" id="section-8">
       <p>```text</p>
       <p>취득시기 : 소유권이전등기일 / 적용세율 : 유상승계취득 / 과   표 : 대물변제액과 시가인정액(감정평가액,거래가액) 중 높은가액(2024.1.1..개정) / 중 낮은 가액(2023.3.14. 법령개정) / 준비서류 : 대물변제계약서,법인장부(근저당설정계약서. 등.) / * 건설법인의 경우 보통 ‘건설미수금 계정’에 계상함. / ※ 중과에 해당하지 않음(지방세법시행령 제27조제3항), 주택은 중과 검토 / (채권을 산)</p>
       <p>```</p>
@@ -149,6 +136,7 @@ export default function Content06CourtJudgmentV10() {
 
       <p>금전채무에 갈음하여 부동산 등으로 급부함으로써 채권을 소멸시키는 계약형태로서 비록 금전채무를 이행함에 있어서 금전 대신 부동산 등 물건을 양도함으로써 양수자 입장에서 보면 결과적으로 부동산 등 물건을 유상승계 취득하게 되는 것이다. 대물변제로 인한 부동산 취득의 경우 채권액이 상대방에게 취득의 대가를 지급한 금액으로 볼 수가 있으므로 취득세 과세표준에 해당하는 것이다.(대법원98두17067, 1999.11.22)</p>
 
-    </div>
+    
+      </CalcBox></div>
   );
 }

@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "조직변경",
-  category: "corp-acquisition-tax",
-  group: "types",
-  groupLabel: "취득유형별",
-  order: 12,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅱ_취득_유형별/12_조직변경",
-  sourcePages: [196,198],
-  sourceTaxTypes: ["acquisition_tax"],
-  sourceKeyLawRefs: ["지방세법 제131조 제1항 제8호"],
-  lawReference: "지방세법 제131조 제1항 제8호",
-};
-
+import { CalcBox, SubSection } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "조직변경"
+ *   category: "corp-acquisition-tax"
+ *   group: "types"
+ *   groupLabel: "취득유형별"
+ *   order: 12
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅱ_취득_유형별/12_조직변경"
+ *   sourcePages: [196,198]
+ *   sourceTaxTypes: ["acquisition_tax"]
+ *   sourceKeyLawRefs: ["지방세법 제131조 제1항 제8호"]
+ *   lawReference: "지방세법 제131조 제1항 제8호"
+ */
 export default function Content12OrgChangeV10() {
   return (
     <div className="space-y-6">
@@ -38,17 +37,12 @@ export default function Content12OrgChangeV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>법인의 조직변경(사단법인→재단법인, 주식회사→유한회사 등) 시 취득세 납세의무 성립 여부를 다룬다. 법인격의 동일성이 유지되는 조직변경은 실질과세 원칙상 취득행위로 볼 수 없어 취득세 납세의무가 없으며, 해산·설립 등기는 형식적 절차에 불과하다는 것이 핵심 쟁점이다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>조직변경</strong> — 회사 또는 법인이 법인격의 동일성을 보유하면서 법률상의 조직을 변경하여 다른 종류의 법인으로 되는 것. 인격의 동일성이 유지되므로 실질과세 원칙상 취득행위로 보지 않는다.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세법/제131조" target="_blank" rel="noopener noreferrer">법 §131</a>, <a href="https://law.go.kr/법령/지방세법/제137조" target="_blank" rel="noopener noreferrer">법 §137</a></li>
@@ -63,29 +57,24 @@ export default function Content12OrgChangeV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>수록 판례 (1건)</Outline>
-      </h2>
-
-      <Outline level={2}>대법원2010두6731</Outline>
+      
+      </CalcBox><CalcBox title="■ 수록 판례 (1건)" id="section-3">
+      <SubSection title="● 대법원2010두6731">
       <p><strong>쟁점</strong>: 주식회사의 유한회사로의 조직변경 시 법인격 동일성 유지 여부 및 취득세 납세의무</p>
       <p><strong>판시사항</strong>: 상법상 주식회사의 유한회사로의 조직변경은 법인격의 동일성을 유지하면서 조직을 변경하는 것이고, 그 과정에서 행하는 해산등기와 설립등기는 유한회사의 기록을 새로 개설하는 방편일 뿐 주식회사가 실제로 해산하고 유한회사가 새로 설립되는 것이 아니다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제131조" target="_blank" rel="noopener noreferrer">법 §131</a>, <a href="https://law.go.kr/법령/지방세법/제137조" target="_blank" rel="noopener noreferrer">법 §137</a></p>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 관련 법조문" id="section-4">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세법 제131조 제1항 제8호</code></li>
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
       <p>법인의 목적사업의 동일성을 유지한 상태로 다른 재단법인으로 조직 변경된 경우 취득세납세의무가 없는 것임</p>
 
       <p>(세정과-2551, 2004.08.17. )</p>
@@ -98,10 +87,8 @@ export default function Content12OrgChangeV10() {
 
 
 
-      <h2 id="section-6">
-      <Outline level={1}>부동산시가표준액표 용도지수</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 부동산시가표준액표 용도지수" id="section-6">
       <p>```text</p>
       <p>&lt;부동산시가표준액표 용도지수 적용요령&gt; / 1) 1구 또는 1동의 건축물이 2이상의 용도에 사용되는 경우에는 각각의 용도대로 구분한다. / 다만, 공용부분은 전용면적 비율로 안분하되 안분할 수 없는 부분은 사용면적이 제일 큰 / 용도의 건물에 부속된 것으로 본다.</p>
       <p>```</p>
@@ -193,6 +180,7 @@ export default function Content12OrgChangeV10() {
       <p>| 수영장 | 수영장 | 127 |</p>
       <p>| 주차장 | 차량관련시설 중 / - 백화점 면적 537적용 / - 기타면적 533적용 | 감산제외 / 등 |</p>
 
-    </div>
+    
+      </CalcBox></div>
   );
 }

@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "재산세 정리",
-  category: "corp-acquisition-tax",
-  group: "references",
-  groupLabel: "실무참고",
-  order: 15,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅲ_기타_참고/14_재산세_정리",
-  sourcePages: [240,255],
-  sourceTaxTypes: ["property_tax"],
-  sourceKeyLawRefs: ["지방세법 시행령 제103조의2","지방세법 시행령 제102조 제1항","지방세법 시행령 제102조 제2항","지방세법 시행령 제102조 제3항","지방세법 시행령 제102조 제5항"],
-  lawReference: "지방세법 시행령 제103조의2, 지방세법 시행령 제102조 제1항, 지방세법 시행령 제102조 제2항, 지방세법 시행령 제102조 제3항, 지방세법 시행령 제102조 제5항",
-};
-
+import { CalcBox, SubSection } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "재산세 정리"
+ *   category: "corp-acquisition-tax"
+ *   group: "references"
+ *   groupLabel: "실무참고"
+ *   order: 15
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅲ_기타_참고/14_재산세_정리"
+ *   sourcePages: [240,255]
+ *   sourceTaxTypes: ["property_tax"]
+ *   sourceKeyLawRefs: ["지방세법 시행령 제103조의2","지방세법 시행령 제102조 제1항","지방세법 시행령 제102조 제2항","지방세법 시행령 제102조 제3항","지방세법 시행령 제102조 제5항"]
+ *   lawReference: "지방세법 시행령 제103조의2, 지방세법 시행령 제102조 제1항, 지방세법 시행령 제102조 제2항, 지방세법 시행령 제102조 제3항, 지방세법 시행령 제102조 제5항"
+ */
 export default function Content14PropertyTaxSummaryV10() {
   return (
     <div className="space-y-6">
@@ -41,17 +40,12 @@ export default function Content14PropertyTaxSummaryV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>본 리프는 지방세법상 재산세 과세대상 토지의 분류(별도합산·분리과세)와 관련 시행령 규정을 정리하며, 특히 분리과세 대상 토지의 범위(공장용지, 농지, 임야, 리츠·펀드 소유 토지 등)와 그 개정 내용을 상세히 다룬다. 아울러 취득의 시기에 관한 지방세법 시행령 제20조 내용과 운영예규(법7-2)의 지목변경 취득시기 해석을 포함한다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>분리과세대상 토지</strong> — 재산세 과세 시 다른 토지와 합산하지 않고 별도로 과세하는 토지로, 공장용지·농지·임야·골프장용 토지 등 지방세법 제106조 제1항 제3호 각 목에 해당하는 토지를 말한다.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세법/제106조" target="_blank" rel="noopener noreferrer">법 §106</a>, <a href="https://law.go.kr/법령/지방세법시행령/제102조" target="_blank" rel="noopener noreferrer">시행령 §102</a></li>
@@ -72,20 +66,17 @@ export default function Content14PropertyTaxSummaryV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>예규 (1건)</Outline>
-      </h2>
-
-      <Outline level={2}>법7-2</Outline>
+      
+      </CalcBox><CalcBox title="■ 예규 (1건)" id="section-3">
+      <SubSection title="● 법7-2">
       <p><strong>쟁점</strong>: 건축공사와 병행되는 지목변경의 취득시기</p>
       <p><strong>판시사항</strong>: 건축공사 등과 병행되는 경우로서 지목변경의 경우 취득시기는 건축공사가 완료된 때이다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법시행령/제20조" target="_blank" rel="noopener noreferrer">시행령 §20</a></p>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 관련 법조문" id="section-4">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세법 시행령 제103조의2</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세법 시행령 제102조 제1항</code></li>
@@ -95,10 +86,8 @@ export default function Content14PropertyTaxSummaryV10() {
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
       <p>12. 「장사 등에 관한 법률」 제14조제3항에 따른 설치·관리허가를 받은 법인묘지용 토지로서 지적공부상 지목이 묘지인 토지</p>
 
       <p>13. 다음 각 목에 규정된 임야. 다만, 「체육시설의 설치·이용에 관한 법률」에 따른 회원제골프장용 토지의 임야는 제외한다.</p>
@@ -496,10 +485,8 @@ export default function Content14PropertyTaxSummaryV10() {
       <p>| (주)케이비평촌리테일위탁관리부동산투자회사 | 비상장 | 공모 |</p>
       <p>| (주)교보제십사호위탁관리부동산투자회사 | 비상장 | 공모 |</p>
 
-      <h2 id="section-6">
-      <Outline level={1}>한국표준산업분류상 “동일업종” 판단기준</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 한국표준산업분류상 “동일업종” 판단기준" id="section-6">
       <p>#### 통계청사이트▷통계분류포털▷한국표준산업분류▷분류내용보기(해설서)▷“검색어”에서 입력조회</p>
 
       <p>※ 한국표준산업분류상 세분류를 기준으로 동일업종여부 판단</p>
@@ -521,10 +508,8 @@ export default function Content14PropertyTaxSummaryV10() {
 
 
 
-      <h2 id="section-7">
-      <Outline level={1}>사업자등록증 “업종코드” 판단기준</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 사업자등록증 “업종코드” 판단기준" id="section-7">
       <p>#### 홈택스사이트▷조회/발급▷기타조회▷기준.단순 경비율(업종코드)▷“업종코드”에서 입력조회</p>
 
       <p>※ 업종코드는 세무종합시스템 사업장정보수신에서 확인</p>
@@ -532,17 +517,10 @@ export default function Content14PropertyTaxSummaryV10() {
 
 
 
-      <h2 id="section-8">
-      <Outline level={1}>세무종합시스템 “업종코드” 찾기(총괄관리/국세청사업장정보조회/..)</Outline>
-      </h2>
-
-
-
-
-      <h2 id="section-9">
-      <Outline level={1}>취득의 시기</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 세무종합시스템 “업종코드” 찾기(총괄관리/국세청사업장정보조회/..)" id="section-8">
+      
+      </CalcBox><CalcBox title="■ 취득의 시기" id="section-9">
       <p>제10조의7【취득의 시기】취득물건의 취득 유형별 취득시기</p>
 
       <p>☞ 「지방세법시행령」제20조</p>
@@ -581,6 +559,7 @@ export default function Content14PropertyTaxSummaryV10() {
 
       <p>⑭ 무상취득,유상승계취득,연부취득 전에 등기 또는 등록을 한 경우: 등기일 또는 등록일</p>
 
-    </div>
+    
+      </CalcBox></div>
   );
 }

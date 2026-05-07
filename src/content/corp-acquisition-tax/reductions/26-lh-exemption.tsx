@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "한국토지주택공사(LH)",
-  category: "corp-acquisition-tax",
-  group: "reductions",
-  groupLabel: "감면",
-  order: 26,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅰ_지특법_감면/26_한국토지주택공사_감면_LH_지특법32조",
-  sourcePages: [158,159],
-  sourceTaxTypes: ["acquisition_tax","property_tax"],
-  sourceKeyLawRefs: ["지방세특례제한법 제45조","지방세특례제한법 시행령 제22조","지방세특례제한법 제45조 제1항"],
-  lawReference: "지방세특례제한법 제45조, 지방세특례제한법 시행령 제22조, 지방세특례제한법 제45조 제1항",
-};
-
+import { CalcBox } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "한국토지주택공사(LH)"
+ *   category: "corp-acquisition-tax"
+ *   group: "reductions"
+ *   groupLabel: "감면"
+ *   order: 26
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅰ_지특법_감면/26_한국토지주택공사_감면_LH_지특법32조"
+ *   sourcePages: [158,159]
+ *   sourceTaxTypes: ["acquisition_tax","property_tax"]
+ *   sourceKeyLawRefs: ["지방세특례제한법 제45조","지방세특례제한법 시행령 제22조","지방세특례제한법 제45조 제1항"]
+ *   lawReference: "지방세특례제한법 제45조, 지방세특례제한법 시행령 제22조, 지방세특례제한법 제45조 제1항"
+ */
 export default function Content26LhExemptionV10() {
   return (
     <div className="space-y-6">
@@ -37,17 +36,12 @@ export default function Content26LhExemptionV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>본 리프는 지방세특례제한법 제45조에 따른 학술연구단체 및 장학법인에 대한 취득세·재산세 감면 요건과 세율을 다룬다. 학술단체의 해당 여부는 정관상 목적사업, 예산 사용, 사업실적 등을 종합적으로 고려하여 학술연구·발표가 주된 사업인지를 기준으로 판단한다. 아울러 감면 후 직접사용 의무 위반 시 추징 규정과 농특세·지역자원시설세 등 부가세 적용 방식도 안내한다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>학술연구단체</strong> — 학술의 연구와 발표를 주된 목적으로 하는 법인 또는 단체로, 정관상 목적사업·사업실적·예산 사용 비율 등을 종합적으로 고려하여 판단한다.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제45조" target="_blank" rel="noopener noreferrer">지특법 §45 제1항</a>, <a href="https://law.go.kr/법령/지방세특례제한법시행령/제22조" target="_blank" rel="noopener noreferrer">지특령 §22 제1항</a></li>
@@ -66,10 +60,8 @@ export default function Content26LhExemptionV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 관련 법조문" id="section-3">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제45조</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 시행령 제22조</code></li>
@@ -77,14 +69,10 @@ export default function Content26LhExemptionV10() {
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
-      <h2 id="section-5">
-      <Outline level={1}>학술연구 및 장학단체에 대한 감면</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
+      
+      </CalcBox><CalcBox title="■ 학술연구 및 장학단체에 대한 감면" id="section-5">
       <p>```text</p>
       <p>지방세특례제한법 제45조 【학술연구 및 장학법인에 대한 감면】 / ① 대통령령으로 정하는 학술단체가 학술연구사업에 직접 사용하기 위하여 취득하는 부동산에 대해서는 취득세를, 과세기준일 현재 학술연구사업에 직접 사용하는 부동산에 대해서는 재산세를 각각 2027년 12월 31일까지 면제한다. 다만, 제45조의2에 따른 단체는 제외한다. / (일반적인 추징규정을 따름: 1년이내 직접사용 등) / ② 「공익법인의 설립ㆍ운영에 관한 법률」에 따라 설립된 장학법인(이하 이 조에서 “장학법인”이라 한다)에 대해서는 다음 각 호에서 정하는 바에 따라 지방세를 2027년 12월 31일까지 감면한다. / 1. 장학법인이 장학사업에 직접 사용하기 위하여 취득하는 부동산에 대해서는 취득세를, / 과세기준일 현재 장학사업에 직접 사용하는 부동산에 대해서는 재산세를 각각 면제한다. / 2. 장학법인이 장학금을 지급할 목적으로 취득하는 임대용 부동산에 대해서는 취득세의 100     분의 80을, 과세기준일 현재 해당 임대용으로 사용하는 부동산에 대해서는 재산세의 100분의      80을 각각 경감한다. / ③ 제1항 및 제2항에 따라 취득세를 면제 또는 경감받은 후 다음 각 호의 어느 하나에 해당하는 경우 그 해당 부분에 대해서는 면제 또는 경감된 취득세를 추징한다. / 1. 정당한 사유 없이 그 취득일부터 1년이 경과할 때까지 해당 용도로 직접 사용하지 아니하는 경우 / 2. 해당 용도로 직접 사용한 기간이 2년 미만인 상태에서 매각ㆍ증여하거나 다른 용도로 사용하는 경우 / 3. 취득일부터 3년 이내에 관계 법령에 따라 설립허가가 취소되는 등 대통령령으로 정하는 사유에 해당하는 경우</p>
       <p>```</p>
@@ -147,6 +135,7 @@ export default function Content26LhExemptionV10() {
 
       <p>#### 이와 같이 제반여건을 살펴보건대 중소기업연구원은 학술의 연구와 발표를 주된 목적으로 하는 지방세특례제한법 제45조제1항의 학술연구단체에 해당하므로 기 신고납부한 취득세 등에 대하여 취득세를 감면 하고자 합니다.</p>
 
-    </div>
+    
+      </CalcBox></div>
   );
 }

@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "신탁",
-  category: "corp-acquisition-tax",
-  group: "types",
-  groupLabel: "취득유형별",
-  order: 9,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅱ_취득_유형별/09_신탁",
-  sourcePages: [188,192],
-  sourceTaxTypes: ["acquisition_tax","property_tax"],
-  sourceKeyLawRefs: ["지방세법 시행령 제27조 제6항","지방세법 제7조 제5항","지방세법 제13조 제1항","지방세특례제한법 제31조의4 제2항","지방세법 제7조 제4항","지방세법 시행령 제18조의6","지방세법 제15조 제2항 제2호","지방세법 시행령 제20조 제10항","지방세법 제7조 제14항"],
-  lawReference: "지방세법 시행령 제27조 제6항, 지방세법 제7조 제5항, 지방세법 제13조 제1항, 지방세특례제한법 제31조의4 제2항, 지방세법 제7조 제4항, 지방세법 시행령 제18조의6, 지방세법 제15조 제2항 제2호, 지방세법 시행령 제20조 제10항, 지방세법 제7조 제14항",
-};
-
+import { CalcBox, SubSection } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "신탁"
+ *   category: "corp-acquisition-tax"
+ *   group: "types"
+ *   groupLabel: "취득유형별"
+ *   order: 9
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅱ_취득_유형별/09_신탁"
+ *   sourcePages: [188,192]
+ *   sourceTaxTypes: ["acquisition_tax","property_tax"]
+ *   sourceKeyLawRefs: ["지방세법 시행령 제27조 제6항","지방세법 제7조 제5항","지방세법 제13조 제1항","지방세특례제한법 제31조의4 제2항","지방세법 제7조 제4항","지방세법 시행령 제18조의6","지방세법 제15조 제2항 제2호","지방세법 시행령 제20조 제10항","지방세법 제7조 제14항"]
+ *   lawReference: "지방세법 시행령 제27조 제6항, 지방세법 제7조 제5항, 지방세법 제13조 제1항, 지방세특례제한법 제31조의4 제2항, 지방세법 제7조 제4항, 지방세법 시행령 제18조의6, 지방세법 제15조 제2항 제2호, 지방세법 시행령 제20조 제10항, 지방세법 제7조 제14항"
+ */
 export default function Content09TrustV10() {
   return (
     <div className="space-y-6">
@@ -41,17 +40,12 @@ export default function Content09TrustV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>신탁재산의 취득세·재산세 과세에서 납세의무자(수탁자 vs 위탁자), 중과세 적용 기준, 감면 적용 및 추징 여부를 다룬다. 수탁자가 원칙적 납세의무자이며, 중과세 판단도 수탁자 기준으로 적용되도록 법 개정이 이루어졌고, 감면 추징 여부에 대해 과세관청·조세심판원·법원 간 견해 차이가 있었음을 정리한다. 또한 지목변경 간주취득의 과세표준·세율·취득시기를 별도로 설명한다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>수탁자 납세의무</strong> — 신탁법상 신탁재산의 소유권은 수탁자에게 귀속되므로, 취득세 및 재산세의 납세의무자는 원칙적으로 수탁자이다.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세법/제7조" target="_blank" rel="noopener noreferrer">법 §7</a>, <a href="https://law.go.kr/법령/지방세법/제7조" target="_blank" rel="noopener noreferrer">법 §7 제5항</a></li>
@@ -70,98 +64,103 @@ export default function Content09TrustV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>수록 판례 (7건)</Outline>
-      </h2>
-
-      <Outline level={2}>대법원2001두4979</Outline>
+      
+      </CalcBox><CalcBox title="■ 수록 판례 (7건)" id="section-3">
+      <SubSection title="● 대법원2001두4979">
       <p><strong>쟁점</strong>: 신탁부동산 취득세 중과세 대상 여부 판단 기준</p>
       <p><strong>판시사항</strong>: 취득세 중과세 대상 여부도 수탁자를 기준으로 판단하여야 한다는 취지의 판결로, 이를 근거로 2016.12.27. 지방세법이 개정되었다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제1항</a></p>
 
-      <Outline level={2}>대법원2005다9685</Outline>
+      
+        </SubSection><SubSection title="● 대법원2005다9685">
       <p><strong>쟁점</strong>: 신탁법상 신탁재산의 소유권 귀속</p>
       <p><strong>판시사항</strong>: 신탁법상 소유권은 수탁자의 재산임을 확인하였다.</p>
 
-      <Outline level={2}>대법원2010두2395</Outline>
+      
+        </SubSection><SubSection title="● 대법원2010두2395">
       <p><strong>쟁점</strong>: 신탁재산 지목변경 시 납세의무자</p>
       <p><strong>판시사항</strong>: 신탁재산 지목변경 시 납세의무자는 수탁자이다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제7조" target="_blank" rel="noopener noreferrer">법 §7 제4항</a></p>
 
-      <Outline level={2}>대법원2016두42487</Outline>
+      
+        </SubSection><SubSection title="● 대법원2016두42487">
       <p><strong>쟁점</strong>: 수탁자의 사업시행자 지위와 감면 특례 적용</p>
       <p><strong>판시사항</strong>: 수탁자이자 납세의무자인 원고가 관광단지개발 사업시행자인 경우에만 감면 특례규정이 적용된다.</p>
 
-      <Outline level={2}>대법원2017두44893</Outline>
+      
+        </SubSection><SubSection title="● 대법원2017두44893">
       <p><strong>쟁점</strong>: 감면 후 신탁에 따른 소유권 이전 시 추징 여부</p>
       <p><strong>판시사항</strong>: 심리불속행 기각판결로 서울고법 2016누65710 판결을 확정하였으며, 신탁에 따른 소유권 이전은 추징 대상이 아님을 인정하였다.</p>
 
-      <Outline level={2}>대법원2017두94798</Outline>
+      
+        </SubSection><SubSection title="● 대법원2017두94798">
       <p><strong>쟁점</strong>: 위탁자가 신탁 후 수탁자가 잔금 지급 시 납세의무자</p>
       <p><strong>판시사항</strong>: 위탁자가 신탁 후 수탁자가 잔금을 지급한 경우 취득세 납세의무자는 수탁자이다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제7조" target="_blank" rel="noopener noreferrer">법 §7</a></p>
 
-      <Outline level={2}>대법원2018두62515</Outline>
+      
+        </SubSection><SubSection title="● 대법원2018두62515">
       <p><strong>쟁점</strong>: 신탁수익권 취득 시 취득세 납세의무 여부</p>
       <p><strong>판시사항</strong>: 신탁수익권 취득은 신탁이익을 받을 수 있는 권리를 취득한 것이므로 취득세 납세의무가 없다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제7조" target="_blank" rel="noopener noreferrer">법 §7</a></p>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>하급심 판례 (1건)</Outline>
-      </h2>
-
-      <Outline level={2}>서울고법2016누65710</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 하급심 판례 (1건)" id="section-4">
+      <SubSection title="● 서울고법2016누65710">
       <p><strong>쟁점</strong>: 감면 적용 후 신탁에 따른 소유권 이전 시 추징 여부</p>
       <p><strong>판시사항</strong>: 신탁에 따른 소유권 이전은 취득세 감면 추징 대상이 아니라고 판시하였으며, 대법원에서 심리불속행 기각으로 확정되었다.</p>
 
 
-      <h2 id="section-5">
-      <Outline level={1}>조심 판례 (2건)</Outline>
-      </h2>
-
-      <Outline level={2}>조심2016지1244</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 조심 판례 (2건)" id="section-5">
+      <SubSection title="● 조심2016지1244">
       <p><strong>쟁점</strong>: 신탁수익자 변경 시 취득세 과세 시점</p>
       <p><strong>판시사항</strong>: 우선수익자가 수탁자와 매매계약을 체결하고 신탁 부동산을 인수하는 경우에야 비로소 취득세 과세대상이 된다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제7조" target="_blank" rel="noopener noreferrer">법 §7</a></p>
 
-      <Outline level={2}>조심2018지0490</Outline>
+      
+        </SubSection><SubSection title="● 조심2018지0490">
       <p><strong>쟁점</strong>: 구 등록세 중과세의 수탁자 기준 적용 여부</p>
       <p><strong>판시사항</strong>: 법령이 아닌 유권해석으로 위탁자 기준으로 중과세를 적용하는 것은 잘못이며, 구 등록세 분은 수탁자 기준으로 적용하여야 한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제2항</a></p>
 
 
-      <h2 id="section-6">
-      <Outline level={1}>질의회신 (5건)</Outline>
-      </h2>
-
-      <Outline level={2}>지방세운영과-571</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 질의회신 (5건)" id="section-6">
+      <SubSection title="● 지방세운영과-571">
       <p><strong>쟁점</strong>: 신탁재산 이전 후 중과세대상이 된 경우 납세의무</p>
       <p><strong>판시사항</strong>: 신탁재산이 수탁자에게 이전된 이후 중과세대상이 된 경우, 중과세대상은 비과세에 해당하지 않고 수탁자에게 취득세 중과세에 따른 납세의무가 성립된다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13</a></p>
 
-      <Outline level={2}>지방세특례제도과-324</Outline>
+      
+        </SubSection><SubSection title="● 지방세특례제도과-324">
       <p><strong>쟁점</strong>: 감면 후 신탁에 따른 소유권 이전 시 추징 여부 (과세관청 해석)</p>
       <p><strong>판시사항</strong>: 처분은 유상·무상을 불문하고 취득자가 아닌 타인에게 소유권을 이전하여 직접 사용할 수 없는 경우를 의미하며, 신탁계약에 따른 소유권 이전도 추징 대상에 해당한다는 과세관청 해석.</p>
 
-      <Outline level={2}>지방세특례제도과-1709</Outline>
+      
+        </SubSection><SubSection title="● 지방세특례제도과-1709">
       <p><strong>쟁점</strong>: 감면 후 신탁에 따른 소유권 이전 시 추징 여부 (과세관청 해석)</p>
       <p><strong>판시사항</strong>: 신탁계약에 따라 위탁자로부터 수탁자에게 소유권이 이전되더라도 추징 대상으로 본다는 과세관청 해석.</p>
 
-      <Outline level={2}>서울세제-12229</Outline>
+      
+        </SubSection><SubSection title="● 서울세제-12229">
       <p><strong>쟁점</strong>: 임대사업자가 신탁한 임대주택의 재산세 감면 여부</p>
       <p><strong>판시사항</strong>: 임대사업자가 임대주택을 신탁회사에 신탁하고 임대관리를 하는 경우, 재산세 과세기준일 현재 소유권자가 수탁자로 변경된 것이므로 위탁자는 임대목적으로 직접 사용하는 경우에 해당하지 않아 임대사업자 재산세 감면 대상이 아니다.</p>
 
-      <Outline level={2}>지방세운영과-3161</Outline>
+      
+        </SubSection><SubSection title="● 지방세운영과-3161">
       <p><strong>쟁점</strong>: 공동주택 신축 시 조경·도로포장비의 과세표준 귀속</p>
       <p><strong>판시사항</strong>: 공동주택 단지 내 조경공사비와 도로포장비는 신축 공동주택의 취득가격에 포함되나, 준공된 토지에 신축하는 경우 단지 내 조경·도로공사로 부속토지 가액이 증가하면 지목변경 간주취득세를 적용한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제7조" target="_blank" rel="noopener noreferrer">법 §7 제4항</a>, <a href="https://law.go.kr/법령/지방세법/제7조" target="_blank" rel="noopener noreferrer">법 §7 제14항</a></p>
 
 
-      <h2 id="section-7">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 관련 법조문" id="section-7">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세법 시행령 제27조 제6항</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세법 제7조 제5항</code></li>
@@ -175,10 +174,8 @@ export default function Content09TrustV10() {
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
       <p>☞ 중 과</p>
 
       <p>| 구  분 | 중과 여부 |</p>
@@ -187,8 +184,7 @@ export default function Content09TrustV10() {
 
 
 
-      <Outline level={2}>납세의무자</Outline>
-
+      <SubSection title="● 납세의무자">
       <p>신탁법상 소유권은 수탁자의 재산임(대법원 2005다9685.2007.9.7.)</p>
 
       <p>위탁자가 신탁후 수탁자가 잔금을 지급한 경우 취득세 납세의무자는 수탁자임(대법원 2017두94798.2018.3.15.)</p>
@@ -209,8 +205,8 @@ export default function Content09TrustV10() {
 
 
 
-      <Outline level={2}>중과</Outline>
-
+      
+        </SubSection><SubSection title="● 중과">
       <p>신탁부동산에 따른 구취득세 중과세 : 지방세법 제13조 제1항(본점 신증축시 수탁자가 취득한 재산중 위탁자의 본점 사업용으로 사용하는 부동산은 중과대상임-2017년도부터.) 납세의무자는 수탁자임.</p>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
@@ -243,8 +239,8 @@ export default function Content09TrustV10() {
 
 
 
-      <Outline level={2}>감면</Outline>
-
+      
+        </SubSection><SubSection title="● 감면">
       <p>사업시행자 감면 : 수탁자가 사업시행자가 되면 감면이 적용됨.</p>
 
       <p>수탁자는 사업시행자가 되어야 사업시행에 따른 감면규정을 적용받기 때문에 위탁자가 사업시행자로 그대로 있는 상태에서는 감면적용 안됨. 수탁자가 사업시행자가 되어야 감면 (지식산업센터 등)</p>
@@ -293,8 +289,8 @@ export default function Content09TrustV10() {
 
 
 
-      <Outline level={2}>신탁에 따른 소유권 이전 (비과세)</Outline>
-
+      
+        </SubSection><SubSection title="● 신탁에 따른 소유권 이전 (비과세)">
       <p>수탁자로부터 위탁자로 이전 : 과표-시가표준액, 세율-무상취득</p>
 
       <p>수탁자로부터 수익자로 이전 : 과표-사실상취득가액, 세율-유상취득</p>
@@ -305,10 +301,9 @@ export default function Content09TrustV10() {
 
 
 
-      <h2 id="section-9">
-      <Outline level={1}>지목변경</Outline>
-      </h2>
-
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 지목변경" id="section-9">
       <p>```text</p>
       <p>취득시기 : 지목이 사실상 변경된 날과 공부상 변경한 날 중 빠른 날 / 적용세율 : 2% / 과   표  ① 변경으로 증가한 가액에 해당하는 사실상취득가격으로 한다. / ② 사실상취득가격을 확인할 수 없는 경우 / ☞ 지목변경 이후의 토지에 대한 시가표준액 - 지목변경 전의 시가표준액 / 준비서류 : 지목변경 비용 입증 서류 / ※ 사례별 적용요령 지방세운영과-3161(2018.12.28.)/서울특별시 세무과-28400(2018.12.31) / - 일반적인 지목변경: 지목변경 간주취득세(2%) / - 공동주택 신축시 지목변경이 이루어진 경우: 건물 신축 과표에 포함(세율 2.8%적용) / - 택지공사가 공동주택신축과 동시에 지목변경이 이루어진 경우: 지목변경 간주취득세(2%)</p>
       <p>```</p>
@@ -365,6 +360,7 @@ export default function Content09TrustV10() {
 
       <p>단, 택지공사가 준공된 토지에 직접 건축물을 신축하거나 분양받은 토지에 건축물을 신축하는 경우로써 단지내 조경 및 도로공사에 따라 공동주택 부속토지의 가액이 증가하였다면 지방세법 제7조 제14항에 따른 지목변경에 따른 간주취득을 한 것으로서, 그 비용은 지목변경 간주취득세 적용</p>
 
-    </div>
+    
+      </CalcBox></div>
   );
 }

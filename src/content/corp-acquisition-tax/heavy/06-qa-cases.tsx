@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "질의회신 사례",
-  category: "corp-acquisition-tax",
-  group: "heavy",
-  groupLabel: "중과",
-  order: 6,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-heavy",
-  sourceBookTitle: "법인 중과 실무 (2026년)",
-  sourceLeaf: "corp-heavy/Ⅰ_법인_중과_실무/06_질의회신_사례등",
-  sourcePages: [12,16],
-  sourceTaxTypes: ["acquisition_tax"],
-  sourceKeyLawRefs: ["소득세법 제16조","지방세법 제15조 제2항","지방세법 시행규칙 제55조의2","지방세법 제137조 제1항 제1호","지방세법 시행령 제43조 제5항","지방세법 제28조 제2항","지방세법 제13조 제2항 제1호","지방세법 제13조 제4항","지방세법 시행령 제26조 제4항 제2호","지방세법 제138조 제1항 제3호"],
-  lawReference: "소득세법 제16조, 지방세법 제15조 제2항, 지방세법 시행규칙 제55조의2, 지방세법 제137조 제1항 제1호, 지방세법 시행령 제43조 제5항, 지방세법 제28조 제2항, 지방세법 제13조 제2항 제1호, 지방세법 제13조 제4항, 지방세법 시행령 제26조 제4항 제2호, 지방세법 제138조 제1항 제3호",
-};
-
+import { CalcBox, SubSection } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "질의회신 사례"
+ *   category: "corp-acquisition-tax"
+ *   group: "heavy"
+ *   groupLabel: "중과"
+ *   order: 6
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-heavy"
+ *   sourceBookTitle: "법인 중과 실무 (2026년)"
+ *   sourceLeaf: "corp-heavy/Ⅰ_법인_중과_실무/06_질의회신_사례등"
+ *   sourcePages: [12,16]
+ *   sourceTaxTypes: ["acquisition_tax"]
+ *   sourceKeyLawRefs: ["소득세법 제16조","지방세법 제15조 제2항","지방세법 시행규칙 제55조의2","지방세법 제137조 제1항 제1호","지방세법 시행령 제43조 제5항","지방세법 제28조 제2항","지방세법 제13조 제2항 제1호","지방세법 제13조 제4항","지방세법 시행령 제26조 제4항 제2호","지방세법 제138조 제1항 제3호"]
+ *   lawReference: "소득세법 제16조, 지방세법 제15조 제2항, 지방세법 시행규칙 제55조의2, 지방세법 제137조 제1항 제1호, 지방세법 시행령 제43조 제5항, 지방세법 제28조 제2항, 지방세법 제13조 제2항 제1호, 지방세법 제13조 제4항, 지방세법 시행령 제26조 제4항 제2호, 지방세법 제138조 제1항 제3호"
+ */
 export default function Content06QaCasesV10() {
   return (
     <div className="space-y-6">
@@ -39,17 +38,12 @@ export default function Content06QaCasesV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>대도시 내 법인 중과세 관련 질의회신 및 사례 모음으로, 지점 설치일 판단, 본점 사업용 부동산 인정 기준, 조직변경(주식회사↔유한회사) 시 등록면허세 적용, 법인합병에 따른 지점설치 중과세, 임대가 불가피한 업종의 중과 제외 등 다양한 실무 쟁점을 다룬다. 각 쟁점별로 행정자치부·서울시 세제과·지방세운영과 질의회신과 조세심판원 결정, 대법원 판결이 제시되어 있다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>지점 설치일</strong> — 지점으로서 실질적 요건(인적·물적 설비)을 갖추고 사업이 행해지는 장소가 된 날로, 사업자 등록 여부와 무관하다.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13</a>, <a href="https://law.go.kr/법령/지방세법시행령/제27조" target="_blank" rel="noopener noreferrer">시행령 §27</a></li>
@@ -72,105 +66,113 @@ export default function Content06QaCasesV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>수록 판례 (2건)</Outline>
-      </h2>
-
-      <Outline level={2}>대법원2010두6731</Outline>
+      
+      </CalcBox><CalcBox title="■ 수록 판례 (2건)" id="section-3">
+      <SubSection title="● 대법원2010두6731">
       <p><strong>쟁점</strong>: 주식회사→유한회사 조직변경 등기 시 등록세(등록면허세) 세율 적용</p>
       <p><strong>판시사항</strong>: 주식회사의 유한회사로의 조직변경은 법인격의 동일성을 유지하면서 조직을 변경하는 것으로, 유한회사의 설립등기는 구 지방세법 제137조 제1항 제1호 제1목의 설립등기 과세표준 적용대상이 아니며, 기타등기로 보아 건당 40,200원의 등록세 세율을 적용한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제137조" target="_blank" rel="noopener noreferrer">법 §137 제1항</a></p>
 
-      <Outline level={2}>대법원2019두39918</Outline>
+      
+        </SubSection><SubSection title="● 대법원2019두39918">
       <p><strong>쟁점</strong>: 유통산업(도소매업) 영위 법인의 판매시설 임대 시 대도시 중과 제외 여부</p>
       <p><strong>판시사항</strong>: 도·소매업이 구 지방세법 시행령 제26조 제4항 제2호의 임대가 불가피한 업종인 유통산업에 해당하는 경우, 판매시설 용도로 제3자에게 임대한 건물 부분도 유통산업에 직접 사용되는 것으로 보아 대도시 중과세율 적용에서 제외된다. 대규모점포 등의 개설등록 여부와 무관하다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제4항</a>, <a href="https://law.go.kr/법령/지방세법시행령/제26조" target="_blank" rel="noopener noreferrer">시행령 §26 제4항</a></p>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>조심 판례 (2건)</Outline>
-      </h2>
-
-      <Outline level={2}>조심2010지85</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 조심 판례 (2건)" id="section-4">
+      <SubSection title="● 조심2010지85">
       <p><strong>쟁점</strong>: 지점 설치일 판단 기준</p>
       <p><strong>판시사항</strong>: 지점 설치일은 지점으로서 실질적 요건(인적·물적 설비)을 갖춘 날이다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13</a></p>
 
-      <Outline level={2}>조심2010지0328</Outline>
+      
+        </SubSection><SubSection title="● 조심2010지0328">
       <p><strong>쟁점</strong>: 과밀억제권역 내 본점 사무실 이전 시 취득세 중과 범위</p>
       <p><strong>판시사항</strong>: 동일한 과밀억제권역 내에서 신축건물로 본점 사무실을 이전하는 경우 취득세 중과 대상은 본점용 사무실 면적의 증가분에 한정되며, 이미 중과세된 기존 면적분에 대해 재차 중과하는 것은 불합리하다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13</a></p>
 
 
-      <h2 id="section-5">
-      <Outline level={1}>질의회신 (12건)</Outline>
-      </h2>
-
-      <Outline level={2}>서울세제과-4838</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 질의회신 (12건)" id="section-5">
+      <SubSection title="● 서울세제과-4838">
       <p><strong>쟁점</strong>: 법인 설립일 판단 기준</p>
       <p><strong>판시사항</strong>: 법인 설립일은 설립등기를 통해 법인격을 취득하게 되므로 등기부등본상 법인 설립일이다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13</a></p>
 
-      <Outline level={2}>지방세운영과-4794</Outline>
+      
+        </SubSection><SubSection title="● 지방세운영과-4794">
       <p><strong>쟁점</strong>: 본점 사업용 부동산 해당 여부 판단 기준</p>
       <p><strong>판시사항</strong>: 본점 사업용 부동산은 본점등기 여부가 아니라 법인의 본점으로서 중추적인 의사결정 기능을 수행하는 장소로 사용되는 부동산을 의미한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13</a></p>
 
-      <Outline level={2}>세제과-14170</Outline>
+      
+        </SubSection><SubSection title="● 세제과-14170">
       <p><strong>쟁점</strong>: 임대사업용 부동산에 상주 직원 없는 경우 지점 설치 해당 여부</p>
       <p><strong>판시사항</strong>: 임대업무는 대도시 외 본점에서 관리하고 부동산에 영업·대외거래 인원을 상주시키지 않는 경우 지점 설치에 해당하지 않아 중과세 대상이 아니다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13</a></p>
 
-      <Outline level={2}>지방세운영과-684</Outline>
+      
+        </SubSection><SubSection title="● 지방세운영과-684">
       <p><strong>쟁점</strong>: 주유소 내 세차업의 취득세 중과 업종 해당 여부</p>
       <p><strong>판시사항</strong>: 주유소 내 세차시설을 활용하는 세차업은 사업자등록 없이 무료로 운영하더라도 주유소 운영업(유통산업)과 별개의 사업으로 보아 취득세 중과대상 업종에 해당한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13</a></p>
 
-      <Outline level={2}>세제과-3385</Outline>
+      
+        </SubSection><SubSection title="● 세제과-3385">
       <p><strong>쟁점</strong>: 본·지점 설치일, 임대부동산 중과세 제외, 지점설치 전후 취득 시 중과 범위</p>
       <p><strong>판시사항</strong>: 법인 본점 설치일은 설립등기일이며, 지점 설치일은 인적·물적 설비를 갖추고 사업이 행해지는 장소가 된 때이다. 임대 관련 업무 일체를 본점에서 수행하는 경우 중과세 대상이 아니며, 지점설치 전 취득은 지점용 직접 사용 부분만, 지점설치 후 취득은 건물 전체가 중과 대상이다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13</a></p>
 
-      <Outline level={2}>지방세운영과-2310</Outline>
+      
+        </SubSection><SubSection title="● 지방세운영과-2310">
       <p><strong>쟁점</strong>: 정부출자법인 해당 여부 및 첨단기술 겸업 시 안분 기준</p>
       <p><strong>판시사항</strong>: 법인등기부상 자본금에 포함되지 않은 정부 출연금은 납입자본금으로 볼 수 없고, 국가가 아닌 기관을 통해 출연받은 경우 정부출자법인으로 볼 수 없다. 첨단·비첨단 기술을 겸업하는 경우 안분 기준 자료가 없으면 무형재산 보유비율로 안분한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제28조" target="_blank" rel="noopener noreferrer">법 §28</a></p>
 
-      <Outline level={2}>지방세정팀-965</Outline>
+      
+        </SubSection><SubSection title="● 지방세정팀-965">
       <p><strong>쟁점</strong>: 대도시 외 설립 중과제외 법인의 대도시 전입 시 등록세율 변경 연혁</p>
       <p><strong>판시사항</strong>: 대도시 외에서 설립한 중과제외 법인이 대도시 내로 전입 시 등록세율을 설립으로 보아 지방세법 제137조 제1항 제1호를 적용하도록 변경되었다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제137조" target="_blank" rel="noopener noreferrer">법 §137 제1항</a></p>
 
-      <Outline level={2}>서울세제-6299</Outline>
+      
+        </SubSection><SubSection title="● 서울세제-6299">
       <p><strong>쟁점</strong>: 주택건설업 법인의 도시형생활주택 신축 취득 시 중과 제외 및 상가 안분</p>
       <p><strong>판시사항</strong>: 주택건설업 해당 법인이 도시형생활주택 신축용 토지를 취득하여 3년 이내 착공하는 경우 중과 예외에 해당하나, 일부 상가 부분은 해당하지 않으며 안분 기준은 면적비율이다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13</a></p>
 
-      <Outline level={2}>지방세운영과-1063</Outline>
+      
+        </SubSection><SubSection title="● 지방세운영과-1063">
       <p><strong>쟁점</strong>: 대도시 내 지점 설치 시 별도 지점등기부 없는 경우 등록면허세 중과 적용 여부</p>
       <p><strong>판시사항</strong>: 별도의 지점등기부가 작성되지 않고 본점등기부 지점란에만 등기사항을 기재하더라도 지점 또는 분사무소의 설치에 해당하여 중과세율로 등록면허세를 신고납부해야 한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제28조" target="_blank" rel="noopener noreferrer">법 §28</a>, <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13</a></p>
 
-      <Outline level={2}>서울세제-17315</Outline>
+      
+        </SubSection><SubSection title="● 서울세제-17315">
       <p><strong>쟁점</strong>: 조직변경 후 5년 이내 증자 시 등록면허세 중과 적용 여부</p>
       <p><strong>판시사항</strong>: 주식회사↔유한회사 조직변경은 법인격의 동일성을 유지하는 것이므로, 조직변경 후 5년 이내에 자본금을 증자하더라도 지방세법 제28조 제2항의 중과세 적용 대상이 아니다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제28조" target="_blank" rel="noopener noreferrer">법 §28 제2항</a></p>
 
-      <Outline level={2}>서울세제-7244</Outline>
+      
+        </SubSection><SubSection title="● 서울세제-7244">
       <p><strong>쟁점</strong>: 법인합병 시 피합병법인 지점을 합병법인 지점으로 변경 등기한 경우 취득세 중과</p>
       <p><strong>판시사항</strong>: 합병법인이 흡수합병하면서 피합병법인의 지점을 합병법인의 지점으로 변경·등기하여 유지·존속하는 것은 대도시 내 지점설치 후 5년 이내 부동산 취득에 해당하여 취득세 중과 대상이다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제2항</a>, <a href="https://law.go.kr/법령/지방세법시행령/제27조" target="_blank" rel="noopener noreferrer">시행령 §27 제3항</a></p>
 
-      <Outline level={2}>지방세운영과-2422</Outline>
+      
+        </SubSection><SubSection title="● 지방세운영과-2422">
       <p><strong>쟁점</strong>: 수도권에서 서울로 전입 후 서울 외 대도시 부동산 취득 시 중과 여부</p>
       <p><strong>판시사항</strong>: 대도시 외 지역에서 서울 외의 대도시로 전입하여 5년이 경과한 후 서울특별시로 전입한 경우, 서울특별시 외의 대도시 내 부동산 취득에 대해서는 취득세를 중과할 수 없다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13 제2항</a>, <a href="https://law.go.kr/법령/지방세법시행령/제27조" target="_blank" rel="noopener noreferrer">시행령 §27 제3항</a></p>
 
 
-      <h2 id="section-6">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 관련 법조문" id="section-6">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">소득세법 제16조</code> ⚠️ _범위 밖_</li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세법 제15조 제2항</code></li>
@@ -185,12 +187,9 @@ export default function Content06QaCasesV10() {
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
-      <Outline level={2}>질의회신 및 사례</Outline>
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
+      <SubSection title="● 질의회신 및 사례">
       <p>#### 지점 설치일은? 지점으로서 실질적 요건(인적,물적설비)을 갖춘날이다(조심2010지85.2010.10.14.)</p>
 
       <p>#### 법인 설립일은? 설립등기를 하면서 법인격을 취득하게 되므로 등기부등본상 법인 설립일임.</p>
@@ -355,6 +354,8 @@ export default function Content06QaCasesV10() {
 
       <p>대도시 내 법인 취득세 중과여부 확인 매뉴얼</p>
 
-    </div>
+    
+      
+        </SubSection></CalcBox></div>
   );
 }

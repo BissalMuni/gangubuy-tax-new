@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "학교·종교단체 사택 감면대상",
-  category: "corp-acquisition-tax",
-  group: "references",
-  groupLabel: "실무참고",
-  order: 13,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅲ_기타_참고/12_학교_종교단체_사택감면대상",
-  sourcePages: [234,236],
-  sourceTaxTypes: ["acquisition_tax","property_tax"],
-  sourceKeyLawRefs: ["지방세특례제한법 제2조 제1항 제2호","법인세법 제4조 제3항","법인세법 시행령 제3조"],
-  lawReference: "지방세특례제한법 제2조 제1항 제2호, 법인세법 제4조 제3항, 법인세법 시행령 제3조",
-};
-
+import { CalcBox, SubSection } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "학교·종교단체 사택 감면대상"
+ *   category: "corp-acquisition-tax"
+ *   group: "references"
+ *   groupLabel: "실무참고"
+ *   order: 13
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅲ_기타_참고/12_학교_종교단체_사택감면대상"
+ *   sourcePages: [234,236]
+ *   sourceTaxTypes: ["acquisition_tax","property_tax"]
+ *   sourceKeyLawRefs: ["지방세특례제한법 제2조 제1항 제2호","법인세법 제4조 제3항","법인세법 시행령 제3조"]
+ *   lawReference: "지방세특례제한법 제2조 제1항 제2호, 법인세법 제4조 제3항, 법인세법 시행령 제3조"
+ */
 export default function Content12SchoolReligiousResidenceV10() {
   return (
     <div className="space-y-6">
@@ -39,17 +38,12 @@ export default function Content12SchoolReligiousResidenceV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>종교단체(교회·종교법인)가 소유한 사택을 교수·의사·사제·전도사 등 종교·교육·의료 사업의 중추적 종사자에게 무상으로 제공하는 경우 취득세·재산세 비과세·감면 대상에 해당하는지를 다룬다. 유상임대 또는 수익사업 종사 직원이 사용하는 경우에는 직접 사용으로 볼 수 없어 감면 대상에서 제외된다. 특수사목 사제의 사택도 종교활동의 중추적 지위자 사택으로 인정된다는 대법원 판결이 포함된다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>사택 직접 사용</strong> — 종교·교육·의료 단체가 소유한 부동산 내 사택을 해당 사업의 중추적 종사자(교수·의사·사제·전도사 등)에게 무상으로 주거용으로 제공하는 것으로, 취득세·재산세 비과세·감면의 핵심 요건이다.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세법/제109조" target="_blank" rel="noopener noreferrer">법 §109</a>, <a href="https://law.go.kr/법령/지방세특례제한법/제50조" target="_blank" rel="noopener noreferrer">지특법 §50</a></li>
@@ -64,35 +58,32 @@ export default function Content12SchoolReligiousResidenceV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>수록 판례 (1건)</Outline>
-      </h2>
-
-      <Outline level={2}>대법원2015두48495</Outline>
+      
+      </CalcBox><CalcBox title="■ 수록 판례 (1건)" id="section-3">
+      <SubSection title="● 대법원2015두48495">
       <p><strong>쟁점</strong>: 특수사목 사제 사택의 취득세·재산세 비과세 해당 여부</p>
       <p><strong>판시사항</strong>: 본당사목 사제뿐만 아니라 특수사목 사제도 종교단체의 중추적 지위자에 해당하므로, 그 사택은 종교단체가 사업에 사용하는 부동산으로서 취득세·등록세·재산세 비과세 대상이다. 특수사목이 본당사목과 본질적으로 다르지 않고, 부산교구 전체를 선교 대상으로 삼는 필수불가결한 역할을 수행하기 때문이다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제50조" target="_blank" rel="noopener noreferrer">지특법 §50</a></p>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>예규 (2건)</Outline>
-      </h2>
-
-      <Outline level={2}>세제과-380</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 예규 (2건)" id="section-4">
+      <SubSection title="● 세제과-380">
       <p><strong>쟁점</strong>: 종교법인 사택의 재산세 감면 요건 (직접 사용 여부)</p>
       <p><strong>판시사항</strong>: 종교법인이 학교·병원·종교 목적 사업에 직접 사용하기 위해 한 울타리 안에 있는 사택을 교수·의사·부목사·전도사 등에게 무상 주거용으로만 제공하는 경우 재산세 감면 대상이나, 유상임대 또는 수익사업 기여 직원이 사용하는 경우는 감면 대상이 아니다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제50조" target="_blank" rel="noopener noreferrer">지특법 §50</a></p>
 
-      <Outline level={2}>지방세운영과-230</Outline>
+      
+        </SubSection><SubSection title="● 지방세운영과-230">
       <p><strong>쟁점</strong>: 교회 경내 부목사·관리집사 사택의 취득세 비과세 여부</p>
       <p><strong>판시사항</strong>: 교회 경내의 건물을 부목사 및 관리집사가 무상으로 사택으로 사용하는 경우 종교용에 직접 사용하는 것으로 보아 취득세 등 비과세에 해당한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제109조" target="_blank" rel="noopener noreferrer">법 §109</a></p>
 
 
-      <h2 id="section-5">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 관련 법조문" id="section-5">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제2조 제1항 제2호</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">법인세법 제4조 제3항</code> ⚠️ _범위 밖_</li>
@@ -100,10 +91,8 @@ export default function Content12SchoolReligiousResidenceV10() {
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
       <p>세제과-380, 2012.01.09</p>
 
       <p>종교법인이 학교, 병원, 종교 사업에 직접 사용하는 목적으로 한 울타리 안에 있는 사택을 교수, 의사, 전도사 등의 주거용으로 제공하는 경우 재산세를 감면할수 있으나, 유상임대 및 수익사업에 기여하는 직원 등이 사용하는 경우는 감면 대상이 아니다.</p>
@@ -140,12 +129,8 @@ export default function Content12SchoolReligiousResidenceV10() {
 
 
 
-      <h2 id="section-7">
-      <Outline level={1}>수익사업의 정의</Outline>
-      </h2>
-
-
-
+      
+      </CalcBox><CalcBox title="■ 수익사업의 정의" id="section-7">
       <p>☞ 수익사업이란 국가데이터처장이 고시하는 한국표준산업분류에 의한 각 사업중 수입이 발생</p>
 
       <p>하는 것을 말하며 유치원, 학교, 평생교육시설 및 사회복지시설에 제공하는 사회복지사업등은 제외한다.</p>
@@ -262,6 +247,7 @@ export default function Content12SchoolReligiousResidenceV10() {
 
       <p>②법 제4조제3항제5호에서 “대통령령으로 정하는 수입”이란 법령 또는 정관에 규정된 고유목적사업(제1항에 따른 수익사업은 제외한다. 이하 이 항에서 같다)에 직접 사용한 유형자산 및 무형자산의 처분으로 인하여 생기는 다음 각 호의 구분에 따른 수입을 말하며, 제1호와 제2호에 모두 해당하는 경우에는 해당 각 호에 따른 수입 중 큰 수입을 말한다. 이 경우 해당 자산의 유지ㆍ관리 등을 위한 관람료ㆍ입장료수입 등 부수수익이 있는 경우에도 이를 고유목적사업에 직접 사용한 자산으로 본다.</p>
 
-    </div>
+    
+      </CalcBox></div>
   );
 }

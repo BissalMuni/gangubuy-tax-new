@@ -1,22 +1,22 @@
 "use client";
 
-import { Callout } from "@/components/mdx/Callout";
 
-export const meta = {
-  title: "임대사업자 감면",
-  sectionId: "17",
-  category: "취득세",
-  subcategory: "감면",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  pageRange: [40,41,42],
-  effectiveDate: "2020-08-18",
-  lastUpdated: "2026-04-03",
-  status: "draft",
-  lawReference: "지특법 §31, §31의3",
-  tags: ["임대사업자","감면","공공임대","장기임대","추징","재산세"],
-};
-
+import { Insight } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "임대사업자 감면"
+ *   sectionId: "17"
+ *   category: "취득세"
+ *   subcategory: "감면"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   pageRange: [40,41,42]
+ *   effectiveDate: "2020-08-18"
+ *   lastUpdated: "2026-04-03"
+ *   status: "draft"
+ *   lawReference: "지특법 §31, §31의3"
+ *   tags: ["임대사업자","감면","공공임대","장기임대","추징","재산세"]
+ */
 export default function RentalBusinessV10() {
   return (
     <div className="space-y-6">
@@ -158,7 +158,7 @@ export default function RentalBusinessV10() {
       </tbody>
       </table>
 
-      <Callout type="info">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>전용면적 60㎡ 이하</strong> 부동산 취득세는 100% 감면이나, 취득세액 200만원 초과시 15%가 부과되므로 <strong>최소납부세액</strong> 적용시 15%는 과세됨 (주택 2억원까지 취득세 0원)</li>
@@ -166,7 +166,7 @@ export default function RentalBusinessV10() {
         <li>건축(건설)임대사업자 감면 - 감면분과 비감면분의 취득가액을 <strong>면적대비로 안분</strong>하여 각각 과세</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       <hr className="my-6" />
 
@@ -240,7 +240,7 @@ export default function RentalBusinessV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <p><strong>다가구주택 감면 범위</strong> (지특법 §31의3)</p>
       <ul className="list-disc pl-6 my-4 space-y-1">
@@ -248,7 +248,7 @@ export default function RentalBusinessV10() {
         <li>소유자 실제 거주 호수는 <strong>제외</strong> (재산세만 감면)</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       <hr className="my-6" />
 
@@ -256,7 +256,7 @@ export default function RentalBusinessV10() {
 
       <h3 className="text-lg font-semibold mt-6 mb-3">A. 취득세 추징</h3>
 
-      <Callout type="caution">
+      <Insight>
 
       <p><strong>이자상당액 추징</strong> (지특법 §178②, 영 §123의2)</p>
 
@@ -266,7 +266,7 @@ export default function RentalBusinessV10() {
         <li><strong>납부지연가산 이자율</strong>: 1일 10만분의 22 (22.6.7. 이전: 1일 10만분의 25)</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       <p><strong>처리 절차</strong>:</p>
       <p>1. 등기일자를 반드시 입력</p>
@@ -285,13 +285,13 @@ export default function RentalBusinessV10() {
 
       <h3 className="text-lg font-semibold mt-6 mb-3">C. 예외조항 - 폐지유형 자발적 말소시 미추징</h3>
 
-      <Callout type="info">
+      <Insight>
 
       <p>단기임대(4년)와 장기임대 중 아파트매입임대와 같이 <strong>폐지유형</strong>으로 등록하였다가 임대의무기간 종료 전 <strong>자진말소</strong>하는 경우 취득세·재산세 감면혜택 유지하고 <strong>추징하지 않음</strong></p>
 
       <p>('20.8.18. 신설시행 / 지특법 영 §13조)</p>
 
-      </Callout>
+      </Insight>
 
       <hr className="my-6" />
 
@@ -335,7 +335,7 @@ export default function RentalBusinessV10() {
       </tbody>
       </table>
 
-      <Callout type="info">
+      <Insight>
 
       <p><strong>도시형생활주택 원룸형</strong> (5층 이상)</p>
       <ul className="list-disc pl-6 my-4 space-y-1">
@@ -344,7 +344,7 @@ export default function RentalBusinessV10() {
         <li>자진말소: 2021.5.17.부터 자진말소대상에서 제외</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       <hr className="my-6" />
 

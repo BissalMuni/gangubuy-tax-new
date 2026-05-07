@@ -1,20 +1,20 @@
 "use client";
 
-import { Callout } from "@/components/mdx/Callout";
 
-export const meta = {
-  title: "농지 외 부동산 취득세율",
-  category: "취득세",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  sourceSections: [26],
-  effectiveDate: "2026-01-01",
-  lastUpdated: "2026-01-31",
-  status: "draft",
-  lawReference: "지방세법 §11①1가, §11①1나, §11①2, §11①3",
-  tags: ["부동산","취득세","세율","유상거래","상속","증여","원시취득","상가","오피스텔"],
-};
-
+import { Insight } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "농지 외 부동산 취득세율"
+ *   category: "취득세"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   sourceSections: [26]
+ *   effectiveDate: "2026-01-01"
+ *   lastUpdated: "2026-01-31"
+ *   status: "draft"
+ *   lawReference: "지방세법 §11①1가, §11①1나, §11①2, §11①3"
+ *   tags: ["부동산","취득세","세율","유상거래","상속","증여","원시취득","상가","오피스텔"]
+ */
 export default function NonFarmlandV10() {
   return (
     <div className="space-y-6">
@@ -184,7 +184,7 @@ export default function NonFarmlandV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>주택 vs 비주택 판단</strong>이 세율에 큰 영향을 미치므로, 건축물의 실제 용도를 정확히 확인할 것</li>
@@ -194,7 +194,7 @@ export default function NonFarmlandV10() {
         <li>법인의 상가·사무실 취득 시에도 동일한 <strong>4.6%</strong> 적용 (주택과 달리 법인 중과 없음)</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       </section>
 
@@ -324,7 +324,7 @@ export default function NonFarmlandV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>상속 부동산의 과세표준은 <strong>시가표준액</strong>이며, 실거래가 아님에 유의</li>
@@ -334,7 +334,7 @@ export default function NonFarmlandV10() {
         <li>상속포기자는 취득세 납세의무 없음 (법원 상속포기 심판 확정 필요)</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       </section>
 
@@ -466,7 +466,7 @@ export default function NonFarmlandV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>2023년 개정으로 증여 과세표준이 <strong>시가인정액</strong>으로 변경되어 세부담이 증가할 수 있음</li>
@@ -476,7 +476,7 @@ export default function NonFarmlandV10() {
         <li>증여세(국세)와 취득세(지방세)의 과세표준 산정 방식이 다를 수 있으므로 각각 확인 필요</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       </section>
 
@@ -626,7 +626,7 @@ export default function NonFarmlandV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>신축 건물의 과세표준은 <strong>실제 건축비용 전체</strong>이며, 도급계약서 금액뿐만 아니라 설계비, 감리비, 인입공사비 등 <strong>부대비용 모두 포함</strong></li>
@@ -636,7 +636,7 @@ export default function NonFarmlandV10() {
         <li>사용승인일(임시사용승인일) 또는 사실상 사용일 중 빠른 날이 <strong>취득시기</strong>임</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       </section>
 

@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "납부지연 가산세",
-  category: "corp-acquisition-tax",
-  group: "references",
-  groupLabel: "실무참고",
-  order: 11,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅲ_기타_참고/10_납부지연가산세",
-  sourcePages: [223,228],
-  sourceTaxTypes: ["common"],
-  sourceKeyLawRefs: ["지방세법 제20조 제1항","지방세기본법 제54조 제1항","지방세기본법 제53조의2","지방세기본법 제53조","지방세기본법 제54조","지방세기본법 제57조","지방세특례제한법 제178조","지방세특례제한법 시행령 제123조의2"],
-  lawReference: "지방세법 제20조 제1항, 지방세기본법 제54조 제1항, 지방세기본법 제53조의2, 지방세기본법 제53조, 지방세기본법 제54조, 지방세기본법 제57조, 지방세특례제한법 제178조, 지방세특례제한법 시행령 제123조의2",
-};
-
+import { CalcBox, SubSection } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "납부지연 가산세"
+ *   category: "corp-acquisition-tax"
+ *   group: "references"
+ *   groupLabel: "실무참고"
+ *   order: 11
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅲ_기타_참고/10_납부지연가산세"
+ *   sourcePages: [223,228]
+ *   sourceTaxTypes: ["common"]
+ *   sourceKeyLawRefs: ["지방세법 제20조 제1항","지방세기본법 제54조 제1항","지방세기본법 제53조의2","지방세기본법 제53조","지방세기본법 제54조","지방세기본법 제57조","지방세특례제한법 제178조","지방세특례제한법 시행령 제123조의2"]
+ *   lawReference: "지방세법 제20조 제1항, 지방세기본법 제54조 제1항, 지방세기본법 제53조의2, 지방세기본법 제53조, 지방세기본법 제54조, 지방세기본법 제57조, 지방세특례제한법 제178조, 지방세특례제한법 시행령 제123조의2"
+ */
 export default function Content10LatePaymentPenaltyV10() {
   return (
     <div className="space-y-6">
@@ -41,17 +40,12 @@ export default function Content10LatePaymentPenaltyV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>이 리프는 취득세 감면 착오 신청 후 추징 시 과소신고가산세 부과 가능 여부를 다룬다. 납세의무자가 산출세액을 정당하게 신고한 후 감면세액 판단 착오로 최종 납부세액이 달라진 경우 과소신고가산세를 부과할 수 없다는 법리를 판례·조심·예규를 통해 정리한다. 또한 가산세 부과의 정당한 사유 법리 및 무신고가산세·과소신고가산세의 적용 구분 기준을 설명한다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>과소신고가산세</strong> — 납세의무자가 법정신고기한 내 과세표준 신고를 하였으나 신고하여야 할 납부세액보다 적게 신고한 경우 부과하는 가산세로, 신고의무 불이행에 대한 행정제재이다.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세기본법/제54조" target="_blank" rel="noopener noreferrer">지기법 §54 제1항</a></li>
@@ -68,50 +62,47 @@ export default function Content10LatePaymentPenaltyV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>수록 판례 (2건)</Outline>
-      </h2>
-
-      <Outline level={2}>대법원2022두49311</Outline>
+      
+      </CalcBox><CalcBox title="■ 수록 판례 (2건)" id="section-3">
+      <SubSection title="● 대법원2022두49311">
       <p><strong>쟁점</strong>: 착오 감면 신청 후 추징 시 과소신고가산세 부과 불가</p>
       <p><strong>판시사항</strong>: 취득세 납세의무자가 과세표준에 세율을 곱한 산출세액을 정당하게 신고한 이상, 지방세특례제한법에 근거한 감면세액 판단을 그르쳐 최종 납부세액을 잘못 신고하였더라도 과소신고가산세를 부과할 수 없다. 과소신고가산세는 납세의무자가 과세표준이나 산출세액 등의 신고의무를 이행하지 않은 것에 대한 제재이기 때문이다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세법/제20조" target="_blank" rel="noopener noreferrer">법 §20 제1항</a>, <a href="https://law.go.kr/법령/지방세기본법/제54조" target="_blank" rel="noopener noreferrer">지기법 §54 제1항</a></p>
 
-      <Outline level={2}>대법원2014두12505</Outline>
+      
+        </SubSection><SubSection title="● 대법원2014두12505">
       <p><strong>쟁점</strong>: 과소신고가산세 부과요건 – 산출세액 기준 정당 신고의 의미</p>
       <p><strong>판시사항</strong>: 납세의무자가 산출세액을 정당하게 신고한 경우 감면 판단 착오로 인한 납부세액 부족에 과소신고가산세를 부과할 수 없다는 취지를 선언한 선행 판례이다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세기본법/제54조" target="_blank" rel="noopener noreferrer">지기법 §54 제1항</a>, <a href="https://law.go.kr/법령/지방세법/제20조" target="_blank" rel="noopener noreferrer">법 §20 제1항</a></p>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>조심 판례 (2건)</Outline>
-      </h2>
-
-      <Outline level={2}>조심2010지0840</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 조심 판례 (2건)" id="section-4">
+      <SubSection title="● 조심2010지0840">
       <p><strong>쟁점</strong>: 고급주택 중과세 신고 불이행에 대한 가산세 부과 정당한 사유 인정</p>
       <p><strong>판시사항</strong>: 주택 신축 시 공시된 개별주택가격이 없었고 주택가격비준표를 사용한 산정가액도 없었으므로 고급주택 과세요건인 시가표준액 6억 원 초과 여부를 중과세로 신고할 수 없었던 정당한 사유가 인정되어 가산세 부과처분은 잘못이 있다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세기본법/제57조" target="_blank" rel="noopener noreferrer">지기법 §57 제1항</a></p>
 
-      <Outline level={2}>조심2018지0609</Outline>
+      
+        </SubSection><SubSection title="● 조심2018지0609">
       <p><strong>쟁점</strong>: 착오 감면 신청 시 무신고가산세가 아닌 과소신고가산세 적용</p>
       <p><strong>판시사항</strong>: 당초 부동산 취득에 따른 취득신고 시 착오로 감면신청한 경우, 감면 추징사유 미발생이더라도 취득세 과세표준 신고가 이루어진 점을 감안하면 무신고가산세가 아니라 과소신고가산세를 적용하여야 한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세기본법/제53조" target="_blank" rel="noopener noreferrer">지기법 §53</a>, <a href="https://law.go.kr/법령/지방세기본법/제54조" target="_blank" rel="noopener noreferrer">지기법 §54</a></p>
 
 
-      <h2 id="section-5">
-      <Outline level={1}>예규 (1건)</Outline>
-      </h2>
-
-      <Outline level={2}>지방세정책과-2639</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 예규 (1건)" id="section-5">
+      <SubSection title="● 지방세정책과-2639">
       <p><strong>쟁점</strong>: 착오감면 취득세 추징 시 신고불성실가산세 부과 여부 – A법인·B법인 구분 적용</p>
       <p><strong>판시사항</strong>: A법인처럼 취득세를 0원으로 신고한 경우 부족세액의 20%를 신고불성실가산세로 부과하고, B법인처럼 산출세액을 신고 후 착오감면 받은 경우에는 무신고가산세 및 과소신고가산세 모두 부과할 수 없다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세기본법/제53조" target="_blank" rel="noopener noreferrer">지기법 §53</a>, <a href="https://law.go.kr/법령/지방세기본법/제54조" target="_blank" rel="noopener noreferrer">지기법 §54</a></p>
 
 
-      <h2 id="section-6">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 관련 법조문" id="section-6">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세법 제20조 제1항</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세기본법 제54조 제1항</code></li>
@@ -124,10 +115,8 @@ export default function Content10LatePaymentPenaltyV10() {
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
       <p>◉ 사례</p>
 
       <p>착오로 감면 신청하여 추징 시 과소신고가산세는 부과대상 아님.</p>
@@ -258,10 +247,8 @@ export default function Content10LatePaymentPenaltyV10() {
 
 
 
-      <h2 id="section-8">
-      <Outline level={1}>부동산등기용 등록번호 부여방법(제출서류 : 정관 및 대표자등록증명서 등.)</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 부동산등기용 등록번호 부여방법(제출서류 : 정관 및 대표자등록증명서 등.)" id="section-8">
       <p>```text</p>
       <p>법인 아닌 사단ㆍ재단 및 외국인의 부동산등기용 등록번호 부여절차에 관한 규정 시행규칙 [별표 1]</p>
       <p>법인아닌사단·재단등록번호의 구성체계 / 1. 종중</p>
@@ -297,10 +284,8 @@ export default function Content10LatePaymentPenaltyV10() {
       </tbody>
       </table>
 
-      <h2 id="section-9">
-      <Outline level={1}>법인 및 재외국민의 부동산등기용등록번호 부여에 관한 규칙 [별표 3] 1101[**]-*******</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 법인 및 재외국민의 부동산등기용등록번호 부여에 관한 규칙 [별표 3] 1101[**]-*******" id="section-9">
       <p>```text</p>
       <p>법인종류별 분류번호</p>
       <p>법인종류 | 법률근거 | 법인분류 | 분류번호</p>
@@ -312,6 +297,7 @@ export default function Content10LatePaymentPenaltyV10() {
       <p>| 기타 | (기타 분류할 수 없는 법인) | 71</p>
       <p>```</p>
 
-    </div>
+    
+      </CalcBox></div>
   );
 }

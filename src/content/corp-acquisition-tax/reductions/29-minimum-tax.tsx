@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "최소납부제",
-  category: "corp-acquisition-tax",
-  group: "reductions",
-  groupLabel: "감면",
-  order: 29,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅰ_지특법_감면/29_최소납부제_감면특례_제한_지특법177조의2",
-  sourcePages: [163,165],
-  sourceTaxTypes: ["common"],
-  sourceKeyLawRefs: ["지방세특례제한법 제177조의2 제1항 제1호","지방세특례제한법 제31조","지방세특례제한법 제177조의2","지방세특례제한법 제178조"],
-  lawReference: "지방세특례제한법 제177조의2 제1항 제1호, 지방세특례제한법 제31조, 지방세특례제한법 제177조의2, 지방세특례제한법 제178조",
-};
-
+import { CalcBox, SubSection } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "최소납부제"
+ *   category: "corp-acquisition-tax"
+ *   group: "reductions"
+ *   groupLabel: "감면"
+ *   order: 29
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅰ_지특법_감면/29_최소납부제_감면특례_제한_지특법177조의2"
+ *   sourcePages: [163,165]
+ *   sourceTaxTypes: ["common"]
+ *   sourceKeyLawRefs: ["지방세특례제한법 제177조의2 제1항 제1호","지방세특례제한법 제31조","지방세특례제한법 제177조의2","지방세특례제한법 제178조"]
+ *   lawReference: "지방세특례제한법 제177조의2 제1항 제1호, 지방세특례제한법 제31조, 지방세특례제한법 제177조의2, 지방세특례제한법 제178조"
+ */
 export default function Content29MinimumTaxV10() {
   return (
     <div className="space-y-6">
@@ -37,17 +36,12 @@ export default function Content29MinimumTaxV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>지방세특례제한법 제177조의2(최소납부제)는 취득세 면제 시에도 최소한의 세액을 납부하게 하는 제도로, 취득세 200만원 이하 면제 기준의 호별·전체 합산 판단 방법이 핵심 쟁점이다. 아울러 제178조의 일반적 추징규정 적용범위(직접사용 문구 유무, 개별추징규정 유무)를 정리한다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>최소납부세제</strong> — 정책적 목적에 따라 면제혜택을 부여하더라도 납세능력 있는 자에게 최소한의 세액을 납부하게 하는 제도로, 취득세 면제 시 15%를 최소납부세액으로 징수한다.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제177조의2" target="_blank" rel="noopener noreferrer">지특법 §177의2</a></li>
@@ -66,10 +60,8 @@ export default function Content29MinimumTaxV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 관련 법조문" id="section-3">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제177조의2 제1항 제1호</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제31조</code></li>
@@ -78,10 +70,8 @@ export default function Content29MinimumTaxV10() {
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
       <p>2. 제15조제2항, 제22조제1항ㆍ제2항, 제63조제5항, 제72조제1항ㆍ제2항, 제74조제1항, 제85조의2제2항, 제88조제1항, 제89조 및 제90조: 2020년 1월 1일</p>
 
       <p>3. 제1호 및 제2호에서 규정한 면제 외의 면제: 2017년 1월 1일</p>
@@ -124,10 +114,8 @@ export default function Content29MinimumTaxV10() {
 
 
 
-      <h2 id="section-5">
-      <Outline level={1}>지특법 일반적 추징규정 적용여부</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 지특법 일반적 추징규정 적용여부" id="section-5">
       <p>```text</p>
       <p>지방세특례제한법 제178조 【감면된 취득세의 추징】 / ① 부동산에 대한 감면을 적용할 때 이 법에서 특별히 규정한 경우를 제외하고는 다음 각 호의 어느 하나에 해당하는 경우 그 해당 부분에 대해서는 감면된 취득세를 추징한다. / 1. 정당한 사유 없이 그 취득일부터 1년이 경과할 때까지 해당 용도로 직접 사용하지 아니하는 경우 / 2. 해당 용도로 직접 사용한 기간이 2년 미만인 상태에서 매각ㆍ증여하거나 다른 용도로 사용하는 경우 / ② 이 법에 따라 부동산에 대한 취득세 감면을 받은 자가 제1항 또는 그 밖에 이 법의 각 규정에서 정하는 추징 사유에 해당하여 그 해당 부분에 대해서 감면된 세액을 납부하여야 하는 경우에는 대통령령으로 정하는 바에 따라 계산한 이자상당액을 가산하여 납부하여야 하며, 해당 세액은 「지방세법」 제20조에 따라 납부하여야 할 세액으로 본다. 다만, 파산 등 대통령령으로 정하는 부득이한 사유가 있는 경우에는 이자상당액을 가산하지 아니한다.(2020.1.15.신설)</p>
       <p>```</p>
@@ -140,8 +128,7 @@ export default function Content29MinimumTaxV10() {
 
       <p>※ 지방세특례제한법상 일반적 추징규정 적용범위 서울시세무과-6233(2013.3.26.) (지방세운영과-782(2013.3.21.))</p>
 
-      <Outline level={2}>적용방법 1. 감면조문에 “직접사용” 문구가 있는 경우</Outline>
-
+      <SubSection title="● 적용방법 1. 감면조문에 “직접사용” 문구가 있는 경우">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>개별추징규정이 있으면 개별 추징규정 적용</li>
       </ul>
@@ -193,6 +180,8 @@ export default function Content29MinimumTaxV10() {
 
 
 
-    </div>
+    
+      
+        </SubSection></CalcBox></div>
   );
 }

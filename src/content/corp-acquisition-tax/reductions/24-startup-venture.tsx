@@ -1,24 +1,23 @@
 "use client";
 
 import { SectionNav } from "@/components/mdx/SectionNav";
-import { Outline } from "@/components/mdx/Outline";
-
-export const meta = {
-  title: "창업벤처기업",
-  category: "corp-acquisition-tax",
-  group: "reductions",
-  groupLabel: "감면",
-  order: 24,
-  lastUpdated: "2026-04-23",
-  sourceBook: "corp-practice",
-  sourceBookTitle: "법인실무 (2025.12.31 반영)",
-  sourceLeaf: "corp-practice/Ⅰ_지특법_감면/24_창업벤처기업_실무_지특법58조의3",
-  sourcePages: [144,156],
-  sourceTaxTypes: ["acquisition_tax","property_tax"],
-  sourceKeyLawRefs: ["지방세특례제한법 시행령 제29조의2","지방세특례제한법 제58조의3","지방세특례제한법 제58조의3 제4항","지방세특례제한법 제58조의3 제2항","지방세특례제한법 시행령 제29조의2 제1항 제1호","지방세특례제한법 제60조 제3항","지방세특례제한법 제32조","지방세특례제한법 제31조","지방세특례제한법 시행령 제13조","지방세특례제한법 시행령 제14조"],
-  lawReference: "지방세특례제한법 시행령 제29조의2, 지방세특례제한법 제58조의3, 지방세특례제한법 제58조의3 제4항, 지방세특례제한법 제58조의3 제2항, 지방세특례제한법 시행령 제29조의2 제1항 제1호, 지방세특례제한법 제60조 제3항, 지방세특례제한법 제32조, 지방세특례제한법 제31조, 지방세특례제한법 시행령 제13조, 지방세특례제한법 시행령 제14조",
-};
-
+import { CalcBox, SubSection } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "창업벤처기업"
+ *   category: "corp-acquisition-tax"
+ *   group: "reductions"
+ *   groupLabel: "감면"
+ *   order: 24
+ *   lastUpdated: "2026-04-23"
+ *   sourceBook: "corp-practice"
+ *   sourceBookTitle: "법인실무 (2025.12.31 반영)"
+ *   sourceLeaf: "corp-practice/Ⅰ_지특법_감면/24_창업벤처기업_실무_지특법58조의3"
+ *   sourcePages: [144,156]
+ *   sourceTaxTypes: ["acquisition_tax","property_tax"]
+ *   sourceKeyLawRefs: ["지방세특례제한법 시행령 제29조의2","지방세특례제한법 제58조의3","지방세특례제한법 제58조의3 제4항","지방세특례제한법 제58조의3 제2항","지방세특례제한법 시행령 제29조의2 제1항 제1호","지방세특례제한법 제60조 제3항","지방세특례제한법 제32조","지방세특례제한법 제31조","지방세특례제한법 시행령 제13조","지방세특례제한법 시행령 제14조"]
+ *   lawReference: "지방세특례제한법 시행령 제29조의2, 지방세특례제한법 제58조의3, 지방세특례제한법 제58조의3 제4항, 지방세특례제한법 제58조의3 제2항, 지방세특례제한법 시행령 제29조의2 제1항 제1호, 지방세특례제한법 제60조 제3항, 지방세특례제한법 제32조, 지방세특례제한법 제31조, 지방세특례제한법 시행령 제13조, 지방세특례제한법 시행령 제14조"
+ */
 export default function Content24StartupVentureV10() {
   return (
     <div className="space-y-6">
@@ -40,17 +39,12 @@ export default function Content24StartupVentureV10() {
 
       <hr className="my-6" />
 
-      <h2 id="summary">
-      <Outline level={1}>요약</Outline>
-      </h2>
-
+      <CalcBox title="■ 요약" id="summary">
       <p>이 리프는 지방세특례제한법 제58조의3에 따른 창업벤처중소기업 취득세·재산세 감면의 요건(창업 인정 범위, 감면업종, 감면율)과 추징사유를 다룬다. 창업 해당 여부(동종업종 승계·법인전환·사업확장 등 창업 배제 요건), 감면업종 추가 여부, 벤처기업 확인일 기준 감면기산일 등의 실무 쟁점이 다수 판례·결정례·예규를 통해 정리되어 있다. 또한 창업보육센터(지특법 제60조) 및 한국토지주택공사(지특법 제31·32조) 감면 내용도 부수적으로 포함된다.</p>
 
 
-      <h2 id="concepts">
-      <Outline level={1}>주요 개념</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 주요 개념" id="concepts">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>창업벤처중소기업</strong> — 창업일로부터 3년 이내에 벤처기업으로 확인을 받고 지특법 제58조의3 제4항에서 규정한 업종을 영위하는 중소기업으로, 취득세·재산세 등 지방세 감면 혜택을 받을 수 있는 기업.</li>
         <li>관련 조문: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의3" target="_blank" rel="noopener noreferrer">지특법 §58의3 제2항</a>, <a href="https://law.go.kr/법령/지방세특례제한법시행령/제29조의2" target="_blank" rel="noopener noreferrer">지특령 §29의2</a></li>
@@ -71,134 +65,148 @@ export default function Content24StartupVentureV10() {
       </ul>
 
 
-      <h2 id="section-3">
-      <Outline level={1}>수록 판례 (3건)</Outline>
-      </h2>
-
-      <Outline level={2}>대법원2016두30576</Outline>
+      
+      </CalcBox><CalcBox title="■ 수록 판례 (3건)" id="section-3">
+      <SubSection title="● 대법원2016두30576">
       <p><strong>쟁점</strong>: 창업중소기업 동종업종 여부의 판단기준</p>
       <p><strong>판시사항</strong>: 창업중소기업의 동종업종 여부는 사업자등록증 등 형식적 기재에도 불구하고 실제 영위하는 업종의 내용에 따라 실질적으로 판단하여야 한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의3" target="_blank" rel="noopener noreferrer">지특법 §58의3</a></p>
 
-      <Outline level={2}>대법원2016두55377</Outline>
+      
+        </SubSection><SubSection title="● 대법원2016두55377">
       <p><strong>쟁점</strong>: 창업 개인사업자가 법인전환 시 감면 취득세 추징 여부</p>
       <p><strong>판시사항</strong>: 창업한 개인기업자가 법인의 대표이사라는 사정, 개인기업 법인전환에 따른 취득세 등 면제대상이라는 사정 등은 추징 면제를 위한 정당한 사유로 볼 수 없으므로, 취득세 감면분은 추징 대상이다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의3" target="_blank" rel="noopener noreferrer">지특법 §58의3 제7항</a></p>
 
-      <Outline level={2}>대법원2017두36861</Outline>
+      
+        </SubSection><SubSection title="● 대법원2017두36861">
       <p><strong>쟁점</strong>: 대학과 별도 법인인 산학협력단의 창업보육센터 재산세 감면 여부</p>
       <p><strong>판시사항</strong>: 대학과 별도의 법인인 산학협력단이 사용하고 있다면 학교의 교육사업 자체에 사용된다고 볼 수 없으므로 감면 대상에 해당하지 않는다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제60조" target="_blank" rel="noopener noreferrer">지특법 §60 제3항</a></p>
 
 
-      <h2 id="section-4">
-      <Outline level={1}>조심 판례 (15건)</Outline>
-      </h2>
-
-      <Outline level={2}>조심2018지2007</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 조심 판례 (15건)" id="section-4">
+      <SubSection title="● 조심2018지2007">
       <p><strong>쟁점</strong>: 창업벤처중소기업의 벤처확인일 후 추가 부동산 취득 시 감면 여부</p>
       <p><strong>판시사항</strong>: 사업의 확장을 위한 부동산 취득행위를 창업으로 볼 수는 없더라도, 적법하게 창업한 창업벤처중소기업이 벤처기업 확인일부터 4년 이내에 사업 확장을 위해 취득한 사업용 부동산은 취득세 감면대상에 해당한다. 창업행위와 창업중소기업의 취득세 감면 범위는 구별하여 판단하여야 한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의3" target="_blank" rel="noopener noreferrer">지특법 §58의3 제1항</a>, <a href="https://law.go.kr/법령/지방세특례제한법/제58조의3" target="_blank" rel="noopener noreferrer">지특법 §58의3 제2항</a></p>
 
-      <Outline level={2}>조심2015지732</Outline>
+      
+        </SubSection><SubSection title="● 조심2015지732">
       <p><strong>쟁점</strong>: 예비벤처기업의 창업벤처중소기업 등록면허세 감면 해당 여부</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의3" target="_blank" rel="noopener noreferrer">지특법 §58의3 제3항</a></p>
 
-      <Outline level={2}>조심2016지1237</Outline>
+      
+        </SubSection><SubSection title="● 조심2016지1237">
       <p><strong>쟁점</strong>: 신탁 부동산에 대한 창업벤처기업 재산세 감면 적용 여부</p>
       <p><strong>판시사항</strong>: 창업벤처기업이 부동산을 신탁한 경우 재산세 감면을 받을 수 없다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의3" target="_blank" rel="noopener noreferrer">지특법 §58의3 제2항</a></p>
 
-      <Outline level={2}>조심2021지5641</Outline>
+      
+        </SubSection><SubSection title="● 조심2021지5641">
       <p><strong>쟁점</strong>: 감면업종과 비감면업종을 동시에 영위할 목적으로 창업 후 감면업종 매출이 사후 발생한 경우 감면 여부</p>
       <p><strong>판시사항</strong>: 도·소매업과 제조업을 영위할 목적으로 창업하고 초기에는 도소매업 매출만 있었더라도, 이후 제조업에 대한 매출이 발생하고 해당 제조업 사업용 부동산을 취득한 경우 창업중소기업 취득세 감면대상에 해당한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의3" target="_blank" rel="noopener noreferrer">지특법 §58의3 제1항</a>, <a href="https://law.go.kr/법령/지방세특례제한법/제58조의3" target="_blank" rel="noopener noreferrer">지특법 §58의3 제2항</a></p>
 
-      <Outline level={2}>조심2017지0224</Outline>
+      
+        </SubSection><SubSection title="● 조심2017지0224">
       <p><strong>쟁점</strong>: 개인사업체 사업을 확장하여 법인 창업 시 창업 인정 여부</p>
       <p><strong>판시사항</strong>: 쟁점 개인사업체의 대표자가 청구법인의 지분을 100% 소유하고 상호·목적사업 등이 유사하며 주 매출처가 동일한 경우, 청구법인은 사실상 기존 개인사업체의 사업을 확장하여 창업한 경우에 해당하여 새로운 사업을 최초로 개시하는 창업으로 보기 어렵다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의3" target="_blank" rel="noopener noreferrer">지특법 §58의3 제6항</a></p>
 
-      <Outline level={2}>조심2017지1002</Outline>
+      
+        </SubSection><SubSection title="● 조심2017지1002">
       <p><strong>쟁점</strong>: 설립 당시 목적사업에 제조업 포함 시 이후 제조업 매출 발생한 경우 감면 여부</p>
       <p><strong>판시사항</strong>: 최초 설립 시부터 제조업과 도매업을 목적사업으로 포함하고 있었고 제조업 준비에 장기간이 소요됨에도 도소매업 매출이 먼저 발생하였다는 이유만으로 업종추가로 보아 감면을 배제하는 것은 창업중소기업 감면의 입법취지에 반한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의3" target="_blank" rel="noopener noreferrer">지특법 §58의3 제1항</a></p>
 
-      <Outline level={2}>조심2022지1188</Outline>
+      
+        </SubSection><SubSection title="● 조심2022지1188">
       <p><strong>쟁점</strong>: 창업일 이후 감면업종을 추가한 경우 감면 해당 여부</p>
       <p><strong>판시사항</strong>: 법인 설립 당시 창고업·부동산임대업을 영위하다가 부동산 취득 이후에 제조업을 추가한 경우, 해당 부동산은 창업일 당시 업종 사업을 위한 것으로 보기 어려우므로 창업중소기업 감면대상에 해당하지 않는다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의3" target="_blank" rel="noopener noreferrer">지특법 §58의3 제1항</a>, <a href="https://law.go.kr/법령/지방세특례제한법시행령/제29조의2" target="_blank" rel="noopener noreferrer">지특령 §29의2 제1항</a></p>
 
-      <Outline level={2}>조심2017지0128</Outline>
+      
+        </SubSection><SubSection title="● 조심2017지0128">
       <p><strong>쟁점</strong>: 감면업종과 비감면업종 동시 영위 여부 및 하드웨어 매출의 도소매업 해당 여부</p>
       <p><strong>판시사항</strong>: 소프트웨어 구동에 최적화된 하드웨어를 부대적으로 매출하는 경우, 이는 감면업종인 소프트웨어 개발·공급업을 영위함에 있어 부대적으로 수행된 매출로 보이므로, 감면업종과 비감면업종(도소매업)을 동시에 영위하였다고 보아 과세한 처분은 잘못이다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의3" target="_blank" rel="noopener noreferrer">지특법 §58의3 제1항</a></p>
 
-      <Outline level={2}>조심2019지1540</Outline>
+      
+        </SubSection><SubSection title="● 조심2019지1540">
       <p><strong>쟁점</strong>: 사업 확장을 위한 부동산 취득과 창업 행위의 구별</p>
       <p><strong>판시사항</strong>: 적법하게 창업한 창업벤처중소기업이 벤처기업 확인일부터 4년 이내에 사업 확장을 위해 취득한 사업용 부동산을 취득세 감면 대상이 아닌 것으로 보기는 어려우므로, 창업 행위와 창업중소기업의 취득세 감면 범위는 구별하여 판단하여야 한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의3" target="_blank" rel="noopener noreferrer">지특법 §58의3 제1항</a></p>
 
-      <Outline level={2}>조심2013지0058</Outline>
+      
+        </SubSection><SubSection title="● 조심2013지0058">
       <p><strong>쟁점</strong>: 감면배제 업종으로 설립 후 사업실적 없이 제조업 추가 시 창업 해당 여부</p>
       <p><strong>판시사항</strong>: 창업중소기업 감면 배제 업종(무역업 등)을 목적으로 설립된 법인이 실제로 사업을 영위하지 않은 상태에서 감면대상 제조업을 추가한 경우, 이를 원시적 창업으로 보아야 하므로 감면을 배제한 처분은 잘못이다. 다만 2019년 개정 이후에는 적용에 주의가 필요하다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의3" target="_blank" rel="noopener noreferrer">지특법 §58의3 제6항</a></p>
 
-      <Outline level={2}>조심2017지0844</Outline>
+      
+        </SubSection><SubSection title="● 조심2017지0844">
       <p><strong>쟁점</strong>: 개인사업자 법인전환 시 감면 취득세 추징 여부</p>
       <p><strong>판시사항</strong>: 창업한 개인사업자가 취득세를 감면받은 후 법인전환을 통해 법인에게 이전할 경우 감면받은 취득세는 추징 대상이다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의3" target="_blank" rel="noopener noreferrer">지특법 §58의3 제7항</a></p>
 
-      <Outline level={2}>조심2009지857</Outline>
+      
+        </SubSection><SubSection title="● 조심2009지857">
       <p><strong>쟁점</strong>: 개인사업자와 청구법인 사업의 동종업종 해당 여부</p>
       <p><strong>판시사항</strong>: 개인사업자가 영위한 사업과 청구법인의 사업 사이에 유사성은 있으나 동일한 제조업을 영위한 것으로 보이지 않는 경우, 청구법인은 새로운 창업벤처중소기업으로 볼 수 있다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의3" target="_blank" rel="noopener noreferrer">지특법 §58의3 제6항</a></p>
 
-      <Outline level={2}>조심2019지0824</Outline>
+      
+        </SubSection><SubSection title="● 조심2019지0824">
       <p><strong>쟁점</strong>: 개인사업자와 청구법인의 사업 동종성 및 창업 인정 여부</p>
       <p><strong>판시사항</strong>: 개인사업자가 영위한 사업과 청구법인의 사업이 동일한 제조업으로 보이지 않는 점 등에 비추어 청구법인은 창업벤처중소기업을 새로 설립한 것으로 보는 것이 타당하다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의3" target="_blank" rel="noopener noreferrer">지특법 §58의3 제1항</a></p>
 
-      <Outline level={2}>조심2017지1015</Outline>
+      
+        </SubSection><SubSection title="● 조심2017지1015">
       <p><strong>쟁점</strong>: 개인사업자의 실질적 사업 영위 여부에 따른 법인전환 해당 여부</p>
       <p><strong>판시사항</strong>: 기존 개인사업자의 부가가치세과세표준증명에 매입·매출이 없어 실질적인 창업을 하지 않은 것으로 보이는 경우, 법인 설립은 기존 사업의 전환이 아니라 처음부터 새로운 사업을 최초로 개시하는 경우에 해당한다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의3" target="_blank" rel="noopener noreferrer">지특법 §58의3 제6항</a></p>
 
-      <Outline level={2}>조심2013지773</Outline>
+      
+        </SubSection><SubSection title="● 조심2013지773">
       <p><strong>쟁점</strong>: 법인 설립 당시 목적사업 기재와 업종추가 해당 여부</p>
       <p><strong>판시사항</strong>: 법인 설립 당시 등기부등본상 목적사업으로 해당 업종을 명시하고 법인 설립 후 3년 이내에 벤처기업으로 지정받아 계속 영위하고 있는 경우, 업종 추가에 해당한다고 볼 수 없다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의3" target="_blank" rel="noopener noreferrer">지특법 §58의3 제2항</a></p>
 
 
-      <h2 id="section-5">
-      <Outline level={1}>예규 (4건)</Outline>
-      </h2>
-
-      <Outline level={2}>지방세특례제도과-1084</Outline>
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 예규 (4건)" id="section-5">
+      <SubSection title="● 지방세특례제도과-1084">
       <p><strong>쟁점</strong>: 동종 사업 새로운 사업장 추가 취득 시 창업중소기업 취득세 감면 여부</p>
       <p><strong>판시사항</strong>: 동종 사업을 영위하는 새로운 사업장을 추가로 취득하는 경우에도 감면요건인 '사업을 확장하거나 다른 업종을 추가하는 경우'에 해당하므로 취득세 감면대상으로 보기 어렵다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의3" target="_blank" rel="noopener noreferrer">지특법 §58의3 제6항</a></p>
 
-      <Outline level={2}>지방세특례제도과-664</Outline>
+      
+        </SubSection><SubSection title="● 지방세특례제도과-664">
       <p><strong>쟁점</strong>: 창업자의 의미 및 창업 배제 요건(법인 실질지배자)</p>
       <p><strong>판시사항</strong>: 창업자란 거주자가 법인의 최대주주 또는 최대출자자이거나 대표자로서 그 법인을 실질적으로 지배하는 자를 말하며, 거주자가 법인을 실질적으로 지배하지 않는 경우라면 동종사업 영위 법인 설립도 창업으로 볼 수 있다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의3" target="_blank" rel="noopener noreferrer">지특법 §58의3 제6항</a></p>
 
-      <Outline level={2}>지방세특례제도과-2845</Outline>
+      
+        </SubSection><SubSection title="● 지방세특례제도과-2845">
       <p><strong>쟁점</strong>: 위탁생산방식(OEM)의 국내·국외 제조업 감면 해당 여부</p>
       <p><strong>판시사항</strong>: 창업중소기업이 위탁생산방식(OEM)으로 제품을 생산하더라도 직접 기획하여 제조하게 하고 인수·판매하는 경우 감면대상 제조업에 해당하며, 국내·국외를 구분하지 않으므로 국외 위탁생산도 포함된다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의3" target="_blank" rel="noopener noreferrer">지특법 §58의3 제4항</a></p>
 
-      <Outline level={2}>지방세특례제도과-571</Outline>
+      
+        </SubSection><SubSection title="● 지방세특례제도과-571">
       <p><strong>쟁점</strong>: 벤처기업 확인을 여러 번 받은 경우 감면기산일</p>
       <p><strong>판시사항</strong>: 벤처기업 확인을 여러 번 받은 경우 최초로 벤처기업 확인받은 날이 감면기산일이다.</p>
       <p><strong>관련 조문</strong>: <a href="https://law.go.kr/법령/지방세특례제한법/제58조의3" target="_blank" rel="noopener noreferrer">지특법 §58의3 제2항</a></p>
 
 
-      <h2 id="section-6">
-      <Outline level={1}>관련 법조문</Outline>
-      </h2>
-
+      
+      
+        </SubSection></CalcBox><CalcBox title="■ 관련 법조문" id="section-6">
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 시행령 제29조의2</code></li>
         <li><code className="bg-gray-100 px-1 rounded text-sm">지방세특례제한법 제58조의3</code></li>
@@ -213,10 +221,8 @@ export default function Content24StartupVentureV10() {
       </ul>
 
 
-      <h2 id="source">
-      <Outline level={1}>원문</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 원문" id="source">
       <p>⑧ 창업중소기업 및 창업벤처중소기업이 제1항제2호 및 제2항제2호에 따른 경감기간이 지나기 전에 중소기업간 통합 또는 법인전환을 하는 경우 그 법인은 대통령령으로 정하는 바에 따라 남은 경감기간에 대하여 제1항제2호 및 제2항제2호를 적용받을 수 있다. 다만, 중소기업간 통합 및 법인전환 전에 취득한 사업용재산에 대해서만 적용한다.</p>
 
       <p>⑨ 제1항부터 제4항까지의 규정에 따른 창업중소기업 및 창업벤처중소기업 감면을 적용받으려는 경우에는 행정안전부령으로 정하는 감면신청서를 관할 지방자치단체의 장에게 제출하여야 한다.</p>
@@ -703,10 +709,8 @@ export default function Content24StartupVentureV10() {
 
       <p>시설ㆍ장소를 제공하고 경영ㆍ기술 분야에 대하여 지원하는 것을 주된 목적으로 하는 사업장을 말한다.</p>
 
-      <h2 id="section-8">
-      <Outline level={1}>한국토지주택공사에 대한 감면</Outline>
-      </h2>
-
+      
+      </CalcBox><CalcBox title="■ 한국토지주택공사에 대한 감면" id="section-8">
       <p>```text</p>
       <p>지방세특례제한법 제32조【한국토지주택공사의 소규모 공동주택 취득에 대한 감면 등】 / ① 한국토지주택공사가 임대를 목적으로 취득하여 소유하는 대통령령으로 정하는 소규모 공동주택(이하 이 조에서 "소규모 공동주택"이라 한다)용 부동산에 대해서는 취득세 및 재산세의 100분의 25을 각각 2027년 12월 31일까지 경감한다. / ② 한국토지주택공사가 분양을 목적으로 취득하는 소규모 공동주택용 부동산에 대해서는 취득세의 100분의 25를 2016년 12월 31일까지 경감한다.    &lt;일몰규정&gt; / ③ 제1항 또는 제2항을 적용할 때 토지를 취득한 후에 소규모 공동주택의 건축을 착공하지 아니하거나 소규모 공동주택이 아닌 용도에 사용하는 경우 그 해당 부분에 대해서는 감면된 취득세 및 재산세를 추징한다. / 지방세특례제한법 제31조 【임대주택 등에 대한 감면】 참조 / ① (건설임대주택 취득세 감면) / ② (입주사실 없는 최초분양 임대주택 취득세 감면) / ③ (감면취득세 추징사유) / ④ (임대주택 재산세 감면) / ⑤ (감면재산세 추징사유) / ⑥ 「한국토지주택공사법」에 따라 설립된 한국토지주택공사(이하 "한국토지주택공사"라 한다)가 「공공주택 특별법」 제43조제1항에 따라 매입하여 공급하는 것으로서 대통령령으로 정하는 주택및건축물에 대해서는 취득세의 100분의 25와 재산세의 100분의 50을 각각 2027년 12월 31일까지 경감한다. 다만, 다음 각 호의 어느 하나에 해당하는 경우 그 해당 부분에 대해서는 경감된 취득세 및 재산세를 추징한다. / 1. 정당한 사유 없이 그 매입일부터 1년이 경과할 때까지 해당 용도로 직접 사용하지 아니하는 경우 / 2. 해당 용도로 직접 사용한 기간이 2년 미만인 상태에서 매각·증여하거나 다른 용도로 사용하는 경우</p>
       <p>```</p>
@@ -729,6 +733,7 @@ export default function Content24StartupVentureV10() {
 
       <p>※ 지방세특례제한법시행령제14조(소규모 공동주택의 범위 등) ① 법 제32조제1항에 따른 소규모 공동주택용 부동산은 1구(1세대가 독립하여 구분 사용할 수 있도록 구획된 부분을 말한다. 이하 같다)당 건축면적(전용면적을 말한다)이 60제곱미터 이하인 공동주택(해당 공동주택의 입주자가 공동으로 사용하는 부대시설 및 공공용으로 사용하는 토지와 영구임대주택단지 안의 복리시설 중 임대수익금 전액을 임대주택 관리비로 충당하는 시설을 포함한다) 및 그 부속토지(관계 법령에 따라 국가 또는 지방자치단체에 무상으로 귀속될 공공시설용지를 포함한다)를 말한다.</p>
 
-    </div>
+    
+      </CalcBox></div>
   );
 }

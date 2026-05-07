@@ -1,20 +1,20 @@
 "use client";
 
-import { Callout } from "@/components/mdx/Callout";
 
-export const meta = {
-  title: "취득세 세율 공통사항",
-  category: "취득세",
-  audience: "internal",
-  source: "acquisitiontax.pdf",
-  sourceSections: [11,12,13,14,15,16,17,18,20,23,24,25,27,37],
-  effectiveDate: "2026-01-01",
-  lastUpdated: "2026-01-31",
-  status: "draft",
-  lawReference: "지방세법 §7, §10, §11, §13, §15, §16, 지특법 각 조항",
-  tags: ["공통","분할취득","과밀억제권역","사치성재산","세율특례","감면","면세점","주택수"],
-};
-
+import { Insight } from "@/components/content/shared";
+/**
+ * meta:
+ *   title: "취득세 세율 공통사항"
+ *   category: "취득세"
+ *   audience: "internal"
+ *   source: "acquisitiontax.pdf"
+ *   sourceSections: [11,12,13,14,15,16,17,18,20,23,24,25,27,37]
+ *   effectiveDate: "2026-01-01"
+ *   lastUpdated: "2026-01-31"
+ *   status: "draft"
+ *   lawReference: "지방세법 §7, §10, §11, §13, §15, §16, 지특법 각 조항"
+ *   tags: ["공통","분할취득","과밀억제권역","사치성재산","세율특례","감면","면세점","주택수"]
+ */
 export default function CommonV10() {
   return (
     <div className="space-y-6">
@@ -157,7 +157,7 @@ export default function CommonV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>지분 초과 부분</strong>은 반드시 유상취득 세율을 적용해야 하며, 세율특례(3/1000)를 일괄 적용할 수 없음</li>
@@ -165,7 +165,7 @@ export default function CommonV10() {
         <li>과세표준은 지분 비율이 아닌 <strong>분할된 부동산 전체 시가표준액</strong>임에 유의</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       </section>
 
@@ -236,14 +236,14 @@ export default function CommonV10() {
       </tbody>
       </table>
 
-      <Callout type="info">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>중과기준세율</strong>: 2% (지방세법상 중과세 산정 시 기준이 되는 세율)</li>
         <li><strong>산식 예시</strong>: 4% × 3 - 2% × 2 = 12% - 4% = <strong>8%</strong> (+ 지방교육세·농어촌특별세 별도)</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       <h3 className="text-lg font-semibold mt-6 mb-3">관련 법령</h3>
 
@@ -284,7 +284,7 @@ export default function CommonV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>법인 설립 후 5년 이내</strong> 취득하는 부동산도 중과 대상에 포함되므로, 설립 시기 확인 필수</li>
@@ -293,7 +293,7 @@ export default function CommonV10() {
         <li>중과세율 산정 시 <strong>중과기준세율(2%)</strong>을 적용한 산식을 정확히 이해해야 함</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       </section>
 
@@ -389,14 +389,14 @@ export default function CommonV10() {
       </tbody>
       </table>
 
-      <Callout type="info">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>중과 가산분</strong>: 중과기준세율(2%) × 400% = <strong>8%</strong></li>
         <li>지방교육세, 농어촌특별세는 별도 부과</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       <h3 className="text-lg font-semibold mt-6 mb-3">관련 법령</h3>
 
@@ -437,7 +437,7 @@ export default function CommonV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>고급주택</strong> 해당 여부는 시행령 §28의 기준을 엄격히 적용하므로, 시가표준액·면적·부대시설 등을 종합적으로 판단해야 함</li>
@@ -446,7 +446,7 @@ export default function CommonV10() {
         <li>고급오락장은 영업 허가·신고 내용이 아닌 <strong>실제 사용 용도</strong>를 기준으로 판단</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       </section>
 
@@ -623,7 +623,7 @@ export default function CommonV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>각 감면 항목별 <strong>법정 요건</strong>을 정확히 충족해야 하며, 미충족 시 감면분이 <strong>추징</strong>될 수 있음</li>
@@ -632,16 +632,16 @@ export default function CommonV10() {
         <li>협의이혼 재산분할은 <strong>재판상 이혼</strong>에는 적용되지 않음</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
-      <Callout type="info">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>감면 항목이 <strong>중복</strong>되는 경우 지특법상 중복감면 배제 규정을 확인하여야 함</li>
         <li>각 감면의 <strong>유효기간</strong>(일몰 규정)을 반드시 확인할 것</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       </section>
 
@@ -822,7 +822,7 @@ export default function CommonV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>무상취득 시 <strong>시가인정액</strong> 적용이 원칙이므로, 시가표준액과 차이가 발생할 수 있음에 유의</li>
@@ -831,16 +831,16 @@ export default function CommonV10() {
         <li>채권액이 시가표준액보다 높은 경우 <strong>채권액</strong>이 과세표준이 되는 점에 유의</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
-      <Callout type="info">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>유사부동산 판단 시 <strong>동일 단지</strong>, <strong>전용면적 5% 이내</strong>, <strong>공동주택가격 5% 이내</strong>의 3가지 요건을 모두 충족해야 함</li>
         <li>시가인정액 적용순서를 정확히 파악하여 과세표준을 산정할 것</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       </section>
 
@@ -955,7 +955,7 @@ export default function CommonV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>대수선</strong>은 면세점 비과세 대상에서 제외되므로, 개수(수선)와 대수선의 구분이 중요</li>
@@ -963,16 +963,16 @@ export default function CommonV10() {
         <li>공동주택 충전시설은 전체 금액이 아닌 <strong>세대별 안분 금액</strong>으로 면세점 여부를 판단해야 함</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
-      <Callout type="info">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>면세점(50만원)은 <strong>취득가액</strong> 기준이며, 과세표준이 아닌 실제 취득에 소요된 금액으로 판단</li>
         <li>공동주택 개수 비과세는 시가표준액 <strong>9억원 이하</strong> 주택에 한하여 적용됨</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       </section>
 
@@ -1131,7 +1131,7 @@ export default function CommonV10() {
       </tbody>
       </table>
 
-      <Callout type="caution">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li><strong>배우자</strong>는 주민등록표 기재 여부와 관계없이 항상 <strong>동일 세대</strong>로 판단되므로, 세대 분리로 주택 수를 줄이는 것이 불가능</li>
@@ -1140,16 +1140,16 @@ export default function CommonV10() {
         <li>오피스텔의 주택 수 포함 여부는 <strong>계약일(2020.8.12.)</strong> 기준이므로 계약일자 확인 필수</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
-      <Callout type="info">
+      <Insight>
 
       <ul className="list-disc pl-6 my-4 space-y-1">
         <li>상속주택 5년 제외 특례는 <strong>유상취득</strong> 시에만 적용되며, 무상취득(증여) 시에는 적용되지 않음</li>
         <li>준주택(기숙사, 다중생활시설, 노인복지주택)은 주택 수에 포함되지 않으나, <strong>주거용 오피스텔</strong>은 2020.8.12. 이후 계약분부터 포함됨</li>
       </ul>
 
-      </Callout>
+      </Insight>
 
       </section>
 
