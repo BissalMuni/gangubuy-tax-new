@@ -48,44 +48,45 @@ function passWithRole(request: NextRequest, role: Role | null) {
   return NextResponse.next({ request: { headers: requestHeaders } });
 }
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const isAdminGuarded =
+    pathname.startsWith("/admin") || pathname.startsWith("/api/admin");
 
-  // 관리자 경로가 아닌 경우 통과
-  if (!pathname.startsWith("/admin") && !pathname.startsWith("/api/admin")) {
-    return passWithRole(request, null);
-  }
-
-  // JWT 세션 확인
+  // JWT 세션 확인 (있으면 role 추출 → x-user-role 헤더로 주입)
+  let role: Role | null = null;
   const secret = getSecret();
-  if (!secret) {
-    return NextResponse.redirect(new URL("/login", request.url));
-  }
-
   const token = request.cookies.get(COOKIE_NAME)?.value;
-  if (!token) {
-    return NextResponse.redirect(new URL("/login", request.url));
+  if (secret && token) {
+    try {
+      const { payload } = await jwtVerify(token, secret);
+      const r = payload.role as Role;
+      if (ROLES.includes(r)) role = r;
+    } catch {
+      // 무효 토큰은 미인증으로 처리 (admin 경로면 아래에서 리다이렉트)
+    }
   }
 
-  try {
-    const { payload } = await jwtVerify(token, secret);
-    const role = payload.role as Role;
-
-    if (!ROLES.includes(role)) {
+  // /admin, /api/admin 만 미인증/권한 부족 시 리다이렉트
+  if (isAdminGuarded) {
+    if (!secret || !role) {
       return NextResponse.redirect(new URL("/login", request.url));
     }
-
-    // 경로별 권한 체크
     if (!checkRouteAccess(pathname, role)) {
       return NextResponse.redirect(new URL("/admin", request.url));
     }
-
-    return passWithRole(request, role);
-  } catch {
-    return NextResponse.redirect(new URL("/login", request.url));
   }
+
+  // /api/comments, /api/attachments 등은 헤더만 주입하고 통과 —
+  // 라우트 핸들러 안의 requirePermission 이 401/403 을 결정한다.
+  return passWithRole(request, role);
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/api/admin/:path*"],
+  matcher: [
+    "/admin/:path*",
+    "/api/admin/:path*",
+    "/api/comments/:path*",
+    "/api/attachments/:path*",
+  ],
 };
