@@ -31,7 +31,7 @@ export function TopicContent({
         </h1>
       </div>
 
-      <div ref={containerRef}>
+      <div ref={containerRef} className="topic-content">
         {Content ? (
           <Suspense fallback={<p className="text-muted">콘텐츠를 불러오는 중...</p>}>
             <Content />
