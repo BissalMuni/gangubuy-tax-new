@@ -17,6 +17,7 @@ const NAV_ITEMS: NavItem[] = [
   { href: "/admin", label: "대시보드", minRole: "subadmin" },
   { href: "/admin/changes", label: "수정 이력", minRole: "admin" },
   { href: "/admin/structure", label: "책/바구니 관리", minRole: "subadmin" },
+  { href: "/admin/attachments", label: "첨부파일 관리", minRole: "admin" },
   { href: "/admin/super/structure", label: "구조 편집", minRole: "superadmin" },
 ];
 

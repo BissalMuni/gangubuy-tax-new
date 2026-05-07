@@ -35,6 +35,17 @@ export default async function AdminPage() {
           </Link>
         )}
 
+        {/* admin 이상: 첨부파일 관리 */}
+        {hasPermission(role, "view_audit") && (
+          <Link
+            href="/admin/attachments"
+            className="rounded-lg border border-gray-200 p-4 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800"
+          >
+            <h2 className="font-semibold">첨부파일 관리</h2>
+            <p className="text-sm text-gray-500">전체 첨부 조회·필터·미리보기·삭제</p>
+          </Link>
+        )}
+
         {/* superadmin: 구조 편집 */}
         {role === "superadmin" && (
           <Link
