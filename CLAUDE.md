@@ -121,9 +121,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Tech Stack
 
-- **Framework:** Next.js 14 (App Router, src directory) + React 18
+- **Framework:** Next.js 16 (App Router, src directory) + React 19
 - **Language:** TypeScript (strict mode — no `any`)
-- **Styling:** Tailwind CSS + Ant Design (comments/attachments/search)
+- **Styling:** Tailwind CSS
 - **Package manager:** pnpm
 - **Testing:** vitest
 - **Backend:** Supabase — 댓글·첨부파일
@@ -159,7 +159,7 @@ src/components/
 ├── comments/       # 댓글 폼/목록
 ├── attachments/    # 첨부파일 업로드/목록
 ├── search/         # 검색 입력/결과
-├── providers/      # AntdProvider, FontSizeProvider
+├── providers/      # ThemeProvider
 ├── admin/          # 관리자 대시보드, 바구니 관리
 └── ui/             # Header, DarkModeToggle, FontSizeControl, MobileNav
 ```
