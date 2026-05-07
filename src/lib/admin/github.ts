@@ -90,3 +90,62 @@ export async function commitFiles(
 
   return { sha: newCommit.sha, filesChanged: files.map((f) => f.path) };
 }
+
+/** GitHub 커밋 목록 조회 응답의 일부 (수정 이력 화면이 사용하는 필드만) */
+export interface CommitSummary {
+  sha: string;
+  message: string;
+  authorName: string;
+  authorLogin: string | null;
+  authorAvatarUrl: string | null;
+  date: string;
+  htmlUrl: string;
+}
+
+/** 옵션: GitHub commits API 파라미터 */
+export interface ListCommitsOptions {
+  /** 특정 경로(폴더/파일)에 영향을 준 커밋만 — GitHub commits API의 path 파라미터 */
+  path?: string;
+  /** 1-indexed 페이지 번호 */
+  page?: number;
+  /** 페이지 크기 (기본 30, 최대 100) */
+  perPage?: number;
+  /** 브랜치/SHA. 기본은 main */
+  sha?: string;
+}
+
+/** main 브랜치 커밋 목록 조회 */
+export async function listCommits(
+  gh: GitHubConfig,
+  options: ListCommitsOptions = {}
+): Promise<CommitSummary[]> {
+  const params = new URLSearchParams();
+  params.set("sha", options.sha ?? "main");
+  if (options.path) params.set("path", options.path);
+  if (options.page) params.set("page", String(options.page));
+  params.set("per_page", String(Math.min(options.perPage ?? 30, 100)));
+
+  const raw = (await githubFetch(
+    gh.repo,
+    `commits?${params.toString()}`,
+    gh.token
+  )) as Array<{
+    sha: string;
+    html_url: string;
+    commit: {
+      author: { name?: string; date?: string } | null;
+      message: string;
+    };
+    author: { login?: string; avatar_url?: string } | null;
+  }>;
+
+  return raw.map((c) => ({
+    sha: c.sha,
+    message: c.commit.message,
+    authorName: c.commit.author?.name ?? "",
+    authorLogin: c.author?.login ?? null,
+    authorAvatarUrl: c.author?.avatar_url ?? null,
+    date: c.commit.author?.date ?? "",
+    htmlUrl: c.html_url,
+  }));
+}
