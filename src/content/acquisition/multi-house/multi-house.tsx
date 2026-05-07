@@ -350,6 +350,11 @@ export default function MultiHouseV11() {
           </tbody>
           </table>
 
+          <Insight>
+            <strong>판단 기준: 증여자의 주택수</strong><br/>
+            무상취득 중과세 여부는 <strong>수증자(취득자)의 주택수가 아니라 증여자의 주택수</strong>를 기준으로 판단합니다. 취득 시점에 증여자가 몇 채를 보유하고 있는지가 중과 적용의 핵심 기준입니다. (<a href="https://law.go.kr/법령/지방세법시행령/제28조의6" target="_blank" rel="noopener noreferrer">시행령 §28조의6②</a>)
+          </Insight>
+
           <p><strong>중과제외 사유</strong> (<a href="https://law.go.kr/법령/지방세법시행령/제28조의6" target="_blank" rel="noopener noreferrer">시행령 §28조의6②</a>)</p>
           <p>1. 1세대1주택자의 배우자·직계존비속이 해당 주택을 무상취득하는 경우</p>
           <p>2. 이혼재산분할 (<a href="https://law.go.kr/법령/지방세법/제15조" target="_blank" rel="noopener noreferrer">법 §15①6호</a>, <a href="https://law.go.kr/법령/민법/제834조" target="_blank" rel="noopener noreferrer">민법 §834·839의2·840</a>)</p>
