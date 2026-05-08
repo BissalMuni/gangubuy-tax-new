@@ -571,6 +571,8 @@ export default function MultiHouseV11() {
             <li>다가구주택은 <strong>1개</strong>의 주택으로 산정</li>
           </ul>
 
+          <p className="text-sm text-muted mt-2">근거: <a href="https://law.go.kr/법령/지방세법/제13조의3" target="_blank" rel="noopener noreferrer">법 §13조의3</a>, <a href="https://law.go.kr/법령/지방세법시행령/제28조의4" target="_blank" rel="noopener noreferrer">시행령 §28조의4①</a></p>
+
         </SubSection>
 
         <SubSection title="● 취득 주택에서 제외 (§28조의4②)">
@@ -865,7 +867,7 @@ export default function MultiHouseV11() {
           </thead>
           <tbody>
           <tr style={{backgroundColor: '#e6f7ff'}}>
-          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1호 저가주택</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1호 저가주택 (수도권 1억↓ / 비수도권 2억↓)</td>
           <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
           <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
           <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득·보유 모두 주택수 불산입</td>
