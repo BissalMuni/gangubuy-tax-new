@@ -88,6 +88,9 @@ export interface Comment {
   processed?: boolean;
   processed_at?: string;
   commit_sha?: string;
+  // ① 입력단 sanitizer 결과 — flagged=true 인 댓글은 자동화에서 제외된다
+  flagged?: boolean;
+  flag_reason?: string | null;
 }
 
 /** 콘텐츠 수정 이력 (admin 감사용) */
