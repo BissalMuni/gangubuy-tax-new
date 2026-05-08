@@ -224,3 +224,115 @@ scripts/
 - ~~자매 프로젝트 math 에도 동일 적용~~ ✅ 완료
 - 운영 중 false negative/positive 발견 시 `DANGEROUS_PATTERNS` / 임계값 조정 (지속)
 
+---
+
+## ②③ 의존 관계 — 묶음 작업
+
+②와 ③은 **사실상 한 PR 단위**로 가야 한다. 이유:
+
+```
+[현재] Bash 살아있음
+  Claude --allowedTools "Bash,..."
+       └─ 댓글이 "도구 결과"로 컨텍스트에 들어옴
+          ↳ 시스템 프롬프트의 격리 지시(③의 A)가 적용되지 않음
+```
+
+```
+[②③ 후]
+  workflow가 미리 fetch + filter (②)
+       └─ 필터 통과한 JSON을 프롬프트에 직접 주입
+              ↓
+  Claude --allowedTools "Read,Edit,Write,Glob,Grep"  ← Bash 빠짐
+       └─ 댓글이 <user_input>...</user_input> 데이터로 들어옴
+              ↳ 시스템 프롬프트 격리(③의 A) + 능동 필터(③의 B) 발효
+```
+
+| 시나리오 | 가능? | 효과 |
+|---|---|---|
+| ②만 단독 | ✅ | Bash 제거 + 사전 필터. 컨텍스트 재배치만으로도 부분 효과 |
+| ③만 단독 (A 포함) | ❌ | 댓글이 도구 결과로 오는 한 격리 구분자를 못 씌움 |
+| ③만 단독 (B만) | ⚠️ 약함 | "악의적 내용 무시" 한 줄 추가만 가능. 메타 인젝션에 뚫림 |
+
+코드량으로도 동일 워크플로우 YAML을 함께 수정하므로 한 묶음이 자연스럽다.
+
+---
+
+## ⑤ 커밋·배포단 — 설계 노트 (미착수)
+
+### 본질
+
+⑤의 핵심은 "자동화 브랜치 push" 그 자체가 아니라 **"main 직 push 금지"** 이다. 브랜치는 PR을 만들기 위한 수단이며, 진짜 가치는 **main 진입 경로에 검사 가능한 게이트(PR + CI)를 강제로 끼워넣는 것**.
+
+### 4요소 (중요도 순)
+
+| 요소 | 가치 | 없으면 |
+|---|---|---|
+| 1. main 직 push 금지 (Branch protection) | 강제력. 우회 불가 | 다른 요소 무의미 |
+| 2. PR 단위로 묶이는 변경 | 추적성·롤백 용이 | 사고 시 commit 단위 cherry-pick revert 필요 |
+| 3. PR에 추가 CI 검사 | ④ 외 후속 게이트 | 통합 검사 자리 없음 |
+| 4. 자동 머지 vs 수동 승인 | 운영 모드 선택 | (어느 쪽이든 가능) |
+
+### 권장: A 모드 (자동 머지, 사람 개입 0명)
+
+```
+cron 발화
+  ↓
+1. checkout main
+2. Claude 편집
+3. ④ validate-output.sh
+  ↓
+4. workflow 자동:
+   ├─ git checkout -b bot/auto-feedback-{timestamp}
+   ├─ git commit
+   └─ git push origin bot/auto-feedback-{timestamp}
+  ↓
+5. workflow 자동:
+   gh pr create --title "Apply content feedback (N)" --base main
+  ↓
+6. workflow 자동:
+   gh pr merge --auto --squash <PR번호>
+  ↓
+7. GitHub 자동:
+   ├─ branch protection 의 status check 워크플로우 발화
+   └─ 모든 check 통과 → auto-merge → main 갱신
+  ↓
+8. (자동) bot 브랜치 삭제 + 댓글 처리 표시
+```
+
+step 4~8 모두 GitHub Actions + GitHub auto-merge 가 처리. 사람 개입 0건.
+
+### 시간 비교
+
+| 단계 | 현재(직 push) | ⑤ 적용 후 |
+|---|---|---|
+| Claude 편집 | ~분 | ~분 (동일) |
+| 검증·commit | 초 | 초 (동일) |
+| main 반영 | 즉시 | +10~60초 (PR 생성 + status check) |
+
+체감 추가 지연 ≈ 1분 이내. 일/주 단위 자동화에서 무시할 수준.
+
+### 평상시 vs 사고 시
+
+| 상황 | 현재 | ⑤ 적용 |
+|---|---|---|
+| 평상시 | 자동 push → main | 자동 PR → 자동 머지 → main (사람 무관) |
+| 사고 시 운영자 발견 | git log에서 commit 일일이 찾아 revert | PR 단위로 통째 revert (한 번에 복구) |
+
+### 부수 효과 — 추가 게이트 자리 마련
+
+⑤가 만든 PR에 트리거되는 새 워크플로우 추가 가능:
+- `pr-content-review.yml` — 다른 LLM 으로 변경 재검토
+- `pr-security-scan.yml` — secret leak 검사
+- `pr-typecheck.yml` — 깊이 있는 타입 체크
+
+지금 당장 안 만들어도 되지만 자리는 확보됨.
+
+### 변경 산출물 (예정)
+
+| 파일 | 종류 |
+|---|---|
+| `.github/workflows/review-feedback.yml` | 수정 — step 6 (Commit and push) 분리: 브랜치 push + PR create + auto-merge |
+| GitHub repo Settings → Branches | 수동 — main 보호 규칙: "Require pull request before merging" + status check 지정 |
+
+코드 변경은 워크플로우 한 파일. **GitHub repo 설정의 브랜치 보호 규칙은 코드가 아닌 대시보드 작업** — 두 프로젝트 각각 적용 필요.
+
