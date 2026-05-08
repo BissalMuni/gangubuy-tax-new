@@ -275,7 +275,7 @@
     {
       "id": "acq-admin",
       "slug": "admin",
-      "title": "행정",
+      "title": "실무",
       "children": [
         {
           "id": "acq-admin-internet-filing",
@@ -300,7 +300,7 @@
         {
           "id": "acq-admin-facility-vs-equipment",
           "slug": "facility-vs-equipment",
-          "title": "시설 vs 설비"
+          "title": "시설 vs 시설물"
         },
         {
           "id": "acq-admin-demolition-ledger",
