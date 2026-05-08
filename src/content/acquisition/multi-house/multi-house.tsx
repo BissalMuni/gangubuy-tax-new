@@ -634,6 +634,329 @@ export default function MultiHouseV11() {
 
         </SubSection>
 
+        <SubSection title="● 보유 주택에서 제외 (§28조의4⑥)">
+
+          <p>기존 소유주택 수에서 제외</p>
+
+          <table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px', marginBottom: '16px'}}>
+          <thead>
+          <tr style={{backgroundColor: '#f0f0f0'}}>
+          <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '60px'}}>호</th>
+          <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>유형</th>
+          <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>조건/비고</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1호</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>중과제외 주택 일부</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}><a href="https://law.go.kr/법령/지방세법시행령/제28조의2" target="_blank" rel="noopener noreferrer">§28조의2</a> 1·3·4·5·6·11·12·17·18호</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>2호</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>주택건설/개발업자 신축 보유</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>거주 1년 미만</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>3호</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>상속주택</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>상속개시일로부터 <strong>5년 이내</strong></td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>4호</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1억 이하 오피스텔</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>시가표준액 기준</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>5호</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1억 이하 부속토지</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>시가표준액 기준</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>6호</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>혼인 특례</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>혼인 전 분양권 → 배우자 혼인 전 주택</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>7호</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>②항 소형주택</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>위 소형주택 해당</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>8호</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>소형신축오피스텔</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>60㎡↓, 3억/6억↓</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>9호</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>소형기축오피스텔</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>60㎡↓, 3억/6억↓, 임대등록</td>
+          </tr>
+          </tbody>
+          </table>
+
+          <p><strong>§28조의2 중과제외 주택 참고</strong> (주택수 제외 가능: 1·3·4·5·6·11·12·17·18호)</p>
+
+          <table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px', marginBottom: '16px'}}>
+          <thead>
+          <tr style={{backgroundColor: '#f0f0f0'}}>
+          <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '60px'}}>호</th>
+          <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>유형</th>
+          <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '100px', textAlign: 'center'}}>주택수 제외</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>저가주택 (수도권 1억↓ / 비수도권 2억↓)</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#1890ff'}}>✓</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>2</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>공공매입임대주택 공급목적</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>✗</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>2의2~3</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지분적립형·이익공유형 환매 / 현물보상</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>✗</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>3</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>노인복지주택</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#1890ff'}}>✓</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>3의2</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>도시재생 현물보상 주택</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>✗</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>4</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>문화유산 주택 (지정·등록·천연기념물)</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#1890ff'}}>✓</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>5</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>공공지원민간임대주택</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#1890ff'}}>✓</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>6</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>가정어린이집</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#1890ff'}}>✓</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>7</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>주택도시기금+LH 부동산투자회사</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>✗</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>8</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>멸실목적 취득 (주택건설사업)</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>✗</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>9</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>시공자 공사대금 미분양주택</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>✗</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>10</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>저당권실행·채권변제 취득</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>✗</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>11</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>농어촌주택</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#1890ff'}}>✓</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>12</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>사원임대용 주택 (60㎡↓)</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#1890ff'}}>✓</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>13</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>물적분할·적격분할·법인합병 취득</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>✗</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>14</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>리모델링주택조합</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>✗</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>15</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>토지임대부 분양주택 관련</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>✗</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>16</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>기업구조조정 부동산투자회사 지방 미분양</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>✗</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>17</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>지방 미분양 아파트 (수도권外, 85㎡↓, 6억↓, &apos;26년)</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#1890ff'}}>✓</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>18</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>인구감소지역 임대주택 (&apos;26년)</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#1890ff'}}>✓</td>
+          </tr>
+          </tbody>
+          </table>
+
+          <Insight>
+
+          <ul className="list-disc pl-6 my-4 space-y-1">
+            <li>1억 이하라도 정비구역(도시 및 주거환경정비법), 사업시행구역(빈집 및 소규모주택 정비법)은 <strong>중과 적용</strong></li>
+            <li>공동 상속 시 지분 최대 상속인의 소유주택으로 판단 (지분 동일 시 거주자 → 최연장자 순)</li>
+          </ul>
+
+          </Insight>
+
+        </SubSection>
+
+        <SubSection title="● 중과제외주택 vs 주택수합산배제 대상주택 구분">
+
+          <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+          <thead>
+          <tr style={{backgroundColor: '#f0f0f0'}}>
+          <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '160px'}}>구분</th>
+          <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>중과제외주택<br/>(<a href="https://law.go.kr/법령/지방세법시행령/제28조의2" target="_blank" rel="noopener noreferrer">시행령 §28조의2</a>)</th>
+          <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>주택수합산배제 대상주택<br/>(<a href="https://law.go.kr/법령/지방세법시행령/제28조의4" target="_blank" rel="noopener noreferrer">시행령 §28조의4⑥</a>)</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr style={{backgroundColor: '#e6f7ff'}}>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>의미</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>해당 주택 <strong>취득 시</strong> 중과세율 적용 배제 → <strong>일반세율</strong> 적용</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>보유 주택수 산정에서 <strong>제외</strong> → 다른 주택 취득 시 주택수에 불산입</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>효과</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>해당 주택 자체의 세율만 낮아짐</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>다른 주택 취득 시에도 주택수에서 빠지므로 <strong>전체 세율에 영향</strong></td>
+          </tr>
+          <tr style={{backgroundColor: '#e6f7ff'}}>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>적용 범위</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§28조의2 전체 (1~18호)</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>§28조의2 중 <strong>일부</strong> (1·3·4·5·6·11·12·17·18호)만 해당</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>포함관계</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>중과제외이나 주택수에는 <strong>포함</strong>되는 유형 있음<br/>(예: 멸실목적 취득, 저당권실행 등)</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>주택수합산배제이면 반드시 <strong>중과제외</strong>에도 해당</td>
+          </tr>
+          </tbody>
+          </table>
+
+          <table style={{width: '100%', borderCollapse: 'collapse', fontSize: 'var(--content-font-size, 13px)', marginBottom: '16px'}}>
+          <thead>
+          <tr style={{backgroundColor: '#f0f0f0'}}>
+          <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>유형 (§28조의2)</th>
+          <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '100px', textAlign: 'center'}}>중과제외</th>
+          <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '100px', textAlign: 'center'}}>주택수 제외</th>
+          <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '200px'}}>실무 포인트</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr style={{backgroundColor: '#e6f7ff'}}>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1호 저가주택</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득·보유 모두 주택수 불산입</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>2호 공공매입임대 공급목적</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#cf1322', fontWeight: 'bold'}}>X</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득 시만 중과배제, 주택수 산입</td>
+          </tr>
+          <tr style={{backgroundColor: '#e6f7ff'}}>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>3호 노인복지주택</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득·보유 모두 주택수 불산입</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>4호 문화유산 주택</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득·보유 모두 주택수 불산입</td>
+          </tr>
+          <tr style={{backgroundColor: '#e6f7ff'}}>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>5호 공공지원민간임대</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득·보유 모두 주택수 불산입</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>6호 가정어린이집</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득·보유 모두 주택수 불산입</td>
+          </tr>
+          <tr style={{backgroundColor: '#e6f7ff'}}>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>8호 멸실목적 취득</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#cf1322', fontWeight: 'bold'}}>X</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득 시만 중과배제, 주택수 산입</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>10호 저당권실행·채권변제</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#cf1322', fontWeight: 'bold'}}>X</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득 시만 중과배제, 주택수 산입</td>
+          </tr>
+          <tr style={{backgroundColor: '#e6f7ff'}}>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>11호 농어촌주택</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득·보유 모두 주택수 불산입</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>12호 사원임대용 (60㎡↓)</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득·보유 모두 주택수 불산입</td>
+          </tr>
+          <tr style={{backgroundColor: '#e6f7ff'}}>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>13호 물적분할·법인합병</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#cf1322', fontWeight: 'bold'}}>X</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득 시만 중과배제, 주택수 산입</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>17호 지방 미분양</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득·보유 모두 주택수 불산입</td>
+          </tr>
+          <tr style={{backgroundColor: '#e6f7ff'}}>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>18호 인구감소지역 임대</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', color: '#52c41a', fontWeight: 'bold'}}>O</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득·보유 모두 주택수 불산입</td>
+          </tr>
+          </tbody>
+          </table>
+
+          <Insight>
+
+          <ul className="list-disc pl-6 my-4 space-y-1">
+            <li><strong>중과제외(§28조의2)</strong>: 18개 유형 모두 해당 주택 취득 시 중과세율 적용 배제</li>
+            <li><strong>주택수합산배제(§28조의4⑥1호)</strong>: 위 중과제외 중 <strong>1·3·4·5·6·11·12·17·18호</strong>만 보유 주택수에서도 제외</li>
+            <li>중과제외이지만 주택수에는 산입되는 유형(2·7~10·13~16호)은 <strong>다른 주택 취득 시 주택수에 포함</strong>되어 세율에 영향</li>
+          </ul>
+
+          </Insight>
+
+        </SubSection>
+
       </CalcBox>
 
       <hr className="my-6" />
