@@ -155,10 +155,10 @@ scripts/
 
 | 단계 | 상태 | 비고 |
 |---|---|---|
-| ① 입력단 | ✅ **코드 구현 완료** (마이그레이션 적용 대기) | 2026-05-08 |
+| ① 입력단 | ✅ **운영 적용 완료** | 2026-05-08 — 두 프로젝트(gangubuy-tax-new, math) 마이그레이션·코드 배포 완료 |
 | ② 큐 게이트 | ⬜ 미착수 | |
 | ③ LLM 호출단 | ⬜ 미착수 | ②의 Bash 제거가 선행되어야 의미 있음 |
-| ④ 출력 검증단 | ⬜ 미착수 | |
+| ④ 출력 검증단 | ✅ **코드 구현 완료** (배포 대기) | 2026-05-08 — gangubuy-tax-new 만 적용 |
 | ⑤ 커밋·배포단 | ⬜ 미착수 | |
 
 ### ① 입력단 — 완료 내역 (2026-05-08)
@@ -187,11 +187,40 @@ scripts/
 - 내 수정 파일에 TypeScript 오류 없음
 
 **대기 작업 (사용자 결정 필요)**
-1. Supabase 대시보드 SQL 에디터에서 `migrations/007_add_flagged_columns.sql` 실행 — 안 돌리면 `flagged` 필드 insert 시 무시 또는 에러
+1. ~~Supabase 대시보드 SQL 에디터에서 `migrations/007_add_flagged_columns.sql` 실행~~ ✅ 완료 (2026-05-08)
 2. (선택) 운영자 검토 UI — 플래그된 댓글 목록을 `/admin`에서 노출할지 결정. 현재는 `console.warn`에만 남음
 
 ### 운영 후 추가 가능한 보강 (① 단)
 - 차단 패턴 추가는 `banned-patterns.ts`의 `BANNED_PATTERNS` 배열에 항목만 추가하면 됨. 운영 중 새 인젝션 사례가 발견되면 그때 보강
 - 플래그된 댓글의 false positive 비율을 보고 패턴 보수성 조정
 - IP/계정당 rate limit은 본 단계에 포함되지 않음 — 필요 시 별도 작업
+
+### ④ 출력 검증단 — 완료 내역 (2026-05-08)
+
+**설계 결정**
+- 실패 동작: **Hard fail** — commit 차단 + 댓글 미처리 보존 → 다음 cron 재시도
+- 임계값: 총 500줄 / 파일당 200줄 / 파일 수 20개
+- TypeScript 검사는 제외 (tsconfig가 tests 폴더 포함하여 기존 오류로 false fail 위험; Vercel 빌드가 backstop)
+
+**구현 산출물**
+
+| 파일 | 종류 | 역할 |
+|---|---|---|
+| `scripts/validate-output.sh` | 신설 | 5종 검사 (허용 경로 / 총 라인 / 파일당 라인 / 파일 수 / 위험 패턴) |
+| `.github/workflows/review-feedback.yml` | 수정 | step 5(Apply) ↔ step 6(Commit) 사이에 "Validate Claude output" step 추가 |
+
+**검사 항목**
+
+| 항목 | 상한 | 차단 시그니처 |
+|---|---|---|
+| 허용 경로 | `src/content/**` 외 변경 | basket·book·map·components 손대는 시도 |
+| 총 변경 라인 | 500 | 대규모 무차별 변경 |
+| 파일당 변경 라인 | 200 | 한 파일 통째 갈아엎기 |
+| 변경 파일 수 | 20 | 광범위 공격 |
+| 위험 패턴 | `dangerouslySetInnerHTML`, `eval(`, `new Function`, `<script`, `import.meta`, `__proto__` | XSS·코드 인젝션 |
+
+**대기 작업**
+1. 변경사항 commit & push (현재 working tree 상태) — 다음 cron 부터 적용됨
+2. 자매 프로젝트 math 에도 동일 적용 필요 (별도 진행)
+3. 운영 중 false negative 발견 시 `DANGEROUS_PATTERNS` / 임계값 조정
 
