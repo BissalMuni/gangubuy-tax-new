@@ -479,7 +479,11 @@ export default function MultiHouseV11() {
 
         </SubSection>
 
-        <SubSection title="● 중위소득 기준 (보건복지부 고시, 2027년 기준)">
+        <SubSection title="● 중위소득 기준 (보건복지부 고시)">
+
+          <p style={{fontSize: '13px', marginBottom: '8px'}}>
+            출처: <a href="https://www.mohw.go.kr/menu.es?mid=a10708010900" target="_blank" rel="noopener noreferrer" style={{color: '#1890ff'}}>보건복지부 고시 (기준 중위소득)</a> (2026년 기준)
+          </p>
 
           <table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px', marginBottom: '16px'}}>
           <thead>
@@ -494,24 +498,24 @@ export default function MultiHouseV11() {
           <tbody>
           <tr>
           <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>금액(원/월)</td>
-          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>2,640,565</td>
-          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>4,324,271</td>
-          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>5,518,507</td>
-          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>6,688,182</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>2,564,238</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>4,199,292</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>5,359,036</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>6,494,738</td>
           </tr>
           <tr style={{backgroundColor: '#e6f7ff'}}>
           <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>중위소득40%(월)</td>
-          <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>1,056,226</td>
-          <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>1,729,708</td>
-          <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>2,207,403</td>
-          <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>2,675,273</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>1,025,695</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>1,679,717</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>2,143,614</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>2,597,895</td>
           </tr>
           <tr>
           <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>연간소득40%</td>
-          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>12,674,712</td>
-          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>20,756,500</td>
-          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>26,488,836</td>
-          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>32,103,276</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>12,308,340</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>20,156,604</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>25,723,368</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>31,174,740</td>
           </tr>
           </tbody>
           </table>
@@ -1224,7 +1228,7 @@ export default function MultiHouseV11() {
         <summary>Q. 30세 미만 자녀의 독립세대 인정 소득 증빙은?</summary>
 
         <ul className="list-disc pl-6 my-4 space-y-1">
-          <li>취득일로부터 과거 1년간 소득이 중위소득 40% 이상 (2027년 기준 1인가구 약 12,674,712원)</li>
+          <li>취득일로부터 과거 1년간 소득이 중위소득 40% 이상 (2026년 기준 1인가구 약 12,308,340원)</li>
           <li>전년도 소득: 소득금액증명원, 원천징수영수증</li>
           <li>당해 소득: 원천징수지급명세서, 사업자등록증, 재직증명서 등</li>
           <li>월 급여는 기준 이상이나 <strong>연간 소득이 미달</strong>이면 별도세대 불인정</li>
