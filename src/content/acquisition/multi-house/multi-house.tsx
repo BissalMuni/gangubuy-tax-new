@@ -530,6 +530,154 @@ export default function MultiHouseV11() {
 
           </Insight>
 
+          <Insight>
+
+          <p style={{fontWeight: 'bold', marginBottom: '10px'}}>조심 2022지0888 결정 핵심 정리</p>
+
+          <p style={{fontWeight: 'bold', marginTop: '12px', marginBottom: '6px'}}>① 사건 개요</p>
+          <table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px', marginBottom: '12px'}}>
+          <thead>
+          <tr style={{backgroundColor: '#f0f0f0'}}>
+          <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '100px'}}>항목</th>
+          <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>내용</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득일</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>2021.10.29.</td>
+          </tr>
+          <tr style={{backgroundColor: '#fafafa'}}>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득 물건</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>다세대주택 지하층 101호 (52.98㎡)</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>청구인</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>1997년생, 30세 미만 미혼, 부모와 별도 주민등록</td>
+          </tr>
+          <tr style={{backgroundColor: '#fafafa'}}>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>문제</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>모친이 1주택 보유 → 청구인과 동일세대로 보면 2주택 중과 해당</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>처분</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>중과세율 8% 적용, 취득세 등 부과</td>
+          </tr>
+          <tr style={{backgroundColor: '#fafafa'}}>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>결정</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', color: '#cf1322'}}>취소</td>
+          </tr>
+          </tbody>
+          </table>
+
+          <p style={{fontWeight: 'bold', marginTop: '12px', marginBottom: '6px'}}>② 쟁점</p>
+          <p style={{marginBottom: '6px'}}>청구인의 소득이 기준 중위소득 40% 이상인지 — 즉 <strong>비과세 기타소득을 소득에 포함할 수 있는가</strong></p>
+          <ul className="list-disc pl-6 my-2 space-y-1">
+            <li>청구인은 연구용역비를 비과세 기타소득으로 원천징수 신고됨</li>
+            <li>소득금액증명원에 해당 금액이 나타나지 않음</li>
+            <li>처분청은 이를 제외하면 기준 미달이라고 판단 → 부모와 동일세대 → 중과</li>
+          </ul>
+
+          <p style={{fontWeight: 'bold', marginTop: '12px', marginBottom: '6px'}}>③ 적용 법령 (취득일 기준)</p>
+          <p style={{marginBottom: '6px'}}>시행령 제28조의3 제2항 제1호 (2020.8.12. 신설, 취득일 당시 유효)</p>
+          <ul className="list-disc pl-6 my-2 space-y-1">
+            <li>부모와 세대를 달리하는 30세 미만 자녀로서</li>
+            <li>「소득세법」제4조에 따른 소득이 기준 중위소득의 100분의 40 이상이고</li>
+            <li>독립된 생계를 유지할 수 있는 경우 → 별도세대</li>
+          </ul>
+          <p style={{marginTop: '6px'}}>핵심: 당시 규정에는 소득 판단 기간(12개월/24개월) 및 <strong>비과세소득 제외 규정이 없었음</strong></p>
+
+          <p style={{fontWeight: 'bold', marginTop: '12px', marginBottom: '6px'}}>④ 결정 논리</p>
+          <table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px', marginBottom: '12px'}}>
+          <thead>
+          <tr style={{backgroundColor: '#f0f0f0'}}>
+          <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold', width: '60px'}}>단계</th>
+          <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>내용</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>①</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득일 당시 규정은 &quot;소득세법 제4조에 따른 소득&quot;이라고만 규정</td>
+          </tr>
+          <tr style={{backgroundColor: '#fafafa'}}>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>②</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>소득세법 제4조는 소득의 <strong>구분(종합·퇴직·양도)</strong>만 규정할 뿐, 비과세소득 제외 여부는 규정하지 않음</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>③</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>따라서 비과세소득도 광의의 소득으로 포함된다고 해석</td>
+          </tr>
+          <tr style={{backgroundColor: '#fafafa'}}>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>④</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>이후 2021.12.31. 개정 + 2022.1.1. 행안부 고시에서 비로소 비과세소득 제외 명시 → 이전과 다른 내용으로 개정된 것</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>⑤</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>비과세소득 포함 시 청구인의 소득은 기준 중위소득 40% 이상 → 별도세대 요건 충족</td>
+          </tr>
+          <tr style={{backgroundColor: '#fafafa'}}>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center'}}>⑥</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', color: '#cf1322'}}>중과세율 적용은 잘못 → 취소</td>
+          </tr>
+          </tbody>
+          </table>
+
+          <p style={{fontWeight: 'bold', marginTop: '12px', marginBottom: '6px'}}>⑤ 개정 전후 비교</p>
+          <table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px', marginBottom: '12px'}}>
+          <thead>
+          <tr style={{backgroundColor: '#f0f0f0'}}>
+          <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구분</th>
+          <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>구 규정 (～2021.12.30.)</th>
+          <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>현행 (2022.1.1.～)</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>소득 정의</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>소득세법 제4조에 따른 소득</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>행정안전부장관이 정하는 소득</td>
+          </tr>
+          <tr style={{backgroundColor: '#fafafa'}}>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>소득 기간</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>규정 없음</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>취득일 직전 12개월</td>
+          </tr>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>기간 예외</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>없음</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>일시적 휴직·휴업 시 24개월</td>
+          </tr>
+          <tr style={{backgroundColor: '#fafafa'}}>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>비과세소득</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>제외 근거 없음 → <strong>포함 해석</strong></td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>명시적으로 제외</td>
+          </tr>
+          </tbody>
+          </table>
+
+          <p style={{fontWeight: 'bold', marginTop: '12px', marginBottom: '6px'}}>⑥ 이 결정이 말해주는 것 / 말해주지 않는 것</p>
+          <table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px', marginBottom: '4px'}}>
+          <thead>
+          <tr style={{backgroundColor: '#f0f0f0'}}>
+          <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>항목</th>
+          <th style={{border: '1px solid #d9d9d9', padding: '8px', fontWeight: 'bold'}}>내용</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', color: '#52c41a'}}>✅ 이 결정의 선례 가치</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>구 규정(～2021.12.30.) 적용 사건에서 비과세소득 포함 해석</td>
+          </tr>
+          <tr style={{backgroundColor: '#fafafa'}}>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px', color: '#cf1322'}}>❌ 이 결정과 무관한 것</td>
+          <td style={{border: '1px solid #d9d9d9', padding: '8px'}}>현행 24개월 예외 규정의 근거 — 취득일 이후에 만들어진 규정이므로 전혀 별개</td>
+          </tr>
+          </tbody>
+          </table>
+
+          </Insight>
+
         </SubSection>
 
       </CalcBox>
