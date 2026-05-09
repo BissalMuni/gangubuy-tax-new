@@ -689,6 +689,8 @@ export default function MultiHouseV11() {
 
         <SubSection title="● 주택 수에 가산 (법 §13조의3, 시행령 §28조의4①)">
 
+          <p className="text-sm text-muted mb-3">근거: <a href="https://law.go.kr/법령/지방세법/제13조의3" target="_blank" rel="noopener noreferrer">법 §13조의3</a>, <a href="https://law.go.kr/법령/지방세법시행령/제28조의4" target="_blank" rel="noopener noreferrer">시행령 §28조의4①</a></p>
+
           <table style={{width: '100%', borderCollapse: 'collapse', fontSize: '13px', marginBottom: '16px'}}>
           <thead>
           <tr style={{backgroundColor: '#f0f0f0'}}>
@@ -722,8 +724,6 @@ export default function MultiHouseV11() {
             <li>신탁주택은 위탁자의 주택 수에 가산</li>
             <li>다가구주택은 <strong>1개</strong>의 주택으로 산정</li>
           </ul>
-
-          <p className="text-sm text-muted mt-2">근거: <a href="https://law.go.kr/법령/지방세법/제13조의3" target="_blank" rel="noopener noreferrer">법 §13조의3</a>, <a href="https://law.go.kr/법령/지방세법시행령/제28조의4" target="_blank" rel="noopener noreferrer">시행령 §28조의4①</a></p>
 
         </SubSection>
 
