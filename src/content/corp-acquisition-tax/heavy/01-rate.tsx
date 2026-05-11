@@ -43,7 +43,7 @@ export default function Content01RateV10() {
           <li>관련 조문: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13</a>, <a href="https://law.go.kr/법령/지방세법/제13조의2" target="_blank" rel="noopener noreferrer">법 §13의2</a></li>
           <li><strong>본점 신증축</strong> — 대도시 과밀억제권역 내 법인이 본점 사무실을 신축 또는 증축하는 행위로, 구 취득세 중과(제1항) 사유에 해당한다.</li>
           <li>관련 조문: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13</a></li>
-          <li><strong>대도시 법인 설립 후 5년 이내 부동산 취득</strong> — 대도시에서 법인 설립 후 5년 이내에 해당 법인이 부동산을 취득하는 경우로, 구 등록세 중과(제2항) 사유에 해당한다.</li>
+          <li><strong>대도시 법인 설립 또는 전입 또는 지점 설치 후 5년 이내 부동산 취득</strong> — 대도시에서 법인 설립 또는 전입 또는 지점 설치 후 5년 이내에 해당 법인이 부동산을 취득하는 경우로, 구 등록세 중과(제2항) 사유에 해당한다.</li>
           <li>관련 조문: <a href="https://law.go.kr/법령/지방세법/제13조" target="_blank" rel="noopener noreferrer">법 §13</a></li>
           <li><strong>주택 중과</strong> — 2020.8.12. 이후 취득분부터 적용되는 주택 매매 및 증여 취득 시 중과세율로, 지방세법 제13조의2에 근거한다.</li>
           <li>관련 조문: <a href="https://law.go.kr/법령/지방세법/제13조의2" target="_blank" rel="noopener noreferrer">법 §13의2</a></li>
