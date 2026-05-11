@@ -4,7 +4,7 @@ import { allBooks, getFirstLeafPath } from '@/book';
 export default function Home() {
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
-      <h1 className="text-2xl font-bold mb-2">GanguBuy Tax</h1>
+      <h1 className="text-2xl font-bold mb-2">G-TaxWiki</h1>
       <p className="text-gray-500 mb-8">
         지방세 정보 안내 사이트입니다. 좌측 메뉴에서 세목을 선택하세요.
       </p>

@@ -4,7 +4,7 @@ import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'GanguBuy Tax',
+  title: 'G-TaxWiki',
   description: '지방세 정보 사이트',
 };
 
