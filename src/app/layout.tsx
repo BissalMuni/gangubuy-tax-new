@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Sidebar } from '@/components/navigation/sidebar';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
+import { Footer } from '@/components/ui/Footer';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -26,6 +27,7 @@ export default function RootLayout({
           <Sidebar />
           <main className="flex-1 overflow-y-auto pt-14 lg:pt-0">
             {children}
+            <Footer />
           </main>
         </ThemeProvider>
       </body>
