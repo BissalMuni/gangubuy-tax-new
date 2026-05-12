@@ -3,5 +3,138 @@
   "basePath": "property",
   "title": "재산세",
   "description": "보유 부동산에 대해 부과되는 세금",
-  "children": []
+  "children": [
+    {
+      "id": "prop-vol1",
+      "slug": "vol1",
+      "title": "제1편 재산세",
+      "children": [
+        {
+          "id": "prop-vol1-overview",
+          "slug": "overview",
+          "title": "1장. 재산세 개요",
+          "children": [
+            { "id": "prop-vol1-overview-statute", "slug": "statute", "title": "Ⅰ. 법조문 구성" },
+            { "id": "prop-vol1-overview-summary", "slug": "summary", "title": "Ⅱ. 재산세 개관" },
+            { "id": "prop-vol1-overview-history", "slug": "history", "title": "Ⅲ. 입법 연혁" },
+            { "id": "prop-vol1-overview-rate-table", "slug": "rate-table", "title": "Ⅳ. 세율표" }
+          ]
+        },
+        {
+          "id": "prop-vol1-taxpayer",
+          "slug": "taxpayer",
+          "title": "2장. 납세의무자",
+          "children": [
+            { "id": "prop-vol1-taxpayer-principal", "slug": "principal", "title": "Ⅰ. 원칙적 납세의무자" },
+            { "id": "prop-vol1-taxpayer-exceptional", "slug": "exceptional", "title": "Ⅱ. 예외적 납세의무자" },
+            { "id": "prop-vol1-taxpayer-unknown-owner", "slug": "unknown-owner", "title": "Ⅲ. 소유권 귀속이 불분명한 재산의 납세의무" }
+          ]
+        },
+        {
+          "id": "prop-vol1-object",
+          "slug": "object",
+          "title": "3장. 과세대상",
+          "children": [
+            { "id": "prop-vol1-object-land", "slug": "land", "title": "Ⅰ. 토지" },
+            { "id": "prop-vol1-object-building", "slug": "building", "title": "Ⅱ. 건축물" },
+            { "id": "prop-vol1-object-house", "slug": "house", "title": "Ⅲ. 주택" },
+            { "id": "prop-vol1-object-aircraft-ship", "slug": "aircraft-ship", "title": "Ⅳ. 항공기·선박" }
+          ]
+        },
+        {
+          "id": "prop-vol1-base-rate",
+          "slug": "base-rate",
+          "title": "4장. 과세표준 및 세율",
+          "children": [
+            { "id": "prop-vol1-base-rate-base", "slug": "base", "title": "Ⅰ. 과세표준" },
+            { "id": "prop-vol1-base-rate-rate", "slug": "rate", "title": "Ⅱ. 세율" }
+          ]
+        },
+        {
+          "id": "prop-vol1-levy",
+          "slug": "levy",
+          "title": "5장. 부과 징수",
+          "children": [
+            { "id": "prop-vol1-levy-base-date", "slug": "base-date", "title": "Ⅰ. 과세기준일 및 납기" },
+            { "id": "prop-vol1-levy-place", "slug": "place", "title": "Ⅱ. 납세지" },
+            { "id": "prop-vol1-levy-method", "slug": "method", "title": "Ⅲ. 징수방법 등" },
+            { "id": "prop-vol1-levy-payment-in-kind", "slug": "payment-in-kind", "title": "Ⅳ. 물납" },
+            { "id": "prop-vol1-levy-installment", "slug": "installment", "title": "Ⅴ. 분할납부" },
+            { "id": "prop-vol1-levy-small-exemption", "slug": "small-exemption", "title": "Ⅵ. 소액 징수 면제" },
+            { "id": "prop-vol1-levy-trust", "slug": "trust", "title": "Ⅶ. 신탁재산에 대한 특례" },
+            { "id": "prop-vol1-levy-religion", "slug": "religion", "title": "Ⅷ. 향교 및 종교단체에 대한 특례" },
+            { "id": "prop-vol1-levy-report", "slug": "report", "title": "Ⅸ. 신고 의무" },
+            { "id": "prop-vol1-levy-manager", "slug": "manager", "title": "Ⅹ. 납세관리인 지정 신고" }
+          ]
+        },
+        {
+          "id": "prop-vol1-cap",
+          "slug": "cap",
+          "title": "6장. 세부담의 상한",
+          "children": [
+            { "id": "prop-vol1-cap-overview", "slug": "overview", "title": "Ⅰ. 개요" },
+            { "id": "prop-vol1-cap-calc", "slug": "calc", "title": "Ⅱ. 세부담 상한의 계산 방법" },
+            { "id": "prop-vol1-cap-example", "slug": "example", "title": "Ⅲ. 세액계산 사례" }
+          ]
+        },
+        {
+          "id": "prop-vol1-non-tax",
+          "slug": "non-tax",
+          "title": "7장. 비과세",
+          "children": [
+            { "id": "prop-vol1-non-tax-state", "slug": "state", "title": "Ⅰ. 국가 등에 대한 비과세" },
+            { "id": "prop-vol1-non-tax-use", "slug": "use", "title": "Ⅱ. 용도구분에 의한 비과세" }
+          ]
+        },
+        {
+          "id": "prop-vol1-reduction",
+          "slug": "reduction",
+          "title": "8장. 재산세 감면",
+          "children": [
+            { "id": "prop-vol1-reduction-childcare", "slug": "childcare", "title": "Ⅰ. 어린이집 및 유치원에 대한 감면" },
+            { "id": "prop-vol1-reduction-elderly", "slug": "elderly", "title": "Ⅱ. 노인복지시설에 대한 감면" },
+            { "id": "prop-vol1-reduction-welfare", "slug": "welfare", "title": "Ⅲ. 사회복지시설에 대한 감면" },
+            { "id": "prop-vol1-reduction-rental", "slug": "rental", "title": "Ⅳ. 임대주택 등에 대한 감면" },
+            { "id": "prop-vol1-reduction-long-rental", "slug": "long-rental", "title": "Ⅴ. 장기일반민간임대주택 등에 대한 감면" },
+            { "id": "prop-vol1-reduction-restricted-land", "slug": "restricted-land", "title": "Ⅵ. 사권제한 토지 등에 대한 감면" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prop-vol2",
+      "slug": "vol2",
+      "title": "제2편 도시지역분 및 지역자원시설세",
+      "children": [
+        {
+          "id": "prop-vol2-urban",
+          "slug": "urban",
+          "title": "1장. 재산세 도시지역분",
+          "children": [
+            { "id": "prop-vol2-urban-overview", "slug": "overview", "title": "Ⅰ. 개요" },
+            { "id": "prop-vol2-urban-object", "slug": "object", "title": "Ⅱ. 과세대상" },
+            { "id": "prop-vol2-urban-base-rate", "slug": "base-rate", "title": "Ⅲ. 과세표준 및 세율" },
+            { "id": "prop-vol2-urban-levy-relation", "slug": "levy-relation", "title": "Ⅳ. 재산세 도시지역분 및 부과징수 관계" },
+            { "id": "prop-vol2-urban-threshold", "slug": "threshold", "title": "Ⅴ. 기준금액 판단" }
+          ]
+        },
+        {
+          "id": "prop-vol2-fire",
+          "slug": "fire",
+          "title": "2장. 소방분 지역자원시설세",
+          "children": [
+            { "id": "prop-vol2-fire-purpose", "slug": "purpose", "title": "Ⅰ. 과세목적" },
+            { "id": "prop-vol2-fire-object", "slug": "object", "title": "Ⅱ. 과세대상" },
+            { "id": "prop-vol2-fire-taxpayer", "slug": "taxpayer", "title": "Ⅲ. 납세의무자" },
+            { "id": "prop-vol2-fire-place", "slug": "place", "title": "Ⅳ. 납세지" },
+            { "id": "prop-vol2-fire-non-tax", "slug": "non-tax", "title": "Ⅴ. 비과세" },
+            { "id": "prop-vol2-fire-base-rate", "slug": "base-rate", "title": "Ⅵ. 과세표준 및 세율" },
+            { "id": "prop-vol2-fire-risk-building", "slug": "risk-building", "title": "Ⅶ. 화재위험 건축물 등" },
+            { "id": "prop-vol2-fire-apply-property", "slug": "apply-property", "title": "Ⅷ. 재산세 준용" },
+            { "id": "prop-vol2-fire-progressive", "slug": "progressive", "title": "Ⅸ. 소방 누진" }
+          ]
+        }
+      ]
+    }
+  ]
 }
