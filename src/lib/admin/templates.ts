@@ -30,6 +30,60 @@ export function genBookDataJson(book: Book): string {
   return JSON.stringify(book, null, 2) + "\n";
 }
 
+/** src/content/.../{slug}.tsx — leaf 콘텐츠 빈 스켈레톤 (CONVENTION_CONTENT.md 준수) */
+export function genLeafTsx(slug: string): string {
+  const componentName = toPascalCase(slug);
+  return `"use client";
+
+import { CalcBox } from "@/components/content/shared";
+
+export default function ${componentName}() {
+  return (
+    <div className="space-y-8">
+      <CalcBox title="■ 준비 중">
+        <p>이 단원의 내용을 작성해 주세요.</p>
+      </CalcBox>
+    </div>
+  );
+}
+`;
+}
+
+/** 트리에서 모든 leaf 노드의 id를 재귀적으로 수집 */
+export function collectLeafIds(nodes: TreeNode[]): Set<string> {
+  const ids = new Set<string>();
+  const walk = (ns: TreeNode[]) => {
+    for (const n of ns) {
+      if (!n.children || n.children.length === 0) {
+        ids.add(n.id);
+      } else {
+        walk(n.children);
+      }
+    }
+  };
+  walk(nodes);
+  return ids;
+}
+
+/** 트리에서 모든 leaf 노드를 슬러그 경로와 함께 수집 */
+export function collectLeavesWithPath(
+  nodes: TreeNode[],
+): { id: string; slug: string; slugPath: string[] }[] {
+  const leaves: { id: string; slug: string; slugPath: string[] }[] = [];
+  const walk = (ns: TreeNode[], parentSlugs: string[]) => {
+    for (const n of ns) {
+      const slugs = [...parentSlugs, n.slug];
+      if (!n.children || n.children.length === 0) {
+        leaves.push({ id: n.id, slug: n.slug, slugPath: slugs });
+      } else {
+        walk(n.children, slugs);
+      }
+    }
+  };
+  walk(nodes, []);
+  return leaves;
+}
+
 const KEBAB = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 const MAX_DEPTH = 5;
 

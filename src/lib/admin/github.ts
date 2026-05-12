@@ -36,6 +36,22 @@ export async function githubFetch(
   return res.json();
 }
 
+/** main HEAD에서 특정 경로의 파일이 존재하는지 확인 (404면 false) */
+export async function pathExistsInRepo(
+  gh: GitHubConfig,
+  filePath: string,
+): Promise<boolean> {
+  const url = `https://api.github.com/repos/${gh.repo}/contents/${encodeURI(filePath)}`;
+  const res = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${gh.token}`,
+      Accept: "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28",
+    },
+  });
+  return res.ok;
+}
+
 /** 여러 파일을 한 번에 GitHub에 커밋 */
 export async function commitFiles(
   gh: GitHubConfig,

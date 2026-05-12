@@ -1,8 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requirePermission } from "@/lib/auth/require-role";
 import { getBookByPath } from "@/book";
-import { getGitHubConfig, commitFiles } from "@/lib/admin/github";
-import { genBookDataJson, validateBookTree } from "@/lib/admin/templates";
+import {
+  getGitHubConfig,
+  commitFiles,
+  pathExistsInRepo,
+} from "@/lib/admin/github";
+import {
+  genBookDataJson,
+  genLeafTsx,
+  validateBookTree,
+  collectLeafIds,
+  collectLeavesWithPath,
+} from "@/lib/admin/templates";
 import type { Book } from "@/book/types";
 
 /** PUT: 특정 책의 트리 전체 업데이트 (src/book/data/{id}.json 커밋) */
@@ -50,6 +60,29 @@ export async function PUT(
     return NextResponse.json({ error: v.error }, { status: 400 });
   }
 
+  // 신규 leaf 감지 → 빈 TSX 스켈레톤도 같은 커밋에 포함
+  // (1 leaf = 1 TSX 파일 — CLAUDE.md / CONVENTION_CONTENT.md 원칙)
+  const oldLeafIds = collectLeafIds(existing.children ?? []);
+  const newLeaves = collectLeavesWithPath(book.children ?? []).filter(
+    (leaf) => !oldLeafIds.has(leaf.id),
+  );
+
+  // 기존 파일을 덮어쓰지 않도록 GitHub에서 한 번 더 확인
+  const skeletonFiles = (
+    await Promise.all(
+      newLeaves.map(async (leaf) => {
+        const tsxPath = `src/content/${book.basePath}/${leaf.slugPath.join("/")}.tsx`;
+        if (await pathExistsInRepo(gh, tsxPath)) return null;
+        return { path: tsxPath, content: genLeafTsx(leaf.slug) };
+      }),
+    )
+  ).filter((f): f is { path: string; content: string } => f !== null);
+
+  const commitMessage =
+    skeletonFiles.length > 0
+      ? `feat(book): update ${book.id} tree + ${skeletonFiles.length} new leaf skeleton(s) via admin UI`
+      : `feat(book): update ${book.id} tree via admin UI`;
+
   try {
     const result = await commitFiles(
       gh,
@@ -58,8 +91,9 @@ export async function PUT(
           path: `src/book/data/${book.id}.json`,
           content: genBookDataJson(book),
         },
+        ...skeletonFiles,
       ],
-      `feat(book): update ${book.id} tree via admin UI`
+      commitMessage,
     );
 
     return NextResponse.json({
