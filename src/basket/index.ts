@@ -1,11 +1,10 @@
 export type { Basket } from "./types";
 
 import { taxBasket } from "./tax";
-import { luxHvyBasket } from "./lux-hvy";
 import type { Basket } from "./types";
 
 /** 모든 바구니 */
-export const allBaskets: Basket[] = [taxBasket, luxHvyBasket];
+export const allBaskets: Basket[] = [taxBasket];
 
 /** ID로 바구니 찾기 */
 export function getBasketById(id: string): Basket | undefined {
