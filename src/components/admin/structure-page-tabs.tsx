@@ -14,11 +14,11 @@ interface Props {
 }
 
 export function StructurePageTabs({ books, baskets }: Props) {
-  const [tab, setTab] = useState<TabKey>("books");
+  const [tab, setTab] = useState<TabKey>("baskets");
 
   const tabs: { key: TabKey; label: string }[] = [
-    { key: "books", label: "책 관리" },
     { key: "baskets", label: "바구니 관리" },
+    { key: "books", label: "책 관리" },
   ];
 
   return (
