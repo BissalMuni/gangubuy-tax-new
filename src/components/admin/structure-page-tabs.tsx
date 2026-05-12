@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { Book } from "@/book/types";
 import type { Basket } from "@/basket/types";
 import { BasketManager } from "./basket-manager";
+import { BookManager } from "./book-manager";
 
 type TabKey = "books" | "baskets";
 
@@ -40,11 +41,7 @@ export function StructurePageTabs({ books, baskets }: Props) {
       </div>
 
       {/* 패널 */}
-      {tab === "books" && (
-        <div className="text-sm text-gray-500">
-          책 관리 기능 준비 중...
-        </div>
-      )}
+      {tab === "books" && <BookManager books={books} />}
       {tab === "baskets" && <BasketManager books={books} baskets={baskets} />}
     </div>
   );

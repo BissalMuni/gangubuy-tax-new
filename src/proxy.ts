@@ -14,14 +14,13 @@ function getSecret() {
 
 /** 경로별 최소 권한 매핑 */
 const ROUTE_PERMISSIONS: { path: string; permission: string; role?: Role }[] = [
-  // superadmin 전용 — 구조 편집 (바구니/책 생성 등)
-  { path: "/admin/super", role: "superadmin", permission: "manage_books" },
-  { path: "/api/admin/baskets", permission: "edit_structure" },
   // admin 이상 — 이력 조회, 롤백
   { path: "/api/admin/rollback", permission: "rollback" },
   // subadmin 이상 — 책/바구니 관리
   { path: "/admin/structure", permission: "edit_structure" },
   { path: "/api/admin/structure", permission: "edit_structure" },
+  { path: "/api/admin/baskets", permission: "edit_structure" },
+  { path: "/api/admin/books", permission: "edit_structure" },
 ];
 
 /** 경로에 필요한 최소 역할/권한 확인 */
