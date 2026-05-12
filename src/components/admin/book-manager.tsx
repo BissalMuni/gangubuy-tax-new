@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import type { Book, TreeNode } from "@/book/types";
 
 interface Props {
@@ -16,6 +16,18 @@ function detectIdPrefix(book: Book): string {
     if (m) return m[1];
   }
   return book.id;
+}
+
+/** 경로(인덱스 배열)로 트리 노드를 얻음. 빈 경로 = 루트 자식 배열 자체를 참조. */
+function getNodeAtPath(children: TreeNode[], path: number[]): TreeNode | null {
+  let cur: TreeNode | null = null;
+  let arr: TreeNode[] = children;
+  for (const i of path) {
+    if (i < 0 || i >= arr.length) return null;
+    cur = arr[i];
+    arr = cur.children ?? [];
+  }
+  return cur;
 }
 
 /** 경로 부모의 children 배열 반환 (불변 갱신용 새 배열). */
@@ -199,8 +211,6 @@ export function BookManager({ books }: Props) {
                 depth={1}
                 isFirst={i === 0}
                 isLast={i === current.children!.length - 1}
-                bookId={current.basePath}
-                slugPath={[node.slug]}
                 onUpdate={(p, updater) =>
                   applyChildrenUpdate((ch) => updateNodeAt(ch, p, updater))
                 }
@@ -275,8 +285,6 @@ interface NodeRowProps {
   depth: number;
   isFirst: boolean;
   isLast: boolean;
-  bookId: string;
-  slugPath: string[];
   onUpdate: (path: number[], updater: (n: TreeNode) => TreeNode) => void;
   onDelete: (path: number[]) => void;
   onMove: (path: number[], delta: -1 | 1) => void;
@@ -289,8 +297,6 @@ function NodeRow({
   depth,
   isFirst,
   isLast,
-  bookId,
-  slugPath,
   onUpdate,
   onDelete,
   onMove,
@@ -299,9 +305,7 @@ function NodeRow({
   const [editing, setEditing] = useState(false);
   const [titleDraft, setTitleDraft] = useState(node.title);
   const [adding, setAdding] = useState(false);
-  const [editingContent, setEditingContent] = useState(false);
   const hasChildren = (node.children?.length ?? 0) > 0;
-  const isLeaf = !hasChildren;
 
   const commitTitle = () => {
     const t = titleDraft.trim();
@@ -358,15 +362,6 @@ function NodeRow({
           {node.slug}
         </span>
         <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100">
-          {isLeaf && (
-            <button
-              onClick={() => setEditingContent((v) => !v)}
-              title="내용 편집"
-              className="rounded px-1.5 py-0.5 text-xs text-emerald-600 hover:bg-emerald-50 dark:hover:bg-emerald-900/30"
-            >
-              📝
-            </button>
-          )}
           <button
             onClick={() => setAdding((v) => !v)}
             title="자식 추가"
@@ -414,17 +409,6 @@ function NodeRow({
         </div>
       )}
 
-      {editingContent && isLeaf && (
-        <div style={{ paddingLeft: `${depth * 16 + 8}px` }}>
-          <LeafContentEditor
-            bookId={bookId}
-            slugPath={slugPath}
-            title={node.title}
-            onClose={() => setEditingContent(false)}
-          />
-        </div>
-      )}
-
       {hasChildren && (
         <ul>
           {node.children!.map((child, i) => (
@@ -435,8 +419,6 @@ function NodeRow({
               depth={depth + 1}
               isFirst={i === 0}
               isLast={i === node.children!.length - 1}
-              bookId={bookId}
-              slugPath={[...slugPath, child.slug]}
               onUpdate={onUpdate}
               onDelete={onDelete}
               onMove={onMove}
@@ -504,129 +486,6 @@ function AddChildForm({ parentId, existingSlugs, onCancel, onAdd }: AddChildForm
         취소
       </button>
       {error && <span className="w-full text-xs text-red-600">{error}</span>}
-    </div>
-  );
-}
-
-interface LeafContentEditorProps {
-  bookId: string;
-  slugPath: string[];
-  title: string;
-  onClose: () => void;
-}
-
-function LeafContentEditor({ bookId, slugPath, title, onClose }: LeafContentEditorProps) {
-  const [text, setText] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [saving, setSaving] = useState(false);
-  const [message, setMessage] = useState<Message | null>(null);
-
-  const slugsJoined = slugPath.join("/");
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      try {
-        const url = `/api/admin/content?book=${encodeURIComponent(
-          bookId,
-        )}&slugs=${encodeURIComponent(slugsJoined)}`;
-        const res = await fetch(url);
-        const data = await res.json();
-        if (cancelled) return;
-        if (!res.ok) {
-          setMessage({ type: "error", text: data.error || "로드 실패" });
-        } else {
-          setText(data.text ?? "");
-        }
-      } catch (err) {
-        if (cancelled) return;
-        setMessage({
-          type: "error",
-          text: err instanceof Error ? err.message : "네트워크 오류",
-        });
-      } finally {
-        if (!cancelled) setLoading(false);
-      }
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, [bookId, slugsJoined]);
-
-  const handleSave = async () => {
-    setSaving(true);
-    setMessage(null);
-    try {
-      const res = await fetch("/api/admin/content", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ book: bookId, slugs: slugPath.join("/"), text }),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        setMessage({ type: "error", text: data.error || "저장 실패" });
-      } else {
-        setMessage({
-          type: "success",
-          text: `저장 완료 (commit: ${data.commit?.slice(0, 7)})`,
-        });
-      }
-    } catch (err) {
-      setMessage({
-        type: "error",
-        text: err instanceof Error ? err.message : "네트워크 오류",
-      });
-    } finally {
-      setSaving(false);
-    }
-  };
-
-  return (
-    <div className="my-2 rounded border border-emerald-500 bg-emerald-50/30 p-3 dark:bg-emerald-900/10">
-      <div className="mb-2 flex items-center justify-between text-xs">
-        <div className="font-medium">
-          📝 {title}
-          <span className="ml-2 font-mono text-gray-500">
-            src/content/{bookId}/{slugPath.join("/")}.md
-          </span>
-        </div>
-        <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
-          닫기
-        </button>
-      </div>
-      {loading ? (
-        <p className="text-xs text-gray-500">불러오는 중...</p>
-      ) : (
-        <>
-          <textarea
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            rows={10}
-            placeholder="내용을 입력하세요. 줄바꿈은 그대로 표시됩니다."
-            className="w-full rounded border border-gray-300 bg-white p-2 text-sm font-mono dark:border-gray-600 dark:bg-gray-900 dark:text-gray-100"
-          />
-          <div className="mt-2 flex items-center gap-3">
-            <button
-              onClick={handleSave}
-              disabled={saving}
-              className={`rounded px-3 py-1 text-xs font-medium text-white ${
-                saving ? "cursor-not-allowed bg-gray-400" : "bg-emerald-600 hover:bg-emerald-700"
-              }`}
-            >
-              {saving ? "저장 중..." : "GitHub에 저장"}
-            </button>
-            <span className="text-xs text-gray-500">{text.length}자</span>
-            {message && (
-              <span
-                className={`text-xs ${
-                  message.type === "success" ? "text-emerald-600" : "text-red-600"
-                }`}
-              >
-                {message.text}
-              </span>
-            )}
-          </div>
-        </>
-      )}
     </div>
   );
 }

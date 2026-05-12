@@ -21,7 +21,6 @@ const ROUTE_PERMISSIONS: { path: string; permission: string; role?: Role }[] = [
   { path: "/api/admin/structure", permission: "edit_structure" },
   { path: "/api/admin/baskets", permission: "edit_structure" },
   { path: "/api/admin/books", permission: "edit_structure" },
-  { path: "/api/admin/content", permission: "edit_structure" },
 ];
 
 /** 경로에 필요한 최소 역할/권한 확인 */

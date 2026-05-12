@@ -11,19 +11,12 @@ export function TopicContent({
   node,
   contentPath,
   book,
-  mdText,
-  tsxExists,
 }: {
   node: TreeNode;
   contentPath: string;
   book: Book;
-  /** MD 파일이 있으면 plain text. 있으면 TSX보다 우선. */
-  mdText?: string | null;
-  /** TSX 파일 존재 여부 (서버에서 미리 확인). 없으면 lazy import 시도하지 않음. */
-  tsxExists?: boolean;
 }) {
-  // MD 우선, 없으면 TSX 파일이 실제 존재할 때만 lazy 시도
-  const Content = mdText || !tsxExists ? null : getContentComponent(book, node);
+  const Content = getContentComponent(book, node);
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
@@ -39,9 +32,7 @@ export function TopicContent({
       </div>
 
       <div ref={containerRef} className="topic-content">
-        {mdText ? (
-          <div className="whitespace-pre-wrap text-base leading-relaxed">{mdText}</div>
-        ) : Content ? (
+        {Content ? (
           <Suspense fallback={<p className="text-muted">콘텐츠를 불러오는 중...</p>}>
             <Content />
             {/* 모든 <section><h2> 옆에 의견 버튼 자동 주입.
