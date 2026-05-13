@@ -337,6 +337,11 @@
           "id": "prop-vol3-lux-hvy",
           "slug": "lux-hvy",
           "title": "유흥 중과"
+        },
+        {
+          "id": "prop-vol3-lux-hvy-apportionment",
+          "slug": "lux-hvy-apportionment",
+          "title": "유흥 재산세 안분"
         }
       ]
     }
