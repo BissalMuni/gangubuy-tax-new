@@ -104,10 +104,15 @@ export async function uploadAttachment(
     throw new Error('file size exceeds 10MB limit');
   }
 
-  // Validate MIME type
-  if (!ALLOWED_MIME_TYPES.includes(file.type as (typeof ALLOWED_MIME_TYPES)[number])) {
+  // 일부 OS(특히 Windows)는 .md 파일의 MIME type을 비워서 보내므로 확장자로 보강.
+  const fileExt = file.name.toLowerCase().split('.').pop() ?? '';
+  const isTextExt = fileExt === 'txt' || fileExt === 'md';
+  if (
+    !ALLOWED_MIME_TYPES.includes(file.type as (typeof ALLOWED_MIME_TYPES)[number]) &&
+    !isTextExt
+  ) {
     throw new Error(
-      'file type not allowed. Allowed: pdf, xlsx, xls, doc, docx, hwp, jpg, jpeg, png, gif',
+      'file type not allowed. Allowed: pdf, xlsx, xls, doc, docx, hwp, jpg, jpeg, png, gif, txt, md',
     );
   }
 

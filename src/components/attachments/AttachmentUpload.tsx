@@ -44,7 +44,13 @@ export function AttachmentUpload({
       return;
     }
 
-    if (!ALLOWED_MIME_TYPES.includes(file.type as (typeof ALLOWED_MIME_TYPES)[number])) {
+    // 일부 OS(특히 Windows)는 .md 파일의 MIME type을 비워서 보내므로 확장자로 보강.
+    const ext = file.name.toLowerCase().split('.').pop() ?? '';
+    const isTextExt = ext === 'txt' || ext === 'md';
+    if (
+      !ALLOWED_MIME_TYPES.includes(file.type as (typeof ALLOWED_MIME_TYPES)[number]) &&
+      !isTextExt
+    ) {
       setToast({ type: 'error', text: '허용되지 않는 파일 형식입니다.' });
       return;
     }
@@ -81,7 +87,7 @@ export function AttachmentUpload({
       <input
         ref={fileInputRef}
         type="file"
-        accept={ALLOWED_MIME_TYPES.join(',')}
+        accept={`${ALLOWED_MIME_TYPES.join(',')},.txt,.md`}
         onChange={handleFileChange}
         className="hidden"
         aria-label="파일 업로드 (최대 10MB)"
