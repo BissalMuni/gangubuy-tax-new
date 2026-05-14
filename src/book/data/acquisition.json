@@ -186,6 +186,18 @@
       ]
     },
     {
+      "id": "acq-gaesu",
+      "slug": "gaesu",
+      "title": "개수",
+      "children": [
+        {
+          "id": "acq-gaesu-elevator",
+          "slug": "elevator",
+          "title": "승강기"
+        }
+      ]
+    },
+    {
       "id": "acq-filing",
       "slug": "filing",
       "title": "신고",
