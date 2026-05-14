@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useSession, invalidateSession } from "@/lib/auth/use-session";
+import { createSupabaseBrowserClient } from "@/lib/supabase/client";
+import { useSession } from "@/lib/auth/use-session";
 
 /** 사이드바 로그인/역할 표시 */
 export function SidebarAuth() {
@@ -25,8 +26,8 @@ export function SidebarAuth() {
   }
 
   const handleLogout = async () => {
-    await fetch("/api/auth/logout", { method: "POST" });
-    invalidateSession();
+    const supabase = createSupabaseBrowserClient();
+    await supabase.auth.signOut();
     router.refresh();
   };
 

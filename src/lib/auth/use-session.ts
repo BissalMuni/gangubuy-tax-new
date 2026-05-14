@@ -1,66 +1,69 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import type { Role } from "./constants";
+import { ROLE_LABELS, ROLE_PERMISSIONS } from "./constants";
 
 export interface SessionInfo {
   role: Role;
   label: string;
   permissions: readonly string[];
+  email?: string;
+  displayName?: string;
 }
 
-let cache: SessionInfo | null | undefined; // undefined = 미조회, null = 비로그인
-const subscribers = new Set<(s: SessionInfo | null) => void>();
-let inFlight: Promise<SessionInfo | null> | null = null;
-
-async function load(): Promise<SessionInfo | null> {
-  if (cache !== undefined) return cache;
-  if (inFlight) return inFlight;
-  inFlight = fetch("/api/auth/me", { cache: "no-store" })
-    .then((res) => (res.ok ? (res.json() as Promise<SessionInfo>) : null))
-    .catch(() => null)
-    .then((s) => {
-      cache = s;
-      subscribers.forEach((fn) => fn(s));
-      return s;
-    })
-    .finally(() => {
-      inFlight = null;
-    });
-  return inFlight;
-}
-
-/** 세션 캐시 무효화 (로그인/로그아웃 직후 호출) */
+/** 세션 캐시 무효화 — Supabase onAuthStateChange가 자동 처리하므로 호환용 */
 export function invalidateSession() {
-  cache = undefined;
-  load();
+  // no-op: onAuthStateChange가 상태를 자동 업데이트
 }
 
 /**
- * 모든 컴포넌트가 단일 캐시를 공유하는 가벼운 세션 훅.
- * 여러 컴포넌트가 동시에 사용해도 /api/auth/me 는 1회만 호출됨.
+ * Supabase Auth 기반 세션 훅.
+ * onAuthStateChange로 로그인/로그아웃 자동 반영.
  */
 export function useSession() {
-  // 초기값에서 캐시를 그대로 사용 (effect 안에서 setState 하지 않음)
   const [session, setSession] = useState<SessionInfo | null | undefined>(
-    () => cache
+    undefined
   );
 
   useEffect(() => {
-    let active = true;
+    const supabase = createSupabaseBrowserClient();
 
-    if (cache === undefined) {
-      load().then((s) => active && setSession(s));
-    }
+    // 초기 세션 로드
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (user) {
+        const role = (user.app_metadata?.user_role ?? "reader") as Role;
+        setSession({
+          role,
+          label: ROLE_LABELS[role],
+          permissions: ROLE_PERMISSIONS[role],
+          email: user.email,
+        });
+      } else {
+        setSession(null);
+      }
+    });
 
-    const update = (s: SessionInfo | null) => {
-      if (active) setSession(s);
-    };
-    subscribers.add(update);
-    return () => {
-      active = false;
-      subscribers.delete(update);
-    };
+    // 인증 상태 변경 구독
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, authSession) => {
+      if (authSession?.user) {
+        const role = (authSession.user.app_metadata?.user_role ??
+          "reader") as Role;
+        setSession({
+          role,
+          label: ROLE_LABELS[role],
+          permissions: ROLE_PERMISSIONS[role],
+          email: authSession.user.email,
+        });
+      } else {
+        setSession(null);
+      }
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
   return {
