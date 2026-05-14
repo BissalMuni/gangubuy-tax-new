@@ -13,3 +13,6 @@ tsconfig.tsbuildinfo
 Dockerfile.claude
 docker-compose.claude.yml
 .claude-output/
+
+# 실무 원본 자료 (PDF/HWPX 등 로컬 참고용)
+silmu/
