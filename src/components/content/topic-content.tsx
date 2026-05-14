@@ -3,6 +3,7 @@
 import { Suspense, useRef } from "react";
 import { AutoSectionComment } from "@/components/feedback/auto-section-comment";
 import { SectionComment } from "@/components/feedback/section-comment";
+import { FloatingSectionNav } from "@/components/mdx/FloatingSectionNav";
 import { getContentComponent } from "@/map";
 import type { Book, TreeNode } from "@/book";
 
@@ -45,6 +46,9 @@ export function TopicContent({
           <p className="text-muted italic">이 단원의 콘텐츠가 준비 중입니다.</p>
         )}
       </div>
+
+      {/* 스크롤 중에만 보이는 플로팅 섹션 네비 (페이지당 1개) */}
+      <FloatingSectionNav />
     </>
   );
 }
