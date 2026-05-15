@@ -13,7 +13,7 @@ function getSupabaseClient() {
   if (!url || !key) {
     throw new Error('Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY');
   }
-  return { client: createClient(url, key), url };
+  return { client: createClient(url, key, { db: { schema: 'tax' } }), url };
 }
 
 /**
