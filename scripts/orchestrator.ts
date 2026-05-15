@@ -74,6 +74,14 @@ async function extractAttachmentContent(attachments: Attachment[]): Promise<stri
       }
     } else if (att.mime_type.startsWith('image/')) {
       contents.push(`[이미지: ${att.file_name}] - ${att.download_url}`);
+    } else if (att.mime_type === 'text/plain' || att.mime_type === 'text/markdown') {
+      // 텍스트/마크다운 파일 내용 추출
+      try {
+        const textContent = buffer.toString('utf-8');
+        contents.push(`### ${att.file_name}\n${textContent}`);
+      } catch {
+        contents.push(`[${att.file_name}] - 텍스트 변환 실패`);
+      }
     } else {
       contents.push(`[${att.file_name}] - 지원되지 않는 형식`);
     }

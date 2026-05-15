@@ -86,6 +86,15 @@ async function extractAttachmentContent(attachments: Attachment[]): Promise<stri
     else if (att.mime_type.startsWith('image/')) {
       contents.push(`[이미지: ${att.file_name}] - ${att.download_url}`);
     }
+    // 텍스트/마크다운 파일
+    else if (att.mime_type === 'text/plain' || att.mime_type === 'text/markdown') {
+      try {
+        const textContent = buffer.toString('utf-8');
+        contents.push(`### ${att.file_name}\n${textContent}`);
+      } catch {
+        contents.push(`[${att.file_name}] - 텍스트 변환 실패`);
+      }
+    }
     // 기타 파일
     else {
       contents.push(`[${att.file_name}] - 지원되지 않는 형식 (${att.mime_type})`);
