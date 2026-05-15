@@ -196,12 +196,12 @@ export async function processComment(comment: Comment): Promise<ProcessResult> {
   // 2. MDX 파일 읽기
   const mdxContent = fs.readFileSync(mdxFilePath, 'utf-8');
 
-  // 3. 첨부파일 처리
-  const attachments = await fetchAttachments(comment.content_path);
+  // 3. 첨부파일 처리 (댓글별 조회)
+  const attachments = await fetchAttachments(comment.content_path, comment.id);
   let attachmentContent: string | undefined;
 
   if (attachments.length > 0) {
-    console.log(`[Process Comment] Found ${attachments.length} attachments`);
+    console.log(`[Process Comment] Found ${attachments.length} attachments for comment ${comment.id.substring(0, 8)}`);
     attachmentContent = await extractAttachmentContent(attachments);
   }
 

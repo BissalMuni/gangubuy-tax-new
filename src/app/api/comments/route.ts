@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getComments, createComment } from '@/lib/supabase/comments';
+import { linkAttachmentsToComment } from '@/lib/supabase/attachments';
 import { requirePermission, getRoleFromRequest } from '@/lib/auth/require-role';
 import { ROLE_LABELS } from '@/lib/auth/constants';
 import { sanitizeCommentBody } from '@/lib/security/comment-sanitizer';
@@ -94,6 +95,14 @@ export async function POST(request: NextRequest) {
       flagged,
       flagReason,
     });
+
+    // 미연결 첨부파일을 새 댓글에 자동 연결
+    if (data?.id) {
+      await linkAttachmentsToComment(content_path.trim(), data.id).catch(() => {
+        // 첨부파일 연결 실패는 댓글 등록 자체를 막지 않음
+      });
+    }
+
     return NextResponse.json({ data }, { status: 201 });
   } catch {
     return NextResponse.json({ error: '등록 실패' }, { status: 500 });

@@ -113,6 +113,7 @@ export interface ContentChange {
 export interface Attachment {
   id: string;
   content_path: string;
+  comment_id?: string | null;
   file_name: string;
   storage_path: string;
   file_size: number;

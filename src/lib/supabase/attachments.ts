@@ -94,10 +94,57 @@ export async function getAttachments(contentPath: string): Promise<Attachment[]>
   })) as Attachment[];
 }
 
+/** 특정 댓글에 연결된 첨부파일만 조회 */
+export async function getAttachmentsByCommentId(commentId: string): Promise<Attachment[]> {
+  const supabase = getSupabase();
+  const { data, error } = await supabase
+    .from('attachments')
+    .select('*')
+    .eq('comment_id', commentId)
+    .order('created_at', { ascending: false });
+
+  if (error) throw error;
+
+  const rows = data || [];
+  if (rows.length === 0) return [];
+
+  const paths = rows.map((r) => r.storage_path);
+  const { data: signed, error: signError } = await supabase.storage
+    .from(BUCKET_NAME)
+    .createSignedUrls(paths, SIGNED_URL_TTL);
+  if (signError) throw signError;
+
+  return rows.map((row, idx) => ({
+    ...row,
+    download_url: signed?.[idx]?.signedUrl ?? '',
+  })) as Attachment[];
+}
+
+/**
+ * 미연결 첨부파일(comment_id IS NULL)을 특정 댓글에 연결.
+ * 댓글 등록 직후 호출하여 같은 content_path의 pending 첨부파일을 일괄 연결한다.
+ */
+export async function linkAttachmentsToComment(
+  contentPath: string,
+  commentId: string,
+): Promise<number> {
+  const supabase = getSupabase();
+  const { data, error } = await supabase
+    .from('attachments')
+    .update({ comment_id: commentId })
+    .eq('content_path', contentPath)
+    .is('comment_id', null)
+    .select('id');
+
+  if (error) throw error;
+  return data?.length ?? 0;
+}
+
 export async function uploadAttachment(
   file: File,
   contentPath: string,
   uploadedBy: string,
+  commentId?: string,
 ): Promise<Attachment> {
   // Validate file size
   if (file.size > MAX_FILE_SIZE) {
@@ -141,6 +188,7 @@ export async function uploadAttachment(
     .from('attachments')
     .insert({
       content_path: contentPath,
+      comment_id: commentId ?? null,
       file_name: file.name,
       storage_path: storagePath,
       file_size: file.size,

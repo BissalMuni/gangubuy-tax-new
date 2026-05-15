@@ -37,15 +37,24 @@ export async function fetchUnprocessedComments(): Promise<Comment[]> {
 }
 
 /**
- * 특정 content_path의 첨부파일을 조회합니다
+ * 특정 댓글에 연결된 첨부파일을 조회합니다.
+ * commentId가 없으면 content_path로 폴백합니다.
  */
-export async function fetchAttachments(contentPath: string): Promise<Attachment[]> {
+export async function fetchAttachments(contentPath: string, commentId?: string): Promise<Attachment[]> {
   const { client, url } = getSupabaseClient();
-  const { data, error } = await client
+
+  let query = client
     .from('attachments')
     .select('*')
-    .eq('content_path', contentPath)
     .order('created_at', { ascending: true });
+
+  if (commentId) {
+    query = query.eq('comment_id', commentId);
+  } else {
+    query = query.eq('content_path', contentPath);
+  }
+
+  const { data, error } = await query;
 
   if (error) {
     console.error('[Fetch Attachments] Error:', error.message);
@@ -123,7 +132,7 @@ if (require.main === module) {
       console.log(`Body: ${comment.body.substring(0, 100)}...`);
       console.log(`Created: ${comment.created_at}`);
 
-      const attachments = await fetchAttachments(comment.content_path);
+      const attachments = await fetchAttachments(comment.content_path, comment.id);
       if (attachments.length > 0) {
         console.log(`Attachments: ${attachments.map((a) => a.file_name).join(', ')}`);
       }

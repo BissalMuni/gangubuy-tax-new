@@ -144,22 +144,23 @@ async function processComments(): Promise<{ processed: number; errors: number }>
 
     const mdxContent = fs.readFileSync(mdxFilePath, 'utf-8');
 
-    // 첨부파일 처리
-    const attachments = await fetchAttachments(contentPath);
-    let attachmentContent = '';
-    if (attachments.length > 0) {
-      log(`  첨부파일 ${attachments.length}개 처리 중...`);
-      attachmentContent = await extractAttachmentContent(attachments);
-    }
+    // 요청 목록 구성 (댓글별 첨부파일 포함)
+    const requests: { label: string; body: string }[] = [];
+    for (const c of comments) {
+      requests.push({
+        label: `${c.author} (${c.created_at})`,
+        body: c.body,
+      });
 
-    // 요청 목록 구성
-    const requests = comments.map((c) => ({
-      label: `${c.author} (${c.created_at})`,
-      body: c.body,
-    }));
-
-    if (attachmentContent) {
-      requests.push({ label: '첨부파일', body: attachmentContent });
+      // 댓글별 첨부파일 조회
+      const attachments = await fetchAttachments(contentPath, c.id);
+      if (attachments.length > 0) {
+        log(`  댓글 ${c.id.substring(0, 8)} 첨부파일 ${attachments.length}개 처리 중...`);
+        const attachmentContent = await extractAttachmentContent(attachments);
+        if (attachmentContent) {
+          requests.push({ label: `첨부파일 (${c.id.substring(0, 8)})`, body: attachmentContent });
+        }
+      }
     }
 
     // 프롬프트 생성

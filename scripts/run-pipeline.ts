@@ -157,22 +157,22 @@ async function buildCombinedPrompt(
 ): Promise<string> {
   const guidelines = getGuidelinesContent();
 
-  // 댓글 내용 합치기
-  const commentsSection = comments
-    .map((c, i) => `### 댓글 ${i + 1} (작성자: ${c.author}, ${c.created_at})
-${c.body}`)
-    .join('\n\n');
-
-  // 첨부파일 처리
-  const attachments = await fetchAttachments(contentPath);
-  let attachmentSection = '';
-  if (attachments.length > 0) {
-    console.log(`  첨부파일 ${attachments.length}개 발견`);
-    attachmentSection = `
-## 첨부파일 내용
-${await extractAttachmentContent(attachments)}
-`;
+  // 댓글 내용 + 댓글별 첨부파일 합치기
+  const commentsSections: string[] = [];
+  for (const [i, c] of comments.entries()) {
+    let section = `### 댓글 ${i + 1} (작성자: ${c.author}, ${c.created_at})\n${c.body}`;
+    const attachments = await fetchAttachments(contentPath, c.id);
+    if (attachments.length > 0) {
+      console.log(`  댓글 ${c.id.substring(0, 8)} 첨부파일 ${attachments.length}개 발견`);
+      const attachmentContent = await extractAttachmentContent(attachments);
+      if (attachmentContent) {
+        section += `\n\n#### 첨부파일\n${attachmentContent}`;
+      }
+    }
+    commentsSections.push(section);
   }
+  const commentsSection = commentsSections.join('\n\n');
+  const attachmentSection = '';
 
   return `# MDX 파일 수정 요청
 
