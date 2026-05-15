@@ -42,7 +42,7 @@ jobs:
       # 4) 의존성 설치 (첨부파일 전처리 + Claude Code에서 사용)
       - name: Install dependencies
         if: steps.check.outputs.skip == 'false'
-        run: npm install -g pnpm && pnpm install --frozen-lockfile
+        run: npm install -g pnpm && pnpm install --frozen-lockfile --ignore-scripts
 
       # 5) 첨부파일 내용을 댓글 JSON에 병합 (Claude Code 단계에는 Supabase 자격증명이 없으므로 미리 처리)
       - name: Enrich comments with attachments
