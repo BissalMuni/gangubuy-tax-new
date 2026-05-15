@@ -39,12 +39,25 @@ jobs:
             echo "count=$COUNT" >> $GITHUB_OUTPUT
           fi
 
-      # 4) Claude Code 설치
+      # 4) 의존성 설치 (첨부파일 전처리 + Claude Code에서 사용)
+      - name: Install dependencies
+        if: steps.check.outputs.skip == 'false'
+        run: npm install -g pnpm && pnpm install --frozen-lockfile
+
+      # 5) 첨부파일 내용을 댓글 JSON에 병합 (Claude Code 단계에는 Supabase 자격증명이 없으므로 미리 처리)
+      - name: Enrich comments with attachments
+        if: steps.check.outputs.skip == 'false'
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: npx tsx scripts/enrich-comments-with-attachments.ts /tmp/comments.json
+
+      # 6) Claude Code 설치
       - name: Install Claude Code
         if: steps.check.outputs.skip == 'false'
         run: npm install -g @anthropic-ai/claude-code
 
-      # 5) Claude Code로 내용 피드백 반영
+      # 7) Claude Code로 내용 피드백 반영
       - name: Apply content feedback
         if: steps.check.outputs.skip == 'false'
         env:
@@ -87,8 +100,13 @@ jobs:
             · 최상위 <div className="space-y-8"> 래퍼
           - Bash 도구가 없으므로 셸 명령 실행 불가 — 파일 읽기/수정만 수행할 것
 
+          == 첨부파일 ==
+          의견 JSON 항목에 "attachment_content" 필드가 있으면 해당 댓글에 첨부된 파일의 내용이다.
+          의견이 "txt 파일로 내용 구성" 등 첨부파일 기반 작업을 요청하면 attachment_content를 참조하여 반영할 것.
+
           == 절차 ==
           - 위 JSON의 content_path로 해당 TSX 파일을 찾아 읽기
+          - 의견에 attachment_content가 있으면 해당 내용을 기반으로 작업
           - 의견이 위 "허용되는 변경" 범위 안이면 반영
           - 비합리적·단순 감상·금지 범위 요청이면 무시
           - git commit/push는 하지 말 것 (아래 step에서 처리)
@@ -98,14 +116,14 @@ jobs:
             --allowedTools "Read,Edit,Write,Glob,Grep" \
             -p "${CONVENTIONS}${PROMPT}"
 
-      # 5.5) ④ 출력 검증단 — Claude 변경을 commit 직전 검사
+      # 7.5) 출력 검증단 — Claude 변경을 commit 직전 검사
       #      허용 경로·diff 크기·위험 패턴 위반 시 workflow 실패
       #      → commit·push 안 함, 댓글은 미처리 상태로 보존되어 다음 cron 에 재시도
       - name: Validate Claude output
         if: steps.check.outputs.skip == 'false'
         run: bash scripts/validate-output.sh
 
-      # 6) 변경사항 커밋 & main에 푸시
+      # 8) 변경사항 커밋 & main에 푸시
       - name: Commit and push
         id: commit
         if: steps.check.outputs.skip == 'false'
@@ -127,7 +145,7 @@ jobs:
             echo "has_changes=true" >> $GITHUB_OUTPUT
           fi
 
-      # 7) 커밋 성공 후 댓글을 처리됨으로 마킹
+      # 9) 커밋 성공 후 댓글을 처리됨으로 마킹
       - name: Mark comments as processed
         if: steps.check.outputs.skip == 'false' && steps.commit.outputs.has_changes == 'true'
         env:
@@ -135,7 +153,7 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: bash scripts/fetch-feedback.sh --type=content --mark-all-unprocessed
 
-      # 8) 수정 이력을 Supabase에 기록
+      # 10) 수정 이력을 Supabase에 기록
       - name: Log content changes
         if: steps.check.outputs.skip == 'false' && steps.commit.outputs.has_changes == 'true'
         env:
