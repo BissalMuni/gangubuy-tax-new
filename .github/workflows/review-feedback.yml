@@ -20,7 +20,7 @@ jobs:
       # 2) Node.js 설치
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       # 3) 미처리 내용 수정 의견 확인 — 없으면 조기 종료
       - name: Check unprocessed content comments
