@@ -138,3 +138,23 @@ export const ALLOWED_MIME_TYPES = [
 ] as const;
 
 export const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+
+// === Calendar Events ===
+
+export type RecurrenceType = 'none' | 'yearly' | 'monthly' | 'weekly';
+
+export interface CalendarEvent {
+  id: string;
+  title: string;
+  description?: string | null;
+  start_date: string;
+  end_date?: string | null;
+  all_day: boolean;
+  recurrence: RecurrenceType;
+  color: string;
+  completed: boolean;
+  completed_at?: string | null;
+  created_by: string;
+  created_at: string;
+  updated_at: string;
+}

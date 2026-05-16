@@ -45,6 +45,17 @@ export default async function AdminPage() {
             <p className="text-sm text-gray-500">전체 첨부 조회·필터·미리보기·삭제</p>
           </Link>
         )}
+
+        {/* subadmin 이상: 일정 관리 */}
+        {hasPermission(role, "edit_structure") && (
+          <Link
+            href="/admin/calendar"
+            className="rounded-lg border border-gray-200 p-4 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800"
+          >
+            <h2 className="font-semibold">일정 관리</h2>
+            <p className="text-sm text-gray-500">세무 일정 등록·캘린더·당일 알림</p>
+          </Link>
+        )}
       </div>
     </div>
   );

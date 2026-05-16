@@ -18,6 +18,7 @@ const NAV_ITEMS: NavItem[] = [
   { href: "/admin/changes", label: "수정 이력", minRole: "admin" },
   { href: "/admin/structure", label: "책/바구니 관리", minRole: "subadmin" },
   { href: "/admin/attachments", label: "첨부파일 관리", minRole: "admin" },
+  { href: "/admin/calendar", label: "일정 관리", minRole: "subadmin" },
 ];
 
 function hasMinRole(role: Role, minRole: Role): boolean {

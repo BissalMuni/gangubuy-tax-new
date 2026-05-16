@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Sidebar } from '@/components/navigation/sidebar';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { Footer } from '@/components/ui/Footer';
+import { TodayEventsPopup } from '@/components/admin/calendar/today-popup';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -29,6 +30,8 @@ export default function RootLayout({
             {children}
             <Footer />
           </main>
+          <TodayEventsPopup />
+
         </ThemeProvider>
       </body>
     </html>
