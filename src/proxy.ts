@@ -29,6 +29,10 @@ export async function proxy(request: NextRequest) {
   const isAdminGuarded =
     pathname.startsWith("/admin") || pathname.startsWith("/api/admin");
 
+  // 콘텐츠 경로 — 로그인 필수 (추후 일부 공개 가능)
+  const CONTENT_PREFIXES = ["/acquisition", "/corp-acquisition-tax", "/property", "/vehicle"];
+  const isContentPage = CONTENT_PREFIXES.some((p) => pathname.startsWith(p));
+
   // Supabase 세션 리프레시 + 사용자 정보 읽기
   let response = NextResponse.next({ request });
 
@@ -70,6 +74,13 @@ export async function proxy(request: NextRequest) {
   requestHeaders.delete("x-user-role");
   if (role) requestHeaders.set("x-user-role", role);
 
+  // 콘텐츠 경로 보호 — 로그인 필수
+  if (isContentPage && !session) {
+    const loginUrl = new URL("/login", request.url);
+    loginUrl.searchParams.set("next", pathname);
+    return NextResponse.redirect(loginUrl);
+  }
+
   // admin 경로 보호
   if (isAdminGuarded) {
     if (!role) {
@@ -102,5 +113,9 @@ export const config = {
     "/api/admin/:path*",
     "/api/comments/:path*",
     "/api/attachments/:path*",
+    "/acquisition/:path*",
+    "/corp-acquisition-tax/:path*",
+    "/property/:path*",
+    "/vehicle/:path*",
   ],
 };
