@@ -30,15 +30,16 @@ export function useSession() {
   useEffect(() => {
     const supabase = createSupabaseBrowserClient();
 
-    // 초기 세션 로드
-    supabase.auth.getUser().then(({ data: { user } }) => {
-      if (user) {
-        const role = (user.app_metadata?.user_role ?? "reader") as Role;
+    // 초기 세션 로드 — JWT claims에서 user_role 추출
+    supabase.auth.getSession().then(({ data: { session: s } }) => {
+      if (s) {
+        const payload = JSON.parse(atob(s.access_token.split(".")[1]));
+        const role = (payload.user_role ?? s.user.app_metadata?.user_role ?? "reader") as Role;
         setSession({
           role,
           label: ROLE_LABELS[role],
           permissions: ROLE_PERMISSIONS[role],
-          email: user.email,
+          email: s.user.email,
         });
       } else {
         setSession(null);
@@ -49,8 +50,9 @@ export function useSession() {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, authSession) => {
-      if (authSession?.user) {
-        const role = (authSession.user.app_metadata?.user_role ??
+      if (authSession) {
+        const payload = JSON.parse(atob(authSession.access_token.split(".")[1]));
+        const role = (payload.user_role ?? authSession.user.app_metadata?.user_role ??
           "reader") as Role;
         setSession({
           role,

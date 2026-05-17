@@ -7,13 +7,15 @@ export async function getSessionFromCookies(): Promise<{
 } | null> {
   const supabase = await createSupabaseServerClient();
   const {
-    data: { user },
-  } = await supabase.auth.getUser();
+    data: { session },
+  } = await supabase.auth.getSession();
 
-  if (!user) return null;
+  if (!session) return null;
 
   // Custom JWT Hook이 주입한 user_role 클레임에서 역할 읽기
-  const role = (user.app_metadata?.user_role ?? "reader") as Role;
+  // access_token을 디코딩하여 최상위 claims에서 user_role 추출
+  const payload = JSON.parse(atob(session.access_token.split(".")[1]));
+  const role = (payload.user_role ?? session.user.app_metadata?.user_role ?? "reader") as Role;
   if (!ROLES.includes(role)) return null;
 
   return { role };

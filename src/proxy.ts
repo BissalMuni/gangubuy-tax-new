@@ -54,13 +54,14 @@ export async function proxy(request: NextRequest) {
   );
 
   const {
-    data: { user },
-  } = await supabase.auth.getUser();
+    data: { session },
+  } = await supabase.auth.getSession();
 
   // JWT custom claim에서 역할 추출
   let role: Role | null = null;
-  if (user) {
-    const r = (user.app_metadata?.user_role ?? "reader") as Role;
+  if (session) {
+    const payload = JSON.parse(atob(session.access_token.split(".")[1]));
+    const r = (payload.user_role ?? session.user.app_metadata?.user_role ?? "reader") as Role;
     if (ROLES.includes(r)) role = r;
   }
 
